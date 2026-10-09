@@ -6,7 +6,7 @@ import {zodTextFormat} from 'openai/helpers/zod';
 import {parseMaterials,awaitPdfWorker,materialFileId,safeMaterialFilename,type MaterialUpload} from '../src/lib/materials/parse';
 import {organizeMaterials} from '../src/lib/materials/service';
 import {MATERIAL_SYSTEM_PROMPT,ModelMaterialOutputSchema,buildMaterialPromptData,validateMaterialOutput,extractMaterials,openAIMaterialTransport,type ModelMaterialOutput,type MaterialTransport} from '../src/lib/materials/extract';
-import {MATERIAL_LIMITS,MaterialResponseSchema,MaterialStreamEventSchema,type MaterialRequest,type ParsedMaterial,type MaterialResponse} from '../src/lib/materials/contracts';
+import {MATERIAL_LIMITS,MATERIAL_PROTOCOL_VERSION,MaterialResponseSchema,MaterialStreamEventSchema,type MaterialRequest,type ParsedMaterial,type MaterialResponse} from '../src/lib/materials/contracts';
 import {POST,maxDuration} from '../src/app/api/materials/route';
 import {readMaterialConfig} from '../src/lib/materials/config';
 import {readIntakeConfig} from '../src/lib/intake/service';
@@ -115,16 +115,39 @@ describe('material extraction citations, attribution and multiple case separatio
     expect(result[0].items[0].sources[0].quote).toContain('Mira');expect(result[1].items[0].sources[0].quote).toContain('Leo');
     expect(result[0]).not.toHaveProperty('selected');
   });
-  it('rejects fabricated, joined, omitted-page, wrong-file citations and unsupported dates',async()=>{
+  it('rejects fabricated, joined, omitted-page, wrong-file citations and invalid conflicts',async()=>{
     const docs=await parsed();
     for(const mutate of [
       (model:ModelMaterialOutput)=>{model.candidates[0].items[0].sources[0].quote='A court awarded GBP 20,000.';},
       (model:ModelMaterialOutput)=>{model.candidates[0].items[0].sources[0].pdfPage=2;},
       (model:ModelMaterialOutput)=>{model.candidates[0].items[0].sources[0].fileId='pdf-forged';},
-      (model:ModelMaterialOutput)=>{model.candidates[0].items[4].date='2026-10-03';},
       (model:ModelMaterialOutput)=>{model.candidates[0].conflicts=[{description:'Invalid conflict',itemIndices:[0,47]}];},
     ]){const model=output(docs);mutate(model);expect(()=>validateMaterialOutput(model,docs,'en')).toThrow(/validation/);}
     const omitted=structuredClone(docs);omitted[0].pages[0].status='omitted';expect(()=>validateMaterialOutput(output(docs),omitted,'en')).toThrow(/validation/);
+  });
+  it('reconciles an unambiguous date format to literal evidence and routes a real mismatch to user review',async()=>{
+    const docs=await parsed(),model=output(docs);
+    model.candidates[0].items[4].date='2026-10-03';
+    const equivalent=validateMaterialOutput(model,docs,'en')[0];
+    expect(equivalent.items[4]).toMatchObject({date:'3 October 2026'});expect(equivalent.items[4].dateReview).toBeUndefined();
+    model.candidates[0].items[4].date='2099-12-01';model.candidates[0].items[4].text='Wrong draft says receipt was 2099-12-01.';
+    model.candidates[0].conflicts=[{description:'Wrong draft conflicts about 2099-12-01.',itemIndices:[0,4]}];
+    model.candidates[0].missing=['Verify 2099-12-01.'];
+    const flagged=validateMaterialOutput(model,docs,'en')[0];
+    expect(flagged.items).toHaveLength(5);expect(flagged.items[0].text).toBe(equivalent.items[0].text);
+    expect(flagged.items[4]).toMatchObject({date:null,dateReview:{reason:'date_mismatch',resolution:null}});
+    expect(flagged.items[4].sources).toEqual(equivalent.items[4].sources);
+    expect(JSON.stringify(flagged)).not.toMatch(/2099-12-01|Wrong draft/);
+    expect(flagged.conflicts).toHaveLength(1);expect(flagged.conflicts[0].itemIds).toContain(flagged.items[4].id);
+    model.candidates[0].items[4].date=null;
+    expect(validateMaterialOutput(model,docs,'en')[0].items[4].dateReview?.reason).toBe('missing_date');
+  });
+  it('keeps checked items and returns a date-review warning with exactly one model attempt',async()=>{
+    const docs=await parsed(),model=output(docs);model.candidates[0].items[4].date='2099-12-01';
+    const transport=vi.fn(async()=>({status:'completed',output_parsed:model}));
+    const result=await organizeMaterials([await fixture()],metadata,{config,transport});
+    expect(result.mode).toBe('live_ai');expect(result.candidates[0].items).toHaveLength(5);
+    expect(result.warnings.join()).toContain('1 date item');expect(transport).toHaveBeenCalledOnce();
   });
   it('matches PDF layout whitespace but stores the exact original page substring and original date',async()=>{
     const docs=await parsed(),model=output(docs);
@@ -196,8 +219,8 @@ describe('service consent, usage gates and lifecycle',()=>{
     expect(readIntakeConfig(env).timeoutMs).toBe(30000);
     expect(readMaterialConfig({...env,AI_MATERIAL_TIMEOUT_MS:'90000'}).timeoutMs).toBe(90000);
     for(const value of ['999','120001','invalid'])expect(()=>readMaterialConfig({...env,AI_MATERIAL_TIMEOUT_MS:value})).toThrow();
-    // Upload + three serial parser deadlines + model still fit the total and hosting limits.
-    expect(15000+3*15000+120000).toBeLessThanOrEqual(MATERIAL_LIMITS.requestTimeoutMs);
+    // Upload + the combined parser deadline + model fit the total and hosting limits.
+    expect(15000+15000+120000).toBeLessThanOrEqual(MATERIAL_LIMITS.requestTimeoutMs);
     expect(MATERIAL_LIMITS.requestTimeoutMs+5000).toBeLessThan(maxDuration*1000);
   });
   it('accepts a 75-second model response without retrying or applying a partial result',async()=>{
@@ -236,9 +259,19 @@ describe('bounded multipart NDJSON route',()=>{
   async function request(overrides:Partial<MaterialRequest>={},names=['expression-letter.pdf'],headers:Record<string,string>={}){
     const form=new FormData();form.append('metadata',JSON.stringify({...metadata,aiConsent:false,...overrides}));
     for(const name of names){const file=await fixture(name);form.append('files',new Blob([file.bytes as Uint8Array<ArrayBuffer>],{type:'application/pdf'}),name);}
-    return new NextRequest('https://caselink.example/api/materials',{method:'POST',headers:{origin:'https://caselink.example',host:'caselink.example',...headers},body:form});
+    return new NextRequest('https://caselink.example/api/materials',{method:'POST',headers:{origin:'https://caselink.example',host:'caselink.example','x-caselink-material-version':MATERIAL_PROTOCOL_VERSION,...headers},body:form});
   }
   const events=async(response:Response)=>(await response.text()).trim().split('\n').map(line=>MaterialStreamEventSchema.parse(JSON.parse(line)));
+  it('asks stale tabs to refresh before any paid call, while keeping local text compatible',async()=>{
+    const fetch=vi.fn();vi.stubGlobal('fetch',fetch);vi.stubEnv('ANALYSIS_MODE','invalid-before-config');
+    for(const version of [null,'1']){
+      const stale=await request({aiConsent:true});if(version===null)stale.headers.delete('x-caselink-material-version');else stale.headers.set('x-caselink-material-version',version);
+      const response=await POST(stale);expect(response.status).toBe(409);expect(await response.json()).toMatchObject({code:'INVALID_INPUT',message:expect.stringContaining('Refresh')});
+    }
+    const local=await request();local.headers.delete('x-caselink-material-version');
+    expect((await events(await POST(local))).at(-1)).toMatchObject({type:'result',result:{mode:'local_text'}});
+    expect(fetch).not.toHaveBeenCalled();
+  });
   it('streams actual checking/reading/doc/result states with no consent or config and no cache',async()=>{
     vi.stubEnv('ANALYSIS_MODE','invalid-ignore-without-consent');const fetch=vi.fn();vi.stubGlobal('fetch',fetch);
     const response=await POST(await request()),stream=await events(response);

@@ -168,7 +168,7 @@ export default function AdaptiveQuestionnaire({initialEntry='upload'}:{initialEn
     }
   }
   function answerQuestion(question: NonNullable<View['response']>['questions'][number], answer: string) {
-    if(inputRef.current.intake.materials){update(applyMaterialAnswer(inputRef.current,question,answer));return;}
+    if(inputRef.current.intake.materials){update(applyMaterialAnswer(inputRef.current,question,answer,locale));return;}
     const answers = inputRef.current.intake.answers;
     const item = { questionId: question.id, question: question.title, answer, ...(question.anchorQuote ? {anchorQuote:question.anchorQuote} : {}) };
     if (!answers.some(existing=>existing.questionId===question.id) && answers.length>=40) {setNotice(c.answerLimit);return;}

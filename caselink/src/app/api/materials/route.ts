@@ -2,7 +2,7 @@ import {NextRequest} from 'next/server';
 import {AnalysisError,publicError} from '@/lib/ai/errors';
 import {NO_STORE,errorResponse,requestIdentifier} from '@/lib/ai/http';
 import {readMaterialConfig} from '@/lib/materials/config';
-import {MATERIAL_LIMITS,MaterialRequestSchema,type MaterialStreamEvent} from '@/lib/materials/contracts';
+import {MATERIAL_LIMITS,MATERIAL_PROTOCOL_VERSION,MaterialRequestSchema,type MaterialStreamEvent} from '@/lib/materials/contracts';
 import {organizeMaterials} from '@/lib/materials/service';
 import {releaseUploads,type MaterialUpload} from '@/lib/materials/parse';
 
@@ -42,6 +42,7 @@ export async function POST(request:NextRequest){
     let raw:unknown;try{raw=JSON.parse(metadata[0]);}catch{throw new AnalysisError('INVALID_INPUT','材料整理参数不是有效 JSON。');}
     const parsed=MaterialRequestSchema.safeParse(raw);if(!parsed.success||parsed.data.operation!=='initial')throw new AnalysisError('INVALID_INPUT','请检查材料整理参数、同意选项和输入版本。');
     const data=parsed.data;requestId=data.requestId;
+    if(data.aiConsent&&request.headers.get('x-caselink-material-version')!==MATERIAL_PROTOCOL_VERSION)throw new AnalysisError('INVALID_INPUT',data.locale==='en'?'This page has been updated. Refresh and select your materials again; no AI call was made.':'页面已更新，请刷新后重新选择材料；本次未调用 AI。',409);
     const uploads=form.getAll('files');
     if(!uploads.length||uploads.length>MATERIAL_LIMITS.maxFiles||uploads.some(file=>typeof file==='string'))throw new AnalysisError('INVALID_INPUT','每次请选择同案的 1–3 份 PDF。');
     for(const file of uploads as File[]){

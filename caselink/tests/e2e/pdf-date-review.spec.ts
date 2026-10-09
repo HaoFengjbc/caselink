@@ -40,6 +40,7 @@ async function setup(page: Page, response = extraction()) {
   let materialCalls = 0;
   await page.route('**/api/capabilities', route => route.fulfill({json: {mode: 'live', configured: true, liveAvailable: true, materialExtractionAvailable: true, controlledSearchConfigured: false, ruleAvailable: true}}));
   await page.route('**/api/materials', route => {
+    expect(route.request().headers()['x-caselink-material-version']).toBe('2');
     materialCalls++;
     return route.fulfill({contentType: 'application/x-ndjson', body: JSON.stringify({type: 'result', result: response}) + '\n'});
   });

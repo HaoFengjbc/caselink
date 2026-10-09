@@ -8,7 +8,8 @@ import {recordModel} from '../ai/execution';
 import type {MaterialConfig} from './config';
 import type {Locale} from '../i18n/locale';
 import {originalMaterialQuote} from './citations';
-import {materialValidationError,type MaterialValidationReason} from './validation-error';
+import {resolveMaterialDate} from './dates';
+import {materialValidationError,recordMaterialValidationIssue,type MaterialValidationReason} from './validation-error';
 import {MaterialFieldSchema,MaterialNatureSchema,MaterialPrefillSchema,MaterialCandidateSchema,type ParsedMaterial,type MaterialCandidate} from './contracts';
 
 export const MATERIAL_OUTPUT_TOKENS=8000;
@@ -60,26 +61,30 @@ export function validateMaterialOutput(raw:unknown,documents:ParsedMaterial[],lo
         if(quote===null)throw invalid('quote_mismatch',position);
         return {...source,quote,filename:document.filename,printedPage:page.printedPage,method:'embedded_text' as const};
       });
-      const date=item.date?(sources.map(source=>originalMaterialQuote(source.quote,item.date!)).find(value=>value!==null)??null):null;
-      if(item.date&&!date)throw invalid('date_mismatch',{candidate:candidateIndex,item:itemIndex});
-      if(item.dateKind!=='none'&&!date)throw invalid('missing_date',{candidate:candidateIndex,item:itemIndex});
+      const date=item.date?resolveMaterialDate(item.date,sources.map(source=>source.quote)):null;
+      const dateIssue=item.date&&!date?'date_mismatch':item.dateKind!=='none'&&!date?'missing_date':null;
+      if(dateIssue)recordMaterialValidationIssue(dateIssue,{candidate:candidateIndex,item:itemIndex},'needs_review');
       const itemId=`material-${digest([id,item.field,item.text,sources])}`;
       if(itemIds.has(itemId))throw invalid('duplicate_item',{candidate:candidateIndex,item:itemIndex});itemIds.add(itemId);
-      return {...item,date,id:itemId,sources,status:'extracted' as const,originalText:item.text};
+      // An unsupported date may also contaminate the prose. Withdraw that entire draft,
+      // retaining only the checked quotes until the user records a note or keeps it unknown.
+      const text=dateIssue?copy(locale,'此项日期待核对；AI 日期及相关草稿未采用，请查看原文。','This item needs date review. The AI date and related draft were not adopted; check the original excerpt.'):item.text;
+      const uncertainty=dateIssue?copy(locale,'无法确定日期与引文一致；请填写核对说明、明确保留未知，或删除该项。','The date could not be verified against the excerpt. Add a review note, explicitly keep it unknown, or delete this item.'):item.uncertainty;
+      return {...item,text,date,id:itemId,sources,uncertainty,status:'extracted' as const,originalText:text,...(dateIssue?{dateReview:{reason:dateIssue,resolution:null}}:{})};
     });
     // Prefill remains conservative: a location/scope/status needs its own cited extraction.
-    const prefill={...candidate.prefill};
-    if(!items.some(i=>i.field==='country'))prefill.country='';
-    if(!items.some(i=>i.field==='jurisdiction'))prefill.jurisdiction='unknown';
-    if(!items.some(i=>i.field==='expression'))prefill.expression='unsure';
-    if(!items.some(i=>i.field==='stage'))prefill.stage='unknown';
-    if(!items.some(i=>i.field==='party'))prefill.personType='unknown';
-    if(!items.some(i=>['stage','claim','document_type'].includes(i.field)))prefill.caseKind='unknown';
+    const prefill={...candidate.prefill},usableItems=items.filter(item=>!item.dateReview);
+    if(!usableItems.some(i=>i.field==='country'))prefill.country='';
+    if(!usableItems.some(i=>i.field==='jurisdiction'))prefill.jurisdiction='unknown';
+    if(!usableItems.some(i=>i.field==='expression'))prefill.expression='unsure';
+    if(!usableItems.some(i=>i.field==='stage'))prefill.stage='unknown';
+    if(!usableItems.some(i=>i.field==='party'))prefill.personType='unknown';
+    if(!usableItems.some(i=>['stage','claim','document_type'].includes(i.field)))prefill.caseKind='unknown';
     const conflicts=candidate.conflicts.map((conflict,index)=>{
       if(new Set(conflict.itemIndices).size<2||conflict.itemIndices.some(i=>!items[i]))throw invalid('invalid_conflict',{candidate:candidateIndex});
-      return {id:`conflict-${digest([id,index,conflict.itemIndices])}`,description:conflict.description,itemIds:conflict.itemIndices.map(i=>items[i].id),resolution:null};
+      return {id:`conflict-${digest([id,index,conflict.itemIndices])}`,description:conflict.itemIndices.some(i=>items[i].dateReview)?copy(locale,'这些材料记载存在待核对的日期或陈述；请对照双方原文说明如何记录。','These cited accounts contain a date or statement needing review. Compare both excerpts and record how to retain them.'):conflict.description,itemIds:conflict.itemIndices.map(i=>items[i].id),resolution:null};
     });
-    return MaterialCandidateSchema.parse({id,label:candidate.label,prefill,items,conflicts,missing:candidate.missing.slice(0,3)});
+    return MaterialCandidateSchema.parse({id,label:candidate.label,prefill,items,conflicts,missing:candidate.missing.filter(text=>!candidate.items.some((item,index)=>items[index].dateReview&&item.date&&text.includes(item.date))).slice(0,3)});
   });
 }
 

@@ -21,7 +21,11 @@ export function materialValidationError(reason:MaterialValidationReason,locale:L
   const where=position.item!==undefined?(en?`Item ${position.item+1}: `:`第 ${position.item+1} 项：`):'';
   const page=position.pdfPage!==undefined?(en?` (PDF page ${position.pdfPage})`:`（PDF 物理页 ${position.pdfPage}）`):'';
   // Allowlisted reason and numeric positions only. Never log text, names, file IDs or excerpts.
-  const execution=currentExecution();
-  if(execution){try{console.info(JSON.stringify({event:'caselink_material_validation',requestId:execution.requestId,reason,...position}));}catch{/* Diagnostics must not change request handling. */}}
+  recordMaterialValidationIssue(reason,position);
   return new AnalysisError('INVALID_MODEL_OUTPUT',where+descriptions[reason][en?1:0]+page+(en?' Source validation failed; no case facts were applied. Read text already extracted below, or continue manually.':'未通过来源校验，未填入案情。可在下方查看已读取文字，或继续手动填写。'),502);
+}
+
+export function recordMaterialValidationIssue(reason:MaterialValidationReason,position:Position={},disposition?:'needs_review'):void{
+  const execution=currentExecution();
+  if(execution){try{console.info(JSON.stringify({event:'caselink_material_validation',requestId:execution.requestId,reason,...position,...(disposition?{disposition}:{})}));}catch{/* Diagnostics must not change request handling. */}}
 }

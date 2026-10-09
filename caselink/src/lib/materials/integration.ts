@@ -126,7 +126,7 @@ export function confirmMaterials(input:NewCaseInput):Draft{
 }
 
 /** Explicit user answers update the same record; documentary quotes are never rewritten. */
-export function applyMaterialAnswer(input:NewCaseInput,question:IntakeQuestion,answer:string):Draft{
+export function applyMaterialAnswer(input:NewCaseInput,question:IntakeQuestion,answer:string,locale:'zh'|'en'='zh'):Draft{
  const current=draft(input),old=current.intake.materials;if(!old)return current;
  if(answer.length>800)throw new Error('Answer exceeds 800 characters.');
  const value={questionId:question.id,question:question.title,answer};
@@ -135,7 +135,7 @@ export function applyMaterialAnswer(input:NewCaseInput,question:IntakeQuestion,a
  const next:Draft={...current,intake:{...current.intake,answers,confirmed:false,materials:{...old,reviewNeeded:true}}};
  const text=answer.trim(),unknown=/^(not sure|unknown|skip for now|不清楚|暂时跳过)$/i.test(text);
  const dateItem=old.items.find(i=>i.dateReview&&question.id===questionId('date:'+i.id));
- if(dateItem&&text)return resolveMaterialDateReview(next,dateItem.id,unknown?'unknown':'reviewed',text,/^(not sure|unknown|skip for now)$/i.test(text)?'en':'zh');
+ if(dateItem&&text)return resolveMaterialDateReview(next,dateItem.id,unknown?'unknown':'reviewed',text,locale);
  if(question.id===materialQuestionIds.country){next.country=!text||unknown?'unknown':text.slice(0,100);next.intake.jurisdiction='unknown';}
  if(question.id===materialQuestionIds.jurisdiction)next.intake.jurisdiction=!text||unknown?'unknown':text.slice(0,100);
  if(question.id==='uk-jurisdiction')next.intake.jurisdiction=resolveJurisdiction({...next,intake:{...next.intake,jurisdiction:text}}).jurisdictionCode;

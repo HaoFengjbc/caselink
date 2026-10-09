@@ -2,7 +2,7 @@
 
 import {useEffect, useRef, useState} from 'react';
 import {FileText, RotateCcw, Upload, X} from 'lucide-react';
-import {MATERIAL_LIMITS, MaterialStreamEventSchema, type MaterialDocument, type MaterialResponse, type ParsedMaterial} from '@/lib/materials/contracts';
+import {MATERIAL_LIMITS, MATERIAL_PROTOCOL_VERSION, MaterialStreamEventSchema, type MaterialDocument, type MaterialResponse, type ParsedMaterial} from '@/lib/materials/contracts';
 import {readPreferences, registerSessionCleanup, sessionInputVersion} from '@/lib/session';
 import {useI18n} from '@/components/i18n/LocaleProvider';
 import {currentMaterialResponse, selectionError, setFileStage, type SelectedMaterial} from './materials-client-state';
@@ -68,7 +68,7 @@ export default function MaterialUpload({documents, locked, aiEnabled, awaitingSe
       const bodyBytes=await new Response(form).arrayBuffer();
       if(bodyBytes.byteLength>MATERIAL_LIMITS.maxRequestBytes)throw new Error(errors.total);
       if(!current())return;
-      const response=await fetch('/api/materials',{method:'POST',body:form,signal:controller.signal,cache:'no-store'});
+      const response=await fetch('/api/materials',{method:'POST',headers:{'X-Caselink-Material-Version':MATERIAL_PROTOCOL_VERSION},body:form,signal:controller.signal,cache:'no-store'});
       if(!response.ok){const failure=await response.json();throw new Error(failure.message||(en?'Materials could not be processed.':'材料处理失败。'));}
       if(!response.body)throw new Error(en?'No processing response was received.':'未收到处理结果。');
       const reader=response.body.getReader(),decoder=new TextDecoder();let buffer='';

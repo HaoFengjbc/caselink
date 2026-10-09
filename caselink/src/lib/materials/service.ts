@@ -16,6 +16,8 @@ export async function organizeMaterials(files:MaterialUpload[],request:MaterialR
     return await runExecution(request,'material',async()=>{
       options.emit?.({type:'stage',stage:'organizing'});
       const candidates=await extractMaterials(documents,{locale:request.locale,background:request.background,config:config!,signal:options.signal,transport:options.transport});
+      const datesForReview=candidates.reduce((count,candidate)=>count+candidate.items.filter(item=>item.dateReview&&!item.dateReview.resolution).length,0);
+      if(datesForReview)warnings.push(request.locale==='en'?`${datesForReview} date item(s) need your review; their AI dates and related drafts were not adopted. Other checked items are ready to review.`:`${datesForReview} 项日期需要核对；相关 AI 日期和草稿未采用，其余已通过来源校验的内容已整理。`);
       return MaterialResponseSchema.parse({mode:'live_ai',documents,candidates,model:config!.model,warnings});
     });
   }finally{releaseUploads(files);}

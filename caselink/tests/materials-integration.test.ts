@@ -1,7 +1,7 @@
 import {describe,it,expect,vi,afterEach} from 'vitest';
 import {EMPTY_INPUT,NewCaseInputSchema,AnalysisResultSchema,type NewCaseInput} from '../src/lib/contracts';
 import {MaterialResponseSchema,type MaterialResponse} from '../src/lib/materials/contracts';
-import {applyMaterialCandidate,removeMaterialFile,updateMaterialItem,deleteMaterialItem,resolveMaterialConflict,materialQuestions,materialReviewErrors,confirmMaterials} from '../src/lib/materials/integration';
+import {applyMaterialCandidate,removeMaterialFile,updateMaterialItem,deleteMaterialItem,resolveMaterialConflict,materialQuestions,materialReviewErrors,confirmMaterials,resolveMaterialDateReview} from '../src/lib/materials/integration';
 import {analyzeInput} from '../src/lib/ai/service';
 import {analysisMarkdown} from '../src/components/results/export';
 import {buildResearchQuery} from '../src/lib/research/query';
@@ -52,6 +52,29 @@ describe('PDF intake uses one case record and immutable source evidence',()=>{
   const result=extracted();result.candidates.push({...structuredClone(result.candidates[0]),id:'unrelated-case',label:'Unrelated matter',items:[{...structuredClone(result.candidates[0].items[0]),id:'unrelated-fact',text:'Unrelated matter.'}]});
   expect(()=>applyMaterialCandidate(structuredClone(EMPTY_INPUT),result,'')).toThrow();
   const input=applyMaterialCandidate(structuredClone(EMPTY_INPUT),result,'case-fixture');expect(JSON.stringify(input)).not.toContain('Unrelated matter');
+ });
+ it('requires handling only uncertain dates and preserves an explicit unknown in the existing report snapshot',async()=>{
+  const result=extracted(),ordinary=result.candidates[0].items[0];
+  result.candidates[0].items.push({...structuredClone(ordinary),id:'date-needs-review',field:'date',dateKind:'document',date:null,text:'Date needs review; AI draft not adopted.',originalText:'Date needs review; AI draft not adopted.',uncertainty:'Review the original date.',dateReview:{reason:'date_mismatch',resolution:null},sources:[{...ordinary.sources[0],quote:'Letter dated 2024-05-10.'}]});
+  let input=applyMaterialCandidate(ready(),result,'case-fixture');
+  expect(input.intake.facts.map(f=>f.materialItemId)).not.toContain('date-needs-review');expect(materialReviewErrors(input,'en').join()).toContain('flagged dates');
+  expect(()=>confirmMaterials(input)).toThrow();
+  const bypass=structuredClone(input);bypass.intake.confirmed=true;bypass.intake.materials!.reviewNeeded=false;
+  expect(NewCaseInputSchema.safeParse(bypass).success).toBe(false);
+  input=updateMaterialItem(input,'date-needs-review','An ordinary edit is not explicit date review.');
+  expect(materialReviewErrors(input,'en').join()).toContain('flagged dates');
+  const deleted=deleteMaterialItem(input,'date-needs-review');expect(materialReviewErrors(deleted,'en')).toEqual([]);
+  expect(()=>resolveMaterialDateReview(input,'date-needs-review','reviewed','')).toThrow();
+  input=resolveMaterialDateReview(input,'date-needs-review','unknown',undefined,'en');
+  expect(materialReviewErrors(input,'en')).toEqual([]);input=confirmMaterials(input);
+  const item=input.intake.materials!.items.find(i=>i.id==='date-needs-review')!;
+  expect(item.date).toBeNull();expect(item.text).toContain('unknown');expect(item.sources[0].quote).toBe('Letter dated 2024-05-10.');
+  const report=await analyzeInput(input,{forceRule:true,locale:'en'});
+  expect(report.snapshot?.uploadedMaterials?.items.find(i=>i.id===item.id)?.dateReview?.resolution).toBe('unknown');
+  expect(analysisMarkdown(report,input,'en')).toContain('Explicitly retained as unknown');
+  const reviewed=resolveMaterialDateReview(input,item.id,'reviewed','The document date is 10 May; receipt date is still unknown.','en');
+  expect(reviewed.intake.materials!.items.find(i=>i.id===item.id)).toMatchObject({status:'edited',date:null,text:'The document date is 10 May; receipt date is still unknown.',dateReview:{resolution:'reviewed'}});
+  expect(report.snapshot?.uploadedMaterials?.items.find(i=>i.id===item.id)?.dateReview?.resolution).toBe('unknown');
  });
  it('generates action references through the existing rule flow with a frozen private-source snapshot',async()=>{
   const input=ready(),result=await analyzeInput(input,{forceRule:true,locale:'en'});
