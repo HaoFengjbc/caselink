@@ -31,7 +31,7 @@ export const IntakeRecordSchema=z.object({
 }).strict().superRefine((record,ctx)=>{
   if(record.confirmed&&record.materials){
     const m=record.materials;
-    if(m.reviewNeeded||!m.goalConfirmed||!m.disclosureConfirmed||m.conflicts.some(c=>!c.resolution?.trim()))ctx.addIssue({code:'custom',path:['materials'],message:'请先核对材料、处理冲突并确认本次目标与披露范围。'});
+    if(m.reviewNeeded||!m.goalConfirmed||!m.disclosureConfirmed||m.conflicts.some(c=>!c.resolution?.trim())||m.items.some(i=>i.dateReview&&!i.dateReview.resolution))ctx.addIssue({code:'custom',path:['materials'],message:'请先核对材料、处理日期疑点和冲突并确认本次目标与披露范围。'});
     if(!record.goalText.trim()||!record.disclosureDetails.trim())ctx.addIssue({code:'custom',path:['materials'],message:'材料不能替用户确认本次目标和披露边界。'});
   }
   if(new Set(record.answers.map(answer=>answer.questionId)).size!==record.answers.length)ctx.addIssue({code:'custom',path:['answers'],message:'同一补充问题不能重复保存答案。'});

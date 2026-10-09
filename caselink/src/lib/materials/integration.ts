@@ -10,7 +10,7 @@ const slot=(field:MaterialItem['field']):IntakeSlot=>field==='event'||field==='d
 const questionId=(value:string)=>{let hash=2166136261;for(const c of value)hash=Math.imul(hash^c.charCodeAt(0),16777619);return `dynamic-${(hash>>>0).toString(16).padStart(8,'0').repeat(3).slice(0,20)}`;};
 function sync(input:Draft,materials:MaterialRecord):Draft{
  const userFacts=input.intake.facts.filter(f=>!f.materialItemId);
- const facts=[...userFacts,...materials.items.map(item=>({id:item.id,materialItemId:item.id,text:item.text,summary:item.originalText.slice(0,200),quote:item.sources[0].quote,slot:slot(item.field)}))].slice(0,12);
+ const facts=[...userFacts,...materials.items.filter(item=>!item.dateReview||item.dateReview.resolution).map(item=>({id:item.id,materialItemId:item.id,text:item.text,summary:item.originalText.slice(0,200),quote:item.sources[0].quote,slot:slot(item.field)}))].slice(0,12);
  return {...input,intake:{...input.intake,materials:MaterialRecordSchema.parse(materials),facts,confirmed:false}};
 }
 export function applyMaterialCandidate(input:NewCaseInput,result:MaterialResponse,candidateId:string):Draft{
@@ -31,7 +31,7 @@ export function applyMaterialCandidate(input:NewCaseInput,result:MaterialRespons
   // A document's stage describes its own reporting date, never the user's current stage.
   background:{...current.background,personType:current.background.personType==='unknown'?prefill.personType:current.background.personType},
   intake:{...current.intake,jurisdiction:current.intake.jurisdiction==='unknown'?prefill.jurisdiction:current.intake.jurisdiction,caseKind:current.intake.caseKind==='unknown'?prefill.caseKind:current.intake.caseKind,expression:current.intake.expression&&current.intake.expression!=='unsure'?current.intake.expression:prefill.expression}};
- const prior=items.filter(i=>i.field==='prior_action');if(next.priorActions.status==='unknown'&&prior.length)next.priorActions={status:'described',description:prior.map(i=>i.text).join('\n').slice(0,800),date:''};
+ const prior=items.filter(i=>i.field==='prior_action'&&(!i.dateReview||i.dateReview.resolution));if(next.priorActions.status==='unknown'&&prior.length)next.priorActions={status:'described',description:prior.map(i=>i.text).join('\n').slice(0,800),date:''};
  return sync(next,{version:1,documents,selectedCaseId:old?.selectedCaseId??selected.id,selectedCaseLabel:old?.selectedCaseLabel??selected.label,items,conflicts,missing:[...new Set([...(old?.missing??[]),...selected.missing])].slice(0,8),reviewNeeded:true,goalConfirmed:old?.goalConfirmed??false,disclosureConfirmed:old?.disclosureConfirmed??false,latestConfirmed:false});
 }
 function invalidateDerived(input:Draft,fields:MaterialItem['field'][]):Draft{
@@ -61,6 +61,16 @@ export function updateMaterialItem(input:NewCaseInput,itemId:string,text:string)
  const next=sync(current,{...old,reviewNeeded:true,items:old.items.map(i=>i.id===itemId?{...i,text,status:'edited'}:i)});
  const item=old.items.find(i=>i.id===itemId);return item&&item.text!==text?invalidateDerived(next,[item.field]):next;
 }
+/** Resolve only the review status; a human note never becomes a source quote or an inferred date. */
+export function resolveMaterialDateReview(input:NewCaseInput,itemId:string,resolution:'reviewed'|'unknown',note?:string,locale:'zh'|'en'='zh'):Draft{
+ const current=draft(input),old=current.intake.materials;if(!old)return current;
+ const item=old.items.find(i=>i.id===itemId);if(!item?.dateReview)return current;
+ const text=resolution==='unknown'?(locale==='en'?'Date remains unverified; retain it as unknown and check the original before relying on it.':'日期尚未核实，明确保留未知；依赖该日期前须核对原文。'):note?.trim()??'';
+ if(!text||text.length>800)throw new Error('Enter a review note of 1–800 characters or explicitly keep the date unknown.');
+ const uncertainty=resolution==='unknown'?(locale==='en'?'The user explicitly retained the date as unknown. Do not infer a date from this note.':'用户明确将日期保留为未知，不得从笔记推定日期。'):(locale==='en'?'Date handled through a user review note; the note is not documentary wording or independent verification.':'日期已由用户填写核对说明；该说明不是文件原话或独立核实结论。');
+ const next=sync(current,{...old,reviewNeeded:true,items:old.items.map(i=>i.id===itemId?{...i,text,date:null,status:'edited',uncertainty,dateReview:{...i.dateReview!,resolution}}:i)});
+ return invalidateDerived(next,[item.field]);
+}
 export function deleteMaterialItem(input:NewCaseInput,itemId:string):Draft{
  const current=draft(input),old=current.intake.materials;if(!old)return current;
  const next=sync(current,{...old,reviewNeeded:true,items:old.items.filter(i=>i.id!==itemId),conflicts:old.conflicts.filter(c=>!c.itemIds.includes(itemId))});
@@ -75,6 +85,7 @@ export function materialQuestions(input:NewCaseInput,locale:'zh'|'en',options:{o
  const record=input.intake,materials=record?.materials;if(!materials)return [];
  const en=locale==='en',questions:IntakeQuestion[]=[];
  const add=(id:string,title:string,reason:string)=>questions.push({id,title,reason,options:[en?'Not sure':'不清楚',en?'Skip for now':'暂时跳过'],sourceIds:[]});
+ if(!options.omitDedicated)for(const item of materials.items.filter(i=>i.dateReview&&!i.dateReview.resolution))add(questionId('date:'+item.id),en?'What date can you verify in this excerpt, or should it remain unknown?':'原文中的这处日期能否核实，或应保留未知？',item.uncertainty??(en?'The model date could not be verified against its quoted source.':'AI 日期未能与引用原文核对。'));
  if(!options.omitDedicated)for(const conflict of materials.conflicts.filter(c=>!c.resolution?.trim()))add(questionId(conflict.id),en?'How should these conflicting accounts be recorded?':'这两处记载不一致，应如何记录？',conflict.description);
  const jur=resolveJurisdiction(input);
  if(input.country==='unknown'||!input.country.trim())add(questionId('country'),en?'Which country and specific jurisdiction is this matter in?':'案件在哪个国家、具体法域？',en?'The materials do not establish the applicable location.':'材料尚不能确定案件地点与具体法域。');
@@ -101,6 +112,7 @@ export function materialReviewErrors(input:NewCaseInput,locale:'zh'|'en'='zh'):s
  const record=input.intake,materials=record?.materials;if(!materials)return [];
  const en=locale==='en',errors:string[]=[];
  if(!materials.items.length)errors.push(en?'Add or enter case facts before confirming.':'请先添加或填写案情内容。');
+ if(materials.items.some(item=>item.dateReview&&!item.dateReview.resolution))errors.push(en?'Review the flagged dates, explicitly keep them unknown, or delete those items.':'请核对标记的日期，也可明确保留未知或删除该项。');
  if(materials.conflicts.some(c=>!c.resolution?.trim()))errors.push(en?'Record how unresolved conflicting accounts should be handled; “not sure” is allowed.':'请说明尚未处理的冲突如何记录；可以填写“不清楚”。');
  if(!record.goalText.trim()||!materials.goalConfirmed)errors.push(en?'Confirm your current work goal.':'请确认本次希望完成的工作目标。');
  if(!record.disclosureDetails.trim()||input.publicity==='unknown'||!materials.disclosureConfirmed)errors.push(en?'Confirm permitted information and recipients, including an internal-only choice if appropriate.':'请确认本次可分享的信息和接收范围，也可明确选择仅内部使用。');
@@ -122,6 +134,8 @@ export function applyMaterialAnswer(input:NewCaseInput,question:IntakeQuestion,a
  if(answers.length>40)throw new Error('At most 40 follow-up answers are supported.');
  const next:Draft={...current,intake:{...current.intake,answers,confirmed:false,materials:{...old,reviewNeeded:true}}};
  const text=answer.trim(),unknown=/^(not sure|unknown|skip for now|不清楚|暂时跳过)$/i.test(text);
+ const dateItem=old.items.find(i=>i.dateReview&&question.id===questionId('date:'+i.id));
+ if(dateItem&&text)return resolveMaterialDateReview(next,dateItem.id,unknown?'unknown':'reviewed',text,/^(not sure|unknown|skip for now)$/i.test(text)?'en':'zh');
  if(question.id===materialQuestionIds.country){next.country=!text||unknown?'unknown':text.slice(0,100);next.intake.jurisdiction='unknown';}
  if(question.id===materialQuestionIds.jurisdiction)next.intake.jurisdiction=!text||unknown?'unknown':text.slice(0,100);
  if(question.id==='uk-jurisdiction')next.intake.jurisdiction=resolveJurisdiction({...next,intake:{...next.intake,jurisdiction:text}}).jurisdictionCode;
