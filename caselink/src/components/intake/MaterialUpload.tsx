@@ -67,15 +67,8 @@ export default function MaterialUpload({documents, locked, aiEnabled, awaitingSe
       const bodyBytes=await new Response(form).arrayBuffer();
       if(bodyBytes.byteLength>MATERIAL_LIMITS.maxRequestBytes)throw new Error(errors.total);
       if(!current())return;
-      let response=await fetch('/api/materials',{method:'POST',body:form,signal:controller.signal,cache:'no-store'});
-      if(!response.ok){
-        let failure=await response.json();
-        if(failure.code==='REQUEST_IN_PROGRESS'&&failure.retryAfterSeconds===0&&current()){
-          response=await fetch('/api/materials',{method:'POST',body:form,signal:controller.signal,cache:'no-store'});
-          if(!response.ok)failure=await response.json();
-        }
-        if(!response.ok)throw new Error(failure.message||(en?'Materials could not be processed.':'材料处理失败。'));
-      }
+      const response=await fetch('/api/materials',{method:'POST',body:form,signal:controller.signal,cache:'no-store'});
+      if(!response.ok){const failure=await response.json();throw new Error(failure.message||(en?'Materials could not be processed.':'材料处理失败。'));}
       if(!response.body)throw new Error(en?'No processing response was received.':'未收到处理结果。');
       const reader=response.body.getReader(),decoder=new TextDecoder();let buffer='';
       const consume=(line:string)=>{

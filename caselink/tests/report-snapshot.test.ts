@@ -33,10 +33,10 @@ describe('complete facts and request version isolation', () => {
  });
  it('edits clear terminal failures and exhausted retries, while unchanged retries remain bounded', () => {
   const draft=input(); const failure={code:'INVALID_MODEL_OUTPUT',retryable:false,inputIdentity:submissionIdentity(draft)};
-  expect(activeFailure(failure,draft)).toEqual(failure); expect(mayRetry(failure,1)).toBe(false);
+  expect(activeFailure(failure,draft)).toEqual(failure); expect(mayRetry(failure)).toBe(false);
   const changed={...draft,intake:{...draft.intake,goalText:'New clarified goal',confirmed:true}};
   expect(activeFailure(failure,changed)).toBeNull();
-  expect(mayRetry({code:'TIMEOUT'},1)).toBe(true); expect(mayRetry({code:'TIMEOUT'},2)).toBe(false);
+  expect(mayRetry({code:'TIMEOUT'})).toBe(true);
   expect(activeFailure({...failure,code:'TIMEOUT'},changed)).toBeNull();
   expect(submissionIdentity({...draft,intake:{...draft.intake,confirmed:true}})).toBe(submissionIdentity(draft));
  });

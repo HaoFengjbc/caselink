@@ -1,7 +1,7 @@
 import {captureReportSnapshot} from '../reports/snapshot';
 import {assessDomain,requireResearchScope} from '../research/domain';
 import {resolveJurisdiction} from '../jurisdiction';
-import {currentExecution,executionFor} from '../usage/runtime';
+import {currentExecution,executionFor} from './execution';
 import type {RequestIdentity} from '../workflow-contracts';
 import {randomUUID} from 'node:crypto';
 import { AnalysisResultSchema, NewCaseInputSchema, SCHEMA_VERSION, CORPUS_VERSION, PROMPT_VERSION, type NewCaseInput, type AnalysisResult, type ModelAnalysisOutput, type WebModelAnalysisOutput } from '../contracts';
@@ -106,7 +106,7 @@ export async function analyzeInput(raw:NewCaseInput,options:{forceRule?:boolean;
   for(const e of context.evidence)if(historicalIds.has(e.evidenceId)&&!sourceIds.has(e.evidenceId)){referencedSources.push(e);sourceIds.add(e.evidenceId);}
   // Chinese results keep their original shape; only other languages are tagged.
   checkCancelled();
-  const result=AnalysisResultSchema.parse({...output,domain,jurisdiction,execution:currentExecution()??{...executionFor(options.identity??{requestId:randomUUID(),inputVersion:1,operation:'initial'},0,options.identity?.operation==='supplement'?2:1),actualCostUsd:0},...(webResearch?{webResearch}:{}),actionOrigins,researchAssessment,analysisId:randomUUID(),schemaVersion:SCHEMA_VERSION,inputHash,corpusVersion:CORPUS_VERSION,promptVersion:PROMPT_VERSION,createdAt:new Date().toISOString(),mode,historicalComparisons,sources:referencedSources,...(locale==='zh'?{}:{locale})});
+  const result=AnalysisResultSchema.parse({...output,domain,jurisdiction,execution:currentExecution()??{...executionFor(options.identity??{requestId:randomUUID(),inputVersion:1,operation:'initial'}),actualCostUsd:mode==='live_ai'?null:0},...(webResearch?{webResearch}:{}),actionOrigins,researchAssessment,analysisId:randomUUID(),schemaVersion:SCHEMA_VERSION,inputHash,corpusVersion:CORPUS_VERSION,promptVersion:PROMPT_VERSION,createdAt:new Date().toISOString(),mode,historicalComparisons,sources:referencedSources,...(locale==='zh'?{}:{locale})});
   result.snapshot=captureReportSnapshot(result,locale,input);
   return result;
 }

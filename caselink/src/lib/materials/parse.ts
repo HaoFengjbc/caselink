@@ -31,7 +31,7 @@ export async function parseMaterials(files:MaterialUpload[],options:{locale:Loca
     if(Buffer.from(file.bytes.subarray(0,5)).toString('ascii')!=='%PDF-')throw new AnalysisError('INVALID_INPUT',copy(locale,`${name} 不是真实 PDF 文件。`,`${name} is not a PDF file.`),415);
     const id=materialFileId(file.bytes);if(ids.has(id))throw new AnalysisError('INVALID_INPUT',copy(locale,'同一 PDF 被重复选择，请移除重复文件。','The same PDF was selected twice. Remove the duplicate.'));ids.add(id);
   }
-  if(activeParsers>=2)throw new AnalysisError('CONCURRENCY_LIMIT',copy(locale,'当前材料读取繁忙，请稍后重试。','Material reading is busy. Please retry shortly.'),429,{retryable:true,retryAfterSeconds:5});
+  if(activeParsers>=2)throw new AnalysisError('PARSER_BUSY',copy(locale,'当前材料读取繁忙，请稍后重试。','Material reading is busy. Please retry shortly.'),429,{retryable:true,retryAfterSeconds:5});
   activeParsers++;
   let worker:Worker|undefined;
   try{

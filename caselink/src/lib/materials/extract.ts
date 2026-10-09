@@ -4,7 +4,7 @@ import {zodTextFormat} from 'openai/helpers/zod';
 import {z} from 'zod';
 import {AnalysisError,publicError} from '../ai/errors';
 import type {ProviderResponse} from '../ai/adapter';
-import {meteredModel} from '../usage/runtime';
+import {recordModel} from '../ai/execution';
 import type {IntakeConfig} from '../intake/service';
 import type {Locale} from '../i18n/locale';
 import {MaterialFieldSchema,MaterialNatureSchema,MaterialPrefillSchema,MaterialCandidateSchema,type ParsedMaterial,type MaterialCandidate} from './contracts';
@@ -35,7 +35,7 @@ export function buildMaterialPromptData(documents:ParsedMaterial[],background:st
 
 export const openAIMaterialTransport:MaterialTransport=async({config,data,signal})=>{
   const client=new OpenAI({apiKey:config.key,maxRetries:0,timeout:config.timeoutMs});
-  return meteredModel('intake',config.model,MATERIAL_OUTPUT_TOKENS,JSON.stringify({data,instructions:MATERIAL_SYSTEM_PROMPT,schema:ModelMaterialOutputSchema.toJSONSchema()}),()=>client.responses.parse({model:config.model,store:false,reasoning:{effort:'low'},instructions:MATERIAL_SYSTEM_PROMPT,input:[{role:'user',content:data}],text:{format:zodTextFormat(ModelMaterialOutputSchema,'caselink_materials')},max_output_tokens:MATERIAL_OUTPUT_TOKENS},{signal}));
+  return recordModel('intake',config.model,()=>client.responses.parse({model:config.model,store:false,reasoning:{effort:'low'},instructions:MATERIAL_SYSTEM_PROMPT,input:[{role:'user',content:data}],text:{format:zodTextFormat(ModelMaterialOutputSchema,'caselink_materials')},max_output_tokens:MATERIAL_OUTPUT_TOKENS},{signal}));
 };
 
 export function validateMaterialOutput(raw:unknown,documents:ParsedMaterial[],locale:Locale):MaterialCandidate[]{

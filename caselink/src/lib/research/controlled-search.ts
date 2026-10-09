@@ -1,7 +1,7 @@
 import type {WebSearchTransport,WebSearchResponse} from './provider';
 import {safePublicUrl} from './provider';
 import {AnalysisError} from '../ai/errors';
-import {meteredSearch} from '../usage/runtime';
+import {recordSearch} from '../ai/execution';
 import {buildResearchQuery} from './query';
 import {EMPTY_INPUT,type NewCaseInput} from '../contracts';
 import {resolveJurisdiction} from '../jurisdiction';
@@ -11,7 +11,7 @@ type BraveHit={url?:unknown;title?:unknown;description?:unknown};
 export class ControlledSearchFailure extends Error{constructor(public actualQueries:string[],public searchCallCount:number){super('controlled_search_failed');}}
 const clean=(value:unknown,limit:number)=>typeof value==='string'?value.replace(/<[^>]*>/g,'').replace(/[\u0000-\u001f]/g,' ').slice(0,limit):'';
 /** Server executes literal approved q values. No model, tool, page or snippet can initiate another search. */
-export function createControlledSearchTransport(fetcher:typeof fetch=fetch,env:Readonly<Record<string,string|undefined>>=process.env,meter:typeof meteredSearch=meteredSearch):WebSearchTransport{
+export function createControlledSearchTransport(fetcher:typeof fetch=fetch,env:Readonly<Record<string,string|undefined>>=process.env,record:typeof recordSearch=recordSearch):WebSearchTransport{
  return async ({query,signal})=>{
   if(!controlledSearchConfigured(env))throw new AnalysisError('WEB_SEARCH_DISABLED','受控联网未配置，保留正式库参考。',503,{retryable:false});
   // Reconstruct from canonical structured labels. Never serialize free-form plan/narrative.
@@ -31,7 +31,7 @@ export function createControlledSearchTransport(fetcher:typeof fetch=fetch,env:R
    const url=new URL('https://api.search.brave.com/res/v1/web/search');url.searchParams.set('q',term);url.searchParams.set('count','3');url.searchParams.set('spellcheck','false');url.searchParams.set('text_decorations','false');url.searchParams.set('result_filter','web');
    actualQueries.push(term);
    let body:{query?:{original?:string;altered?:string;spellcheck_off?:boolean};web?:{results?:BraveHit[]}};
-   try{body=await meter(async()=>{
+   try{body=await record(async()=>{
     const response=await fetcher(url,{headers:{Accept:'application/json','X-Subscription-Token':env.BRAVE_SEARCH_API_KEY!},signal,redirect:'error',cache:'no-store'});
     if(!response.ok){const error=new Error('controlled_search_failed');Object.assign(error,{status:response.status});throw error;}
     const parsed=await response.json() as typeof body;

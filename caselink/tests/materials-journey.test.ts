@@ -6,15 +6,13 @@ import {type ModelMaterialOutput} from '../src/lib/materials/extract';
 import {type MaterialResponse,type ParsedMaterial} from '../src/lib/materials/contracts';
 import {applyMaterialCandidate,confirmMaterials,resolveMaterialConflict,materialQuestions} from '../src/lib/materials/integration';
 import {analyzeInput} from '../src/lib/ai/service';
-import {runPaidRequest} from '../src/lib/usage/control';
-import {meteredModel} from '../src/lib/usage/runtime';
-import {RedisProtocolSimulator,fixtureUsageConfig} from './fixtures/usage';
+import {recordModel} from '../src/lib/ai/execution';
 
 // A transport simulation, not a recorded or real AI extraction. PDF parsing and rule analysis are real.
 describe('complete PDF journey with actual fixture bytes and simulated model transport',()=>{
  it('joins two parsed PDFs, validates quotes, resolves a conflict, confirms consent, and freezes action references',async()=>{
   const files=await Promise.all(['expression-letter.pdf','expression-update.pdf'].map(async name=>({name,type:'application/pdf',bytes:new Uint8Array(await readFile(new URL(`./fixtures/pdf/${name}`,import.meta.url)))})));
-  const buffers=files.map(file=>file.bytes),redis=new RedisProtocolSimulator();
+  const buffers=files.map(file=>file.bytes);
   const transport=vi.fn(async({data}:{data:string})=>{
    const {documents}=JSON.parse(data) as {documents:ParsedMaterial[]};
    const note=(index:number,field:ModelMaterialOutput['candidates'][number]['items'][number]['field'],quote:string)=>({field,text:quote,subject:'Mira Vale',nature:'document_record' as const,dateKind:'none' as const,date:null,sources:[{fileId:documents[index].fileId,pdfPage:1,quote}],uncertainty:null});
@@ -27,14 +25,12 @@ describe('complete PDF journey with actual fixture bytes and simulated model tra
     {...note(0,'date','Mira says she received the letter on 3 October 2026.'),dateKind:'event',date:'3 October 2026',nature:'party_statement'},
     {...note(1,'date',"The lawyer's note says the letter was received on 5 October 2026."),dateKind:'event',date:'5 October 2026'},
    ],conflicts:[{description:'The materials disagree about the actual receipt date.',itemIndices:[5,6]}],missing:['The actual receipt date and latest developments need confirmation.']}]};
-   return meteredModel('intake','test-model',8000,data,async()=>({status:'completed',model:'test-model',output_parsed:value,usage:{input_tokens:1000,output_tokens:1000}}));
+   return recordModel('intake','test-model',async()=>({status:'completed',model:'test-model',output_parsed:value,usage:{input_tokens:1000,output_tokens:1000}}));
   });
   const identity={requestId:'material-journey-01',inputVersion:1,operation:'initial' as const,sessionId:'fixture-session',ipDigest:'fixture-ip',inputHash:'fixture-hash',locale:'en' as const,kind:'material' as const};
-  const paid=<T extends MaterialResponse>(work:()=>Promise<T>)=>runPaidRequest(identity,{model:'test-model',maxOutputTokens:8000,searchCalls:0},work,{config:fixtureUsageConfig,redis:redis.command,now:()=>redis.now,retainResult:false,log:vi.fn()});
-  const extraction=await organizeMaterials(files,{...identity,aiConsent:true,background:'',existingPageCount:0,existingFileCount:0},{config:{mode:'live',key:'fictional-test-key',model:'test-model',timeoutMs:3000},transport,paid});
+  const extraction=await organizeMaterials(files,{...identity,aiConsent:true,background:'',existingPageCount:0,existingFileCount:0},{config:{mode:'live',key:'fictional-test-key',model:'test-model',timeoutMs:3000},transport});
   expect(transport).toHaveBeenCalledOnce();expect(extraction.documents.map(d=>d.pageCount)).toEqual([2,1]);
-  expect(extraction.execution?.actualCostUsd).toBeGreaterThan(0); // Simulated metering, no real money spent.
-  expect([...redis.values.keys()].some(key=>key.includes(':result:'))).toBe(false);
+  expect(extraction.execution?.actualCostUsd).toBeNull();expect(extraction.execution?.stages).toHaveLength(1); // Diagnostics do not invent an invoice.
   expect(files).toHaveLength(0);expect(buffers.every(buffer=>buffer.every(byte=>byte===0))).toBe(true);
   let input=applyMaterialCandidate(structuredClone(EMPTY_INPUT),extraction,extraction.candidates[0].id);
   expect(input.stage).toBe('unknown');expect(input.intake.materials!.conflicts).toHaveLength(1);

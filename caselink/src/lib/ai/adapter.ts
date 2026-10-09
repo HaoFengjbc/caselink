@@ -1,4 +1,4 @@
-import {meteredModel,type ProviderUsage} from '../usage/runtime';
+import {recordModel,type ProviderUsage} from './execution';
 import OpenAI from 'openai';
 import { zodTextFormat } from 'openai/helpers/zod';
 import { ModelAnalysisOutputSchema, WebModelAnalysisOutputSchema, type WebModelAnalysisOutput, type NewCaseInput, type ModelAnalysisOutput } from '../contracts';
@@ -15,7 +15,7 @@ export type ProviderResponse=ProviderUsage&{status?:string;output_parsed:unknown
 export type ModelTransport=(args:{config:ServerConfig;data:string;signal:AbortSignal;instructions?:string;outputMode?:'corpus'|'web'})=>Promise<ProviderResponse>;
 export const openAITransport:ModelTransport=async({config,data,signal,instructions=SYSTEM_PROMPT,outputMode='corpus'})=>{
   const client=new OpenAI({apiKey:config.key,maxRetries:0,timeout:config.timeoutMs});
-  return meteredModel('synthesis',config.model,config.maxOutputTokens,JSON.stringify({data,instructions,schema:outputMode==='web'?WebModelAnalysisOutputSchema.toJSONSchema():ModelAnalysisOutputSchema.toJSONSchema()}),()=>client.responses.parse({model:config.model,store:false,instructions,input:[{role:'user',content:data}],reasoning:{effort:config.reasoningEffort},text:{verbosity:'low',format:outputMode==='web'?zodTextFormat(WebModelAnalysisOutputSchema,'caselink_web_analysis'):zodTextFormat(ModelAnalysisOutputSchema,'caselink_analysis')},max_output_tokens:config.maxOutputTokens},{signal}));
+  return recordModel('synthesis',config.model,()=>client.responses.parse({model:config.model,store:false,instructions,input:[{role:'user',content:data}],reasoning:{effort:config.reasoningEffort},text:{verbosity:'low',format:outputMode==='web'?zodTextFormat(WebModelAnalysisOutputSchema,'caselink_web_analysis'):zodTextFormat(ModelAnalysisOutputSchema,'caselink_analysis')},max_output_tokens:config.maxOutputTokens},{signal}));
 };
 
 export async function generateLive(input:NewCaseInput,context:AnalysisContext,matches:MatchedCase[],config:ServerConfig,signal?:AbortSignal,transport:ModelTransport=openAITransport,locale:Locale='zh'):Promise<ModelAnalysisOutput>{

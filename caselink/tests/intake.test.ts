@@ -1,4 +1,4 @@
-import {withTestMeter} from './fixtures/usage';
+import {withTestExecution} from './fixtures/execution';
 import {describe,it,expect,vi} from 'vitest';
 import {NextRequest} from 'next/server';
 import {zodTextFormat} from 'openai/helpers/zod';
@@ -145,7 +145,7 @@ describe('installed SDK and failure paths without any live requests',()=>{
     expect(format.schema.properties.facts.items.required).toEqual(['quote','summary','slot']);expect(format.schema.properties.questions.maxItems).toBe(3);
     let body:Record<string,unknown>|undefined;const fetchMock=vi.fn(async(_url:unknown,options?:RequestInit)=>{body=JSON.parse(String(options?.body));return sdkResponse(modelOutput());});vi.stubGlobal('fetch',fetchMock);
     try{
-      const response=await withTestMeter(()=>openAIIntakeTransport({config,data:buildIntakePromptData(input(),'en'),signal:new AbortController().signal}),config.model);
+      const response=await withTestExecution(()=>openAIIntakeTransport({config,data:buildIntakePromptData(input(),'en'),signal:new AbortController().signal}),config.model);
       expect(response.output_parsed).toEqual(modelOutput());expect(body).toMatchObject({model:'gpt-6-luna',store:false,reasoning:{effort:'low'},max_output_tokens:4000});expect(fetchMock).toHaveBeenCalledOnce();
     }finally{vi.unstubAllGlobals();}
   });
@@ -181,12 +181,12 @@ describe('intake route protections and response contract',()=>{
       expect(call).not.toHaveBeenCalled();
     }finally{vi.unstubAllGlobals();}
   });
-  it('refuses paid intake without distributed usage configuration and preserves preferences',async()=>{
+  it('calls intake without usage configuration and preserves preferences',async()=>{
     stubEnv();const call=vi.fn(async()=>sdkResponse(modelOutput()));vi.stubGlobal('fetch',call);
     try{
       const original=input();const before=structuredClone(original);const response=await intakeRequest(request({input:original,locale:'en'}));
-      expect(response.status).toBe(503);const body=await response.json();
-      expect(body.code).toBe('USAGE_CONTROL_UNAVAILABLE');expect(JSON.stringify(body)).not.toContain(config.key);expect(original).toEqual(before);expect(call).not.toHaveBeenCalled();
+      expect(response.status).toBe(200);const body=await response.json();
+      expect(body.mode).toBe('live_ai');expect(JSON.stringify(body)).not.toContain(config.key);expect(original).toEqual(before);expect(call).toHaveBeenCalledOnce();
     }finally{vi.unstubAllGlobals();vi.unstubAllEnvs();}
   });
 });

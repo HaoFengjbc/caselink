@@ -16,3 +16,7 @@ playwright-report/
 *.tsbuildinfo
 .DS_Store
 AGENTS.md
+
+# Development fixtures and verification tools are not production assets.
+tests/
+scripts/

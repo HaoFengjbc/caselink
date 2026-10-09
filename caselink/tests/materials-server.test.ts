@@ -9,14 +9,13 @@ import {MATERIAL_SYSTEM_PROMPT,ModelMaterialOutputSchema,buildMaterialPromptData
 import {MATERIAL_LIMITS,MaterialResponseSchema,MaterialStreamEventSchema,type MaterialRequest,type ParsedMaterial,type MaterialResponse} from '../src/lib/materials/contracts';
 import {POST} from '../src/app/api/materials/route';
 import type {IntakeConfig} from '../src/lib/intake/service';
-import {withTestMeter} from './fixtures/usage';
+import {withTestExecution} from './fixtures/execution';
 
 const config:IntakeConfig={mode:'live',key:'not-a-real-key',model:'gpt-6-luna',timeoutMs:1000};
 const metadata:MaterialRequest={requestId:'materials-fixture-001',inputVersion:1,operation:'initial',locale:'en',aiConsent:true,existingPageCount:0,existingFileCount:0,background:''};
 const fixture=async(name='expression-letter.pdf'):Promise<MaterialUpload>=>({name,type:'application/pdf',bytes:new Uint8Array(await readFile(new URL(`./fixtures/pdf/${name}`,import.meta.url)))});
 const parsed=()=>parseMaterialsFromNames(['expression-letter.pdf']);
 const parseMaterialsFromNames=async(names:string[])=>parseMaterials(await Promise.all(names.map(name=>fixture(name))),{locale:'en'});
-const localPaid=async<T extends MaterialResponse>(work:()=>Promise<T>)=>work();
 function output(documents:ParsedMaterial[]):ModelMaterialOutput{
   const file=documents[0],source=(quote:string,pdfPage=1)=>({fileId:file.fileId,pdfPage,quote});
   const item=(field:'event'|'claim'|'country'|'jurisdiction'|'expression'|'party',text:string,quote:string)=>({field,text,subject:'the document',nature:'document_record' as const,dateKind:'none' as const,date:null,sources:[source(quote)],uncertainty:null});
@@ -143,14 +142,14 @@ describe('service consent, usage gates and lifecycle',()=>{
     vi.stubEnv('ANALYSIS_MODE','invalid-value-must-not-be-read');
     for(const [name,consent,mode] of [['expression-letter.pdf',false,'live'],['expression-letter.pdf',true,'demo'],['scanned-image.pdf',true,'live'],['blank.pdf',true,'live']] as const){
       const upload=await fixture(name),bytes=upload.bytes,files=[upload],transport:MaterialTransport=vi.fn();
-      const result=await organizeMaterials(files,{...metadata,aiConsent:consent},{config:{...config,mode},transport,paid:localPaid});
+      const result=await organizeMaterials(files,{...metadata,aiConsent:consent},{config:{...config,mode},transport});
       expect(result.mode).toBe('local_text');expect(result.candidates).toEqual([]);expect(transport).not.toHaveBeenCalled();expect(files).toHaveLength(0);expect(bytes.every(value=>value===0)).toBe(true);
     }
   });
-  it('requires paid lease before extraction and does not domain-gate an absent handwritten narrative',async()=>{
+  it('uses configured AI without Redis and does not domain-gate an absent handwritten narrative',async()=>{
     const docs=await parsed(),transport=vi.fn(async()=>({status:'completed',output_parsed:output(docs)}));
-    await expect(organizeMaterials([await fixture()],metadata,{config,transport})).rejects.toMatchObject({code:'USAGE_CONTROL_UNAVAILABLE'});expect(transport).not.toHaveBeenCalled();
-    const result=await organizeMaterials([await fixture()],metadata,{config,transport,paid:localPaid});
+    vi.stubEnv('UPSTASH_REDIS_REST_URL','');
+    const result=await organizeMaterials([await fixture()],metadata,{config,transport});
     expect(result.mode).toBe('live_ai');expect(transport).toHaveBeenCalledOnce();expect(result.candidates[0].items.length).toBeGreaterThan(0);
   });
   it('cleans failed and cancelled uploads and a retry cannot see old files',async()=>{
@@ -169,7 +168,7 @@ describe('service consent, usage gates and lifecycle',()=>{
     const docs=await parsed(),model=output(docs);let body:Record<string,unknown>|undefined;
     vi.stubGlobal('fetch',vi.fn(async(_url:unknown,options?:RequestInit)=>{body=JSON.parse(String(options?.body));return new Response(JSON.stringify({id:'resp_material_fixture',object:'response',created_at:0,status:'completed',model:config.model,output:[{id:'msg_fixture',type:'message',role:'assistant',status:'completed',content:[{type:'output_text',text:JSON.stringify(model),annotations:[]}]}]}),{headers:{'content-type':'application/json'}});}));
     const format=zodTextFormat(ModelMaterialOutputSchema,'caselink_materials');expect(format.strict).toBe(true);
-    const response=await withTestMeter(()=>openAIMaterialTransport({config,data:buildMaterialPromptData(docs,'','en'),signal:new AbortController().signal}),config.model);
+    const response=await withTestExecution(()=>openAIMaterialTransport({config,data:buildMaterialPromptData(docs,'','en'),signal:new AbortController().signal}),config.model);
     expect(response.output_parsed).toEqual(model);expect(body).toMatchObject({model:config.model,store:false,max_output_tokens:8000});expect(body).not.toHaveProperty('tools');expect(JSON.stringify(body)).not.toContain('input_file');
   });
 });
@@ -195,11 +194,10 @@ describe('bounded multipart NDJSON route',()=>{
     expect((await POST(await request({},undefined,{'content-length':String(MATERIAL_LIMITS.maxRequestBytes+1)}))).status).toBe(413);
     expect(fetch).not.toHaveBeenCalled();
   });
-  it('fails closed for missing API key and shared usage config with no surprise model calls',async()=>{
+  it('fails closed for missing API key with no surprise model calls',async()=>{
     vi.stubEnv('ANALYSIS_MODE','live');vi.stubEnv('OPENAI_API_KEY','');const fetch=vi.fn();vi.stubGlobal('fetch',fetch);
     const missingKey=await POST(await request({aiConsent:true}));expect(missingKey.status).toBe(503);expect(await missingKey.json()).toMatchObject({code:'CONFIGURATION_ERROR'});
-    vi.stubEnv('OPENAI_API_KEY','not-a-real-key');vi.stubEnv('UPSTASH_REDIS_REST_URL','');
-    const missingUsage=await POST(await request({aiConsent:true}));expect(missingUsage.status).toBe(503);expect(await missingUsage.json()).toMatchObject({code:'USAGE_CONTROL_UNAVAILABLE'});expect(fetch).not.toHaveBeenCalled();
+    expect(fetch).not.toHaveBeenCalled();
   });
   it('returns real invalid-PDF errors without private parser content or fake result',async()=>{
     const response=await POST(await request({},['corrupt.pdf'])),stream=await events(response);

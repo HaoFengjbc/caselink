@@ -5,9 +5,6 @@ import {applyMaterialCandidate,removeMaterialFile,updateMaterialItem,deleteMater
 import {analyzeInput} from '../src/lib/ai/service';
 import {analysisMarkdown} from '../src/components/results/export';
 import {buildResearchQuery} from '../src/lib/research/query';
-import {runPaidRequest,type PaidIdentity} from '../src/lib/usage/control';
-import {readUsageConfig,materialUsageConfigured} from '../src/lib/usage/config';
-import {RedisProtocolSimulator,fixtureUsageConfig} from './fixtures/usage';
 import {availableIntakeQuestions} from '../src/lib/intake/questions';
 
 export const extracted=():MaterialResponse=>MaterialResponseSchema.parse({mode:'live_ai',warnings:[],documents:[{fileId:'pdf-fixture-1',filename:'fictional-letter.pdf',size:2500,pageCount:1,processedPages:[1],unreadablePages:[],omittedPages:[],warnings:[],pages:[{pdfPage:1,text:'The fictional company alleges that reporter Morgan Vale published an inaccurate article. Case in England and Wales. Letter dated 2024-05-10. Reply requested by 2024-05-20.',status:'read',printedPage:null}]}],candidates:[{id:'case-fixture',label:'Fictional Morgan Vale publication dispute',prefill:{country:'United Kingdom',jurisdiction:'england_wales',caseKind:'civil',expression:'yes',stage:'pretrial',personType:'journalist'},items:[{id:'fact-allegation',field:'claim',text:'The company alleges inaccurate reporting.',subject:'Fictional company',nature:'allegation',dateKind:'none',date:null,sources:[{fileId:'pdf-fixture-1',filename:'fictional-letter.pdf',pdfPage:1,printedPage:null,quote:'The fictional company alleges that reporter Morgan Vale published an inaccurate article.',method:'embedded_text'}],uncertainty:null,status:'extracted',originalText:'The company alleges inaccurate reporting.'}],conflicts:[],missing:[]}]});
@@ -72,17 +69,11 @@ describe('PDF intake uses one case record and immutable source evidence',()=>{
  });
 });
 
-describe('private PDF usage control independent of search',()=>{
- it('never saves a PDF extraction response even encrypted, while blocking duplicate paid execution',async()=>{
-  const redis=new RedisProtocolSimulator(),work=vi.fn(async()=>({warnings:['FICTIONAL PRIVATE EXCERPT'],execution:undefined}));
-  const identity:PaidIdentity={requestId:'material-paid-01',inputVersion:1,operation:'initial',sessionId:'fixture-session',ipDigest:'fixture-ip',inputHash:'fixture-hash',locale:'en',kind:'material'};
-  const options={config:fixtureUsageConfig,redis:redis.command,now:()=>redis.now,retainResult:false,log:vi.fn()};
-  await runPaidRequest(identity,{model:'test-model',maxOutputTokens:8000,searchCalls:0},work,options);
-  expect([...redis.values.keys()].some(k=>k.includes(':result:'))).toBe(false);expect(JSON.stringify(redis.commands)).not.toContain('FICTIONAL PRIVATE EXCERPT');
-  await expect(runPaidRequest(identity,{model:'test-model',maxOutputTokens:8000,searchCalls:0},work,options)).rejects.toMatchObject({code:'IDEMPOTENCY_CONFLICT'});expect(work).toHaveBeenCalledOnce();
- });
- it('needs only the intake price and budget and does not depend on Brave or final-analysis model',()=>{
-  const env={UPSTASH_REDIS_REST_URL:fixtureUsageConfig.url,UPSTASH_REDIS_REST_TOKEN:'fixture-token',USAGE_SESSION_SECRET:fixtureUsageConfig.secret,AI_MODEL_RATES_JSON:JSON.stringify({'gpt-6-luna':fixtureUsageConfig.rates['gpt-6-luna']}),AI_GLOBAL_DAILY_BUDGET_USD:'2',USAGE_TRUSTED_IP_HEADER:'x-fixture-ip',CONTROLLED_SEARCH_ENABLED:'true'};
-  expect(()=>readUsageConfig(env)).toThrow();expect(materialUsageConfigured(env)).toBe(true);expect(readUsageConfig(env,{searchRequired:false}).searchMicroUsd).toBe(0);
+describe('PDF execution independent of public search',()=>{
+ it('reports extraction available without Brave, Redis or paid cookies',async()=>{
+  vi.stubEnv('ANALYSIS_MODE','live');vi.stubEnv('OPENAI_API_KEY','fictional-key');vi.stubEnv('BRAVE_SEARCH_API_KEY','');vi.stubEnv('UPSTASH_REDIS_REST_URL','');
+  const {GET}=await import('../src/app/api/capabilities/route');const {NextRequest}=await import('next/server');
+  const response=await GET(new NextRequest('https://caselink.example/api/capabilities'));
+  expect(await response.json()).toMatchObject({materialExtractionAvailable:true,materialResultRetentionSeconds:0,paidProtectionEnabled:false,webSearchAvailable:false});expect(response.headers.get('set-cookie')).toBeNull();
  });
 });

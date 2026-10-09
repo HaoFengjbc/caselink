@@ -2,6 +2,8 @@
 
 日期：2026-10-09。范围以本轮 TrialWatch 新闻与表达案件定位为准。本文记录真实执行的验证，不将历史测试、模拟 provider 或资料结构检查当作实时 AI、生产用量控制或团队人工审核的证明。
 
+> 发布后补记：本文以下保留发布前验收事实。用户随后授权部署生产，已发布 `aad75c2`，15 项线上免费检查通过；AI/联网所需配置仍未就绪。当前状态见 [生产发布记录](production-release.md)。
+
 ## 范围与准备
 
 - 主目录 `/Users/fenghao/Desktop/hackhaton/caselink`，Git 根目录为上一级 `hackhaton`。

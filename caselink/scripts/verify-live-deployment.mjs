@@ -92,18 +92,22 @@ async function main() {
     }
   }
   function post(ruleInput = input, headers = {}) {
-    return request('/api/analyze', { method: 'POST', headers: { 'Content-Type': 'application/json', Origin: origin, 'Sec-Fetch-Site': 'same-origin', ...headers }, body: JSON.stringify({ input: ruleInput, requestId: randomUUID(), forceRule: true }) });
+    return request('/api/analyze', { method: 'POST', headers: { 'Content-Type': 'application/json', Origin: origin, 'Sec-Fetch-Site': 'same-origin', ...headers }, body: JSON.stringify({ input: ruleInput, requestId: randomUUID(), inputVersion: 1, operation: 'initial', forceRule: true }) });
   }
-  const ready = await check('live_capabilities_no_password', async () => {
+  let capabilities = null;
+  await check('capabilities_and_rule_availability', async () => {
     const response = await request('/api/capabilities');
     assert(response.status === 200, 'CAPABILITIES_HTTP_ERROR');
     const body = await bodyOf(response);
-    const allowed = ['mode', 'configured', 'liveAvailable', 'accessRequired'];
+    const allowed = ['mode', 'configured', 'liveAvailable', 'accessRequired', 'paidProtectionEnabled', 'controlledSearchConfigured', 'webSearchAvailable', 'ruleAvailable', 'serverResultRetentionSeconds', 'idempotencyEnabled', 'progressEvents', 'configurationNotice'];
     assert(body && typeof body === 'object' && Object.keys(body).every(key => allowed.includes(key)), 'UNEXPECTED_CAPABILITIES_FIELDS');
-    assert(body.mode === 'live' && body.configured === true && body.liveAvailable === true && body.accessRequired === false, 'LIVE_NOT_READY_OR_PASSWORD_REQUIRED');
-    return { httpStatus: response.status, mode: body.mode };
+    assert(body.ruleAvailable === true && body.accessRequired === false && typeof body.liveAvailable === 'boolean', 'RULE_UNAVAILABLE_OR_PASSWORD_REQUIRED');
+    assert(!body.liveAvailable || (body.mode === 'live' && body.configured), 'LIVE_WITHOUT_MODEL_CONFIGURATION');
+    assert(!body.webSearchAvailable || (body.liveAvailable && body.controlledSearchConfigured), 'WEB_WITHOUT_SEARCH_CONTROL');
+    assert(body.paidProtectionEnabled === false && body.serverResultRetentionSeconds === 0 && body.idempotencyEnabled === false, 'UNEXPECTED_PAID_ADMISSION_OR_CACHE');
+    capabilities = body;
+    return { httpStatus: response.status, capabilities: body };
   });
-  if (ready) {
     await check('invalid_input_rejected', async () => {
       const response = await post({});
       const body = await bodyOf(response);
@@ -111,14 +115,17 @@ async function main() {
       assert(typeof body.requestId === 'string' && !('mode' in body), 'INVALID_VALIDATION_ERROR');
       return { httpStatus: response.status, errorCode: body.code };
     });
-    await check('explicit_force_rule_available', async () => {
-      const response = await post();
+    for (const scenario of DEMO_SCENARIOS) await check(`explicit_force_rule_${scenario.id}`, async () => {
+      const response = await post(scenario.input);
       assert(response.status === 200, 'RULE_HTTP_ERROR');
       const body = await bodyOf(response);
       const parsed = contracts.AnalysisResultSchema.safeParse(body);
       assert(parsed.success && parsed.data.mode === 'rule_reference', 'RULE_MODE_OR_SCHEMA_ERROR');
       assert(parsed.data.actionOptions.length > 0 && parsed.data.sources.length > 0, 'RULE_CONTENT_MISSING');
       assert(parsed.data.sources.every(source => evidenceIds.has(source.evidenceId)), 'UNKNOWN_EVIDENCE_REFERENCE');
+      assert(parsed.data.promptVersion === contracts.PROMPT_VERSION && parsed.data.corpusVersion === contracts.CORPUS_VERSION, 'RELEASE_VERSION_MISMATCH');
+      assert(parsed.data.snapshot?.completeness === 'complete' && parsed.data.snapshot.corpusVersion === parsed.data.corpusVersion, 'SNAPSHOT_MISSING');
+      assert(parsed.data.domain?.status === 'in_scope', 'EXPRESSION_DOMAIN_MISMATCH');
       return { httpStatus: response.status, mode: parsed.data.mode, counts: { actions: parsed.data.actionOptions.length, cases: parsed.data.comparableCases.length, sources: parsed.data.sources.length } };
     });
     await check('cross_site_analysis_rejected', async () => {
@@ -129,7 +136,18 @@ async function main() {
       assert(response.status === 403 && body.code === 'FORBIDDEN', 'CROSS_SITE_NOT_REJECTED');
       return { httpStatus: response.status, errorCode: body.code };
     });
-  } else checks.push({ name: 'analysis_routes', status: 'skipped', errorCode: 'LIVE_NOT_READY_OR_PASSWORD_REQUIRED' });
+  await check('manual_intake_available', async () => {
+    const response = await request('/api/intake', { method: 'POST', headers: { 'Content-Type': 'application/json', Origin: origin, 'Sec-Fetch-Site': 'same-origin' }, body: JSON.stringify({ input, requestId: randomUUID(), inputVersion: 1, operation: 'initial', forceManual: true }) });
+    const body = await bodyOf(response);
+    assert(response.status === 200 && body.mode === 'manual' && body.domain?.status === 'in_scope', 'MANUAL_INTAKE_ERROR');
+    return { httpStatus: response.status, mode: body.mode };
+  });
+  for (const route of ['/', '/new', '/cases', '/compare', '/resources']) await check(`page_${route}`, async () => {
+    const response = await request(route);
+    const html = await response.text();
+    assert(response.status === 200 && html.includes('CaseLink') && !html.includes('Authentication Required'), 'PAGE_CONTENT_MISSING');
+    return { httpStatus: response.status };
+  });
   await Promise.all([
     ['aigul-utepova', 'Aigul Utepova'], ['emna-chargui', 'Emna Chargui'], ['myriam-bribri', 'Myriam Bribri'],
   ].map(([id, expected]) => check(`case_${id}`, async () => {
@@ -139,7 +157,7 @@ async function main() {
     assert(html.includes('CaseLink') && html.includes(expected) && !html.includes('Authentication Required'), 'CASE_CONTENT_MISSING');
     return { httpStatus: response.status };
   })));
-  const report = { status: checks.every(item => item.status === 'passed') ? 'passed' : 'failed', mode: ready ? 'live' : null, anonymous: true, modelRequests: 0, latencyMs: Math.round(performance.now() - started), checks };
+  const report = { status: checks.every(item => item.status === 'passed') ? 'passed' : 'failed', origin, checkedAt: new Date().toISOString(), capabilities, anonymous: true, modelRequests: 0, latencyMs: Math.round(performance.now() - started), checks };
   const output = path.join(root, 'test-results', 'live-deployment-http.json');
   await fs.mkdir(path.dirname(output), { recursive: true });
   await fs.writeFile(output, `${JSON.stringify(report, null, 2)}\n`);
