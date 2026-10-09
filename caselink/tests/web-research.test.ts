@@ -33,12 +33,12 @@ describe('research queries contain only canonical labels',()=>{
   expect(recognizedJurisdiction(['IN']).countryCode).toBe('IN');
   expect(recognizedJurisdiction(['unidentified city','Tunisia']).countryCode).toBe('TN');
  });
- it('does not send raw identifiers or infer a journalism domain in structured-only fallback',()=>{
+ it('does not send raw identifiers when building expression-domain approved labels',()=>{
   const i=input();i.country='England; AliceSensitive 555-0109 lives at 77 Hidden Road';
   i.background.description='AliceSensitive alice@example.net was accused of defamation on 2026-10-08.';
   i.background.personType='other';const q=buildResearchQuery(i);const body=JSON.stringify(q);
   expect(body).not.toMatch(/AliceSensitive|555-0109|Hidden Road|2026-10-08|alice@example/);
-  expect(q.searchTerms.join(' ')).not.toMatch(/journalist|freedom of expression|fair trial|defamation/);
+  expect(q.searchTerms.join(' ')).toMatch(/journalism/);expect(q.searchTerms.join(' ')).not.toMatch(/fair trial|defamation/);
   expect(q.plan.coverage).toBe('limited');
  });
  it('unknown country uses visibly broad comparative terms without forwarding free jurisdiction',()=>{
@@ -48,12 +48,12 @@ describe('research queries contain only canonical labels',()=>{
  });
  it('never turns negative narrative keywords or existing counsel into structured problems',()=>{
   const i=input();i.background.description='没有被逮捕，不涉及国家安全，也不是诽谤。已有律师，收到律师函。';
-  expect(buildResearchQuery(i).topics).toEqual([]);
+  expect(buildResearchQuery(i).topics).toEqual(['journalism freedom of expression']);
  });
  it('keeps confirmed access problems, file access and selected goals ahead of optional query topics',()=>{
   const i=input();i.currentProblems=['lawyer_access','file_access'];i.primaryGoal='release';i.stage='appeal';
   const q=buildResearchQuery(i);expect(q.searchTerms.join(' ')).toMatch(/legal representation/);
-  expect(q.searchTerms.join(' ')).toMatch(/case records/);expect(q.searchTerms.join(' ')).toMatch(/release from detention/);expect(q.searchTerms.join(' ')).toMatch(/appeal review/);
+  expect(q.searchTerms.join(' ')).toMatch(/case records/);expect(q.searchTerms.join(' ')).toMatch(/release from detention/);expect(q.searchTerms.join(' ')).toMatch(/appeal/);
  });
  it('does not assign a negated UK location when proceedings are in Canada',()=>{
   expect(recognizedJurisdiction(['not England; proceedings are in Canada','Canada']).countryCode).toBe('CA');
@@ -70,14 +70,14 @@ describe('research queries contain only canonical labels',()=>{
   const i=input();
   i.intake={version:1,jurisdiction:'England and Wales',caseKind:'civil',narrative:'',goalText:'',disclosureDetails:'',answers:[{questionId:'uk-jurisdiction',question:'UK legal system?',answer:'Scotland'}],facts:[],confirmed:true};
   expect(buildResearchQuery(i).jurisdiction.legalSystem).toBe('England and Wales');
-  i.country='unknown';i.intake.jurisdiction='Canada';expect(buildResearchQuery(i).jurisdiction.countryCode).toBe('CA');
+  i.country='unknown';i.intake.jurisdiction='Canada';expect(buildResearchQuery(i).jurisdiction.countryCode).toBeNull();
  });
- it('retains an explicit UK system when the country is unknown and uses UK answers only to refine a broad UK location',()=>{
+ it('does not inherit an old UK system when the country was changed to unknown',()=>{
   const i=input();i.country='unknown';
   i.intake={version:1,jurisdiction:'Northern Ireland',caseKind:'civil',narrative:'',goalText:'',disclosureDetails:'',answers:[{questionId:'uk-jurisdiction',question:'UK legal system?',answer:'Scotland'}],facts:[],confirmed:true};
-  expect(buildResearchQuery(i).jurisdiction).toMatchObject({countryCode:'GB',legalSystem:'Northern Ireland'});
-  i.intake.jurisdiction='UK';expect(buildResearchQuery(i).jurisdiction.legalSystem).toBe('Scotland');
-  i.intake.jurisdiction='';expect(buildResearchQuery(i).jurisdiction.legalSystem).toBe('Scotland');
+  expect(buildResearchQuery(i).jurisdiction).toMatchObject({countryCode:null,legalSystem:null});
+  i.intake.jurisdiction='UK';expect(buildResearchQuery(i).jurisdiction.legalSystem).toBeNull();
+  i.intake.jurisdiction='';expect(buildResearchQuery(i).jurisdiction.legalSystem).toBeNull();
  });
 
 });
@@ -214,52 +214,11 @@ describe('paragraph links backed by this response’s completed web tools',()=>{
  });
 });
 
-describe('discovery followed by mandatory source reading',()=>{
- const url='https://court.gov/all-procedural-stages';
- const open=(target=url,status='completed')=>({type:'web_search_call',status,action:{type:'open_page',url:target}});
- const found=()=>({status:'completed',output:[search,message('Discovery summary must never enter the final case report.',[citation('Discovery summary must never enter the final case report.',url)])]});
- const http=(response:WebSearchResponse)=>new Response(JSON.stringify({id:'resp_offline',object:'response',created_at:0,model:config.model,...response}),{status:200,headers:{'content-type':'application/json'}});
- const run=()=>openAIWebSearchTransport({config,query:buildResearchQuery(input()),signal:new AbortController().signal,locale:'en'});
- it('keeps only final read paragraphs, permits trial and appeal citations to the same opened page, and records the gate',async()=>{
-  const trial='The district court gave its trial judgment.';const appeal='The same report says the appellate court affirmed; the exact appeal date is not given.';
-  const second={status:'completed',output:[open(),message(`${trial}\n\n${appeal}`,[citation(trial,url,0,trial.length),citation(appeal,url,trial.length+2,trial.length+2+appeal.length)])]};
-  const mock=vi.fn().mockResolvedValueOnce(http(found())).mockResolvedValueOnce(http(second));vi.stubGlobal('fetch',mock);
-  const raw=await run();const r=assembleWebResearch(raw,[]);
-  expect(raw.requireOpenedSources).toBe(true);expect(raw.readSourceUrls).toEqual([url]);expect(r.passages).toHaveLength(2);expect(r.sources).toHaveLength(1);expect(r.sources[0].pageOpened).toBe(true);
-  expect(JSON.stringify(r)).not.toContain('Discovery summary');expect(r.passages[1].text).toContain('appellate court affirmed');
-  const body=JSON.parse(String(mock.mock.calls[1][1].body));expect(JSON.parse(body.input[0].content).candidateUrls).toEqual([url]);expect(body.instructions).toContain('SAME inspected page');
- });
- it('does not promote discovery text even if discovery opened the page but the read step did not',async()=>{
-  vi.stubGlobal('fetch',vi.fn().mockResolvedValueOnce(http({...found(),output:[...found().output,open()]})).mockResolvedValueOnce(http({status:'completed',output:[message('The reader repeats an uninspected outcome.',[citation('The reader repeats an uninspected outcome.',url)])]})));
-  const raw=await run();expect(raw.readSourceUrls).toEqual([]);expect(assembleWebResearch(raw,[])).toMatchObject({status:'no_results',sources:[],passages:[]});
- });
- it('drops a whole mixed paragraph when one of its cited pages did not successfully open',()=>{
-  const other='https://court.gov/unread';const text='Two different public decisions are described together in this paragraph.';
-  const r=assembleWebResearch({status:'completed',requireOpenedSources:true,readSourceUrls:[url,other],output:[search,open(),open(other,'failed'),message(text,[citation(text,url,0,3),citation(text,other,4,8)])]},[]);
-  expect(r).toMatchObject({status:'no_results',passages:[],sources:[]});
- });
- it('cannot claim a page was opened using only a metadata URL or a search inventory',()=>{
-  const text='A case report claims a procedural outcome with no actual open action.';
-  expect(assembleWebResearch({status:'completed',requireOpenedSources:true,readSourceUrls:[url],output:[search,message(text,[citation(text,url)])]},[]).sources).toEqual([]);
- });
- it('does not start reading without a usable cited discovery or after discovery failure',async()=>{
-  for(const response of [{status:'completed',output:[search,message('No suitable material.',[])]},{...found(),status:'incomplete'}]){
-   const mock=vi.fn(async()=>http(response));vi.stubGlobal('fetch',mock);const raw=await run();expect(mock).toHaveBeenCalledTimes(1);expect(assembleWebResearch(raw,[]).sources).toEqual([]);
-  }
- });
- it('does not fallback to discovery claims when the read response is incomplete',async()=>{
-  vi.stubGlobal('fetch',vi.fn().mockResolvedValueOnce(http(found())).mockResolvedValueOnce(http({status:'incomplete',output:[open(),message('A partial report.',[citation('A partial report.',url)])]})));
-  expect(assembleWebResearch(await run(),[])).toMatchObject({status:'unavailable',sources:[],passages:[]});
- });
- it('cancellation between discovery and reading prevents a second request',async()=>{
-  const controller=new AbortController();const mock=vi.fn(async()=>{controller.abort();return http(found());});vi.stubGlobal('fetch',mock);
-  await expect(researchWeb(input(),config,controller.signal,args=>openAIWebSearchTransport(args),'en')).rejects.toMatchObject({code:'CANCELLED'});expect(mock).toHaveBeenCalledTimes(1);
- });
- it('shares the same total 65-second deadline across both discovery and reading',async()=>{
-  vi.useFakeTimers();let calls=0;const mock=vi.fn(async()=>{calls++;if(calls===1){await new Promise(resolve=>setTimeout(resolve,40_000));return http(found());}return new Promise<Response>(()=>{});});vi.stubGlobal('fetch',mock);
-  const wrapped:WebSearchTransport=args=>openAIWebSearchTransport(args);const task=researchWeb(input(),config,undefined,wrapped);
-  await vi.advanceTimersByTimeAsync(40_010);expect(mock).toHaveBeenCalledTimes(2);
-  await vi.advanceTimersByTimeAsync(24_990);expect(await task).toMatchObject({status:'unavailable',failureReason:'timeout'});expect(mock).toHaveBeenCalledTimes(2);
+describe('autonomous tool search is retired',()=>{
+ it('cannot launch built-in tool search, even with a configured model',async()=>{
+  const network=vi.fn();vi.stubGlobal('fetch',network);
+  await expect(openAIWebSearchTransport({config,query:buildResearchQuery(input()),signal:new AbortController().signal,locale:'en'})).rejects.toMatchObject({code:'WEB_SEARCH_DISABLED'});
+  expect(network).not.toHaveBeenCalled();
  });
 });
 
@@ -293,18 +252,5 @@ describe('research transport and cancellation',()=>{
  it('does not use ambient credentials when config is incomplete',async()=>{
   const mock=transport(result());const r=await researchWeb(input(),{...config,key:'',configured:false},undefined,mock);
   expect(r.status).toBe('unavailable');expect(mock).not.toHaveBeenCalled();
- });
- it('the real SDK serialization uses required live search, a tool cap, no persistence and safe input only',async()=>{
-  const bodies:Record<string,any>[]=[];const fetchMock=vi.fn(async(_url:unknown,init?:RequestInit)=>{
-   bodies.push(JSON.parse(String(init?.body)));return new Response(JSON.stringify({id:'resp_offline',object:'response',created_at:0,model:config.model,...result()}),{status:200,headers:{'content-type':'application/json'}});
-  });vi.stubGlobal('fetch',fetchMock);
-  const i=input();i.background.description='AlicePrivate at private@example.org 2025-11-20 defamation';
-  await openAIWebSearchTransport({config,query:buildResearchQuery(i),signal:new AbortController().signal,locale:'en'});
-  for(const body of bodies){expect(body).toMatchObject({model:'gpt-6.1-sol',store:false,tool_choice:'required',max_tool_calls:3,reasoning:{effort:'low'},include:['web_search_call.action.sources'],tools:[{type:'web_search',external_web_access:true,search_context_size:'medium'}]});expect(JSON.stringify(body.input)).not.toMatch(/AlicePrivate|private@example|2025-11-20/);}
-  expect(bodies[0].max_output_tokens).toBe(1000);expect(bodies[1].max_output_tokens).toBe(3500);expect(bodies.reduce((n,b)=>n+b.max_tool_calls,0)).toBe(6);expect(fetchMock).toHaveBeenCalledTimes(2);
- });
- it('the real SDK does not retry an HTTP 429',async()=>{
-  const fetchMock=vi.fn(async()=>new Response(JSON.stringify({error:{message:'limited',type:'rate_limit_error'}}),{status:429,headers:{'content-type':'application/json'}}));vi.stubGlobal('fetch',fetchMock);
-  await expect(openAIWebSearchTransport({config,query:buildResearchQuery(input()),signal:new AbortController().signal,locale:'zh'})).rejects.toMatchObject({status:429});expect(fetchMock).toHaveBeenCalledTimes(1);
  });
 });

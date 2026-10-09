@@ -1,3 +1,4 @@
+import {withTestMeter} from './fixtures/usage';
 import {describe,it,expect,vi} from 'vitest';
 import {NextRequest} from 'next/server';
 import {zodTextFormat} from 'openai/helpers/zod';
@@ -11,7 +12,7 @@ import {POST as intakeRequest} from '../src/app/api/intake/route';
 
 const narrative='我收到一封要求到场的通知，但不清楚原因。家人保留着通知副本。';
 const quote='家人保留着通知副本。';
-const record=():IntakeRecord=>({version:1,jurisdiction:'unknown',caseKind:'unknown',narrative,goalText:'先弄清事情',disclosureDetails:'身份信息不要公开',answers:[],facts:[],confirmed:false});
+const record=():IntakeRecord=>({version:1,jurisdiction:'unknown',caseKind:'unknown',narrative,goalText:'先弄清事情',disclosureDetails:'身份信息不要公开',answers:[],facts:[],confirmed:false,expression:'yes'});
 const input=():NewCaseInput=>({...structuredClone(EMPTY_INPUT),country:'英国',primaryGoal:'other',publicity:'private',intake:record()});
 const config:IntakeConfig={mode:'live',key:'local-test-only-key',model:'gpt-6-luna',timeoutMs:1000};
 const dynamicQuestion=()=>({title:'通知副本写明了哪些事项或到场要求？',reason:'你提到家人保存通知副本，需要先了解通知已经写明的内容。',options:['可以说明要点','暂时看不到副本','不清楚'],anchorQuote:quote});
@@ -144,7 +145,7 @@ describe('installed SDK and failure paths without any live requests',()=>{
     expect(format.schema.properties.facts.items.required).toEqual(['quote','summary','slot']);expect(format.schema.properties.questions.maxItems).toBe(3);
     let body:Record<string,unknown>|undefined;const fetchMock=vi.fn(async(_url:unknown,options?:RequestInit)=>{body=JSON.parse(String(options?.body));return sdkResponse(modelOutput());});vi.stubGlobal('fetch',fetchMock);
     try{
-      const response=await openAIIntakeTransport({config,data:buildIntakePromptData(input(),'en'),signal:new AbortController().signal});
+      const response=await withTestMeter(()=>openAIIntakeTransport({config,data:buildIntakePromptData(input(),'en'),signal:new AbortController().signal}),config.model);
       expect(response.output_parsed).toEqual(modelOutput());expect(body).toMatchObject({model:'gpt-6-luna',store:false,reasoning:{effort:'low'},max_output_tokens:4000});expect(fetchMock).toHaveBeenCalledOnce();
     }finally{vi.unstubAllGlobals();}
   });
@@ -162,7 +163,7 @@ describe('installed SDK and failure paths without any live requests',()=>{
 });
 
 describe('intake route protections and response contract',()=>{
-  const request=(body:unknown,headers:Record<string,string>={})=>new NextRequest('https://caselink.example/api/intake',{method:'POST',headers:{host:'caselink.example',origin:'https://caselink.example','content-type':'application/json',...headers},body:typeof body==='string'?body:JSON.stringify(body)});
+  const request=(body:unknown,headers:Record<string,string>={})=>new NextRequest('https://caselink.example/api/intake',{method:'POST',headers:{host:'caselink.example',origin:'https://caselink.example','content-type':'application/json',...headers},body:typeof body==='string'?body:JSON.stringify({requestId:'fixture-intake',inputVersion:1,operation:'initial',...(body as object)})});
   it('serves manual intake without reading live configuration and sets no-store',async()=>{
     vi.stubEnv('ANALYSIS_MODE','invalid-would-fail-if-read');vi.stubEnv('OPENAI_API_KEY',undefined);const call=vi.fn();vi.stubGlobal('fetch',call);
     try{
@@ -180,12 +181,12 @@ describe('intake route protections and response contract',()=>{
       expect(call).not.toHaveBeenCalled();
     }finally{vi.unstubAllGlobals();}
   });
-  it('passes a local SDK response through the live route without exposing a key or changing preferences',async()=>{
+  it('refuses paid intake without distributed usage configuration and preserves preferences',async()=>{
     stubEnv();const call=vi.fn(async()=>sdkResponse(modelOutput()));vi.stubGlobal('fetch',call);
     try{
       const original=input();const before=structuredClone(original);const response=await intakeRequest(request({input:original,locale:'en'}));
-      expect(response.status).toBe(200);const body=IntakeResponseSchema.parse(await response.json());
-      expect(body.mode).toBe('live_ai');expect(body.model).toBe('gpt-6-luna');expect(body.facts[0].quote).toBe(quote);expect(JSON.stringify(body)).not.toContain(config.key);expect(original).toEqual(before);expect(call).toHaveBeenCalledOnce();
+      expect(response.status).toBe(503);const body=await response.json();
+      expect(body.code).toBe('USAGE_CONTROL_UNAVAILABLE');expect(JSON.stringify(body)).not.toContain(config.key);expect(original).toEqual(before);expect(call).not.toHaveBeenCalled();
     }finally{vi.unstubAllGlobals();vi.unstubAllEnvs();}
   });
 });
