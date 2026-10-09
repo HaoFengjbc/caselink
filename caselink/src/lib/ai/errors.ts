@@ -1,7 +1,10 @@
-import type {WorkflowErrorCode} from '../workflow-contracts';
+import type {WorkflowErrorCode,DomainAssessment} from '../workflow-contracts';
 export type ErrorCode=WorkflowErrorCode;
 export class AnalysisError extends Error {
-  constructor(public code:ErrorCode,message:string,public status=400){super(message);this.name='AnalysisError';}
+  retryable?:boolean;
+  retryAfterSeconds?:number;
+  domain?:DomainAssessment;
+  constructor(public code:ErrorCode,message:string,public status=400,options:{retryable?:boolean;retryAfterSeconds?:number;domain?:DomainAssessment}={}){super(message);this.name='AnalysisError';Object.assign(this,options);}
 }
 const quotaCodes=new Set(['insufficient_quota','credit_balance_exhausted','organization_spend_limit_exceeded','project_spend_limit_exceeded','organization_usage_limit_exceeded']);
 export function publicError(error:unknown):AnalysisError{
