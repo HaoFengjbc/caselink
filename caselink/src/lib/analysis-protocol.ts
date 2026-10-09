@@ -6,3 +6,6 @@ export type AnalysisRequest=z.infer<typeof AnalysisRequestSchema>;
 export const RETRYABLE_REQUEST_CODES=new Set(['TIMEOUT','NETWORK_ERROR','RATE_LIMITED','UPSTREAM_ERROR','INTERNAL_ERROR','CONCURRENCY_LIMIT','REQUEST_IN_PROGRESS']);
 // A retry keeps the request ID/input version. Edits or explicit supplementation create a new identity.
 export const MAX_UNCHANGED_INPUT_ATTEMPTS=2;
+
+export const IntakeRequestSchema=AnalysisRequestSchema.omit({forceRule:true}).extend({forceManual:z.boolean().optional()}).strict();
+export type IntakeRequest=z.infer<typeof IntakeRequestSchema>;
