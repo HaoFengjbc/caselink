@@ -9,6 +9,24 @@
       "清楚、可信、具体的事件和所涉侵害说明",
       "与陈述对应的关键佐证材料；不能仅依据媒体报道",
       "当事人或代表对向相关方及公开报告披露姓名的明确意见"
+    ],
+    "type": "un_mechanism",
+    "locator": "Submission of information: criteria; who can submit; what happens; confidentiality",
+    "summary": "向特别程序专家提交可信、具体的信息，是否行动由专家按任务范围决定。",
+    "eligibility": [
+      "无需先穷尽国内救济，但必须核对具体任务范围。",
+      "不得仅依据媒体报道；先核对当事人同意和身份披露风险。"
+    ],
+    "reviewStatus": "agent_checked",
+    "agentCheckedAt": "2026-10-09",
+    "teamReviewedAt": null,
+    "unknowns": [
+      "团队未人工复核；提交不保证介入或救济。"
+    ],
+    "tags": [
+      "expression",
+      "detention",
+      "fair_trial"
     ]
   },
   {
@@ -21,6 +39,386 @@
       "新闻工作背景与相关作品说明",
       "事件、当前需求及与新闻工作的关联",
       "先与当事人确认协助请求与信息共享范围"
+    ],
+    "type": "assistance",
+    "locator": "Journalist Safety and Emergencies → How to Get Help — Emergencies",
+    "summary": "记者安全建议与紧急协助入口。优先危机情况，无法回应所有请求。",
+    "eligibility": [
+      "需说明新闻工作背景及与事件的关联。",
+      "由机构评估；不保证答复、代理或资助。"
+    ],
+    "reviewStatus": "agent_checked",
+    "agentCheckedAt": "2026-10-09",
+    "teamReviewedAt": null,
+    "unknowns": [
+      "团队未人工复核；个案接收范围、可用资源与共享政策须在联系前确认。",
+      "本轮另读 https://cpj.org/emergency-response/how-to-get-help/ 的 Emergencies 部分；原条目日期与适用说明保留。"
+    ],
+    "tags": [
+      "journalist_safety",
+      "assistance"
+    ]
+  },
+  {
+    "resourceId": "iccpr-article-19",
+    "name": "ICCPR 第 19 条：表达自由",
+    "officialUrl": "https://treaties.un.org/doc/publication/unts/volume%20999/volume-999-i-14668-english.pdf",
+    "checkedAt": "2026-10-09",
+    "applicability": "国际条约研究依据。需核对有关国家的缔约状态、保留、时间及管辖范围；不是自动可在当地直接援引的法律。",
+    "requiredMaterials": [
+      "核对原文、当前适用条件及本案材料；提交前由负责律师或协调人确认。"
+    ],
+    "type": "treaty",
+    "locator": "Article 19(1)–(3), printed p. 178 / PDF p. 8",
+    "summary": "保护意见及信息表达；限制需按条约条件分析。",
+    "eligibility": [
+      "核对缔约及保留状态；事实须属于相应条款。"
+    ],
+    "reviewStatus": "agent_checked",
+    "agentCheckedAt": "2026-10-09",
+    "teamReviewedAt": null,
+    "unknowns": [
+      "团队尚未逐条人工复核；本案适用性、当地法律地位及当前程序要求待确认。"
+    ],
+    "tags": [
+      "expression",
+      "defamation"
+    ]
+  },
+  {
+    "resourceId": "iccpr-article-9",
+    "name": "ICCPR 第 9 条：人身自由",
+    "officialUrl": "https://treaties.un.org/doc/publication/unts/volume%20999/volume-999-i-14668-english.pdf",
+    "checkedAt": "2026-10-09",
+    "applicability": "国际条约研究依据。需核对有关国家的缔约状态、保留、时间及管辖范围；不是自动可在当地直接援引的法律。",
+    "requiredMaterials": [
+      "核对原文、当前适用条件及本案材料；提交前由负责律师或协调人确认。"
+    ],
+    "type": "treaty",
+    "locator": "Article 9(1)–(5), printed pp. 175–176 / PDF pp. 5–6",
+    "summary": "涉及任意拘押、拘押依据与司法审查。",
+    "eligibility": [
+      "核对缔约及保留状态；事实须属于相应条款。"
+    ],
+    "reviewStatus": "agent_checked",
+    "agentCheckedAt": "2026-10-09",
+    "teamReviewedAt": null,
+    "unknowns": [
+      "团队尚未逐条人工复核；本案适用性、当地法律地位及当前程序要求待确认。"
+    ],
+    "tags": [
+      "detention"
+    ]
+  },
+  {
+    "resourceId": "iccpr-article-14",
+    "name": "ICCPR 第 14 条：公正审判",
+    "officialUrl": "https://treaties.un.org/doc/publication/unts/volume%20999/volume-999-i-14668-english.pdf",
+    "checkedAt": "2026-10-09",
+    "applicability": "国际条约研究依据。需核对有关国家的缔约状态、保留、时间及管辖范围；不是自动可在当地直接援引的法律。",
+    "requiredMaterials": [
+      "核对原文、当前适用条件及本案材料；提交前由负责律师或协调人确认。"
+    ],
+    "type": "treaty",
+    "locator": "Article 14(1)–(7), printed pp. 176–177 / PDF pp. 6–7",
+    "summary": "涵盖法院平等、公正审理及刑事程序保障。",
+    "eligibility": [
+      "核对缔约及保留状态；事实须属于相应条款。"
+    ],
+    "reviewStatus": "agent_checked",
+    "agentCheckedAt": "2026-10-09",
+    "teamReviewedAt": null,
+    "unknowns": [
+      "团队尚未逐条人工复核；本案适用性、当地法律地位及当前程序要求待确认。"
+    ],
+    "tags": [
+      "fair_trial",
+      "lawyer_access"
+    ]
+  },
+  {
+    "resourceId": "iccpr-article-12",
+    "name": "ICCPR 第 12 条：迁徙与离境",
+    "officialUrl": "https://treaties.un.org/doc/publication/unts/volume%20999/volume-999-i-14668-english.pdf",
+    "checkedAt": "2026-10-09",
+    "applicability": "国际条约研究依据。需核对有关国家的缔约状态、保留、时间及管辖范围；不是自动可在当地直接援引的法律。",
+    "requiredMaterials": [
+      "核对原文、当前适用条件及本案材料；提交前由负责律师或协调人确认。"
+    ],
+    "type": "treaty",
+    "locator": "Article 12(1)–(4), printed p. 176 / PDF p. 6",
+    "summary": "涉及迁徙、离境及其限制条件。",
+    "eligibility": [
+      "核对缔约及保留状态；事实须属于相应条款。"
+    ],
+    "reviewStatus": "agent_checked",
+    "agentCheckedAt": "2026-10-09",
+    "teamReviewedAt": null,
+    "unknowns": [
+      "团队尚未逐条人工复核；本案适用性、当地法律地位及当前程序要求待确认。"
+    ],
+    "tags": [
+      "travel_restriction"
+    ]
+  },
+  {
+    "resourceId": "hrc-general-comment-34",
+    "name": "人权事务委员会一般性意见第 34 号：表达与诽谤",
+    "officialUrl": "https://documents.un.org/api/symbol/access?l=en&s=CCPR/C/GC/34&t=pdf",
+    "checkedAt": "2026-10-09",
+    "applicability": "委员会对 ICCPR 的解释文件，与条约正文和当地法律地位分别核对；不是本案裁决。",
+    "requiredMaterials": [
+      "核对原文、当前适用条件及本案材料；提交前由负责律师或协调人确认。"
+    ],
+    "type": "interpretation",
+    "locator": "CCPR/C/GC/34, paras. 11–13, 22–25, 47",
+    "summary": "解释表达自由和限制；第47段讨论诽谤法律。",
+    "eligibility": [
+      "核对 ICCPR 适用性和所引段落上下文。"
+    ],
+    "reviewStatus": "agent_checked",
+    "agentCheckedAt": "2026-10-09",
+    "teamReviewedAt": null,
+    "unknowns": [
+      "团队尚未逐条人工复核；本案适用性、当地法律地位及当前程序要求待确认。"
+    ],
+    "tags": [
+      "expression",
+      "defamation"
+    ]
+  },
+  {
+    "resourceId": "hrc-general-comment-35",
+    "name": "人权事务委员会一般性意见第 35 号：任意拘押",
+    "officialUrl": "https://documents.un.org/api/symbol/access?l=en&s=CCPR/C/GC/35&t=pdf",
+    "checkedAt": "2026-10-09",
+    "applicability": "委员会对 ICCPR 的解释文件，与条约正文和当地法律地位分别核对；不是本案裁决。",
+    "requiredMaterials": [
+      "核对原文、当前适用条件及本案材料；提交前由负责律师或协调人确认。"
+    ],
+    "type": "interpretation",
+    "locator": "CCPR/C/GC/35, paras. 10–12",
+    "summary": "区分违法拘押与任意拘押，需结合具体情形。",
+    "eligibility": [
+      "核对 ICCPR 适用性和所引段落上下文。"
+    ],
+    "reviewStatus": "agent_checked",
+    "agentCheckedAt": "2026-10-09",
+    "teamReviewedAt": null,
+    "unknowns": [
+      "团队尚未逐条人工复核；本案适用性、当地法律地位及当前程序要求待确认。"
+    ],
+    "tags": [
+      "detention"
+    ]
+  },
+  {
+    "resourceId": "hrc-general-comment-32",
+    "name": "人权事务委员会一般性意见第 32 号：公正审判",
+    "officialUrl": "https://documents.un.org/api/symbol/access?l=en&s=CCPR/C/GC/32&t=pdf",
+    "checkedAt": "2026-10-09",
+    "applicability": "委员会对 ICCPR 的解释文件，与条约正文和当地法律地位分别核对；不是本案裁决。",
+    "requiredMaterials": [
+      "核对原文、当前适用条件及本案材料；提交前由负责律师或协调人确认。"
+    ],
+    "type": "interpretation",
+    "locator": "CCPR/C/GC/32, paras. 22–25",
+    "summary": "解释审判保障，包括特别或军事法庭及公正公开审理。",
+    "eligibility": [
+      "核对 ICCPR 适用性和所引段落上下文。"
+    ],
+    "reviewStatus": "agent_checked",
+    "agentCheckedAt": "2026-10-09",
+    "teamReviewedAt": null,
+    "unknowns": [
+      "团队尚未逐条人工复核；本案适用性、当地法律地位及当前程序要求待确认。"
+    ],
+    "tags": [
+      "fair_trial"
+    ]
+  },
+  {
+    "resourceId": "wgad-submission",
+    "name": "任意拘留问题工作组：程序资料",
+    "officialUrl": "https://www.ohchr.org/sites/default/files/Documents/Publications/FactSheet26en.pdf",
+    "checkedAt": "2026-10-09",
+    "applicability": "供拘押案件研究；须重新打开官方程序与问卷核对当前要求。",
+    "requiredMaterials": [
+      "核对原文、当前适用条件及本案材料；提交前由负责律师或协调人确认。"
+    ],
+    "type": "un_mechanism",
+    "locator": "Fact Sheet No. 26, individual cases / model questionnaire",
+    "summary": "任意剥夺自由事项的研究入口；本次全文读取受阻，具体提交规则暂不作为已核实指导。",
+    "eligibility": [
+      "提交方式、资格及与其他机制并行的影响须先核对。"
+    ],
+    "reviewStatus": "unreviewed",
+    "agentCheckedAt": null,
+    "teamReviewedAt": null,
+    "unknowns": [
+      "官方搜索索引可见，全文返回 403；团队须核对最新方法、表格和定位。"
+    ],
+    "tags": [
+      "detention"
+    ]
+  },
+  {
+    "resourceId": "hrc-individual-communications",
+    "name": "人权事务委员会：个人来文",
+    "officialUrl": "https://treaties.un.org/doc/publication/unts/volume%20999/volume-999-i-14668-english.pdf",
+    "checkedAt": "2026-10-09",
+    "applicability": "仅针对接受相应程序的国家，须核对受害人资格、国内救济、重复程序及保留。",
+    "requiredMaterials": [
+      "核对原文、当前适用条件及本案材料；提交前由负责律师或协调人确认。"
+    ],
+    "type": "un_mechanism",
+    "locator": "First Optional Protocol, Articles 1–5, printed pp. 302–303 / PDF pp. 63–64",
+    "summary": "第一任择议定书规定个人来文程序。",
+    "eligibility": [
+      "核对有关国家是否受第一任择议定书拘束。",
+      "核对用尽国内救济要求和例外；并行国际程序须专门审查。"
+    ],
+    "reviewStatus": "agent_checked",
+    "agentCheckedAt": "2026-10-09",
+    "teamReviewedAt": null,
+    "unknowns": [
+      "团队尚未逐条人工复核；本案适用性、当地法律地位及当前程序要求待确认。"
+    ],
+    "tags": [
+      "expression",
+      "detention",
+      "fair_trial"
+    ]
+  },
+  {
+    "resourceId": "echr-article-10",
+    "name": "欧洲人权公约第 10 条：表达自由",
+    "officialUrl": "https://www.echr.coe.int/documents/d/echr/convention_ENG",
+    "checkedAt": "2026-10-09",
+    "applicability": "区域条约；需确认被诉国、管辖关系、相关时间及条款适用范围。不得直接套用于欧洲之外的案件。",
+    "requiredMaterials": [
+      "核对原文、当前适用条件及本案材料；提交前由负责律师或协调人确认。"
+    ],
+    "type": "treaty",
+    "locator": "Article 10(1)–(2), printed pp. 12–13 / PDF p. 8",
+    "summary": "表达自由及限制条件。",
+    "eligibility": [
+      "当地援引方式与向欧洲人权法院申请的可受理性分别审查。"
+    ],
+    "reviewStatus": "agent_checked",
+    "agentCheckedAt": "2026-10-09",
+    "teamReviewedAt": null,
+    "unknowns": [
+      "团队尚未逐条人工复核；本案适用性、当地法律地位及当前程序要求待确认。"
+    ],
+    "tags": [
+      "expression",
+      "defamation"
+    ]
+  },
+  {
+    "resourceId": "echr-article-5",
+    "name": "欧洲人权公约第 5 条：人身自由",
+    "officialUrl": "https://www.echr.coe.int/documents/d/echr/convention_ENG",
+    "checkedAt": "2026-10-09",
+    "applicability": "区域条约；需确认被诉国、管辖关系、相关时间及条款适用范围。不得直接套用于欧洲之外的案件。",
+    "requiredMaterials": [
+      "核对原文、当前适用条件及本案材料；提交前由负责律师或协调人确认。"
+    ],
+    "type": "treaty",
+    "locator": "Article 5(1)–(5), printed pp. 8–9 / PDF p. 6",
+    "summary": "人身自由、拘押依据与审查。",
+    "eligibility": [
+      "当地援引方式与向欧洲人权法院申请的可受理性分别审查。"
+    ],
+    "reviewStatus": "agent_checked",
+    "agentCheckedAt": "2026-10-09",
+    "teamReviewedAt": null,
+    "unknowns": [
+      "团队尚未逐条人工复核；本案适用性、当地法律地位及当前程序要求待确认。"
+    ],
+    "tags": [
+      "detention"
+    ]
+  },
+  {
+    "resourceId": "echr-article-6",
+    "name": "欧洲人权公约第 6 条：公正审判",
+    "officialUrl": "https://www.echr.coe.int/documents/d/echr/convention_ENG",
+    "checkedAt": "2026-10-09",
+    "applicability": "区域条约；需确认被诉国、管辖关系、相关时间及条款适用范围。不得直接套用于欧洲之外的案件。",
+    "requiredMaterials": [
+      "核对原文、当前适用条件及本案材料；提交前由负责律师或协调人确认。"
+    ],
+    "type": "treaty",
+    "locator": "Article 6(1)–(3), printed pp. 9–11 / PDF pp. 6–7",
+    "summary": "民事权利义务及刑事指控的公正审理保障。",
+    "eligibility": [
+      "当地援引方式与向欧洲人权法院申请的可受理性分别审查。"
+    ],
+    "reviewStatus": "agent_checked",
+    "agentCheckedAt": "2026-10-09",
+    "teamReviewedAt": null,
+    "unknowns": [
+      "团队尚未逐条人工复核；本案适用性、当地法律地位及当前程序要求待确认。"
+    ],
+    "tags": [
+      "fair_trial"
+    ]
+  },
+  {
+    "resourceId": "ecthr-applicants",
+    "name": "欧洲人权法院：申请与可受理性",
+    "officialUrl": "https://www.echr.coe.int/apply-to-the-court",
+    "checkedAt": "2026-10-09",
+    "applicability": "仅在欧洲人权公约的国家、时间、管辖及受害人范围内考虑。",
+    "requiredMaterials": [
+      "核对原文、当前适用条件及本案材料；提交前由负责律师或协调人确认。"
+    ],
+    "type": "regional_mechanism",
+    "locator": "How to make a valid application; Rule 47; Admissibility Guide",
+    "summary": "申请须符合规定格式；形式完整不代表可受理。",
+    "eligibility": [
+      "由律师核对国内救济、期限计算、重复程序及 Rule 47 文件要求。",
+      "本工具不计算申请期限，不承诺立案。"
+    ],
+    "reviewStatus": "agent_checked",
+    "agentCheckedAt": "2026-10-09",
+    "teamReviewedAt": null,
+    "unknowns": [
+      "团队尚未逐条人工复核；本案适用性、当地法律地位及当前程序要求待确认。"
+    ],
+    "tags": [
+      "expression",
+      "detention",
+      "fair_trial"
+    ]
+  },
+  {
+    "resourceId": "frontline-protection-grants",
+    "name": "Front Line Defenders：保护资助",
+    "officialUrl": "https://www.frontlinedefenders.org/en/programme/protection-grants",
+    "checkedAt": "2026-10-09",
+    "applicability": "限于和平人权活动所致风险及符合计划的保护费用；不是通用诉讼资助。",
+    "requiredMaterials": [
+      "核对原文、当前适用条件及本案材料；提交前由负责律师或协调人确认。"
+    ],
+    "type": "assistance",
+    "locator": "Protection Grants — eligible security costs; exclusions; application and reporting",
+    "summary": "为处于风险中的人权捍卫者提供安全保护资助的评估入口。",
+    "eligibility": [
+      "核对活动、风险、具体保护费用及计划排除项。",
+      "需安全联系方式与预算；批准与金额由机构决定。"
+    ],
+    "reviewStatus": "agent_checked",
+    "agentCheckedAt": "2026-10-09",
+    "teamReviewedAt": null,
+    "unknowns": [
+      "团队尚未逐条人工复核；本案适用性、当地法律地位及当前程序要求待确认。"
+    ],
+    "tags": [
+      "assistance",
+      "journalist_safety"
     ]
   }
 ]

@@ -16,7 +16,7 @@ export const DEMO_SCENARIOS: Array<{id:string; title:string; description:string;
   }}
 ];
 
-/** The same two fictional cases written in English, shown when the interface is in English. */
+/** English fictional inputs, shown when the interface is in English. */
 export const DEMO_SCENARIOS_EN: Array<{id:string; title:string; description:string; input:NewCaseInput}> = [
   {id:'journalist-private-release', title:'Journalist detained: seek release privately first', description:'Fictional scenario: a journalist in Kazakhstan is detained awaiting trial, has a lawyer, and wants to handle things privately first.', input:{
     ...structuredClone(EMPTY_INPUT), country:'Kazakhstan', stage:'pretrial', currentProblems:['detained','expression_restricted'],
@@ -31,3 +31,16 @@ export const DEMO_SCENARIOS_EN: Array<{id:string; title:string; description:stri
     priorActions:{status:'none',description:'',date:''},publicity:'public',isExample:true,exampleId:'blogger-public-charges'
   }}
 ];
+
+
+// A fictional UK civil-expression matter. A legal threat is not labeled a proven SLAPP.
+DEMO_SCENARIOS.push({id:'uk-expression-civil',title:'英国调查报道：民事诽谤威胁',description:'虚构场景：英格兰和威尔士记者收到民事索赔威胁；尚未起诉，需核对法域和覆盖不足。',input:{
+ ...structuredClone(EMPTY_INPUT),country:'英国',stage:'unknown',currentProblems:['expression_restricted'],
+ background:{activities:['investigation_report'],personType:'journalist',description:'【虚构演示】一名记者就公共采购发布调查报道后，收到要求撤稿并威胁提起民事诽谤诉讼的函件。尚未收到法院文件。'},primaryGoal:'lawyer',resources:['press_association'],resourceConstraints:'尚无当地律师；编辑部能整理报道依据。',priorActions:{status:'described',description:'编辑部保留了函件和报道资料，尚未对外回应。',date:''},publicity:'private',isExample:true,exampleId:'uk-expression-civil',
+ intake:{version:1,jurisdiction:'england_wales',caseKind:'civil',expression:'yes',narrative:'【虚构演示】一名记者在英格兰和威尔士发布公共采购调查报道后，收到要求撤稿、道歉并威胁提起民事诽谤诉讼的律师函。尚未收到法院文件。编辑部怀疑对方试图阻止公共参与，但是否构成 SLAPP 需要当地律师核实。已保留报道依据和函件。',goalText:'',disclosureDetails:'仅内部研究；未经当事人和编辑部同意，不公开身份、不联络媒体或对方。',answers:[],facts:[],confirmed:true}
+}});
+DEMO_SCENARIOS_EN.push({id:'uk-expression-civil',title:'UK investigative reporting: civil defamation threat',description:'Fictional scenario: an England and Wales journalist receives a civil claim threat; no court papers, jurisdiction and coverage need checking.',input:{
+ ...structuredClone(EMPTY_INPUT),country:'United Kingdom',stage:'unknown',currentProblems:['expression_restricted'],
+ background:{activities:['investigation_report'],personType:'journalist',description:'[Fictional demo] After reporting on public procurement, a journalist receives a demand to remove the article and a threat of civil defamation litigation. No court papers have arrived.'},primaryGoal:'lawyer',resources:['press_association'],resourceConstraints:'No local lawyer yet; the newsroom can organize the reporting material.',priorActions:{status:'described',description:'The newsroom retained the letter and reporting material without an external response.',date:''},publicity:'private',isExample:true,exampleId:'uk-expression-civil',
+ intake:{version:1,jurisdiction:'england_wales',caseKind:'civil',expression:'yes',narrative:'[Fictional demo] A journalist in England and Wales receives a lawyer letter demanding removal and an apology, with a threat of civil defamation litigation, after reporting on public procurement. No court papers have arrived. The newsroom suspects an attempt to suppress public participation, but a local lawyer must assess whether it is a SLAPP. The letter and reporting material are retained.',goalText:'',disclosureDetails:'Internal research only. Do not reveal identity or contact the media or the other party without the journalist and newsroom consent.',answers:[],facts:[],confirmed:true}
+}});

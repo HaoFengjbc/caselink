@@ -1,0 +1,273 @@
+{
+  "generatedOn": "2026-10-09",
+  "scope": "Structured inventory only; no independent event or legal review",
+  "counts": {
+    "cases": 22,
+    "countriesOrRegions": 14,
+    "documents": 21,
+    "sourcePages": 804,
+    "excerpts": 187,
+    "interventions": 72,
+    "outcomes": 61,
+    "resources": 16
+  },
+  "countries": {
+    "中国香港": 1,
+    "乌干达": 1,
+    "俄罗斯": 2,
+    "危地马拉": 1,
+    "哈萨克斯坦": 2,
+    "土耳其": 1,
+    "孟加拉国": 1,
+    "巴基斯坦": 2,
+    "摩洛哥": 3,
+    "格鲁吉亚": 1,
+    "泰国": 1,
+    "白俄罗斯": 2,
+    "突尼斯": 2,
+    "马来西亚": 2
+  },
+  "evidenceReview": {
+    "conflict": 5,
+    "verified": 182
+  },
+  "sourceFormats": {
+    "pdf": 20,
+    "web_print": 1
+  },
+  "resourceReview": {
+    "agent_checked": 15,
+    "unreviewed": 1
+  },
+  "resourceTypes": {
+    "assistance": 2,
+    "interpretation": 3,
+    "regional_mechanism": 1,
+    "treaty": 7,
+    "un_mechanism": 3
+  },
+  "missingStructuredFields": {
+    "jurisdiction": 22,
+    "procedureType": 22,
+    "charges": 22,
+    "reviewedBy": 22,
+    "reviewedAt": 22
+  },
+  "stagesRecordedByCase": {
+    "investigation": 8,
+    "pretrial": 6,
+    "trial": 12,
+    "appeal": 6,
+    "postjudgment": 11,
+    "unknown": 1
+  },
+  "cases": [
+    {
+      "caseId": "aigul-utepova",
+      "country": "哈萨克斯坦",
+      "documents": 1,
+      "excerpts": 12,
+      "conflictingExcerpts": [],
+      "asOf": "2022-04",
+      "unknowns": 4
+    },
+    {
+      "caseId": "emna-chargui",
+      "country": "突尼斯",
+      "documents": 1,
+      "excerpts": 12,
+      "conflictingExcerpts": [
+        "emna-verdict-july13",
+        "emna-verdict-july3"
+      ],
+      "asOf": "2021-06",
+      "unknowns": 4
+    },
+    {
+      "caseId": "myriam-bribri",
+      "country": "突尼斯",
+      "documents": 1,
+      "excerpts": 8,
+      "conflictingExcerpts": [],
+      "asOf": "2021-06",
+      "unknowns": 4
+    },
+    {
+      "caseId": "shahidul-alam",
+      "country": "孟加拉国",
+      "documents": 1,
+      "excerpts": 10,
+      "conflictingExcerpts": [],
+      "asOf": "2023-01",
+      "unknowns": 3
+    },
+    {
+      "caseId": "katsiaryna-andreyeva-daria-chultsova",
+      "country": "白俄罗斯",
+      "documents": 1,
+      "excerpts": 10,
+      "conflictingExcerpts": [],
+      "asOf": "2021-10",
+      "unknowns": 3
+    },
+    {
+      "caseId": "mzia-amaglobeli",
+      "country": "格鲁吉亚",
+      "documents": 1,
+      "excerpts": 11,
+      "conflictingExcerpts": [
+        "mzia-amaglobeli-appeal-document-date-a",
+        "mzia-amaglobeli-appeal-document-date-b"
+      ],
+      "asOf": "2026-01",
+      "unknowns": 2
+    },
+    {
+      "caseId": "jose-ruben-zamora",
+      "country": "危地马拉",
+      "documents": 1,
+      "excerpts": 14,
+      "conflictingExcerpts": [
+        "jose-ruben-zamora-annulment-date-footnote"
+      ],
+      "asOf": "2024-02",
+      "unknowns": 3
+    },
+    {
+      "caseId": "marina-zolotova",
+      "country": "白俄罗斯",
+      "documents": 1,
+      "excerpts": 10,
+      "conflictingExcerpts": [],
+      "asOf": "2019-07-26",
+      "unknowns": 2
+    },
+    {
+      "caseId": "svetlana-prokopyeva",
+      "country": "俄罗斯",
+      "documents": 1,
+      "excerpts": 10,
+      "conflictingExcerpts": [],
+      "asOf": "2021-01",
+      "unknowns": 3
+    },
+    {
+      "caseId": "bao-choy",
+      "country": "中国香港",
+      "documents": 1,
+      "excerpts": 7,
+      "conflictingExcerpts": [],
+      "asOf": "2021-07",
+      "unknowns": 1
+    },
+    {
+      "caseId": "malaysiakini-steven-gan",
+      "country": "马来西亚",
+      "documents": 1,
+      "excerpts": 8,
+      "conflictingExcerpts": [],
+      "asOf": "2021-10",
+      "unknowns": 1
+    },
+    {
+      "caseId": "hajar-raissouni",
+      "country": "摩洛哥",
+      "documents": 1,
+      "excerpts": 8,
+      "conflictingExcerpts": [],
+      "asOf": "2020-08",
+      "unknowns": 2
+    },
+    {
+      "caseId": "omar-radi-2020",
+      "country": "摩洛哥",
+      "documents": 1,
+      "excerpts": 7,
+      "conflictingExcerpts": [],
+      "asOf": "2020-09",
+      "unknowns": 1
+    },
+    {
+      "caseId": "omar-radi-ii-2022",
+      "country": "摩洛哥",
+      "documents": 1,
+      "excerpts": 8,
+      "conflictingExcerpts": [],
+      "asOf": "2022-07",
+      "unknowns": 2
+    },
+    {
+      "caseId": "cansu-piskin",
+      "country": "土耳其",
+      "documents": 1,
+      "excerpts": 6,
+      "conflictingExcerpts": [],
+      "asOf": "2019-07",
+      "unknowns": 2
+    },
+    {
+      "caseId": "asad-ali-toor",
+      "country": "巴基斯坦",
+      "documents": 1,
+      "excerpts": 6,
+      "conflictingExcerpts": [],
+      "asOf": "2023-09",
+      "unknowns": 3
+    },
+    {
+      "caseId": "bilal-ghauri",
+      "country": "巴基斯坦",
+      "documents": 1,
+      "excerpts": 5,
+      "conflictingExcerpts": [],
+      "asOf": "2023-09",
+      "unknowns": 3
+    },
+    {
+      "caseId": "moses-bwayo",
+      "country": "乌干达",
+      "documents": 1,
+      "excerpts": 6,
+      "conflictingExcerpts": [],
+      "asOf": "2021-01",
+      "unknowns": 3
+    },
+    {
+      "caseId": "wuth-boonlert-samak-donnapee",
+      "country": "泰国",
+      "documents": 1,
+      "excerpts": 7,
+      "conflictingExcerpts": [],
+      "asOf": "2020-07",
+      "unknowns": 3
+    },
+    {
+      "caseId": "alnur-ilyashev",
+      "country": "哈萨克斯坦",
+      "documents": 1,
+      "excerpts": 9,
+      "conflictingExcerpts": [],
+      "asOf": "2021-03",
+      "unknowns": 3
+    },
+    {
+      "caseId": "alexander-pichugin",
+      "country": "俄罗斯",
+      "documents": 1,
+      "excerpts": 6,
+      "conflictingExcerpts": [],
+      "asOf": "2022-04",
+      "unknowns": 3
+    },
+    {
+      "caseId": "dian-abdullah",
+      "country": "马来西亚",
+      "documents": 1,
+      "excerpts": 7,
+      "conflictingExcerpts": [],
+      "asOf": "2021-03-24",
+      "unknowns": 3
+    }
+  ],
+  "reviewNote": "Existing verified excerpt labels are retained, not promoted to a documented team review."
+}
