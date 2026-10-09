@@ -1,16 +1,16 @@
 import {executionFor,runExecution} from '../ai/execution';
-import {readIntakeConfig,type IntakeConfig} from '../intake/service';
+import {readMaterialConfig,type MaterialConfig} from './config';
 import {MaterialResponseSchema,type MaterialRequest,type MaterialResponse} from './contracts';
 import {parseMaterials,releaseUploads,type MaterialUpload,type MaterialEmitter} from './parse';
 import {extractMaterials,type MaterialTransport} from './extract';
 
-export type MaterialServiceOptions={signal?:AbortSignal;emit?:MaterialEmitter;config?:IntakeConfig;transport?:MaterialTransport};
+export type MaterialServiceOptions={signal?:AbortSignal;emit?:MaterialEmitter;config?:MaterialConfig;transport?:MaterialTransport};
 /** The only upload lifetime. On success, failure or cancellation upload buffers are released. */
 export async function organizeMaterials(files:MaterialUpload[],request:MaterialRequest,options:MaterialServiceOptions={}):Promise<MaterialResponse>{
   try{
     const documents=await parseMaterials(files,{locale:request.locale,signal:options.signal,emit:options.emit,existingPageCount:request.existingPageCount,existingFileCount:request.existingFileCount});
     const warnings=documents.flatMap(document=>document.warnings);
-    const config=request.aiConsent?(options.config??readIntakeConfig()):undefined;
+    const config=request.aiConsent?(options.config??readMaterialConfig()):undefined;
     const local=()=>MaterialResponseSchema.parse({mode:'local_text',documents,candidates:[],warnings,execution:{...executionFor(request),actualCostUsd:0}});
     if(!request.aiConsent||config?.mode!=='live'||!documents.some(document=>document.processedPages.length))return local();
     return await runExecution(request,'material',async()=>{

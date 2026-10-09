@@ -77,7 +77,7 @@ export default function MaterialUpload({documents, locked, aiEnabled, awaitingSe
         if(!parsed.success)throw new Error(en?'The material response was invalid.':'材料响应格式不正确。');
         const event=parsed.data;
         if(event.type==='stage'){
-          setStage(labels[event.stage]);commit(setFileStage(filesRef.current,event.fileId?[event.fileId]:ids,event.stage));
+          setStage(event.stage==='organizing'?(en?'AI is organizing the case. This may take up to 2 minutes; you can cancel.':'AI 正在整理案情，最多可能需要 2 分钟，可随时取消。'):labels[event.stage]);commit(setFileStage(filesRef.current,event.fileId?[event.fileId]:ids,event.stage));
         }else if(event.type==='document'){
           const doc=event.document;commit(filesRef.current.map(file=>file.id===doc.fileId?{...file,pageCount:doc.pageCount,message:doc.unreadablePages.length?(en?`Some pages could not be read: ${doc.unreadablePages.join(', ')}`:`部分页面无法读取：${doc.unreadablePages.join('、')}`):undefined}:file));
         }else if(event.type==='error'){throw new Error(event.message);

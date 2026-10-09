@@ -1,13 +1,13 @@
 import {NextRequest} from 'next/server';
 import {AnalysisError,publicError} from '@/lib/ai/errors';
 import {NO_STORE,errorResponse,requestIdentifier} from '@/lib/ai/http';
-import {readIntakeConfig} from '@/lib/intake/service';
+import {readMaterialConfig} from '@/lib/materials/config';
 import {MATERIAL_LIMITS,MaterialRequestSchema,type MaterialStreamEvent} from '@/lib/materials/contracts';
 import {organizeMaterials} from '@/lib/materials/service';
 import {releaseUploads,type MaterialUpload} from '@/lib/materials/parse';
 
 export const runtime='nodejs';
-export const maxDuration=60;
+export const maxDuration=240;
 
 function checkMultipartOrigin(request:Request):void{
   const origin=request.headers.get('origin'),host=(request.headers.get('host')??new URL(request.url).host).toLowerCase();
@@ -48,7 +48,7 @@ export async function POST(request:NextRequest){
       if(file.size>MATERIAL_LIMITS.maxFileBytes)throw new AnalysisError('PAYLOAD_TOO_LARGE','每份 PDF 不得超过 3 MiB。',413);
       files.push({name:file.name,type:file.type,bytes:new Uint8Array(await file.arrayBuffer())});
     }
-    const config=data.aiConsent?readIntakeConfig():undefined;
+    const config=data.aiConsent?readMaterialConfig():undefined;
     if(config?.mode==='live'&&!config.key)throw new AnalysisError('CONFIGURATION_ERROR','AI 材料整理尚未配置；可关闭 AI 查看本地提取文字。',503);
     const controller=new AbortController(),onAbort=()=>controller.abort();request.signal.addEventListener('abort',onAbort,{once:true});if(request.signal.aborted)controller.abort();
     let closed=false,timedOut=false;
@@ -58,7 +58,7 @@ export async function POST(request:NextRequest){
       start(sink){
         const emit=(event:MaterialStreamEvent)=>{if(!closed){try{sink.enqueue(encoder.encode(JSON.stringify(event)+'\n'));}catch{closed=true;controller.abort();}}};
         void organizeMaterials(files,data,{config,signal:controller.signal,emit}).then(result=>{emit({type:'result',result});}).catch(error=>{
-          const failure=timedOut?new AnalysisError('TIMEOUT','材料处理超过 55 秒，已停止；请减少材料后重试。',504):publicError(error);
+          const failure=timedOut?new AnalysisError('TIMEOUT',data.locale==='en'?'Material processing exceeded 180 seconds and was stopped. Try fewer materials.':'材料处理超过 180 秒，已停止；请减少材料后重试。',504):publicError(error);
           emit({type:'error',code:failure.code,message:failure.message,...(failure.retryable!==undefined?{retryable:failure.retryable}:{}),...(failure.retryAfterSeconds!==undefined?{retryAfterSeconds:failure.retryAfterSeconds}:{})});
         }).finally(()=>{clearTimeout(timer);request.signal.removeEventListener('abort',onAbort);if(!closed){closed=true;sink.close();}});
       },

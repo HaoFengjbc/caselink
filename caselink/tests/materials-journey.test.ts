@@ -6,7 +6,6 @@ import {type ModelMaterialOutput} from '../src/lib/materials/extract';
 import {type MaterialResponse,type ParsedMaterial} from '../src/lib/materials/contracts';
 import {applyMaterialCandidate,confirmMaterials,resolveMaterialConflict,materialQuestions} from '../src/lib/materials/integration';
 import {analyzeInput} from '../src/lib/ai/service';
-import {recordModel} from '../src/lib/ai/execution';
 
 // A transport simulation, not a recorded or real AI extraction. PDF parsing and rule analysis are real.
 describe('complete PDF journey with actual fixture bytes and simulated model transport',()=>{
@@ -25,7 +24,7 @@ describe('complete PDF journey with actual fixture bytes and simulated model tra
     {...note(0,'date','Mira says she received the letter on 3 October 2026.'),dateKind:'event',date:'3 October 2026',nature:'party_statement'},
     {...note(1,'date',"The lawyer's note says the letter was received on 5 October 2026."),dateKind:'event',date:'5 October 2026'},
    ],conflicts:[{description:'The materials disagree about the actual receipt date.',itemIndices:[5,6]}],missing:['The actual receipt date and latest developments need confirmation.']}]};
-   return recordModel('intake','test-model',async()=>({status:'completed',model:'test-model',output_parsed:value,usage:{input_tokens:1000,output_tokens:1000}}));
+   return {status:'completed',model:'test-model',output_parsed:value,usage:{input_tokens:1000,output_tokens:1000}};
   });
   const identity={requestId:'material-journey-01',inputVersion:1,operation:'initial' as const,sessionId:'fixture-session',ipDigest:'fixture-ip',inputHash:'fixture-hash',locale:'en' as const,kind:'material' as const};
   const extraction=await organizeMaterials(files,{...identity,aiConsent:true,background:'',existingPageCount:0,existingFileCount:0},{config:{mode:'live',key:'fictional-test-key',model:'test-model',timeoutMs:3000},transport});

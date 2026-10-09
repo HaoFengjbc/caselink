@@ -7,7 +7,10 @@ import {parseMaterials,awaitPdfWorker,materialFileId,safeMaterialFilename,type M
 import {organizeMaterials} from '../src/lib/materials/service';
 import {MATERIAL_SYSTEM_PROMPT,ModelMaterialOutputSchema,buildMaterialPromptData,validateMaterialOutput,extractMaterials,openAIMaterialTransport,type ModelMaterialOutput,type MaterialTransport} from '../src/lib/materials/extract';
 import {MATERIAL_LIMITS,MaterialResponseSchema,MaterialStreamEventSchema,type MaterialRequest,type ParsedMaterial,type MaterialResponse} from '../src/lib/materials/contracts';
-import {POST} from '../src/app/api/materials/route';
+import {POST,maxDuration} from '../src/app/api/materials/route';
+import {readMaterialConfig} from '../src/lib/materials/config';
+import {readIntakeConfig} from '../src/lib/intake/service';
+import {runExecution} from '../src/lib/ai/execution';
 import type {IntakeConfig} from '../src/lib/intake/service';
 import {withTestExecution} from './fixtures/execution';
 
@@ -27,7 +30,7 @@ function output(documents:ParsedMaterial[]):ModelMaterialOutput{
     {...item('event','Mira says she received the letter on 3 October 2026.','Mira says she received the letter on 3 October 2026.'),nature:'party_statement',subject:'Mira',dateKind:'event',date:'3 October 2026'},
   ],conflicts:[],missing:['The envelope and delivery record are not provided.']}]};
 }
-afterEach(()=>{vi.unstubAllGlobals();vi.unstubAllEnvs();});
+afterEach(()=>{vi.useRealTimers();vi.unstubAllGlobals();vi.unstubAllEnvs();});
 
 describe('PDF parsing with physical-page evidence and no external requests',()=>{
   it('reads actual PDF bytes, stable file IDs, physical order and exact text',async()=>{
@@ -158,6 +161,34 @@ describe('service consent, usage gates and lifecycle',()=>{
     const controller=new AbortController();controller.abort();const cancelled=[await fixture()];
     await expect(organizeMaterials(cancelled,metadata,{signal:controller.signal,config})).rejects.toMatchObject({code:'CANCELLED'});expect(cancelled).toEqual([]);
     const retry=await organizeMaterials([await fixture('expression-update.pdf')],{...metadata,aiConsent:false});expect(retry.documents).toHaveLength(1);expect(retry.documents[0].filename).toBe('expression-update.pdf');
+  });
+  it('gives PDF extraction its own bounded deadline while retaining the configured model',()=>{
+    const env={ANALYSIS_MODE:'live',OPENAI_API_KEY:'fictional-key',OPENAI_INTAKE_MODEL:'unchanged-model',AI_INTAKE_TIMEOUT_MS:'30000'};
+    expect(readMaterialConfig(env)).toMatchObject({model:'unchanged-model',timeoutMs:120000});
+    expect(readIntakeConfig(env).timeoutMs).toBe(30000);
+    expect(readMaterialConfig({...env,AI_MATERIAL_TIMEOUT_MS:'90000'}).timeoutMs).toBe(90000);
+    for(const value of ['999','120001','invalid'])expect(()=>readMaterialConfig({...env,AI_MATERIAL_TIMEOUT_MS:value})).toThrow();
+    // Upload + three serial parser deadlines + model still fit the total and hosting limits.
+    expect(15000+3*15000+120000).toBeLessThanOrEqual(MATERIAL_LIMITS.requestTimeoutMs);
+    expect(MATERIAL_LIMITS.requestTimeoutMs+5000).toBeLessThan(maxDuration*1000);
+  });
+  it('accepts a 75-second model response without retrying or applying a partial result',async()=>{
+    const docs=await parsed();vi.useFakeTimers();
+    const transport=vi.fn(()=>new Promise<ReturnType<MaterialTransport> extends Promise<infer T>?T:never>(resolve=>setTimeout(()=>resolve({status:'completed',output_parsed:output(docs)}),75000)));
+    const pending=extractMaterials(docs,{locale:'en',background:'',config:readMaterialConfig({ANALYSIS_MODE:'live',OPENAI_API_KEY:'fictional-key'}),transport});
+    let settled=false;void pending.then(()=>{settled=true;});
+    await vi.advanceTimersByTimeAsync(60000);expect(settled).toBe(false);expect(transport).toHaveBeenCalledOnce();
+    await vi.advanceTimersByTimeAsync(15000);expect(await pending).toHaveLength(1);expect(transport).toHaveBeenCalledOnce();
+  });
+  it('records a timed-out model attempt before reporting failure and still honors cancellation',async()=>{
+    const docs=await parsed();vi.useFakeTimers();const log=vi.fn();let signal:AbortSignal|undefined;
+    const transport=vi.fn((args:Parameters<MaterialTransport>[0])=>{signal=args.signal;return new Promise<never>(()=>{});});
+    const pending=runExecution(metadata,'material',async()=>({candidates:await extractMaterials(docs,{locale:'en',background:'',config:{...config,timeoutMs:120000},transport})}),log);
+    const failure=expect(pending).rejects.toMatchObject({code:'TIMEOUT',message:expect.stringContaining('120 seconds')});
+    await vi.advanceTimersByTimeAsync(120000);await failure;expect(signal?.aborted).toBe(true);expect(transport).toHaveBeenCalledOnce();
+    expect(log).toHaveBeenCalledWith(expect.objectContaining({state:'failed',failureStage:'intake',errorCode:'TIMEOUT',stages:[expect.objectContaining({elapsedMs:120000,status:'failed',inputTokens:null,outputTokens:null})]}));
+    const controller=new AbortController();const cancelled=extractMaterials(docs,{locale:'en',background:'',config:{...config,timeoutMs:120000},transport,signal:controller.signal});
+    const cancelledCheck=expect(cancelled).rejects.toMatchObject({code:'CANCELLED'});controller.abort();await cancelledCheck;
   });
   it('aborts model deadline and rejects refusal/truncation without inventing fallback',async()=>{
     const docs=await parsed();

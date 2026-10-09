@@ -2,7 +2,7 @@ import {z} from 'zod';
 import {RequestIdentitySchema,ResearchExecutionSchema} from '../workflow-contracts';
 
 // Deliberately below Vercel's 4.5 MB function request limit, including multipart overhead.
-export const MATERIAL_LIMITS={maxFiles:3,maxFileBytes:3*1024*1024,maxRequestBytes:4_000_000,maxTotalFileBytes:3_900_000,maxPages:30,maxTextBytes:75_000,parseTimeoutMs:15_000,requestTimeoutMs:55_000} as const;
+export const MATERIAL_LIMITS={maxFiles:3,maxFileBytes:3*1024*1024,maxRequestBytes:4_000_000,maxTotalFileBytes:3_900_000,maxPages:30,maxTextBytes:75_000,parseTimeoutMs:15_000,requestTimeoutMs:180_000} as const;
 export const MaterialFieldSchema=z.enum(['party','country','jurisdiction','expression','document_type','stage','event','claim','position','prior_action','evidence','missing_evidence','date','demand','restriction']);
 export const MaterialNatureSchema=z.enum(['allegation','party_statement','court_finding','document_record','uncertain']);
 export const MaterialSourceSchema=z.object({fileId:z.string().min(1).max(100),filename:z.string().min(1).max(180),pdfPage:z.number().int().min(1).max(30),printedPage:z.string().max(80).nullable(),quote:z.string().min(1).max(800),method:z.literal('embedded_text')}).strict();

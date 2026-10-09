@@ -67,3 +67,13 @@ test('MOCKED provider: only new PDF is sent, same-case confirmation preserves ed
 test('MOCKED provider: server configuration failure is shown and retry does not reuse old result',async({page})=>{
  let calls=0;await page.route('**/api/materials',route=>{calls++;return calls===1?route.fulfill({status:503,json:{code:'USAGE_CONTROL_UNAVAILABLE',message:'共享用量控制尚未配置，未调用模型。'}}):route.fulfill({contentType:'application/x-ndjson',body:JSON.stringify({type:'result',result})+'\n'});});await page.goto('/new');await upload(page);await expect(page.locator('main').getByRole('alert')).toContainText('未调用模型');await expect(page.locator('[data-material-item]')).toHaveCount(0);await page.getByRole('button',{name:'读取材料并整理案情',exact:true}).click();await expect(page.locator('[data-material-item="party"]')).toBeVisible();expect(calls).toBe(2);
 });
+
+
+test('MOCKED slow provider: browser waits beyond the former 60-second cutoff without another request',async({page})=>{
+ let release!:()=>void;const delayed=new Promise<void>(done=>{release=done;});let calls=0;
+ await page.route('**/api/materials',async route=>{calls++;await delayed;await route.fulfill({contentType:'application/x-ndjson',body:JSON.stringify({type:'result',result})+'\n'});});
+ await page.goto('/new');await page.clock.install();await upload(page);
+ await expect.poll(()=>calls).toBe(1);await page.clock.fastForward(75000);
+ await expect(page.getByRole('button',{name:'取消',exact:true})).toBeVisible();await expect(page.locator('[data-material-item]')).toHaveCount(0);expect(calls).toBe(1);
+ release();await expect(page.locator('[data-material-item="party"]')).toBeVisible();expect(calls).toBe(1);
+});
