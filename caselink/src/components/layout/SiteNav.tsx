@@ -1,9 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import NewAnalysisButton from '@/components/intake/NewAnalysisButton';
-import { archiveCurrentSession } from '@/lib/session';
 import { usePathname } from 'next/navigation';
 import { ArrowUpRight, X } from 'lucide-react';
 import { useI18n } from '@/components/i18n/LocaleProvider';
@@ -23,7 +22,6 @@ export function LanguageToggle({ className = '' }: { className?: string }) {
 export default function SiteHeader() {
   const pathname = usePathname();
   const { t, locale } = useI18n();
-  useEffect(() => { archiveCurrentSession(); }, []);
   const dialog = useRef<HTMLDialogElement>(null);
   const inLibrary = pathname.startsWith('/cases');
   const inFlow = ['/new', '/review', '/analysis'].includes(pathname);
@@ -39,6 +37,7 @@ export default function SiteHeader() {
       <dialog ref={dialog} className="menu-drawer" aria-label={t.header.siteMenu} onClick={e => { if (e.target === e.currentTarget) dialog.current?.close(); }}>
         <div className="menu-head"><span>{t.header.menu}</span><button className="menu-close" aria-label={t.header.closeMenu} onClick={() => dialog.current?.close()}><X size={34} strokeWidth={1.4}/></button></div>
         <ul className="menu-links">{MENU_LINKS.map((href, i) => <li key={href}>{href === '/new' ? <NewAnalysisButton onStart={() => dialog.current?.close()}><small>{String(i + 1).padStart(2, '0')}</small>{t.header.menuItems[i]}</NewAnalysisButton> : <Link href={href} aria-current={isCurrent(href) ? 'page' : undefined} onClick={() => dialog.current?.close()}><small>{String(i + 1).padStart(2, '0')}</small>{t.header.menuItems[i]}</Link>}</li>)}<li><Link href="/history" onClick={() => dialog.current?.close()}><small>05</small>{locale === 'en' ? 'My analyses' : '我的分析'}</Link></li></ul>
+        <div className="row"><Link href="/compare" onClick={() => dialog.current?.close()}>{locale === 'en' ? 'Compare cases' : '多案比较'}</Link><Link href="/resources" onClick={() => dialog.current?.close()}>{locale === 'en' ? 'International resources' : '国际依据与资源'}</Link></div>
         <LanguageToggle className="lang-toggle-large"/>
         <p className="menu-foot">{t.header.menuFoot[0]}<br/>{t.header.menuFoot[1]}</p>
       </dialog>

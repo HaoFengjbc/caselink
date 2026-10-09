@@ -113,7 +113,7 @@ const zhUI = {
     gapsTitle: '让判断保留边界', gapsText: '把已经知道的与仍需确认的放在一起。', missing: '建议补充的信息', limits: '资料与判断的限制', conflict: '来源冲突，未自动消解', unrecorded: '历史资料仍未记载的内容',
     sources: '本次参考的原文证据', sourceLine: (p: number, d: string) => `PDF 第 ${p} 页 · 报告 ${d}`, sourceButton: '原文',
     asideEyebrow: '先补齐，再推进', asideTitle: '更好的行动，始于更清楚的信息。', asideNone: '建议与负责律师共同核查当前程序和当事人意愿。', asideEdit: '补充或修改案情',
-    noteTitle: '行动有据，判断有边界', noteText: '联网发现附网页来源，仍待核实；已核对历史资料作为补充。建议步骤与来源记录分别标注。', noteLink: '查看案例资料库',
+    noteTitle: '行动有据，判断有边界', noteText: '正式案例原文是研究主干，国际依据注明条件，网页补充待核实。行动建议与历史事实分开标注。', noteLink: '查看案例资料库',
     clear: '清空当前草稿', clearConfirm: '清空当前案情草稿？已经保存的历史报告仍保留在「我的分析」中。',
     printTitle: '原文证据', printPage: (p: number) => `PDF 第 ${p} 页`,
     printReport: (pub: string, asOf: string, id: string) => `报告 ${pub} · 事实截至 ${asOf} · ${id}`,
@@ -123,7 +123,7 @@ const zhUI = {
   web: {
     tab: '联网发现', title: '从公开资料中，寻找可比较的经验', intro: '以下为本次搜索与 AI 比较结果，尚未正式入库核对；阅读来源，并核实时间、程序与适用性。',
     status: { completed: '已取得网页资料', no_results: '未取得可用网页结果', unavailable: '本次联网研究未完成' },
-    none: '本次结果未进行联网研究。规则与预置演示结果不搜索网页；已核对历史案例仅供补充参考。',
+    none: '本次结果未进行联网研究。规则与预置演示不搜索网页，仍可查阅正式案例原文和有条件的国际资源。',
     noResults: '搜索未取得可用的带来源资料。这不代表不存在相关案例或支持渠道。', unavailable: '本次搜索未能完成，不能据此判断没有相关资料。请保留信息缺口，并核对已有参考。',
     noComparisons: '暂未形成可比案例', noComparisonsText: '取得网页资料不等于找到适合类比的案例。可以展开完整搜索报告，查看原始资料与信息缺口。',
     pending: '联网发现 · 待核实', asOf: '资料状态截至', dateUnknown: '日期未知，须核实', jurisdictionUnknown: '辖区未明确',
@@ -167,14 +167,14 @@ const zhUI = {
 export type UIText = typeof zhUI;
 
 const enUI: UIText = {
-  meta: { title: 'CaseLink · Turn past cases into next steps', description: 'Research cases and sources on the web, compare documented history, and consider next steps.', dateLocale: 'en-GB' },
+  meta: { title: 'CaseLink · Turn past cases into next steps', description: 'Research journalism and expression matters using documented cases, qualified international sources and unverified web supplements.', dateLocale: 'en-GB' },
   lang: zhUI.lang,
   header: {
     home: 'CaseLink home', library: 'Case library', start: 'New analysis', menu: 'Menu', closeMenu: 'Close menu', siteMenu: 'Site menu',
     menuItems: ['Home', 'New analysis', 'Case library', 'How it works'],
-    menuFoot: ['Independent research prototype · web research and TrialWatch history', 'Sourced facts, bounded judgments.'],
+    menuFoot: ['Independent advocacy research prototype · TrialWatch historical sources', 'Sourced facts, bounded judgments.'],
   },
-  footer: { tagline: 'Turn experience into the next step.', about: ['Independent research prototype · web research and TrialWatch history', 'Action references only — users judge them against their own situation.'], note: 'Sourced facts · bounded judgments' },
+  footer: { tagline: 'Turn experience into the next step.', about: ['Independent advocacy research prototype · TrialWatch historical sources', 'Action references only — users judge them against their own situation.'], note: 'Sourced facts · bounded judgments' },
   home: {
     heroLine1: 'Let sourced research', heroLine2: 'light the ', heroFill: 'next step', heroEnd: '.',
     stats: ['Past cases', 'Public reports', 'Recorded actions', 'Source excerpts'],
@@ -182,7 +182,7 @@ const enUI: UIText = {
     approachTitle: ['How it', 'works'],
     steps: [
       { title: 'Describe the situation', text: 'Choose a region and describe the situation in your own words. AI helps organize it and asks follow-up questions for you to review.', meta: 'Your input sets the direction' },
-      { title: 'Research and compare', text: 'Search public sources using region and issue keywords, compare relevant cases, and supplement them with reviewed historical records.', meta: 'Linked findings, with applicability still to verify' },
+      { title: 'Research and compare', text: 'Start with the case library and source evidence. International standards state conditions; web findings remain an unverified supplement.', meta: 'Linked findings, with applicability still to verify' },
       { title: 'Find where to start', text: 'Get conditions, steps, materials and follow-up points: a concrete starting point for your team’s discussion.', meta: 'Grounded suggestions — you make the call' },
     ],
     libraryTitle: ['Past', 'cases'], libraryIntro: 'Start with documented cases, historical actions, later developments and differences in context.', browseAll: 'Browse all cases',
