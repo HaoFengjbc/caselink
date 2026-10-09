@@ -4,7 +4,7 @@
 
 本轮定位是：**正式案例库为主干，国际标准与机制提供有适用条件的依据，公开网页补充明确待核实**。一般纠纷不进入完整付费研究；表达关联不清楚时先确认。项目是独立原型，不声称获得 TrialWatch 官方认可。
 
-本地代码已按 2026-10-09 迭代说明开发，尚未发布本轮代码。生产站点仍是 [caselink-eight.vercel.app](https://caselink-eight.vercel.app) 的此前部署。完整交付与真实验证范围见 [本轮验收](docs/iteration-2026-10-09/acceptance.md)，部署核对见 [准备记录](docs/iteration-2026-10-09/preflight.md)。旧版文档中的“通用纠纷、联网主干、自动补查、自动保存”描述不适用于本轮代码。
+本轮代码已于 2026-10-09 发布至 [caselink-eight.vercel.app](https://caselink-eight.vercel.app)，部署源码 `aad75c2`，15 项线上免费检查通过。当前规则参考和案例比较可用；因 Redis、成本预算与受控搜索配置缺失，付费 AI 和联网搜索关闭。发布细节见 [生产记录](docs/iteration-2026-10-09/production-release.md)，完整交付及验证限制见 [本轮验收](docs/iteration-2026-10-09/acceptance.md)。旧版文档中的“通用纠纷、联网主干、自动补查、自动保存”描述不适用于本轮代码。
 
 ## 本地运行
 
