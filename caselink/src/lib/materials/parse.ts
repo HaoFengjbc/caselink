@@ -1,5 +1,4 @@
 import {createHash} from 'node:crypto';
-import {createRequire} from 'node:module';
 import {pathToFileURL} from 'node:url';
 import {Worker} from 'node:worker_threads';
 import {PDF_WORKER_SOURCE} from './worker-source';
@@ -36,10 +35,12 @@ export async function parseMaterials(files:MaterialUpload[],options:{locale:Loca
   activeParsers++;
   let worker:Worker|undefined;
   try{
-    const require=createRequire(import.meta.url);
+    // Resolve through the actual Node runtime: webpack must not rewrite this ESM path into a require stub.
+    const require=process.getBuiltinModule('module').createRequire(`${process.cwd()}/package.json`);
     worker=new Worker(PDF_WORKER_SOURCE,{eval:true,resourceLimits:{maxOldGenerationSizeMb:128,maxYoungGenerationSizeMb:32,stackSizeMb:4},workerData:{files:files.map(file=>({filename:safeMaterialFilename(file.name),fileId:materialFileId(file.bytes),size:file.bytes.byteLength,bytes:new Uint8Array(file.bytes)})),locale,limits:MATERIAL_LIMITS,existingPageCount:options.existingPageCount??0,pdfjsUrl:pathToFileURL(require.resolve('pdfjs-dist/legacy/build/pdf.mjs')).href}});
     return await awaitPdfWorker(worker,options);
-  }finally{if(worker)await worker.terminate();activeParsers--;}
+  }catch(error){if(error instanceof AnalysisError)throw error;throw new AnalysisError('CONFIGURATION_ERROR',copy(locale,'PDF 读取环境暂不可用，请联系管理员检查解析器部署。','The PDF reading runtime is unavailable. Ask the administrator to check the parser deployment.'),503);}
+  finally{if(worker)await worker.terminate();activeParsers--;}
 }
 let activeParsers=0;
 

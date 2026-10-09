@@ -11,7 +11,7 @@ import {RedisProtocolSimulator,fixtureUsageConfig} from './fixtures/usage';
 import {availableIntakeQuestions} from '../src/lib/intake/questions';
 
 export const extracted=():MaterialResponse=>MaterialResponseSchema.parse({mode:'live_ai',warnings:[],documents:[{fileId:'pdf-fixture-1',filename:'fictional-letter.pdf',size:2500,pageCount:1,processedPages:[1],unreadablePages:[],omittedPages:[],warnings:[],pages:[{pdfPage:1,text:'The fictional company alleges that reporter Morgan Vale published an inaccurate article. Case in England and Wales. Letter dated 2024-05-10. Reply requested by 2024-05-20.',status:'read',printedPage:null}]}],candidates:[{id:'case-fixture',label:'Fictional Morgan Vale publication dispute',prefill:{country:'United Kingdom',jurisdiction:'england_wales',caseKind:'civil',expression:'yes',stage:'pretrial',personType:'journalist'},items:[{id:'fact-allegation',field:'claim',text:'The company alleges inaccurate reporting.',subject:'Fictional company',nature:'allegation',dateKind:'none',date:null,sources:[{fileId:'pdf-fixture-1',filename:'fictional-letter.pdf',pdfPage:1,printedPage:null,quote:'The fictional company alleges that reporter Morgan Vale published an inaccurate article.',method:'embedded_text'}],uncertainty:null,status:'extracted',originalText:'The company alleges inaccurate reporting.'}],conflicts:[],missing:[]}]});
-const ready=()=>{let input=applyMaterialCandidate(structuredClone(EMPTY_INPUT),extracted(),'case-fixture');input={...input,publicity:'private',intake:{...input.intake,goalText:'Prepare an internal chronology for the instructed lawyer.',disclosureDetails:'Only share de-identified excerpts with the instructed lawyer.'}};return confirmMaterials(input);};
+const ready=()=>{let input=applyMaterialCandidate(structuredClone(EMPTY_INPUT),extracted(),'case-fixture');input={...input,publicity:'private',intake:{...input.intake,goalText:'Prepare an internal chronology for the instructed lawyer.',disclosureDetails:'Only share de-identified excerpts with the instructed lawyer.',materials:{...input.intake.materials!,goalConfirmed:true,disclosureConfirmed:true}}};return confirmMaterials(input);};
 afterEach(()=>{vi.unstubAllEnvs();vi.unstubAllGlobals();});
 
 describe('PDF intake uses one case record and immutable source evidence',()=>{
@@ -21,6 +21,8 @@ describe('PDF intake uses one case record and immutable source evidence',()=>{
   expect(input.intake.materials?.items).toHaveLength(1);expect(input.intake.facts[0].materialItemId).toBe('fact-allegation');
   expect(materialReviewErrors(input)).toHaveLength(2);expect(()=>confirmMaterials(input)).toThrow();
   expect(NewCaseInputSchema.safeParse({...input,intake:{...input.intake,confirmed:true}}).success).toBe(false);
+  const unconfirmed=ready();unconfirmed.intake.materials!.goalConfirmed=false;unconfirmed.intake.materials!.disclosureConfirmed=false;
+  expect(materialReviewErrors(unconfirmed)).toHaveLength(2);expect(()=>confirmMaterials(unconfirmed)).toThrow();
  });
  it('asks only useful material gaps; goal and disclosure cannot be inferred from prior public advocacy',()=>{
   let input=applyMaterialCandidate(structuredClone(EMPTY_INPUT),extracted(),'case-fixture');

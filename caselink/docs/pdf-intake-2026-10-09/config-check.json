@@ -1,0 +1,42 @@
+{
+  "original": {
+    "filePresent": true,
+    "models": {
+      "OPENAI_MODEL": "gpt-6.1-sol",
+      "OPENAI_INTAKE_MODEL": "not set; application default applies"
+    },
+    "configured": {
+      "OPENAI_API_KEY": false,
+      "UPSTASH_REDIS_REST_URL": false,
+      "UPSTASH_REDIS_REST_TOKEN": false,
+      "USAGE_SESSION_SECRET": false,
+      "AI_MODEL_RATES_JSON": false,
+      "AI_GLOBAL_DAILY_BUDGET_USD": false,
+      "USAGE_TRUSTED_IP_HEADER": false,
+      "BRAVE_SEARCH_API_KEY": false
+    }
+  },
+  "integration": {
+    "filePresent": false,
+    "models": {
+      "OPENAI_MODEL": "not set; application default applies",
+      "OPENAI_INTAKE_MODEL": "not set; application default applies"
+    },
+    "configured": {
+      "OPENAI_API_KEY": false,
+      "UPSTASH_REDIS_REST_URL": false,
+      "UPSTASH_REDIS_REST_TOKEN": false,
+      "USAGE_SESSION_SECRET": false,
+      "AI_MODEL_RATES_JSON": false,
+      "AI_GLOBAL_DAILY_BUDGET_USD": false,
+      "USAGE_TRUSTED_IP_HEADER": false,
+      "BRAVE_SEARCH_API_KEY": false
+    }
+  },
+  "verification": {
+    "paidProviderCalls": 0,
+    "realProviderCostUsd": 0,
+    "reason": "Local paid-mode configuration is missing. No request sent to a real model provider.",
+    "accountCreditBalance": "Not verified; no account credentials were read."
+  }
+}

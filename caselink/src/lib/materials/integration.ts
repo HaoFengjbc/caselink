@@ -22,7 +22,7 @@ export function applyMaterialCandidate(input:NewCaseInput,result:MaterialRespons
  if(items.length>48)throw new Error('The combined case exceeds 48 extracted items; review the existing materials before adding more.');
  const conflicts=[...(old?.conflicts??[])];for(const conflict of selected.conflicts)if(!conflicts.some(c=>c.id===conflict.id))conflicts.push(conflict);
  // Incremental uploads cannot silently replace contradictory single-valued assertions.
- for(const item of selected.items){if(!['country','jurisdiction','date','stage'].includes(item.field))continue;
+ for(const item of selected.items){if(!['country','jurisdiction','date','stage'].includes(item.field)&&!(item.date&&item.dateKind==='requested_deadline'))continue;
   const prior=old?.items.find(i=>i.field===item.field&&i.subject===item.subject&&i.dateKind===item.dateKind&&(i.date??i.text)!==(item.date??item.text)&&!i.sources.some(s=>item.sources.some(t=>s.fileId===t.fileId)));
   if(prior&&!conflicts.some(c=>c.itemIds.includes(prior.id)&&c.itemIds.includes(item.id)))conflicts.push({id:questionId(prior.id+item.id),description:`${prior.text} / ${item.text}`,itemIds:[prior.id,item.id],resolution:null});
  }
@@ -86,7 +86,14 @@ export function materialQuestions(input:NewCaseInput,locale:'zh'|'en',options:{o
   questions.push({id:materialQuestionIds.expression,title:en?'Did reporting, speaking, posting or another expression activity trigger this legal matter?':'本案是否因报道、发言、发帖或其他表达活动引发？',reason:en?'The connection is unclear in the supplied material.':'材料中的表达关联尚不清楚，需要核对后再开展完整研究。',options:en?['Yes','No','Not sure']:['是','否','不清楚'],sourceIds:[]});
  }
  if(!materials.latestConfirmed)add(questionId('latest-material-update'),en?'When was the document received, and what has changed since its date?':'文件实际何时收到？材料记载之后有何新进展？',en?'Document dates and historical status do not establish the current situation.':'文件日期与历史状态不能直接当作当前进展；不清楚也可说明。');
- for(const missing of materials.missing)add(questionId('missing:'+missing),missing,en?'A gap identified in the material; you may say not sure or skip.':'材料中尚未明确的具体缺口，可以回答不清楚或暂时跳过。');
+ for(const missing of materials.missing){
+  // Mandatory controls already cover these topics. Do not ask a model paraphrase again.
+  if(/收到|最新|进展|目标|披露|授权|receipt|latest|current status|update|goal|disclosure|consent/i.test(missing))continue;
+  if(/国家|法域|辖区|country|jurisdiction/i.test(missing))continue;
+  if(/表达关联|expression.*(?:connection|link)/i.test(missing))continue;
+  add(questionId('missing:'+missing),missing,en?'A gap identified in the material; you may say not sure or skip.':'材料中尚未明确的具体缺口，可以回答不清楚或暂时跳过。');
+ }
+
  const answered=new Set(record.answers.filter(a=>a.answer.trim()).map(a=>a.questionId));
  return questions.filter(q=>!answered.has(q.id)).slice(0,3);
 }
@@ -95,8 +102,8 @@ export function materialReviewErrors(input:NewCaseInput,locale:'zh'|'en'='zh'):s
  const en=locale==='en',errors:string[]=[];
  if(!materials.items.length)errors.push(en?'Add or enter case facts before confirming.':'请先添加或填写案情内容。');
  if(materials.conflicts.some(c=>!c.resolution?.trim()))errors.push(en?'Record how unresolved conflicting accounts should be handled; “not sure” is allowed.':'请说明尚未处理的冲突如何记录；可以填写“不清楚”。');
- if(!record.goalText.trim())errors.push(en?'Confirm your current work goal.':'请确认本次希望完成的工作目标。');
- if(!record.disclosureDetails.trim()||input.publicity==='unknown')errors.push(en?'Confirm permitted information and recipients, including an internal-only choice if appropriate.':'请确认本次可分享的信息和接收范围，也可明确选择仅内部使用。');
+ if(!record.goalText.trim()||!materials.goalConfirmed)errors.push(en?'Confirm your current work goal.':'请确认本次希望完成的工作目标。');
+ if(!record.disclosureDetails.trim()||input.publicity==='unknown'||!materials.disclosureConfirmed)errors.push(en?'Confirm permitted information and recipients, including an internal-only choice if appropriate.':'请确认本次可分享的信息和接收范围，也可明确选择仅内部使用。');
  return errors;
 }
 export function confirmMaterials(input:NewCaseInput):Draft{

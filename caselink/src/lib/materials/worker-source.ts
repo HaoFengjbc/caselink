@@ -18,7 +18,7 @@ const emit=event=>parentPort.postMessage({type:'event',event});
  for(const file of files){
   const {filename,fileId,bytes}=file;
   emit({type:'stage',stage:'reading',fileId,filename});
-  const task=pdfjs.getDocument({data:bytes,cMapUrl,cMapPacked:true,standardFontDataUrl,enableXfa:false,useWasm:false,useSystemFonts:false,disableFontFace:true,useWorkerFetch:false,disableAutoFetch:true,verbosity:0,maxImageSize:16000000,stopAtErrors:true});
+  const task=pdfjs.getDocument({data:bytes,cMapUrl,cMapPacked:true,standardFontDataUrl,isEvalSupported:false,enableXfa:false,useWasm:false,useSystemFonts:false,disableFontFace:true,useWorkerFetch:false,disableAutoFetch:true,verbosity:0,maxImageSize:16000000,stopAtErrors:true});
   try{
    const doc=await task.promise;
    if(await doc.getPermissions()!==null)throw fail('INVALID_INPUT',copy(filename+' 已加密；请在本地提供未加密副本。',filename+' is encrypted. Provide an unencrypted copy from your device.'));

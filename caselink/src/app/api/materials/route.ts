@@ -21,7 +21,7 @@ function checkMultipartOrigin(request:Request):void{
   if(!/^multipart\/form-data;\s*boundary=/i.test(request.headers.get('content-type')??''))throw new AnalysisError('INVALID_INPUT','请选择 PDF 文件上传。',415);
 }
 
-export async function readLimitedMaterialForm(request:Request):Promise<FormData>{
+async function readLimitedMaterialForm(request:Request):Promise<FormData>{
   if(Number(request.headers.get('content-length'))>MATERIAL_LIMITS.maxRequestBytes)throw new AnalysisError('PAYLOAD_TOO_LARGE','上传请求超过 4,000,000 字节；请减少 PDF 大小。',413);
   const reader=request.body?.getReader();if(!reader)throw new AnalysisError('INVALID_INPUT','上传内容为空。');
   const chunks:Uint8Array[]=[];let total=0;

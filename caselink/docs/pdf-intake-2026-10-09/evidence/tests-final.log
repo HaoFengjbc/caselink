@@ -1,0 +1,11 @@
+> caselink@0.1.0 test
+> vitest run
+
+
+ RUN  v5.0.3 /Users/fenghao/.codex/worktrees/caselink-pdf-intake/hackhaton/caselink
+
+
+ Test Files  29 passed (29)
+      Tests  370 passed | 2 skipped (372)
+   Start at  18:02:54
+   Duration  3.13s (tests 57%, import 27%, transform 16%, worker 1%)

@@ -1,0 +1,186 @@
+[
+  {
+    "files": [
+      "expression-letter.pdf",
+      "expression-update.pdf"
+    ],
+    "status": 200,
+    "types": [
+      "stage",
+      "stage",
+      "stage",
+      "document",
+      "stage",
+      "document",
+      "result"
+    ],
+    "mode": "local_text",
+    "documents": [
+      {
+        "name": "expression-letter.pdf",
+        "pages": 2,
+        "read": [
+          1,
+          2
+        ],
+        "unreadable": [],
+        "omitted": [],
+        "pageStates": [
+          "read",
+          "read"
+        ]
+      },
+      {
+        "name": "expression-update.pdf",
+        "pages": 1,
+        "read": [
+          1
+        ],
+        "unreadable": [],
+        "omitted": [],
+        "pageStates": [
+          "read"
+        ]
+      }
+    ]
+  },
+  {
+    "files": [
+      "scanned-image.pdf"
+    ],
+    "status": 200,
+    "types": [
+      "stage",
+      "stage",
+      "document",
+      "result"
+    ],
+    "mode": "local_text",
+    "documents": [
+      {
+        "name": "scanned-image.pdf",
+        "pages": 1,
+        "read": [],
+        "unreadable": [
+          1
+        ],
+        "omitted": [],
+        "pageStates": [
+          "image_only"
+        ]
+      }
+    ]
+  },
+  {
+    "files": [
+      "blank.pdf"
+    ],
+    "status": 200,
+    "types": [
+      "stage",
+      "stage",
+      "document",
+      "result"
+    ],
+    "mode": "local_text",
+    "documents": [
+      {
+        "name": "blank.pdf",
+        "pages": 1,
+        "read": [],
+        "unreadable": [
+          1
+        ],
+        "omitted": [],
+        "pageStates": [
+          "blank"
+        ]
+      }
+    ]
+  },
+  {
+    "files": [
+      "encrypted.pdf"
+    ],
+    "status": 200,
+    "types": [
+      "stage",
+      "stage",
+      "error"
+    ],
+    "code": "INVALID_INPUT",
+    "message": "encrypted.pdf is encrypted. Provide an unencrypted copy from your device."
+  },
+  {
+    "files": [
+      "corrupt.pdf"
+    ],
+    "status": 200,
+    "types": [
+      "stage",
+      "stage",
+      "error"
+    ],
+    "code": "INVALID_INPUT",
+    "message": "corrupt.pdf is damaged or cannot be read reliably. Export the PDF again."
+  },
+  {
+    "files": [
+      "too-many-pages.pdf"
+    ],
+    "status": 200,
+    "types": [
+      "stage",
+      "stage",
+      "error"
+    ],
+    "code": "PAYLOAD_TOO_LARGE",
+    "message": "The PDFs exceed 30 pages in total. AI was not called. Provide copies containing the selected pages."
+  },
+  {
+    "files": [
+      "text-budget.pdf"
+    ],
+    "status": 200,
+    "types": [
+      "stage",
+      "stage",
+      "document",
+      "result"
+    ],
+    "mode": "local_text",
+    "documents": [
+      {
+        "name": "text-budget.pdf",
+        "pages": 10,
+        "read": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "unreadable": [],
+        "omitted": [
+          8,
+          9,
+          10
+        ],
+        "pageStates": [
+          "read",
+          "read",
+          "read",
+          "read",
+          "read",
+          "read",
+          "read",
+          "omitted",
+          "omitted",
+          "omitted"
+        ]
+      }
+    ]
+  }
+]
