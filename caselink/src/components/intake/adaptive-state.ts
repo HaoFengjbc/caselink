@@ -1,5 +1,6 @@
 import { type NewCaseInput, type IntakeRecord } from '@/lib/contracts';
 import { inputKey } from '@/lib/session';
+import {hasIntakeQuote} from '@/lib/intake/contracts';
 
 export {isUnitedKingdom} from '@/lib/jurisdiction';
 
@@ -17,7 +18,7 @@ export function intakeSourceKey(input: NewCaseInput): string {
 }
 
 export function hasSourceQuote(record: IntakeRecord, quote: string): boolean {
-  return quote.trim().length > 0 && [record.narrative, ...record.answers.map(answer => answer.answer)].some(source => source.includes(quote));
+  return hasIntakeQuote(record,quote);
 }
 
 /** Never truncate a person's existing answer when adding a shortcut. */
