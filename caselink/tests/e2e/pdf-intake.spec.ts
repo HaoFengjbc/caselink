@@ -77,3 +77,15 @@ test('MOCKED slow provider: browser waits beyond the former 60-second cutoff wit
  await expect(page.getByRole('button',{name:'取消',exact:true})).toBeVisible();await expect(page.locator('[data-material-item]')).toHaveCount(0);expect(calls).toBe(1);
  release();await expect(page.locator('[data-material-item="party"]')).toBeVisible();expect(calls).toBe(1);
 });
+
+
+test('MOCKED validation failure: parsed text remains available without another call and removal clears it',async({page})=>{
+ let calls=0;
+ await page.route('**/api/materials',route=>{calls++;const events=[...documents.map(document=>({type:'document',document})),{type:'error',code:'INVALID_MODEL_OUTPUT',message:'第 2 项：AI 引文无法在它标注的 PDF 物理页找到一致原文。未填入案情。'}];return route.fulfill({contentType:'application/x-ndjson',body:events.map(event=>JSON.stringify(event)).join('\n')+'\n'});});
+ await page.goto('/new');await upload(page);
+ await expect(page.locator('main').getByRole('alert')).toContainText('第 2 项');await expect(page.locator('[data-material-item]')).toHaveCount(0);
+ await page.getByText(`${files[0].name} · 本地提取文字`,{exact:true}).click();await expect(page.locator('pre').first()).toContainText(letterText);expect(calls).toBe(1);
+ expect(await page.evaluate(()=>Object.values(localStorage).some(value=>value.includes('Mira Chen')))).toBe(false);
+ await page.getByRole('button',{name:`移除 ${files[0].name}`,exact:true}).click();await expect(page.getByText(`${files[0].name} · 本地提取文字`,{exact:true})).toHaveCount(0);expect(calls).toBe(1);
+ await page.reload();await expect(page.locator('pre')).toHaveCount(0);
+});

@@ -7,6 +7,8 @@ import type {ProviderResponse} from '../ai/adapter';
 import {recordModel} from '../ai/execution';
 import type {MaterialConfig} from './config';
 import type {Locale} from '../i18n/locale';
+import {originalMaterialQuote} from './citations';
+import {materialValidationError,type MaterialValidationReason} from './validation-error';
 import {MaterialFieldSchema,MaterialNatureSchema,MaterialPrefillSchema,MaterialCandidateSchema,type ParsedMaterial,type MaterialCandidate} from './contracts';
 
 export const MATERIAL_OUTPUT_TOKENS=8000;
@@ -39,26 +41,31 @@ export const openAIMaterialTransport:MaterialTransport=async({config,data,signal
 };
 
 export function validateMaterialOutput(raw:unknown,documents:ParsedMaterial[],locale:Locale):MaterialCandidate[]{
-  const invalid=()=>new AnalysisError('INVALID_MODEL_OUTPUT',copy(locale,'材料整理未通过原文、页码或案件分组校验，未采用结果。可查看本地提取文字或手动填写。','The extraction failed quote, page or case-group validation and was not accepted. You can view locally extracted text or enter the case manually.'),502);
-  const parsed=ModelMaterialOutputSchema.safeParse(raw);if(!parsed.success)throw invalid();
+  const invalid=(reason:MaterialValidationReason,position:{candidate?:number;item?:number;source?:number;pdfPage?:number}={})=>materialValidationError(reason,locale,position);
+  const parsed=ModelMaterialOutputSchema.safeParse(raw);if(!parsed.success)throw invalid('schema');
   const documentsById=new Map(documents.map(d=>[d.fileId,d]));
   const candidateIds=new Set<string>();
-  return parsed.data.candidates.map(candidate=>{
+  return parsed.data.candidates.map((candidate,candidateIndex)=>{
     const digest=(value:unknown)=>createHash('sha256').update(JSON.stringify(value)).digest('hex').slice(0,20);
     const id=`case-${digest(candidate.items.map(i=>i.sources))}`;
-    if(candidateIds.has(id))throw invalid();candidateIds.add(id);
+    if(candidateIds.has(id))throw invalid('duplicate_case',{candidate:candidateIndex});candidateIds.add(id);
     const itemIds=new Set<string>();
-    const items=candidate.items.map(item=>{
-      const sources=item.sources.map(source=>{
+    const items=candidate.items.map((item,itemIndex)=>{
+      const sources=item.sources.map((source,sourceIndex)=>{
         const document=documentsById.get(source.fileId),page=document?.pages.find(p=>p.pdfPage===source.pdfPage);
-        if(!document||!page||page.status!=='read'||!document.processedPages.includes(source.pdfPage)||!source.quote.trim()||!page.text.includes(source.quote))throw invalid();
-        return {...source,filename:document.filename,printedPage:page.printedPage,method:'embedded_text' as const};
+        const position={candidate:candidateIndex,item:itemIndex,source:sourceIndex,pdfPage:source.pdfPage};
+        if(!document)throw invalid('unknown_file',position);
+        if(!page||page.status!=='read'||!document.processedPages.includes(source.pdfPage))throw invalid('unreadable_page',position);
+        const quote=originalMaterialQuote(page.text,source.quote);
+        if(quote===null)throw invalid('quote_mismatch',position);
+        return {...source,quote,filename:document.filename,printedPage:page.printedPage,method:'embedded_text' as const};
       });
-      if(item.date&&!sources.some(source=>source.quote.includes(item.date!)))throw invalid();
-      if(item.dateKind!=='none'&&!item.date)throw invalid();
+      const date=item.date?(sources.map(source=>originalMaterialQuote(source.quote,item.date!)).find(value=>value!==null)??null):null;
+      if(item.date&&!date)throw invalid('date_mismatch',{candidate:candidateIndex,item:itemIndex});
+      if(item.dateKind!=='none'&&!date)throw invalid('missing_date',{candidate:candidateIndex,item:itemIndex});
       const itemId=`material-${digest([id,item.field,item.text,sources])}`;
-      if(itemIds.has(itemId))throw invalid();itemIds.add(itemId);
-      return {...item,id:itemId,sources,status:'extracted' as const,originalText:item.text};
+      if(itemIds.has(itemId))throw invalid('duplicate_item',{candidate:candidateIndex,item:itemIndex});itemIds.add(itemId);
+      return {...item,date,id:itemId,sources,status:'extracted' as const,originalText:item.text};
     });
     // Prefill remains conservative: a location/scope/status needs its own cited extraction.
     const prefill={...candidate.prefill};
@@ -69,7 +76,7 @@ export function validateMaterialOutput(raw:unknown,documents:ParsedMaterial[],lo
     if(!items.some(i=>i.field==='party'))prefill.personType='unknown';
     if(!items.some(i=>['stage','claim','document_type'].includes(i.field)))prefill.caseKind='unknown';
     const conflicts=candidate.conflicts.map((conflict,index)=>{
-      if(new Set(conflict.itemIndices).size<2||conflict.itemIndices.some(i=>!items[i]))throw invalid();
+      if(new Set(conflict.itemIndices).size<2||conflict.itemIndices.some(i=>!items[i]))throw invalid('invalid_conflict',{candidate:candidateIndex});
       return {id:`conflict-${digest([id,index,conflict.itemIndices])}`,description:conflict.description,itemIds:conflict.itemIndices.map(i=>items[i].id),resolution:null};
     });
     return MaterialCandidateSchema.parse({id,label:candidate.label,prefill,items,conflicts,missing:candidate.missing.slice(0,3)});

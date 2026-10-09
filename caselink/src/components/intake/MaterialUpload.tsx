@@ -57,6 +57,7 @@ export default function MaterialUpload({documents, locked, aiEnabled, awaitingSe
     if(intent.current?.key!==identityKey)intent.current={key:identityKey,id:crypto.randomUUID(),version:sessionInputVersion()};
     const identity=intent.current;
     pending.current={token,controller,ids};setBusy(true);changeBusy.current(true);setNotice('');setStage(en?'Sending materials':'正在提交材料');
+    setLocalPages(previous=>previous.filter(doc=>!ids.includes(doc.fileId)));
     const timeout=window.setTimeout(()=>controller.abort(),MATERIAL_LIMITS.requestTimeoutMs+5000);
     let ended=false;
     const current=()=>currentMaterialResponse(token,pending.current?.token??null,ids,filesRef.current)&&localeRef.current===capturedLocale;
@@ -79,7 +80,10 @@ export default function MaterialUpload({documents, locked, aiEnabled, awaitingSe
         if(event.type==='stage'){
           setStage(event.stage==='organizing'?(en?'AI is organizing the case. This may take up to 2 minutes; you can cancel.':'AI 正在整理案情，最多可能需要 2 分钟，可随时取消。'):labels[event.stage]);commit(setFileStage(filesRef.current,event.fileId?[event.fileId]:ids,event.stage));
         }else if(event.type==='document'){
-          const doc=event.document;commit(filesRef.current.map(file=>file.id===doc.fileId?{...file,pageCount:doc.pageCount,message:doc.unreadablePages.length?(en?`Some pages could not be read: ${doc.unreadablePages.join(', ')}`:`部分页面无法读取：${doc.unreadablePages.join('、')}`):undefined}:file));
+          const doc=event.document;
+          if(!ids.includes(doc.fileId))throw new Error(en?'The document response does not belong to the selected files.':'读取结果与所选文件不一致。');
+          setLocalPages(previous=>[...previous.filter(previousDoc=>previousDoc.fileId!==doc.fileId),doc]);
+          commit(filesRef.current.map(file=>file.id===doc.fileId?{...file,pageCount:doc.pageCount,message:doc.unreadablePages.length?(en?`Some pages could not be read: ${doc.unreadablePages.join(', ')}`:`部分页面无法读取：${doc.unreadablePages.join('、')}`):undefined}:file));
         }else if(event.type==='error'){throw new Error(event.message);
         }else{
           ended=true;const result=event.result;

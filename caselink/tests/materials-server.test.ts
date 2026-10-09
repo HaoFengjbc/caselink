@@ -13,6 +13,7 @@ import {readIntakeConfig} from '../src/lib/intake/service';
 import {runExecution} from '../src/lib/ai/execution';
 import type {IntakeConfig} from '../src/lib/intake/service';
 import {withTestExecution} from './fixtures/execution';
+import {originalMaterialQuote} from '../src/lib/materials/citations';
 
 const config:IntakeConfig={mode:'live',key:'not-a-real-key',model:'gpt-6-luna',timeoutMs:1000};
 const metadata:MaterialRequest={requestId:'materials-fixture-001',inputVersion:1,operation:'initial',locale:'en',aiConsent:true,existingPageCount:0,existingFileCount:0,background:''};
@@ -30,7 +31,7 @@ function output(documents:ParsedMaterial[]):ModelMaterialOutput{
     {...item('event','Mira says she received the letter on 3 October 2026.','Mira says she received the letter on 3 October 2026.'),nature:'party_statement',subject:'Mira',dateKind:'event',date:'3 October 2026'},
   ],conflicts:[],missing:['The envelope and delivery record are not provided.']}]};
 }
-afterEach(()=>{vi.useRealTimers();vi.unstubAllGlobals();vi.unstubAllEnvs();});
+afterEach(()=>{vi.useRealTimers();vi.restoreAllMocks();vi.unstubAllGlobals();vi.unstubAllEnvs();});
 
 describe('PDF parsing with physical-page evidence and no external requests',()=>{
   it('reads actual PDF bytes, stable file IDs, physical order and exact text',async()=>{
@@ -124,6 +125,33 @@ describe('material extraction citations, attribution and multiple case separatio
       (model:ModelMaterialOutput)=>{model.candidates[0].conflicts=[{description:'Invalid conflict',itemIndices:[0,47]}];},
     ]){const model=output(docs);mutate(model);expect(()=>validateMaterialOutput(model,docs,'en')).toThrow(/validation/);}
     const omitted=structuredClone(docs);omitted[0].pages[0].status='omitted';expect(()=>validateMaterialOutput(output(docs),omitted,'en')).toThrow(/validation/);
+  });
+  it('matches PDF layout whitespace but stores the exact original page substring and original date',async()=>{
+    const docs=await parsed(),model=output(docs);
+    docs[0].pages[0].text=docs[0].pages[0].text.replace('England and Wales','England\n  and Wales').replace('3 October 2026','3\nOctober 2026');
+    const result=validateMaterialOutput(model,docs,'en')[0];
+    expect(result.items[0].sources[0].quote).toContain('England\n  and Wales');
+    expect(result.items[4].date).toBe('3\nOctober 2026');
+    for(const item of result.items)for(const source of item.sources)expect(docs[0].pages[source.pdfPage-1].text).toContain(source.quote);
+    expect(originalMaterialQuote('记者张三声\n 明不认罪。','记者张三声明不认罪。')).toBe('记者张三声\n 明不认罪。');
+    expect(originalMaterialQuote('登 𠀀 记','登𠀀记')).toBe('登 𠀀 记');
+  });
+  it('does not erase negation, amounts, word boundaries, punctuation or intervening text',()=>{
+    for(const [page,quote] of [
+      ['The court did not convict the reporter.','The court did convict the reporter.'],
+      ['记者声 明不认罪。','记者声明认罪。'],['GBP 20,000','GBP 20000'],['GBP 20 000','GBP 20000'],
+      ['now here','nowhere'],['nowhere','now here'],['left; right','left right'],['first unrelated words last','first last'],
+    ])expect(originalMaterialQuote(page,quote)).toBeNull();
+  });
+  it('diagnoses only numeric positions and reason codes, without logging document or model contents',async()=>{
+    const docs=await parsed(),model=output(docs);model.candidates[0].items[0].sources[0].quote='PRIVATE-MODEL-QUOTE-DO-NOT-LOG';
+    const log=vi.spyOn(console,'info').mockImplementation(()=>{});
+    await expect(withTestExecution(async()=>validateMaterialOutput(model,docs,'en'))).rejects.toMatchObject({code:'INVALID_MODEL_OUTPUT',message:expect.stringContaining('Item 1:')});
+    const diagnostic=JSON.parse(String(log.mock.calls[0][0]));
+    expect(diagnostic).toEqual({event:'caselink_material_validation',requestId:'fixture-request',reason:'quote_mismatch',candidate:0,item:0,source:0,pdfPage:1});
+    expect(JSON.stringify(log.mock.calls)).not.toMatch(/PRIVATE-MODEL|Mira|expression-letter|pdf-/);
+    model.candidates[0].items[0].sources[0].fileId='wrong-file';
+    expect(()=>validateMaterialOutput(model,docs,'en')).toThrow('outside this upload');
   });
   it('conservatively blanks unsupported prefill and never emits goal/disclosure authorization',async()=>{
     const docs=await parsed(),model=output(docs);model.candidates[0].items=model.candidates[0].items.slice(3);
