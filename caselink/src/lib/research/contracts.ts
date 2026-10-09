@@ -1,9 +1,9 @@
 import {z} from 'zod';
 import {ResearchPlanSchema} from './plan';
 
-export const ResearchFailureSchema=z.enum(['timeout','no_search','no_citations','search_failed','invalid_output','planning_failed','unsafe_plan','insufficient_plan','budget_exhausted']);
+export const ResearchFailureSchema=z.enum(['timeout','no_search','no_citations','search_failed','invalid_output','planning_failed','unsafe_plan','insufficient_plan','budget_exhausted','web_search_disabled']);
 export const ResearchAttemptSchema=z.object({
- attempt:z.union([z.literal(1),z.literal(2)]),reason:z.enum(['initial','no_relevant_comparisons']),startedAt:z.string(),
+ attempt:z.union([z.literal(1),z.literal(2)]),reason:z.enum(['initial','no_relevant_comparisons','manual_supplement']),startedAt:z.string(),
  status:z.enum(['completed','no_results','unavailable']),searchTerms:z.array(z.string().max(700)).max(20),
  actualQueries:z.array(z.string().max(700)).max(40),searchCallCount:z.number().int().min(0).max(20),
  sourceCount:z.number().int().min(0).max(30),failureReason:ResearchFailureSchema.nullable(),
