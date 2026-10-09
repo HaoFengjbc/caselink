@@ -4,7 +4,7 @@ export const adaptiveCopy = {
     phases: ['地区与案件', '用自己的话说', '案情整理', '行动参考'], back: '返回首页', classic: '使用原有逐题问卷', saved: '默认仅在当前页面内存中使用', loading: '正在恢复你的案情…', storage: '浏览器存储暂不可用，当前页面仍可继续；刷新后可能需要重新填写。',
     locationTitle: '这件事发生在哪里？', locationText: '任何国家或地区都可以填写；本轮专注与新闻及表达活动相关的案件。', country: '国家或地区', countryPlaceholder: '例如：英国、突尼斯，或你所在的地区', unknown: '不清楚', jurisdiction: '英国的哪个司法地区？', jurisdictionText: '不同地区的程序可能不同。不确定时保留未知，不替你推断。', jurisdictions: { england_wales: '英格兰与威尔士', scotland: '苏格兰', northern_ireland: '北爱尔兰', unknown: '不确定' },
     kind: '这涉及哪一类案件？', kindHint: '选项帮助整理，不要求你作法律判断。', kinds: { criminal: '刑事', civil: '民事', administrative: '行政', mixed: '涉及多类', unknown: '不清楚' },
-    expression: '这件事和新闻报道或公开表达有关吗？', expressionHint: 'CaseLink 已核实的历史案例，都是记者、博主或活动人士因报道、发帖等表达而面临追诉的案件。这个回答决定能否用它们来对照。', expressions: { yes: '有关', no: '无关', unsure: '不确定' },
+    expression: '这件事和新闻报道或公开表达有关吗？', expressionHint: 'CaseLink 正式库中的历史案例，都是记者、博主或活动人士因报道、发帖等表达而面临追诉的案件。这个回答决定能否用它们来对照。', expressions: { yes: '有关', no: '无关', unsure: '不确定' },
     expressionActivities: '涉及哪种表达？可多选，也可以跳过。',
     outOfScopeTitle: '超出本轮新闻与表达案件范围', outOfScopeText: '本轮不提供通用纠纷的完整付费研究。可以查看通用资源；如果事件确实因报道或公开表达引发，请补充说明关联。',
     narrativeTitle: '用你自己的话，说说发生了什么。', narrativeHint: '可以写事件经过、收到的文书、已经做过的行动和当前困难。信息不全也可以，不需要真实姓名或证件号码。', narrative: '案情原始描述', narrativePlaceholder: '发生了什么？目前最困扰你的是哪件事？有哪些已知日期、材料或回应？',

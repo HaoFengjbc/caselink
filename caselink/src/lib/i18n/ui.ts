@@ -78,7 +78,7 @@ const zhUI = {
     cancelled: '本次分析已取消', failed: '本次分析未完成', retried: '本次请求已重试一次，不再重复调用。可修改案情或使用其他可用模式。', editCase: '返回修改案情',
     busyStages: ['处理中'], busyTitle: '正在研究资料并整理行动参考', busyText: '请求正在处理，可以随时取消。此提示不代表具体阶段进度；本次只进行一轮，补查需由你主动发起。', cancel: '取消本次分析',
     retry: '重试一次', restart: '重新开始分析', submit: '查找案例并生成行动参考', rule: '改用规则参考 · 不联网、不调用 AI', existing: '查看上一次有效结果',
-    previewTitle: '等待期间，先看看案例库里的候选案例', previewNote: '这些是按你的描述从已核实案例库初步找到的候选。AI 完成后会重新判断哪些适合对照。档案在新标签页打开，不会中断本次分析。', previewTier: '已核实 · 案例库原文',
+    previewTitle: '等待期间，先看看案例库里的候选案例', previewNote: '这些是按你的描述从正式案例库初步找到的候选。AI 完成后会重新判断哪些适合对照。档案在新标签页打开，不会中断本次分析。', previewTier: '正式库 · 原入库审核记录',
     footnote: ['以正式案例库为主干，国际依据注明适用条件，网页补充标为待核实；行动建议与历史事实分开。', '请勿填写无需分析的身份信息。行动参考供团队判断，不自动发送或递交任何材料。'],
   },
   /** Messages the client writes itself; server messages are shown as-is in Chinese. */
@@ -97,8 +97,8 @@ const zhUI = {
     label: '行动参考', generated: (d: string) => `生成于 ${d}`, title: '你的案件，下一步怎么走。',
     statement: ['眼下最希望', '。在', '、', (n: number) => `阶段，对照 ${n} 个历史参考案例，梳理可以考虑的行动。`] as [string, string, string, (n: number) => string],
     exampleTag: '虚构新案 · 仅供体验', publicity: '公开限制：', editLimits: '修改限制', support: '目前支持：', notProvided: '尚未提供',
-    stats: ['行动参考', '已核实案例', '联网比较', '信息缺口'], tabsLabel: '分析结果栏目', tabs: ['行动参考', '已核实案例', '联网补充 · 待核实', '证据与缺口'],
-    tiers: { label: '依据分三类', verified: '已核实 · 案例库原文', web: '待核实 · 联网发现', ai: 'AI 整理 · 需你判断' },
+    stats: ['行动参考', '正式库案例', '联网比较', '信息缺口'], tabsLabel: '分析结果栏目', tabs: ['行动参考', '正式库案例', '联网补充 · 待核实', '证据与缺口'],
+    tiers: { label: '资料与建议类型', verified: '正式库 · 原入库审核记录', web: '待核实 · 联网发现', ai: 'AI 整理 · 需你判断' },
     heroGoal: '你眼下最希望', heroGoalUnknown: '眼下的目标：', place: '地区：', record: '查看已确认的案情记录',
     outOfScope: '这件事超出本轮新闻与表达案件范围，不继续完整付费研究。可以查看通用资源，或补充与表达活动的关联。',
     langMismatch: '这份方案是以英文生成的。如需中文版本，请返回确认页重新分析。', langRerun: '用中文重新分析',
@@ -137,7 +137,7 @@ const zhUI = {
   },
   evidence: {
     view: '查看原文依据', none: '无个案证据 · 一般准备参考', title: ['原文', '出处'], summary: (n: number) => `${n} 条英文原文摘录 · 附中文解释与 PDF 页码`, close: '关闭证据',
-    conflict: '报告存在冲突', verified: '已核对原文', page: (p: number, printed: string | null) => `PDF 第 ${p} 页${printed ? ` · 印刷页 ${printed}` : ''}`,
+    conflict: '报告存在冲突', verified: '原入库核对记录', page: (p: number, printed: string | null) => `PDF 第 ${p} 页${printed ? ` · 印刷页 ${printed}` : ''}`,
     reportDate: (d: string, c: string) => `报告日期 ${d} · 核查 ${c}`, open: '打开官方 PDF 对应页',
   },
   library: {
@@ -277,7 +277,7 @@ const enUI: UIText = {
     statement: ['Top priority:', '. In', ', at the', (n: number) => `stage — ${plural(n, 'past case')} compared to lay out actions worth considering.`],
     exampleTag: 'Fictional case · demo only', publicity: 'Publicity: ', editLimits: 'Edit limits', support: 'Support: ', notProvided: 'Not provided',
     stats: ['Actions', 'Reviewed cases', 'Web comparisons', 'Information gaps'], tabsLabel: 'Result sections', tabs: ['Actions', 'Reviewed cases', 'Web findings · to verify', 'Evidence & gaps'],
-    tiers: { label: 'Three kinds of basis', verified: 'Reviewed · library source', web: 'To verify · web finding', ai: 'AI-drafted · your judgment' },
+    tiers: { label: 'Sources and suggestions', verified: 'Library · original review record', web: 'To verify · web finding', ai: 'AI-drafted · your judgment' },
     heroGoal: 'Your main goal: ', heroGoalUnknown: 'Your main goal: ', place: 'Place: ', record: 'View the confirmed case record',
     outOfScope: 'This matter is outside the journalism and expression scope. Full paid research will not continue. Consult general resources or clarify the link to expression.',
     langMismatch: 'This plan was generated in Chinese. To get it in English, go back to Review and run the analysis again.', langRerun: 'Re-run in English',
@@ -316,7 +316,7 @@ const enUI: UIText = {
   },
   evidence: {
     view: 'View source evidence', none: 'No case evidence · general preparation', title: ['Source', 'evidence'], summary: (n: number) => `${plural(n, 'English excerpt')} · with notes and PDF page numbers`, close: 'Close evidence',
-    conflict: 'Conflict in report', verified: 'Checked against source', page: (p: number, printed: string | null) => `PDF p. ${p}${printed ? ` · printed p. ${printed}` : ''}`,
+    conflict: 'Conflict in report', verified: 'Original source-review record', page: (p: number, printed: string | null) => `PDF p. ${p}${printed ? ` · printed p. ${printed}` : ''}`,
     reportDate: (d: string, c: string) => `Report ${d} · checked ${c}`, open: 'Open the official PDF page',
   },
   library: {
