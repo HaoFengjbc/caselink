@@ -1087,6 +1087,14 @@
         "A clear, credible and specific account of what happened and the alleged violation",
         "Key supporting material matching the account; media reports alone are not enough",
         "The person’s or their representative’s explicit view on disclosing their name to the parties concerned and in public reports"
+      ],
+      "summary": "Submit credible, detailed information for mandate holders to decide whether to act.",
+      "eligibility": [
+        "Check the mandate; prior exhaustion of domestic remedies is not required for these communications.",
+        "Information cannot rely exclusively on media reports; confirm consent and identity-disclosure risks."
+      ],
+      "unknowns": [
+        "Team review is pending; applicability to a particular case and current procedural requirements are not established."
       ]
     },
     "cpj-emergency-help": {
@@ -1096,6 +1104,213 @@
         "A description of the person’s journalism and relevant work",
         "The incident, current needs, and how they connect to the person’s journalism",
         "First confirm with the person what help to ask for and what information may be shared"
+      ],
+      "summary": "Journalist safety and emergency-assistance contact. Crisis situations are prioritized; not every request can receive a response.",
+      "eligibility": [
+        "Explain the journalism and its connection to the incident.",
+        "The organization assesses requests; response, representation or funding is not guaranteed."
+      ],
+      "unknowns": [
+        "Team review is pending; applicability to a particular case and current procedural requirements are not established."
+      ]
+    },
+    "iccpr-article-19": {
+      "name": "ICCPR Article 19: Freedom of expression",
+      "applicability": "International or regional treaty reference. Check State obligations, reservations, time and jurisdiction. This is not automatically directly applicable local law.",
+      "requiredMaterials": [
+        "Check the original source, current eligibility and case materials with the responsible lawyer or coordinator."
+      ],
+      "summary": "Opinion and expression, including the conditions governing restrictions.",
+      "eligibility": [
+        "Check applicable treaty status, reservations, jurisdiction, local legal effect and the cited provisions in context."
+      ],
+      "unknowns": [
+        "Team review is pending; applicability to a particular case and current procedural requirements are not established."
+      ]
+    },
+    "iccpr-article-9": {
+      "name": "ICCPR Article 9: Liberty and security",
+      "applicability": "International or regional treaty reference. Check State obligations, reservations, time and jurisdiction. This is not automatically directly applicable local law.",
+      "requiredMaterials": [
+        "Check the original source, current eligibility and case materials with the responsible lawyer or coordinator."
+      ],
+      "summary": "Liberty, grounds for detention, and judicial review.",
+      "eligibility": [
+        "Check applicable treaty status, reservations, jurisdiction, local legal effect and the cited provisions in context."
+      ],
+      "unknowns": [
+        "Team review is pending; applicability to a particular case and current procedural requirements are not established."
+      ]
+    },
+    "iccpr-article-14": {
+      "name": "ICCPR Article 14: Fair trial",
+      "applicability": "International or regional treaty reference. Check State obligations, reservations, time and jurisdiction. This is not automatically directly applicable local law.",
+      "requiredMaterials": [
+        "Check the original source, current eligibility and case materials with the responsible lawyer or coordinator."
+      ],
+      "summary": "Equality before courts, fair hearings, and criminal-procedure safeguards.",
+      "eligibility": [
+        "Check applicable treaty status, reservations, jurisdiction, local legal effect and the cited provisions in context."
+      ],
+      "unknowns": [
+        "Team review is pending; applicability to a particular case and current procedural requirements are not established."
+      ]
+    },
+    "iccpr-article-12": {
+      "name": "ICCPR Article 12: Movement and departure",
+      "applicability": "International or regional treaty reference. Check State obligations, reservations, time and jurisdiction. This is not automatically directly applicable local law.",
+      "requiredMaterials": [
+        "Check the original source, current eligibility and case materials with the responsible lawyer or coordinator."
+      ],
+      "summary": "Movement, departure, and permitted restrictions.",
+      "eligibility": [
+        "Check applicable treaty status, reservations, jurisdiction, local legal effect and the cited provisions in context."
+      ],
+      "unknowns": [
+        "Team review is pending; applicability to a particular case and current procedural requirements are not established."
+      ]
+    },
+    "hrc-general-comment-34": {
+      "name": "Human Rights Committee General Comment 34: Expression and defamation",
+      "applicability": "Human Rights Committee interpretation of the ICCPR. Check the treaty and local legal status separately; this is not a decision on the present case.",
+      "requiredMaterials": [
+        "Check the original source, current eligibility and case materials with the responsible lawyer or coordinator."
+      ],
+      "summary": "Committee interpretation of expression and restrictions; paragraph 47 addresses defamation laws.",
+      "eligibility": [
+        "Check applicable treaty status, reservations, jurisdiction, local legal effect and the cited provisions in context."
+      ],
+      "unknowns": [
+        "Team review is pending; applicability to a particular case and current procedural requirements are not established."
+      ]
+    },
+    "hrc-general-comment-35": {
+      "name": "Human Rights Committee General Comment 35: Arbitrary detention",
+      "applicability": "Human Rights Committee interpretation of the ICCPR. Check the treaty and local legal status separately; this is not a decision on the present case.",
+      "requiredMaterials": [
+        "Check the original source, current eligibility and case materials with the responsible lawyer or coordinator."
+      ],
+      "summary": "Distinguishes unlawful from arbitrary detention; the specific circumstances matter.",
+      "eligibility": [
+        "Check applicable treaty status, reservations, jurisdiction, local legal effect and the cited provisions in context."
+      ],
+      "unknowns": [
+        "Team review is pending; applicability to a particular case and current procedural requirements are not established."
+      ]
+    },
+    "hrc-general-comment-32": {
+      "name": "Human Rights Committee General Comment 32: Fair trial",
+      "applicability": "Human Rights Committee interpretation of the ICCPR. Check the treaty and local legal status separately; this is not a decision on the present case.",
+      "requiredMaterials": [
+        "Check the original source, current eligibility and case materials with the responsible lawyer or coordinator."
+      ],
+      "summary": "Interpretation of fair-trial guarantees, including special or military tribunals and public hearings.",
+      "eligibility": [
+        "Check applicable treaty status, reservations, jurisdiction, local legal effect and the cited provisions in context."
+      ],
+      "unknowns": [
+        "Team review is pending; applicability to a particular case and current procedural requirements are not established."
+      ]
+    },
+    "wgad-submission": {
+      "name": "Working Group on Arbitrary Detention: procedure",
+      "applicability": "Detention research only; reopen official current procedures and the questionnaire before use.",
+      "requiredMaterials": [
+        "Check the original source, current eligibility and case materials with the responsible lawyer or coordinator."
+      ],
+      "summary": "Research entry for alleged arbitrary deprivation of liberty. The full text was blocked during this check; current submission rules are not verified here.",
+      "eligibility": [
+        "Recheck the current procedure, eligibility and interaction with parallel mechanisms before submission."
+      ],
+      "unknowns": [
+        "Official search index was visible, but full-text access returned 403. The team must verify the current methods, form and locator."
+      ]
+    },
+    "hrc-individual-communications": {
+      "name": "Human Rights Committee: individual communications",
+      "applicability": "Only consider against States accepting the relevant procedure, subject to victim status, remedies, parallel proceedings and reservations.",
+      "requiredMaterials": [
+        "Check the original source, current eligibility and case materials with the responsible lawyer or coordinator."
+      ],
+      "summary": "Individual-communication procedure established by the First Optional Protocol.",
+      "eligibility": [
+        "Confirm the State is bound by the First Optional Protocol.",
+        "Review exhaustion of domestic remedies and exceptions, reservations and parallel international proceedings."
+      ],
+      "unknowns": [
+        "Team review is pending; applicability to a particular case and current procedural requirements are not established."
+      ]
+    },
+    "echr-article-10": {
+      "name": "ECHR Article 10: Expression",
+      "applicability": "Regional treaty. Confirm the respondent State, jurisdiction, relevant time and provision; do not transplant it to cases outside its scope.",
+      "requiredMaterials": [
+        "Check the original source, current eligibility and case materials with the responsible lawyer or coordinator."
+      ],
+      "summary": "Expression and conditions governing restrictions.",
+      "eligibility": [
+        "Check applicable treaty status, reservations, jurisdiction, local legal effect and the cited provisions in context."
+      ],
+      "unknowns": [
+        "Team review is pending; applicability to a particular case and current procedural requirements are not established."
+      ]
+    },
+    "echr-article-5": {
+      "name": "ECHR Article 5: Liberty",
+      "applicability": "Regional treaty. Confirm the respondent State, jurisdiction, relevant time and provision; do not transplant it to cases outside its scope.",
+      "requiredMaterials": [
+        "Check the original source, current eligibility and case materials with the responsible lawyer or coordinator."
+      ],
+      "summary": "Liberty, detention grounds, and review.",
+      "eligibility": [
+        "Check applicable treaty status, reservations, jurisdiction, local legal effect and the cited provisions in context."
+      ],
+      "unknowns": [
+        "Team review is pending; applicability to a particular case and current procedural requirements are not established."
+      ]
+    },
+    "echr-article-6": {
+      "name": "ECHR Article 6: Fair trial",
+      "applicability": "Regional treaty. Confirm the respondent State, jurisdiction, relevant time and provision; do not transplant it to cases outside its scope.",
+      "requiredMaterials": [
+        "Check the original source, current eligibility and case materials with the responsible lawyer or coordinator."
+      ],
+      "summary": "Fair-hearing guarantees for civil rights and obligations or criminal charges.",
+      "eligibility": [
+        "Check applicable treaty status, reservations, jurisdiction, local legal effect and the cited provisions in context."
+      ],
+      "unknowns": [
+        "Team review is pending; applicability to a particular case and current procedural requirements are not established."
+      ]
+    },
+    "ecthr-applicants": {
+      "name": "European Court of Human Rights: applications",
+      "applicability": "Only within the Convention’s State, temporal, jurisdictional and victim scope. Admissibility needs separate review.",
+      "requiredMaterials": [
+        "Check the original source, current eligibility and case materials with the responsible lawyer or coordinator."
+      ],
+      "summary": "An application must meet formal requirements; completeness does not establish admissibility.",
+      "eligibility": [
+        "A lawyer must check domestic remedies, time limits, duplication and Rule 47 documents.",
+        "This tool does not calculate filing deadlines or promise acceptance."
+      ],
+      "unknowns": [
+        "Team review is pending; applicability to a particular case and current procedural requirements are not established."
+      ]
+    },
+    "frontline-protection-grants": {
+      "name": "Front Line Defenders: Protection Grants",
+      "applicability": "Protection costs linked to risk from peaceful human-rights work; not general litigation funding.",
+      "requiredMaterials": [
+        "Check the original source, current eligibility and case materials with the responsible lawyer or coordinator."
+      ],
+      "summary": "Assessment route for protection support to human rights defenders at risk.",
+      "eligibility": [
+        "Check peaceful human-rights activity, related risk, protection costs and programme exclusions.",
+        "Provide secure contact details and a budget; the organization decides approval and amount."
+      ],
+      "unknowns": [
+        "Team review is pending; applicability to a particular case and current procedural requirements are not established."
       ]
     }
   },
