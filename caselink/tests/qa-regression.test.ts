@@ -5,6 +5,7 @@ import {analyzeInput} from '../src/lib/ai/service';
 import {buildRuleReference} from '../src/lib/retrieval/rules';
 import {retrieveCases} from '../src/lib/retrieval/match';
 import {contextFor,validateModelOutput} from '../src/lib/evidence/validate';
+import {captureReportSnapshot} from '../src/lib/reports/snapshot';
 import {analysisMarkdown} from '../src/components/results/export';
 import {documents,getCase} from '../src/lib/corpus';
 import {zh} from '../src/lib/i18n/zh';
@@ -40,7 +41,7 @@ describe('independent QA: session restoration and stale result protection',()=>{
   for(const changed of variants){session.saveInput(changed);expect(session.isResultStale()).toBe(true);expect(session.saveResult({...result,analysisId:'late-old-response'},originalKey)).toBe(false);expect(session.readSession().result?.analysisId).toBe(result.analysisId);}
  });
  it('recovers saved input and result on a fresh module and clears them together',async()=>{
-  mockWindow();let session=await import('../src/lib/session');const input=example();session.saveInput(input,6);const result=await analyzeInput(input,{config:demoConfig});session.saveResult(result,session.inputKey(input));
+  mockWindow();let session=await import('../src/lib/session');const input=example();session.setPreferences({refreshRecovery:true,expiresAt:new Date(Date.now()+86400000).toISOString()});session.saveInput(input,6);const result=await analyzeInput(input,{config:demoConfig});session.saveResult(result,session.inputKey(input));
   vi.resetModules();session=await import('../src/lib/session');expect(session.readSession().input).toEqual(input);expect(session.readSession().result?.analysisId).toBe(result.analysisId);expect(session.readSession().step).toBe(6);expect(session.isResultStale()).toBe(false);
   session.clearSession();expect(session.readSession()).toMatchObject({input:null,result:null,step:0});
  });
@@ -71,7 +72,7 @@ describe('independent QA: new-case dates are not historical verdict assertions',
 describe('independent QA: exported plans preserve review context',()=>{
  it('retains all action details, source provenance, historical gaps and the prior-action date',async()=>{
   const input=example();input.priorActions={status:'described',description:'已经询问负责律师，仍在等待回应。',date:'上周（待确认）'};
-  const result=await analyzeInput(input,{config:demoConfig});const markdown=analysisMarkdown(result,input);
+  const result=await analyzeInput(input,{config:demoConfig});result.snapshot=captureReportSnapshot(result);const markdown=analysisMarkdown(result,input);
   expect(markdown).toContain(zh.modes[result.mode]);expect(markdown).toContain(input.priorActions.date);
   expect(markdown).toContain(result.inputHash);
   for(const action of result.actionOptions)for(const detail of [...action.steps,...action.materials,...action.followUp,...action.uncertainties])expect(markdown).toContain(detail);

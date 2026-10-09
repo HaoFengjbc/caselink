@@ -13,7 +13,8 @@ import { useI18n } from '@/components/i18n/LocaleProvider';
 import { DEMO_SCENARIOS, DEMO_SCENARIOS_EN } from '../../../data/demo/fixtures';
 import Choices from './Choices';
 import FlowSteps from './FlowSteps';
-import { toClassicInput } from './adaptive-state';
+import PrivacyPreferences from './PrivacyPreferences';
+import { toClassicInput, withIntake, isUnitedKingdom } from './adaptive-state';
 import styles from './intake.module.css';
 
 function toggle<T extends string>(items: T[], value: T): T[] {
@@ -43,7 +44,7 @@ export default function Questionnaire() {
     const requested = new URLSearchParams(window.location.search).get('step');
     const requestedStep = requested !== null && /^\d$/.test(requested) ? Number(requested) : session.step;
     setStep(Math.max(0, Math.min(8, requestedStep)));
-    // A draft started in the adaptive intake continues here without its AI record.
+    // Both editors retain the same complete record.
     const current = session.input ? toClassicInput(session.input) : newDraft();
     if (session.input && current !== session.input) saveInput(current);
     setInput(current);
@@ -62,7 +63,7 @@ export default function Questionnaire() {
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
   }, []);
-  function update(next: NewCaseInput) { if(next.intake)next={...next,intake:{...next.intake,confirmed:false}};setInput(next); saveInput(next, step); setStale(isResultStale()); setError(''); }
+  function update(next: NewCaseInput) { if (next.country !== input.country && next.intake && !isUnitedKingdom(next.country)) next = { ...next, intake: { ...next.intake, jurisdiction: 'unknown' } }; if(next.intake)next={...next,intake:{...next.intake,confirmed:false}};setInput(next); saveInput(next, step); setStale(isResultStale()); setError(''); }
   function go(next: number) {
     saveInput(input, next); setStep(next); setError(''); setShowExample(false);
     window.history.replaceState(null, '', '/new?mode=classic');
@@ -99,6 +100,8 @@ export default function Questionnaire() {
     {showClear && <div className={styles.clearNotice}><span>{q.clearText}</span><button className="btn btn-small" onClick={() => setShowClear(false)}>{q.keep}</button><button className="btn btn-small btn-primary" onClick={() => { clearSession(); setInput(newDraft()); setStep(0); setStale(false); setShowClear(false); setError(''); }}>{q.confirmClear}</button></div>}
     {input.isExample && <div className={styles.exampleBanner}><span className="tag tag-accent">{q.fictional}</span>{copy.exampleNotice}</div>}
     {!isStorageAvailable() && <p className="notice">{q.storage}</p>}
+    <PrivacyPreferences onRestore={() => { const restored = readSession().input; if (restored) setInput(restored); }}/>
+    <Link className="text-link" href="/new">{locale === 'en' ? 'Switch to free-form intake (all facts retained)' : '切换自由录入（保留完整案情）'}</Link>
     {stale && <p className={styles.staleNote}>{q.stale}</p>}
 
     <nav className={styles.stepNav} aria-label={q.nav}>
@@ -163,6 +166,7 @@ export default function Questionnaire() {
         </>}
         {step === 8 && <Choices name={q.groups[8]!} options={L.publicity} value={input.publicity} onChange={value => update({ ...input, publicity: value as NewCaseInput['publicity'] })} descriptions={t.optionNotes.publicity} layout="spectrum" escapeHint={q.escape.publicity} hotkeys/>}
       </div>
+      {input.intake && <details className="notice"><summary>{locale === 'en' ? 'Complete record retained across both editors' : '两种界面共享的完整案情'}</summary><p>{locale === 'en' ? 'Jurisdiction: ' : '具体法域：'}{input.intake.jurisdiction}</p><label>{locale === 'en' ? 'Full narrative' : '完整叙述'}<textarea className="field" value={input.intake.narrative} maxLength={6000} onChange={e => update({ ...input, intake: { ...withIntake(input).intake, narrative: e.target.value } })}/></label><label>{locale === 'en' ? 'Goal in your words' : '具体目标'}<textarea className="field" value={input.intake.goalText} maxLength={800} onChange={e => update({ ...input, primaryGoal: 'other', intake: { ...withIntake(input).intake, goalText: e.target.value } })}/></label><label>{locale === 'en' ? 'Disclosure restrictions' : '披露限制'}<textarea className="field" value={input.intake.disclosureDetails} maxLength={800} onChange={e => update({ ...input, intake: { ...withIntake(input).intake, disclosureDetails: e.target.value } })}/></label>{input.intake.answers.map(answer => <p key={answer.questionId}>{answer.question}: {answer.answer}</p>)}<Link className="text-link" href="/new">{locale === 'en' ? 'Edit jurisdiction and follow-up answers' : '编辑法域与追问答案'}</Link></details>}
       {error && <p className="error" role="alert">{error}</p>}
     </section>
 
