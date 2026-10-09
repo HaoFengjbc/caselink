@@ -1,3 +1,4 @@
+import {meteredModel,type ProviderUsage} from '../usage/runtime';
 import OpenAI from 'openai';
 import { zodTextFormat } from 'openai/helpers/zod';
 import { ModelAnalysisOutputSchema, WebModelAnalysisOutputSchema, type WebModelAnalysisOutput, type NewCaseInput, type ModelAnalysisOutput } from '../contracts';
@@ -5,16 +6,16 @@ import { type AnalysisContext, validateModelOutput, lockUnspecifiedGoalActions, 
 import { type MatchedCase } from '../retrieval/match';
 import { type ServerConfig } from './config';
 import { AnalysisError, publicError } from './errors';
-import { SYSTEM_PROMPT, buildPromptData, systemPrompt, buildWebPromptData, webSystemPrompt } from './prompt';
+import { SYSTEM_PROMPT, buildPromptData, systemPrompt, buildWebPromptData, webSystemPrompt, CONTROLLED_SNIPPET_NOTICE } from './prompt';
 import type { Locale } from '../i18n/locale';
 import type {WebResearch} from '../research/contracts';
 import {normalizeConfirmedGoal} from '../intake/analysis';
 
-export type ProviderResponse={status?:string;output_parsed:unknown;output?:Array<{type?:string;content?:Array<{type?:string}>}>};
+export type ProviderResponse=ProviderUsage&{status?:string;output_parsed:unknown;output?:Array<{type?:string;content?:Array<{type?:string}>}>};
 export type ModelTransport=(args:{config:ServerConfig;data:string;signal:AbortSignal;instructions?:string;outputMode?:'corpus'|'web'})=>Promise<ProviderResponse>;
 export const openAITransport:ModelTransport=async({config,data,signal,instructions=SYSTEM_PROMPT,outputMode='corpus'})=>{
   const client=new OpenAI({apiKey:config.key,maxRetries:0,timeout:config.timeoutMs});
-  return client.responses.parse({model:config.model,store:false,instructions,input:[{role:'user',content:data}],reasoning:{effort:config.reasoningEffort},text:{verbosity:'low',format:outputMode==='web'?zodTextFormat(WebModelAnalysisOutputSchema,'caselink_web_analysis'):zodTextFormat(ModelAnalysisOutputSchema,'caselink_analysis')},max_output_tokens:config.maxOutputTokens},{signal});
+  return meteredModel('synthesis',config.model,config.maxOutputTokens,JSON.stringify({data,instructions,schema:outputMode==='web'?WebModelAnalysisOutputSchema.toJSONSchema():ModelAnalysisOutputSchema.toJSONSchema()}),()=>client.responses.parse({model:config.model,store:false,instructions,input:[{role:'user',content:data}],reasoning:{effort:config.reasoningEffort},text:{verbosity:'low',format:outputMode==='web'?zodTextFormat(WebModelAnalysisOutputSchema,'caselink_web_analysis'):zodTextFormat(ModelAnalysisOutputSchema,'caselink_analysis')},max_output_tokens:config.maxOutputTokens},{signal}));
 };
 
 export async function generateLive(input:NewCaseInput,context:AnalysisContext,matches:MatchedCase[],config:ServerConfig,signal?:AbortSignal,transport:ModelTransport=openAITransport,locale:Locale='zh'):Promise<ModelAnalysisOutput>{
@@ -25,7 +26,7 @@ export async function generateLive(input:NewCaseInput,context:AnalysisContext,ma
 
 export async function generateWebLive(input:NewCaseInput,context:AnalysisContext,matches:MatchedCase[],research:WebResearch,config:ServerConfig,signal?:AbortSignal,transport:ModelTransport=openAITransport,locale:Locale='zh'):Promise<WebModelAnalysisOutput>{
   input=normalizeConfirmedGoal(input);
-  const raw=await generateStructured(config,buildWebPromptData(input,context,matches,research,locale),webSystemPrompt(locale),'web',signal,transport);
+  const raw=await generateStructured(config,buildWebPromptData(input,context,matches,research,locale),webSystemPrompt(locale)+'\n'+CONTROLLED_SNIPPET_NOTICE,'web',signal,transport);
   return validateWebModelOutput(lockWebUnspecifiedGoalActions(raw,input,locale),input,context,research,locale);
 }
 

@@ -1,3 +1,4 @@
+import {resolveJurisdiction} from '../jurisdiction';
 import type {NewCaseInput} from '../contracts';
 import type {Locale} from '../i18n/locale';
 import type {IntakeQuestion,FixedIntakeQuestionId} from './contracts';
@@ -5,19 +6,9 @@ import {UK_JURISDICTION_SOURCE_ID} from './sources';
 
 export type UKJurisdiction='england_wales'|'scotland'|'northern_ireland';
 export type JurisdictionRoute={isUK:boolean;jurisdiction:UKJurisdiction|'unknown'};
-const normalized=(value:string)=>value.trim().toLowerCase().replace(/[.,]/g,'').replace(/\s+/g,' ');
-const jurisdictions:Record<string,UKJurisdiction>={
-  england_wales:'england_wales','england and wales':'england_wales',england:'england_wales',wales:'england_wales','英格兰及威尔士':'england_wales','英格兰和威尔士':'england_wales','英格兰':'england_wales','威尔士':'england_wales',
-  scotland:'scotland','苏格兰':'scotland',northern_ireland:'northern_ireland','northern ireland':'northern_ireland','北爱尔兰':'northern_ireland',
-};
-const ukNames=new Set(['uk','united kingdom','the united kingdom','great britain','britain','英国','英国（uk）','联合王国']);
 export function jurisdictionRoute(input:NewCaseInput):JurisdictionRoute{
-  const country=normalized(input.country);const jurisdiction=normalized(input.intake?.jurisdiction??'');
-  const answer=normalized(input.intake?.answers.find(a=>a.questionId==='uk-jurisdiction')?.answer??'');
-  const isUK=!!jurisdictions[country]||!!jurisdictions[jurisdiction]||ukNames.has(country)||ukNames.has(jurisdiction);
-  // A retained answer from an earlier UK draft must not route a newly selected country back to the UK.
-  const concrete=isUK?(jurisdictions[jurisdiction]??jurisdictions[answer]??jurisdictions[country]):undefined;
-  return {isUK,jurisdiction:concrete??'unknown'};
+ const value=resolveJurisdiction(input);
+ return {isUK:value.countryCode==='GB',jurisdiction:value.jurisdictionCode==='england_wales'||value.jurisdictionCode==='scotland'||value.jurisdictionCode==='northern_ireland'?value.jurisdictionCode:'unknown'};
 }
 
 type Copy={title:string;reason:string;options:string[]};

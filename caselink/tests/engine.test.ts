@@ -1,3 +1,4 @@
+import {withTestMeter} from './fixtures/usage';
 import {unavailableResearch} from './fixtures/research';
 import {describe,it,expect,vi} from 'vitest';
 import {EMPTY_INPUT,PROMPT_VERSION,NewCaseInputSchema,ModelAnalysisOutputSchema,type NewCaseInput} from '../src/lib/contracts';
@@ -181,7 +182,7 @@ describe('live mode, provider failures and request boundaries',()=>{
     });
     vi.stubGlobal('fetch',fetchMock);
     try{
-      const response=await openAITransport({config:liveConfig,data:'Only a local test fixture; no network.',signal:new AbortController().signal});
+      const response=await withTestMeter(()=>openAITransport({config:liveConfig,data:'Only a local test fixture; no network.',signal:new AbortController().signal}));
       expect(response.output_parsed).toEqual(expected);expect(requestBody?.store).toBe(false);expect((requestBody?.text as {format:{strict:boolean}}).format.strict).toBe(true);expect((requestBody?.text as {verbosity:string}).verbosity).toBe('low');expect(requestBody?.reasoning).toEqual({effort:'low'});expect(requestBody?.max_output_tokens).toBe(9000);expect(fetchMock).toHaveBeenCalledOnce();
     }finally{vi.unstubAllGlobals();}
   });
@@ -219,7 +220,7 @@ describe('live mode, provider failures and request boundaries',()=>{
       const fetchMock=vi.fn(async()=>new Response(JSON.stringify({error:{...providerError,message:'private upstream diagnostic'}}),{status:429,headers:{'content-type':'application/json','x-request-id':'req_local_fixture'}}));
       vi.stubGlobal('fetch',fetchMock);
       try{
-        const failure=await generateLive(input,context(input),retrieveCases(input),liveConfig).catch(error=>error);
+        const failure=await withTestMeter(()=>generateLive(input,context(input),retrieveCases(input),liveConfig)).catch(error=>error);
         expect(failure).toBeInstanceOf(AnalysisError);expect(failure).toMatchObject({code,status:429});
         expect(failure.message).not.toContain('private upstream diagnostic');expect(fetchMock).toHaveBeenCalledOnce();
       }finally{vi.unstubAllGlobals();}
@@ -248,28 +249,18 @@ describe('live mode, provider failures and request boundaries',()=>{
         for(const cookie of [undefined,'caselink_access=obsolete-invalid-token']){
           const request=new NextRequest('https://caselink.example/api/capabilities',{headers:cookie?{cookie}:{}});
           const response=await capabilitiesRequest(request);expect(response.status).toBe(200);
-          expect(await response.json()).toEqual({mode,configured,liveAvailable:mode==='live'&&configured,accessRequired:false});
+          expect(await response.json()).toMatchObject({mode,configured,liveAvailable:false,accessRequired:false,usageControlConfigured:false});
           expect(response.headers.get('set-cookie')).toBeNull();expect(response.headers.get('cache-control')).toContain('no-store');
         }
       }
     }finally{vi.unstubAllEnvs();}
   });
-  it('accepts same-origin live requests without a password or Cookie and preserves both locales through the SDK',async()=>{
-    stubLiveEnv();
-    try{
-      for(const locale of ['zh','en'] as const){
-        const input=demo();const expected=buildRuleReference(input,retrieveCases(input,cases,locale),locale);
-        const fetchMock=vi.fn(async()=>new Response(JSON.stringify({id:'resp_local_fixture',object:'response',created_at:0,status:'completed',model:'test-model',output:[{id:'msg_local_fixture',type:'message',role:'assistant',status:'completed',content:[{type:'output_text',text:JSON.stringify(expected),annotations:[]}]}]}),{status:200,headers:{'content-type':'application/json'}}));
-        vi.stubGlobal('fetch',fetchMock);
-        const request=new NextRequest('http://localhost:3000/api/analyze',{method:'POST',headers:{Host:'caselink.example',Origin:'https://caselink.example','Content-Type':'application/json'},body:JSON.stringify({input,requestId:'request-no-password',locale})});
-        expect(request.headers.get('cookie')).toBeNull();
-        const response=await analyzeRequest(request);const body=await response.json();
-        expect(response.status).toBe(200);expect(body.mode).toBe('live_ai');expect(body.locale).toBe(locale==='en'?'en':undefined);
-        expect(body.actionOptions).toEqual(expected.actionOptions);expect(body.webResearch).toMatchObject({status:'unavailable',failureReason:'planning_failed'});expect(fetchMock).toHaveBeenCalledTimes(2);
-        expect(JSON.stringify(body)).not.toContain(mockLiveEnv.OPENAI_API_KEY);expect(body).not.toHaveProperty('password');
-        expect(response.headers.get('set-cookie')).toBeNull();expect(response.headers.get('cache-control')).toContain('no-store');
-      }
-    }finally{vi.unstubAllGlobals();vi.unstubAllEnvs();}
+  it('does not mistake same-origin/password-free access for a distributed paid allowance',async()=>{
+    stubLiveEnv();const fetchMock=vi.fn();vi.stubGlobal('fetch',fetchMock);
+    try{for(const locale of ['zh','en'] as const){
+      const response=await analyzeRequest(new NextRequest('https://caselink.example/api/analyze',{method:'POST',headers:{host:'caselink.example',origin:'https://caselink.example','content-type':'application/json'},body:JSON.stringify({input:demo(),requestId:'request-no-password',inputVersion:1,operation:'initial',locale})}));
+      expect(response.status).toBe(503);expect(await response.json()).toMatchObject({code:'USAGE_CONTROL_UNAVAILABLE'});expect(fetchMock).not.toHaveBeenCalled();
+    }}finally{vi.unstubAllGlobals();vi.unstubAllEnvs();}
   });
   it('still blocks cross-site or oversized live requests before calling the model',async()=>{
     stubLiveEnv();const fetchMock=vi.fn();vi.stubGlobal('fetch',fetchMock);

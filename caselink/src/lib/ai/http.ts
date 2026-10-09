@@ -26,4 +26,4 @@ export async function readLimitedJson(request:Request,maxBytes=24576):Promise<un
   try{return JSON.parse(Buffer.concat(chunks).toString('utf8'));}catch{throw new AnalysisError('INVALID_INPUT','请求正文不是有效 JSON。');}
 }
 export function requestIdentifier(request:NextRequest){const value=request.headers.get('x-request-id');return value&&/^[A-Za-z0-9_-]{8,100}$/.test(value)?value:randomUUID();}
-export function errorResponse(error:unknown,requestId:string){const e=publicError(error);return NextResponse.json({code:e.code,message:e.message,requestId},{status:e.status,headers:NO_STORE});}
+export function errorResponse(error:unknown,requestId:string){const e=publicError(error);return NextResponse.json({code:e.code,message:e.message,requestId,...(e.retryable!==undefined?{retryable:e.retryable}:{}),...(e.retryAfterSeconds!==undefined?{retryAfterSeconds:e.retryAfterSeconds}:{}),...(e.domain?{domain:e.domain}:{})},{status:e.status,headers:{...NO_STORE,...(e.retryAfterSeconds!==undefined?{'Retry-After':String(e.retryAfterSeconds)}:{})}});}
