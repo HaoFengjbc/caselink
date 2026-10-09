@@ -1,3 +1,5 @@
+> 历史版本记录：本文件保留先前实现或验收事实，不代表 2026-10-09 本轮代码。当前定位、隐私和研究控制以 [README](../README.md) 与 [本轮验收](iteration-2026-10-09/acceptance.md) 为准；本轮尚未部署。
+
 # Vercel 部署
 
 本项目是常规 Next.js App Router 应用，Node 24，含服务端 Route Handler。静态历史库随构建发布；新案和结果不写服务器磁盘。

@@ -1,3 +1,5 @@
+> 历史版本记录：本文件保留先前实现或验收事实，不代表 2026-10-09 本轮代码。当前定位、隐私和研究控制以 [README](../README.md) 与 [本轮验收](iteration-2026-10-09/acceptance.md) 为准；本轮尚未部署。
+
 # CaseLink 架构
 
 本说明对应2026-10-09已发布 v3.1 实现（`PROMPT_VERSION=3.1`）；本轮真实模型样本、执行边界与部署状态见 [verification.md](verification.md)。CaseLink 是单个 Next.js App Router 应用：中英文问卷与结果界面、同源服务端 API、版本化静态证据库和 OpenAI 原生网页搜索。Python只用于开发阶段离线提取；网站没有数据库、向量库、自建运行时爬虫或Python服务。
