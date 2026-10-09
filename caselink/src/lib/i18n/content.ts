@@ -16,12 +16,13 @@ type EnglishContent = {
   countries: Record<string, string>;
   cases: Record<string, CaseText>;
   evidence: Record<string, string>;
-  resources: Record<string, { name: string; applicability: string; requiredMaterials: string[] }>;
+  resources: Record<string, { name: string; applicability: string; requiredMaterials: string[]; summary?: string; eligibility?: string[]; unknowns?: string[] }>;
   documents: Record<string, { author: string }>;
 };
 
 /**
- * English overlay for the verified Chinese corpus. The canonical data and its validation stay in
+ * English overlay for the Chinese corpus. Review status belongs to each source; translations do
+ * not upgrade it. The canonical data and its validation stay in
  * Chinese; this only swaps display text, keyed by stable IDs, and falls back to Chinese if missing.
  */
 export const EN_CONTENT = enContent as EnglishContent;
@@ -38,11 +39,8 @@ export function countryName(value: string, locale: Locale): string {
   return EN_CONTENT.countries[countryKey(value)] ?? value;
 }
 
-const caseCache = new Map<string, CaseRecord>();
 export function localizeCase(record: CaseRecord, locale: Locale): CaseRecord {
   if (locale === 'zh') return record;
-  const cached = caseCache.get(record.caseId);
-  if (cached) return cached;
   const t = EN_CONTENT.cases[record.caseId];
   if (!t) return record;
   const localized: CaseRecord = {
@@ -57,7 +55,6 @@ export function localizeCase(record: CaseRecord, locale: Locale): CaseRecord {
     unknowns: t.unknowns.length === record.unknowns.length ? t.unknowns : record.unknowns,
     conflicts: record.conflicts.map((f, i) => ({ ...f, description: t.conflicts[i] ?? f.description })),
   };
-  caseCache.set(record.caseId, localized);
   return localized;
 }
 
@@ -67,7 +64,11 @@ export function localizeEvidence(item: Evidence, locale: Locale): Evidence {
 
 export function localizeResource(item: Resource, locale: Locale): Resource {
   const t = locale === 'en' ? EN_CONTENT.resources[item.resourceId] : undefined;
-  return t ? { ...item, name: t.name, applicability: t.applicability, requiredMaterials: t.requiredMaterials } : item;
+  return t ? { ...item, name: t.name, applicability: t.applicability, requiredMaterials: t.requiredMaterials,
+    summary: t.summary ?? item.summary,
+    eligibility: t.eligibility ?? item.eligibility,
+    unknowns: t.unknowns ?? item.unknowns,
+  } : item;
 }
 
 export function localizeDocument(item: SourceDocument, locale: Locale): SourceDocument {
