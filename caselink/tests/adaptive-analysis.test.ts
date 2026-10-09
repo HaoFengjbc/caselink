@@ -13,7 +13,7 @@ const input = (): NewCaseInput => ({ ...structuredClone(EMPTY_INPUT), country: '
   version: 1, jurisdiction: 'England and Wales', caseKind: 'civil', narrative: 'Our editor received a letter demanding removal of an article. We have not received a court claim.',
   goalText: 'Understand what the letter requests and prepare material for a local adviser.', disclosureDetails: 'Do not publish names or send the letter to media.',
   answers: [{ questionId: 'latest-document', question: 'What documents do you have?', answer: 'Only the letter; no court decision.' }],
-  facts: [{ id: 'fact-1', text: 'The editor received a letter.', quote: 'Our editor received a letter' }], confirmed: true,
+  facts: [{ id: 'fact-1', text: 'The editor received a letter.', quote: 'Our editor received a letter' }], confirmed: true, expression: 'yes',
 }});
 
 describe('adaptive case record reaches analysis without forcing old categories', () => {

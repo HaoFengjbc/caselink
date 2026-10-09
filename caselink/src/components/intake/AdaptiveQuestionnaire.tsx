@@ -47,6 +47,7 @@ export default function AdaptiveQuestionnaire() {
   const [input, setInput] = useState<Draft>(() => withIntake(newDraft()));
   const [view, setView] = useState<View>({ phase: 0, response: null, sourceKey: null, locale });
   const [loaded, setLoaded] = useState(false);
+  const [aiEnabled, setAiEnabled] = useState(true);
   const [consentOpen, setConsentOpen] = useState(false);
   const [busy, setBusy] = useState(false);
   const [notice, setNotice] = useState('');
@@ -70,6 +71,14 @@ export default function AdaptiveQuestionnaire() {
     setInput(next); setView(saved); setLoaded(true);
     saveInput(next); persistView(next, saved);
     return () => { unregister(); pending.current?.controller.abort(); pending.current = null; };
+  }, []);
+  useEffect(() => {
+    const updatePreference = () => {
+      const enabled = readPreferences().aiEnabled; setAiEnabled(enabled);
+      if (!enabled) { setConsentOpen(false); pending.current?.controller.abort(); pending.current = null; setBusy(false); }
+    };
+    updatePreference(); window.addEventListener('caselink:session', updatePreference);
+    return () => window.removeEventListener('caselink:session', updatePreference);
   }, []);
   useEffect(() => {
     if (previousLocale.current === locale) return;
@@ -102,11 +111,12 @@ export default function AdaptiveQuestionnaire() {
     pending.current?.controller.abort(); pending.current = null; setBusy(false); setNotice(c.cancelled);
   }
   function requestConsent() {
+    if (!readPreferences().aiEnabled) return;
     if (!inputRef.current.country.trim()) { setNotice(c.countryError); return; }
     setNotice(''); setConsentOpen(true);
   }
   async function organize() {
-    if (pending.current) return;
+    if (pending.current || !readPreferences().aiEnabled) return;
     const capturedInput = { ...inputRef.current, country: inputRef.current.country.trim() };
     const parsed = NewCaseInputSchema.safeParse(capturedInput);
     if (!parsed.success) { setNotice(c.inputError); return; }
@@ -126,7 +136,8 @@ export default function AdaptiveQuestionnaire() {
       if (pending.current?.token !== token || localeRef.current !== capturedLocale || inputKey(inputRef.current) !== capturedKey) return;
       if (!response.ok) {
         const known = typeof body.code === 'string' && t.serverErrors[body.code];
-        setNotice(known || body.message || c.requestFailed); return;
+        const wait = Number.isFinite(body.retryAfterSeconds) && body.retryAfterSeconds > 0 ? (capturedLocale === 'en' ? ` Retry after ${Math.ceil(body.retryAfterSeconds)} seconds.` : ` 请等待 ${Math.ceil(body.retryAfterSeconds)} 秒后重试。`) : '';
+        setNotice((known || body.message || c.requestFailed) + wait); return;
       }
       const result = IntakeResponseSchema.safeParse(body);
       if (!result.success) { setNotice(c.invalidResponse); return; }
@@ -182,8 +193,8 @@ export default function AdaptiveQuestionnaire() {
   const sendBox = consentOpen && <section className={styles.consent} role="region" aria-label={c.disclosureTitle}><ShieldCheck size={22}/><div><h3>{c.disclosureTitle}</h3><p>{c.disclosureText}</p>{record.facts.length > 0 && <p className={styles.small}>{c.replaceNotice}</p>}<div className="row"><button className="btn btn-primary" onClick={organize}>{c.send}<ArrowRight size={16}/></button><button className="btn btn-ghost" onClick={() => setConsentOpen(false)}>{c.notYet}</button></div></div></section>;
   const busyBox = busy && <div className={styles.busy} role="status"><span className="loading-ring"/><div><strong>{c.busy}</strong><p>{c.busyText}</p></div><button className="btn btn-ghost" onClick={cancel}><X size={16}/>{c.cancel}</button></div>;
   // On the statement screen the analysis is the main action, so organizing again is secondary.
-  const organizeButton = <button className={`btn ${view.phase === 2 ? 'btn-ghost' : 'btn-accent'}`} disabled={busy || analysisBusy} onClick={requestConsent}><Sparkles size={16}/>{view.response ? c.reorganize : c.organize}</button>;
-  /** Leaving for the step-by-step form keeps the person's own words, without the AI record. */
+  const organizeButton = <button className={`btn ${view.phase === 2 ? 'btn-ghost' : 'btn-accent'}`} disabled={busy || analysisBusy || !aiEnabled} onClick={requestConsent}><Sparkles size={16}/>{!aiEnabled ? c.aiDisabledTitle : view.response ? c.reorganize : c.organize}</button>;
+  /** Both editors retain the same complete case record and independent preferences. */
   const toClassic = () => { const next = toClassicInput(inputRef.current); saveInput(next); router.push('/new?mode=classic'); };
 
   return <main className={styles.page}>
@@ -211,7 +222,7 @@ export default function AdaptiveQuestionnaire() {
     </section>}
 
     {view.phase === 1 && <>
-      <div className={styles.aiHint}><ShieldCheck size={18}/><div><strong>{c.aiHintTitle}</strong><p>{c.aiHintText}</p></div><button type="button" className="text-link" onClick={() => { setPreferences({ aiEnabled: false }); toClassic(); }}>{c.noAi}<ArrowRight size={13}/></button></div>
+      <div className={styles.aiHint}><ShieldCheck size={18}/><div><strong>{aiEnabled ? c.aiHintTitle : c.aiDisabledTitle}</strong><p>{aiEnabled ? c.aiHintText : c.aiDisabledText}</p></div><button type="button" className="text-link" onClick={() => { setPreferences({ aiEnabled: false }); toClassic(); }}>{c.noAi}<ArrowRight size={13}/></button></div>
       <section className={styles.storyLayout}>
       <div className={styles.storyMain}><label className={styles.label} htmlFor="adaptive-narrative"><MessageSquareText size={19}/>{c.narrative}</label><textarea id="adaptive-narrative" className={`field ${styles.narrative}`} maxLength={6000} value={record.narrative} placeholder={c.narrativePlaceholder} onChange={event => updateRecord({ narrative: event.target.value })}/><span className={styles.count}>{record.narrative.length} / 6000</span><label className={styles.label} htmlFor="adaptive-goal">{c.goalText}</label><textarea id="adaptive-goal" className="field" maxLength={800} rows={3} value={record.goalText} placeholder={c.goalPlaceholder} onChange={event => updateRecord({ goalText: event.target.value })}/><span className={styles.count}>{record.goalText.length} / 800</span><p className={styles.small}>{c.goalDefault}</p><label className={styles.label} htmlFor="adaptive-disclosure">{c.disclosure}</label><textarea id="adaptive-disclosure" className="field" maxLength={800} rows={3} value={record.disclosureDetails} placeholder={c.disclosurePlaceholder} onChange={event => updateRecord({ disclosureDetails: event.target.value })}/><span className={styles.count}>{record.disclosureDetails.length} / 800</span></div>
       <aside className={styles.preferences}><span className={styles.roundIcon}><PencilLine size={23}/></span><h3>{c.goal}</h3><p>{input.primaryGoal === 'other' || input.primaryGoal === 'unknown' && record.goalText.trim() ? record.goalText || c.unknown : L.goals[input.primaryGoal]}</p><details><summary>{c.goalShortcuts}</summary><label className={styles.label} htmlFor="adaptive-priority">{c.goalHint}</label><select id="adaptive-priority" className="field" value={input.primaryGoal} onChange={event => update({ ...input, primaryGoal: event.target.value as NewCaseInput['primaryGoal'] })}>{Object.entries(L.goals).filter(([value])=>value===input.primaryGoal||value==='other'||value==='lawyer'||value==='unknown'&&!record.goalText.trim()||record.caseKind==='criminal'||record.caseKind==='mixed').map(([value,label])=><option value={value} key={value}>{value==='other'?c.customGoal:label}</option>)}</select></details><label className={styles.label} htmlFor="adaptive-publicity">{c.publicity}</label><p>{c.publicityHint}</p><select id="adaptive-publicity" className="field" value={input.publicity} onChange={event => update({ ...input, publicity: event.target.value as NewCaseInput['publicity'] })}>{Object.entries(L.publicity).map(([value, label]) => <option value={value} key={value}>{label}</option>)}</select><div className={styles.preferenceFoot}><ShieldCheck size={17}/>{c.ready}</div></aside>

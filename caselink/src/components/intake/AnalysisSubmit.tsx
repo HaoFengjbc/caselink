@@ -15,7 +15,7 @@ import { retrieveNarrativeCandidates } from '@/lib/retrieval/candidates';
 import { countryName, localizeCase } from '@/lib/i18n/content';
 import { useI18n } from '@/components/i18n/LocaleProvider';
 import styles from './intake.module.css';
-import {submissionIdentity,activeFailure,mayRetry} from './submission-state';
+import {submissionIdentity,activeFailure,mayRetry,chargedAttemptCount} from './submission-state';
 
 type Capabilities = { mode: 'demo' | 'live'; liveAvailable: boolean; configured: boolean; usageControlConfigured?: boolean; controlledSearchConfigured?: boolean; idempotencyResultRetentionSeconds?: number; progressEvents?: boolean };
 type Failure = { code: string; message: string; retryable?: boolean; retryAfterSeconds?: number; domain?: DomainAssessment };
@@ -106,6 +106,10 @@ export default function AnalysisSubmit({ prepare, currentInput, operation = 'ini
       const { response, body } = await postWorkflow('/api/analyze', { input: parsed.data, requestId, inputVersion, operation, ...(parentAnalysisId ? { parentAnalysisId } : {}), preferences: readPreferences(), ...(forceRule ? { forceRule: true } : {}), ...(locale === 'zh' ? {} : { locale }) }, controller.signal);
       if (pending.current?.token !== token) return;
       if (!response.ok) {
+        if (intent.current?.requestId === requestId) {
+          intent.current.attempts = chargedAttemptCount(body.code, intent.current.attempts);
+          setAttemptCount(intent.current.attempts);
+        }
         setFailure({ code: body.code || 'REQUEST_ERROR', message: serverMessage(body.code, body.message, t.clientErrors.REQUEST_ERROR), retryable: body.retryable, retryAfterSeconds: body.retryAfterSeconds, domain: body.domain });
         if (Number.isFinite(body.retryAfterSeconds)) setRetryAt(Date.now() + body.retryAfterSeconds * 1000); return;
       }

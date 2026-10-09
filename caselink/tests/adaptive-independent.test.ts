@@ -11,11 +11,11 @@ import { analysisMarkdown } from '../src/components/results/export';
 
 const config: ServerConfig = { mode: 'live', configured: true, key: 'unused-local-test-key', model: 'local-mock', timeoutMs: 1000, reasoningEffort: 'low', maxOutputTokens: 9000 };
 afterEach(() => { vi.unstubAllGlobals(); vi.resetModules(); });
-function draft(narrative = 'We received a demand letter. No proceedings have been confirmed.'): NewCaseInput {
+function draft(narrative = 'Our fictional editor received a demand letter about a published investigation. No proceedings have been confirmed.'): NewCaseInput {
   return { ...structuredClone(EMPTY_INPUT), country: 'United Kingdom', primaryGoal: 'other', publicity: 'private', intake: {
     version: 1, jurisdiction: 'england_wales', caseKind: 'unknown', narrative,
     goalText: 'Organize the documents and identify the questions still unanswered.',
-    disclosureDetails: '', answers: [], facts: [], confirmed: true,
+    disclosureDetails: '', answers: [], facts: [], confirmed: true, expression: 'yes',
   } };
 }
 

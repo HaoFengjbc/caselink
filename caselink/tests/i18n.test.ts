@@ -88,7 +88,10 @@ describe('English analysis end to end',()=>{
     for(const scenario of [...DEMO_SCENARIOS_EN,...DEMO_SCENARIOS]){
       const result=await analyzeInput(scenario.input,{config:demoConfig,locale:'en'});
       expect(result.mode).toBe('preset_demo');expect(result.locale).toBe('en');
-      expect(CJK.test(JSON.stringify({...result,sources:[]}))).toBe(false);
+      // Immutable source snapshots retain original-language source metadata and quotes.
+      expect(CJK.test(JSON.stringify({...result,sources:[],snapshot:undefined}))).toBe(false);
+      expect(result.snapshot?.locale).toBe('en');
+      expect(result.snapshot?.completeness).toBe('complete');
     }
     const zh=await analyzeInput(DEMO_SCENARIOS[0].input,{config:demoConfig});
     expect(zh.locale).toBeUndefined();

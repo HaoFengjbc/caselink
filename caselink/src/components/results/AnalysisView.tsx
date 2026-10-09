@@ -8,6 +8,7 @@ import {getSavedReport,historyStatus} from '@/lib/session/history';
 import {CORPUS_VERSION,PROMPT_VERSION} from '@/lib/contracts';
 import type {AnalysisResult,NewCaseInput,ActionOption} from '@/lib/contracts';
 import {snapshotForResult} from '@/lib/reports/snapshot';
+import {EvidenceLayers} from '@/components/research/EvidenceLayers';
 import {ReportSnapshotProvider,useReportSnapshot} from './SnapshotContext';
 import AnalysisSubmit from '@/components/intake/AnalysisSubmit';
 import {countryName,localizeCase,localizeDocument,localizeEvidence,localizeResource} from '@/lib/i18n/content';
@@ -65,10 +66,10 @@ export default function AnalysisView({reportId}:{reportId?:string}){const {local
  const tabs:[string,string,number,'ai'|'verified'|'web'|null][]=[['actions',x.tabs[0]!,result.actionOptions.length,'ai'],['comparison',x.tabs[1]!,result.comparableCases.length,'verified'],['web',x.tabs[2]!,result.webComparisons?.length??0,'web'],['gaps',x.tabs[3]!,result.missingInformation.length,null]];
  const counts:(number|string)[]=[result.actionOptions.length,result.comparableCases.length,result.webResearch?result.webComparisons?.length??0:'—',result.missingInformation.length];
  const editHref=input.intake?'/new':'/review';
- const outOfScope=input.intake?.expression==='no';
+ const outOfScope=result.domain?.status==='out_of_scope'||input.intake?.expression==='no';
  const selectedGoal=input.primaryGoal==='other'&&input.intake?.goalText.trim()?goalPhrase(input.intake.goalText,locale):L.goals[input.primaryGoal];
  const jurisdictionNames=adaptiveCopy[locale].jurisdictions as Record<string,string>;
- const placeText=input.intake?[input.country==='unknown'?adaptiveCopy[locale].unknown:countryName(input.country,locale),input.intake.jurisdiction!=='unknown'?jurisdictionNames[input.intake.jurisdiction]??input.intake.jurisdiction:'',(adaptiveCopy[locale].kinds as Record<string,string>)[input.intake.caseKind]].filter(Boolean).join(' · '):'';
+ const placeText=input.intake?[input.country==='unknown'?adaptiveCopy[locale].unknown:countryName(input.country,locale),result.jurisdiction?.jurisdictionCode&&result.jurisdiction.jurisdictionCode!=='unknown'&&result.jurisdiction.jurisdictionCode!=='national'?jurisdictionNames[result.jurisdiction.jurisdictionCode]??result.jurisdiction.legalSystem:'',(adaptiveCopy[locale].kinds as Record<string,string>)[input.intake.caseKind]].filter(Boolean).join(' · '):'';
  const knownResources=input.resources.filter(resource=>resource!=='unknown');
  const supportText=input.intake?(knownResources.map(resource=>L.resources[resource]).join(list)||(locale==='en'?'See the original case record':'支持情况见原始记录')):(input.resources.map(resource=>L.resources[resource]).join(list)||x.notProvided);
  return <ReportSnapshotProvider snapshot={snapshot}><main data-top="dark" className={styles.analysisPage}>
@@ -76,7 +77,8 @@ export default function AnalysisView({reportId}:{reportId?:string}){const {local
    <div className={`${styles.resultBreadcrumb} no-print`}><Link href={reportId?"/history":editHref}><ArrowLeft size={15}/>{reportId?(locale==='en'?'My analyses':'我的分析'):input.intake?x.backStatement:x.back}</Link>{input.intake?<FlowSteps current={3} steps={adaptiveCopy[locale].phases}/>:<FlowSteps current={2}/>}<div className={styles.exportButtons}><button onClick={copy}>{copied?<Check size={14}/>:<Copy size={14}/>}{copied?x.copied:x.copy}</button><button onClick={download}><Download size={14}/>{x.download}</button><button onClick={()=>window.print()} aria-label={x.print}><Printer size={15}/></button></div></div>
    <div className={`${styles.langNotice} no-print`}><span>{reportId?(locale==='en'?'Saved report · opening this report does not run AI again.':'历史报告 · 查看这份报告不会重新运行 AI。'):(locale==='en'?'This report is only in memory unless you explicitly save it.':'本次结果默认仅在内存中，主动保存后才进入历史。')}</span><Link href="/history" className="text-link">{locale==='en'?'All analyses':'全部分析'}<ArrowRight size={14}/></Link></div>
    {!reportId&&<div className="notice no-print"><label>{locale==='en'?'Save on this browser for: ':'保存到本浏览器，有效期：'}<select value={saveDays} onChange={event=>setSaveDays(Number(event.target.value))}>{[1,7,30].map(days=><option value={days} key={days}>{days}{locale==='en'?' days':' 天'}</option>)}</select></label> <button className="btn btn-small" onClick={()=>{const ok=saveCurrentReport(new Date(Date.now()+saveDays*86400000).toISOString());setMessage(ok?(locale==='en'?'Saved on this browser. Expired records are removed on the next visit; clearing site data also deletes them.':'已保存到本浏览器；到期后下次访问会清理，清除网站数据也会删除。'):(locale==='en'?'Not saved (storage unavailable, capacity or deletion restriction). Download the report to retain a copy.':'未保存（存储不可用、容量或删除限制），请下载报告保留。'));}}>{locale==='en'?'Save report to history':'主动保存到历史'}</button><p>{locale==='en'?'Only this report is saved, not later drafts. Existing saved reports keep their original expiry.':'仅保存本报告，不自动保存后续草稿。已保存报告保留原有效期。'}</p></div>}
-   {snapshot.completeness==='legacy_partial'&&<p className="notice">{locale==='en'?'Legacy partial evidence record. Missing case, document or resource details are not reconstructed from the current corpus.':'旧版证据记录不完整，缺失案例、文档或资源内容未从当前案例库回填。'}</p>}
+   {snapshot.completeness==='legacy_partial'&&<p className="notice">{locale==='en'?'Partial evidence record. Missing case, document or resource details are not reconstructed from the current corpus.':'证据记录不完整，缺失案例、文档或资源内容未从当前案例库回填。'}</p>}
+   {result.domain&&result.domain.status!=='in_scope'&&<div className="notice"><p>{result.domain.reason} {result.domain.clarification}</p><Link href="/resources">{locale==='en'?'Resources and applicability':'查看资源与适用条件'}</Link></div>}
    {storageWarning&&<p className="notice" role="alert">{locale==='en'?'Browser storage is unavailable or full. Download this report before closing or refreshing.':'浏览器存储不可用或空间不足，请在关闭或刷新前下载本报告。'}</p>}
    {olderVersion&&<p className="notice">{locale==='en'?'This report was generated with an earlier analysis or source version. The stored result remains viewable; evidence completeness is stated separately.':'这份报告使用较早的分析或资料版本生成，仍可查看已存结果；证据完整性另行标注。'}</p>}
    {message&&<p role="status" className="notice">{message}</p>}
@@ -116,6 +118,7 @@ export default function AnalysisView({reportId}:{reportId?:string}){const {local
    <div className={styles.asideSourceNote}><strong>{x.noteTitle}</strong><p>{x.noteText}</p><Link href="/cases" className="text-link">{x.noteLink}<ArrowUpRight size={13}/></Link></div>
    {!reportId&&<button className={`${styles.clearButton} text-link`} onClick={()=>{if(window.confirm(x.clearConfirm)){clearSession();setState({input:null,result:null,stale:false})}}}><Trash2 size={13}/>{x.clear}</button>}
   </aside></div>
+  <EvidenceLayers snapshot={snapshot}/>
   <section className={styles.printSources}><h2>{x.printTitle}</h2>{result.sources.map(e=>{const d=docOf(e.documentId);return <article key={e.evidenceId}><h3>{caseOf(e.caseId)?.title} · {x.printPage(e.pdfPage)}</h3><blockquote>{e.exactQuote}</blockquote><p>{e.explanation}</p><p>{x.printReport(d?.publishedDate??'',d?.factsAsOf??'',e.evidenceId)}</p><p>{x.printAuthor(d?.author??'',e.printedPage,d?.checkedAt??'',L.origins[e.origin])}</p><p>{sourceFormatNote(e,locale)}</p><a href={evidenceSourceLink(e)}>{x.printLink}</a></article>})}</section>
  </main></ReportSnapshotProvider>;
 }

@@ -71,8 +71,8 @@ describe('confirmed general civil goals',()=>{
   output.actionOptions[1].reason='If the proposed refund is 50 percent of the service fee, record its basis; this is not an established entitlement.';
   expect(()=>validateModelOutput(output,input,contextFor([]),'en')).not.toThrow();
  });
- it('asks for evidence, amounts and suitable routes without forcing every dispute into lawyer or media action',()=>{
-  const prompt=webSystemPrompt();expect(prompt).toContain('普通民事');expect(prompt).toContain('充值或购买支出不自动等于可赔损失');expect(prompt).toContain('平台内部申诉不默认需要律师');
+ it('keeps non-criminal expression work in scope without forcing media outreach or counsel for ordinary preparation',()=>{
+  const prompt=webSystemPrompt();expect(prompt).toContain('民事诽谤或 SLAPP 风险');expect(prompt).toContain('不编金额、责任、法条、期限或保证');expect(prompt).toContain('平台内部申诉不默认需要律师');
   expect(JSON.parse(buildPromptData(account(),contextFor([]),[])).userProvidedCase.primaryGoal).toBe('other');
  });
 });

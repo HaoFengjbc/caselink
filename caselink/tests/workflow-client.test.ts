@@ -1,7 +1,17 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { postWorkflow } from '../src/components/intake/workflow-request';
+import {chargedAttemptCount,mayRetry} from '../src/components/intake/submission-state';
 afterEach(()=>vi.unstubAllGlobals());
 describe('anonymous session handshake (mock HTTP only)',()=>{
+ it('does not exhaust the sole model retry when a prior lease still blocks admission',()=>{
+  let attempts=1; // The first model attempt timed out.
+  for(const code of ['REQUEST_IN_PROGRESS','CONCURRENCY_LIMIT']){
+   attempts=chargedAttemptCount(code,attempts+1);
+   expect(attempts).toBe(1);expect(mayRetry({code,retryable:true},attempts)).toBe(true);
+  }
+  expect(chargedAttemptCount('TIMEOUT',2)).toBe(2);
+  expect(chargedAttemptCount('RATE_LIMITED',2)).toBe(2); // Could be a provider rejection.
+ });
  it('performs one zero-call bootstrap with exactly the same payload before the real request',async()=>{
   const fetch=vi.fn().mockResolvedValueOnce(Response.json({code:'REQUEST_IN_PROGRESS',retryAfterSeconds:0},{status:409})).mockResolvedValueOnce(Response.json({analysisId:'mock-result'}));vi.stubGlobal('fetch',fetch);
   const payload={requestId:'same-request',inputVersion:2,operation:'initial'};

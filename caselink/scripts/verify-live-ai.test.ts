@@ -20,7 +20,7 @@ const run=(args:string[],target=script)=>spawnSync(process.execPath,['--import',
 describe('offline live-smoke input checker',()=>{
   it.each([script,deploymentScript])('loads intake and research-plan schema dependencies offline in %s',target=>{
     const result=run(['--check-inputs'],target);expect(result.status,result.stderr).toBe(0);
-    expect(JSON.parse(result.stdout)).toEqual({status:'inputs_valid',counts:{fixtures:2,evidence:evidence.length,networkRequests:0,analysisRequests:0}});
+    expect(JSON.parse(result.stdout)).toEqual({status:'inputs_valid',counts:{fixtures:3,evidence:evidence.length,networkRequests:0,analysisRequests:0}});
   });
   it('still refuses a remote target without an explicit paid-smoke opt-in',()=>{
     const result=run(['https://caselink-eight.vercel.app']);expect(result.status).toBe(1);expect(result.stderr).toContain('EXPLICIT_OPT_IN_REQUIRED');

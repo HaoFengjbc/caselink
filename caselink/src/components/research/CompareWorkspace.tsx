@@ -3,7 +3,7 @@ import {useState} from 'react';
 import Link from 'next/link';
 import {cases} from '@/lib/corpus';
 import type {ComparisonBrief} from '@/lib/contracts';
-import {countryName} from '@/lib/i18n/content';
+import {countryName,localizeCase} from '@/lib/i18n/content';
 import {useI18n} from '@/components/i18n/LocaleProvider';
 import {comparisonMarkdown} from '@/components/results/comparison-export';
 import {buildComparisonBrief,parseComparisonBrief,serializeComparisonBrief,COMPARISON_MAX_BYTES} from './comparison-data';
@@ -12,7 +12,7 @@ import styles from './research.module.css';
 function download(text:string,filename:string,type:string){const url=URL.createObjectURL(new Blob([text],{type}));const a=document.createElement('a');a.href=url;a.download=filename;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
 export default function CompareWorkspace(){
  const {locale}=useI18n();const en=locale==='en';const [selected,setSelected]=useState<string[]>([]),[query,setQuery]=useState(''),[brief,setBrief]=useState<ComparisonBrief|null>(null),[error,setError]=useState('');
- const filtered=cases.filter(c=>`${c.title} ${c.country} ${countryName(c.country,'en')}`.toLocaleLowerCase().includes(query.toLocaleLowerCase()));
+ const filtered=cases.map(c=>localizeCase(c,locale)).filter(c=>`${c.title} ${c.country} ${countryName(c.country,'en')}`.toLocaleLowerCase().includes(query.toLocaleLowerCase()));
  const capture=()=>{try{setBrief(buildComparisonBrief(selected,locale));setError('');}catch(e){setError(e instanceof Error?e.message:String(e));}};
  const exportAs=(json:boolean)=>{if(!brief)return;try{const canonical=serializeComparisonBrief(brief);download(json?canonical:comparisonMarkdown(brief,brief.locale),`CaseLink-comparison-${brief.briefId}.${json?'json':'md'}`,json?'application/json':'text/markdown');setError('');}catch(e){setError(e instanceof Error?e.message:String(e));}};
  const importFile=async(file?:File)=>{if(!file)return;try{if(file.size>COMPARISON_MAX_BYTES)throw new Error(en?'The file exceeds 3 MB.':'文件超过 3 MB。');const value=parseComparisonBrief(await file.text());setBrief(value);setSelected(value.caseIds);setError('');}catch(e){setError(en?'Cannot open comparison: '+String(e):'无法打开比较快照：'+String(e));}};

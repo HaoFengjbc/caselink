@@ -1,10 +1,7 @@
 import { type NewCaseInput, type IntakeRecord } from '@/lib/contracts';
 import { inputKey } from '@/lib/session';
 
-export function isUnitedKingdom(country: string): boolean {
-  const value = country.trim().toLowerCase().replace(/[.]/g, '').replace(/\s+/g, ' ');
-  return ['英国', '聯合王國', '联合王国', '大不列颠及北爱尔兰联合王国', 'uk', 'united kingdom', 'the united kingdom', 'great britain', 'britain'].includes(value);
-}
+export {isUnitedKingdom} from '@/lib/jurisdiction';
 
 export function withIntake(input: NewCaseInput): NewCaseInput & { intake: IntakeRecord } {
   return {
