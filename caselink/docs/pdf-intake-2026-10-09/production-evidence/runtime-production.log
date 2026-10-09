@@ -1,0 +1,8 @@
+Running 2 tests using 1 worker
+
+(node:29070) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/e2e/pdf-runtime.spec.ts:6:1 › REAL local parser: two text PDFs, a scan, blank, corrupt, encrypted and page-limit errors (3.0s)
+  ✓  2 tests/e2e/pdf-runtime.spec.ts:20:1 › REAL browser upload: AI off can read text, reports scans honestly, and never creates extracted facts (3.4s)
+
+  2 passed (6.8s)

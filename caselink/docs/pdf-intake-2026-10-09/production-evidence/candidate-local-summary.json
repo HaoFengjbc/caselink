@@ -1,0 +1,33 @@
+{
+  "mode": "local_text",
+  "documents": [
+    {
+      "filename": "expression-letter.pdf",
+      "pages": 2,
+      "processedPages": [
+        1,
+        2
+      ],
+      "warnings": []
+    },
+    {
+      "filename": "expression-update.pdf",
+      "pages": 1,
+      "processedPages": [
+        1
+      ],
+      "warnings": []
+    }
+  ],
+  "execution": {
+    "requestId": "e363ef0f-f0be-43b6-a540-938ea4fa1378",
+    "inputVersion": 1,
+    "operation": "initial",
+    "round": 1,
+    "stages": [],
+    "failureStage": null,
+    "controlledSearch": false,
+    "reservedCostUsd": null,
+    "actualCostUsd": 0
+  }
+}

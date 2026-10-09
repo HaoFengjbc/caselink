@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "base": "https://caselink-eight.vercel.app",
+  "extractionSource": "Replayed the one genuine response from the same deployment; no additional extraction provider call",
+  "extractionModel": "gpt-6-luna",
+  "files": 2,
+  "items": 18,
+  "conflicts": 1,
+  "replayedResponses": 1,
+  "realRuleAnalysisRequests": 1,
+  "pageErrors": []
+}

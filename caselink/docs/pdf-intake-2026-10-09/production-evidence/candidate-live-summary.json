@@ -1,0 +1,46 @@
+{
+  "mode": "live_ai",
+  "model": "gpt-6-luna",
+  "files": 2,
+  "pages": [
+    2,
+    1
+  ],
+  "candidates": [
+    {
+      "label": "FICT-EXPR-001 — Mira Vale／Northbridge Council 律师函",
+      "itemCount": 18,
+      "conflicts": 1,
+      "prefill": {
+        "country": "英国",
+        "jurisdiction": "英格兰和威尔士",
+        "caseKind": "unknown",
+        "expression": "yes",
+        "stage": "unknown",
+        "personType": "journalist"
+      }
+    }
+  ],
+  "execution": {
+    "requestId": "49dd3295-6c69-4c88-b9ed-b8c9ca7869e4",
+    "inputVersion": 1,
+    "operation": "initial",
+    "round": 1,
+    "stages": [
+      {
+        "stage": "intake",
+        "elapsedMs": 27018,
+        "model": "gpt-6-luna",
+        "responseId": "resp_018a064ff759476a016ac96789878487d2b6f55d3303dd6828",
+        "inputTokens": 1700,
+        "outputTokens": 3439,
+        "toolCalls": 0,
+        "status": "completed"
+      }
+    ],
+    "failureStage": null,
+    "controlledSearch": false,
+    "reservedCostUsd": null,
+    "actualCostUsd": null
+  }
+}
