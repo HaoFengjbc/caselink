@@ -4,18 +4,21 @@
  */
 export const PDF_WORKER_SOURCE=String.raw`
 const {parentPort,workerData}=require('node:worker_threads');
+const {fileURLToPath}=require('node:url');
 const {files,locale,limits,existingPageCount,pdfjsUrl}=workerData;
 const copy=(zh,en)=>locale==='en'?en:zh;
 const fail=(code,message,status=422)=>Object.assign(new Error(message),{safe:true,code,status});
 const emit=event=>parentPort.postMessage({type:'event',event});
 (async()=>{
  const pdfjs=await import(pdfjsUrl);
+ const cMapUrl=fileURLToPath(new URL('../../cmaps/',pdfjsUrl));
+ const standardFontDataUrl=fileURLToPath(new URL('../../standard_fonts/',pdfjsUrl));
  let remainingBytes=limits.maxTextBytes,totalPages=existingPageCount;
  const output=[];
  for(const file of files){
   const {filename,fileId,bytes}=file;
   emit({type:'stage',stage:'reading',fileId,filename});
-  const task=pdfjs.getDocument({data:bytes,enableXfa:false,useWasm:false,useSystemFonts:false,disableFontFace:true,useWorkerFetch:false,disableAutoFetch:true,verbosity:0,maxImageSize:16000000,stopAtErrors:true});
+  const task=pdfjs.getDocument({data:bytes,cMapUrl,cMapPacked:true,standardFontDataUrl,enableXfa:false,useWasm:false,useSystemFonts:false,disableFontFace:true,useWorkerFetch:false,disableAutoFetch:true,verbosity:0,maxImageSize:16000000,stopAtErrors:true});
   try{
    const doc=await task.promise;
    if(await doc.getPermissions()!==null)throw fail('INVALID_INPUT',copy(filename+' 已加密；请在本地提供未加密副本。',filename+' is encrypted. Provide an unencrypted copy from your device.'));
