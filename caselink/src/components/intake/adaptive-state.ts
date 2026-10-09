@@ -65,12 +65,8 @@ export function withExpression(input: NewCaseInput, expression: Expression, acti
   return { ...current, background: { ...current.background, activities: nextActivities }, intake: { ...current.intake, expression, confirmed: false } };
 }
 
-/** The step-by-step form keeps no AI record: the person's own words stay as background text, the rest is dropped. */
-export function toClassicInput(input: NewCaseInput): NewCaseInput {
-  if (!input.intake) return input;
-  const { intake, ...rest } = input;
-  return { ...rest, background: { ...input.background, description: input.background.description.trim() || intake.narrative.trim().slice(0, 800) } };
-}
+/** Two views of one fact record. AI preference is stored separately in session preferences. */
+export function toClassicInput(input: NewCaseInput): NewCaseInput { return input; }
 
 /** A written goal shown after “你眼下最希望” or “Your main goal:”, without a repeated wish verb or closing punctuation. */
 export function goalPhrase(text: string, locale: 'zh' | 'en'): string {

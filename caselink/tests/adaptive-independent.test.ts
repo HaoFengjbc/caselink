@@ -40,12 +40,12 @@ describe('independent adaptive workflow properties', () => {
     const session = await import('../src/lib/session');
     const input = draft('Sensitive case text that the user chooses to erase.');
     session.saveInput(input);
-    storage.set('caselink.adaptive.view.v1', JSON.stringify({ version: 1, inputKey: session.inputKey(input), phase: 2, response: null, sourceKey: null, locale: 'en' }));
+    storage.set(session.ADAPTIVE_VIEW_STORAGE_KEY, JSON.stringify({ version: 1, inputKey: session.inputKey(input), phase: 2, response: null, sourceKey: null, locale: 'en' }));
     storage.set('unrelated-preference', 'keep');
     session.clearSession();
     expect(session.readSession().input).toBeNull();
     expect(storage.has('caselink.session.v1')).toBe(false);
-    expect(storage.has('caselink.adaptive.view.v1')).toBe(false);
+    expect(storage.has(session.ADAPTIVE_VIEW_STORAGE_KEY)).toBe(false);
     expect(storage.get('unrelated-preference')).toBe('keep');
   });
 

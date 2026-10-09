@@ -1,17 +1,19 @@
 'use client';
 
 import Link from 'next/link';
+import {postWorkflow} from './workflow-request';
 import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { ArrowLeft, ArrowRight, Globe2, Info, MessageSquareText, PencilLine, ShieldCheck, Sparkles, X } from 'lucide-react';
 import { NewCaseInputSchema, type NewCaseInput, type IntakeRecord } from '@/lib/contracts';
 import { IntakeResponseSchema, type IntakeResponse } from '@/lib/intake/contracts';
 import { useI18n } from '@/components/i18n/LocaleProvider';
-import { ADAPTIVE_VIEW_STORAGE_KEY, readSession, saveInput, newDraft, inputKey, isResultStale, isStorageAvailable, registerSessionCleanup } from '@/lib/session';
+import { ADAPTIVE_VIEW_STORAGE_KEY, readPreferences, setPreferences, sessionInputVersion, readSession, saveInput, newDraft, inputKey, isResultStale, isStorageAvailable, registerSessionCleanup } from '@/lib/session';
 import { adaptiveCopy } from './adaptive-copy';
 import { changeIntake, confirmableIntake, mergeIntakeFacts, hasSourceQuote, intakeSourceKey, isUnitedKingdom, toClassicInput, withExpression, withIntake } from './adaptive-state';
 import AdaptiveStatement from './AdaptiveStatement';
 import AnalysisSubmit from './AnalysisSubmit';
+import PrivacyPreferences from './PrivacyPreferences';
 import styles from './adaptive.module.css';
 
 type Draft = NewCaseInput & { intake: IntakeRecord };
@@ -25,7 +27,7 @@ registerSessionCleanup(() => { memoryView = null; });
 function restoreView(input: NewCaseInput, locale: 'zh' | 'en'): View {
   const empty: View = { phase: input.intake?.confirmed ? 2 : 0, response: null, sourceKey: null, locale };
   try {
-    const raw = sessionStorage.getItem(VIEW_KEY);
+    const raw = readPreferences().refreshRecovery ? sessionStorage.getItem(VIEW_KEY) : null;
     if (raw) memoryView = JSON.parse(raw);
   } catch { /* The original draft has its own memory fallback. */ }
   const saved = memoryView;
@@ -35,7 +37,7 @@ function restoreView(input: NewCaseInput, locale: 'zh' | 'en'): View {
 }
 function persistView(input: NewCaseInput, view: View) {
   memoryView = { ...view, version: 1, inputKey: inputKey(input) };
-  try { sessionStorage.setItem(VIEW_KEY, JSON.stringify(memoryView)); } catch { /* Keep in memory. */ }
+  try { if (readPreferences().refreshRecovery) sessionStorage.setItem(VIEW_KEY, JSON.stringify(memoryView)); } catch { /* Keep in memory. */ }
 }
 
 export default function AdaptiveQuestionnaire() {
@@ -55,6 +57,7 @@ export default function AdaptiveQuestionnaire() {
   const localeRef = useRef(locale);
   const pending = useRef<{ token: string; controller: AbortController } | null>(null);
   const previousLocale = useRef(locale);
+  const organizeIntent = useRef<{ key: string; requestId: string; inputVersion: number } | null>(null);
   const heading = useRef<HTMLHeadingElement>(null);
   localeRef.current = locale;
 
@@ -109,6 +112,9 @@ export default function AdaptiveQuestionnaire() {
     if (!parsed.success) { setNotice(c.inputError); return; }
     const capturedKey = inputKey(inputRef.current);
     const capturedLocale = localeRef.current;
+    const intentKey = `${capturedKey}:${capturedLocale}:${readPreferences().aiEnabled}`;
+    if (organizeIntent.current?.key !== intentKey) organizeIntent.current = { key: intentKey, requestId: crypto.randomUUID(), inputVersion: sessionInputVersion() };
+    const identity = organizeIntent.current;
     const token = crypto.randomUUID();
     const controller = new AbortController();
     pending.current = { token, controller };
@@ -116,12 +122,11 @@ export default function AdaptiveQuestionnaire() {
     let timedOut = false;
     const timeout = window.setTimeout(() => { timedOut = true; controller.abort(); }, 35000);
     try {
-      const response = await fetch('/api/intake', { method: 'POST', headers: { 'Content-Type': 'application/json' }, cache: 'no-store', signal: controller.signal, body: JSON.stringify({ input: parsed.data, locale: capturedLocale }) });
-      const body = await response.json();
+      const { response, body } = await postWorkflow('/api/intake', { input: parsed.data, locale: capturedLocale, requestId: identity.requestId, inputVersion: identity.inputVersion, operation: 'initial', preferences: readPreferences(), ...(!readPreferences().aiEnabled ? { forceManual: true } : {}) }, controller.signal);
       if (pending.current?.token !== token || localeRef.current !== capturedLocale || inputKey(inputRef.current) !== capturedKey) return;
       if (!response.ok) {
         const known = typeof body.code === 'string' && t.serverErrors[body.code];
-        setNotice(known || c.requestFailed); return;
+        setNotice(known || body.message || c.requestFailed); return;
       }
       const result = IntakeResponseSchema.safeParse(body);
       if (!result.success) { setNotice(c.invalidResponse); return; }
@@ -191,7 +196,7 @@ export default function AdaptiveQuestionnaire() {
       ? <button key={phase} disabled={analysisBusy} onClick={() => go(index)} aria-current={view.phase === index ? 'step' : undefined}><span>{pad(index + 1)}</span>{phase}<ArrowRight size={14}/></button>
       : <button key={phase} disabled={!resultReady || analysisBusy} onClick={() => router.push('/analysis')}><span>{pad(index + 1)}</span>{phase}</button>)}</nav>
     {!isStorageAvailable() && <p className="notice">{c.storage}</p>}
-    {view.phase < 2 && noticeBox}
+    <PrivacyPreferences onRestore={() => { const restored = readSession().input; if (restored) commit(withIntake(restored), { phase: 0, response: null, sourceKey: null, locale }); }}/>{view.phase < 2 && noticeBox}
 
     {view.phase === 0 && <section className={styles.location}>
       <div className={styles.locationIntro}><span className={styles.roundIcon}><Globe2 size={30}/></span><h2>{c.locationTitle}</h2><p>{c.locationText}</p><div className={styles.mapLines} aria-hidden="true"><i/><i/><i/><span>＋</span></div></div>
@@ -206,7 +211,7 @@ export default function AdaptiveQuestionnaire() {
     </section>}
 
     {view.phase === 1 && <>
-      <div className={styles.aiHint}><ShieldCheck size={18}/><div><strong>{c.aiHintTitle}</strong><p>{c.aiHintText}</p></div><button type="button" className="text-link" onClick={toClassic}>{c.noAi}<ArrowRight size={13}/></button></div>
+      <div className={styles.aiHint}><ShieldCheck size={18}/><div><strong>{c.aiHintTitle}</strong><p>{c.aiHintText}</p></div><button type="button" className="text-link" onClick={() => { setPreferences({ aiEnabled: false }); toClassic(); }}>{c.noAi}<ArrowRight size={13}/></button></div>
       <section className={styles.storyLayout}>
       <div className={styles.storyMain}><label className={styles.label} htmlFor="adaptive-narrative"><MessageSquareText size={19}/>{c.narrative}</label><textarea id="adaptive-narrative" className={`field ${styles.narrative}`} maxLength={6000} value={record.narrative} placeholder={c.narrativePlaceholder} onChange={event => updateRecord({ narrative: event.target.value })}/><span className={styles.count}>{record.narrative.length} / 6000</span><label className={styles.label} htmlFor="adaptive-goal">{c.goalText}</label><textarea id="adaptive-goal" className="field" maxLength={800} rows={3} value={record.goalText} placeholder={c.goalPlaceholder} onChange={event => updateRecord({ goalText: event.target.value })}/><span className={styles.count}>{record.goalText.length} / 800</span><p className={styles.small}>{c.goalDefault}</p><label className={styles.label} htmlFor="adaptive-disclosure">{c.disclosure}</label><textarea id="adaptive-disclosure" className="field" maxLength={800} rows={3} value={record.disclosureDetails} placeholder={c.disclosurePlaceholder} onChange={event => updateRecord({ disclosureDetails: event.target.value })}/><span className={styles.count}>{record.disclosureDetails.length} / 800</span></div>
       <aside className={styles.preferences}><span className={styles.roundIcon}><PencilLine size={23}/></span><h3>{c.goal}</h3><p>{input.primaryGoal === 'other' || input.primaryGoal === 'unknown' && record.goalText.trim() ? record.goalText || c.unknown : L.goals[input.primaryGoal]}</p><details><summary>{c.goalShortcuts}</summary><label className={styles.label} htmlFor="adaptive-priority">{c.goalHint}</label><select id="adaptive-priority" className="field" value={input.primaryGoal} onChange={event => update({ ...input, primaryGoal: event.target.value as NewCaseInput['primaryGoal'] })}>{Object.entries(L.goals).filter(([value])=>value===input.primaryGoal||value==='other'||value==='lawyer'||value==='unknown'&&!record.goalText.trim()||record.caseKind==='criminal'||record.caseKind==='mixed').map(([value,label])=><option value={value} key={value}>{value==='other'?c.customGoal:label}</option>)}</select></details><label className={styles.label} htmlFor="adaptive-publicity">{c.publicity}</label><p>{c.publicityHint}</p><select id="adaptive-publicity" className="field" value={input.publicity} onChange={event => update({ ...input, publicity: event.target.value as NewCaseInput['publicity'] })}>{Object.entries(L.publicity).map(([value, label]) => <option value={value} key={value}>{label}</option>)}</select><div className={styles.preferenceFoot}><ShieldCheck size={17}/>{c.ready}</div></aside>
@@ -222,7 +227,7 @@ export default function AdaptiveQuestionnaire() {
       </AdaptiveStatement>
       <section className={styles.submit} aria-label={c.submit}>
         {noticeBox}
-        <AnalysisSubmit prepare={prepareAnalysis} hasResult={!!session.result} stale={isResultStale(session)} submitLabel={c.submit} offerRule disabled={busy} onBusyChange={setAnalysisBusy}/>
+        <AnalysisSubmit currentInput={input} prepare={prepareAnalysis} hasResult={!!session.result} stale={isResultStale(session)} submitLabel={c.submit} offerRule disabled={busy} onBusyChange={setAnalysisBusy}/>
         <p className={styles.submitNote}>{c.submitNote}</p>
         <p className={styles.footnote}>{c.footnote}</p>
       </section>

@@ -11,6 +11,8 @@ import { inputSummary, unknownSteps } from '@/lib/i18n/intake';
 import { useI18n } from '@/components/i18n/LocaleProvider';
 import { midSentence } from './StatementCard';
 import FlowSteps from './FlowSteps';
+import AdaptiveSummary from './AdaptiveSummary';
+import PrivacyPreferences from './PrivacyPreferences';
 import AnalysisSubmit from './AnalysisSubmit';
 import styles from './intake.module.css';
 
@@ -25,7 +27,7 @@ export default function Review() {
   useEffect(() => {
     const session = readSession();
     // The adaptive flow confirms and submits from its own case statement; /review stays for the step-by-step form.
-    if (session.input?.intake) { router.replace('/new'); return; }
+    // Classic and free-form views share the complete record, including intake.
     const normalized=session.input?normalizeConfirmedGoal(session.input):null;
     if(normalized&&normalized!==session.input)saveInput(normalized);
     setInput(normalized); setStale(isResultStale({...session,input:normalized})); setHasResult(!!session.result); setLoaded(true);
@@ -36,7 +38,7 @@ export default function Review() {
   const unknown = unknownSteps(input);
   const unknownCount = unknown.filter(Boolean).length;
   /** One editable blank in the case statement; unknown answers are marked rather than filled in. */
-  const blank = (step: number, text: string, gap = unknown[step]) => <Link href={`/new?step=${step}`} className={gap ? styles.blankUnknown : styles.blank} aria-label={r.edit(copy.steps[step].short, text)}>{text}</Link>;
+  const blank = (step: number, text: string, gap = unknown[step]) => <Link href={`/new?mode=classic&step=${step}`} className={gap ? styles.blankUnknown : styles.blank} aria-label={r.edit(copy.steps[step].short, text)}>{text}</Link>;
   const word = (text: string) => midSentence(text, locale);
   const knownActivities = input.background.activities.filter(a => a !== 'unknown');
   const activities = knownActivities.map(a => word(L.activities[a])).join(locale === 'en' ? ', ' : '、');
@@ -60,7 +62,7 @@ export default function Review() {
         {prior.status === 'unknown' ? <>此前的行动{blank(7, summary[7]!)}</> : <>此前{blank(7, prior.status === 'described' ? priorText : summary[7]!)}</>}。
         对外公开方面，{blank(8, summary[8]!)}。</>;
   return <main data-top="dark" className={styles.reviewPage}>
-    <div className={`${styles.flowTop} ${styles.flowTopDark}`}><Link href="/new?step=8" className={styles.backLink}><ArrowLeft size={15}/>{r.back}</Link><FlowSteps current={1}/><span className={styles.reviewComplete}><Check size={14}/>{r.complete}</span></div>
+    <div className={`${styles.flowTop} ${styles.flowTopDark}`}><Link href="/new?mode=classic&step=8" className={styles.backLink}><ArrowLeft size={15}/>{r.back}</Link><FlowSteps current={1}/><span className={styles.reviewComplete}><Check size={14}/>{r.complete}</span></div>
     <section className={styles.statementStage}>
       <h1 className={styles.statementTitle}>{r.title}</h1>
       {input.isExample && <div className={styles.exampleBannerDark}><span className="tag tag-accent">{t.q.fictional}</span>{copy.exampleNotice}</div>}
@@ -75,7 +77,9 @@ export default function Review() {
       <p className={styles.statementNote}>{unknownCount > 0 ? <><b>{r.gaps(unknownCount)}</b>{r.gapsTail}</> : r.allKnown}{r.clickToEdit}</p>
     </section>
     <section className={styles.submitStage}>
-      <AnalysisSubmit prepare={() => input} hasResult={hasResult} stale={stale} editHref="/new?mode=classic" offerRule/>
+      {input.intake && <AdaptiveSummary input={input} locale={locale}/>}
+      <PrivacyPreferences/>
+      <AnalysisSubmit currentInput={input} prepare={() => { const confirmed = input.intake ? { ...input, intake: { ...input.intake, confirmed: true } } : input; saveInput(confirmed); return confirmed; }} hasResult={hasResult} stale={stale} editHref="/new?mode=classic" offerRule/>
       <p className={styles.submitFootnote}>{r.footnote[0]}<br/>{r.footnote[1]}</p>
     </section>
   </main>;
