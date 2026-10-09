@@ -1,4 +1,5 @@
-export type ErrorCode='INVALID_INPUT'|'PAYLOAD_TOO_LARGE'|'CONFIGURATION_ERROR'|'FORBIDDEN'|'TIMEOUT'|'CANCELLED'|'RATE_LIMITED'|'QUOTA_EXHAUSTED'|'MODEL_REFUSAL'|'INCOMPLETE_OUTPUT'|'INVALID_MODEL_OUTPUT'|'UPSTREAM_ERROR'|'INTERNAL_ERROR';
+import type {WorkflowErrorCode} from '../workflow-contracts';
+export type ErrorCode=WorkflowErrorCode;
 export class AnalysisError extends Error {
   constructor(public code:ErrorCode,message:string,public status=400){super(message);this.name='AnalysisError';}
 }
