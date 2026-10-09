@@ -25,4 +25,10 @@
 
 ## 发布
 
-发布与正式域名检查结果在完成后补记。继续使用 PDF 集成 worktree，不修改主工作区其他未提交功能。
+- 修复提交 `babb63f`；部署 `dpl_BVbG4pXasnhfrnxmcXkG3qWQva4J`。
+- 版本地址：https://caselink-ao8m82k2x-hao-s-projects-2154e1c6.vercel.app
+- 正式入口：https://caselink-eight.vercel.app/new
+- 候选先通过两份虚构 PDF、3 页的实际文字提取，再 promote；正式别名已确认。
+- 正式页面 3 项测试通过：实际解析异常文件矩阵、关闭 AI 的真实浏览器读取，以及模拟校验失败后保留原文的浏览器交互。均未调用付费模型。
+- 此次没有取得用户原 PDF，故该文件的具体失败条件仍待脱敏样本复现；不能将通用排版修复声明成该文件已经真实通过。
+- 继续使用 PDF 集成 worktree，不修改主工作区其他未提交功能。以后发布应从本修复继续整合，避免退回旧校验或旧超时。
