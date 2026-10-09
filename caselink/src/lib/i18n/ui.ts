@@ -238,7 +238,7 @@ const enUI: UIText = {
     cancelled: 'Analysis cancelled', failed: 'Analysis did not finish', retried: 'This request was already retried once and won’t be called again. Edit the case or use another available mode.', editCase: 'Edit the case',
     busyStages: ['Processing'], busyTitle: 'Researching sources and considering next steps', busyText: 'The request is processing and can be cancelled. This is not a live phase indicator. Research runs once; a further search requires your explicit action.', cancel: 'Cancel analysis',
     retry: 'Retry once', restart: 'Start again', submit: 'Find cases and draft an action plan', rule: 'Use rule-based reference · no AI or web search', existing: 'View the last valid result',
-    previewTitle: 'While you wait: candidates from the case library', previewNote: 'Candidates found in the reviewed library from your description. When AI finishes, it decides which are fit to compare. Files open in a new tab, so the analysis keeps running.', previewTier: 'Reviewed · library source',
+    previewTitle: 'While you wait: candidates from the case library', previewNote: 'Candidates found in the curated library from your description. When AI finishes, it decides which are fit to compare. Files open in a new tab, so the analysis keeps running.', previewTier: 'Library · original review record',
     footnote: ['Starts with the case library, adds international sources with applicability conditions, and labels web supplements as unverified. Suggestions remain separate from historical facts.', 'Please don’t enter identifying details the analysis doesn’t need. The plan is for your team to judge — nothing is sent or filed automatically.'],
   },
   clientErrors: {
@@ -276,7 +276,7 @@ const enUI: UIText = {
     label: 'Action plan', generated: (d: string) => `Generated ${d}`, title: 'Your case: what to do next.',
     statement: ['Top priority:', '. In', ', at the', (n: number) => `stage — ${plural(n, 'past case')} compared to lay out actions worth considering.`],
     exampleTag: 'Fictional case · demo only', publicity: 'Publicity: ', editLimits: 'Edit limits', support: 'Support: ', notProvided: 'Not provided',
-    stats: ['Actions', 'Reviewed cases', 'Web comparisons', 'Information gaps'], tabsLabel: 'Result sections', tabs: ['Actions', 'Reviewed cases', 'Web findings · to verify', 'Evidence & gaps'],
+    stats: ['Actions', 'Library cases', 'Web comparisons', 'Information gaps'], tabsLabel: 'Result sections', tabs: ['Actions', 'Library cases', 'Web findings · to verify', 'Evidence & gaps'],
     tiers: { label: 'Sources and suggestions', verified: 'Library · original review record', web: 'To verify · web finding', ai: 'AI-drafted · your judgment' },
     heroGoal: 'Your main goal: ', heroGoalUnknown: 'Your main goal: ', place: 'Place: ', record: 'View the confirmed case record',
     outOfScope: 'This matter is outside the journalism and expression scope. Full paid research will not continue. Consult general resources or clarify the link to expression.',
