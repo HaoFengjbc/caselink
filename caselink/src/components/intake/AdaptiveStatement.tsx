@@ -44,7 +44,7 @@ export default function AdaptiveStatement({ input, response, locked, onChange, o
   const { locale, L } = useI18n();
   const c = adaptiveCopy[locale];
   const en = locale === 'en';
-  const record = input.intake;
+  const record = {...input.intake, facts:input.intake.facts.filter(fact=>!fact.materialItemId)};
   const [active, setActive] = useState<Target | null>(null);
   const [tip, setTip] = useState<Tip | null>(null);
   const [storyOpen, setStoryOpen] = useState(false);
@@ -176,7 +176,7 @@ export default function AdaptiveStatement({ input, response, locked, onChange, o
       if (!facts.length) continue;
       rows.push({ key: section, label: c.sheet[section], targets: facts.map(fact => ({ kind: 'fact', id: fact.id })), body: <ul className={`${styles.points} ${section === 'event' ? styles.timeline : ''}`}>{facts.map(fact => <li key={fact.id}>{factPhrase(fact)}</li>)}</ul> });
     }
-  } else {
+  } else if(!record.materials) {
     const story = record.narrative.trim();
     rows.push({ key: 'account', label: c.sheet.account, targets: [{ kind: 'narrative' }], edit: { kind: 'narrative' }, body: story
       ? <><p className={`${styles.plain} ${storyOpen ? '' : styles.clamped}`}>{story}</p>{story.length > 160 && <button type="button" className={styles.more} onClick={() => setStoryOpen(open => !open)}>{storyOpen ? c.collapse : c.expand}<ChevronDown size={13}/></button>}</>

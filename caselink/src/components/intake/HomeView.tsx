@@ -9,6 +9,7 @@ import { useI18n } from '@/components/i18n/LocaleProvider';
 import { cases, documents, evidence } from '@/lib/corpus';
 import { countryName, localizeCase } from '@/lib/i18n/content';
 import styles from './home.module.css';
+import {materialsCopy} from '@/lib/i18n/materials';
 
 export default function HomeView() {
   const { locale, t, L, copy } = useI18n();
@@ -26,7 +27,7 @@ export default function HomeView() {
         </div>
         <div className={styles.heroAside}>
           <p>{copy.home.description}</p>
-          <div className={styles.heroActions}><NewAnalysisButton  className="btn btn-primary">{copy.home.primary}<ArrowRight size={17}/></NewAnalysisButton><DemoPicker/><Link href="/history" className="text-link">{locale==='en'?'My analyses →':'我的分析 →'}</Link></div>
+          <div className={styles.heroActions}><NewAnalysisButton  className="btn btn-primary">{materialsCopy[locale].title}<ArrowRight size={17}/></NewAnalysisButton><Link href="/new?entry=manual" className="text-link">{materialsCopy[locale].manual}<ArrowRight size={15}/></Link><DemoPicker/><Link href="/history" className="text-link">{locale==='en'?'My analyses →':'我的分析 →'}</Link></div>
         </div>
       </div>
       <StatementCard stats={stats} caseCount={cases.length}/>
@@ -54,7 +55,7 @@ export default function HomeView() {
     <section className={styles.bottomCta}>
       <p className={styles.bottomStatement}>{h.bottom[0]}<span>{h.bottom[1]}</span>{h.bottom[2]}</p>
       <p className={styles.bottomSub}>{h.bottomSub}</p>
-      <NewAnalysisButton  className="btn btn-primary">{h.bottomCta}<ArrowRight size={17}/></NewAnalysisButton>
+      <NewAnalysisButton  className="btn btn-primary">{materialsCopy[locale].title}<ArrowRight size={17}/></NewAnalysisButton>
     </section>
   </main>;
 }
