@@ -1,4 +1,5 @@
 import {z} from 'zod';
+import {DomainAssessmentSchema,ResearchExecutionSchema} from '../workflow-contracts';
 
 export const INTAKE_QUESTION_IDS=['uk-jurisdiction','case-kind','current-stage','latest-document','key-dates','representation','prior-actions','immediate-concerns','source-material','goal-details','disclosure-details'] as const;
 export const FixedIntakeQuestionIdSchema=z.enum(INTAKE_QUESTION_IDS);
@@ -40,7 +41,7 @@ export const IntakeQuestionSchema=z.object({id:IntakeQuestionIdSchema,title:z.st
 export type IntakeQuestion=z.infer<typeof IntakeQuestionSchema>;
 export const IntakeSourceSchema=z.object({id:z.string().min(1).max(100),title:z.string().min(1).max(300),url:z.string().url(),checkedAt:z.string().regex(/^\d{4}-\d{2}-\d{2}$/),scope:z.string().min(1).max(800)}).strict();
 export type IntakeSource=z.infer<typeof IntakeSourceSchema>;
-export const IntakeResponseSchema=z.object({mode:z.enum(['live_ai','manual']),facts:z.array(IntakeFactSchema).max(12),questions:z.array(IntakeQuestionSchema).max(3),sources:z.array(IntakeSourceSchema).max(3),model:z.string().min(1).max(100).optional()}).strict();
+export const IntakeResponseSchema=z.object({mode:z.enum(['live_ai','manual']),facts:z.array(IntakeFactSchema).max(12),questions:z.array(IntakeQuestionSchema).max(3),sources:z.array(IntakeSourceSchema).max(3),model:z.string().min(1).max(100).optional(),execution:ResearchExecutionSchema.optional(),domain:DomainAssessmentSchema.optional()}).strict();
 export type IntakeResponse=z.infer<typeof IntakeResponseSchema>;
 
 // The model proposes contextual factual questions; IDs and official sources are server-owned.
