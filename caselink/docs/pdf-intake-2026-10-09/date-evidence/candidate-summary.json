@@ -1,0 +1,20 @@
+[
+  {
+    "check": "candidate_real_two_pdf_text",
+    "status": "passed",
+    "pages": 3,
+    "aiCalls": 0
+  },
+  {
+    "check": "candidate_stale_client_pre_model_rejection",
+    "status": "passed",
+    "httpStatus": 409,
+    "aiCalls": 0,
+    "probeHasFiles": false
+  },
+  {
+    "check": "formal_alias_still_previous_release",
+    "status": "passed",
+    "id": "dpl_BVbG4pXasnhfrnxmcXkG3qWQva4J"
+  }
+]

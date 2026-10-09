@@ -1,6 +1,6 @@
 # PDF 建档生产发布
 
-> 后续生产修复：[30 秒超时修复](timeout-fix.md) 为 `c44840c`；最新排版引文校验与错误诊断改进为 `babb63f`，见 [校验修复记录](validation-fix.md)。下文保留首次上线验收事实。
+> 当前生产修复为 `9657313`：[日期格式匹配与人工核对](date-review-fix.md)。此前 [30 秒超时修复](timeout-fix.md) 为 `c44840c`，[排版引文校验与诊断](validation-fix.md) 为 `babb63f`。下文保留首次上线验收事实。
 
 2026-10-09，America/New_York。用户明确要求“上到生产页面”，本轮完成发布。
 
