@@ -22,7 +22,10 @@ export type WorkflowErrorCode=z.infer<typeof WorkflowErrorCodeSchema>;
 export const RequestErrorSchema=z.object({code:WorkflowErrorCodeSchema,message:z.string(),requestId:z.string(),retryable:z.boolean().optional(),retryAfterSeconds:z.number().int().nonnegative().optional(),domain:DomainAssessmentSchema.optional()});
 export const SourceCategorySchema=z.enum(['curated_case','international_standard','mechanism','assistance','public_web']);
 export const SourceReviewStatusSchema=z.enum(['unreviewed','agent_checked','team_verified','legacy_recorded','conflict']);
-export const SourceDescriptorSchema=z.object({sourceId:z.string(),category:SourceCategorySchema,reviewStatus:SourceReviewStatusSchema,applicability:z.array(z.string()),locator:z.string(),agentCheckedAt:z.string().nullable(),teamReviewedAt:z.string().nullable(),unknowns:z.array(z.string())}).strict();
+export const SourceDescriptorSchema=z.object({sourceId:z.string(),category:SourceCategorySchema,reviewStatus:SourceReviewStatusSchema,applicability:z.array(z.string()),locator:z.string(),agentCheckedAt:z.string().nullable(),teamReviewedAt:z.string().nullable(),unknowns:z.array(z.string())}).strict().superRefine((value,ctx)=>{
+ if(value.reviewStatus==='team_verified'&&!value.teamReviewedAt)ctx.addIssue({code:'custom',path:['teamReviewedAt'],message:'Team verification requires a recorded team review date.'});
+ if(value.reviewStatus==='agent_checked'&&!value.agentCheckedAt)ctx.addIssue({code:'custom',path:['agentCheckedAt'],message:'Agent checking requires a recorded source-check date.'});
+});
 export type SourceDescriptor=z.infer<typeof SourceDescriptorSchema>;
 export const ResourceKindSchema=z.enum(['treaty','interpretation','un_mechanism','regional_mechanism','assistance','general_resource']);
 export const ExecutionStageSchema=z.object({stage:z.enum(['intake','planning','search','reading','synthesis']),elapsedMs:z.number().nonnegative(),model:z.string().nullable(),responseId:z.string().nullable(),inputTokens:z.number().int().nonnegative().nullable(),outputTokens:z.number().int().nonnegative().nullable(),toolCalls:z.number().int().nonnegative(),status:z.enum(['completed','failed','skipped'])}).strict();
