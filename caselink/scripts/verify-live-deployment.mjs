@@ -11,14 +11,14 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const require = createRequire(import.meta.url);
 const modules = new Map();
 const moduleUrls = new Map();
-const fixtureAllowlist=new Set(['src/lib/workflow-contracts.ts','src/lib/contracts.ts','src/lib/intake/contracts.ts','src/lib/research/contracts.ts','src/lib/research/plan.ts','data/demo/fixtures.ts']);
+const fixtureAllowlist=new Set(['src/lib/materials/contracts.ts','src/lib/workflow-contracts.ts','src/lib/contracts.ts','src/lib/intake/contracts.ts','src/lib/research/contracts.ts','src/lib/research/plan.ts','data/demo/fixtures.ts']);
 async function fixtureModule(relative) {
   if(!fixtureAllowlist.has(relative))throw new Error('LOCAL_INPUT_ERROR');
   if (modules.has(relative)) return modules.get(relative);
   let source = stripTypeScriptTypes(await fs.readFile(path.join(root, relative), 'utf8'), { mode: 'strip' });
   if(relative.endsWith('contracts.ts') || relative==='src/lib/research/plan.ts') {
     source=source.replace(/import\s*\{\s*z\s*\}\s*from\s*['"]zod['"];?/,`import zod from ${JSON.stringify(pathToFileURL(require.resolve('zod')).href)}; const {z}=zod;`);
-    if(relative==='src/lib/contracts.ts'||relative==='src/lib/intake/contracts.ts') {
+    if(relative==='src/lib/contracts.ts'||relative==='src/lib/intake/contracts.ts'||relative==='src/lib/materials/contracts.ts') {
       await fixtureModule('src/lib/workflow-contracts.ts');
       const dependency=moduleUrls.get('src/lib/workflow-contracts.ts');
       source=source.replace(/\bfrom\s*['"]\.\.?\/workflow-contracts['"]/g,`from ${JSON.stringify(dependency)}`);
@@ -26,6 +26,10 @@ async function fixtureModule(relative) {
     if(relative==='src/lib/contracts.ts')for(const kind of ['intake','research']){
       const dependency=`src/lib/${kind}/contracts.ts`;await fixtureModule(dependency);
       source=source.replace(new RegExp(`from\\s*['"]\\.\\/${kind}\\/contracts['"]`,'g'),`from ${JSON.stringify(moduleUrls.get(dependency))}`);
+    }
+    if(relative==='src/lib/contracts.ts'||relative==='src/lib/intake/contracts.ts'){
+      await fixtureModule('src/lib/materials/contracts.ts');
+      source=source.replace(/\bfrom\s*['"]\.\.?\/materials\/contracts['"]/g,`from ${JSON.stringify(moduleUrls.get('src/lib/materials/contracts.ts'))}`);
     }
     if(relative==='src/lib/research/contracts.ts'){
       await fixtureModule('src/lib/research/plan.ts');

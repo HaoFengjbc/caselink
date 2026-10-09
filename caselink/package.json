@@ -19,7 +19,8 @@
     "openai": "7.30.0",
     "lucide-react": "1.52.0",
     "tailwindcss": "4.3.3",
-    "@tailwindcss/postcss": "4.3.3"
+    "@tailwindcss/postcss": "4.3.3",
+    "pdfjs-dist": "6.4.299"
   },
   "devDependencies": {
     "typescript": "7.0.2",

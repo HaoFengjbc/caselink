@@ -1,3 +1,4 @@
+import {materialQuestions} from '../materials/integration';
 import {resolveJurisdiction} from '../jurisdiction';
 import type {NewCaseInput} from '../contracts';
 import type {Locale} from '../i18n/locale';
@@ -63,6 +64,7 @@ export function questionById(id:FixedIntakeQuestionId,locale:Locale):IntakeQuest
   const entry=catalog[id];return {id,...entry[locale],options:[...entry[locale].options],sourceIds:[...(entry.sourceIds??[])]};
 }
 export function availableIntakeQuestions(input:NewCaseInput,locale:Locale):IntakeQuestion[]{
+  if(input.intake?.materials)return materialQuestions(input,locale);
   const route=jurisdictionRoute(input);const record=input.intake;
   const answered=new Set(record?.answers.filter(a=>a.answer.trim()).map(a=>a.questionId)??[]);
   const eligible:Record<FixedIntakeQuestionId,boolean>={

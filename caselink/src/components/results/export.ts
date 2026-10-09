@@ -1,3 +1,4 @@
+import {materialsCopy} from '@/lib/i18n/materials';
 import {evidenceSourceLink,sourceFormatNote} from '@/lib/evidence/source-links';
 import type {AnalysisResult,NewCaseInput} from '@/lib/contracts';
 import {snapshotForResult} from '@/lib/reports/snapshot';
@@ -25,6 +26,7 @@ export function analysisMarkdown(result:AnalysisResult,input:NewCaseInput,locale
  `${en?'Disclosure boundaries':'具体披露边界'}: ${record.disclosureDetails||'—'}`,
  ...record.answers.flatMap(answer=>[`${en?'Question':'问题'}: ${answer.question}`,`${en?'Answer':'回答'}: ${answer.answer||'—'}`]),
  ...record.facts.flatMap(fact=>[`${en?'Reviewed note (not independent evidence)':'已核对笔记（非独立证据）'}: ${fact.text}`,`${en?'Original words':'对应原话'}: ${fact.quote}`]),''];
+ if(snapshot.uploadedMaterials){const m=snapshot.uploadedMaterials,c=materialsCopy[locale];section.push('',`## ${c.privateSource}`,c.historical,...m.items.flatMap(item=>[`${c.fields[item.field]}: ${item.text}`,`${item.subject} · ${c.natures[item.nature]}${item.date?` · ${c.dates[item.dateKind]}: ${item.date}`:''}`,...item.sources.flatMap(source=>[`${source.filename} · ${source.fileId} · PDF ${source.pdfPage}`,`> ${source.quote}`])]),...m.conflicts.map(conflict=>`${en?'Conflict':'冲突'}: ${conflict.description} · ${en?'User review':'用户核对'}: ${conflict.resolution??'—'}`));}
  original=original.replace(marker,section.join('\n')+'\n'+marker);
  return original.replace(marker,webResearchMarkdown(result,locale)+'\n'+marker);
 }

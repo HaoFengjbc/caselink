@@ -20,7 +20,7 @@ export type RequestIdentity=z.infer<typeof RequestIdentitySchema>;
 export const WorkflowErrorCodeSchema=z.enum(['INVALID_INPUT','PAYLOAD_TOO_LARGE','CONFIGURATION_ERROR','FORBIDDEN','TIMEOUT','CANCELLED','RATE_LIMITED','QUOTA_EXHAUSTED','MODEL_REFUSAL','INCOMPLETE_OUTPUT','INVALID_MODEL_OUTPUT','UPSTREAM_ERROR','INTERNAL_ERROR','OUT_OF_SCOPE','SCOPE_CLARIFICATION_REQUIRED','CONCURRENCY_LIMIT','IDEMPOTENCY_CONFLICT','REQUEST_IN_PROGRESS','USAGE_CONTROL_UNAVAILABLE','WEB_SEARCH_DISABLED']);
 export type WorkflowErrorCode=z.infer<typeof WorkflowErrorCodeSchema>;
 export const RequestErrorSchema=z.object({code:WorkflowErrorCodeSchema,message:z.string(),requestId:z.string(),retryable:z.boolean().optional(),retryAfterSeconds:z.number().int().nonnegative().optional(),domain:DomainAssessmentSchema.optional()});
-export const SourceCategorySchema=z.enum(['curated_case','international_standard','mechanism','assistance','public_web']);
+export const SourceCategorySchema=z.enum(['curated_case','international_standard','mechanism','assistance','public_web','uploaded_material']);
 export const SourceReviewStatusSchema=z.enum(['unreviewed','agent_checked','team_verified','legacy_recorded','conflict']);
 export const SourceDescriptorSchema=z.object({sourceId:z.string(),category:SourceCategorySchema,reviewStatus:SourceReviewStatusSchema,applicability:z.array(z.string()),locator:z.string(),agentCheckedAt:z.string().nullable(),teamReviewedAt:z.string().nullable(),unknowns:z.array(z.string())}).strict().superRefine((value,ctx)=>{
  if(value.reviewStatus==='team_verified'&&!value.teamReviewedAt)ctx.addIssue({code:'custom',path:['teamReviewedAt'],message:'Team verification requires a recorded team review date.'});

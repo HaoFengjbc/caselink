@@ -1,4 +1,5 @@
 'use client';
+import MaterialSnapshot from './MaterialSnapshot';
 import {evidenceSourceLink,sourceFormatNote} from '@/lib/evidence/source-links';
 import {useEffect,useState} from 'react';
 import Link from 'next/link';
@@ -118,6 +119,7 @@ export default function AnalysisView({reportId}:{reportId?:string}){const {local
    <div className={styles.asideSourceNote}><strong>{x.noteTitle}</strong><p>{x.noteText}</p><Link href="/cases" className="text-link">{x.noteLink}<ArrowUpRight size={13}/></Link></div>
    {!reportId&&<button className={`${styles.clearButton} text-link`} onClick={()=>{if(window.confirm(x.clearConfirm)){clearSession();setState({input:null,result:null,stale:false})}}}><Trash2 size={13}/>{x.clear}</button>}
   </aside></div>
+  {snapshot.uploadedMaterials&&<MaterialSnapshot materials={snapshot.uploadedMaterials} locale={locale}/>}
   <EvidenceLayers snapshot={snapshot}/>
   <section className={styles.printSources}><h2>{x.printTitle}</h2>{result.sources.map(e=>{const d=docOf(e.documentId);return <article key={e.evidenceId}><h3>{caseOf(e.caseId)?.title} · {x.printPage(e.pdfPage)}</h3><blockquote>{e.exactQuote}</blockquote><p>{e.explanation}</p><p>{x.printReport(d?.publishedDate??'',d?.factsAsOf??'',e.evidenceId)}</p><p>{x.printAuthor(d?.author??'',e.printedPage,d?.checkedAt??'',L.origins[e.origin])}</p><p>{sourceFormatNote(e,locale)}</p><a href={evidenceSourceLink(e)}>{x.printLink}</a></article>})}</section>
  </main></ReportSnapshotProvider>;

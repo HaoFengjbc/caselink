@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import {MaterialRecordSchema} from './materials/contracts';
 import {DomainAssessmentSchema,CanonicalJurisdictionSchema,SourceDescriptorSchema,SourceReviewStatusSchema,ResourceKindSchema,ResearchExecutionSchema} from './workflow-contracts';
 export * from './workflow-contracts';
 import {IntakeRecordSchema} from './intake/contracts';
@@ -8,7 +9,7 @@ export type {IntakeRecord} from './intake/contracts';
 
 export const SCHEMA_VERSION = '1.0' as const;
 export const CORPUS_VERSION = '2026-10-09.v3';
-export const PROMPT_VERSION = '4.0';
+export const PROMPT_VERSION = '4.1';
 export const StageSchema = z.enum(['investigation','pretrial','trial','appeal','postjudgment','unknown']);
 export const PersonTypeSchema = z.enum(['journalist','blogger','activist','other','unknown']);
 export const BackgroundTagSchema = z.enum(['reporting','investigation_report','social_media','repost','other','unknown']);
@@ -27,6 +28,7 @@ export const NewCaseInputSchema = z.object({
   priorActions:z.object({status:z.enum(['none','unknown','described']),description:short,date:z.string().max(40)}),
   publicity:PublicitySchema,isExample:z.boolean(),exampleId:z.string().max(100).nullable(),intake:IntakeRecordSchema.optional()
 }).strict().superRefine((v,c)=>{
+  if(v.intake?.confirmed&&v.intake.materials&&v.publicity==='unknown')c.addIssue({code:'custom',path:['publicity'],message:'请确认本次披露选择。'});
   for(const [field,values] of [['currentProblems',v.currentProblems],['resources',v.resources],['background.activities',v.background.activities]] as const){
     if((values.includes('unknown' as never)||values.includes('none' as never))&&values.length>1)c.addIssue({code:'custom',message:'不清楚或没有不能与其他选项同时选择',path:field.split('.')});
     if(new Set(values).size!==values.length)c.addIssue({code:'custom',message:'选项重复',path:field.split('.')});
@@ -50,7 +52,7 @@ export const ResourceSchema=z.object({resourceId:z.string(),name:z.string(),offi
  if(value.reviewStatus==='agent_checked'&&!value.agentCheckedAt)ctx.addIssue({code:'custom',path:['agentCheckedAt'],message:'Agent checking requires a recorded source-check date.'});
 });
 export type Resource=z.infer<typeof ResourceSchema>;
-export const ReportSnapshotSchema=z.object({version:z.literal(1),capturedAt:z.string(),corpusVersion:z.string(),completeness:z.enum(['complete','legacy_partial']),locale:z.enum(['zh','en']),cases:z.array(CaseRecordSchema),evidence:z.array(EvidenceSchema),documents:z.array(SourceDocumentSchema),resources:z.array(ResourceSchema),webResearch:WebResearchSchema.optional(),sourceDescriptors:z.array(SourceDescriptorSchema)}).strict();
+export const ReportSnapshotSchema=z.object({version:z.literal(1),capturedAt:z.string(),corpusVersion:z.string(),completeness:z.enum(['complete','legacy_partial']),locale:z.enum(['zh','en']),cases:z.array(CaseRecordSchema),evidence:z.array(EvidenceSchema),documents:z.array(SourceDocumentSchema),resources:z.array(ResourceSchema),webResearch:WebResearchSchema.optional(),sourceDescriptors:z.array(SourceDescriptorSchema),uploadedMaterials:MaterialRecordSchema.optional()}).strict();
 export type ReportSnapshot=z.infer<typeof ReportSnapshotSchema>;
 export const ComparisonBriefSchema=z.object({briefId:z.string(),title:z.string(),createdAt:z.string(),locale:z.enum(['zh','en']),caseIds:z.array(z.string()).min(2).max(4),snapshot:ReportSnapshotSchema,commonIssues:z.array(z.object({label:z.string(),supportingCaseIds:z.array(z.string()),evidenceIds:z.array(z.string()),differences:z.array(z.string()),unknowns:z.array(z.string())})),limitations:z.array(z.string())}).strict();
 export type ComparisonBrief=z.infer<typeof ComparisonBriefSchema>;

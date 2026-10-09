@@ -56,7 +56,7 @@ redis.call('EXPIRE',KEYS[4],172800)
 if ARGV[6]~='1' then redis.call('ZREM',KEYS[2],ARGV[1]);redis.call('ZREM',KEYS[3],ARGV[1]) end
 redis.call('HSET',KEYS[1],'state',ARGV[3])
 if ARGV[3]=='completed' then
- redis.call('SET',KEYS[5],ARGV[4],'EX',120)
+ if ARGV[4]~='' then redis.call('SET',KEYS[5],ARGV[4],'EX',120) end
  if ARGV[5]~='' then redis.call('SET',KEYS[6],ARGV[5],'EX',86400) end
 end
 redis.call('EXPIRE',KEYS[1],86400)

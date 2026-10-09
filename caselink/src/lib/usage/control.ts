@@ -5,14 +5,14 @@ import {readUsageConfig,reserveMicroUsd,LEASE_SECONDS,usageUnavailable,type Usag
 import {redisRest,RESERVE_LUA,SETTLE_LUA,type RedisCommand} from './redis';
 import {privateDigest} from './identity';
 import {executionFor,withMeter,type Meter} from './runtime';
-export type PaidIdentity=RequestIdentity&{sessionId:string;ipDigest:string;inputHash:string;locale:string;kind:'analysis'|'intake'};
+export type PaidIdentity=RequestIdentity&{sessionId:string;ipDigest:string;inputHash:string;locale:string;kind:'analysis'|'intake'|'material'};
 const prefix='caselink:{usage}:v1:';
 const encryptionKey=(secret:string)=>createHash('sha256').update(`caselink-result-v1:${secret}`).digest();
 function seal(value:unknown,secret:string,aad:string){const iv=randomBytes(12),cipher=createCipheriv('aes-256-gcm',encryptionKey(secret),iv);cipher.setAAD(Buffer.from(aad));const data=Buffer.concat([cipher.update(JSON.stringify(value),'utf8'),cipher.final()]);return Buffer.concat([iv,cipher.getAuthTag(),data]).toString('base64');}
 function open(value:string,secret:string,aad:string):unknown{const bytes=Buffer.from(value,'base64'),decipher=createDecipheriv('aes-256-gcm',encryptionKey(secret),bytes.subarray(0,12));decipher.setAAD(Buffer.from(aad));decipher.setAuthTag(bytes.subarray(12,28));return JSON.parse(Buffer.concat([decipher.update(bytes.subarray(28)),decipher.final()]).toString('utf8'));}
 const fail=(code:AnalysisError['code'],message:string,retryable:boolean,retryAfterSeconds?:number,status=429)=>new AnalysisError(code,message,status,{retryable,retryAfterSeconds});
 /** No raw input is persisted. Reports may contain input-derived text; only their session-bound ciphertext is retained for 120 seconds. */
-export async function runPaidRequest<T extends {execution?:ResearchExecution;analysisId?:string}>(identity:PaidIdentity,plan:{model:string;maxOutputTokens:number;searchCalls:number},work:()=>Promise<T>,options:{config?:UsageConfig;redis?:RedisCommand;now?:()=>number;log?:(value:unknown)=>void}={}):Promise<T>{
+export async function runPaidRequest<T extends {execution?:ResearchExecution;analysisId?:string}>(identity:PaidIdentity,plan:{model:string;maxOutputTokens:number;searchCalls:number},work:()=>Promise<T>,options:{config?:UsageConfig;redis?:RedisCommand;now?:()=>number;retainResult?:boolean;log?:(value:unknown)=>void}={}):Promise<T>{
  const config=options.config??readUsageConfig(),redis=options.redis??redisRest(config),now=options.now??Date.now;
  const requestKey=`${prefix}request:${identity.sessionId}:${identity.requestId}`;
  const resultKey=`${prefix}result:${identity.sessionId}:${identity.requestId}`;
@@ -48,7 +48,7 @@ export async function runPaidRequest<T extends {execution?:ResearchExecution;ana
   execution.actualCostUsd=actual===null?null:actual/1e6;
   const charged=actual??reserved;
   if(result)result.execution={...execution};
-  const encrypted=result?seal(result,config.secret,`${identity.sessionId}:${identity.requestId}:${fingerprint}`):'';
+  const encrypted=result&&options.retainResult!==false?seal(result,config.secret,`${identity.sessionId}:${identity.requestId}:${fingerprint}`):'';
   const parentKey=result?.analysisId?`${prefix}parent:${identity.sessionId}:${result.analysisId}`:`${prefix}unused`;
   const settlement=await redis(['EVAL',SETTLE_LUA,6,requestKey,keys[1],keys[2],keys[5],resultKey,parentKey,lease,charged,state,encrypted,result?.analysisId?JSON.stringify({inputHash:identity.inputHash,round}):'',meter.pendingProviders>0||meter.ambiguousFailure?'1':'0']);
   if(!Array.isArray(settlement)||settlement[0]==='stale')throw fail('REQUEST_IN_PROGRESS','此执行租约已过期；迟到结果未返回，也不会覆盖较新的执行。',true,10,409);

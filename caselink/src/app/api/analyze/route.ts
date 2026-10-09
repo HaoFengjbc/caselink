@@ -26,7 +26,7 @@ export async function POST(request:NextRequest){
    // Domain validation precedes ALL budget or provider calls.
    requireResearchScope(data.input,data.locale??'zh');
    const context=paidRequestContext(request,requestId);if(context instanceof NextResponse)return context;
-   result=await runPaidRequest({...data,sessionId:context.sessionId,ipDigest:context.ipDigest,inputHash:hashInput(data.input),locale:data.locale??'zh',kind:'analysis'}, {model:config.model,maxOutputTokens:config.maxOutputTokens,searchCalls:controlledSearchConfigured()?2:0},analyze,{config:context.config});
+   result=await runPaidRequest({...data,sessionId:context.sessionId,ipDigest:context.ipDigest,inputHash:hashInput(data.input),locale:data.locale??'zh',kind:'analysis'}, {model:config.model,maxOutputTokens:config.maxOutputTokens,searchCalls:controlledSearchConfigured()?2:0},analyze,{config:context.config,retainResult:!data.input.intake?.materials});
   }else result=await analyze();
   return NextResponse.json(result,{headers:{...NO_STORE,'X-Request-Id':requestId}});
  }catch(error){return errorResponse(error,requestId);}

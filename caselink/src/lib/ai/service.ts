@@ -107,6 +107,6 @@ export async function analyzeInput(raw:NewCaseInput,options:{forceRule?:boolean;
   // Chinese results keep their original shape; only other languages are tagged.
   checkCancelled();
   const result=AnalysisResultSchema.parse({...output,domain,jurisdiction,execution:currentExecution()??{...executionFor(options.identity??{requestId:randomUUID(),inputVersion:1,operation:'initial'},0,options.identity?.operation==='supplement'?2:1),actualCostUsd:0},...(webResearch?{webResearch}:{}),actionOrigins,researchAssessment,analysisId:randomUUID(),schemaVersion:SCHEMA_VERSION,inputHash,corpusVersion:CORPUS_VERSION,promptVersion:PROMPT_VERSION,createdAt:new Date().toISOString(),mode,historicalComparisons,sources:referencedSources,...(locale==='zh'?{}:{locale})});
-  result.snapshot=captureReportSnapshot(result,locale);
+  result.snapshot=captureReportSnapshot(result,locale,input);
   return result;
 }

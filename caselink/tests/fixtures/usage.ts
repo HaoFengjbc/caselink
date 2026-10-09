@@ -30,7 +30,7 @@ export class RedisProtocolSimulator{
    this.zsets.get(keys[1])!.set(lease,Number(end));this.zsets.get(keys[2])!.set(lease,Number(end));
    this.records.set(keys[0],{fingerprint,state:'running',expires:end,lease,reserved:amount});return ['reserved'];
   }
-  if(script===SETTLE_LUA){const [lease,charged,state,encrypted,parent,retainLease]=args;const record=this.records.get(keys[0]);if(record?.lease!==lease)return ['stale'];if(record.state!=='running')return ['settled'];this.values.set(keys[3],String(Number(this.values.get(keys[3])??0)+Number(charged)-Number(record.reserved)));if(retainLease!=='1'){this.zsets.get(keys[1])?.delete(lease);this.zsets.get(keys[2])?.delete(lease);}record.state=state;if(state==='completed'){this.values.set(keys[4],encrypted);this.expires.set(keys[4],this.now+120000);if(parent){this.values.set(keys[5],parent);this.expires.set(keys[5],this.now+86400000);}}return ['settled'];}
+  if(script===SETTLE_LUA){const [lease,charged,state,encrypted,parent,retainLease]=args;const record=this.records.get(keys[0]);if(record?.lease!==lease)return ['stale'];if(record.state!=='running')return ['settled'];this.values.set(keys[3],String(Number(this.values.get(keys[3])??0)+Number(charged)-Number(record.reserved)));if(retainLease!=='1'){this.zsets.get(keys[1])?.delete(lease);this.zsets.get(keys[2])?.delete(lease);}record.state=state;if(state==='completed'){if(encrypted){this.values.set(keys[4],encrypted);this.expires.set(keys[4],this.now+120000);}if(parent){this.values.set(keys[5],parent);this.expires.set(keys[5],this.now+86400000);}}return ['settled'];}
   throw new Error('Unexpected Lua program');
  };
 }

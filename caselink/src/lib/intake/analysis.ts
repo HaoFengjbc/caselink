@@ -25,5 +25,5 @@ export function hasDisclosureNotes(input: NewCaseInput): boolean {
 /** Preserve the narrative and answers; model summaries are never used as verified evidence. */
 export function narrativeForRetrieval(input: NewCaseInput): string {
   if (!input.intake?.confirmed) return '';
-  return [input.intake.narrative, ...input.intake.answers.map(answer => answer.answer)].join('\n');
+  return [input.intake.narrative, ...input.intake.answers.map(answer => answer.answer),...(input.intake.materials?.items.map(item=>`${item.subject} [${item.nature}; ${item.dateKind}: ${item.date??'unknown'}] ${item.text}`)??[])].join('\n');
 }

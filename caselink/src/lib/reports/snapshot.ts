@@ -1,5 +1,5 @@
 import {cases,evidence,documents,resources} from '../corpus';
-import {CORPUS_VERSION,type AnalysisResult,type ReportSnapshot} from '../contracts';
+import {CORPUS_VERSION,type AnalysisResult,type ReportSnapshot,type NewCaseInput} from '../contracts';
 import {countryName,localizeCase,localizeEvidence,localizeDocument,localizeResource} from '../i18n/content';
 
 /** Runtime implementation owned by A; these exported signatures are shared with B and C. */
@@ -13,7 +13,7 @@ export function captureCaseSnapshot(caseIds:readonly string[],locale:'zh'|'en'='
  return structuredClone({version:1,capturedAt:new Date().toISOString(),corpusVersion:CORPUS_VERSION,completeness:complete?'complete':'legacy_partial',locale,
   cases:selected.map(c=>({...localizeCase(c,locale),country:countryName(c.country,locale)})),evidence:excerpts.map(e=>localizeEvidence(e,locale)),documents:documents.filter(d=>documentIds.has(d.documentId)).map(d=>localizeDocument(d,locale)),resources:[],sourceDescriptors:excerpts.map(e=>({sourceId:e.evidenceId,category:'curated_case' as const,reviewStatus:e.reviewStatus==='conflict'?'conflict' as const:'legacy_recorded' as const,applicability:['Historical source; applicability to another matter is not established.'],locator:`PDF p. ${e.pdfPage}`,agentCheckedAt:null,teamReviewedAt:null,unknowns:[]}))});
 }
-export function captureReportSnapshot(result:AnalysisResult,locale:'zh'|'en'=result.locale??'zh'):ReportSnapshot {
+export function captureReportSnapshot(result:AnalysisResult,locale:'zh'|'en'=result.locale??'zh',input?:NewCaseInput):ReportSnapshot {
  const snapshot=captureCaseSnapshot([...new Set([...result.comparableCases.map(c=>c.caseId),...result.sources.map(e=>e.caseId)])],locale);
  const resourceIds=new Set(result.actionOptions.flatMap(a=>a.resourceIds));
  snapshot.resources=resources.filter(r=>resourceIds.has(r.resourceId)).map(r=>localizeResource(r,locale));
@@ -25,6 +25,10 @@ export function captureReportSnapshot(result:AnalysisResult,locale:'zh'|'en'=res
  if (result.comparableCases.some(c => !snapshot.cases.some(record => record.caseId === c.caseId)) || [...resourceIds].some(id => !snapshot.resources.some(r => r.resourceId === id))) snapshot.completeness = 'legacy_partial';
  if(result.webResearch)snapshot.webResearch=structuredClone(result.webResearch);
  for(const source of result.webResearch?.sources??[])snapshot.sourceDescriptors.push({sourceId:source.sourceId,category:'public_web',reviewStatus:'unreviewed',applicability:['Unverified public supplement; independent review required.'],locator:source.url,agentCheckedAt:null,teamReviewedAt:null,unknowns:['Applicability and factual support need review.']});
+ if(input?.intake?.materials){
+  snapshot.uploadedMaterials=structuredClone(input.intake.materials);
+  for(const item of snapshot.uploadedMaterials.items)snapshot.sourceDescriptors.push({sourceId:item.id,category:'uploaded_material',reviewStatus:'unreviewed',applicability:['Private materials provided for this case; neither independent verification nor corpus evidence.'],locator:item.sources.map(s=>`${s.filename} · PDF ${s.pdfPage}`).join('; '),agentCheckedAt:null,teamReviewedAt:null,unknowns:item.uncertainty?[item.uncertainty]:[]});
+ }
  return structuredClone(snapshot);
 }
 /** Legacy records never backfill missing historical content from today's corpus. */
