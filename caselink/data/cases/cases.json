@@ -1,0 +1,4415 @@
+[
+  {
+    "caseId": "aigul-utepova",
+    "title": "Aigul Utepova",
+    "country": "哈萨克斯坦",
+    "personTypes": [
+      "journalist"
+    ],
+    "backgroundTags": [
+      "reporting",
+      "investigation_report",
+      "social_media"
+    ],
+    "problems": [
+      "detained",
+      "expression_restricted"
+    ],
+    "summary": "自由调查记者 Aigul Utepova 因被当局解释为支持被禁反对派组织的社交媒体内容受到刑事追诉。报告记载居家限制、被强制送入精神医疗机构、庭审辩护与上诉。对医疗机构安全措施的挑战带来部分调整，但并非立即完全获释；其定罪上诉于2021年6月被驳回。",
+    "evidenceIds": [
+      "aigul-identity",
+      "aigul-background",
+      "aigul-house-arrest",
+      "aigul-detention-challenge",
+      "aigul-discharge",
+      "aigul-appeal"
+    ],
+    "sourceDocumentIds": [
+      "aigul-report"
+    ],
+    "reportDate": "2022-04",
+    "lastKnownStatusAsOf": "2022-04",
+    "statusSummary": "报告截至2022年4月：记载定罪后上诉于2021年6月被驳回；未核查此后的个案进展。",
+    "events": [
+      {
+        "eventId": "aigul-investigation-opened",
+        "caseId": "aigul-utepova",
+        "eventType": "investigation-opened",
+        "description": "当局以涉嫌参与被禁组织启动调查。",
+        "stageAtEvent": "investigation",
+        "date": {
+          "value": "2020-09-15",
+          "precision": "day",
+          "originalText": "On September 15, 2020"
+        },
+        "evidenceIds": [
+          "aigul-background"
+        ]
+      },
+      {
+        "eventId": "aigul-facility-exit",
+        "caseId": "aigul-utepova",
+        "eventType": "facility-exit",
+        "description": "离开精神医疗机构，居家限制并未因此全部解除。",
+        "stageAtEvent": "pretrial",
+        "date": {
+          "value": "2020-12-11",
+          "precision": "day",
+          "originalText": "December 11, 2020"
+        },
+        "evidenceIds": [
+          "aigul-discharge",
+          "aigul-house-arrest"
+        ]
+      },
+      {
+        "eventId": "aigul-trial-opened",
+        "caseId": "aigul-utepova",
+        "eventType": "trial-opened",
+        "description": "审判开始；当事人仍受居家限制。",
+        "stageAtEvent": "trial",
+        "date": {
+          "value": "2021-03-15",
+          "precision": "day",
+          "originalText": "At the March 15 hearing"
+        },
+        "evidenceIds": [
+          "aigul-walk-request"
+        ]
+      },
+      {
+        "eventId": "aigul-conviction",
+        "caseId": "aigul-utepova",
+        "eventType": "conviction",
+        "description": "一审定罪并判处限制自由及相关活动限制。",
+        "stageAtEvent": "postjudgment",
+        "date": {
+          "value": "2021-04-29",
+          "precision": "day",
+          "originalText": "On April 29, 2021"
+        },
+        "evidenceIds": [
+          "aigul-verdict"
+        ]
+      },
+      {
+        "eventId": "aigul-appeal-rejected",
+        "caseId": "aigul-utepova",
+        "eventType": "appeal-rejected",
+        "description": "针对定罪的上诉被驳回。",
+        "stageAtEvent": "appeal",
+        "date": {
+          "value": "2021-06",
+          "precision": "month",
+          "originalText": "In June 2021"
+        },
+        "evidenceIds": [
+          "aigul-appeal"
+        ]
+      }
+    ],
+    "interventions": [
+      {
+        "interventionId": "aigul-challenge",
+        "caseId": "aigul-utepova",
+        "actor": "辩护律师；检方另行申请纠错",
+        "action": "对精神医疗机构拘留裁定提出投诉；检方亦申请纠正所适用措施。",
+        "category": "legal",
+        "executionStatus": "implemented",
+        "stageAtAction": "pretrial",
+        "date": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "针对November 11裁定提出投诉；正文未单列提交日，脚注复核裁定日期不等于投诉日"
+        },
+        "observedOutcomeIds": [
+          "aigul-measure-amended"
+        ],
+        "relationshipToOutcome": "explicit",
+        "evidenceIds": [
+          "aigul-detention-challenge",
+          "aigul-discharge"
+        ]
+      },
+      {
+        "interventionId": "aigul-daily-walks",
+        "caseId": "aigul-utepova",
+        "actor": "Aigul Utepova",
+        "action": "请求审判期间每日允许5—10分钟散步。",
+        "category": "legal",
+        "executionStatus": "implemented",
+        "stageAtAction": "trial",
+        "date": {
+          "value": "2021-03-15",
+          "precision": "day",
+          "originalText": "At the March 15 hearing"
+        },
+        "observedOutcomeIds": [
+          "aigul-walks-not-granted"
+        ],
+        "relationshipToOutcome": "explicit",
+        "evidenceIds": [
+          "aigul-walk-request"
+        ]
+      },
+      {
+        "interventionId": "aigul-defense-motion",
+        "caseId": "aigul-utepova",
+        "actor": "辩护律师",
+        "action": "提出取证程序异议并申请询问一名主要调查员。",
+        "category": "legal",
+        "executionStatus": "implemented",
+        "stageAtAction": "trial",
+        "date": {
+          "value": "2021-03-25",
+          "precision": "day",
+          "originalText": "On March 25, 2021"
+        },
+        "observedOutcomeIds": [],
+        "relationshipToOutcome": "unknown",
+        "evidenceIds": [
+          "aigul-evidence-motion"
+        ]
+      },
+      {
+        "interventionId": "aigul-appeal-filed",
+        "caseId": "aigul-utepova",
+        "actor": "Aigul Utepova一方",
+        "action": "对一审定罪提起上诉。",
+        "category": "legal",
+        "executionStatus": "implemented",
+        "stageAtAction": "appeal",
+        "date": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "材料记录2021年6月被驳回，未单列提出上诉的日期"
+        },
+        "observedOutcomeIds": [
+          "aigul-appeal-dismissed"
+        ],
+        "relationshipToOutcome": "explicit",
+        "evidenceIds": [
+          "aigul-appeal"
+        ]
+      },
+      {
+        "interventionId": "aigul-trialwatch",
+        "caseId": "aigul-utepova",
+        "actor": "Clooney Foundation for Justice / TrialWatch",
+        "action": "派员通过线上庭审进行观察，并发布公平审判报告。",
+        "category": "monitoring",
+        "executionStatus": "implemented",
+        "stageAtAction": "trial",
+        "date": {
+          "value": "2021-03-15/2021-04-29",
+          "precision": "range",
+          "originalText": "March 15, 2021 ... April 29, 2021；报告2022年4月"
+        },
+        "observedOutcomeIds": [],
+        "relationshipToOutcome": "unknown",
+        "evidenceIds": [
+          "aigul-monitoring"
+        ]
+      }
+    ],
+    "outcomes": [
+      {
+        "outcomeId": "aigul-measure-amended",
+        "caseId": "aigul-utepova",
+        "description": "裁定排除安全措施，但仍须留院观察和检查。",
+        "type": "partial",
+        "observedDate": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "正文未单列修改日；脚注所引裁定为November 19, 2020，原始裁定未独立核查"
+        },
+        "statusAsOf": "2022-04",
+        "evidenceIds": [
+          "aigul-detention-challenge",
+          "aigul-discharge"
+        ]
+      },
+      {
+        "outcomeId": "aigul-facility-discharge",
+        "caseId": "aigul-utepova",
+        "description": "于2020-12-11离开精神医疗机构；不等于解除居家限制或撤案。",
+        "type": "specific",
+        "observedDate": {
+          "value": "2020-12-11",
+          "precision": "day",
+          "originalText": "December 11, 2020"
+        },
+        "statusAsOf": "2022-04",
+        "evidenceIds": [
+          "aigul-discharge",
+          "aigul-house-arrest"
+        ]
+      },
+      {
+        "outcomeId": "aigul-walks-not-granted",
+        "caseId": "aigul-utepova",
+        "description": "法官答复在最终裁决前不能更改措施；该次散步请求未获准。",
+        "type": "specific",
+        "observedDate": {
+          "value": "2021-03-15",
+          "precision": "day",
+          "originalText": "At the March 15 hearing"
+        },
+        "statusAsOf": "2022-04",
+        "evidenceIds": [
+          "aigul-walk-request"
+        ]
+      },
+      {
+        "outcomeId": "aigul-convicted",
+        "caseId": "aigul-utepova",
+        "description": "一审判处一年限制自由、两年社会政治及媒体活动限制，并判100小时强制劳动。",
+        "type": "specific",
+        "observedDate": {
+          "value": "2021-04-29",
+          "precision": "day",
+          "originalText": "April 29, 2021"
+        },
+        "statusAsOf": "2022-04",
+        "evidenceIds": [
+          "aigul-verdict"
+        ]
+      },
+      {
+        "outcomeId": "aigul-appeal-dismissed",
+        "caseId": "aigul-utepova",
+        "description": "针对定罪的上诉于2021年6月被驳回。",
+        "type": "specific",
+        "observedDate": {
+          "value": "2021-06",
+          "precision": "month",
+          "originalText": "In June 2021"
+        },
+        "statusAsOf": "2022-04",
+        "evidenceIds": [
+          "aigul-appeal"
+        ]
+      }
+    ],
+    "reportRecommendations": [
+      {
+        "recommendationId": "aigul-reform-psychiatric",
+        "actor": "哈萨克斯坦立法与相关国家机关",
+        "description": "修订精神医疗机构收治法律，提供全面的正当程序保障。",
+        "category": "legal",
+        "evidenceIds": [
+          "aigul-reform"
+        ]
+      }
+    ],
+    "unknowns": [
+      "未核查2022年4月报告之后的个案状态。",
+      "出院具体促成因素未能分离，不能把辩护投诉单独归因为后来出院。",
+      "监测、公开报告与具体司法结果的因果关系未记载。",
+      "脚注所引裁定与其他原始卷宗未独立取得和复核。"
+    ],
+    "conflicts": []
+  },
+  {
+    "caseId": "emna-chargui",
+    "title": "Emna Chargui",
+    "country": "突尼斯",
+    "personTypes": [
+      "blogger"
+    ],
+    "backgroundTags": [
+      "social_media",
+      "repost"
+    ],
+    "problems": [
+      "lawyer_access",
+      "threats",
+      "expression_restricted"
+    ],
+    "summary": "博主 Emna Chargui 因在 Facebook 转发疫情讽刺诗受到追诉。律师陪同了司法警察讯问，但次日检方讯问不准律师在场。律师在庭审中提出无罪辩护，一审仍定罪。报告记载她后来获得德国庇护；截至2021年6月，上诉仍未决。",
+    "evidenceIds": [
+      "emna-identity",
+      "emna-background",
+      "emna-lawyer",
+      "emna-lawyer-denied",
+      "emna-trial-defense",
+      "emna-verdict-july13",
+      "emna-asylum",
+      "emna-appeal"
+    ],
+    "sourceDocumentIds": [
+      "emna-report"
+    ],
+    "reportDate": "2021-06",
+    "lastKnownStatusAsOf": "2021-06",
+    "statusSummary": "报告截至2021年6月：已获德国庇护，上诉仍未决；庇护不等于撤销定罪。",
+    "events": [
+      {
+        "eventId": "emna-post",
+        "caseId": "emna-chargui",
+        "eventType": "post",
+        "description": "在Facebook转发疫情讽刺诗，随后收到威胁。",
+        "stageAtEvent": "investigation",
+        "date": {
+          "value": "2020-05-03",
+          "precision": "day",
+          "originalText": "On May 3, 2020"
+        },
+        "evidenceIds": [
+          "emna-background"
+        ]
+      },
+      {
+        "eventId": "emna-police-interview",
+        "caseId": "emna-chargui",
+        "eventType": "police-interview",
+        "description": "律师陪同司法警察讯问。",
+        "stageAtEvent": "investigation",
+        "date": {
+          "value": "2020-05-05",
+          "precision": "day",
+          "originalText": "On May 5, 2020"
+        },
+        "evidenceIds": [
+          "emna-lawyer"
+        ]
+      },
+      {
+        "eventId": "emna-prosecutor-interview",
+        "caseId": "emna-chargui",
+        "eventType": "prosecutor-interview",
+        "description": "翌日检方讯问时律师未获准在场。",
+        "stageAtEvent": "pretrial",
+        "date": {
+          "value": "2020-05-06",
+          "precision": "day",
+          "originalText": "On May 6, 2020"
+        },
+        "evidenceIds": [
+          "emna-lawyer-denied"
+        ]
+      },
+      {
+        "eventId": "emna-trial",
+        "caseId": "emna-chargui",
+        "eventType": "trial",
+        "description": "庭审恢复，多名律师参与辩护。",
+        "stageAtEvent": "trial",
+        "date": {
+          "value": "2020-07-02",
+          "precision": "day",
+          "originalText": "resuming on July 2, 2020"
+        },
+        "evidenceIds": [
+          "emna-trial-defense",
+          "emna-defense-grounds"
+        ]
+      },
+      {
+        "eventId": "emna-conviction",
+        "caseId": "emna-chargui",
+        "eventType": "conviction",
+        "description": "一审定罪；报告内部宣判日冲突，仅按月份排序。",
+        "stageAtEvent": "postjudgment",
+        "date": {
+          "value": "2020-07",
+          "precision": "month",
+          "originalText": "PDF14：July 13, 2020；PDF15：July 3, 2020，日级冲突未解决"
+        },
+        "evidenceIds": [
+          "emna-verdict-july13",
+          "emna-verdict-july3"
+        ]
+      },
+      {
+        "eventId": "emna-asylum-event",
+        "caseId": "emna-chargui",
+        "eventType": "asylum-event",
+        "description": "后来获得德国庇护，具体日期未记载。",
+        "stageAtEvent": "unknown",
+        "date": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "材料未记载具体日期"
+        },
+        "evidenceIds": [
+          "emna-asylum"
+        ]
+      }
+    ],
+    "interventions": [
+      {
+        "interventionId": "emna-accompaniment",
+        "caseId": "emna-chargui",
+        "actor": "辩护律师 Ines Trabelsi",
+        "action": "接受委托并陪同当事人接受司法警察讯问。",
+        "category": "legal",
+        "executionStatus": "implemented",
+        "stageAtAction": "investigation",
+        "date": {
+          "value": "2020-05-05",
+          "precision": "day",
+          "originalText": "On May 5, 2020"
+        },
+        "observedOutcomeIds": [
+          "emna-police-lawyer-access"
+        ],
+        "relationshipToOutcome": "explicit",
+        "evidenceIds": [
+          "emna-lawyer"
+        ]
+      },
+      {
+        "interventionId": "emna-trial-arguments",
+        "caseId": "emna-chargui",
+        "actor": "约十名辩护律师",
+        "action": "主张无罪，提出宪法权利、构成要件与罪刑法定方面的辩护。",
+        "category": "legal",
+        "executionStatus": "implemented",
+        "stageAtAction": "trial",
+        "date": {
+          "value": "2020-07-02",
+          "precision": "day",
+          "originalText": "July 2, 2020"
+        },
+        "observedOutcomeIds": [
+          "emna-conviction-recorded"
+        ],
+        "relationshipToOutcome": "sequence_only",
+        "evidenceIds": [
+          "emna-trial-defense",
+          "emna-defense-grounds",
+          "emna-verdict-july13",
+          "emna-verdict-july3"
+        ]
+      },
+      {
+        "interventionId": "emna-appeal-filed",
+        "caseId": "emna-chargui",
+        "actor": "Emna Chargui的律师",
+        "action": "在一审判决后提出上诉。",
+        "category": "legal",
+        "executionStatus": "implemented",
+        "stageAtAction": "appeal",
+        "date": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "within 10 days of the first-instance judgment；判决日冲突，不推算精确提交日"
+        },
+        "observedOutcomeIds": [
+          "emna-appeal-pending"
+        ],
+        "relationshipToOutcome": "explicit",
+        "evidenceIds": [
+          "emna-appeal"
+        ]
+      },
+      {
+        "interventionId": "emna-asylum-sought",
+        "caseId": "emna-chargui",
+        "actor": "Emna Chargui；具体协助者未记载",
+        "action": "寻求德国庇护。",
+        "category": "other",
+        "executionStatus": "implemented",
+        "stageAtAction": "unknown",
+        "date": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "材料未记载具体日期"
+        },
+        "observedOutcomeIds": [
+          "emna-asylum-obtained"
+        ],
+        "relationshipToOutcome": "explicit",
+        "evidenceIds": [
+          "emna-asylum"
+        ]
+      },
+      {
+        "interventionId": "emna-trialwatch",
+        "caseId": "emna-chargui",
+        "actor": "Clooney Foundation for Justice / TrialWatch",
+        "action": "派懂阿拉伯语的观察员监测审判，并形成公开报告。",
+        "category": "monitoring",
+        "executionStatus": "implemented",
+        "stageAtAction": "trial",
+        "date": {
+          "value": "2020-07",
+          "precision": "month",
+          "originalText": "July 2020，报告方法页宣判日与案史页冲突"
+        },
+        "observedOutcomeIds": [],
+        "relationshipToOutcome": "unknown",
+        "evidenceIds": [
+          "emna-monitoring",
+          "emna-verdict-july3"
+        ]
+      }
+    ],
+    "outcomes": [
+      {
+        "outcomeId": "emna-police-lawyer-access",
+        "caseId": "emna-chargui",
+        "description": "2020-05-05司法警察讯问有律师陪同；不代表翌日检方讯问同样允许。",
+        "type": "specific",
+        "observedDate": {
+          "value": "2020-05-05",
+          "precision": "day",
+          "originalText": "May 5, 2020"
+        },
+        "statusAsOf": "2021-06",
+        "evidenceIds": [
+          "emna-lawyer",
+          "emna-lawyer-denied"
+        ]
+      },
+      {
+        "outcomeId": "emna-conviction-recorded",
+        "caseId": "emna-chargui",
+        "description": "一审定罪并判处六个月监禁及2,000第纳尔罚金，宣判日期在报告内有冲突。",
+        "type": "specific",
+        "observedDate": {
+          "value": "2020-07",
+          "precision": "month",
+          "originalText": "PDF14：July 13, 2020；PDF15：July 3, 2020，日级冲突未解决"
+        },
+        "statusAsOf": "2021-06",
+        "evidenceIds": [
+          "emna-verdict-july13",
+          "emna-verdict-july3"
+        ]
+      },
+      {
+        "outcomeId": "emna-asylum-obtained",
+        "caseId": "emna-chargui",
+        "description": "报告记载获得德国庇护；未记载定罪因此撤销。",
+        "type": "specific",
+        "observedDate": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "材料未记载具体日期"
+        },
+        "statusAsOf": "2021-06",
+        "evidenceIds": [
+          "emna-asylum",
+          "emna-appeal"
+        ]
+      },
+      {
+        "outcomeId": "emna-appeal-pending",
+        "caseId": "emna-chargui",
+        "description": "截至报告时，上诉仍未决。",
+        "type": "pending",
+        "observedDate": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "The appeal is still pending."
+        },
+        "statusAsOf": "2021-06",
+        "evidenceIds": [
+          "emna-appeal"
+        ]
+      }
+    ],
+    "reportRecommendations": [
+      {
+        "recommendationId": "emna-un-country-visit",
+        "actor": "突尼斯国家机关",
+        "description": "邀请联合国表达自由和／或宗教或信仰自由特别报告员进行国别访问并落实建议。",
+        "category": "international",
+        "evidenceIds": [
+          "emna-un-recommendation"
+        ]
+      }
+    ],
+    "unknowns": [
+      "未核查2021年6月报告之后的上诉或其他司法进展。",
+      "庇护申请与获准日期、具体协助机构未记载。",
+      "未把历史上诉期限用于计算新案期限；须由当地律师另行核实。",
+      "原报告中的指控、作者法律评价、法院结论属于不同信息类型。"
+    ],
+    "conflicts": [
+      {
+        "description": "宣判日期内部冲突：PDF14页（印刷13页）写2020-07-13；PDF15页（印刷14页）写2020-07-03。两条原文均保留，不计算依赖该日期的精确间隔。",
+        "evidenceIds": [
+          "emna-verdict-july13",
+          "emna-verdict-july3"
+        ]
+      }
+    ]
+  },
+  {
+    "caseId": "myriam-bribri",
+    "title": "Myriam Bribri",
+    "country": "突尼斯",
+    "personTypes": [
+      "blogger",
+      "activist",
+      "other"
+    ],
+    "backgroundTags": [
+      "social_media",
+      "repost"
+    ],
+    "problems": [
+      "expression_restricted"
+    ],
+    "summary": "服装设计师、博主和活动人士 Myriam Bribri 因回应警察暴力视频的社交媒体言论，面临电信法第86条指控。辩护律师两次申请延期，其中2021年4月申请用于进一步准备。报告时案件仍在进行，下一次听证预定2021年6月28日。",
+    "evidenceIds": [
+      "myriam-identity",
+      "myriam-background",
+      "myriam-first-adjournment",
+      "myriam-preparation"
+    ],
+    "sourceDocumentIds": [
+      "myriam-report"
+    ],
+    "reportDate": "2021-06",
+    "lastKnownStatusAsOf": "2021-06",
+    "statusSummary": "报告截至2021年6月：案件仍在进行，预定6月28日听证；终局结果未记载。",
+    "events": [
+      {
+        "eventId": "myriam-summons",
+        "caseId": "myriam-bribri",
+        "eventType": "summons",
+        "description": "收到正式传唤，次日接受司法警察讯问。",
+        "stageAtEvent": "investigation",
+        "date": {
+          "value": "2020-10-07",
+          "precision": "day",
+          "originalText": "On October 7 ... the next morning"
+        },
+        "evidenceIds": [
+          "myriam-summons"
+        ]
+      },
+      {
+        "eventId": "myriam-first-delay",
+        "caseId": "myriam-bribri",
+        "eventType": "first-delay",
+        "description": "当日开庭安排因辩方申请改期至2020-12-14。",
+        "stageAtEvent": "trial",
+        "date": {
+          "value": "2020-10-08",
+          "precision": "day",
+          "originalText": "October 7之后the next morning；上下文跨PDF7—8"
+        },
+        "evidenceIds": [
+          "myriam-summons",
+          "myriam-first-adjournment"
+        ]
+      },
+      {
+        "eventId": "myriam-preparation-delay",
+        "caseId": "myriam-bribri",
+        "eventType": "preparation-delay",
+        "description": "律师申请更多准备时间，听证改期至6月28日。",
+        "stageAtEvent": "trial",
+        "date": {
+          "value": "2021-04-12",
+          "precision": "day",
+          "originalText": "On April 12，年份由前文2020-12后顺序确定"
+        },
+        "evidenceIds": [
+          "myriam-first-adjournment",
+          "myriam-preparation"
+        ]
+      },
+      {
+        "eventId": "myriam-scheduled-hearing",
+        "caseId": "myriam-bribri",
+        "eventType": "scheduled-hearing",
+        "description": "报告记载下一次听证预定2021-06-28，不能推定该日实际开庭。",
+        "stageAtEvent": "trial",
+        "date": {
+          "value": "2021-06-28",
+          "precision": "day",
+          "originalText": "The next hearing ... June 28；报告June 2021"
+        },
+        "evidenceIds": [
+          "myriam-background",
+          "myriam-preparation"
+        ]
+      }
+    ],
+    "interventions": [
+      {
+        "interventionId": "myriam-initial-adjournment",
+        "caseId": "myriam-bribri",
+        "actor": "辩护律师",
+        "action": "在获知当日开庭后申请延期。",
+        "category": "legal",
+        "executionStatus": "implemented",
+        "stageAtAction": "trial",
+        "date": {
+          "value": "2020-10-08",
+          "precision": "day",
+          "originalText": "根据PDF7—8连贯叙述：10月7日收到传唤，次日讯问并移送"
+        },
+        "observedOutcomeIds": [
+          "myriam-first-hearing-postponed"
+        ],
+        "relationshipToOutcome": "explicit",
+        "evidenceIds": [
+          "myriam-summons",
+          "myriam-first-adjournment"
+        ]
+      },
+      {
+        "interventionId": "myriam-preparation-adjournment",
+        "caseId": "myriam-bribri",
+        "actor": "辩护律师",
+        "action": "为进一步准备申请延期审理。",
+        "category": "legal",
+        "executionStatus": "implemented",
+        "stageAtAction": "trial",
+        "date": {
+          "value": "2021-04-12",
+          "precision": "day",
+          "originalText": "On April 12；年份由2020年12月后时间线确定"
+        },
+        "observedOutcomeIds": [
+          "myriam-preparation-time"
+        ],
+        "relationshipToOutcome": "explicit",
+        "evidenceIds": [
+          "myriam-first-adjournment",
+          "myriam-preparation"
+        ]
+      },
+      {
+        "interventionId": "myriam-trialwatch",
+        "caseId": "myriam-bribri",
+        "actor": "Clooney Foundation for Justice / TrialWatch",
+        "action": "监测案件并发布公平审判报告。",
+        "category": "monitoring",
+        "executionStatus": "implemented",
+        "stageAtAction": "trial",
+        "date": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "截至2021年6月报告时已在监测，起始日未记载"
+        },
+        "observedOutcomeIds": [],
+        "relationshipToOutcome": "unknown",
+        "evidenceIds": [
+          "myriam-monitoring"
+        ]
+      }
+    ],
+    "outcomes": [
+      {
+        "outcomeId": "myriam-first-hearing-postponed",
+        "caseId": "myriam-bribri",
+        "description": "延期申请后听证改期至2020-12-14。",
+        "type": "partial",
+        "observedDate": {
+          "value": "2020-10-08",
+          "precision": "day",
+          "originalText": "与当天申请相连；新听证日期December 14, 2020"
+        },
+        "statusAsOf": "2021-06",
+        "evidenceIds": [
+          "myriam-first-adjournment",
+          "myriam-summons"
+        ]
+      },
+      {
+        "outcomeId": "myriam-preparation-time",
+        "caseId": "myriam-bribri",
+        "description": "进一步准备的延期申请获准，听证改期至2021-06-28。",
+        "type": "partial",
+        "observedDate": {
+          "value": "2021-04-12",
+          "precision": "day",
+          "originalText": "On April 12 ... postponed to June 28"
+        },
+        "statusAsOf": "2021-06",
+        "evidenceIds": [
+          "myriam-first-adjournment",
+          "myriam-preparation"
+        ]
+      },
+      {
+        "outcomeId": "myriam-proceedings-pending",
+        "caseId": "myriam-bribri",
+        "description": "报告时案件仍在进行；下一次听证预定6月28日。",
+        "type": "pending",
+        "observedDate": {
+          "value": "2021-06",
+          "precision": "month",
+          "originalText": "报告June 2021"
+        },
+        "statusAsOf": "2021-06",
+        "evidenceIds": [
+          "myriam-background"
+        ]
+      },
+      {
+        "outcomeId": "myriam-final-unrecorded",
+        "caseId": "myriam-bribri",
+        "description": "本份报告未记载终局裁判、撤案或撤诉结果。",
+        "type": "unrecorded",
+        "observedDate": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "材料未记载具体日期"
+        },
+        "statusAsOf": "2021-06",
+        "evidenceIds": [
+          "myriam-background",
+          "myriam-dismiss-recommendation"
+        ]
+      }
+    ],
+    "reportRecommendations": [
+      {
+        "recommendationId": "myriam-dismissal",
+        "actor": "法院或检方",
+        "description": "法院驳回案件或检方撤回指控。",
+        "category": "legal",
+        "evidenceIds": [
+          "myriam-dismiss-recommendation"
+        ]
+      },
+      {
+        "recommendationId": "myriam-un-visit",
+        "actor": "突尼斯国家机关",
+        "description": "邀请联合国表达自由特别报告员进行国别访问，支持法律改革。",
+        "category": "international",
+        "evidenceIds": [
+          "myriam-un-recommendation"
+        ]
+      }
+    ],
+    "unknowns": [
+      "未核查2021年6月之后的终局裁判或程序变化。",
+      "报告未记载的倡导行动不能等同于没有发生。",
+      "后续延期开庭安排不表示报告确认6月28日实际举行听证。",
+      "身份中的“其他”指报告所称服装设计师，不是记者身份。"
+    ],
+    "conflicts": []
+  },
+  {
+    "caseId": "shahidul-alam",
+    "title": "Shahidul Alam",
+    "country": "孟加拉国",
+    "personTypes": [
+      "journalist",
+      "activist"
+    ],
+    "backgroundTags": [
+      "reporting",
+      "social_media"
+    ],
+    "problems": [
+      "detained",
+      "lawyer_access",
+      "expression_restricted"
+    ],
+    "summary": "摄影记者与社会活动人士 Shahidul Alam 因报道和评论学生抗议而被捕。报告记录了其妻就酷刑指称向国家人权委员会投诉、高等法院准予保释，以及 Alam 对继续调查提出的司法挑战。保释与一度暂停调查没有终结案件；2022 年 11 月其针对高等法院裁判的申请被驳回。",
+    "evidenceIds": [
+      "shahidul-alam-background",
+      "shahidul-alam-bail",
+      "shahidul-alam-nhrc-complaint",
+      "shahidul-alam-wife-complaint",
+      "shahidul-alam-writ",
+      "shahidul-alam-stay",
+      "shahidul-alam-petition-dismissed",
+      "shahidul-alam-investigation-continues",
+      "shahidul-alam-monitoring",
+      "shahidul-alam-recommendation"
+    ],
+    "sourceDocumentIds": [
+      "shahidul-alam-report"
+    ],
+    "reportDate": "2023-01",
+    "lastKnownStatusAsOf": "2023-01",
+    "statusSummary": "截至 2023 年 1 月报告：Alam 已获保释裁定，但挑战调查的申请被驳回，刑事调查仍可继续；未记录定罪或终结调查。",
+    "events": [
+      {
+        "eventId": "shahidul-alam-arrest-event",
+        "caseId": "shahidul-alam",
+        "eventType": "arrest",
+        "description": "Alam 因抗议报道和评论被捕。",
+        "stageAtEvent": "investigation",
+        "date": {
+          "value": "2018-08",
+          "precision": "month",
+          "originalText": "In August 2018"
+        },
+        "evidenceIds": [
+          "shahidul-alam-background"
+        ]
+      },
+      {
+        "eventId": "shahidul-alam-bail-event",
+        "caseId": "shahidul-alam",
+        "eventType": "bail",
+        "description": "高等法院裁定准予 Alam 保释。",
+        "stageAtEvent": "pretrial",
+        "date": {
+          "value": "2018-11-15",
+          "precision": "day",
+          "originalText": "November 15, 2018"
+        },
+        "evidenceIds": [
+          "shahidul-alam-bail"
+        ]
+      },
+      {
+        "eventId": "shahidul-alam-stay-event",
+        "caseId": "shahidul-alam",
+        "eventType": "proceeding",
+        "description": "高等法院暂时中止 Alam 案调查三个月。",
+        "stageAtEvent": "investigation",
+        "date": {
+          "value": "2019-03-14",
+          "precision": "day",
+          "originalText": "March 14, 2019"
+        },
+        "evidenceIds": [
+          "shahidul-alam-stay"
+        ]
+      },
+      {
+        "eventId": "shahidul-alam-dismissal-event",
+        "caseId": "shahidul-alam",
+        "eventType": "proceeding",
+        "description": "上诉庭驳回 Alam 针对高等法院裁判的申请。",
+        "stageAtEvent": "appeal",
+        "date": {
+          "value": "2022-11-27",
+          "precision": "day",
+          "originalText": "November 27, 2022"
+        },
+        "evidenceIds": [
+          "shahidul-alam-petition-dismissed"
+        ]
+      }
+    ],
+    "interventions": [
+      {
+        "interventionId": "shahidul-alam-nhrc-action",
+        "caseId": "shahidul-alam",
+        "actor": "Rahnuma Ahmed（Alam 的妻子）",
+        "action": "就 Alam 的酷刑指称向国家人权委员会投诉。",
+        "category": "legal",
+        "executionStatus": "implemented",
+        "stageAtAction": "investigation",
+        "date": {
+          "value": "2018-08-07",
+          "precision": "day",
+          "originalText": "August 7, 2018"
+        },
+        "observedOutcomeIds": [],
+        "relationshipToOutcome": "unknown",
+        "evidenceIds": [
+          "shahidul-alam-nhrc-complaint",
+          "shahidul-alam-wife-complaint"
+        ]
+      },
+      {
+        "interventionId": "shahidul-alam-writ-action",
+        "caseId": "shahidul-alam",
+        "actor": "Shahidul Alam 及其辩护方",
+        "action": "提出令状申请，挑战继续调查的合法性。",
+        "category": "legal",
+        "executionStatus": "implemented",
+        "stageAtAction": "investigation",
+        "date": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "Not recorded"
+        },
+        "observedOutcomeIds": [
+          "shahidul-alam-interim-stay"
+        ],
+        "relationshipToOutcome": "sequence_only",
+        "evidenceIds": [
+          "shahidul-alam-writ",
+          "shahidul-alam-stay"
+        ]
+      },
+      {
+        "interventionId": "shahidul-alam-appellate-action",
+        "caseId": "shahidul-alam",
+        "actor": "Shahidul Alam 及其辩护方",
+        "action": "向上诉庭挑战高等法院裁判。",
+        "category": "legal",
+        "executionStatus": "implemented",
+        "stageAtAction": "appeal",
+        "date": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "Not recorded"
+        },
+        "observedOutcomeIds": [
+          "shahidul-alam-challenge-dismissed"
+        ],
+        "relationshipToOutcome": "sequence_only",
+        "evidenceIds": [
+          "shahidul-alam-petition-dismissed"
+        ]
+      },
+      {
+        "interventionId": "shahidul-alam-monitor-action",
+        "caseId": "shahidul-alam",
+        "actor": "Clooney Foundation for Justice / TrialWatch",
+        "action": "监测针对 Alam 的程序并发布报告。",
+        "category": "monitoring",
+        "executionStatus": "implemented",
+        "stageAtAction": "investigation",
+        "date": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "Not recorded"
+        },
+        "observedOutcomeIds": [],
+        "relationshipToOutcome": "unknown",
+        "evidenceIds": [
+          "shahidul-alam-monitoring"
+        ]
+      }
+    ],
+    "outcomes": [
+      {
+        "outcomeId": "shahidul-alam-bail-ordered",
+        "caseId": "shahidul-alam",
+        "description": "Shahidul Alam 获高等法院准予保释的裁定，案件并未因此终结。",
+        "type": "partial",
+        "observedDate": {
+          "value": "2018-11-15",
+          "precision": "day",
+          "originalText": "November 15, 2018"
+        },
+        "statusAsOf": "2023-01",
+        "evidenceIds": [
+          "shahidul-alam-bail",
+          "shahidul-alam-petition-dismissed"
+        ]
+      },
+      {
+        "outcomeId": "shahidul-alam-interim-stay",
+        "caseId": "shahidul-alam",
+        "description": "Shahidul Alam 案调查被暂时中止三个月，并非最终撤案。",
+        "type": "partial",
+        "observedDate": {
+          "value": "2019-03-14",
+          "precision": "day",
+          "originalText": "March 14, 2019"
+        },
+        "statusAsOf": "2023-01",
+        "evidenceIds": [
+          "shahidul-alam-stay"
+        ]
+      },
+      {
+        "outcomeId": "shahidul-alam-challenge-dismissed",
+        "caseId": "shahidul-alam",
+        "description": "Shahidul Alam 针对高等法院裁判的申请被上诉庭驳回，刑事调查仍可继续。",
+        "type": "specific",
+        "observedDate": {
+          "value": "2022-11-27",
+          "precision": "day",
+          "originalText": "November 27, 2022"
+        },
+        "statusAsOf": "2023-01",
+        "evidenceIds": [
+          "shahidul-alam-petition-dismissed",
+          "shahidul-alam-investigation-continues"
+        ]
+      }
+    ],
+    "reportRecommendations": [
+      {
+        "recommendationId": "shahidul-alam-quash-investigation",
+        "description": "依报告作者建议，撤销或停止针对 Alam 的调查。",
+        "actor": "有权撤销或停止调查的法院及有关机关",
+        "category": "legal",
+        "evidenceIds": [
+          "shahidul-alam-recommendation"
+        ]
+      }
+    ],
+    "unknowns": [
+      "报告之后的调查、审判或救济进展未经核查。",
+      "保释裁定不等于已知实际离开监所的日期；国家人权委员会投诉的最终处理未在所选证据中记录。",
+      "未独立调取报告脚注援引的案卷；监测、投诉与保释之间没有可单独归因的因果证据。"
+    ],
+    "conflicts": []
+  },
+  {
+    "caseId": "katsiaryna-andreyeva-daria-chultsova",
+    "title": "Katsiaryna Andreyeva & Daria Chultsova",
+    "country": "白俄罗斯",
+    "personTypes": [
+      "journalist"
+    ],
+    "backgroundTags": [
+      "reporting"
+    ],
+    "problems": [
+      "detained",
+      "file_access",
+      "expression_restricted"
+    ],
+    "summary": "Belsat TV 记者 Katsiaryna Andreyeva 与摄影记者 Daria Chultsova 在直播示威期间被捕。辩方要求取得交通中断的官方记录被拒；ABA 人权中心与 Human Rights Embassy 监测了审判。两人分别被判两年监禁，上诉法院后来维持原判。",
+    "evidenceIds": [
+      "katsiaryna-andreyeva-daria-chultsova-background",
+      "katsiaryna-andreyeva-daria-chultsova-roles-arrest",
+      "katsiaryna-andreyeva-daria-chultsova-arrest",
+      "katsiaryna-andreyeva-daria-chultsova-trial-dates",
+      "katsiaryna-andreyeva-daria-chultsova-sentence",
+      "katsiaryna-andreyeva-daria-chultsova-defense-records",
+      "katsiaryna-andreyeva-daria-chultsova-monitoring",
+      "katsiaryna-andreyeva-daria-chultsova-appeal",
+      "katsiaryna-andreyeva-daria-chultsova-appeal-date-source",
+      "katsiaryna-andreyeva-daria-chultsova-recommendation"
+    ],
+    "sourceDocumentIds": [
+      "katsiaryna-andreyeva-daria-chultsova-report"
+    ],
+    "reportDate": "2021-10",
+    "lastKnownStatusAsOf": "2021-10",
+    "statusSummary": "截至 2021 年 10 月报告：Andreyeva 与 Chultsova 的两年刑期已在上诉中获维持；后续服刑、释放或其他案件未核查。",
+    "events": [
+      {
+        "eventId": "katsiaryna-andreyeva-daria-chultsova-arrest-event",
+        "caseId": "katsiaryna-andreyeva-daria-chultsova",
+        "eventType": "arrest",
+        "description": "Andreyeva 与 Chultsova 在直播示威期间被捕。",
+        "stageAtEvent": "investigation",
+        "date": {
+          "value": "2020-11-15",
+          "precision": "day",
+          "originalText": "November 15, 2020"
+        },
+        "evidenceIds": [
+          "katsiaryna-andreyeva-daria-chultsova-background",
+          "katsiaryna-andreyeva-daria-chultsova-arrest"
+        ]
+      },
+      {
+        "eventId": "katsiaryna-andreyeva-daria-chultsova-verdict-event",
+        "caseId": "katsiaryna-andreyeva-daria-chultsova",
+        "eventType": "conviction",
+        "description": "Andreyeva 与 Chultsova 被定罪并各判两年监禁。",
+        "stageAtEvent": "trial",
+        "date": {
+          "value": "2021-02-18",
+          "precision": "day",
+          "originalText": "February 18"
+        },
+        "evidenceIds": [
+          "katsiaryna-andreyeva-daria-chultsova-trial-dates",
+          "katsiaryna-andreyeva-daria-chultsova-sentence"
+        ]
+      },
+      {
+        "eventId": "katsiaryna-andreyeva-daria-chultsova-appeal-event",
+        "caseId": "katsiaryna-andreyeva-daria-chultsova",
+        "eventType": "proceeding",
+        "description": "上诉法院全面维持 Andreyeva 与 Chultsova 的原判。",
+        "stageAtEvent": "appeal",
+        "date": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "On April 23; the narrative sentence gives no year"
+        },
+        "evidenceIds": [
+          "katsiaryna-andreyeva-daria-chultsova-appeal"
+        ]
+      }
+    ],
+    "interventions": [
+      {
+        "interventionId": "katsiaryna-andreyeva-daria-chultsova-records-action",
+        "caseId": "katsiaryna-andreyeva-daria-chultsova",
+        "actor": "两人的辩护方",
+        "action": "申请取得交通停止的官方记录，核查执法行为是否造成中断。",
+        "category": "legal",
+        "executionStatus": "implemented",
+        "stageAtAction": "trial",
+        "date": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "Not recorded"
+        },
+        "observedOutcomeIds": [
+          "katsiaryna-andreyeva-daria-chultsova-record-request-denied"
+        ],
+        "relationshipToOutcome": "sequence_only",
+        "evidenceIds": [
+          "katsiaryna-andreyeva-daria-chultsova-defense-records"
+        ]
+      },
+      {
+        "interventionId": "katsiaryna-andreyeva-daria-chultsova-appeal-action",
+        "caseId": "katsiaryna-andreyeva-daria-chultsova",
+        "actor": "Andreyeva 与 Chultsova 的辩护方",
+        "action": "针对一审定罪提出上诉。",
+        "category": "legal",
+        "executionStatus": "implemented",
+        "stageAtAction": "appeal",
+        "date": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "Not recorded"
+        },
+        "observedOutcomeIds": [
+          "katsiaryna-andreyeva-daria-chultsova-sentences-upheld"
+        ],
+        "relationshipToOutcome": "sequence_only",
+        "evidenceIds": [
+          "katsiaryna-andreyeva-daria-chultsova-appeal"
+        ]
+      },
+      {
+        "interventionId": "katsiaryna-andreyeva-daria-chultsova-monitor-action",
+        "caseId": "katsiaryna-andreyeva-daria-chultsova",
+        "actor": "ABA 人权中心与 Human Rights Embassy",
+        "action": "以 TrialWatch 项目监测 2021 年 2 月的四场听证。",
+        "category": "monitoring",
+        "executionStatus": "implemented",
+        "stageAtAction": "trial",
+        "date": {
+          "value": "2021-02",
+          "precision": "month",
+          "originalText": "February 2021"
+        },
+        "observedOutcomeIds": [],
+        "relationshipToOutcome": "unknown",
+        "evidenceIds": [
+          "katsiaryna-andreyeva-daria-chultsova-monitoring"
+        ]
+      }
+    ],
+    "outcomes": [
+      {
+        "outcomeId": "katsiaryna-andreyeva-daria-chultsova-record-request-denied",
+        "caseId": "katsiaryna-andreyeva-daria-chultsova",
+        "description": "Andreyeva 与 Chultsova 的辩方取得交通中断官方记录的请求被拒绝。",
+        "type": "specific",
+        "observedDate": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "Not recorded"
+        },
+        "statusAsOf": "2021-10",
+        "evidenceIds": [
+          "katsiaryna-andreyeva-daria-chultsova-defense-records"
+        ]
+      },
+      {
+        "outcomeId": "katsiaryna-andreyeva-daria-chultsova-two-year-sentences",
+        "caseId": "katsiaryna-andreyeva-daria-chultsova",
+        "description": "Katsiaryna Andreyeva 与 Daria Chultsova 分别被判两年监禁。",
+        "type": "specific",
+        "observedDate": {
+          "value": "2021-02-18",
+          "precision": "day",
+          "originalText": "February 18, 2021"
+        },
+        "statusAsOf": "2021-10",
+        "evidenceIds": [
+          "katsiaryna-andreyeva-daria-chultsova-trial-dates",
+          "katsiaryna-andreyeva-daria-chultsova-sentence"
+        ]
+      },
+      {
+        "outcomeId": "katsiaryna-andreyeva-daria-chultsova-sentences-upheld",
+        "caseId": "katsiaryna-andreyeva-daria-chultsova",
+        "description": "Katsiaryna Andreyeva 与 Daria Chultsova 的定罪及两年刑期在上诉中全面获维持。",
+        "type": "specific",
+        "observedDate": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "On April 23; the narrative sentence gives no year"
+        },
+        "statusAsOf": "2021-10",
+        "evidenceIds": [
+          "katsiaryna-andreyeva-daria-chultsova-appeal",
+          "katsiaryna-andreyeva-daria-chultsova-sentence"
+        ]
+      }
+    ],
+    "reportRecommendations": [
+      {
+        "recommendationId": "katsiaryna-andreyeva-daria-chultsova-international-documentation",
+        "description": "作者建议国际监测机制记录此类侵害，保留审判与权利侵害材料。",
+        "actor": "报告所指国际监测机制",
+        "category": "international",
+        "evidenceIds": [
+          "katsiaryna-andreyeva-daria-chultsova-recommendation"
+        ]
+      }
+    ],
+    "unknowns": [
+      "两人的后续案件或报告之后的释放情况未经核查。",
+      "监测或国际倡议不被视为对判决变化的独立原因。",
+      "上诉原始裁判和脚注新闻未独立获取；正文上诉维持句只有 4 月 23 日而无年份，结构化日期留未知。脚注仅证明报告的书目标记，verified 不表示外部事件已核实。"
+    ],
+    "conflicts": []
+  },
+  {
+    "caseId": "mzia-amaglobeli",
+    "title": "Mzia Amaglobeli",
+    "country": "格鲁吉亚",
+    "personTypes": [
+      "journalist"
+    ],
+    "backgroundTags": [
+      "other"
+    ],
+    "problems": [
+      "detained",
+      "lawyer_access",
+      "other"
+    ],
+    "summary": "格鲁吉亚记者 Mzia Amaglobeli 在抗议现场掌掴警察局长后于 2025 年 1 月被捕。辩方挑战羁押并就一审判决请求无罪，TrialWatch 监测一审及上诉。法院在判决时变更罪名并判两年监禁，上诉法院维持原判；报告仅记载律师正在向最高法院提交进一步上诉。",
+    "evidenceIds": [
+      "mzia-amaglobeli-arrest",
+      "mzia-amaglobeli-detention-challenge",
+      "mzia-amaglobeli-detention-continued",
+      "mzia-amaglobeli-verdict",
+      "mzia-amaglobeli-appeals-filed",
+      "mzia-amaglobeli-appeal-upheld",
+      "mzia-amaglobeli-appeal-hearings",
+      "mzia-amaglobeli-supreme-court-pending",
+      "mzia-amaglobeli-monitoring",
+      "mzia-amaglobeli-appeal-document-date-a",
+      "mzia-amaglobeli-appeal-document-date-b"
+    ],
+    "sourceDocumentIds": [
+      "mzia-amaglobeli-report"
+    ],
+    "reportDate": "2026-01",
+    "lastKnownStatusAsOf": "2026-01",
+    "statusSummary": "截至 2026 年 1 月报告：Mzia Amaglobeli 的两年监禁判决在上诉中获维持；最高法院进一步上诉及欧洲人权法院申请均没有已核实的最终结果。",
+    "events": [
+      {
+        "eventId": "mzia-amaglobeli-arrest-event",
+        "caseId": "mzia-amaglobeli",
+        "eventType": "arrest",
+        "description": "Mzia Amaglobeli 被捕，最初被控袭击执行职务的警察。",
+        "stageAtEvent": "investigation",
+        "date": {
+          "value": "2025-01-12",
+          "precision": "day",
+          "originalText": "January 12, 2025"
+        },
+        "evidenceIds": [
+          "mzia-amaglobeli-arrest"
+        ]
+      },
+      {
+        "eventId": "mzia-amaglobeli-verdict-event",
+        "caseId": "mzia-amaglobeli",
+        "eventType": "conviction",
+        "description": "Mzia Amaglobeli 被以变更后的罪名判两年监禁。",
+        "stageAtEvent": "trial",
+        "date": {
+          "value": "2025-08-06",
+          "precision": "day",
+          "originalText": "August 6, 2025"
+        },
+        "evidenceIds": [
+          "mzia-amaglobeli-verdict"
+        ]
+      },
+      {
+        "eventId": "mzia-amaglobeli-appeal-event",
+        "caseId": "mzia-amaglobeli",
+        "eventType": "proceeding",
+        "description": "上诉法院维持 Mzia Amaglobeli 的一审判决。",
+        "stageAtEvent": "appeal",
+        "date": {
+          "value": "2025-11",
+          "precision": "month",
+          "originalText": "November 11, 14, and 18, 2025"
+        },
+        "evidenceIds": [
+          "mzia-amaglobeli-appeal-upheld",
+          "mzia-amaglobeli-appeal-hearings"
+        ]
+      }
+    ],
+    "interventions": [
+      {
+        "interventionId": "mzia-amaglobeli-detention-action",
+        "caseId": "mzia-amaglobeli",
+        "actor": "Mzia Amaglobeli 的辩护律师",
+        "action": "再次挑战审前羁押，并宣布向欧洲人权法院提交相关申请。",
+        "category": "legal",
+        "executionStatus": "implemented",
+        "stageAtAction": "trial",
+        "date": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "Not recorded"
+        },
+        "observedOutcomeIds": [
+          "mzia-amaglobeli-detention-maintained"
+        ],
+        "relationshipToOutcome": "sequence_only",
+        "evidenceIds": [
+          "mzia-amaglobeli-detention-challenge",
+          "mzia-amaglobeli-detention-continued"
+        ]
+      },
+      {
+        "interventionId": "mzia-amaglobeli-appeal-action",
+        "caseId": "mzia-amaglobeli",
+        "actor": "Mzia Amaglobeli 的辩护律师",
+        "action": "针对一审判决上诉并请求无罪。",
+        "category": "legal",
+        "executionStatus": "implemented",
+        "stageAtAction": "appeal",
+        "date": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "Not recorded"
+        },
+        "observedOutcomeIds": [
+          "mzia-amaglobeli-judgment-upheld"
+        ],
+        "relationshipToOutcome": "sequence_only",
+        "evidenceIds": [
+          "mzia-amaglobeli-appeals-filed",
+          "mzia-amaglobeli-appeal-upheld"
+        ]
+      },
+      {
+        "interventionId": "mzia-amaglobeli-supreme-court-action",
+        "caseId": "mzia-amaglobeli",
+        "actor": "Mzia Amaglobeli 的律师",
+        "action": "报告记为正在向最高法院提交上诉，尚不能确认已完成提交。",
+        "category": "legal",
+        "executionStatus": "unknown",
+        "stageAtAction": "appeal",
+        "date": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "Not recorded"
+        },
+        "observedOutcomeIds": [
+          "mzia-amaglobeli-further-appeal-unrecorded"
+        ],
+        "relationshipToOutcome": "unknown",
+        "evidenceIds": [
+          "mzia-amaglobeli-supreme-court-pending"
+        ]
+      },
+      {
+        "interventionId": "mzia-amaglobeli-monitor-action",
+        "caseId": "mzia-amaglobeli",
+        "actor": "Clooney Foundation for Justice / TrialWatch",
+        "action": "派监测员现场观察一审与上诉。",
+        "category": "monitoring",
+        "executionStatus": "implemented",
+        "stageAtAction": "unknown",
+        "date": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "Not recorded"
+        },
+        "observedOutcomeIds": [],
+        "relationshipToOutcome": "unknown",
+        "evidenceIds": [
+          "mzia-amaglobeli-monitoring"
+        ]
+      }
+    ],
+    "outcomes": [
+      {
+        "outcomeId": "mzia-amaglobeli-detention-maintained",
+        "caseId": "mzia-amaglobeli",
+        "description": "Mzia Amaglobeli 的继续羁押获准，辩方该次挑战没有带来释放。",
+        "type": "specific",
+        "observedDate": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "Not recorded"
+        },
+        "statusAsOf": "2026-01",
+        "evidenceIds": [
+          "mzia-amaglobeli-detention-challenge",
+          "mzia-amaglobeli-detention-continued"
+        ]
+      },
+      {
+        "outcomeId": "mzia-amaglobeli-two-year-sentence",
+        "caseId": "mzia-amaglobeli",
+        "description": "Mzia Amaglobeli 被以“抗拒警察”的变更罪名判两年监禁。",
+        "type": "specific",
+        "observedDate": {
+          "value": "2025-08-06",
+          "precision": "day",
+          "originalText": "August 6, 2025"
+        },
+        "statusAsOf": "2026-01",
+        "evidenceIds": [
+          "mzia-amaglobeli-verdict"
+        ]
+      },
+      {
+        "outcomeId": "mzia-amaglobeli-judgment-upheld",
+        "caseId": "mzia-amaglobeli",
+        "description": "Mzia Amaglobeli 的一审判决在上诉中全面获维持。",
+        "type": "specific",
+        "observedDate": {
+          "value": "2025-11",
+          "precision": "month",
+          "originalText": "November 2025 appeal hearings"
+        },
+        "statusAsOf": "2026-01",
+        "evidenceIds": [
+          "mzia-amaglobeli-appeal-upheld",
+          "mzia-amaglobeli-appeal-hearings"
+        ]
+      },
+      {
+        "outcomeId": "mzia-amaglobeli-further-appeal-unrecorded",
+        "caseId": "mzia-amaglobeli",
+        "description": "Mzia Amaglobeli 的律师被记载为正在向最高法院提交上诉；报告未载该院决定。",
+        "type": "pending",
+        "observedDate": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "Not recorded"
+        },
+        "statusAsOf": "2026-01",
+        "evidenceIds": [
+          "mzia-amaglobeli-supreme-court-pending"
+        ]
+      }
+    ],
+    "reportRecommendations": [],
+    "unknowns": [
+      "最高法院上诉和欧洲人权法院申请的受理、决定及报告之后的变化未核查。",
+      "作者有关不公平审判、政治动机或过度处罚的分析不是另一个法院已经认定的结果；没有从专家结论硬凑行动建议。"
+    ],
+    "conflicts": [
+      {
+        "description": "上诉判决文件日期标记不一致：PDF43 脚注标 2025-11-18，PDF51 方法脚注列 2025-12-02。报告未解释是否为口头宣告、书面文件或不同版本；事件保留 2025 年 11 月，未推算任何期限。",
+        "evidenceIds": [
+          "mzia-amaglobeli-appeal-document-date-a",
+          "mzia-amaglobeli-appeal-document-date-b",
+          "mzia-amaglobeli-appeal-hearings"
+        ]
+      }
+    ]
+  },
+  {
+    "caseId": "jose-ruben-zamora",
+    "title": "José Rubén Zamora",
+    "country": "危地马拉",
+    "personTypes": [
+      "journalist"
+    ],
+    "backgroundTags": [
+      "reporting",
+      "investigation_report"
+    ],
+    "problems": [
+      "detained",
+      "lawyer_access",
+      "file_access",
+      "threats"
+    ],
+    "summary": "调查记者 José Rubén Zamora 在 2022 年 7 月被捕，2023 年一审被判洗钱罪成立、另两项指控无罪。辩方就排除证据和实体问题提出上诉，区域人权机构表达关切并重申探访请求，TrialWatch 进行监测。上诉法院随后撤销了有罪及无罪判项并发回重审；截至 2024 年 2 月报告，Zamora 仍被羁押，重审待最高法院审查程序处理。",
+    "evidenceIds": [
+      "jose-ruben-zamora-identity",
+      "jose-ruben-zamora-arrest",
+      "jose-ruben-zamora-defense-obstacles",
+      "jose-ruben-zamora-first-verdict-date",
+      "jose-ruben-zamora-first-conviction",
+      "jose-ruben-zamora-first-acquittals",
+      "jose-ruben-zamora-defense-appeals",
+      "jose-ruben-zamora-defense-merits",
+      "jose-ruben-zamora-international-statement",
+      "jose-ruben-zamora-annulment",
+      "jose-ruben-zamora-annulment-date-footnote",
+      "jose-ruben-zamora-pending-status",
+      "jose-ruben-zamora-monitoring",
+      "jose-ruben-zamora-recommendation"
+    ],
+    "sourceDocumentIds": [
+      "jose-ruben-zamora-report"
+    ],
+    "reportDate": "2024-02",
+    "lastKnownStatusAsOf": "2024-02",
+    "statusSummary": "截至 2024 年 2 月报告：José Rubén Zamora 仍在押，重审待最高法院刑事庭的审查决定；撤销原判不是最终无罪或获释。",
+    "events": [
+      {
+        "eventId": "jose-ruben-zamora-arrest-event",
+        "caseId": "jose-ruben-zamora",
+        "eventType": "arrest",
+        "description": "José Rubén Zamora 遭突袭搜查并被捕。",
+        "stageAtEvent": "investigation",
+        "date": {
+          "value": "2022-07-29",
+          "precision": "day",
+          "originalText": "July 29, 2022"
+        },
+        "evidenceIds": [
+          "jose-ruben-zamora-arrest"
+        ]
+      },
+      {
+        "eventId": "jose-ruben-zamora-verdict-event",
+        "caseId": "jose-ruben-zamora",
+        "eventType": "conviction",
+        "description": "José Rubén Zamora 一审洗钱罪成立并判六年监禁，勒索和影响力交易两项无罪。",
+        "stageAtEvent": "trial",
+        "date": {
+          "value": "2023-06",
+          "precision": "month",
+          "originalText": "June 14; chapter context 2023"
+        },
+        "evidenceIds": [
+          "jose-ruben-zamora-first-verdict-date",
+          "jose-ruben-zamora-first-conviction",
+          "jose-ruben-zamora-first-acquittals"
+        ]
+      },
+      {
+        "eventId": "jose-ruben-zamora-annulment-event",
+        "caseId": "jose-ruben-zamora",
+        "eventType": "proceeding",
+        "description": "José Rubén Zamora 的原有有罪和无罪判项均被撤销，并发回重审；日历日期存在报告内部差异。",
+        "stageAtEvent": "appeal",
+        "date": {
+          "value": "2023-10",
+          "precision": "month",
+          "originalText": "Body: October 10, 2023; footnote: October 20, 2023"
+        },
+        "evidenceIds": [
+          "jose-ruben-zamora-annulment",
+          "jose-ruben-zamora-annulment-date-footnote"
+        ]
+      }
+    ],
+    "interventions": [
+      {
+        "interventionId": "jose-ruben-zamora-defense-appeal-action",
+        "caseId": "jose-ruben-zamora",
+        "actor": "José Rubén Zamora 的辩护律师",
+        "action": "对排除辩护证据及一审实体裁判提起上诉；法院后来未审议辩方上诉。",
+        "category": "legal",
+        "executionStatus": "implemented",
+        "stageAtAction": "appeal",
+        "date": {
+          "value": "2023-07",
+          "precision": "month",
+          "originalText": "In July 2023"
+        },
+        "observedOutcomeIds": [
+          "jose-ruben-zamora-judgment-annulled"
+        ],
+        "relationshipToOutcome": "sequence_only",
+        "evidenceIds": [
+          "jose-ruben-zamora-defense-appeals",
+          "jose-ruben-zamora-defense-merits",
+          "jose-ruben-zamora-annulment"
+        ]
+      },
+      {
+        "interventionId": "jose-ruben-zamora-regional-statement-action",
+        "caseId": "jose-ruben-zamora",
+        "actor": "美洲人权委员会及言论自由特别报告员",
+        "action": "对刑期表达关切，并重申请求现场探访核实 Zamora 处境。",
+        "category": "international",
+        "executionStatus": "implemented",
+        "stageAtAction": "postjudgment",
+        "date": {
+          "value": "2023-06-21",
+          "precision": "day",
+          "originalText": "June 21, 2023"
+        },
+        "observedOutcomeIds": [],
+        "relationshipToOutcome": "unknown",
+        "evidenceIds": [
+          "jose-ruben-zamora-international-statement"
+        ]
+      },
+      {
+        "interventionId": "jose-ruben-zamora-monitor-action",
+        "caseId": "jose-ruben-zamora",
+        "actor": "ABA 人权中心 / TrialWatch",
+        "action": "通过视频、录音及现场观察监测多次诉讼听证。",
+        "category": "monitoring",
+        "executionStatus": "implemented",
+        "stageAtAction": "unknown",
+        "date": {
+          "value": "2022-08/2023-06",
+          "precision": "range",
+          "originalText": "August 2022 to June 2023"
+        },
+        "observedOutcomeIds": [],
+        "relationshipToOutcome": "unknown",
+        "evidenceIds": [
+          "jose-ruben-zamora-monitoring"
+        ]
+      }
+    ],
+    "outcomes": [
+      {
+        "outcomeId": "jose-ruben-zamora-first-instance-six-years",
+        "caseId": "jose-ruben-zamora",
+        "description": "José Rubén Zamora 一审被判洗钱罪成立、六年监禁，另两项指控无罪；这些判项后来均被撤销。",
+        "type": "specific",
+        "observedDate": {
+          "value": "2023-06",
+          "precision": "month",
+          "originalText": "June 14; chapter context 2023"
+        },
+        "statusAsOf": "2024-02",
+        "evidenceIds": [
+          "jose-ruben-zamora-first-verdict-date",
+          "jose-ruben-zamora-first-conviction",
+          "jose-ruben-zamora-first-acquittals",
+          "jose-ruben-zamora-annulment"
+        ]
+      },
+      {
+        "outcomeId": "jose-ruben-zamora-judgment-annulled",
+        "caseId": "jose-ruben-zamora",
+        "description": "José Rubén Zamora 的全部原判被撤销并发回重审；这同时撤销有罪及无罪判项，不是最终无罪。",
+        "type": "partial",
+        "observedDate": {
+          "value": "2023-10",
+          "precision": "month",
+          "originalText": "Body: October 10; footnote: October 20, 2023"
+        },
+        "statusAsOf": "2024-02",
+        "evidenceIds": [
+          "jose-ruben-zamora-annulment",
+          "jose-ruben-zamora-annulment-date-footnote"
+        ]
+      },
+      {
+        "outcomeId": "jose-ruben-zamora-detained-awaiting-retrial",
+        "caseId": "jose-ruben-zamora",
+        "description": "José Rubén Zamora 截至 2024 年 2 月仍被羁押，重审等待最高法院刑事庭的审查决定。",
+        "type": "pending",
+        "observedDate": {
+          "value": "2024-02",
+          "precision": "month",
+          "originalText": "publication of this report in February 2024"
+        },
+        "statusAsOf": "2024-02",
+        "evidenceIds": [
+          "jose-ruben-zamora-pending-status"
+        ]
+      }
+    ],
+    "reportRecommendations": [
+      {
+        "recommendationId": "jose-ruben-zamora-release-dismiss",
+        "description": "按报告建议立即释放 Zamora、撤销全部指控；若重审仍发生，应遵循正当程序及言论自由标准。",
+        "actor": "危地马拉国家机关",
+        "category": "legal",
+        "evidenceIds": [
+          "jose-ruben-zamora-recommendation"
+        ]
+      }
+    ],
+    "unknowns": [
+      "报告之后的最高法院审查、重审或羁押变化未经核查。",
+      "共同被告 Samari Gómez 的结果及 elPeriódico 机构停业不是 Zamora 的个人无罪、获释或撤案结果。",
+      "区域机构表达关切、请求探访与作者建议，均不能自动视为已实现释放或已受理个案。"
+    ],
+    "conflicts": [
+      {
+        "description": "PDF56 正文写上诉撤销裁判作于 2023-10-10，而同页脚注245写 2023-10-20。保留两处原文，事件只按 2023 年 10 月排序，不据此计算期限。",
+        "evidenceIds": [
+          "jose-ruben-zamora-annulment",
+          "jose-ruben-zamora-annulment-date-footnote"
+        ]
+      }
+    ]
+  },
+  {
+    "caseId": "marina-zolotova",
+    "title": "Marina Zolotova",
+    "country": "白俄罗斯",
+    "personTypes": [
+      "journalist"
+    ],
+    "backgroundTags": [
+      "reporting"
+    ],
+    "problems": [
+      "detained",
+      "lawyer_access",
+      "file_access",
+      "expression_restricted"
+    ],
+    "summary": "Tut.By 总编辑 Marina Zolotova 在 BeLTA 付费新闻密码分享案件中被追诉。其他记者的刑事指控被行政罚款替代，而 Zolotova 被继续起诉并于 2019 年 2 月被定罪、罚款约 3400 欧元。ABA 人权中心进行了庭审监测；截至报告记载的 2019 年 7 月 26 日，法院尚未公开说明定罪和罚款理由的判决。",
+    "evidenceIds": [
+      "marina-zolotova-identity-background",
+      "marina-zolotova-arrest-background",
+      "marina-zolotova-others-not-her",
+      "marina-zolotova-initial-interrogation",
+      "marina-zolotova-verdict",
+      "marina-zolotova-monitor-letter",
+      "marina-zolotova-monitor-coverage",
+      "marina-zolotova-judgment-unpublished",
+      "marina-zolotova-status-date",
+      "marina-zolotova-recommendation"
+    ],
+    "sourceDocumentIds": [
+      "marina-zolotova-report"
+    ],
+    "reportDate": "2019-07",
+    "lastKnownStatusAsOf": "2019-07-26",
+    "statusSummary": "截至报告所述 2019-07-26：Marina Zolotova 已被定罪并罚款，判决理由尚未公开；没有核实之后的上诉或其他案件。",
+    "events": [
+      {
+        "eventId": "marina-zolotova-arrest-event",
+        "caseId": "marina-zolotova",
+        "eventType": "arrest",
+        "description": "Marina Zolotova 在涉嫌新闻密码分享的调查中被捕。",
+        "stageAtEvent": "investigation",
+        "date": {
+          "value": "2018-08",
+          "precision": "month",
+          "originalText": "In August 2018"
+        },
+        "evidenceIds": [
+          "marina-zolotova-arrest-background"
+        ]
+      },
+      {
+        "eventId": "marina-zolotova-verdict-event",
+        "caseId": "marina-zolotova",
+        "eventType": "conviction",
+        "description": "Marina Zolotova 被定罪并罚款约 3400 欧元。",
+        "stageAtEvent": "trial",
+        "date": {
+          "value": "2019-02-25",
+          "precision": "day",
+          "originalText": "February 25, 2019"
+        },
+        "evidenceIds": [
+          "marina-zolotova-verdict"
+        ]
+      }
+    ],
+    "interventions": [
+      {
+        "interventionId": "marina-zolotova-monitor-action",
+        "caseId": "marina-zolotova",
+        "actor": "ABA 人权中心 / TrialWatch",
+        "action": "事先通知法院并派员观察庭审；2 月 18 日闭门部分未观察。",
+        "category": "monitoring",
+        "executionStatus": "implemented",
+        "stageAtAction": "trial",
+        "date": {
+          "value": "2019-02",
+          "precision": "month",
+          "originalText": "February 2019"
+        },
+        "observedOutcomeIds": [],
+        "relationshipToOutcome": "unknown",
+        "evidenceIds": [
+          "marina-zolotova-monitor-letter",
+          "marina-zolotova-monitor-coverage"
+        ]
+      }
+    ],
+    "outcomes": [
+      {
+        "outcomeId": "marina-zolotova-conviction-fine",
+        "caseId": "marina-zolotova",
+        "description": "Marina Zolotova 被定罪并处约 3400 欧元罚款；不是其他记者获得的撤销刑事指控结果。",
+        "type": "specific",
+        "observedDate": {
+          "value": "2019-02-25",
+          "precision": "day",
+          "originalText": "February 25, 2019"
+        },
+        "statusAsOf": "2019-07-26",
+        "evidenceIds": [
+          "marina-zolotova-verdict",
+          "marina-zolotova-others-not-her"
+        ]
+      },
+      {
+        "outcomeId": "marina-zolotova-reasons-unpublished",
+        "caseId": "marina-zolotova",
+        "description": "Marina Zolotova 的定罪和罚款已宣告，但截至 2019-07-26 法院尚未公开判决理由。",
+        "type": "pending",
+        "observedDate": {
+          "value": "2019-07-26",
+          "precision": "day",
+          "originalText": "It is now July 26, 2019."
+        },
+        "statusAsOf": "2019-07-26",
+        "evidenceIds": [
+          "marina-zolotova-judgment-unpublished",
+          "marina-zolotova-status-date"
+        ]
+      }
+    ],
+    "reportRecommendations": [
+      {
+        "recommendationId": "marina-zolotova-media-freedom",
+        "description": "依作者建议，保障 Tut.By 等独立媒体自由运作。",
+        "actor": "白俄罗斯国家机关",
+        "category": "other",
+        "evidenceIds": [
+          "marina-zolotova-recommendation"
+        ]
+      }
+    ],
+    "unknowns": [
+      "此次 2019 年报告之后的上诉、案件变化以及当事人后来的其他起诉未经核查。",
+      "没有独立取得尚未公开的判决理由或报告脚注新闻；审判监测与罚款数额之间没有可归因的因果证据。"
+    ],
+    "conflicts": []
+  },
+  {
+    "caseId": "svetlana-prokopyeva",
+    "title": "Svetlana Prokopyeva",
+    "country": "俄罗斯",
+    "personTypes": [
+      "journalist"
+    ],
+    "backgroundTags": [
+      "reporting"
+    ],
+    "problems": [
+      "expression_restricted",
+      "other"
+    ],
+    "summary": "记者 Svetlana Prokopyeva 因一篇广播评论被控“为恐怖主义辩护”。辩方提交专家意见、请求传唤控方专家并申请公开直播后续听证；CFJ 通过录音和直播进行监测。辩方部分取证请求被拒，法院于 2020 年 7 月判其有罪并罚款 50 万卢布、没收电脑，而非检方请求的六年监禁。",
+    "evidenceIds": [
+      "svetlana-prokopyeva-background",
+      "svetlana-prokopyeva-sentence",
+      "svetlana-prokopyeva-prosecution-request",
+      "svetlana-prokopyeva-expert-reports",
+      "svetlana-prokopyeva-experts-rejected",
+      "svetlana-prokopyeva-witness-motion",
+      "svetlana-prokopyeva-motion-denied",
+      "svetlana-prokopyeva-livestream",
+      "svetlana-prokopyeva-monitoring",
+      "svetlana-prokopyeva-report-count-difference"
+    ],
+    "sourceDocumentIds": [
+      "svetlana-prokopyeva-report"
+    ],
+    "reportDate": "2021-01",
+    "lastKnownStatusAsOf": "2021-01",
+    "statusSummary": "截至封面所标 2021 年 1 月报告：Svetlana Prokopyeva 被记载为已定罪并罚款，未记录该刑事定罪上诉的最终结果；另案诽谤诉讼结果不混入本案。",
+    "events": [
+      {
+        "eventId": "svetlana-prokopyeva-conviction-event",
+        "caseId": "svetlana-prokopyeva",
+        "eventType": "conviction",
+        "description": "Svetlana Prokopyeva 被定罪、罚款 50 万卢布并被没收电脑。",
+        "stageAtEvent": "trial",
+        "date": {
+          "value": "2020-07-06",
+          "precision": "day",
+          "originalText": "July 6, 2020"
+        },
+        "evidenceIds": [
+          "svetlana-prokopyeva-sentence"
+        ]
+      }
+    ],
+    "interventions": [
+      {
+        "interventionId": "svetlana-prokopyeva-experts-action",
+        "caseId": "svetlana-prokopyeva",
+        "actor": "Svetlana Prokopyeva 的辩护律师及专家",
+        "action": "提交语言学与心理学专家报告，反驳广播评论支持恐怖主义的指控。",
+        "category": "legal",
+        "executionStatus": "implemented",
+        "stageAtAction": "trial",
+        "date": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "Not recorded"
+        },
+        "observedOutcomeIds": [
+          "svetlana-prokopyeva-defense-reports-rejected"
+        ],
+        "relationshipToOutcome": "sequence_only",
+        "evidenceIds": [
+          "svetlana-prokopyeva-expert-reports",
+          "svetlana-prokopyeva-experts-rejected"
+        ]
+      },
+      {
+        "interventionId": "svetlana-prokopyeva-witness-action",
+        "caseId": "svetlana-prokopyeva",
+        "actor": "Svetlana Prokopyeva 的辩护律师",
+        "action": "要求传唤两名控方专家，并在被拒后请求排除其报告。",
+        "category": "legal",
+        "executionStatus": "implemented",
+        "stageAtAction": "trial",
+        "date": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "Not recorded"
+        },
+        "observedOutcomeIds": [
+          "svetlana-prokopyeva-evidence-motions-denied"
+        ],
+        "relationshipToOutcome": "sequence_only",
+        "evidenceIds": [
+          "svetlana-prokopyeva-witness-motion",
+          "svetlana-prokopyeva-motion-denied"
+        ]
+      },
+      {
+        "interventionId": "svetlana-prokopyeva-broadcast-action",
+        "caseId": "svetlana-prokopyeva",
+        "actor": "Svetlana Prokopyeva 的辩护律师",
+        "action": "申请对其余听证进行公开直播。",
+        "category": "legal",
+        "executionStatus": "implemented",
+        "stageAtAction": "trial",
+        "date": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "Not recorded"
+        },
+        "observedOutcomeIds": [
+          "svetlana-prokopyeva-livestream-allowed"
+        ],
+        "relationshipToOutcome": "sequence_only",
+        "evidenceIds": [
+          "svetlana-prokopyeva-livestream"
+        ]
+      },
+      {
+        "interventionId": "svetlana-prokopyeva-monitor-action",
+        "caseId": "svetlana-prokopyeva",
+        "actor": "Clooney Foundation for Justice / TrialWatch",
+        "action": "使用听证录音及后续视频直播监测审判。",
+        "category": "monitoring",
+        "executionStatus": "implemented",
+        "stageAtAction": "trial",
+        "date": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "Not recorded"
+        },
+        "observedOutcomeIds": [],
+        "relationshipToOutcome": "unknown",
+        "evidenceIds": [
+          "svetlana-prokopyeva-monitoring",
+          "svetlana-prokopyeva-livestream"
+        ]
+      }
+    ],
+    "outcomes": [
+      {
+        "outcomeId": "svetlana-prokopyeva-livestream-allowed",
+        "caseId": "svetlana-prokopyeva",
+        "description": "Svetlana Prokopyeva 案辩方申请成功后，其余听证获准在 YouTube 直播。",
+        "type": "partial",
+        "observedDate": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "Not recorded"
+        },
+        "statusAsOf": "2021-01",
+        "evidenceIds": [
+          "svetlana-prokopyeva-livestream"
+        ]
+      },
+      {
+        "outcomeId": "svetlana-prokopyeva-evidence-motions-denied",
+        "caseId": "svetlana-prokopyeva",
+        "description": "Svetlana Prokopyeva 的辩方传唤两名控方专家及排除其报告的请求均被拒绝。",
+        "type": "specific",
+        "observedDate": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "Not recorded"
+        },
+        "statusAsOf": "2021-01",
+        "evidenceIds": [
+          "svetlana-prokopyeva-witness-motion",
+          "svetlana-prokopyeva-motion-denied"
+        ]
+      },
+      {
+        "outcomeId": "svetlana-prokopyeva-defense-reports-rejected",
+        "caseId": "svetlana-prokopyeva",
+        "description": "Svetlana Prokopyeva 的辩方专家报告和证词未被法院在判决中采纳。",
+        "type": "specific",
+        "observedDate": {
+          "value": "2020-07-06",
+          "precision": "day",
+          "originalText": "July 6, 2020; verdict"
+        },
+        "statusAsOf": "2021-01",
+        "evidenceIds": [
+          "svetlana-prokopyeva-experts-rejected",
+          "svetlana-prokopyeva-sentence"
+        ]
+      },
+      {
+        "outcomeId": "svetlana-prokopyeva-conviction-fine",
+        "caseId": "svetlana-prokopyeva",
+        "description": "Svetlana Prokopyeva 被判有罪，罚款 50 万卢布且电脑被没收；这不是无罪判决，也不是检方请求的六年监禁。",
+        "type": "specific",
+        "observedDate": {
+          "value": "2020-07-06",
+          "precision": "day",
+          "originalText": "July 6, 2020"
+        },
+        "statusAsOf": "2021-01",
+        "evidenceIds": [
+          "svetlana-prokopyeva-sentence",
+          "svetlana-prokopyeva-prosecution-request"
+        ]
+      }
+    ],
+    "reportRecommendations": [],
+    "unknowns": [
+      "该刑事定罪上诉的最终结果及封面报告日期之后的发展未经核查；脚注中另案诽谤诉讼被驳回不能填补这一空白。",
+      "报告结论主要是权利与审判公平性评估，没有从中虚构具体行动建议。",
+      "官方文件名写 February-2021，封面写 January 2021；报告日期按封面保留为 2021-01，未推测精确出版日。"
+    ],
+    "conflicts": [
+      {
+        "description": "辩方专家报告计数不同：PDF10 说“三份”，PDF13 说“四份、七名专家”。结构化行动只写提交专家报告，不据此生成精确数量。",
+        "evidenceIds": [
+          "svetlana-prokopyeva-expert-reports",
+          "svetlana-prokopyeva-report-count-difference"
+        ]
+      }
+    ]
+  },
+  {
+    "caseId": "bao-choy",
+    "title": "Bao Choy Yuk-ling",
+    "country": "中国香港",
+    "personTypes": [
+      "journalist"
+    ],
+    "backgroundTags": [
+      "investigation_report",
+      "reporting"
+    ],
+    "problems": [
+      "expression_restricted"
+    ],
+    "summary": "调查记者Bao Choy因调查元朗袭击事件时查询车辆登记资料，被指在申请表作出虚假陈述。辩方就表格用语、犯罪要件和公共资料使用进行抗辩；法院判罚款，Bao Choy随后提出上诉。",
+    "evidenceIds": [
+      "bao-choy-background",
+      "bao-choy-trial-defense",
+      "bao-choy-verdict",
+      "bao-choy-appeal-filed",
+      "bao-choy-appeal-pending",
+      "bao-choy-monitoring",
+      "bao-choy-appeal-recommendation"
+    ],
+    "sourceDocumentIds": [
+      "bao-choy-report"
+    ],
+    "reportDate": "2021-07",
+    "lastKnownStatusAsOf": "2021-07",
+    "statusSummary": "截至2021年7月报告，Bao Choy被判两项罪名成立及罚款港币6,000元；上诉未决。未核查此后进展。",
+    "events": [
+      {
+        "eventId": "bao-choy-convicted",
+        "caseId": "bao-choy",
+        "eventType": "conviction",
+        "description": "Bao Choy被裁定两项罪名成立并处罚款。",
+        "stageAtEvent": "postjudgment",
+        "date": {
+          "value": "2021-04-22",
+          "precision": "day",
+          "originalText": "On April 22, 2021"
+        },
+        "evidenceIds": [
+          "bao-choy-verdict"
+        ]
+      }
+    ],
+    "interventions": [
+      {
+        "interventionId": "bao-choy-defense",
+        "caseId": "bao-choy",
+        "actor": "辩护律师",
+        "action": "质疑虚假陈述犯罪要件、表格含义及限制查询目的的法律权限。",
+        "category": "legal",
+        "executionStatus": "implemented",
+        "stageAtAction": "trial",
+        "date": {
+          "value": "2021-03-24",
+          "precision": "day",
+          "originalText": "March 24, 2021"
+        },
+        "observedOutcomeIds": [
+          "bao-choy-conviction-fine"
+        ],
+        "relationshipToOutcome": "sequence_only",
+        "evidenceIds": [
+          "bao-choy-trial-defense"
+        ]
+      },
+      {
+        "interventionId": "bao-choy-appeal",
+        "caseId": "bao-choy",
+        "actor": "Bao Choy一方",
+        "action": "提出针对定罪的上诉，并于5月5日宣布已递交。",
+        "category": "legal",
+        "executionStatus": "implemented",
+        "stageAtAction": "appeal",
+        "date": {
+          "value": "2021-05-05",
+          "precision": "day",
+          "originalText": "On May 5, 2021, Bao Choy announced that she had submitted an appeal."
+        },
+        "observedOutcomeIds": [
+          "bao-choy-appeal-unresolved"
+        ],
+        "relationshipToOutcome": "sequence_only",
+        "evidenceIds": [
+          "bao-choy-appeal-filed",
+          "bao-choy-appeal-pending"
+        ]
+      },
+      {
+        "interventionId": "bao-choy-trialwatch",
+        "caseId": "bao-choy",
+        "actor": "TrialWatch",
+        "action": "观察庭审及宣判，形成公平审判评估。",
+        "category": "monitoring",
+        "executionStatus": "implemented",
+        "stageAtAction": "trial",
+        "date": {
+          "value": "2021-03-24/2021-04-22",
+          "precision": "range",
+          "originalText": "March 24, 2021 ... April 2 2, 2021"
+        },
+        "observedOutcomeIds": [],
+        "relationshipToOutcome": "unknown",
+        "evidenceIds": [
+          "bao-choy-monitoring"
+        ]
+      }
+    ],
+    "outcomes": [
+      {
+        "outcomeId": "bao-choy-conviction-fine",
+        "caseId": "bao-choy",
+        "description": "Bao Choy被判罚款港币6,000元。",
+        "type": "specific",
+        "observedDate": {
+          "value": "2021-04-22",
+          "precision": "day",
+          "originalText": "On April 22, 2021"
+        },
+        "statusAsOf": "2021-07",
+        "evidenceIds": [
+          "bao-choy-verdict"
+        ]
+      },
+      {
+        "outcomeId": "bao-choy-appeal-unresolved",
+        "caseId": "bao-choy",
+        "description": "Bao Choy的上诉截至2021年7月报告仍未决。",
+        "type": "pending",
+        "observedDate": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "Her appeal is pending."
+        },
+        "statusAsOf": "2021-07",
+        "evidenceIds": [
+          "bao-choy-appeal-pending"
+        ]
+      }
+    ],
+    "reportRecommendations": [
+      {
+        "recommendationId": "bao-choy-resolve-on-appeal",
+        "description": "在上诉中解决报告提出的合法性及不当目的疑虑。",
+        "actor": "上诉法院",
+        "category": "legal",
+        "evidenceIds": [
+          "bao-choy-appeal-recommendation"
+        ]
+      }
+    ],
+    "unknowns": [
+      "报告未提供上诉终局结果，也未证明监测或公开讨论改变了裁判。"
+    ],
+    "conflicts": []
+  },
+  {
+    "caseId": "malaysiakini-steven-gan",
+    "title": "Malaysiakini 与 Steven Gan",
+    "country": "马来西亚",
+    "personTypes": [
+      "journalist",
+      "other"
+    ],
+    "backgroundTags": [
+      "reporting",
+      "other"
+    ],
+    "problems": [
+      "expression_restricted"
+    ],
+    "summary": "Malaysiakini及总编辑Steven Gan因读者评论被控藐视法庭。Malaysiakini在警方通知后删除评论并在庭审中否认知情及出版责任。联邦法院判Malaysiakini有罪并罚款，但Steven Gan获判无罪；机构随后众筹及申请复核。",
+    "evidenceIds": [
+      "malaysiakini-steven-gan-background",
+      "malaysiakini-steven-gan-comment-removal",
+      "malaysiakini-steven-gan-defense-and-verdict",
+      "malaysiakini-steven-gan-fine",
+      "malaysiakini-steven-gan-crowdfunding",
+      "malaysiakini-steven-gan-review-request",
+      "malaysiakini-steven-gan-monitoring",
+      "malaysiakini-steven-gan-set-aside-recommendation"
+    ],
+    "sourceDocumentIds": [
+      "malaysiakini-steven-gan-report"
+    ],
+    "reportDate": "2021-10",
+    "lastKnownStatusAsOf": "2021-10",
+    "statusSummary": "截至2021年10月报告，Malaysiakini被判藐视法庭及罚款RM 500,000，Steven Gan就本案获判无罪；Malaysiakini复核听证排期10月12日，尚无复核结果。",
+    "events": [
+      {
+        "eventId": "malaysiakini-steven-gan-verdict",
+        "caseId": "malaysiakini-steven-gan",
+        "eventType": "verdict",
+        "description": "法院对Malaysiakini作有罪裁决，同时判Steven Gan无罪。",
+        "stageAtEvent": "postjudgment",
+        "date": {
+          "value": "2021-02-19",
+          "precision": "day",
+          "originalText": "On February 19, 2021"
+        },
+        "evidenceIds": [
+          "malaysiakini-steven-gan-defense-and-verdict",
+          "malaysiakini-steven-gan-fine"
+        ]
+      }
+    ],
+    "interventions": [
+      {
+        "interventionId": "malaysiakini-steven-gan-remove-comments",
+        "caseId": "malaysiakini-steven-gan",
+        "actor": "Malaysiakini编辑团队",
+        "action": "警方通知后删除相关评论、封禁发布用户并致歉。",
+        "category": "other",
+        "executionStatus": "implemented",
+        "stageAtAction": "investigation",
+        "date": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "notified by police; twelve minutes later"
+        },
+        "observedOutcomeIds": [],
+        "relationshipToOutcome": "unknown",
+        "evidenceIds": [
+          "malaysiakini-steven-gan-comment-removal"
+        ]
+      },
+      {
+        "interventionId": "malaysiakini-steven-gan-legal-defense",
+        "caseId": "malaysiakini-steven-gan",
+        "actor": "Malaysiakini辩护律师",
+        "action": "就内容准则合规及评论责任提出抗辩。",
+        "category": "legal",
+        "executionStatus": "implemented",
+        "stageAtAction": "trial",
+        "date": {
+          "value": "2020-07-13",
+          "precision": "day",
+          "originalText": "hearing on the merits on July 13, 2020"
+        },
+        "observedOutcomeIds": [
+          "malaysiakini-steven-gan-outlet-convicted",
+          "malaysiakini-steven-gan-gan-acquitted"
+        ],
+        "relationshipToOutcome": "sequence_only",
+        "evidenceIds": [
+          "malaysiakini-steven-gan-defense-and-verdict",
+          "malaysiakini-steven-gan-monitoring"
+        ]
+      },
+      {
+        "interventionId": "malaysiakini-steven-gan-fundraise",
+        "caseId": "malaysiakini-steven-gan",
+        "actor": "Malaysiakini及捐款支持者",
+        "action": "在判决后众筹罚款所需资金。",
+        "category": "other",
+        "executionStatus": "implemented",
+        "stageAtAction": "postjudgment",
+        "date": {
+          "value": "2021-02-19",
+          "precision": "day",
+          "originalText": "Within hours of the verdict"
+        },
+        "observedOutcomeIds": [
+          "malaysiakini-steven-gan-funds-raised"
+        ],
+        "relationshipToOutcome": "sequence_only",
+        "evidenceIds": [
+          "malaysiakini-steven-gan-crowdfunding"
+        ]
+      },
+      {
+        "interventionId": "malaysiakini-steven-gan-seek-review",
+        "caseId": "malaysiakini-steven-gan",
+        "actor": "Malaysiakini一方",
+        "action": "申请联邦法院复核以撤销定罪。",
+        "category": "legal",
+        "executionStatus": "implemented",
+        "stageAtAction": "postjudgment",
+        "date": {
+          "value": "2021-05",
+          "precision": "month",
+          "originalText": "In May"
+        },
+        "observedOutcomeIds": [
+          "malaysiakini-steven-gan-review-pending"
+        ],
+        "relationshipToOutcome": "sequence_only",
+        "evidenceIds": [
+          "malaysiakini-steven-gan-review-request"
+        ]
+      },
+      {
+        "interventionId": "malaysiakini-steven-gan-trialwatch",
+        "caseId": "malaysiakini-steven-gan",
+        "actor": "CFJ / TrialWatch",
+        "action": "观察实体听证及宣判并记录公平审判权利。",
+        "category": "monitoring",
+        "executionStatus": "implemented",
+        "stageAtAction": "trial",
+        "date": {
+          "value": "2020-07-13/2021-02-19",
+          "precision": "range",
+          "originalText": "July 13, 2020 ... February 19, 2021"
+        },
+        "observedOutcomeIds": [],
+        "relationshipToOutcome": "unknown",
+        "evidenceIds": [
+          "malaysiakini-steven-gan-monitoring"
+        ]
+      }
+    ],
+    "outcomes": [
+      {
+        "outcomeId": "malaysiakini-steven-gan-outlet-convicted",
+        "caseId": "malaysiakini-steven-gan",
+        "description": "Malaysiakini被判藐视法庭及罚款RM 500,000。",
+        "type": "specific",
+        "observedDate": {
+          "value": "2021-02-19",
+          "precision": "day",
+          "originalText": "On February 19, 2021"
+        },
+        "statusAsOf": "2021-10",
+        "evidenceIds": [
+          "malaysiakini-steven-gan-defense-and-verdict",
+          "malaysiakini-steven-gan-fine"
+        ]
+      },
+      {
+        "outcomeId": "malaysiakini-steven-gan-gan-acquitted",
+        "caseId": "malaysiakini-steven-gan",
+        "description": "Steven Gan在本次藐视法庭程序中获判无罪；不代表报告提及的其他调查结束。",
+        "type": "specific",
+        "observedDate": {
+          "value": "2021-02-19",
+          "precision": "day",
+          "originalText": "On February 19, 2021"
+        },
+        "statusAsOf": "2021-10",
+        "evidenceIds": [
+          "malaysiakini-steven-gan-defense-and-verdict"
+        ]
+      },
+      {
+        "outcomeId": "malaysiakini-steven-gan-funds-raised",
+        "caseId": "malaysiakini-steven-gan",
+        "description": "Malaysiakini在判决后数小时内筹得足以支付RM 500,000罚款的资金。",
+        "type": "specific",
+        "observedDate": {
+          "value": "2021-02-19",
+          "precision": "day",
+          "originalText": "Within hours of the verdict"
+        },
+        "statusAsOf": "2021-10",
+        "evidenceIds": [
+          "malaysiakini-steven-gan-crowdfunding"
+        ]
+      },
+      {
+        "outcomeId": "malaysiakini-steven-gan-review-pending",
+        "caseId": "malaysiakini-steven-gan",
+        "description": "Malaysiakini的复核听证截至2021年10月报告预定10月12日举行，报告未载其结果。",
+        "type": "pending",
+        "observedDate": {
+          "value": "2021-10",
+          "precision": "month",
+          "originalText": "October 2021 report"
+        },
+        "statusAsOf": "2021-10",
+        "evidenceIds": [
+          "malaysiakini-steven-gan-review-request"
+        ]
+      }
+    ],
+    "reportRecommendations": [
+      {
+        "recommendationId": "malaysiakini-steven-gan-set-aside",
+        "description": "复核时撤销Malaysiakini的定罪。",
+        "actor": "马来西亚联邦法院",
+        "category": "legal",
+        "evidenceIds": [
+          "malaysiakini-steven-gan-set-aside-recommendation"
+        ]
+      }
+    ],
+    "unknowns": [
+      "报告未记载复核裁决；募集足额资金不证明罚款已实际缴清。"
+    ],
+    "conflicts": []
+  },
+  {
+    "caseId": "hajar-raissouni",
+    "title": "Hajar Raissouni 及共同被告",
+    "country": "摩洛哥",
+    "personTypes": [
+      "journalist"
+    ],
+    "backgroundTags": [
+      "reporting"
+    ],
+    "problems": [
+      "detained",
+      "lawyer_access",
+      "other"
+    ],
+    "summary": "记者Hajar Raissouni及四名共同被告在涉及私人生活与医疗指控的程序中被定罪。辩方申请保释、提交材料及申请证人作证；报告记载相关请求遭拒。2019年10月国王赦免五人，但报告明确赦免不是实体无罪判决。",
+    "evidenceIds": [
+      "hajar-raissouni-identity",
+      "hajar-raissouni-bail-attempts",
+      "hajar-raissouni-defense-evidence",
+      "hajar-raissouni-convictions",
+      "hajar-raissouni-pardon",
+      "hajar-raissouni-pardon-not-acquittal",
+      "hajar-raissouni-monitoring",
+      "hajar-raissouni-assessment"
+    ],
+    "sourceDocumentIds": [
+      "hajar-raissouni-report"
+    ],
+    "reportDate": "2020-08",
+    "lastKnownStatusAsOf": "2020-08",
+    "statusSummary": "截至2020年8月报告，Hajar Raissouni及四名共同被告于2019年10月16日获赦免；此前有罪裁决与赦免须区分，不能称为无罪。未核查此后进展。",
+    "events": [
+      {
+        "eventId": "hajar-raissouni-conviction",
+        "caseId": "hajar-raissouni",
+        "eventType": "conviction",
+        "description": "Hajar Raissouni及四名共同被告被判有罪，刑罚各不相同。",
+        "stageAtEvent": "postjudgment",
+        "date": {
+          "value": "2019-09-30",
+          "precision": "day",
+          "originalText": "On September 30, 2019"
+        },
+        "evidenceIds": [
+          "hajar-raissouni-convictions"
+        ]
+      },
+      {
+        "eventId": "hajar-raissouni-royal-pardon",
+        "caseId": "hajar-raissouni",
+        "eventType": "pardon",
+        "description": "国王赦免Hajar Raissouni及四名共同被告。",
+        "stageAtEvent": "postjudgment",
+        "date": {
+          "value": "2019-10-16",
+          "precision": "day",
+          "originalText": "on October 16, 2019"
+        },
+        "evidenceIds": [
+          "hajar-raissouni-pardon"
+        ]
+      }
+    ],
+    "interventions": [
+      {
+        "interventionId": "hajar-raissouni-bail",
+        "caseId": "hajar-raissouni",
+        "actor": "Hajar Raissouni等被告的辩护团队",
+        "action": "尝试申请保释。",
+        "category": "legal",
+        "executionStatus": "implemented",
+        "stageAtAction": "pretrial",
+        "date": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "despite attempts to procure bail"
+        },
+        "observedOutcomeIds": [
+          "hajar-raissouni-bail-not-obtained"
+        ],
+        "relationshipToOutcome": "sequence_only",
+        "evidenceIds": [
+          "hajar-raissouni-bail-attempts"
+        ]
+      },
+      {
+        "interventionId": "hajar-raissouni-witness-requests",
+        "caseId": "hajar-raissouni",
+        "actor": "辩护律师",
+        "action": "申请提交补充文件和传召证人，遭法官拒绝。",
+        "category": "legal",
+        "executionStatus": "implemented",
+        "stageAtAction": "trial",
+        "date": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "At trial; request dates not separately stated in the cited passage"
+        },
+        "observedOutcomeIds": [],
+        "relationshipToOutcome": "unknown",
+        "evidenceIds": [
+          "hajar-raissouni-defense-evidence"
+        ]
+      },
+      {
+        "interventionId": "hajar-raissouni-trialwatch",
+        "caseId": "hajar-raissouni",
+        "actor": "CFJ / TrialWatch及阿拉伯语翻译",
+        "action": "观察实体听证及宣判，并注明听取证词时的记录限制。",
+        "category": "monitoring",
+        "executionStatus": "implemented",
+        "stageAtAction": "trial",
+        "date": {
+          "value": "2019-09",
+          "precision": "month",
+          "originalText": "In September 2019"
+        },
+        "observedOutcomeIds": [],
+        "relationshipToOutcome": "unknown",
+        "evidenceIds": [
+          "hajar-raissouni-monitoring"
+        ]
+      }
+    ],
+    "outcomes": [
+      {
+        "outcomeId": "hajar-raissouni-bail-not-obtained",
+        "caseId": "hajar-raissouni",
+        "description": "Hajar Raissouni及共同被告在保释尝试后仍被羁押至2019年9月30日定罪。",
+        "type": "specific",
+        "observedDate": {
+          "value": "2019-09-02/2019-09-30",
+          "precision": "range",
+          "originalText": "charged on September 2, 2019 ... convictions on September 30, 2019"
+        },
+        "statusAsOf": "2020-08",
+        "evidenceIds": [
+          "hajar-raissouni-bail-attempts"
+        ]
+      },
+      {
+        "outcomeId": "hajar-raissouni-pardoned",
+        "caseId": "hajar-raissouni",
+        "description": "Hajar Raissouni及四名共同被告于2019年10月16日获赦免；赦免不等于实体无罪判决。",
+        "type": "partial",
+        "observedDate": {
+          "value": "2019-10-16",
+          "precision": "day",
+          "originalText": "October 16, 2019"
+        },
+        "statusAsOf": "2020-08",
+        "evidenceIds": [
+          "hajar-raissouni-pardon",
+          "hajar-raissouni-pardon-not-acquittal"
+        ]
+      }
+    ],
+    "reportRecommendations": [],
+    "unknowns": [
+      "报告未确定赦免的具体促成机制；不能将先前法律请求或监测与赦免建立因果。",
+      "所核对结论未提供具体后续行动建议；reportRecommendations保持为空。"
+    ],
+    "conflicts": []
+  },
+  {
+    "caseId": "omar-radi-2020",
+    "title": "Omar Radi（2020年推文案）",
+    "country": "摩洛哥",
+    "personTypes": [
+      "journalist",
+      "activist"
+    ],
+    "backgroundTags": [
+      "investigation_report",
+      "social_media"
+    ],
+    "problems": [
+      "detained",
+      "expression_restricted"
+    ],
+    "summary": "调查记者及活动人士Omar Radi因批评司法判决的推文被控侮辱司法机关。辩护律师挑战拒绝保释、争取准备时间并提出言论自由及法律适用抗辩；上诉法院先准予保释，一审随后判四个月缓刑及罚款，辩方当日上诉。",
+    "evidenceIds": [
+      "omar-radi-2020-background",
+      "omar-radi-2020-bail-appeal",
+      "omar-radi-2020-preparation-time",
+      "omar-radi-2020-verdict-and-appeal",
+      "omar-radi-2020-expression-defense",
+      "omar-radi-2020-monitoring",
+      "omar-radi-2020-law-reform"
+    ],
+    "sourceDocumentIds": [
+      "omar-radi-2020-report"
+    ],
+    "reportDate": "2020-09",
+    "lastKnownStatusAsOf": "2020-09",
+    "statusSummary": "截至2020年9月报告，Omar Radi在推文案中于2020年3月17日被判四个月缓刑及500迪拉姆罚款，同日已提交上诉通知；报告未载终局上诉结果。本条不包含2022年报告所涉另一程序。",
+    "events": [
+      {
+        "eventId": "omar-radi-2020-conviction",
+        "caseId": "omar-radi-2020",
+        "eventType": "conviction",
+        "description": "Omar Radi在推文案中被判四个月缓刑及500迪拉姆罚款。",
+        "stageAtEvent": "postjudgment",
+        "date": {
+          "value": "2020-03-17",
+          "precision": "day",
+          "originalText": "On March 17, 2020"
+        },
+        "evidenceIds": [
+          "omar-radi-2020-verdict-and-appeal"
+        ]
+      }
+    ],
+    "interventions": [
+      {
+        "interventionId": "omar-radi-2020-bail-challenge",
+        "caseId": "omar-radi-2020",
+        "actor": "Omar Radi辩护律师",
+        "action": "对拒绝保释提出上诉。",
+        "category": "legal",
+        "executionStatus": "implemented",
+        "stageAtAction": "pretrial",
+        "date": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "The next day; 保留原文相对日期，不将推算日期作明确记载"
+        },
+        "observedOutcomeIds": [
+          "omar-radi-2020-bail-granted"
+        ],
+        "relationshipToOutcome": "sequence_only",
+        "evidenceIds": [
+          "omar-radi-2020-bail-appeal"
+        ]
+      },
+      {
+        "interventionId": "omar-radi-2020-prepare-defense",
+        "caseId": "omar-radi-2020",
+        "actor": "Omar Radi辩护律师",
+        "action": "申请延期开庭以准备辩护，申请获准。",
+        "category": "legal",
+        "executionStatus": "implemented",
+        "stageAtAction": "pretrial",
+        "date": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "trial was originally scheduled for January 2, 2020 ... applied for an extension"
+        },
+        "observedOutcomeIds": [],
+        "relationshipToOutcome": "unknown",
+        "evidenceIds": [
+          "omar-radi-2020-preparation-time"
+        ]
+      },
+      {
+        "interventionId": "omar-radi-2020-trial-defense",
+        "caseId": "omar-radi-2020",
+        "actor": "Omar Radi辩护律师",
+        "action": "提出表达自由、推文含义及新闻法适用等抗辩。",
+        "category": "legal",
+        "executionStatus": "implemented",
+        "stageAtAction": "trial",
+        "date": {
+          "value": "2020-03-05",
+          "precision": "day",
+          "originalText": "March 5, 2020 Hearing"
+        },
+        "observedOutcomeIds": [
+          "omar-radi-2020-suspended-sentence"
+        ],
+        "relationshipToOutcome": "sequence_only",
+        "evidenceIds": [
+          "omar-radi-2020-expression-defense"
+        ]
+      },
+      {
+        "interventionId": "omar-radi-2020-appeal",
+        "caseId": "omar-radi-2020",
+        "actor": "Omar Radi的律师",
+        "action": "当庭提交针对定罪的上诉通知。",
+        "category": "legal",
+        "executionStatus": "implemented",
+        "stageAtAction": "appeal",
+        "date": {
+          "value": "2020-03-17",
+          "precision": "day",
+          "originalText": "March 17, 2020 ... that day"
+        },
+        "observedOutcomeIds": [
+          "omar-radi-2020-appeal-result-unrecorded"
+        ],
+        "relationshipToOutcome": "sequence_only",
+        "evidenceIds": [
+          "omar-radi-2020-verdict-and-appeal"
+        ]
+      },
+      {
+        "interventionId": "omar-radi-2020-trialwatch",
+        "caseId": "omar-radi-2020",
+        "actor": "USC国际人权诊所 / TrialWatch",
+        "action": "通过本地观察员记录庭审。",
+        "category": "monitoring",
+        "executionStatus": "implemented",
+        "stageAtAction": "trial",
+        "date": {
+          "value": "2020-03-05",
+          "precision": "day",
+          "originalText": "March 5, 2020"
+        },
+        "observedOutcomeIds": [],
+        "relationshipToOutcome": "unknown",
+        "evidenceIds": [
+          "omar-radi-2020-monitoring"
+        ]
+      }
+    ],
+    "outcomes": [
+      {
+        "outcomeId": "omar-radi-2020-bail-granted",
+        "caseId": "omar-radi-2020",
+        "description": "Omar Radi于2019年12月31日在本推文案中获准保释。",
+        "type": "specific",
+        "observedDate": {
+          "value": "2019-12-31",
+          "precision": "day",
+          "originalText": "On December 31, 2019"
+        },
+        "statusAsOf": "2020-09",
+        "evidenceIds": [
+          "omar-radi-2020-bail-appeal"
+        ]
+      },
+      {
+        "outcomeId": "omar-radi-2020-suspended-sentence",
+        "caseId": "omar-radi-2020",
+        "description": "Omar Radi在2020年3月17日被判四个月缓刑及500迪拉姆罚款。",
+        "type": "specific",
+        "observedDate": {
+          "value": "2020-03-17",
+          "precision": "day",
+          "originalText": "On March 17, 2020"
+        },
+        "statusAsOf": "2020-09",
+        "evidenceIds": [
+          "omar-radi-2020-verdict-and-appeal"
+        ]
+      },
+      {
+        "outcomeId": "omar-radi-2020-appeal-result-unrecorded",
+        "caseId": "omar-radi-2020",
+        "description": "Omar Radi的律师已在宣判当日上诉；2020年9月报告未载该上诉最终结果。",
+        "type": "unrecorded",
+        "observedDate": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "notice of appeal ... that day; no final result reported"
+        },
+        "statusAsOf": "2020-09",
+        "evidenceIds": [
+          "omar-radi-2020-verdict-and-appeal"
+        ]
+      }
+    ],
+    "reportRecommendations": [
+      {
+        "recommendationId": "omar-radi-2020-reform-penal-code",
+        "description": "考虑修订刑法以保障表达自由并与新闻法协调。",
+        "actor": "摩洛哥立法机关",
+        "category": "legal",
+        "evidenceIds": [
+          "omar-radi-2020-law-reform"
+        ]
+      }
+    ],
+    "unknowns": [
+      "报告未载推文案上诉终局结果；不能以另一个程序的六年刑期替代本案结果。"
+    ],
+    "conflicts": []
+  },
+  {
+    "caseId": "omar-radi-ii-2022",
+    "title": "Omar Radi II（2021—2022年程序）",
+    "country": "摩洛哥",
+    "personTypes": [
+      "journalist"
+    ],
+    "backgroundTags": [
+      "investigation_report"
+    ],
+    "problems": [
+      "detained",
+      "other"
+    ],
+    "summary": "本条记录Omar Radi被控国家安全及性犯罪的另一程序，区别于2020年推文案。报告记载多次临时释放请求、证人申请、健康问题陈述和上诉。2021年一审判六年监禁，2022年3月上诉维持；报告作者批评程序公平性，不能据此自行判断指控事实。",
+    "evidenceIds": [
+      "omar-radi-ii-2022-identity-and-monitoring",
+      "omar-radi-ii-2022-arrest-charges",
+      "omar-radi-ii-2022-release-requests",
+      "omar-radi-ii-2022-conviction",
+      "omar-radi-ii-2022-appeal-summary",
+      "omar-radi-ii-2022-appeal-body",
+      "omar-radi-ii-2022-health-representation",
+      "omar-radi-ii-2022-assessment"
+    ],
+    "sourceDocumentIds": [
+      "omar-radi-ii-2022-report"
+    ],
+    "reportDate": "2022-07",
+    "lastKnownStatusAsOf": "2022-07",
+    "statusSummary": "截至2022年7月报告，Omar Radi在本程序中的六年刑期于2022年3月3日获上诉法院维持；报告未记录此后的救济结果。",
+    "events": [
+      {
+        "eventId": "omar-radi-ii-2022-arrest",
+        "caseId": "omar-radi-ii-2022",
+        "eventType": "arrest",
+        "description": "Omar Radi被逮捕并被提出国家安全及性犯罪指控。",
+        "stageAtEvent": "pretrial",
+        "date": {
+          "value": "2020-07-29",
+          "precision": "day",
+          "originalText": "on July 29, 2020"
+        },
+        "evidenceIds": [
+          "omar-radi-ii-2022-arrest-charges"
+        ]
+      },
+      {
+        "eventId": "omar-radi-ii-2022-conviction",
+        "caseId": "omar-radi-ii-2022",
+        "eventType": "conviction",
+        "description": "Omar Radi在本程序中被判六年监禁。",
+        "stageAtEvent": "postjudgment",
+        "date": {
+          "value": "2021-07-19",
+          "precision": "day",
+          "originalText": "On July 19, 2021"
+        },
+        "evidenceIds": [
+          "omar-radi-ii-2022-conviction"
+        ]
+      },
+      {
+        "eventId": "omar-radi-ii-2022-appeal-affirmed",
+        "caseId": "omar-radi-ii-2022",
+        "eventType": "appeal-affirmed",
+        "description": "上诉法院维持Omar Radi在本程序中的六年刑期。",
+        "stageAtEvent": "appeal",
+        "date": {
+          "value": "2022-03-03",
+          "precision": "day",
+          "originalText": "On March 3, 2022"
+        },
+        "evidenceIds": [
+          "omar-radi-ii-2022-appeal-summary",
+          "omar-radi-ii-2022-appeal-body"
+        ]
+      }
+    ],
+    "interventions": [
+      {
+        "interventionId": "omar-radi-ii-2022-request-release",
+        "caseId": "omar-radi-ii-2022",
+        "actor": "Omar Radi及辩护律师",
+        "action": "在审前及审判期间多次请求临时释放。",
+        "category": "legal",
+        "executionStatus": "implemented",
+        "stageAtAction": "pretrial",
+        "date": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "throughout the pre-trial process and during trial"
+        },
+        "observedOutcomeIds": [
+          "omar-radi-ii-2022-release-denied"
+        ],
+        "relationshipToOutcome": "sequence_only",
+        "evidenceIds": [
+          "omar-radi-ii-2022-release-requests"
+        ]
+      },
+      {
+        "interventionId": "omar-radi-ii-2022-raise-health",
+        "caseId": "omar-radi-ii-2022",
+        "actor": "Omar Radi辩护律师",
+        "action": "在庭审提出健康问题，法官随后准许当事人作陈述；未确定后续医疗改善。",
+        "category": "legal",
+        "executionStatus": "implemented",
+        "stageAtAction": "trial",
+        "date": {
+          "value": "2021-06-01",
+          "precision": "day",
+          "originalText": "June 1, 2021"
+        },
+        "observedOutcomeIds": [],
+        "relationshipToOutcome": "unknown",
+        "evidenceIds": [
+          "omar-radi-ii-2022-health-representation"
+        ]
+      },
+      {
+        "interventionId": "omar-radi-ii-2022-appeal",
+        "caseId": "omar-radi-ii-2022",
+        "actor": "Omar Radi辩护律师",
+        "action": "针对一审判决提交上诉并继续提出公平审判异议。",
+        "category": "legal",
+        "executionStatus": "implemented",
+        "stageAtAction": "appeal",
+        "date": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "Shortly after the conviction"
+        },
+        "observedOutcomeIds": [
+          "omar-radi-ii-2022-six-years-affirmed"
+        ],
+        "relationshipToOutcome": "sequence_only",
+        "evidenceIds": [
+          "omar-radi-ii-2022-appeal-summary",
+          "omar-radi-ii-2022-appeal-body"
+        ]
+      },
+      {
+        "interventionId": "omar-radi-ii-2022-trialwatch",
+        "caseId": "omar-radi-ii-2022",
+        "actor": "USC国际人权诊所 / TrialWatch",
+        "action": "观察一审及随后的上诉，形成公平审判报告。",
+        "category": "monitoring",
+        "executionStatus": "implemented",
+        "stageAtAction": "trial",
+        "date": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "trial concluded July 19, 2021; appeal concluded March 3, 2022; start not specified"
+        },
+        "observedOutcomeIds": [],
+        "relationshipToOutcome": "unknown",
+        "evidenceIds": [
+          "omar-radi-ii-2022-identity-and-monitoring"
+        ]
+      }
+    ],
+    "outcomes": [
+      {
+        "outcomeId": "omar-radi-ii-2022-release-denied",
+        "caseId": "omar-radi-ii-2022",
+        "description": "Omar Radi审前及审判期间多次临时释放请求均遭拒。",
+        "type": "specific",
+        "observedDate": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "throughout the pre-trial process and during trial"
+        },
+        "statusAsOf": "2022-07",
+        "evidenceIds": [
+          "omar-radi-ii-2022-release-requests"
+        ]
+      },
+      {
+        "outcomeId": "omar-radi-ii-2022-six-years-affirmed",
+        "caseId": "omar-radi-ii-2022",
+        "description": "Omar Radi在本程序中的六年监禁判决于2022年3月3日获维持。",
+        "type": "specific",
+        "observedDate": {
+          "value": "2022-03-03",
+          "precision": "day",
+          "originalText": "On March 3, 2022"
+        },
+        "statusAsOf": "2022-07",
+        "evidenceIds": [
+          "omar-radi-ii-2022-appeal-body"
+        ]
+      }
+    ],
+    "reportRecommendations": [],
+    "unknowns": [
+      "报告未记载2022年7月之后的案件发展；作者的公平审判结论不等于无罪裁决。",
+      "所核对结论未列具体后续行动建议；不从其他程序或脚注移植建议。"
+    ],
+    "conflicts": [
+      {
+        "description": "上诉开始时间在报告内部不一致：摘要PDF第6页称2022年1月开始，正文PDF第26页称原定2021年11月4日的听证延期八次至2022年2月15日。两处均记载2022年3月3日维持原判；本条不推定确切开庭日。",
+        "evidenceIds": [
+          "omar-radi-ii-2022-appeal-summary",
+          "omar-radi-ii-2022-appeal-body"
+        ]
+      }
+    ]
+  },
+  {
+    "caseId": "cansu-piskin",
+    "title": "Cansu Pişkin",
+    "country": "土耳其",
+    "personTypes": [
+      "journalist"
+    ],
+    "backgroundTags": [
+      "reporting"
+    ],
+    "problems": [
+      "expression_restricted"
+    ],
+    "summary": "记者Cansu Pişkin因报道中刊出检察官姓名而被控反恐法罪名。辩方对管辖、起诉时效、姓名已公开及犯罪故意提出异议。法院判十个月监禁，但延缓刑罚并设五年监督；报告称本次程序并未使Pişkin实际入狱。",
+    "evidenceIds": [
+      "cansu-piskin-background",
+      "cansu-piskin-jurisdiction-defense",
+      "cansu-piskin-intent-defense",
+      "cansu-piskin-deferred-sentence",
+      "cansu-piskin-monitoring",
+      "cansu-piskin-outcome-limit"
+    ],
+    "sourceDocumentIds": [
+      "cansu-piskin-report"
+    ],
+    "reportDate": "2019-07",
+    "lastKnownStatusAsOf": "2019-07",
+    "statusSummary": "截至2019年7月报告，Cansu Pişkin于5月7日被判十个月监禁、刑罚延缓并接受五年监督；不是无罪或撤案，报告未载此后的监督期结果。",
+    "events": [
+      {
+        "eventId": "cansu-piskin-trial-start",
+        "caseId": "cansu-piskin",
+        "eventType": "trial-opened",
+        "description": "Cansu Pişkin的庭审开始，辩方提出管辖及时效异议。",
+        "stageAtEvent": "trial",
+        "date": {
+          "value": "2019-03-06",
+          "precision": "day",
+          "originalText": "March 6, 2019 Hearing"
+        },
+        "evidenceIds": [
+          "cansu-piskin-jurisdiction-defense"
+        ]
+      },
+      {
+        "eventId": "cansu-piskin-verdict",
+        "caseId": "cansu-piskin",
+        "eventType": "conviction",
+        "description": "Cansu Pişkin被判有罪，十个月刑罚延缓并设置五年监督。",
+        "stageAtEvent": "postjudgment",
+        "date": {
+          "value": "2019-05-07",
+          "precision": "day",
+          "originalText": "May 7, 2019 Hearing"
+        },
+        "evidenceIds": [
+          "cansu-piskin-deferred-sentence"
+        ]
+      }
+    ],
+    "interventions": [
+      {
+        "interventionId": "cansu-piskin-challenge-jurisdiction",
+        "caseId": "cansu-piskin",
+        "actor": "Cansu Pişkin辩护律师",
+        "action": "提出管辖与起诉时效异议；法院拒绝停止程序。",
+        "category": "legal",
+        "executionStatus": "implemented",
+        "stageAtAction": "trial",
+        "date": {
+          "value": "2019-03-06",
+          "precision": "day",
+          "originalText": "March 6, 2019 Hearing"
+        },
+        "observedOutcomeIds": [],
+        "relationshipToOutcome": "unknown",
+        "evidenceIds": [
+          "cansu-piskin-jurisdiction-defense"
+        ]
+      },
+      {
+        "interventionId": "cansu-piskin-defend-intent",
+        "caseId": "cansu-piskin",
+        "actor": "Cansu Pişkin及律师",
+        "action": "提出报道具有新闻价值、缺乏犯罪故意及姓名已公开等抗辩。",
+        "category": "legal",
+        "executionStatus": "implemented",
+        "stageAtAction": "trial",
+        "date": {
+          "value": "2019-03-25",
+          "precision": "day",
+          "originalText": "March 25, 2019 Hearing"
+        },
+        "observedOutcomeIds": [
+          "cansu-piskin-deferred-not-acquitted"
+        ],
+        "relationshipToOutcome": "sequence_only",
+        "evidenceIds": [
+          "cansu-piskin-intent-defense"
+        ]
+      },
+      {
+        "interventionId": "cansu-piskin-trialwatch",
+        "caseId": "cansu-piskin",
+        "actor": "哥伦比亚法学院人权诊所及当地伙伴 / TrialWatch",
+        "action": "观察三次庭审并使用口译、文件翻译及标准化问卷记录。",
+        "category": "monitoring",
+        "executionStatus": "implemented",
+        "stageAtAction": "trial",
+        "date": {
+          "value": "2019-03/2019-05",
+          "precision": "range",
+          "originalText": "Between March and May 2019"
+        },
+        "observedOutcomeIds": [],
+        "relationshipToOutcome": "unknown",
+        "evidenceIds": [
+          "cansu-piskin-background",
+          "cansu-piskin-monitoring"
+        ]
+      }
+    ],
+    "outcomes": [
+      {
+        "outcomeId": "cansu-piskin-deferred-not-acquitted",
+        "caseId": "cansu-piskin",
+        "description": "Cansu Pişkin获十个月监禁判决，但刑罚延缓并接受五年监督；本程序未导致实际入狱，也不是无罪裁决。",
+        "type": "partial",
+        "observedDate": {
+          "value": "2019-05-07",
+          "precision": "day",
+          "originalText": "May 7, 2019 Hearing"
+        },
+        "statusAsOf": "2019-07",
+        "evidenceIds": [
+          "cansu-piskin-deferred-sentence",
+          "cansu-piskin-outcome-limit"
+        ]
+      }
+    ],
+    "reportRecommendations": [],
+    "unknowns": [
+      "报告未提供五年监督期之后的结果，也未证明监测改变了裁判。",
+      "所核对结论未列可独立提取的具体行动建议，建议数组为空。"
+    ],
+    "conflicts": []
+  },
+  {
+    "caseId": "asad-ali-toor",
+    "title": "Asad Ali Toor",
+    "country": "巴基斯坦",
+    "personTypes": [
+      "journalist"
+    ],
+    "backgroundTags": [
+      "social_media"
+    ],
+    "problems": [
+      "expression_restricted"
+    ],
+    "summary": "主题报告单案摘录：记者 Asad Ali Toor 因批评国家机构的社交媒体内容遭遇多轮 FIR 与传唤。他向法院挑战最初 FIR，调查机关随后以未取得犯罪证据结案；后来另一轮传唤在法院挑战后未被 FIA 继续推进。不同调查不能合并成一次无罪判决。",
+    "evidenceIds": [
+      "toor-background",
+      "toor-quash-request",
+      "toor-initial-closure",
+      "toor-later-notices",
+      "toor-later-not-pursued",
+      "toor-peca-reform-recommendation"
+    ],
+    "sourceDocumentIds": [
+      "pakistan-peca-report"
+    ],
+    "reportDate": "2023-09",
+    "lastKnownStatusAsOf": "2023-09",
+    "statusSummary": "截至2023年9月主题报告，记载最初调查结案及后续传唤未继续推进；未据此认定所有调查终结，未核查之后状态。",
+    "events": [],
+    "interventions": [
+      {
+        "interventionId": "toor-challenge-fir",
+        "caseId": "asad-ali-toor",
+        "actor": "Asad Ali Toor 及其诉讼代理方",
+        "action": "向拉合尔高等法院申请撤销 FIR，质疑投诉缺乏具体信息及投诉人关联。",
+        "category": "legal",
+        "executionStatus": "implemented",
+        "stageAtAction": "investigation",
+        "date": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "Not separately dated in the report"
+        },
+        "observedOutcomeIds": [
+          "toor-initial-investigation-closed"
+        ],
+        "relationshipToOutcome": "sequence_only",
+        "evidenceIds": [
+          "toor-quash-request",
+          "toor-initial-closure"
+        ]
+      },
+      {
+        "interventionId": "toor-challenge-later-notices",
+        "caseId": "asad-ali-toor",
+        "actor": "Asad Ali Toor 一方",
+        "action": "向法院挑战后续传唤；报告称其后 FIA 未继续推进。",
+        "category": "legal",
+        "executionStatus": "implemented",
+        "stageAtAction": "investigation",
+        "date": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "Not separately dated in the report"
+        },
+        "observedOutcomeIds": [
+          "toor-later-inquiry-not-pursued"
+        ],
+        "relationshipToOutcome": "sequence_only",
+        "evidenceIds": [
+          "toor-later-notices",
+          "toor-later-not-pursued"
+        ]
+      }
+    ],
+    "outcomes": [
+      {
+        "outcomeId": "toor-initial-investigation-closed",
+        "caseId": "asad-ali-toor",
+        "description": "Asad Ali Toor 的最初 FIR 所涉调查由调查机关结案，理由是未取得显示犯罪的证据。",
+        "type": "specific",
+        "observedDate": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "Not separately dated in the report"
+        },
+        "statusAsOf": "2023-09",
+        "evidenceIds": [
+          "toor-initial-closure"
+        ]
+      },
+      {
+        "outcomeId": "toor-later-inquiry-not-pursued",
+        "caseId": "asad-ali-toor",
+        "description": "Asad Ali Toor 后续一组传唤引发的程序在法院挑战后未被 FIA 继续推进；这不表示所有针对他的程序均已结束。",
+        "type": "partial",
+        "observedDate": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "Not separately dated in the report"
+        },
+        "statusAsOf": "2023-09",
+        "evidenceIds": [
+          "toor-later-notices",
+          "toor-later-not-pursued"
+        ]
+      }
+    ],
+    "reportRecommendations": [
+      {
+        "recommendationId": "toor-peca-reform",
+        "description": "改革或废除 Section 20；未改革时承认其违宪，并落实法院要求的 FIA 滥用情况报告。",
+        "actor": "巴基斯坦政府与 FIA（作者建议对象）",
+        "category": "other",
+        "evidenceIds": [
+          "toor-peca-reform-recommendation"
+        ]
+      }
+    ],
+    "unknowns": [
+      "这是主题报告内的单案摘录，不包含完整案件档案；不同 FIR 与传唤结果不得互换。",
+      "行动提交日与调查结案日未在所引正文单独载明；脚注裁定日期不能替代结案日期。",
+      "证据核验仅指与所供报告对照；不等于独立核实基础事件，也不表示报告日期后的当前状态。"
+    ],
+    "conflicts": []
+  },
+  {
+    "caseId": "bilal-ghauri",
+    "title": "Bilal Ghauri",
+    "country": "巴基斯坦",
+    "personTypes": [
+      "journalist"
+    ],
+    "backgroundTags": [
+      "social_media"
+    ],
+    "problems": [
+      "expression_restricted"
+    ],
+    "summary": "主题报告单案摘录：记者 Bilal Ghauri 收到未清楚说明行为的 WhatsApp 传唤，随后要求提供细节并向伊斯兰堡高等法院挑战。报告记载法院在认定 Section 20 违宪的裁定中宣布程序无效并撤销传唤。",
+    "evidenceIds": [
+      "ghauri-notices",
+      "ghauri-details-request",
+      "ghauri-court-challenge",
+      "ghauri-notices-quashed",
+      "ghauri-peca-reform-recommendation"
+    ],
+    "sourceDocumentIds": [
+      "pakistan-peca-report"
+    ],
+    "reportDate": "2023-09",
+    "lastKnownStatusAsOf": "2023-09",
+    "statusSummary": "截至2023年9月报告，所述传唤已被撤销；该摘录没有后续个案状态或其他程序记录。",
+    "events": [],
+    "interventions": [
+      {
+        "interventionId": "ghauri-request-particulars",
+        "caseId": "bilal-ghauri",
+        "actor": "Bilal Ghauri",
+        "action": "回复通知并要求说明调查细节。",
+        "category": "legal",
+        "executionStatus": "implemented",
+        "stageAtAction": "investigation",
+        "date": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "Not separately dated in the report"
+        },
+        "observedOutcomeIds": [],
+        "relationshipToOutcome": "unknown",
+        "evidenceIds": [
+          "ghauri-details-request"
+        ]
+      },
+      {
+        "interventionId": "ghauri-challenge-notices",
+        "caseId": "bilal-ghauri",
+        "actor": "Bilal Ghauri 与其律师",
+        "action": "向伊斯兰堡高等法院挑战通知未说明行为及通过 WhatsApp 送达的问题。",
+        "category": "legal",
+        "executionStatus": "implemented",
+        "stageAtAction": "investigation",
+        "date": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "Not separately dated in the report"
+        },
+        "observedOutcomeIds": [
+          "ghauri-notices-annulled"
+        ],
+        "relationshipToOutcome": "explicit",
+        "evidenceIds": [
+          "ghauri-court-challenge",
+          "ghauri-notices-quashed"
+        ]
+      }
+    ],
+    "outcomes": [
+      {
+        "outcomeId": "ghauri-notices-annulled",
+        "caseId": "bilal-ghauri",
+        "description": "伊斯兰堡高等法院宣告 Bilal Ghauri 的所述程序无效，并撤销相关传唤。",
+        "type": "specific",
+        "observedDate": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "Not separately dated in the report"
+        },
+        "statusAsOf": "2023-09",
+        "evidenceIds": [
+          "ghauri-notices-quashed"
+        ]
+      }
+    ],
+    "reportRecommendations": [
+      {
+        "recommendationId": "ghauri-peca-reform",
+        "description": "改革 Section 20 并落实法院要求的 FIA 滥用情况报告。",
+        "actor": "巴基斯坦政府与 FIA（作者建议对象）",
+        "category": "other",
+        "evidenceIds": [
+          "ghauri-peca-reform-recommendation"
+        ]
+      }
+    ],
+    "unknowns": [
+      "这是主题报告单案摘录，未核查完整裁定或报告发表后的法律、个案变化。",
+      "所引正文未给出法院撤销传唤的具体日期，不以其他案件裁定日期补齐。",
+      "证据核验仅指与所供报告对照；不等于独立核实基础事件，也不表示报告日期后的当前状态。"
+    ],
+    "conflicts": []
+  },
+  {
+    "caseId": "moses-bwayo",
+    "title": "Moses Bwayo",
+    "country": "乌干达",
+    "personTypes": [
+      "journalist"
+    ],
+    "backgroundTags": [
+      "reporting"
+    ],
+    "problems": [
+      "detained",
+      "lawyer_access",
+      "expression_restricted"
+    ],
+    "summary": "记者兼电影制作者 Moses Bwayo 在拍摄关于反对派人物 Bobi Wine 的纪录片片段时被捕并因非法集会受到追诉。律师申请保释后，他于2020年3月获保释；8月开庭时检方证人未到，法院拒绝延期并撤案。保释与撤案是不同结果，报告未建立二者因果关系。",
+    "evidenceIds": [
+      "bwayo-identity-monitoring",
+      "bwayo-bail-application",
+      "bwayo-dismissal",
+      "bwayo-counsel-request",
+      "bwayo-later-safety",
+      "bwayo-protection-recommendation"
+    ],
+    "sourceDocumentIds": [
+      "bwayo-report"
+    ],
+    "reportDate": "2021-01",
+    "lastKnownStatusAsOf": "2021-01",
+    "statusSummary": "截至2021年1月报告：刑事案件于2020年8月10日因检方未举证被撤；报告同时记载其后采访期间遭枪击，撤案不等于安全风险解除。",
+    "events": [
+      {
+        "eventId": "bwayo-rearrest",
+        "caseId": "moses-bwayo",
+        "eventType": "rearrest",
+        "description": "Moses Bwayo 按警方保证条件报到时再次被捕并被带到法院。",
+        "stageAtEvent": "pretrial",
+        "date": {
+          "value": "2020-03-04",
+          "precision": "day",
+          "originalText": "March 4"
+        },
+        "evidenceIds": [
+          "bwayo-bail-application"
+        ]
+      },
+      {
+        "eventId": "bwayo-dismissal-event",
+        "caseId": "moses-bwayo",
+        "eventType": "dismissal",
+        "description": "检方证人未出庭后，法院拒绝延期并撤案。",
+        "stageAtEvent": "trial",
+        "date": {
+          "value": "2020-08-10",
+          "precision": "day",
+          "originalText": "August 10"
+        },
+        "evidenceIds": [
+          "bwayo-dismissal"
+        ]
+      }
+    ],
+    "interventions": [
+      {
+        "interventionId": "bwayo-seek-counsel",
+        "caseId": "moses-bwayo",
+        "actor": "Moses Bwayo",
+        "action": "在最初拘押期间请求律师，报告仍记载该期间未获接触律师。",
+        "category": "legal",
+        "executionStatus": "implemented",
+        "stageAtAction": "investigation",
+        "date": {
+          "value": null,
+          "precision": "range",
+          "originalText": "February 24 to February 26"
+        },
+        "observedOutcomeIds": [],
+        "relationshipToOutcome": "unknown",
+        "evidenceIds": [
+          "bwayo-counsel-request"
+        ]
+      },
+      {
+        "interventionId": "bwayo-seek-bail",
+        "caseId": "moses-bwayo",
+        "actor": "Moses Bwayo 等被告的律师",
+        "action": "在首次法院出庭时提出保释申请。",
+        "category": "legal",
+        "executionStatus": "implemented",
+        "stageAtAction": "pretrial",
+        "date": {
+          "value": "2020-03-04",
+          "precision": "day",
+          "originalText": "March 4"
+        },
+        "observedOutcomeIds": [
+          "bwayo-bail-granted"
+        ],
+        "relationshipToOutcome": "explicit",
+        "evidenceIds": [
+          "bwayo-bail-application"
+        ]
+      },
+      {
+        "interventionId": "bwayo-trial-monitoring",
+        "caseId": "moses-bwayo",
+        "actor": "美国律师协会人权中心 / TrialWatch",
+        "action": "观察刑事程序并整理报告。",
+        "category": "monitoring",
+        "executionStatus": "implemented",
+        "stageAtAction": "trial",
+        "date": {
+          "value": null,
+          "precision": "range",
+          "originalText": "From May to August 2020"
+        },
+        "observedOutcomeIds": [],
+        "relationshipToOutcome": "unknown",
+        "evidenceIds": [
+          "bwayo-identity-monitoring"
+        ]
+      }
+    ],
+    "outcomes": [
+      {
+        "outcomeId": "bwayo-bail-granted",
+        "caseId": "moses-bwayo",
+        "description": "Moses Bwayo 于2020年3月6日获法院准予保释；刑事案件当时仍在继续。",
+        "type": "partial",
+        "observedDate": {
+          "value": "2020-03-06",
+          "precision": "day",
+          "originalText": "March 6"
+        },
+        "statusAsOf": "2021-01",
+        "evidenceIds": [
+          "bwayo-bail-application"
+        ]
+      },
+      {
+        "outcomeId": "bwayo-case-dismissed",
+        "caseId": "moses-bwayo",
+        "description": "Moses Bwayo 的案件于2020年8月10日因检方未有证人出庭、未举证而被法院撤销。",
+        "type": "specific",
+        "observedDate": {
+          "value": "2020-08-10",
+          "precision": "day",
+          "originalText": "August 10"
+        },
+        "statusAsOf": "2021-01",
+        "evidenceIds": [
+          "bwayo-dismissal"
+        ]
+      }
+    ],
+    "reportRecommendations": [
+      {
+        "recommendationId": "bwayo-protect-reporters",
+        "description": "保护记者开展选举报道，防止因报道遭报复。",
+        "actor": "乌干达当局（作者建议对象）",
+        "category": "other",
+        "evidenceIds": [
+          "bwayo-protection-recommendation"
+        ]
+      }
+    ],
+    "unknowns": [
+      "未核查2021年1月报告后的司法与安全状态；未独立取得报告脚注中的警方、法院和其他材料。",
+      "保释、案件撤销和观察活动没有被报告证明为同一因果链；律师具体申请材料未完整载入报告。",
+      "证据核验仅指与所供报告对照；不等于独立核实基础事件，也不表示报告日期后的当前状态。"
+    ],
+    "conflicts": []
+  },
+  {
+    "caseId": "wuth-boonlert-samak-donnapee",
+    "title": "Wuth Boonlert & Samak Donnapee",
+    "country": "泰国",
+    "personTypes": [
+      "activist",
+      "other"
+    ],
+    "backgroundTags": [
+      "social_media",
+      "repost"
+    ],
+    "problems": [
+      "expression_restricted"
+    ],
+    "summary": "原住民权利倡导者 Wuth Boonlert 与退休林业官员 Samak Donnapee 因 Facebook 内容在同案受审。Samak 是原帖作者，Wuth 只无评论转发；前者自行辩护，后者由 Cross Cultural Foundation 律师代理。2019年11月18日两人均被判无罪。报告同时批评起诉决定，不把无罪等同于整个程序均符合标准。",
+    "evidenceIds": [
+      "wuth-samak-identities",
+      "wuth-repost-context",
+      "wuth-samak-representation",
+      "samak-defense-testimony",
+      "wuth-defense-testimony",
+      "wuth-samak-acquittal",
+      "wuth-samak-early-review"
+    ],
+    "sourceDocumentIds": [
+      "wuth-samak-report"
+    ],
+    "reportDate": "2020-07",
+    "lastKnownStatusAsOf": "2020-07",
+    "statusSummary": "截至2020年7月报告，两人于2019年11月18日获所有指控无罪；未核查之后是否上诉或有其他程序。",
+    "events": [
+      {
+        "eventId": "wuth-samak-trial",
+        "caseId": "wuth-boonlert-samak-donnapee",
+        "eventType": "trial-opened",
+        "description": "两人联合审判开始，但法律代理安排不同。",
+        "stageAtEvent": "trial",
+        "date": {
+          "value": "2019-09-10",
+          "precision": "day",
+          "originalText": "September 10 and 11, 2019"
+        },
+        "evidenceIds": [
+          "wuth-samak-representation"
+        ]
+      },
+      {
+        "eventId": "wuth-samak-judgment",
+        "caseId": "wuth-boonlert-samak-donnapee",
+        "eventType": "acquittal",
+        "description": "两人所有指控均获无罪。",
+        "stageAtEvent": "postjudgment",
+        "date": {
+          "value": "2019-11-18",
+          "precision": "day",
+          "originalText": "November 18, 2019"
+        },
+        "evidenceIds": [
+          "wuth-samak-acquittal"
+        ]
+      }
+    ],
+    "interventions": [
+      {
+        "interventionId": "samak-self-defense",
+        "caseId": "wuth-boonlert-samak-donnapee",
+        "actor": "Samak Donnapee",
+        "action": "自行辩护并作证说明帖子依据、真实抗辩及帖子指向的主体。",
+        "category": "legal",
+        "executionStatus": "implemented",
+        "stageAtAction": "trial",
+        "date": {
+          "value": "2019-09-11",
+          "precision": "day",
+          "originalText": "September 11, 2019"
+        },
+        "observedOutcomeIds": [
+          "wuth-samak-not-guilty"
+        ],
+        "relationshipToOutcome": "sequence_only",
+        "evidenceIds": [
+          "wuth-samak-representation",
+          "samak-defense-testimony"
+        ]
+      },
+      {
+        "interventionId": "wuth-counsel-defense",
+        "caseId": "wuth-boonlert-samak-donnapee",
+        "actor": "Wuth Boonlert 与 Cross Cultural Foundation 律师",
+        "action": "接受律师代理并作证解释无评论转发的来源与促请调查的目的。",
+        "category": "legal",
+        "executionStatus": "implemented",
+        "stageAtAction": "trial",
+        "date": {
+          "value": "2019-09-11",
+          "precision": "day",
+          "originalText": "September 11, 2019"
+        },
+        "observedOutcomeIds": [
+          "wuth-samak-not-guilty"
+        ],
+        "relationshipToOutcome": "sequence_only",
+        "evidenceIds": [
+          "wuth-samak-representation",
+          "wuth-defense-testimony"
+        ]
+      }
+    ],
+    "outcomes": [
+      {
+        "outcomeId": "wuth-samak-not-guilty",
+        "caseId": "wuth-boonlert-samak-donnapee",
+        "description": "Wuth Boonlert 与 Samak Donnapee 于2019年11月18日被判所有指控无罪，法院拒绝共同原告的损害赔偿请求。",
+        "type": "specific",
+        "observedDate": {
+          "value": "2019-11-18",
+          "precision": "day",
+          "originalText": "November 18, 2019"
+        },
+        "statusAsOf": "2020-07",
+        "evidenceIds": [
+          "wuth-samak-acquittal"
+        ]
+      }
+    ],
+    "reportRecommendations": [
+      {
+        "recommendationId": "wuth-samak-early-screening",
+        "description": "及早审查被控言论与证据，避免缺乏基础的案件进入完整审判。",
+        "actor": "检察官与法院（作者建议对象）",
+        "category": "legal",
+        "evidenceIds": [
+          "wuth-samak-early-review"
+        ]
+      }
+    ],
+    "unknowns": [
+      "联合案件的两名当事人职业、原帖与转发、是否由律师代理均不同，不得互换。",
+      "未核查2020年7月之后的上诉或其他进展；辩护活动与无罪结果仅能确认先后顺序，不能推定单项行动决定判决。",
+      "证据核验仅指与所供报告对照；不等于独立核实基础事件，也不表示报告日期后的当前状态。"
+    ],
+    "conflicts": []
+  },
+  {
+    "caseId": "alnur-ilyashev",
+    "title": "Alnur Ilyashev",
+    "country": "哈萨克斯坦",
+    "personTypes": [
+      "activist",
+      "blogger"
+    ],
+    "backgroundTags": [
+      "social_media"
+    ],
+    "problems": [
+      "detained",
+      "lawyer_access",
+      "expression_restricted"
+    ],
+    "summary": "人权活动者兼博主 Alnur Ilyashev 因三则批评执政党的 Facebook 帖文被控在紧急状态下传播虚假信息。远程审判伴随连线及保密律师沟通问题。释放请求被拒，一审判处限制行动及活动禁令；上诉未获成功，辩方继而请求总检察长提出抗诉，报告未记载该请求结果。",
+    "evidenceIds": [
+      "alnur-identity-background",
+      "alnur-conviction",
+      "alnur-appeal-protest",
+      "alnur-pretrial-release-denied",
+      "alnur-trial-release-denied",
+      "alnur-private-consultation",
+      "alnur-reconsideration-recommendation",
+      "alnur-remote-hearing-recommendation",
+      "alnur-virtual-connection-problems"
+    ],
+    "sourceDocumentIds": [
+      "alnur-report"
+    ],
+    "reportDate": "2021-03",
+    "lastKnownStatusAsOf": "2021-03",
+    "statusSummary": "截至2021年3月报告：定罪获维持，最高法院未准其上诉；辩方请求总检察长提出抗诉，结果未记录。",
+    "events": [
+      {
+        "eventId": "alnur-verdict-event",
+        "caseId": "alnur-ilyashev",
+        "eventType": "conviction",
+        "description": "法院判处限制行动和政治、公民活动禁令。",
+        "stageAtEvent": "postjudgment",
+        "date": {
+          "value": "2020-06-22",
+          "precision": "day",
+          "originalText": "June 22"
+        },
+        "evidenceIds": [
+          "alnur-conviction"
+        ]
+      }
+    ],
+    "interventions": [
+      {
+        "interventionId": "alnur-pretrial-release-requests",
+        "caseId": "alnur-ilyashev",
+        "actor": "Alnur Ilyashev 一方",
+        "action": "审前多次要求释放，报告记载均被拒绝。",
+        "category": "legal",
+        "executionStatus": "implemented",
+        "stageAtAction": "pretrial",
+        "date": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "Not separately dated in the report"
+        },
+        "observedOutcomeIds": [],
+        "relationshipToOutcome": "unknown",
+        "evidenceIds": [
+          "alnur-pretrial-release-denied"
+        ]
+      },
+      {
+        "interventionId": "alnur-trial-bail-request",
+        "caseId": "alnur-ilyashev",
+        "actor": "辩护律师",
+        "action": "主张最初两个月拘押期已满，要求释放并提出保释。",
+        "category": "legal",
+        "executionStatus": "implemented",
+        "stageAtAction": "trial",
+        "date": {
+          "value": "2020-06-18",
+          "precision": "day",
+          "originalText": "June 18"
+        },
+        "observedOutcomeIds": [
+          "alnur-release-refused"
+        ],
+        "relationshipToOutcome": "explicit",
+        "evidenceIds": [
+          "alnur-trial-release-denied"
+        ]
+      },
+      {
+        "interventionId": "alnur-appeal-filed",
+        "caseId": "alnur-ilyashev",
+        "actor": "Alnur Ilyashev 及辩方",
+        "action": "对定罪提出上诉，报告记载上诉法院维持原判，最高法院亦未准上诉。",
+        "category": "legal",
+        "executionStatus": "implemented",
+        "stageAtAction": "appeal",
+        "date": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "Not separately dated in the report"
+        },
+        "observedOutcomeIds": [
+          "alnur-appeal-upheld",
+          "alnur-supreme-appeal-denied"
+        ],
+        "relationshipToOutcome": "explicit",
+        "evidenceIds": [
+          "alnur-conviction",
+          "alnur-appeal-protest"
+        ]
+      },
+      {
+        "interventionId": "alnur-request-protest",
+        "caseId": "alnur-ilyashev",
+        "actor": "辩护方",
+        "action": "请求总检察长向最高法院提出抗诉，要求重新审查。",
+        "category": "legal",
+        "executionStatus": "implemented",
+        "stageAtAction": "postjudgment",
+        "date": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "Not separately dated in the report"
+        },
+        "observedOutcomeIds": [
+          "alnur-protest-outcome-unrecorded"
+        ],
+        "relationshipToOutcome": "unknown",
+        "evidenceIds": [
+          "alnur-appeal-protest"
+        ]
+      }
+    ],
+    "outcomes": [
+      {
+        "outcomeId": "alnur-release-refused",
+        "caseId": "alnur-ilyashev",
+        "description": "Alnur Ilyashev 于2020年6月18日庭审中提出的释放及保释请求被法院拒绝。",
+        "type": "specific",
+        "observedDate": {
+          "value": "2020-06-18",
+          "precision": "day",
+          "originalText": "June 18"
+        },
+        "statusAsOf": "2021-03",
+        "evidenceIds": [
+          "alnur-trial-release-denied"
+        ]
+      },
+      {
+        "outcomeId": "alnur-restricted-movement-sentence",
+        "caseId": "alnur-ilyashev",
+        "description": "Alnur Ilyashev 于2020年6月22日被判三年限制行动及五年政治、公民活动禁令，实际判决不是检方所要求的三年监禁。",
+        "type": "specific",
+        "observedDate": {
+          "value": "2020-06-22",
+          "precision": "day",
+          "originalText": "June 22"
+        },
+        "statusAsOf": "2021-03",
+        "evidenceIds": [
+          "alnur-conviction"
+        ]
+      },
+      {
+        "outcomeId": "alnur-appeal-upheld",
+        "caseId": "alnur-ilyashev",
+        "description": "阿拉木图市法院于2020年9月15日全面维持对 Alnur Ilyashev 的一审判决。",
+        "type": "specific",
+        "observedDate": {
+          "value": "2020-09-15",
+          "precision": "day",
+          "originalText": "September 15"
+        },
+        "statusAsOf": "2021-03",
+        "evidenceIds": [
+          "alnur-appeal-protest"
+        ]
+      },
+      {
+        "outcomeId": "alnur-supreme-appeal-denied",
+        "caseId": "alnur-ilyashev",
+        "description": "哈萨克斯坦最高法院未准 Alnur Ilyashev 的上诉；报告未给出该决定的具体日期。",
+        "type": "specific",
+        "observedDate": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "Not separately dated in the report"
+        },
+        "statusAsOf": "2021-03",
+        "evidenceIds": [
+          "alnur-appeal-protest"
+        ]
+      },
+      {
+        "outcomeId": "alnur-protest-outcome-unrecorded",
+        "caseId": "alnur-ilyashev",
+        "description": "Alnur Ilyashev 的辩方已请求总检察长向最高法院提出抗诉，但2021年3月报告未记录该请求结果。",
+        "type": "unrecorded",
+        "observedDate": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "Not separately dated in the report"
+        },
+        "statusAsOf": "2021-03",
+        "evidenceIds": [
+          "alnur-appeal-protest"
+        ]
+      }
+    ],
+    "reportRecommendations": [
+      {
+        "recommendationId": "alnur-supreme-review",
+        "description": "运用司法审查权纠正权利违反，并推翻维持定罪的上诉裁定。",
+        "actor": "哈萨克斯坦最高法院（专家建议对象）",
+        "category": "legal",
+        "evidenceIds": [
+          "alnur-reconsideration-recommendation"
+        ]
+      },
+      {
+        "recommendationId": "alnur-remote-safeguards",
+        "description": "为远程听证保障被告同意、可用救济、实时保密律师沟通与稳定连线。",
+        "actor": "审判机关与相关主管机构（作者建议对象）",
+        "category": "legal",
+        "evidenceIds": [
+          "alnur-remote-hearing-recommendation"
+        ]
+      }
+    ],
+    "unknowns": [
+      "最高法院决定日期与总检察长抗诉请求结果未载明；未核查2021年3月之后进展。",
+      "报告对公平审判和表达自由的评价属于作者分析；脚注的裁判、专家意见和观察笔记未独立核查。",
+      "证据核验仅指与所供报告对照；不等于独立核实基础事件，也不表示报告日期后的当前状态。"
+    ],
+    "conflicts": []
+  },
+  {
+    "caseId": "alexander-pichugin",
+    "title": "Alexander Pichugin",
+    "country": "俄罗斯",
+    "personTypes": [
+      "journalist"
+    ],
+    "backgroundTags": [
+      "social_media"
+    ],
+    "problems": [
+      "expression_restricted"
+    ],
+    "summary": "记者 Alexander Pichugin 因在 Telegram 以讽刺方式批评疫情期间宗教聚会，被以传播虚假信息定罪。辩方提出意见与事实的区别、交叉询问控方专家并获准补充语言学鉴定；虽然获得程序层面的部分回应，法院仍于2020年11月11日定罪并处罚金。",
+    "evidenceIds": [
+      "pichugin-identity-background",
+      "pichugin-satirical-comment",
+      "pichugin-defense-opinion",
+      "pichugin-supplementary-examination",
+      "pichugin-verdict",
+      "pichugin-judicial-assessment-recommendation"
+    ],
+    "sourceDocumentIds": [
+      "pichugin-report"
+    ],
+    "reportDate": "2022-04",
+    "lastKnownStatusAsOf": "2022-04",
+    "statusSummary": "截至2022年4月报告，记录一审定罪与300,000卢布罚金；未记录随后上诉结果，不推定定罪已被撤销。",
+    "events": [
+      {
+        "eventId": "pichugin-verdict-event",
+        "caseId": "alexander-pichugin",
+        "eventType": "conviction",
+        "description": "法院对 Alexander Pichugin 作出定罪与罚金判决。",
+        "stageAtEvent": "postjudgment",
+        "date": {
+          "value": "2020-11-11",
+          "precision": "day",
+          "originalText": "November 11, 2020"
+        },
+        "evidenceIds": [
+          "pichugin-verdict"
+        ]
+      }
+    ],
+    "interventions": [
+      {
+        "interventionId": "pichugin-expert-defense",
+        "caseId": "alexander-pichugin",
+        "actor": "辩方与语言学专家",
+        "action": "以意见、比喻和讽刺语境反驳将发言视为事实陈述的指控。",
+        "category": "legal",
+        "executionStatus": "implemented",
+        "stageAtAction": "trial",
+        "date": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "Not separately dated in the report"
+        },
+        "observedOutcomeIds": [
+          "pichugin-convicted-fined"
+        ],
+        "relationshipToOutcome": "sequence_only",
+        "evidenceIds": [
+          "pichugin-defense-opinion"
+        ]
+      },
+      {
+        "interventionId": "pichugin-seek-supplement",
+        "caseId": "alexander-pichugin",
+        "actor": "辩护方",
+        "action": "交叉询问揭示控方专家收到的材料语境不完整后，申请补充语言学鉴定。",
+        "category": "legal",
+        "executionStatus": "implemented",
+        "stageAtAction": "trial",
+        "date": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "Not separately dated in the report"
+        },
+        "observedOutcomeIds": [
+          "pichugin-examination-granted"
+        ],
+        "relationshipToOutcome": "explicit",
+        "evidenceIds": [
+          "pichugin-supplementary-examination"
+        ]
+      }
+    ],
+    "outcomes": [
+      {
+        "outcomeId": "pichugin-examination-granted",
+        "caseId": "alexander-pichugin",
+        "description": "Alexander Pichugin 的辩方补充语言学鉴定申请获准，法院指定专家出具报告；这一程序结果不等于撤销指控。",
+        "type": "partial",
+        "observedDate": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "Not separately dated in the report"
+        },
+        "statusAsOf": "2022-04",
+        "evidenceIds": [
+          "pichugin-supplementary-examination"
+        ]
+      },
+      {
+        "outcomeId": "pichugin-convicted-fined",
+        "caseId": "alexander-pichugin",
+        "description": "Alexander Pichugin 于2020年11月11日被 Bogorodsk 市法院定罪并处罚金300,000卢布。",
+        "type": "specific",
+        "observedDate": {
+          "value": "2020-11-11",
+          "precision": "day",
+          "originalText": "November 11, 2020"
+        },
+        "statusAsOf": "2022-04",
+        "evidenceIds": [
+          "pichugin-verdict"
+        ]
+      }
+    ],
+    "reportRecommendations": [
+      {
+        "recommendationId": "pichugin-independent-assessment",
+        "description": "审视所用法律的合宪性，并由法院独立判断发言人的意图。",
+        "actor": "法院（专家所述本应采取的路径）",
+        "category": "legal",
+        "evidenceIds": [
+          "pichugin-judicial-assessment-recommendation"
+        ]
+      }
+    ],
+    "unknowns": [
+      "未记录上诉提交与处理结果，未核查2022年4月之后状态。",
+      "补充鉴定获准是部分程序结果；不能认为专家证据导致减轻处罚或推翻定罪。",
+      "证据核验仅指与所供报告对照；不等于独立核实基础事件，也不表示报告日期后的当前状态。"
+    ],
+    "conflicts": []
+  },
+  {
+    "caseId": "dian-abdullah",
+    "title": "Dian Abdullah",
+    "country": "马来西亚",
+    "personTypes": [
+      "blogger"
+    ],
+    "backgroundTags": [
+      "social_media"
+    ],
+    "problems": [
+      "expression_restricted"
+    ],
+    "summary": "独立博主 Dian Abdullah 因批评国王任命新首相以及疫情政策的两篇博文，被分别依据 Penal Code Section 505(b) 与 CMA Section 233(1)(a) 起诉。她在2020年6月缴纳保释金，审判同年12月开始。2021年3月24日的初步报告发表时案件仍在审理；撤诉或无罪只是作者建议。",
+    "evidenceIds": [
+      "dian-identity-posts",
+      "dian-charges",
+      "dian-bail-trial",
+      "dian-pending-hearing",
+      "dian-trialwatch-monitoring",
+      "dian-dismissal-recommendation",
+      "dian-charge-review-recommendation"
+    ],
+    "sourceDocumentIds": [
+      "dian-report"
+    ],
+    "reportDate": "2021-03-24",
+    "lastKnownStatusAsOf": "2021-03-24",
+    "statusSummary": "截至2021年3月24日初步报告，已缴纳保释金，审判尚未结束，下一次庭审当时定于3月25日；后续结果未知。",
+    "events": [
+      {
+        "eventId": "dian-charged",
+        "caseId": "dian-abdullah",
+        "eventType": "charges-filed",
+        "description": "Dian Abdullah 因两篇博文面临两组不同法条指控。",
+        "stageAtEvent": "pretrial",
+        "date": {
+          "value": "2020-06",
+          "precision": "month",
+          "originalText": "In June 2020"
+        },
+        "evidenceIds": [
+          "dian-charges"
+        ]
+      },
+      {
+        "eventId": "dian-trial-started",
+        "caseId": "dian-abdullah",
+        "eventType": "trial-opened",
+        "description": "Dian Abdullah 的审判开始。",
+        "stageAtEvent": "trial",
+        "date": {
+          "value": "2020-12-22",
+          "precision": "day",
+          "originalText": "December 22; chronology following June 2020 charges"
+        },
+        "evidenceIds": [
+          "dian-charges",
+          "dian-bail-trial"
+        ]
+      }
+    ],
+    "interventions": [
+      {
+        "interventionId": "dian-post-bail",
+        "caseId": "dian-abdullah",
+        "actor": "Dian Abdullah",
+        "action": "到庭并缴纳4,000林吉特保释金。",
+        "category": "legal",
+        "executionStatus": "implemented",
+        "stageAtAction": "pretrial",
+        "date": {
+          "value": "2020-06-09",
+          "precision": "day",
+          "originalText": "June 9; June 2020 in the executive summary"
+        },
+        "observedOutcomeIds": [
+          "dian-bail-posted"
+        ],
+        "relationshipToOutcome": "explicit",
+        "evidenceIds": [
+          "dian-charges",
+          "dian-bail-trial"
+        ]
+      },
+      {
+        "interventionId": "dian-monitor-proceedings",
+        "caseId": "dian-abdullah",
+        "actor": "美国律师协会人权中心 / TrialWatch",
+        "action": "观察刑事程序并在案件结束前发布初步报告。",
+        "category": "monitoring",
+        "executionStatus": "implemented",
+        "stageAtAction": "trial",
+        "date": {
+          "value": null,
+          "precision": "unknown",
+          "originalText": "Not separately dated in the report"
+        },
+        "observedOutcomeIds": [],
+        "relationshipToOutcome": "unknown",
+        "evidenceIds": [
+          "dian-trialwatch-monitoring"
+        ]
+      }
+    ],
+    "outcomes": [
+      {
+        "outcomeId": "dian-bail-posted",
+        "caseId": "dian-abdullah",
+        "description": "Dian Abdullah 于2020年6月9日在吉隆坡刑事 Sessions Court 缴纳4,000林吉特保释金；此后仍受审。",
+        "type": "partial",
+        "observedDate": {
+          "value": "2020-06-09",
+          "precision": "day",
+          "originalText": "June 9; June 2020 in the executive summary"
+        },
+        "statusAsOf": "2021-03-24",
+        "evidenceIds": [
+          "dian-charges",
+          "dian-bail-trial"
+        ]
+      },
+      {
+        "outcomeId": "dian-trial-pending",
+        "caseId": "dian-abdullah",
+        "description": "Dian Abdullah 的案件在2021年3月24日初步报告发表时仍在审理，下一次庭审当时安排在3月25日；未记录最终裁判。",
+        "type": "pending",
+        "observedDate": {
+          "value": "2021-03-24",
+          "precision": "day",
+          "originalText": "March 24, 2021 (report publication date)"
+        },
+        "statusAsOf": "2021-03-24",
+        "evidenceIds": [
+          "dian-pending-hearing"
+        ]
+      }
+    ],
+    "reportRecommendations": [
+      {
+        "recommendationId": "dian-end-prosecution",
+        "description": "作出无罪判决或撤案，或由检方撤回指控。",
+        "actor": "吉隆坡刑事 Sessions Court 或检方（作者建议对象）",
+        "category": "legal",
+        "evidenceIds": [
+          "dian-dismissal-recommendation"
+        ]
+      },
+      {
+        "recommendationId": "dian-screen-charges",
+        "description": "审查拟起诉行为是否达到刑事追诉所需严重性，以及言论与所称威胁是否存在明确关联。",
+        "actor": "检察官与法官（作者建议对象）",
+        "category": "legal",
+        "evidenceIds": [
+          "dian-charge-review-recommendation"
+        ]
+      }
+    ],
+    "unknowns": [
+      "本地 PDF 是2026年10月8日打印的官方网页副本，报告日期为2021年3月24日；PDF页码只对本地副本有效，无稳定印刷页码。",
+      "初步报告未提供最终结果；保释与作者呼吁撤诉均不得改写为案件已撤销或已无罪。",
+      "证据核验仅指与所供报告对照；不等于独立核实基础事件，也不表示报告日期后的当前状态。"
+    ],
+    "conflicts": []
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "resourceId": "ohchr-special-procedures",
+    "name": "联合国人权高专办：特别程序信息提交指引",
+    "officialUrl": "https://spsubmission.ohchr.org/",
+    "checkedAt": "2026-10-07",
+    "applicability": "供个人、团体及社会组织核对特别程序提交要求。是否采取行动由相关专家决定，自动回执不代表已介入。该机制不是司法裁决程序；国别访问建议与个人信息提交不同。应先确认当事人同意、披露选择及安全风险。",
+    "requiredMaterials": [
+      "清楚、可信、具体的事件和所涉侵害说明",
+      "与陈述对应的关键佐证材料；不能仅依据媒体报道",
+      "当事人或代表对向相关方及公开报告披露姓名的明确意见"
+    ]
+  },
+  {
+    "resourceId": "cpj-emergency-help",
+    "name": "保护记者委员会（CPJ）：记者安全与紧急协助",
+    "officialUrl": "https://cpj.org/journalist-safety-and-emergencies/",
+    "checkedAt": "2026-10-07",
+    "applicability": "面向因新闻工作遭遇相关事件的在职记者及媒体工作者，提供个案评估的短期紧急支持。优先处理紧急情形，不保证回应或资助；博主及活动人士不能只凭身份假定符合范围。页面说明信息可能与少量可信合作方共享作核验。",
+    "requiredMaterials": [
+      "新闻工作背景与相关作品说明",
+      "事件、当前需求及与新闻工作的关联",
+      "先与当事人确认协助请求与信息共享范围"
+    ]
+  }
+]

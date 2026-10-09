@@ -1,0 +1,23 @@
+// Browser regression with mocked AI responses; no live model call.
+const baseURL=process.env.TEST_BASE_URL||'http://127.0.0.1:3000';
+import { chromium } from '@playwright/test';
+const browser=await chromium.launch({channel:'chrome',headless:true});
+const page=await browser.newPage();
+const input={schemaVersion:'1.0',country:'突尼斯',stage:'trial',currentProblems:['threats'],background:{activities:['social_media'],personType:'blogger',description:'虚构QA'},primaryGoal:'drop_charges',keyDates:[{date:'2026-11-05',event:'预计听证',approximate:true}],resources:['lawyer'],resourceConstraints:'',priorActions:{status:'none',description:'',date:''},publicity:'private',isExample:false,exampleId:null};
+await page.addInitScript(input=>sessionStorage.setItem('caselink.session.v1',JSON.stringify({version:1,input,result:null,resultInputKey:null,step:8})),input);
+await page.route('**/api/capabilities',route=>route.fulfill({json:{mode:'live',configured:true,liveAvailable:true,accessRequired:false}}));
+const requests=[];
+await page.route('**/api/analyze',route=>{requests.push(route.request().postDataJSON());return route.fulfill({status:502,json:{code:'UPSTREAM_ERROR',message:'服务未完成本次分析',requestId:requests.at(-1).requestId}})});
+await page.goto(`${baseURL}/review`);
+await page.getByText(/2026-11-05.*大约/).waitFor();
+await page.getByRole('button',{name:'查找案例并生成行动参考'}).click();await page.getByRole('button',{name:'重试一次'}).click();
+await page.getByText('本次请求已重试一次，不再重复调用。可修改案情或使用其他可用模式。').waitFor();
+if(requests.length!==2)throw new Error(`attempts=${requests.length}`);
+if(requests[0].requestId!==requests[1].requestId||JSON.stringify(requests[0].input)!==JSON.stringify(requests[1].input))throw new Error('retry intent changed');
+if(await page.getByRole('button',{name:'重试一次'}).count())throw new Error('third attempt offered');
+await page.unroute('**/api/analyze');await page.route('**/api/analyze',route=>route.fulfill({status:422,json:{code:'MODEL_REFUSAL',message:'模型拒绝',requestId:'qa-refusal'}}));
+await page.reload();await page.getByRole('button',{name:'查找案例并生成行动参考'}).click();await page.getByText('模型拒绝').waitFor();
+if(await page.getByRole('button',{name:'重试一次'}).count())throw new Error('refusal retry offered');
+await page.getByRole('button',{name:/改用规则参考/}).waitFor();
+console.log(JSON.stringify({approximateDateLabeled:true,recoverableAttempts:requests.length,requestIdPreserved:true,thirdAttemptBlocked:true,refusalHasNoRetry:true,ruleAlternativeVisible:true},null,2));
+await browser.close();

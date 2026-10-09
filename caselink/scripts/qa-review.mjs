@@ -1,0 +1,43 @@
+// Browser regression with mocked AI responses; no live model call.
+const baseURL=process.env.TEST_BASE_URL||'http://127.0.0.1:3000';
+import { chromium } from '@playwright/test';
+const browser=await chromium.launch({channel:'chrome',headless:true});
+const page=await browser.newPage({viewport:{width:1440,height:1000}});
+const input={schemaVersion:'1.0',country:'突尼斯',stage:'trial',currentProblems:['threats','expression_restricted'],background:{activities:['social_media','repost'],personType:'blogger',description:'【虚构QA】公开内容导致起诉'},primaryGoal:'drop_charges',keyDates:[],resources:['lawyer','local_ngo'],resourceConstraints:'',priorActions:{status:'none',description:'',date:''},publicity:'public',isExample:false,exampleId:null};
+const r=await page.request.post(`${baseURL}/api/analyze`,{data:{input,requestId:'qa-review-regression',forceRule:true}});
+if(!r.ok())throw new Error(await r.text());const result=await r.json();
+await page.addInitScript(input=>{
+ if(!sessionStorage.getItem('caselink.session.v1'))sessionStorage.setItem('caselink.session.v1',JSON.stringify({version:1,input,result:null,resultInputKey:null,step:8}));
+ window.__qaRequests=[];
+ const native=window.fetch.bind(window);
+ window.fetch=(url,options)=>{
+  if(url==='/api/capabilities')return Promise.resolve(new Response(JSON.stringify({mode:'demo',configured:false,liveAvailable:false,accessRequired:false}),{headers:{'Content-Type':'application/json'}}));
+  if(url==='/api/analyze')return new Promise(resolve=>window.__qaRequests.push({body:JSON.parse(options.body),resolve}));
+  return native(url,options);
+ };
+},input);
+await page.goto(`${baseURL}/review`);
+const submit=page.getByRole('button',{name:'查找案例并生成行动参考'});await submit.waitFor();
+await submit.evaluate(button=>{button.click();button.click()});
+let count=await page.evaluate(()=>window.__qaRequests.length);if(count!==1)throw new Error(`duplicate: ${count}`);
+await page.getByRole('button',{name:'取消本次分析'}).click();
+await page.getByRole('button',{name:'重新开始分析'}).click();
+count=await page.evaluate(()=>window.__qaRequests.length);if(count!==2)throw new Error(`restart count: ${count}`);
+await page.evaluate(result=>window.__qaRequests[0].resolve(new Response(JSON.stringify({...result,analysisId:'qa-old-cancelled'}),{status:200,headers:{'Content-Type':'application/json'}})),result);
+await page.waitForTimeout(150);
+const afterOld=await page.evaluate(()=>JSON.parse(sessionStorage.getItem('caselink.session.v1')).result);
+if(afterOld!==null||!page.url().endsWith('/review'))throw new Error('cancelled old result leaked');
+await page.evaluate(result=>window.__qaRequests[1].resolve(new Response(JSON.stringify({...result,analysisId:'qa-new-result'}),{status:200,headers:{'Content-Type':'application/json'}})),result);
+await page.waitForURL('**/analysis');
+await page.getByRole('heading',{name:'你的案件，下一步怎么走。'}).waitFor();
+const afterNew=await page.evaluate(()=>JSON.parse(sessionStorage.getItem('caselink.session.v1')).result?.analysisId);
+if(afterNew!=='qa-new-result')throw new Error(`wrong result: ${afterNew}`);
+await page.reload();await page.getByRole('heading',{name:'你的案件，下一步怎么走。'}).waitFor();
+const refreshCount=await page.evaluate(()=>window.__qaRequests.length);if(refreshCount!==0)throw new Error('refresh retriggered analysis');
+await page.goto(`${baseURL}/review`);await page.getByRole('button',{name:'查找案例并生成行动参考'}).click();
+await page.getByRole('link',{name:'返回填写'}).click();await page.getByRole('heading',{name:'对外公开案件有哪些限制？'}).waitFor();
+await page.evaluate(result=>window.__qaRequests[0].resolve(new Response(JSON.stringify({...result,analysisId:'qa-after-unmount'}),{status:200,headers:{'Content-Type':'application/json'}})),result);
+await page.waitForTimeout(150);const afterUnmount=await page.evaluate(()=>JSON.parse(sessionStorage.getItem('caselink.session.v1')).result?.analysisId);
+if(afterUnmount!=='qa-new-result')throw new Error(`unmounted response leaked: ${afterUnmount}`);
+console.log(JSON.stringify({sameTickDoubleClickRequestCount:1,cancelledOldResponseIgnored:true,currentResponseSaved:afterNew,refreshAnalyzeCalls:refreshCount,unmountLateResponseIgnored:true},null,2));
+await browser.close();

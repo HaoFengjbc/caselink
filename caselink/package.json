@@ -1,0 +1,36 @@
+{
+  "name": "caselink",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --hostname 127.0.0.1",
+    "build": "next build --webpack",
+    "start": "next start --hostname 127.0.0.1",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "test:browser-guards": "node scripts/qa-review.mjs && node scripts/qa-review-errors.mjs && node scripts/qa-review-retry.mjs"
+  },
+  "dependencies": {
+    "next": "16.4.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "zod": "4.6.5",
+    "openai": "7.30.0",
+    "lucide-react": "1.52.0",
+    "tailwindcss": "4.3.3",
+    "@tailwindcss/postcss": "4.3.3"
+  },
+  "devDependencies": {
+    "typescript": "7.0.2",
+    "@types/node": "26.6.4",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "vitest": "5.0.3",
+    "@playwright/test": "1.63.0"
+  },
+  "engines": {
+    "node": "24.x"
+  },
+  "type": "module"
+}

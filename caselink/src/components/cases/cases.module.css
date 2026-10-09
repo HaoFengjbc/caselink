@@ -1,0 +1,144 @@
+/* ═════════════════════ Case library & case detail (v3) ═════════════════════ */
+
+/* ── Library (dark, "active maps" list) ── */
+.libraryPage { background: var(--cream); color: var(--ink) }
+.libraryInner { max-width: 1280px; margin: 0 auto; padding: 56px 24px 100px }
+.libraryHero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px; align-items: end; margin-bottom: 44px }
+.libraryHero h1 { margin: 0; font-size: clamp(36px, 4.4vw, 58px); line-height: 1.2; letter-spacing: .26em; color: var(--ink) }
+.libraryHero :global(.bar) { color: var(--ink) }
+.libraryIntro p { margin: 0 0 12px; color: var(--muted); font-size: 15px; letter-spacing: .04em }
+.libraryIntro strong { color: var(--ink); font-weight: 600 }
+.libraryCount { font-size: 13px; letter-spacing: .14em; color: var(--muted) }
+.libraryCount b { margin-right: 6px; font-size: 30px; font-weight: 400; color: var(--red); vertical-align: -3px }
+
+.filters { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 28px; padding-bottom: 20px; border-bottom: 1px solid var(--line) }
+.filterTitle { margin-right: 6px; font-family: var(--font-display); font-size: 14px; letter-spacing: .3em; color: var(--ink) }
+.librarySearch {flex:1 0 100%;margin-bottom:10px}
+.librarySearch input {width:100%;padding:14px 16px;border:1px solid var(--line);border-radius:2px;background:var(--card);color:var(--ink);font-size:15px}
+.select { position: relative; display: inline-flex; align-items: center }
+.select > svg { position: absolute; right: 12px; pointer-events: none; color: var(--muted) }
+.select select { appearance: none; -webkit-appearance: none; padding: 9px 38px 9px 16px; border: 1px solid var(--line); border-radius: 2px; background: var(--card); color: var(--ink); font-size: 14px; letter-spacing: .08em; cursor: pointer; transition: border-color .2s }
+.select select:hover { border-color: var(--ink-2) }
+.select select[data-active="true"] { border-color: var(--red); color: var(--red) }
+.select option { color: var(--ink); background: var(--paper) }
+.filterCount { margin-left: auto; display: inline-flex; align-items: center; gap: 8px; font-size: 13px; letter-spacing: .14em; color: var(--muted) }
+.filterCount b { font-size: 22px; font-weight: 400; color: var(--ink) }
+.filterCount button { width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--line); border-radius: 50%; background: none; color: var(--ink) }
+.filterCount button:hover { border-color: var(--red); color: var(--red) }
+
+.caseList { display: grid; gap: 28px }
+.caseCard { position: relative; display: block; padding: 28px 48px 0; background: var(--card); border: 1px solid var(--line); box-shadow: var(--shadow); text-align: center; overflow: hidden; transition: transform .35s var(--ease), border-color .3s; animation: rise .5s var(--ease) backwards }
+.caseCard:hover { transform: translateY(-4px); border-color: rgba(224, 83, 63, .5) }
+.cardTop { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 12px; font-size: 13px; letter-spacing: .14em; color: var(--muted) }
+.cardTop > :first-child { justify-self: start; font-size: 20px; color: var(--ink) }
+.cardTop > :last-child { justify-self: end }
+.cardTags { letter-spacing: .2em }
+.conflictFlag { color: var(--amber); font-size: 12.5px }
+.caseCard h2, .detailCard h1 { margin: 34px 0 10px; font-size: clamp(48px, 7vw, 96px); font-weight: 400; line-height: .95; letter-spacing: .06em; text-transform: uppercase; color: var(--ink); transition: color .3s }
+.caseCard:hover h2 { color: var(--red) }
+.cardStatement { max-width: 900px; margin: 18px auto 0; font-family: var(--font-display); font-size: clamp(17px, 1.9vw, 24px); font-weight: 600; line-height: 2; letter-spacing: .14em; color: var(--ink) }
+.cardStatement span { margin: 0 .25em; padding-bottom: 2px; color: var(--red); border-bottom: 2.5px solid var(--red); -webkit-box-decoration-break: clone; box-decoration-break: clone }
+.cardSummary { max-width: 780px; margin: 18px auto 0; font-size: 14.5px; line-height: 1.9; color: var(--muted); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden }
+.cardCta { display: inline-flex; align-items: center; gap: 10px; margin: 28px 0 34px; padding: 13px 32px; border: 1.5px solid var(--ink); color: var(--ink); font-family: var(--font-display); font-size: 14.5px; font-weight: 600; letter-spacing: .26em; transition: background .2s, color .2s }
+.caseCard:hover .cardCta { background: var(--red); border-color: var(--red); color: #fff }
+.cardStats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 0 -48px; padding: 22px 48px 20px; background: var(--band) }
+.cardStats > div { display: flex; flex-direction: column-reverse; align-items: center; gap: 4px }
+.cardStats dd { margin: 0; font-size: 36px; line-height: 1; color: var(--ink) }
+.cardStats dt { font-size: 12.5px; letter-spacing: .16em; color: var(--muted) }
+.emptyFilter { padding: 64px 24px; text-align: center; border: 1px dashed var(--line) }
+.emptyFilter h3 { color: var(--ink); letter-spacing: .2em }
+.emptyFilter p { color: var(--muted) }
+.libraryBottom { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-top: 40px; padding-top: 22px; border-top: 1px solid var(--line); font-family: var(--font-display); font-size: 16px; letter-spacing: .2em }
+
+/* ── Detail ── */
+.detailPage { background: var(--paper) }
+.detailHero { background: var(--cream); color: var(--ink); padding: 24px max(24px, calc((100vw - 1280px) / 2)) 60px }
+.backLink { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; letter-spacing: .14em; color: var(--muted); transition: color .2s }
+.backLink:hover { color: var(--red) }
+.detailCard { margin-top: 28px; padding: 28px 48px 0; background: var(--card); border: 1px solid var(--line); box-shadow: var(--shadow); text-align: center; overflow: hidden; animation: rise .6s var(--ease) both }
+.archiveLabel { font-size: 12px; letter-spacing: .3em }
+.detailSummary { max-width: 820px; margin: 20px auto 10px; font-size: 15.5px; line-height: 1.95; color: var(--muted) }
+.detailCard .cardStats { margin-top: 30px }
+.detailBody { max-width: 1280px; margin: 0 auto; padding: 40px 24px 40px }
+.sectionNav { position: sticky; top: calc(var(--header-h) + 12px); z-index: 5; display: flex; gap: 0; width: max-content; max-width: 100%; margin: 28px auto 0; padding: 5px; overflow-x: auto; scrollbar-width: none; background: var(--band); border-radius: 3px; box-shadow: 0 14px 30px -20px rgba(74, 52, 20, .55) }
+.sectionNav a { display: inline-flex; align-items: center; gap: 8px; padding: 9px 18px; border-radius: 2px; font-family: var(--font-display); font-size: 14px; font-weight: 600; letter-spacing: .16em; color: var(--ink); white-space: nowrap; transition: background .2s, color .2s }
+.sectionNav a span { font-size: 15px; color: var(--muted) }
+.sectionNav a:hover { background: var(--card); color: var(--ink) }
+.sectionNav a:hover span { color: var(--red) }
+.detailGrid { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 56px; align-items: start }
+.detailSection { padding-top: 56px }
+.detailSection h2 { margin-bottom: 24px; font-size: clamp(24px, 2.6vw, 30px); letter-spacing: .2em }
+
+.timeline { border-top: 2px solid var(--ink) }
+.timeline article { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 28px; padding: 20px 0; border-bottom: 1px solid var(--line) }
+.timelineDate { font-family: var(--font-display); font-size: 22px; line-height: 1.2; letter-spacing: .06em; color: var(--red) }
+.timelineDate span { display: block; margin-top: 6px; font-family: var(--font-body); font-size: 12.5px; letter-spacing: .1em; color: var(--muted) }
+.timelineBody p { margin-bottom: 4px; font-size: 15px }
+
+.intervention { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 18px; padding: 24px 0; border-top: 1px solid var(--line-strong) }
+.intervention:first-of-type { border-top: 2px solid var(--ink) }
+.interventionIndex { font-family: var(--font-display); font-size: 48px; line-height: .9; color: var(--subtle) }
+.intervention h3 { margin: 12px 0 8px; font-size: 18px; line-height: 1.6; letter-spacing: .1em }
+.actionMeta { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px }
+.actionMeta span { padding: 2px 10px; background: var(--paper-2); font-size: 12.5px; letter-spacing: .06em; color: var(--ink-2) }
+.observedOutcome { margin-bottom: 8px; padding: 14px 16px; background: var(--green-soft); border-left: 3px solid var(--green) }
+.observedOutcome > span { font-size: 12px; letter-spacing: .16em; color: var(--green) }
+.observedOutcome p { margin: 4px 0; font-size: 14.5px; color: #2a4f3e }
+.observedOutcome small { font-size: 12px; color: #94620f }
+.outcomeRow { display: grid; grid-template-columns: 100px minmax(0, 1fr); gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--line) }
+.outcomeRow:first-of-type { border-top: 2px solid var(--ink) }
+.outcomeRow :global(.tag) { justify-self: start }
+.outcomeRow p { margin-bottom: 4px; font-size: 14.5px }
+.outcomeRow small { display: block; font-size: 12.5px }
+.unknownPanel { margin-top: 26px; padding: 20px 22px; border: 1px dashed var(--line-strong) }
+.unknownPanel h3 { margin-bottom: 8px; font-size: 16px; letter-spacing: .18em; color: #94620f }
+.unknownPanel ul { margin: 0; padding-left: 20px; font-size: 14.5px; color: var(--ink-2) }
+.recommendation { margin-bottom: 14px; padding: 20px 22px; background: var(--surface); border: 1.5px dashed #e9b6aa }
+.recommendation > p { margin: 12px 0 6px; font-size: 14.5px }
+.recommendation .recommendationActor { margin-bottom: 8px; font-size: 13px; color: var(--muted) }
+
+.detailAside { position: sticky; top: calc(var(--header-h) + 80px); display: grid; gap: 22px; margin-top: 56px }
+.sourceCard { padding: 24px; background: var(--surface); border: 1px solid var(--line); border-top: 4px solid var(--ink) }
+.sourceCard h3 { margin-bottom: 4px; font-size: 16.5px; line-height: 1.5; letter-spacing: .06em }
+.sourceCard > div > p { margin-bottom: 14px; font-size: 13px }
+.sourceCard :global(.btn) { width: 100%; margin-top: 16px }
+.sourceDl { display: grid; grid-template-columns: auto 1fr; gap: 10px 14px; margin: 0; padding-top: 12px; border-top: 1px solid var(--line); font-size: 13.5px }
+.sourceDl dt { color: var(--muted) }
+.sourceDl dd { margin: 0; text-align: right; font-family: var(--font-display); font-size: 16px; letter-spacing: .06em }
+.asideTip { padding: 24px; background: var(--cream); border-top: 3px solid var(--red); color: var(--ink) }
+.asideTip h3 { margin-bottom: 6px; color: var(--ink); font-size: 17px; letter-spacing: .16em }
+.asideTip p { margin-bottom: 10px; font-size: 13.5px; color: var(--muted) }
+.asideTip :global(.text-link) { color: var(--red) }
+
+@media (max-width: 960px) {
+  .libraryHero { grid-template-columns: 1fr; gap: 24px }
+  .detailGrid { grid-template-columns: 1fr; gap: 0 }
+  .detailAside { position: static }
+}
+@media (max-width: 640px) {
+  .libraryInner { padding: 36px 16px 72px }
+  .libraryHero h1 { letter-spacing: .18em }
+  .select, .select select { width: 100% }
+  .filterTitle { flex-basis: 100% }
+  .filterCount { margin-left: 0 }
+  .caseCard, .detailCard { padding: 20px 18px 0 }
+  .cardTop { grid-template-columns: 1fr auto; font-size: 12px; letter-spacing: .08em }
+  .cardTop > :last-child { grid-column: 1 / -1; justify-self: center }
+  .cardTags { grid-column: 2; grid-row: 1 }
+  .caseCard h2, .detailCard h1 { margin-top: 24px; font-size: 46px }
+  .cardStatement { font-size: 16.5px; letter-spacing: .06em }
+  .cardCta { margin: 22px 0 26px; padding: 12px 24px }
+  .cardStats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 0; margin: 0 -18px; padding: 18px }
+  .cardStats dd { font-size: 30px }
+  .libraryBottom { flex-direction: column; align-items: flex-start }
+  .detailHero { padding: 16px 16px 40px }
+  .detailBody { padding: 28px 16px 32px }
+  .sectionNav a { padding: 8px 10px; font-size: 12.5px; letter-spacing: .06em }
+  .timeline article { grid-template-columns: 1fr; gap: 6px }
+  .intervention { grid-template-columns: 40px minmax(0, 1fr); gap: 12px }
+  .interventionIndex { font-size: 34px }
+  .outcomeRow { grid-template-columns: 1fr; gap: 8px }
+}
+
+/* English sentences carry real spaces, so the fill margins used for Chinese are dropped. */
+:global(html[lang="en"]) .cardStatement span { margin: 0 }

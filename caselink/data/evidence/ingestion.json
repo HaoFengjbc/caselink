@@ -1,0 +1,245 @@
+{
+  "corpusVersion": "2026-10-08.v2",
+  "ingestedAt": "2026-10-09T03:29:05.545529+00:00",
+  "reviewMeaning": "Selected excerpts and their structured interpretation checked against the supplied reports; not independent verification of underlying events or later case developments.",
+  "counts": {
+    "caseRecords": 22,
+    "sourceDocuments": 21,
+    "evidenceExcerpts": 187,
+    "regions": 14
+  },
+  "documents": [
+    {
+      "documentId": "aigul-report",
+      "title": "Kazakhstan v. Aigul Utepova — TrialWatch Fairness Report",
+      "sha256": "d991f7f7d6e9fbd2af7289eb3ab9ba2a2008ed6f4ff7cf153a96d0da45144890",
+      "reportDate": "2022-04",
+      "sourceFormat": "pdf",
+      "caseIds": [
+        "aigul-utepova"
+      ],
+      "excerptCount": 12
+    },
+    {
+      "documentId": "emna-report",
+      "title": "Tunisia vs. Emna Chargui — TrialWatch Fairness Report",
+      "sha256": "1501f5309ada29f1161fdebf7102f382c0673ba75fd0ee210e52e2439ba4b159",
+      "reportDate": "2021-06",
+      "sourceFormat": "pdf",
+      "caseIds": [
+        "emna-chargui"
+      ],
+      "excerptCount": 12
+    },
+    {
+      "documentId": "myriam-report",
+      "title": "Tunisia vs. Myriam Bribri — TrialWatch Fairness Report",
+      "sha256": "863934481e9681955a9a7d4293ce31122ed86e4bb4e886386d44b9179f1bf8b6",
+      "reportDate": "2021-06",
+      "sourceFormat": "pdf",
+      "caseIds": [
+        "myriam-bribri"
+      ],
+      "excerptCount": 8
+    },
+    {
+      "documentId": "shahidul-alam-report",
+      "title": "Bangladesh v. Shahidul Alam",
+      "sha256": "6b0ea3d0959fb21052460b30ca8b1fe7135b65c0733531de77a2360787a92ed7",
+      "reportDate": "2023-01",
+      "sourceFormat": "pdf",
+      "caseIds": [
+        "shahidul-alam"
+      ],
+      "excerptCount": 10
+    },
+    {
+      "documentId": "katsiaryna-andreyeva-daria-chultsova-report",
+      "title": "Belarus v. Katsiaryna Andreyeva and Daria Chultsova",
+      "sha256": "42978ec140db651c6e7fbf6a790ca7dc04088871e02b66df627d01d8438911b4",
+      "reportDate": "2021-10",
+      "sourceFormat": "pdf",
+      "caseIds": [
+        "katsiaryna-andreyeva-daria-chultsova"
+      ],
+      "excerptCount": 10
+    },
+    {
+      "documentId": "mzia-amaglobeli-report",
+      "title": "Georgia v. Mzia Amaglobeli",
+      "sha256": "1fcb0ff51daeb84ac93f12d1a381a835141c0bdd346b8eceb6acbef3dd99ac72",
+      "reportDate": "2026-01",
+      "sourceFormat": "pdf",
+      "caseIds": [
+        "mzia-amaglobeli"
+      ],
+      "excerptCount": 11
+    },
+    {
+      "documentId": "jose-ruben-zamora-report",
+      "title": "Guatemala v. José Rubén Zamora",
+      "sha256": "cb11482cb6264485b37cf975caf507a1db4e772efd7f5d39228429278aba28b5",
+      "reportDate": "2024-02",
+      "sourceFormat": "pdf",
+      "caseIds": [
+        "jose-ruben-zamora"
+      ],
+      "excerptCount": 14
+    },
+    {
+      "documentId": "marina-zolotova-report",
+      "title": "Monitoring of the Trial of Marina Zolotova (Belarus)",
+      "sha256": "7ee07c9232ff7c4bee579f9abf0fe31c88498baf16df19d6a052f1157824b6cf",
+      "reportDate": "2019-07",
+      "sourceFormat": "pdf",
+      "caseIds": [
+        "marina-zolotova"
+      ],
+      "excerptCount": 10
+    },
+    {
+      "documentId": "svetlana-prokopyeva-report",
+      "title": "Russian Federation vs. Svetlana Prokopyeva",
+      "sha256": "8cc972c9b798353930b589796bbd2b5cfb54ce6ffdc2091f464e7674a94600a8",
+      "reportDate": "2021-01",
+      "sourceFormat": "pdf",
+      "caseIds": [
+        "svetlana-prokopyeva"
+      ],
+      "excerptCount": 10
+    },
+    {
+      "documentId": "bao-choy-report",
+      "title": "Hong Kong Special Administrative Region v. Bao Choy Yuk-ling — TrialWatch Fairness Report",
+      "sha256": "611fe39a0578c70296b3a6d0fe1027ebb0f25a5607ef8b89510efb93854403f4",
+      "reportDate": "2021-07",
+      "sourceFormat": "pdf",
+      "caseIds": [
+        "bao-choy"
+      ],
+      "excerptCount": 7
+    },
+    {
+      "documentId": "malaysiakini-steven-gan-report",
+      "title": "Malaysia v. Malaysiakini and Steven Gan — TrialWatch Fairness Report",
+      "sha256": "65f3fed760289d6726b32b58bebf9d21332dddae76cace6fe4072cd40b4426b1",
+      "reportDate": "2021-10",
+      "sourceFormat": "pdf",
+      "caseIds": [
+        "malaysiakini-steven-gan"
+      ],
+      "excerptCount": 8
+    },
+    {
+      "documentId": "hajar-raissouni-report",
+      "title": "Morocco v. Hajar Raissouni et al. — TrialWatch Fairness Report",
+      "sha256": "d975078d3ead4aa9b687fb00880fc2f89165ffceceab8945a7ca410fa3c0b888",
+      "reportDate": "2020-08",
+      "sourceFormat": "pdf",
+      "caseIds": [
+        "hajar-raissouni"
+      ],
+      "excerptCount": 8
+    },
+    {
+      "documentId": "omar-radi-2020-report",
+      "title": "Morocco v. Omar Radi — TrialWatch Fairness Report",
+      "sha256": "2c838e27d9efa78225024cdd7568e18733b118fb8ade6831a51e4939e7cadd0d",
+      "reportDate": "2020-09",
+      "sourceFormat": "pdf",
+      "caseIds": [
+        "omar-radi-2020"
+      ],
+      "excerptCount": 7
+    },
+    {
+      "documentId": "omar-radi-ii-2022-report",
+      "title": "Morocco v. Omar Radi II — TrialWatch Fairness Report",
+      "sha256": "9c1ad11ebfb2703fd3372492d64b23fd6c24411b1d3e0b41bcdc29102d819beb",
+      "reportDate": "2022-07",
+      "sourceFormat": "pdf",
+      "caseIds": [
+        "omar-radi-ii-2022"
+      ],
+      "excerptCount": 8
+    },
+    {
+      "documentId": "cansu-piskin-report",
+      "title": "Trial Monitoring of People v. Cansu Pişkin (Turkey 2019) — TrialWatch Fairness Report",
+      "sha256": "cd1d30ba4d1847a451bf7a7636ba035fb46f806be28edee09e5db992d54a1dde",
+      "reportDate": "2019-07",
+      "sourceFormat": "pdf",
+      "caseIds": [
+        "cansu-piskin"
+      ],
+      "excerptCount": 6
+    },
+    {
+      "documentId": "pakistan-peca-report",
+      "title": "Section 20 of Pakistan’s Prevention of Electronic Crimes Act: Urgent Reforms Needed",
+      "sha256": "88cc7310958779e156b8e8260e709ef81fd8e8ffdfdd8f6822cb13fdf9128927",
+      "reportDate": "2023-09",
+      "sourceFormat": "pdf",
+      "caseIds": [
+        "asad-ali-toor",
+        "bilal-ghauri"
+      ],
+      "excerptCount": 11
+    },
+    {
+      "documentId": "bwayo-report",
+      "title": "Uganda v. Moses Bwayo",
+      "sha256": "3f708b64ff409ef0f7f3f720ed54f7b8d9b7404664fb9e24415afe1139d6bda5",
+      "reportDate": "2021-01",
+      "sourceFormat": "pdf",
+      "caseIds": [
+        "moses-bwayo"
+      ],
+      "excerptCount": 6
+    },
+    {
+      "documentId": "wuth-samak-report",
+      "title": "Government of Thailand & Chaiwat Limlikhitaksorn v. Wuth Boonlert & Samak Donnapee",
+      "sha256": "37f89f62011c6814c506de44ee4bfc6d42fdc9a78ceb987e1685152d43ed7cdb",
+      "reportDate": "2020-07",
+      "sourceFormat": "pdf",
+      "caseIds": [
+        "wuth-boonlert-samak-donnapee"
+      ],
+      "excerptCount": 7
+    },
+    {
+      "documentId": "alnur-report",
+      "title": "Kazakhstan v. Alnur Ilyashev",
+      "sha256": "64092283a0ddfc51b796bb9195c6397bcf0b636923ef93bc28ee4d3e78988765",
+      "reportDate": "2021-03",
+      "sourceFormat": "pdf",
+      "caseIds": [
+        "alnur-ilyashev"
+      ],
+      "excerptCount": 9
+    },
+    {
+      "documentId": "pichugin-report",
+      "title": "Russian Federation vs. Alexander Pichugin",
+      "sha256": "cc6f4e4c41df79979df73a5cc48bbd6ee2f9b80c1ceec288b846604285a06c4d",
+      "reportDate": "2022-04",
+      "sourceFormat": "pdf",
+      "caseIds": [
+        "alexander-pichugin"
+      ],
+      "excerptCount": 6
+    },
+    {
+      "documentId": "dian-report",
+      "title": "Malaysia: A Preliminary Report on Criminal Proceedings Against Blogger Dian Abdullah",
+      "sha256": "160e22eafc4084aaf72988cd5a0045b83a09bdd98681e8320609669b5af178e2",
+      "reportDate": "2021-03-24",
+      "sourceFormat": "web_print",
+      "caseIds": [
+        "dian-abdullah"
+      ],
+      "excerptCount": 7
+    }
+  ]
+}

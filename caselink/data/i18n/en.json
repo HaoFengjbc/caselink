@@ -1,0 +1,1167 @@
+{
+  "countries": {
+    "突尼斯": "Tunisia",
+    "哈萨克斯坦": "Kazakhstan",
+    "孟加拉国": "Bangladesh",
+    "白俄罗斯": "Belarus",
+    "格鲁吉亚": "Georgia",
+    "危地马拉": "Guatemala",
+    "俄罗斯": "Russia",
+    "中国香港": "Hong Kong",
+    "马来西亚": "Malaysia",
+    "摩洛哥": "Morocco",
+    "土耳其": "Turkey",
+    "巴基斯坦": "Pakistan",
+    "乌干达": "Uganda",
+    "泰国": "Thailand"
+  },
+  "cases": {
+    "aigul-utepova": {
+      "summary": "Freelance investigative journalist Aigul Utepova was criminally prosecuted over social media content that the authorities read as support for a banned opposition organization. The report records house arrest, forced placement in a psychiatric facility, her defense at trial, and an appeal. A challenge to the facility’s security measure brought a partial change, not immediate full release; her appeal against the conviction was rejected in June 2021.",
+      "statusSummary": "As of the April 2022 report: the appeal against her conviction was rejected in June 2021. Later developments have not been checked.",
+      "events": {
+        "aigul-investigation-opened": "Authorities opened an investigation on suspicion of involvement in a banned organization.",
+        "aigul-facility-exit": "Left the psychiatric facility; this did not lift her house arrest.",
+        "aigul-trial-opened": "The trial began while she remained under house arrest.",
+        "aigul-conviction": "Convicted at first instance and sentenced to restriction of freedom and related activity bans.",
+        "aigul-appeal-rejected": "Her appeal against the conviction was rejected."
+      },
+      "interventions": {
+        "aigul-challenge": {
+          "actor": "Defense counsel; the prosecution separately petitioned for correction",
+          "action": "Filed a complaint against the ruling that placed her in a psychiatric facility; the prosecution also petitioned to correct the measure applied."
+        },
+        "aigul-daily-walks": {
+          "actor": "Aigul Utepova",
+          "action": "Asked to be allowed 5–10 minute daily walks during the trial."
+        },
+        "aigul-defense-motion": {
+          "actor": "Defense counsel",
+          "action": "Objected to how evidence was gathered and asked to question a lead investigator."
+        },
+        "aigul-appeal-filed": {
+          "actor": "Aigul Utepova’s side",
+          "action": "Appealed the first-instance conviction."
+        },
+        "aigul-trialwatch": {
+          "actor": "Clooney Foundation for Justice / TrialWatch",
+          "action": "Deployed a monitor to observe the trial online and published a fairness report."
+        }
+      },
+      "outcomes": {
+        "aigul-measure-amended": "The ruling removed the security measure, but she still had to stay at the facility for observation and examination.",
+        "aigul-facility-discharge": "Left the psychiatric facility on 2020-12-11; this did not end house arrest or the case.",
+        "aigul-walks-not-granted": "The judge replied that the measure could not change before the final ruling; the request for walks was not granted.",
+        "aigul-convicted": "Sentenced at first instance to one year of restriction of freedom, a two-year ban on socio-political and media activity, and 100 hours of compulsory labor.",
+        "aigul-appeal-dismissed": "The appeal against the conviction was rejected in June 2021."
+      },
+      "recommendations": {
+        "aigul-reform-psychiatric": {
+          "actor": "Kazakhstan’s legislature and relevant state bodies",
+          "description": "Amend the laws on commitment to psychiatric institutions to provide comprehensive due-process protections."
+        }
+      },
+      "unknowns": [
+        "The case status after the April 2022 report has not been checked.",
+        "What led to her discharge cannot be isolated; the later discharge cannot be credited to the defense complaint alone.",
+        "No causal link between monitoring, public reporting and specific court outcomes is recorded.",
+        "The rulings cited in footnotes and other original case files were not independently obtained or reviewed."
+      ],
+      "conflicts": []
+    },
+    "emna-chargui": {
+      "summary": "Blogger Emna Chargui was prosecuted for sharing a satirical pandemic poem on Facebook. A lawyer accompanied her to the judicial police interview, but was not allowed into the prosecutors’ interrogation the next day. Her lawyers argued for acquittal at trial; she was still convicted at first instance. The report records that she later obtained asylum in Germany; as of June 2021 her appeal was still pending.",
+      "statusSummary": "As of the June 2021 report: granted asylum in Germany, appeal still pending. Asylum does not mean the conviction was overturned.",
+      "events": {
+        "emna-post": "Shared a satirical pandemic poem on Facebook and then received threats.",
+        "emna-police-interview": "A lawyer accompanied her to the judicial police interview.",
+        "emna-prosecutor-interview": "The next day her lawyer was not allowed into the prosecutors’ interrogation.",
+        "emna-trial": "The trial resumed, with several lawyers in the defense.",
+        "emna-conviction": "Convicted at first instance; the report gives conflicting verdict dates, so this is ordered by month only.",
+        "emna-asylum-event": "Later obtained asylum in Germany; the date is not recorded."
+      },
+      "interventions": {
+        "emna-accompaniment": {
+          "actor": "Defense attorney Ines Trabelsi",
+          "action": "Took on the case and accompanied her to the judicial police interview."
+        },
+        "emna-trial-arguments": {
+          "actor": "About ten defense lawyers",
+          "action": "Argued for acquittal on constitutional rights, the elements of the offense, and the principle of legality."
+        },
+        "emna-appeal-filed": {
+          "actor": "Emna Chargui’s lawyers",
+          "action": "Filed an appeal after the first-instance judgment."
+        },
+        "emna-asylum-sought": {
+          "actor": "Emna Chargui; who assisted is not recorded",
+          "action": "Sought asylum in Germany."
+        },
+        "emna-trialwatch": {
+          "actor": "Clooney Foundation for Justice / TrialWatch",
+          "action": "Sent an Arabic-speaking monitor to observe the trial and produced a public report."
+        }
+      },
+      "outcomes": {
+        "emna-police-lawyer-access": "A lawyer accompanied her at the judicial police interview on 2020-05-05; this does not mean the prosecutors’ interrogation the next day allowed the same.",
+        "emna-conviction-recorded": "Convicted at first instance and sentenced to six months in prison and a 2,000-dinar fine; the report gives conflicting verdict dates.",
+        "emna-asylum-obtained": "The report records that she obtained asylum in Germany; it does not record that the conviction was overturned as a result.",
+        "emna-appeal-pending": "As of the report, the appeal was still pending."
+      },
+      "recommendations": {
+        "emna-un-country-visit": {
+          "actor": "Tunisian state authorities",
+          "description": "Invite the UN Special Rapporteur on freedom of expression and/or on freedom of religion or belief for a country visit, and implement the recommendations."
+        }
+      },
+      "unknowns": [
+        "Appeal or other court developments after the June 2021 report have not been checked.",
+        "The dates of the asylum application and grant, and who assisted, are not recorded.",
+        "Historical appeal deadlines are not used to calculate deadlines for a new case; a local lawyer must verify them separately.",
+        "The charges, the authors’ legal assessment and the court’s findings in the report are different kinds of information."
+      ],
+      "conflicts": [
+        "Conflicting verdict dates within the report: PDF p.14 (printed p.13) says 2020-07-13; PDF p.15 (printed p.14) says 2020-07-03. Both passages are kept, and no precise interval that depends on that date is calculated."
+      ]
+    },
+    "myriam-bribri": {
+      "summary": "Fashion designer, blogger and activist Myriam Bribri faces charges under Article 86 of the Telecommunications Code over social media comments responding to a video of police violence. Her defense lawyers twice asked for adjournments, including one in April 2021 to prepare further. At the time of the report the case was ongoing, with the next hearing set for June 28, 2021.",
+      "statusSummary": "As of the June 2021 report: the case was ongoing, with a hearing set for June 28. No final outcome is recorded.",
+      "events": {
+        "myriam-summons": "Received an official summons and was questioned by the judicial police the next day.",
+        "myriam-first-delay": "The same-day trial was moved to 2020-12-14 at the defense’s request.",
+        "myriam-preparation-delay": "Her lawyer asked for more preparation time; the hearing was moved to June 28.",
+        "myriam-scheduled-hearing": "The report lists the next hearing for 2021-06-28; it cannot be assumed the hearing actually took place that day."
+      },
+      "interventions": {
+        "myriam-initial-adjournment": {
+          "actor": "Defense counsel",
+          "action": "Asked for an adjournment after learning the trial would go ahead that same day."
+        },
+        "myriam-preparation-adjournment": {
+          "actor": "Defense counsel",
+          "action": "Asked to adjourn the hearing to prepare further."
+        },
+        "myriam-trialwatch": {
+          "actor": "Clooney Foundation for Justice / TrialWatch",
+          "action": "Monitored the case and published a fairness report."
+        }
+      },
+      "outcomes": {
+        "myriam-first-hearing-postponed": "After the adjournment request, the hearing was moved to 2020-12-14.",
+        "myriam-preparation-time": "The request for more preparation time was granted; the hearing was moved to 2021-06-28.",
+        "myriam-proceedings-pending": "At the time of the report the case was ongoing; the next hearing was set for June 28.",
+        "myriam-final-unrecorded": "This report records no final judgment, dismissal or withdrawal of charges."
+      },
+      "recommendations": {
+        "myriam-dismissal": {
+          "actor": "The court or the prosecution",
+          "description": "The court should dismiss the case, or the prosecution should withdraw the charges."
+        },
+        "myriam-un-visit": {
+          "actor": "Tunisian state authorities",
+          "description": "Invite the UN Special Rapporteur on freedom of expression for a country visit to support legal reform."
+        }
+      },
+      "unknowns": [
+        "Final judgments or procedural changes after June 2021 have not been checked.",
+        "Advocacy that the report does not mention cannot be taken to mean none happened.",
+        "Later scheduling does not mean the report confirms the June 28 hearing actually took place.",
+        "“Other” in her profile refers to the fashion designer role named in the report, not a journalist identity."
+      ],
+      "conflicts": []
+    },
+    "shahidul-alam": {
+      "summary": "Photojournalist and social activist Shahidul Alam was arrested over reporting and commentary on student protests. The report records his wife’s complaint to the National Human Rights Commission about torture allegations, a High Court bail order, and his judicial challenge to continuation of the investigation. Bail and an interim stay did not end the case; his petition challenging the High Court judgment was dismissed in November 2022.",
+      "statusSummary": "As of the January 2023 report: Alam had received a bail order, but his challenge was dismissed and the criminal investigation could continue. No conviction or termination of the investigation is recorded.",
+      "events": {
+        "shahidul-alam-arrest-event": "Alam was arrested over protest reporting and commentary.",
+        "shahidul-alam-bail-event": "The High Court ordered Alam’s release on bail.",
+        "shahidul-alam-stay-event": "The High Court temporarily stayed the investigation of Alam for three months.",
+        "shahidul-alam-dismissal-event": "The Appellate Division dismissed Alam’s petition challenging the High Court judgment."
+      },
+      "interventions": {
+        "shahidul-alam-nhrc-action": {
+          "actor": "Rahnuma Ahmed (Alam’s wife)",
+          "action": "Submitted a complaint to the National Human Rights Commission about Alam’s torture allegations."
+        },
+        "shahidul-alam-writ-action": {
+          "actor": "Shahidul Alam and his defense",
+          "action": "Filed a writ petition challenging continuation of the investigation."
+        },
+        "shahidul-alam-appellate-action": {
+          "actor": "Shahidul Alam and his defense",
+          "action": "Petitioned the Appellate Division to challenge the High Court judgment."
+        },
+        "shahidul-alam-monitor-action": {
+          "actor": "Clooney Foundation for Justice / TrialWatch",
+          "action": "Monitored the proceedings against Alam and published a report."
+        }
+      },
+      "outcomes": {
+        "shahidul-alam-bail-ordered": "Shahidul Alam received a High Court bail order; the case did not thereby end.",
+        "shahidul-alam-interim-stay": "The investigation of Shahidul Alam was temporarily stayed for three months, not finally dismissed.",
+        "shahidul-alam-challenge-dismissed": "Shahidul Alam’s petition challenging the High Court judgment was dismissed by the Appellate Division, leaving the criminal investigation able to continue."
+      },
+      "recommendations": {
+        "shahidul-alam-quash-investigation": {
+          "actor": "Courts and authorities empowered to quash or discontinue the investigation",
+          "description": "The report authors recommend quashing or discontinuing the investigation of Alam."
+        }
+      },
+      "unknowns": [
+        "Investigation, trial or remedy developments after the report have not been checked.",
+        "A bail order does not establish the date of physical release; the final disposition of the National Human Rights Commission complaint is not recorded in the selected evidence.",
+        "The underlying files cited in footnotes were not independently obtained; no isolated causal effect of monitoring or the complaint on bail is established."
+      ],
+      "conflicts": []
+    },
+    "katsiaryna-andreyeva-daria-chultsova": {
+      "summary": "Belsat TV reporter Katsiaryna Andreyeva and camera operator Daria Chultsova were arrested while livestreaming a demonstration. Defense requests for official records about traffic disruption were denied. The ABA Center for Human Rights and Human Rights Embassy monitored the trial. Each received a two-year prison sentence, later upheld on appeal.",
+      "statusSummary": "As of the October 2021 report: the two-year sentences of Andreyeva and Chultsova had been upheld on appeal; later imprisonment, release or other proceedings have not been checked.",
+      "events": {
+        "katsiaryna-andreyeva-daria-chultsova-arrest-event": "Andreyeva and Chultsova were arrested during a livestream of a demonstration.",
+        "katsiaryna-andreyeva-daria-chultsova-verdict-event": "Andreyeva and Chultsova were convicted and each sentenced to two years in prison.",
+        "katsiaryna-andreyeva-daria-chultsova-appeal-event": "The appellate court upheld the verdict against Andreyeva and Chultsova in full."
+      },
+      "interventions": {
+        "katsiaryna-andreyeva-daria-chultsova-records-action": {
+          "actor": "The defense of both journalists",
+          "action": "Requested official records of why traffic stopped and whether law enforcement played a role."
+        },
+        "katsiaryna-andreyeva-daria-chultsova-appeal-action": {
+          "actor": "The defense of Andreyeva and Chultsova",
+          "action": "Appealed the first-instance convictions."
+        },
+        "katsiaryna-andreyeva-daria-chultsova-monitor-action": {
+          "actor": "ABA Center for Human Rights and Human Rights Embassy",
+          "action": "Monitored four hearings in February 2021 as part of TrialWatch."
+        }
+      },
+      "outcomes": {
+        "katsiaryna-andreyeva-daria-chultsova-record-request-denied": "The request by the defense of Andreyeva and Chultsova for official traffic-disruption records was denied.",
+        "katsiaryna-andreyeva-daria-chultsova-two-year-sentences": "Katsiaryna Andreyeva and Daria Chultsova were each sentenced to two years in prison.",
+        "katsiaryna-andreyeva-daria-chultsova-sentences-upheld": "The convictions and two-year sentences of Katsiaryna Andreyeva and Daria Chultsova were upheld in full on appeal."
+      },
+      "recommendations": {
+        "katsiaryna-andreyeva-daria-chultsova-international-documentation": {
+          "actor": "The international monitoring mechanisms named in the report",
+          "description": "The authors recommend that international monitoring mechanisms document such violations."
+        }
+      },
+      "unknowns": [
+        "Later proceedings or release after the report have not been checked.",
+        "Monitoring or international advocacy is not treated as an independently established cause of a court outcome.",
+        "The original appellate judgment and footnote news were not obtained; the affirmance sentence gives April 23 without a year, so the structured date remains unknown. The footnote verifies only the report’s bibliographic label; verified does not mean an external event was independently verified."
+      ],
+      "conflicts": []
+    },
+    "mzia-amaglobeli": {
+      "summary": "Georgian journalist Mzia Amaglobeli was arrested in January 2025 after slapping a police chief at a protest. The defense challenged detention and sought acquittal on appeal; TrialWatch monitored the trial and appeal. The trial court reclassified the charge at judgment and imposed two years’ imprisonment; the appellate court upheld the judgment. The report says only that lawyers were submitting a further Supreme Court appeal.",
+      "statusSummary": "As of the January 2026 report: Mzia Amaglobeli’s two-year prison judgment had been upheld on appeal; no verified final outcome of a further Supreme Court appeal or European Court of Human Rights application is recorded.",
+      "events": {
+        "mzia-amaglobeli-arrest-event": "Mzia Amaglobeli was arrested, initially charged with attacking an officer in connection with official duties.",
+        "mzia-amaglobeli-verdict-event": "Mzia Amaglobeli was sentenced to two years’ imprisonment on a reclassified charge.",
+        "mzia-amaglobeli-appeal-event": "The appellate court upheld Mzia Amaglobeli’s trial judgment."
+      },
+      "interventions": {
+        "mzia-amaglobeli-detention-action": {
+          "actor": "Mzia Amaglobeli’s defense lawyers",
+          "action": "Renewed the challenge to pretrial detention and announced submission of a related ECtHR application."
+        },
+        "mzia-amaglobeli-appeal-action": {
+          "actor": "Mzia Amaglobeli’s defense lawyers",
+          "action": "Appealed the trial judgment and sought acquittal."
+        },
+        "mzia-amaglobeli-supreme-court-action": {
+          "actor": "Mzia Amaglobeli’s lawyers",
+          "action": "Reported as submitting a Supreme Court appeal; completion of submission is not confirmed."
+        },
+        "mzia-amaglobeli-monitor-action": {
+          "actor": "Clooney Foundation for Justice / TrialWatch",
+          "action": "Deployed monitors to observe the trial and appeal in person."
+        }
+      },
+      "outcomes": {
+        "mzia-amaglobeli-detention-maintained": "Continued detention of Mzia Amaglobeli was allowed; this defense challenge did not result in release.",
+        "mzia-amaglobeli-two-year-sentence": "Mzia Amaglobeli was sentenced to two years’ imprisonment on the reclassified charge of resisting a police officer.",
+        "mzia-amaglobeli-judgment-upheld": "Mzia Amaglobeli’s trial judgment was upheld in full on appeal.",
+        "mzia-amaglobeli-further-appeal-unrecorded": "Mzia Amaglobeli’s lawyers were reported to be submitting a Supreme Court appeal; the report records no decision by that court."
+      },
+      "recommendations": {},
+      "unknowns": [
+        "Acceptance or decisions on the Supreme Court appeal and ECtHR application, and developments after the report, have not been checked.",
+        "The authors’ assessments of unfairness, political motive or disproportionate punishment are not rulings by another court; no action recommendation was invented from the expert conclusion."
+      ],
+      "conflicts": [
+        "Appellate judgment date labels differ: the footnote on PDF43 says 2025-11-18, while the methodology footnote on PDF51 lists 2025-12-02. The report does not explain whether these concern announcement, a written document or different versions; the event retains November 2025 and no deadline is calculated."
+      ]
+    },
+    "jose-ruben-zamora": {
+      "summary": "Investigative journalist José Rubén Zamora was arrested in July 2022 and convicted of money laundering but acquitted on two other charges at trial in 2023. The defense appealed evidentiary and merits issues, regional human rights bodies expressed concern and reiterated a visit request, and TrialWatch monitored proceedings. The appellate court subsequently annulled both the conviction and acquittals and ordered retrial. As of the February 2024 report Zamora remained detained and retrial awaited Supreme Court cassation proceedings.",
+      "statusSummary": "As of the February 2024 report: José Rubén Zamora remained detained and retrial awaited a cassation decision by the Supreme Court’s Criminal Chamber; annulment was not a final acquittal or release.",
+      "events": {
+        "jose-ruben-zamora-arrest-event": "José Rubén Zamora was arrested during a raid.",
+        "jose-ruben-zamora-verdict-event": "José Rubén Zamora was convicted of money laundering and sentenced to six years, but acquitted of blackmail and influence peddling at trial.",
+        "jose-ruben-zamora-annulment-event": "José Rubén Zamora’s conviction and acquittals were all annulled and retrial ordered; the report gives differing calendar dates."
+      },
+      "interventions": {
+        "jose-ruben-zamora-defense-appeal-action": {
+          "actor": "José Rubén Zamora’s defense lawyers",
+          "action": "Appealed exclusion of defense evidence and the trial judgment on the merits; the appellate court later declined to consider the defense appeals."
+        },
+        "jose-ruben-zamora-regional-statement-action": {
+          "actor": "IACHR and its Special Rapporteur for Freedom of Expression",
+          "action": "Expressed concern over the sentence and reiterated a request for an on-site visit to verify Zamora’s situation."
+        },
+        "jose-ruben-zamora-monitor-action": {
+          "actor": "ABA Center for Human Rights / TrialWatch",
+          "action": "Monitored hearings by video, audio recordings and in person."
+        }
+      },
+      "outcomes": {
+        "jose-ruben-zamora-first-instance-six-years": "José Rubén Zamora was convicted of money laundering and sentenced to six years, with acquittals on two other charges at trial; all those dispositions were later annulled.",
+        "jose-ruben-zamora-judgment-annulled": "The entire judgment against José Rubén Zamora was annulled and retrial ordered; this removed both the conviction and acquittals, not a final finding of innocence.",
+        "jose-ruben-zamora-detained-awaiting-retrial": "José Rubén Zamora remained detained as of February 2024, with retrial awaiting a cassation decision by the Supreme Court’s Criminal Chamber."
+      },
+      "recommendations": {
+        "jose-ruben-zamora-release-dismiss": {
+          "actor": "Guatemalan state authorities",
+          "description": "The report recommends immediate release of Zamora and dismissal of all charges; if a retrial occurs, it should comply with due-process and freedom-of-expression standards."
+        }
+      },
+      "unknowns": [
+        "Supreme Court review, retrial or detention developments after the report have not been checked.",
+        "Co-defendant Samari Gómez’s outcomes and the shutdown of elPeriódico are not personal acquittal, release or dismissal outcomes for Zamora.",
+        "Concern expressed by regional bodies, a visit request and authors’ recommendations do not automatically establish release or acceptance of an individual case."
+      ],
+      "conflicts": [
+        "The body of PDF56 dates the appellate annulment decision to 2023-10-10, but footnote 245 on the same page says 2023-10-20. Both passages are preserved; the event is ordered only by October 2023 and is not used to calculate deadlines."
+      ]
+    },
+    "marina-zolotova": {
+      "summary": "Tut.By editor-in-chief Marina Zolotova was prosecuted in a case concerning password sharing for BeLTA’s paywalled news. Other journalists’ criminal charges were replaced with administrative fines, while Zolotova’s prosecution continued and ended in conviction and a fine of approximately €3,400 in February 2019. The ABA Center for Human Rights monitored the trial. As of 2019-07-26, the date stated in the report, the court had not published a judgment explaining the conviction and fine.",
+      "statusSummary": "As of 2019-07-26 as stated in the report: Marina Zolotova had been convicted and fined, and the reasons for judgment had not been published; later appeals or other cases have not been checked.",
+      "events": {
+        "marina-zolotova-arrest-event": "Marina Zolotova was arrested in an investigation into alleged news-password sharing.",
+        "marina-zolotova-verdict-event": "Marina Zolotova was convicted and fined approximately €3,400."
+      },
+      "interventions": {
+        "marina-zolotova-monitor-action": {
+          "actor": "ABA Center for Human Rights / TrialWatch",
+          "action": "Notified the court in advance and deployed monitors; the closed part of February 18 was not observed."
+        }
+      },
+      "outcomes": {
+        "marina-zolotova-conviction-fine": "Marina Zolotova was convicted and fined approximately €3,400; she did not receive the dismissal of criminal charges recorded for other journalists.",
+        "marina-zolotova-reasons-unpublished": "Marina Zolotova’s conviction and fine had been pronounced, but the court had not published the reasons for judgment as of 2019-07-26."
+      },
+      "recommendations": {
+        "marina-zolotova-media-freedom": {
+          "actor": "Belarusian state authorities",
+          "description": "The authors recommend ensuring that independent outlets such as Tut.By can operate freely."
+        }
+      },
+      "unknowns": [
+        "Appeals or developments after this 2019 report, and any later prosecutions of the same person, have not been checked.",
+        "The unpublished reasons for judgment and footnote news items were not independently obtained; no causal effect of monitoring on the fine is established."
+      ],
+      "conflicts": []
+    },
+    "svetlana-prokopyeva": {
+      "summary": "Journalist Svetlana Prokopyeva was charged with “justifying terrorism” over radio commentary. The defense submitted expert opinions, sought testimony from prosecution experts and successfully requested livestreaming of later hearings; CFJ monitored recordings and broadcasts. Some defense evidentiary motions were refused, and the court convicted her in July 2020, fined her 500,000 rubles and confiscated her laptop, rather than imposing the prosecution’s requested six-year prison sentence.",
+      "statusSummary": "As of the report’s cover date of January 2021: Svetlana Prokopyeva was recorded as convicted and fined; no final result of an appeal against that criminal conviction is recorded, and a separate defamation case is not merged into it.",
+      "events": {
+        "svetlana-prokopyeva-conviction-event": "Svetlana Prokopyeva was convicted, fined 500,000 rubles and had her laptop confiscated."
+      },
+      "interventions": {
+        "svetlana-prokopyeva-experts-action": {
+          "actor": "Svetlana Prokopyeva’s defense lawyers and experts",
+          "action": "Submitted linguistic and psychological expert reports disputing the allegation that the commentary supported terrorism."
+        },
+        "svetlana-prokopyeva-witness-action": {
+          "actor": "Svetlana Prokopyeva’s defense lawyers",
+          "action": "Sought testimony from two prosecution experts and then requested exclusion of their report after refusal."
+        },
+        "svetlana-prokopyeva-broadcast-action": {
+          "actor": "Svetlana Prokopyeva’s defense lawyers",
+          "action": "Petitioned for livestreaming of the remaining hearings."
+        },
+        "svetlana-prokopyeva-monitor-action": {
+          "actor": "Clooney Foundation for Justice / TrialWatch",
+          "action": "Monitored trial using hearing audio recordings and later video broadcasts."
+        }
+      },
+      "outcomes": {
+        "svetlana-prokopyeva-livestream-allowed": "Following a successful defense petition in Svetlana Prokopyeva’s case, the remaining hearings were livestreamed on YouTube.",
+        "svetlana-prokopyeva-evidence-motions-denied": "The requests by Svetlana Prokopyeva’s defense to call two prosecution experts and exclude their report were both denied.",
+        "svetlana-prokopyeva-defense-reports-rejected": "The court did not accept the defense expert reports and testimony in its verdict against Svetlana Prokopyeva.",
+        "svetlana-prokopyeva-conviction-fine": "Svetlana Prokopyeva was convicted, fined 500,000 rubles and had her laptop confiscated; this was neither an acquittal nor the prosecution’s requested six-year prison sentence."
+      },
+      "recommendations": {},
+      "unknowns": [
+        "The final result of an appeal against this criminal conviction and developments after the cover date have not been checked; dismissal of a separate defamation suit in a footnote does not fill that gap.",
+        "The conclusion primarily assesses rights and trial fairness; no specific action recommendation has been invented from it.",
+        "The official filename says February-2021 while the cover says January 2021; the report date follows the cover as 2021-01, without inventing a precise publication day."
+      ],
+      "conflicts": [
+        "Defense expert report counts differ: PDF10 says “three”, while PDF13 says “four” reports by seven experts. The structured action says expert reports were submitted without deriving a definitive count."
+      ]
+    },
+    "bao-choy": {
+      "summary": "Investigative journalist Bao Choy was prosecuted over alleged false statements on applications for vehicle records used in reporting on the Yuen Long attack. Her defense contested the form wording, elements of the offense and use of public records; the court imposed a fine and she appealed.",
+      "statusSummary": "As of the July 2021 report, Bao Choy had been convicted on two counts and fined HKD 6,000; her appeal was pending. Later developments were not checked.",
+      "events": {
+        "bao-choy-convicted": "Bao Choy was convicted on two counts and fined."
+      },
+      "interventions": {
+        "bao-choy-defense": {
+          "actor": "Defense counsel",
+          "action": "Contested the false-statement elements, meaning of the form and legal authority to restrict search purposes."
+        },
+        "bao-choy-appeal": {
+          "actor": "Bao Choy and her defense",
+          "action": "Filed an appeal against conviction and announced the filing on May 5."
+        },
+        "bao-choy-trialwatch": {
+          "actor": "TrialWatch",
+          "action": "Observed the trial and verdict to assess trial fairness."
+        }
+      },
+      "outcomes": {
+        "bao-choy-conviction-fine": "Bao Choy was fined HKD 6,000.",
+        "bao-choy-appeal-unresolved": "Bao Choy’s appeal remained pending in the July 2021 report."
+      },
+      "recommendations": {
+        "bao-choy-resolve-on-appeal": {
+          "actor": "Appellate court",
+          "description": "Resolve the report’s legality and improper-purpose concerns on appeal."
+        }
+      },
+      "unknowns": [
+        "The report does not provide a final appellate outcome or establish that monitoring or public discussion changed the judgment."
+      ],
+      "conflicts": []
+    },
+    "malaysiakini-steven-gan": {
+      "summary": "Malaysiakini and editor-in-chief Steven Gan faced contempt proceedings over reader comments. Malaysiakini removed the comments after police notice and contested knowledge and publication liability. The Federal Court convicted and fined Malaysiakini but acquitted Gan; the outlet then crowdfunded and sought review.",
+      "statusSummary": "As of the October 2021 report, Malaysiakini had been convicted of contempt and fined RM 500,000, while Steven Gan had been acquitted in this case. Malaysiakini’s review was scheduled for October 12; no review outcome was yet reported.",
+      "events": {
+        "malaysiakini-steven-gan-verdict": "The court convicted Malaysiakini and acquitted Steven Gan."
+      },
+      "interventions": {
+        "malaysiakini-steven-gan-remove-comments": {
+          "actor": "Malaysiakini editorial team",
+          "action": "Removed the comments, banned the posting users and apologized after police notification."
+        },
+        "malaysiakini-steven-gan-legal-defense": {
+          "actor": "Malaysiakini defense counsel",
+          "action": "Argued compliance with the Content Code and contested liability for comments."
+        },
+        "malaysiakini-steven-gan-fundraise": {
+          "actor": "Malaysiakini and donors",
+          "action": "Crowdfunded the amount needed for the fine after the verdict."
+        },
+        "malaysiakini-steven-gan-seek-review": {
+          "actor": "Malaysiakini and its lawyers",
+          "action": "Sought Federal Court review to set aside the conviction."
+        },
+        "malaysiakini-steven-gan-trialwatch": {
+          "actor": "CFJ / TrialWatch",
+          "action": "Observed the merits hearing and verdict and documented fair-trial rights."
+        }
+      },
+      "outcomes": {
+        "malaysiakini-steven-gan-outlet-convicted": "Malaysiakini was convicted of contempt and fined RM 500,000.",
+        "malaysiakini-steven-gan-gan-acquitted": "Steven Gan was acquitted in these contempt proceedings; this does not establish the closure of other investigations mentioned in the report.",
+        "malaysiakini-steven-gan-funds-raised": "Malaysiakini raised enough to cover the RM 500,000 fine within hours of the verdict.",
+        "malaysiakini-steven-gan-review-pending": "Malaysiakini’s review hearing was scheduled for October 12 as of the October 2021 report, which does not record its outcome."
+      },
+      "recommendations": {
+        "malaysiakini-steven-gan-set-aside": {
+          "actor": "Malaysian Federal Court",
+          "description": "Set aside Malaysiakini’s conviction on review."
+        }
+      },
+      "unknowns": [
+        "The report does not record the review decision; raising sufficient funds does not itself establish actual payment of the fine."
+      ],
+      "conflicts": [],
+      "title": "Malaysiakini and Steven Gan"
+    },
+    "hajar-raissouni": {
+      "summary": "Journalist Hajar Raissouni and four co-defendants were convicted in proceedings involving private-life and medical allegations. The defense sought bail, offered documents and requested witnesses; the report records refusals. The King pardoned all five in October 2019, but the report expressly distinguishes pardon from acquittal on the merits.",
+      "statusSummary": "As of the August 2020 report, Hajar Raissouni and four co-defendants had been pardoned on October 16, 2019. Their convictions and the pardon must be distinguished; pardon is not acquittal. Later developments were not checked.",
+      "events": {
+        "hajar-raissouni-conviction": "Hajar Raissouni and four co-defendants were convicted and received different sentences.",
+        "hajar-raissouni-royal-pardon": "The King pardoned Hajar Raissouni and four co-defendants."
+      },
+      "interventions": {
+        "hajar-raissouni-bail": {
+          "actor": "Defense teams for Hajar Raissouni and the co-defendants",
+          "action": "Sought bail."
+        },
+        "hajar-raissouni-witness-requests": {
+          "actor": "Defense counsel",
+          "action": "Offered additional documents and requested witnesses; the judge refused."
+        },
+        "hajar-raissouni-trialwatch": {
+          "actor": "CFJ / TrialWatch and Arabic interpreters",
+          "action": "Observed the substantive hearings and judgment and disclosed limits in hearing and recording testimony."
+        }
+      },
+      "outcomes": {
+        "hajar-raissouni-bail-not-obtained": "Hajar Raissouni and her co-defendants remained detained through conviction on September 30, 2019 despite attempts to obtain bail.",
+        "hajar-raissouni-pardoned": "Hajar Raissouni and four co-defendants were pardoned on October 16, 2019; pardon is not acquittal on the merits."
+      },
+      "recommendations": {},
+      "unknowns": [
+        "The report does not establish the mechanism leading to pardon; prior legal requests or monitoring cannot be treated as its cause.",
+        "The reviewed conclusion provides no concrete subsequent action recommendation; reportRecommendations is left empty."
+      ],
+      "conflicts": [],
+      "title": "Hajar Raissouni and co-defendants"
+    },
+    "omar-radi-2020": {
+      "summary": "Investigative journalist and activist Omar Radi was prosecuted for insulting the judiciary over a tweet criticizing a ruling. His lawyers challenged refusal of bail, sought preparation time and raised expression and applicable-law arguments. Bail was granted on review; the trial court later imposed a four-month suspended sentence and fine, and the defense appealed that day.",
+      "statusSummary": "As of the September 2020 report, Omar Radi had received a four-month suspended sentence and a 500-dirham fine in the tweet case on March 17, 2020, with notice of appeal filed that day. The report gives no final appellate result. This entry excludes the separate proceedings covered in the 2022 report.",
+      "events": {
+        "omar-radi-2020-conviction": "Omar Radi received a four-month suspended sentence and a 500-dirham fine in the tweet case."
+      },
+      "interventions": {
+        "omar-radi-2020-bail-challenge": {
+          "actor": "Omar Radi’s defense lawyers",
+          "action": "Appealed the refusal of bail."
+        },
+        "omar-radi-2020-prepare-defense": {
+          "actor": "Omar Radi’s defense lawyers",
+          "action": "Obtained an extension to prepare the defense."
+        },
+        "omar-radi-2020-trial-defense": {
+          "actor": "Omar Radi’s defense lawyers",
+          "action": "Raised freedom-of-expression, tweet-meaning and Press Code arguments."
+        },
+        "omar-radi-2020-appeal": {
+          "actor": "Omar Radi’s lawyer",
+          "action": "Filed notice of appeal against the conviction in court."
+        },
+        "omar-radi-2020-trialwatch": {
+          "actor": "USC International Human Rights Clinic / TrialWatch",
+          "action": "Documented the trial through local monitors."
+        }
+      },
+      "outcomes": {
+        "omar-radi-2020-bail-granted": "Omar Radi was granted bail in the tweet case on December 31, 2019.",
+        "omar-radi-2020-suspended-sentence": "Omar Radi received a four-month suspended sentence and a 500-dirham fine on March 17, 2020.",
+        "omar-radi-2020-appeal-result-unrecorded": "Omar Radi’s lawyer appealed on the day of judgment; the September 2020 report does not record the final result of that appeal."
+      },
+      "recommendations": {
+        "omar-radi-2020-reform-penal-code": {
+          "actor": "Moroccan lawmakers",
+          "description": "Consider revising the Penal Code to protect expression and align it with the Press Code."
+        }
+      },
+      "unknowns": [
+        "The report gives no final appeal result in the tweet case; the six-year sentence in separate proceedings cannot replace this case’s outcome."
+      ],
+      "conflicts": [],
+      "title": "Omar Radi (2020 tweet case)"
+    },
+    "omar-radi-ii-2022": {
+      "summary": "This entry covers separate state-security and sexual-offense proceedings against Omar Radi, distinct from the 2020 tweet case. The report records repeated provisional-release requests, witness issues, health representations and an appeal. A six-year prison sentence was imposed in 2021 and upheld in March 2022. The authors criticize procedural fairness; this does not independently determine the truth of the allegations.",
+      "statusSummary": "As of the July 2022 report, Omar Radi’s six-year sentence in these proceedings had been upheld on March 3, 2022; no subsequent remedy outcome is recorded.",
+      "events": {
+        "omar-radi-ii-2022-arrest": "Omar Radi was arrested and charged with state-security and sexual offenses.",
+        "omar-radi-ii-2022-conviction": "Omar Radi was sentenced to six years in prison in these proceedings.",
+        "omar-radi-ii-2022-appeal-affirmed": "The appellate court upheld Omar Radi’s six-year sentence in these proceedings."
+      },
+      "interventions": {
+        "omar-radi-ii-2022-request-release": {
+          "actor": "Omar Radi and defense counsel",
+          "action": "Repeatedly requested provisional release before and during trial."
+        },
+        "omar-radi-ii-2022-raise-health": {
+          "actor": "Omar Radi’s defense counsel",
+          "action": "Raised health concerns at a hearing, after which Omar Radi was allowed to speak; no subsequent improvement in care is established."
+        },
+        "omar-radi-ii-2022-appeal": {
+          "actor": "Omar Radi’s defense lawyers",
+          "action": "Appealed the trial judgment and pursued fair-trial objections."
+        },
+        "omar-radi-ii-2022-trialwatch": {
+          "actor": "USC International Human Rights Clinic / TrialWatch",
+          "action": "Monitored the trial and subsequent appeal and produced a fairness assessment."
+        }
+      },
+      "outcomes": {
+        "omar-radi-ii-2022-release-denied": "Omar Radi’s repeated requests for provisional release before and during trial were denied.",
+        "omar-radi-ii-2022-six-years-affirmed": "Omar Radi’s six-year prison sentence in these proceedings was upheld on March 3, 2022."
+      },
+      "recommendations": {},
+      "unknowns": [
+        "Developments after July 2022 are not recorded; the authors’ fair-trial conclusions are not an acquittal.",
+        "The reviewed conclusion lists no concrete next-step recommendation; none is imported from other proceedings or footnotes."
+      ],
+      "conflicts": [
+        "The report is internally inconsistent about when the appeal began: PDF page 6 says January 2022, while page 26 says the hearing originally set for November 4, 2021 was postponed eight times until February 15, 2022. Both record affirmance on March 3, 2022; no definite opening date is inferred here."
+      ],
+      "title": "Omar Radi II (2021–2022 proceedings)"
+    },
+    "cansu-piskin": {
+      "summary": "Journalist Cansu Pişkin was prosecuted under anti-terror law for naming a prosecutor in reporting. The defense challenged jurisdiction, time limits, the already-public identity and criminal intent. The court imposed ten months’ imprisonment but deferred the sentence with five years of monitoring; the report says these proceedings did not result in her imprisonment.",
+      "statusSummary": "As of the July 2019 report, Cansu Pişkin had received a ten-month prison sentence on May 7, deferred with five years of monitoring. This was not an acquittal or dismissal; the report gives no later monitoring-period outcome.",
+      "events": {
+        "cansu-piskin-trial-start": "Cansu Pişkin’s trial began and the defense challenged jurisdiction and time limits.",
+        "cansu-piskin-verdict": "Cansu Pişkin was convicted, with a deferred ten-month sentence and five years of monitoring."
+      },
+      "interventions": {
+        "cansu-piskin-challenge-jurisdiction": {
+          "actor": "Cansu Pişkin’s defense counsel",
+          "action": "Raised jurisdiction and time-limit objections; the court declined to stop the proceedings."
+        },
+        "cansu-piskin-defend-intent": {
+          "actor": "Cansu Pişkin and her lawyers",
+          "action": "Argued newsworthiness, lack of criminal intent and prior publication of the name."
+        },
+        "cansu-piskin-trialwatch": {
+          "actor": "Columbia Law School Human Rights Clinic and local partners / TrialWatch",
+          "action": "Monitored three hearings using interpretation, document translation and a standardized questionnaire."
+        }
+      },
+      "outcomes": {
+        "cansu-piskin-deferred-not-acquitted": "Cansu Pişkin received a ten-month prison sentence, deferred with five years of monitoring; these proceedings did not result in imprisonment and were not an acquittal."
+      },
+      "recommendations": {},
+      "unknowns": [
+        "The report does not provide the eventual result of the five-year monitoring period or establish that monitoring changed the judgment.",
+        "The reviewed conclusion lists no separately extractable concrete action recommendation, so the recommendations array is empty."
+      ],
+      "conflicts": []
+    },
+    "asad-ali-toor": {
+      "summary": "Individual case extract from a thematic report: journalist Asad Ali Toor faced multiple FIRs and summonses over social media criticism of state institutions. He challenged the initial FIR in court; investigators subsequently closed that case for lack of evidence of an offense. A later set of notices was not pursued after a court challenge. These separate inquiries are not a single acquittal.",
+      "statusSummary": "As of the September 2023 thematic report, the initial investigation was closed and a later set of notices was not pursued. This does not establish closure of all inquiries; later developments have not been checked.",
+      "events": {},
+      "interventions": {
+        "toor-challenge-fir": {
+          "actor": "Asad Ali Toor and his litigation team",
+          "action": "Asked the Lahore High Court to quash the FIR, citing missing particulars and the complainant’s lack of connection."
+        },
+        "toor-challenge-later-notices": {
+          "actor": "Asad Ali Toor’s side",
+          "action": "Challenged later notices in court; the report states that the FIA subsequently did not pursue them."
+        }
+      },
+      "outcomes": {
+        "toor-initial-investigation-closed": "Investigators closed the initial FIR investigation against Asad Ali Toor because no evidence revealing an offense had been collected.",
+        "toor-later-inquiry-not-pursued": "The FIA did not pursue proceedings initiated by a later set of notices to Asad Ali Toor after a court challenge; this does not establish that all proceedings against him ended."
+      },
+      "recommendations": {
+        "toor-peca-reform": {
+          "actor": "Pakistan’s government and the FIA (recipients of the authors’ recommendation)",
+          "description": "Reform or repeal Section 20; absent reform, concede its unconstitutionality and implement the court-ordered reporting on FIA abuses."
+        }
+      },
+      "unknowns": [
+        "This is an individual extract from a thematic report, not a complete case file; outcomes of distinct FIRs and notices cannot be interchanged.",
+        "The cited body text does not separately date the filing or closure; a footnoted court-order date is not substituted for the closure date.",
+        "Evidence verification means checking against the supplied report, not independent verification of the underlying event or current status after the report date."
+      ],
+      "conflicts": []
+    },
+    "bilal-ghauri": {
+      "summary": "Individual case extract from a thematic report: journalist Bilal Ghauri received WhatsApp notices without clear particulars, requested details, and challenged them before the Islamabad High Court. The report states that the court declared the case a nullity and quashed the notices in its ruling on Section 20.",
+      "statusSummary": "As of the September 2023 report, the described notices had been quashed. The extract does not record subsequent case developments or other proceedings.",
+      "events": {},
+      "interventions": {
+        "ghauri-request-particulars": {
+          "actor": "Bilal Ghauri",
+          "action": "Replied to the notice requesting details of the investigation."
+        },
+        "ghauri-challenge-notices": {
+          "actor": "Bilal Ghauri and counsel",
+          "action": "Challenged the notices before the Islamabad High Court for lacking particulars and being sent through WhatsApp."
+        }
+      },
+      "outcomes": {
+        "ghauri-notices-annulled": "The Islamabad High Court declared the described case against Bilal Ghauri a nullity and quashed the related notices."
+      },
+      "recommendations": {
+        "ghauri-peca-reform": {
+          "actor": "Pakistan’s government and the FIA (recipients of the authors’ recommendation)",
+          "description": "Reform Section 20 and implement the court-ordered reporting on FIA abuses."
+        }
+      },
+      "unknowns": [
+        "This is an extract from a thematic report; the complete ruling and post-publication changes to the law or case have not been checked.",
+        "The cited body text does not give the exact date the notices were quashed; no date from another case is substituted.",
+        "Evidence verification means checking against the supplied report, not independent verification of the underlying event or current status after the report date."
+      ],
+      "conflicts": []
+    },
+    "moses-bwayo": {
+      "summary": "Journalist and filmmaker Moses Bwayo was arrested while filming a documentary scene about opposition figure Bobi Wine and prosecuted for unlawful assembly. Following a lawyer-led bail application, he obtained bail in March 2020. When prosecution witnesses failed to appear in August, the court refused an adjournment and dismissed the case. Bail and dismissal are distinct outcomes with no causal link established between them.",
+      "statusSummary": "As of the January 2021 report: the criminal case was dismissed on 10 August 2020 after the prosecution failed to produce witnesses. The report also records a later shooting while he was reporting; dismissal did not end his safety risks.",
+      "events": {
+        "bwayo-rearrest": "Moses Bwayo was rearrested when reporting under his police-bond conditions and brought to court.",
+        "bwayo-dismissal-event": "After prosecution witnesses failed to appear, the court refused an adjournment and dismissed the case."
+      },
+      "interventions": {
+        "bwayo-seek-counsel": {
+          "actor": "Moses Bwayo",
+          "action": "Requested a lawyer during the initial detention; the report still records no access to counsel during that period."
+        },
+        "bwayo-seek-bail": {
+          "actor": "Lawyers for Moses Bwayo and the other accused",
+          "action": "Applied for bail at the first court appearance."
+        },
+        "bwayo-trial-monitoring": {
+          "actor": "ABA Center for Human Rights / TrialWatch",
+          "action": "Monitored the criminal proceedings and prepared a report."
+        }
+      },
+      "outcomes": {
+        "bwayo-bail-granted": "Moses Bwayo was granted bail on 6 March 2020; the criminal case was still continuing.",
+        "bwayo-case-dismissed": "The court dismissed the case against Moses Bwayo on 10 August 2020 after no prosecution witnesses appeared and the prosecution failed to present evidence."
+      },
+      "recommendations": {
+        "bwayo-protect-reporters": {
+          "actor": "Ugandan authorities (recipients of the authors’ recommendation)",
+          "description": "Protect journalists covering elections from reprisals for their reporting."
+        }
+      },
+      "unknowns": [
+        "Judicial and safety developments after the January 2021 report have not been checked; footnoted police, court and other materials were not independently obtained.",
+        "The report does not establish bail, dismissal and monitoring as one causal chain; complete bail-application materials are not reproduced.",
+        "Evidence verification means checking against the supplied report, not independent verification of the underlying event or current status after the report date."
+      ],
+      "conflicts": []
+    },
+    "wuth-boonlert-samak-donnapee": {
+      "summary": "Indigenous-rights advocate Wuth Boonlert and retired forestry officer Samak Donnapee were jointly tried over Facebook content. Samak authored the posts; Wuth shared one without comment. Samak represented himself and Wuth had Cross Cultural Foundation counsel. Both were acquitted on 18 November 2019. The report also criticizes the prosecution decision, distinguishing acquittal from compliance of the whole process.",
+      "statusSummary": "As of the July 2020 report, both defendants had been acquitted on all charges on 18 November 2019. Subsequent appeals or other proceedings have not been checked.",
+      "events": {
+        "wuth-samak-trial": "The joint trial began with different representation arrangements for the two defendants.",
+        "wuth-samak-judgment": "Both defendants were acquitted on all charges."
+      },
+      "interventions": {
+        "samak-self-defense": {
+          "actor": "Samak Donnapee",
+          "action": "Represented himself and testified about the posts’ basis, a truth defense and the subject they identified."
+        },
+        "wuth-counsel-defense": {
+          "actor": "Wuth Boonlert and Cross Cultural Foundation counsel",
+          "action": "Presented a defense with counsel and testified about the attribution and investigative purpose of the repost."
+        }
+      },
+      "outcomes": {
+        "wuth-samak-not-guilty": "Wuth Boonlert and Samak Donnapee were found not guilty on all charges on 18 November 2019, and the court declined the co-plaintiff’s request for damages."
+      },
+      "recommendations": {
+        "wuth-samak-early-screening": {
+          "actor": "Prosecutors and courts (recipients of the authors’ recommendation)",
+          "description": "Examine the speech and evidence early to avoid taking unsupported cases through a full trial."
+        }
+      },
+      "unknowns": [
+        "The joint defendants differ in occupation, authorship versus reposting, and legal representation; those attributes are not interchangeable.",
+        "Appeals or other developments after July 2020 have not been checked; the defense preceded the acquittals, without proof that a particular action determined the verdict.",
+        "Evidence verification means checking against the supplied report, not independent verification of the underlying event or current status after the report date."
+      ],
+      "conflicts": []
+    },
+    "alnur-ilyashev": {
+      "summary": "Human-rights activist and blogger Alnur Ilyashev was charged over three Facebook posts criticizing the ruling party during a state of emergency. His remote trial involved connection problems and restricted confidential access to counsel. Release requests were denied and he received movement and activity restrictions. His appeals were unsuccessful; the defense then asked the Attorney General to file a protest, with no outcome recorded for that request.",
+      "statusSummary": "As of the March 2021 report, the conviction had been upheld and the Supreme Court had denied his appeal. The defense had asked the Attorney General to file a protest; the outcome was not recorded.",
+      "events": {
+        "alnur-verdict-event": "The court imposed restricted movement and a ban on political and civic activism."
+      },
+      "interventions": {
+        "alnur-pretrial-release-requests": {
+          "actor": "Alnur Ilyashev’s side",
+          "action": "Made several pretrial release requests, all recorded as denied."
+        },
+        "alnur-trial-bail-request": {
+          "actor": "Defense counsel",
+          "action": "Argued that the initial two-month detention period had expired, seeking release and offering bail."
+        },
+        "alnur-appeal-filed": {
+          "actor": "Alnur Ilyashev and his defense",
+          "action": "Appealed the conviction; the report records appellate affirmance and Supreme Court denial."
+        },
+        "alnur-request-protest": {
+          "actor": "The defense",
+          "action": "Asked the Attorney General to file a protest with the Supreme Court seeking reconsideration."
+        }
+      },
+      "outcomes": {
+        "alnur-release-refused": "The court refused the defense request for Alnur Ilyashev’s release and offer of bail at the 18 June 2020 hearing.",
+        "alnur-restricted-movement-sentence": "On 22 June 2020 Alnur Ilyashev was sentenced to three years of restricted movement and a five-year ban on political and civic activism, rather than the three-year prison term requested by prosecutors.",
+        "alnur-appeal-upheld": "The Almaty City Court upheld the first-instance judgment against Alnur Ilyashev in full on 15 September 2020.",
+        "alnur-supreme-appeal-denied": "Kazakhstan’s Supreme Court denied Alnur Ilyashev’s appeal; the report does not give the exact date of that decision.",
+        "alnur-protest-outcome-unrecorded": "Alnur Ilyashev’s defense asked the Attorney General to file a protest before the Supreme Court, but the March 2021 report does not record the request’s outcome."
+      },
+      "recommendations": {
+        "alnur-supreme-review": {
+          "actor": "Kazakhstan’s Supreme Court (recipient of the expert’s recommendation)",
+          "description": "Use judicial review to remedy rights violations and overturn the appellate decision affirming the conviction."
+        },
+        "alnur-remote-safeguards": {
+          "actor": "Courts and responsible authorities (recipients of the authors’ recommendation)",
+          "description": "Provide consent, available remedies, real-time confidential counsel access and reliable connections in remote hearings."
+        }
+      },
+      "unknowns": [
+        "The Supreme Court decision date and the outcome of the Attorney General protest request are not recorded; developments after March 2021 have not been checked.",
+        "Fair-trial and expression assessments are the authors’ analysis; footnoted decisions, expert opinions and monitoring notes were not independently checked.",
+        "Evidence verification means checking against the supplied report, not independent verification of the underlying event or current status after the report date."
+      ],
+      "conflicts": []
+    },
+    "alexander-pichugin": {
+      "summary": "Journalist Alexander Pichugin was convicted of disseminating false information after a sarcastic Telegram comment about religious gatherings during the pandemic. The defense distinguished opinion from fact, cross-examined the prosecution expert and obtained a supplementary linguistic examination. That procedural response did not prevent conviction and a fine on 11 November 2020.",
+      "statusSummary": "As of the April 2022 report, the recorded outcome is a first-instance conviction and a 300,000-ruble fine. No subsequent appeal outcome is recorded; reversal is not inferred.",
+      "events": {
+        "pichugin-verdict-event": "The court convicted and fined Alexander Pichugin."
+      },
+      "interventions": {
+        "pichugin-expert-defense": {
+          "actor": "The defense and its linguistic expert",
+          "action": "Contested the characterization of the speech as factual through evidence about opinion, metaphor and sarcasm."
+        },
+        "pichugin-seek-supplement": {
+          "actor": "The defense",
+          "action": "Sought a supplementary linguistic examination after cross-examination exposed incomplete contextual information supplied to the prosecution expert."
+        }
+      },
+      "outcomes": {
+        "pichugin-examination-granted": "Alexander Pichugin’s defense obtained permission for a supplementary linguistic examination and court-appointed experts produced a report; this procedural result did not dismiss the charges.",
+        "pichugin-convicted-fined": "The Bogorodsk City Court convicted Alexander Pichugin on 11 November 2020 and imposed a fine of 300,000 rubles."
+      },
+      "recommendations": {
+        "pichugin-independent-assessment": {
+          "actor": "The court (the approach the expert says should have been taken)",
+          "description": "Examine the constitutionality of the law and independently determine the speaker’s intent."
+        }
+      },
+      "unknowns": [
+        "The filing or disposition of an appeal is not recorded; developments after April 2022 have not been checked.",
+        "Permission for supplementary examination was a partial procedural result; it does not establish that expert evidence reduced the penalty or overturned the conviction.",
+        "Evidence verification means checking against the supplied report, not independent verification of the underlying event or current status after the report date."
+      ],
+      "conflicts": []
+    },
+    "dian-abdullah": {
+      "summary": "Independent blogger Dian Abdullah was charged under Penal Code Section 505(b) and CMA Section 233(1)(a) over two posts criticizing the appointment of the Prime Minister and pandemic policy. She posted bail in June 2020 and trial began that December. The preliminary report of 24 March 2021 describes continuing proceedings; dismissal or acquittal is only the author’s recommendation.",
+      "statusSummary": "As of the preliminary report dated 24 March 2021, bail had been posted, trial remained ongoing and the next hearing was then scheduled for 25 March. The later outcome is unknown.",
+      "events": {
+        "dian-charged": "Dian Abdullah faced two sets of charges under different provisions for two blog posts.",
+        "dian-trial-started": "Dian Abdullah’s trial began."
+      },
+      "interventions": {
+        "dian-post-bail": {
+          "actor": "Dian Abdullah",
+          "action": "Appeared in court and posted 4,000 ringgit in bail."
+        },
+        "dian-monitor-proceedings": {
+          "actor": "ABA Center for Human Rights / TrialWatch",
+          "action": "Monitored the criminal proceedings and published a preliminary report before their conclusion."
+        }
+      },
+      "outcomes": {
+        "dian-bail-posted": "Dian Abdullah posted 4,000 ringgit in bail at the Kuala Lumpur Criminal Sessions Court on 9 June 2020; she subsequently remained on trial.",
+        "dian-trial-pending": "Dian Abdullah’s case remained on trial when the preliminary report was published on 24 March 2021, with the next hearing then set for 25 March; no final judgment was recorded."
+      },
+      "recommendations": {
+        "dian-end-prosecution": {
+          "actor": "Kuala Lumpur Criminal Sessions Court or the prosecution (recipients of the author’s recommendation)",
+          "description": "Acquit or dismiss the case, or withdraw the charges."
+        },
+        "dian-screen-charges": {
+          "actor": "Prosecutors and judges (recipients of the author’s recommendation)",
+          "description": "Review whether the proposed conduct is sufficiently grave for criminal prosecution and whether a demonstrated link connects the speech and alleged threat."
+        }
+      },
+      "unknowns": [
+        "The local PDF is an 8 October 2026 print of an official webpage published on 24 March 2021; its PDF pages apply only to that local copy and have no stable publisher page numbers.",
+        "The preliminary report provides no final outcome; bail and the author’s call for dismissal must not be rewritten as a recorded dismissal or acquittal.",
+        "Evidence verification means checking against the supplied report, not independent verification of the underlying event or current status after the report date."
+      ],
+      "conflicts": []
+    }
+  },
+  "evidence": {
+    "aigul-identity": "The report calls Aigul Utepova a Kazakh freelance investigative journalist covering social and political issues; the system did not infer a journalist identity from a blogger profile.",
+    "aigul-background": "The report records that a criminal investigation was opened on 2020-09-15 over the authorities’ claim that she took part in a banned organization; the allegation is not treated as established fact.",
+    "aigul-house-arrest": "The report records repeated extensions of house arrest, continuing into the trial; leaving the psychiatric facility later did not lift all restrictions.",
+    "aigul-detention-challenge": "The report records both the defense complaint and the prosecution’s petition for correction. The judge’s removal of the security measure was a partial procedural change; the defense complaint alone cannot be treated as the cause of everything that followed.",
+    "aigul-discharge": "After the amended ruling she still had to stay at the facility for observation and examination until she left on 2020-12-11. Discharge does not mean the case was dropped, an acquittal, or the end of house arrest.",
+    "aigul-walk-request": "On 2021-03-15 she asked for short daily walks, and the judge replied that the measure could not change at that point; this is only the response to that specific request.",
+    "aigul-evidence-motion": "On 2021-03-25 the defense raised procedural objections and asked to question the investigator; nothing shows this request ended the case.",
+    "aigul-defense": "The defense challenged the experts’ reliability and argued that the prosecution targeted her journalism and expression of opinion.",
+    "aigul-verdict": "Convicted at first instance and sentenced to one year of restriction of freedom, a two-year ban on socio-political and media activity, and 100 hours of compulsory labor; this is the historical judgment recorded in the report.",
+    "aigul-appeal": "The appeal was rejected in June 2021; the report gives no exact date. Nothing is inferred about the final outcome of any later remedies.",
+    "aigul-monitoring": "TrialWatch deployed a monitor to observe the March–April 2021 trial remotely; monitoring and the later report do not in themselves show any change in the court outcome.",
+    "aigul-reform": "The report’s authors recommend amending the laws on psychiatric commitment; this is not a completed legal reform.",
+    "emna-identity": "The report calls Emna Chargui a blogger; she is not classified as a journalist on that basis.",
+    "emna-background": "After sharing a satirical pandemic poem on 2020-05-03 she received threats and then deleted the post; this is case background, not the effect of any advocacy.",
+    "emna-lawyer": "Lawyer Ines Trabelsi accompanied her to the judicial police interview on 2020-05-05; this cannot be stretched to mean a lawyer was present at every pretrial interrogation.",
+    "emna-lawyer-denied": "The report singles out the prosecutors’ interrogation the next day, where her lawyer was not allowed in. Getting a lawyer’s help once does not mean the problem was solved.",
+    "emna-trial-defense": "The trial was adjourned because of the pandemic and resumed on 2020-07-02; about ten lawyers took part in the defense and argued for acquittal. Read this together with the next page for their grounds.",
+    "emna-defense-grounds": "The defense arguments concerned freedom of expression and privacy, the elements of the offense, and the principle of legality; these are defense submissions, not findings the court adopted.",
+    "emna-verdict-july13": "This page dates the verdict 2020-07-13, with six months in prison and a fine; it conflicts with the date in the methodology section, and the system does not pick one.",
+    "emna-asylum": "The report records that she later obtained asylum in Germany, without a date. Asylum and the overturning of her Tunisian conviction are different outcomes.",
+    "emna-appeal": "Her lawyers appealed after the first-instance judgment; it was pending at the time of the report. The report’s 10-day figure is kept only as historical text and is never used to calculate deadlines for a new case.",
+    "emna-verdict-july3": "The methodology section dates the reading of the verdict 2020-07-03, which conflicts with 2020-07-13 on PDF page 14.",
+    "emna-monitoring": "TrialWatch sent an Arabic-speaking monitor to observe the trial. This was an actual monitoring action; no independent effect on the verdict is recorded.",
+    "emna-un-recommendation": "The report recommends that Tunisia invite UN Special Rapporteurs for a country visit; this does not mean a Special Rapporteur has taken up this case, or that an individual complaint was accepted.",
+    "myriam-identity": "The report explicitly describes her as a fashion designer, blogger and anti-impunity activist; it does not call her a journalist.",
+    "myriam-background": "At the time of the report she faced charges under Article 86 of the Telecommunications Code over social media comments responding to a police violence video; the hearing was still pending.",
+    "myriam-summons": "She received an official summons on 2020-10-07 and was questioned by the judicial police the next day.",
+    "myriam-first-adjournment": "On learning the trial would go ahead that day, her lawyers asked for an adjournment and the hearing moved to 2020-12-14; this is only a procedural outcome and cannot be recorded as charges being dropped.",
+    "myriam-preparation": "On 2021-04-12 her lawyer asked for more preparation time and the hearing moved to June 28; no final outcome is recorded.",
+    "myriam-monitoring": "The report states that TrialWatch is monitoring the case; when monitoring started and any independent effect are not recorded.",
+    "myriam-dismiss-recommendation": "The authors call on the court to dismiss the case or the prosecution to withdraw the charges; this is a report recommendation and must not be labeled as charges dropped.",
+    "myriam-un-recommendation": "The authors recommend inviting the UN Special Rapporteur on freedom of expression for a country visit; no invitation or visit is recorded.",
+    "shahidul-alam-background": "The report identifies Alam as a photojournalist and social activist and links the arrest background to protest reporting, Facebook Live and television commentary; police allegations are not treated as established facts.",
+    "shahidul-alam-bail": "The report expressly dates the High Court bail order to 2018-11-15; that date is not assumed to be the date Alam physically left custody.",
+    "shahidul-alam-nhrc-complaint": "Alam’s wife Rahnuma Ahmed submitted a complaint to the National Human Rights Commission about torture allegations. The complaint is a recorded action; the allegation has not been independently verified by this project.",
+    "shahidul-alam-wife-complaint": "The report expressly attributes the relevant National Human Rights Commission submissions to Alam’s wife; torture remains an allegation.",
+    "shahidul-alam-writ": "Alam filed a High Court writ challenging continuation of the investigation; the listed rights violations are his submissions, not findings wholly adopted by the court.",
+    "shahidul-alam-stay": "On 2019-03-14 the High Court issued an interim three-month stay of the investigation; this was not dismissal of the case or an acquittal.",
+    "shahidul-alam-petition-dismissed": "Alam challenged the High Court judgment before the Appellate Division, which dismissed his petition on 2022-11-27. This concerned continuation of the investigation, not an appeal against a conviction.",
+    "shahidul-alam-investigation-continues": "The authors explain that dismissal left the criminal investigation able to proceed; their further criticism of fairness is the authors’ assessment.",
+    "shahidul-alam-monitoring": "TrialWatch reports monitoring the proceedings; the potential maximum penalty is not a sentence actually imposed on Alam.",
+    "shahidul-alam-recommendation": "The authors recommend quashing or discontinuing the investigation; the report does not record implementation.",
+    "katsiaryna-andreyeva-daria-chultsova-background": "The report identifies both as Belsat TV correspondents assigned to cover a demonstration on 2020-11-15.",
+    "katsiaryna-andreyeva-daria-chultsova-roles-arrest": "Their respective roles were reporting and operating the camera; they must not be collapsed into one person.",
+    "katsiaryna-andreyeva-daria-chultsova-arrest": "The report records police entering and arresting both journalists; read alongside the demonstration date on the same page.",
+    "katsiaryna-andreyeva-daria-chultsova-trial-dates": "The report dates the start of trial to 2021-02-09 and the convictions to February 18.",
+    "katsiaryna-andreyeva-daria-chultsova-sentence": "The actual first-instance outcome for each was conviction and a two-year prison sentence, not merely a potential maximum penalty.",
+    "katsiaryna-andreyeva-daria-chultsova-defense-records": "The court denied defense requests for official records explaining why traffic stopped; this does not show that the defense obtained those records.",
+    "katsiaryna-andreyeva-daria-chultsova-monitoring": "The ABA Center for Human Rights and Human Rights Embassy actually monitored four hearings; no evidence establishes an effect on the sentences.",
+    "katsiaryna-andreyeva-daria-chultsova-appeal": "The report body records affirmance on April 23 but this sentence gives no year; the cited news date is not treated as a verified judgment date, so the structured event date remains unknown.",
+    "katsiaryna-andreyeva-daria-chultsova-appeal-date-source": "Only the report’s own bibliographic label is checked: the cited news is listed as April 23, 2021. The news item and original judgment were not obtained; this label does not verify the actual judgment year or date.",
+    "katsiaryna-andreyeva-daria-chultsova-recommendation": "The authors recommend that existing international monitoring mechanisms highlight such violations; this is not evidence that an individual complaint from the two journalists was accepted.",
+    "mzia-amaglobeli-arrest": "The report records her journalist identity, arrest on 2025-01-12, and the slap at a protest; charges and the authors’ assessment of political motive remain distinct.",
+    "mzia-amaglobeli-detention-challenge": "The defense renewed its challenge to pretrial detention and announced submission of an ECtHR application; this does not establish admissibility, a merits ruling or a release order.",
+    "mzia-amaglobeli-detention-continued": "Following this detention challenge the judge allowed continued detention; the claimed risk of a new offense is the judge’s stated reason.",
+    "mzia-amaglobeli-verdict": "On 2025-08-06 the judge reclassified the charge as the lesser offense of resisting an officer and imposed two years’ imprisonment; a lesser charge did not mean acquittal or release.",
+    "mzia-amaglobeli-appeals-filed": "Both parties appealed: the defense sought acquittal, while the prosecution sought conviction on the original, more serious charge. The prosecution’s request is not a defense action.",
+    "mzia-amaglobeli-appeal-upheld": "The appellate court upheld the trial judgment in full; this paragraph does not itself give a calendar date, so the structured outcome uses month precision.",
+    "mzia-amaglobeli-appeal-hearings": "The appeal hearings took place on three days in November 2025; read with the disposition paragraph to support month-level timing.",
+    "mzia-amaglobeli-supreme-court-pending": "The report says lawyers are submitting a Supreme Court appeal; it records neither acceptance nor a decision by that court.",
+    "mzia-amaglobeli-monitoring": "CFJ deployed monitors to observe trial and appeal in person; this establishes monitoring, not an effect on the outcome.",
+    "mzia-amaglobeli-appeal-document-date-a": "Only the report’s own date labels are checked: a footnote says 2025-11-18 while the methodology lists 2025-12-02, without explaining the difference. The cited judgment was not obtained; its actual issue date is not verified.",
+    "mzia-amaglobeli-appeal-document-date-b": "Only the report’s methodology label of 2025-12-02 is checked; its difference from PDF43 is preserved. The cited judgment was not obtained, and the label is not treated as a verified judgment date.",
+    "jose-ruben-zamora-identity": "The report records Zamora’s investigative journalism and threats; precautionary measures are included only as reported, without independent review of the original measures.",
+    "jose-ruben-zamora-arrest": "The arrest on 2022-07-29 concerned allegations of money laundering, influence peddling and blackmail; allegations are not treated as proven conduct.",
+    "jose-ruben-zamora-defense-obstacles": "The report records counsel changes, prosecutions of some lawyers and difficulty obtaining materials. Outcomes against lawyers are not assigned to Zamora; the characterization as harassment remains the authors’ account.",
+    "jose-ruben-zamora-first-verdict-date": "The chapter and footnotes identify the judgment hearing as 2023-06-14; use with the dispositions on the next page.",
+    "jose-ruben-zamora-first-conviction": "This is Zamora’s first-instance conviction and six-year sentence, later annulled; it is not a final judgment still in force as of the report.",
+    "jose-ruben-zamora-first-acquittals": "Zamora’s first-instance acquittals concerned only blackmail and influence peddling and were also later annulled; co-defendant Gómez’s acquittal belongs to a different person.",
+    "jose-ruben-zamora-defense-appeals": "The defense actually appealed in July 2023, seeking annulment through the evidence-offering stage to present defense evidence; the prosecution’s appeal described in the same passage is not a defense action.",
+    "jose-ruben-zamora-defense-merits": "The second defense appeal challenged application of law and the principle of legality on the merits; the report does not say this request was granted.",
+    "jose-ruben-zamora-international-statement": "The IACHR and its Special Rapporteur for Freedom of Expression expressed concern and reiterated an on-site visit request; this does not establish that the visit occurred.",
+    "jose-ruben-zamora-annulment": "The appellate court annulled the entire judgment on the State Attorney General’s special appeal and ordered retrial. Zamora’s own appeals were not considered; this cannot be credited as success on the defense appeal or treated as a final acquittal.",
+    "jose-ruben-zamora-annulment-date-footnote": "Only the report’s internal labels are checked: the footnote says 2023-10-20 while the body says 2023-10-10. The cited original decision was not obtained; neither is asserted as the verified actual judgment date.",
+    "jose-ruben-zamora-pending-status": "The report expressly states that retrial awaited the Supreme Court Criminal Chamber’s cassation decision and that Zamora remained detained as of February 2024.",
+    "jose-ruben-zamora-monitoring": "The ABA Center for Human Rights monitored remotely and in person through TrialWatch; monitoring itself does not establish a causal effect on annulment or release.",
+    "jose-ruben-zamora-recommendation": "The authors recommend immediate release and dismissal of all charges, and set standards for any retrial; these are not completed measures.",
+    "marina-zolotova-identity-background": "The report explicitly identifies her as Tut.By’s editor-in-chief; later proceedings are not imported into this report’s account.",
+    "marina-zolotova-arrest-background": "The August 2018 arrest concerned suspected sharing of passwords for paywalled content; suspicion is not treated as an established offense.",
+    "marina-zolotova-others-not-her": "Criminal charges were dropped and administrative fines imposed for other journalists; Zolotova’s prosecution continued, so this is not her dismissal outcome.",
+    "marina-zolotova-initial-interrogation": "The account of initial questioning without counsel is attributed to Zolotova, and the report says she did not request counsel then; it is not rewritten as an express refusal to admit a lawyer.",
+    "marina-zolotova-verdict": "The report records conviction and a fine of approximately €3,400 on 2019-02-25; the earlier five-year maximum exposure was not the sentence imposed.",
+    "marina-zolotova-monitor-letter": "The ABA Center for Human Rights notified the court of monitoring, and monitors encountered no entry barriers; this does not imply every part of the proceedings was public.",
+    "marina-zolotova-monitor-coverage": "Monitors observed the trial but not the closed part of the February 18 hearing; the coverage limitation is preserved.",
+    "marina-zolotova-judgment-unpublished": "At the time of this passage the court had not published its judgment; this does not mean no conviction had been pronounced.",
+    "marina-zolotova-status-date": "The text expressly says the current date is 2019-07-26, so this factual cutoff is retained separately from the cover’s publication month.",
+    "marina-zolotova-recommendation": "The authors call on Belarus to ensure independent outlets can operate freely; this is a general recommendation, not an overturning of Zolotova’s conviction.",
+    "svetlana-prokopyeva-background": "The report records her journalist identity, radio-commentary background and conviction; wording such as “repressive political climate” is the authors’ description of that background.",
+    "svetlana-prokopyeva-sentence": "The actual sanction was a 500,000-ruble fine and confiscation of the laptop; the prosecution’s requested six-year prison term in the preceding sentence is not the sentence imposed.",
+    "svetlana-prokopyeva-prosecution-request": "Six years’ imprisonment and a four-year journalism ban were the prosecution’s requested sentence, not the actual court disposition.",
+    "svetlana-prokopyeva-expert-reports": "This page records four defense reports by seven experts who found no expressions supporting terrorism; these are expert opinions, not a court acquittal.",
+    "svetlana-prokopyeva-experts-rejected": "The report records the court dismissing defense reports and disregarding expert testimony in the verdict; submitting reports does not mean they were accepted.",
+    "svetlana-prokopyeva-witness-motion": "Defense lawyers sought testimony from prosecution experts Yakotsuts and Baykova because the indictment relied on their report; this was an actual motion.",
+    "svetlana-prokopyeva-motion-denied": "The court refused the witness motion and the subsequent request to exclude the report; this was not a defense procedural success.",
+    "svetlana-prokopyeva-livestream": "A successful defense petition led to livestreaming of the remaining hearings; this limited procedural change did not remove the conviction.",
+    "svetlana-prokopyeva-monitoring": "CFJ monitored audio and video recordings, listening to recordings of the first three hearings and later using broadcasts; this is not a claim of continuous in-person attendance.",
+    "svetlana-prokopyeva-report-count-difference": "This passage refers to authors of “three” defense reports testifying, while PDF13 says “four”; the count discrepancy is preserved, and action descriptions avoid a definitive number.",
+    "bao-choy-background": "The report identifies Bao Choy as an investigative journalist and describes her documentary about the Yuen Long attack.",
+    "bao-choy-trial-defense": "The defense argued that knowledge, materiality and falsity were unproved and challenged the form wording and authority to restrict searches. These were arguments made, not findings accepted by the court.",
+    "bao-choy-verdict": "The report records Bao Choy’s conviction on both counts on April 22, 2021 and a total HKD 6,000 fine; this was not an acquittal or dismissal.",
+    "bao-choy-appeal-filed": "May 5, 2021 is when Bao Choy announced that she had filed an appeal; no later ruling is established here.",
+    "bao-choy-appeal-pending": "The report describes Bao Choy’s appeal as pending at publication, not as a statement of current status.",
+    "bao-choy-monitoring": "TrialWatch reports observing the March 24, 2021 trial and April 22 verdict. The extraction splits “22” as “2 2”; that wording is preserved.",
+    "bao-choy-appeal-recommendation": "The expert says these concerns can and should be resolved on appeal. This is a recommendation, not an observed appellate outcome.",
+    "malaysiakini-steven-gan-background": "The report identifies contempt proceedings against the news outlet and its editor over unmoderated reader comments.",
+    "malaysiakini-steven-gan-comment-removal": "The report records removal within twelve minutes of police notice, user bans and an apology; it does not establish that this relieved liability.",
+    "malaysiakini-steven-gan-defense-and-verdict": "The defense invoked the Content Code; the report then expressly distinguishes Malaysiakini’s February 19, 2021 conviction from Steven Gan’s acquittal.",
+    "malaysiakini-steven-gan-fine": "The Federal Court imposed an RM 500,000 fine on Malaysiakini, not a personal fine on Steven Gan.",
+    "malaysiakini-steven-gan-crowdfunding": "The report says Malaysiakini raised enough to cover the fine within hours of the verdict; fundraising did not overturn the conviction.",
+    "malaysiakini-steven-gan-review-request": "The report distinguishes an ordinary appeal from Federal Court review and records Malaysiakini’s May review application and an October 12 hearing schedule.",
+    "malaysiakini-steven-gan-monitoring": "TrialWatch deployed Malay-speaking monitors to the merits hearing and verdict and recorded the proceedings.",
+    "malaysiakini-steven-gan-set-aside-recommendation": "The report calls on the Federal Court to set aside Malaysiakini’s conviction on October 12; this is a recommendation, not the review result.",
+    "hajar-raissouni-identity": "The report identifies Hajar Raissouni as a journalist for an independent outlet and describes its background; this does not independently establish prosecutorial motive.",
+    "hajar-raissouni-bail-attempts": "The report records charges on September 2, 2019 and continued pretrial detention through September 30 despite attempts to obtain bail; individual application dates are not given.",
+    "hajar-raissouni-defense-evidence": "Defense counsel offered additional documents and sought witness testimony, which the judge refused. This records procedural requests without repeating unnecessary private-life details.",
+    "hajar-raissouni-convictions": "The report distinguishes one-year prison sentences for Hajar Raissouni and her fiancé, two years for the doctor and eight-month suspended sentences for the other two co-defendants, all with fines.",
+    "hajar-raissouni-pardon": "The report records the King’s October 16, 2019 pardon of all five defendants; this excerpt does not establish what advocacy caused it.",
+    "hajar-raissouni-pardon-not-acquittal": "The report expressly distinguishes pardon from acquittal on the merits; avoiding imprisonment does not establish that the allegations were factually disproved.",
+    "hajar-raissouni-monitoring": "TrialWatch attended two substantive hearings and delivery of judgment; the report also discloses gaps caused by sound and courtroom conditions, so this is not a complete verbatim record.",
+    "hajar-raissouni-assessment": "The author assesses apparent judicial bias, insufficient evidence and restrictions on defense evidence; this is the author’s assessment, not a later judicial reversal.",
+    "omar-radi-2020-background": "The report identifies Omar Radi as an investigative journalist and activist and traces these proceedings to an April 6, 2019 tweet.",
+    "omar-radi-2020-bail-appeal": "Counsel appealed a bail refusal the next day; the report records bail being granted on December 31, 2019.",
+    "omar-radi-2020-preparation-time": "The defense obtained an extension to prepare, and trial was set for March 5, 2020; the application date is not separately stated.",
+    "omar-radi-2020-verdict-and-appeal": "The report records Omar Radi’s four-month suspended sentence and 500-dirham fine on March 17, 2020, with notice of appeal that day; this was not an acquittal.",
+    "omar-radi-2020-expression-defense": "The report records defense arguments about investigative reporting, constitutional expression protections, the tweet’s meaning and use of the Penal Code rather than the Press Code.",
+    "omar-radi-2020-monitoring": "USC’s International Human Rights Clinic deployed two local monitors to the March 5, 2020 trial.",
+    "omar-radi-2020-law-reform": "The authors call on Morocco to consider Penal Code revisions addressing expression protections and consistency with the new Press Code; no completed reform is established.",
+    "omar-radi-ii-2022-identity-and-monitoring": "The report expressly identifies USC monitoring of this trial and appeal, ending July 19, 2021 and March 3, 2022, and Omar Radi’s investigative-journalist background.",
+    "omar-radi-ii-2022-arrest-charges": "The report records arrest and four charges on July 29, 2020; these are allegations, not independently established conduct.",
+    "omar-radi-ii-2022-release-requests": "The report states that multiple release requests before and during trial were all denied; it does not separately date every application.",
+    "omar-radi-ii-2022-conviction": "The report records Omar Radi’s July 19, 2021 conviction on all counts, six-year prison sentence and damages order; these outcomes belong only to these proceedings.",
+    "omar-radi-ii-2022-appeal-summary": "The summary records affirmance and witness issues and says the appeal began in January 2022; this differs from the postponement chronology on PDF page 26 and is not silently reconciled.",
+    "omar-radi-ii-2022-appeal-body": "The body records counsel’s appeal, refusal of release pending appeal and affirmance of the six-year sentence on March 3, 2022; its hearing-delay account differs from the summary.",
+    "omar-radi-ii-2022-health-representation": "On June 1, 2021 counsel raised health concerns and the judge allowed Omar Radi to speak; permission to speak does not establish improved medical treatment.",
+    "omar-radi-ii-2022-assessment": "The conclusion is the authors’ assessment of trial fairness and abuse of process, not an acquittal or independent verification of the underlying allegations.",
+    "cansu-piskin-background": "The report identifies Cansu Pişkin as an Evrensel journalist and links the charge to naming a prosecutor in her April 5, 2018 article.",
+    "cansu-piskin-jurisdiction-defense": "Defense counsel challenged jurisdiction and time limits, but the court decided the prosecution would continue; the argument was made but did not end the proceedings.",
+    "cansu-piskin-intent-defense": "Counsel argued lack of criminal intent, prior publication of the name and whether a prosecutor fell within the statute.",
+    "cansu-piskin-deferred-sentence": "The report records a deferred ten-month sentence and five years of monitoring; the prison term alone cannot support a claim that Pişkin was actually imprisoned.",
+    "cansu-piskin-monitoring": "The Columbia team or local partners monitored all three hearings, provided accreditation, arranged interpretation and document translation, and used standardized records.",
+    "cansu-piskin-outcome-limit": "The expert criticizes trial fairness but expressly notes that these proceedings did not result in Cansu Pişkin’s imprisonment; this does not mean acquittal.",
+    "toor-background": "The report identifies Toor as a journalist and links the tweets to a private complaint; the allegation is not a proven offense.",
+    "toor-quash-request": "Toor asked the Lahore High Court to quash the FIR, challenging the complainant’s connection to the tweets.",
+    "toor-initial-closure": "Investigators closed the case after stating that no evidence of an offense had been collected. This is not an acquittal or proof that the petition alone caused closure.",
+    "toor-later-notices": "A fresh private complaint and vague summons followed the initial closure; these are separate proceedings.",
+    "toor-later-not-pursued": "The report states that the FIA did not pursue the notices after a court challenge. Its suggested motive is the report’s analysis, not a court finding.",
+    "toor-peca-reform-recommendation": "The authors recommend legislative reform and reporting on FIA abuses; implementation or an individual outcome is not recorded.",
+    "ghauri-notices": "The report records a journalist receiving a WhatsApp notice lacking factual particulars; it does not establish detention.",
+    "ghauri-details-request": "After requesting details, Ghauri was told only the complainant’s identity and an apparent YouTube connection; the next notice remained vague.",
+    "ghauri-court-challenge": "Ghauri and counsel challenged the notices and their service in the High Court; the claim of a campaign to silence journalists was counsel’s argument.",
+    "ghauri-notices-quashed": "The report records the court declaring the case a nullity and quashing the notices; this is not a statement of current general law.",
+    "ghauri-peca-reform-recommendation": "A systemic recommendation in the thematic report, with no further Ghauri outcome attributed to it.",
+    "bwayo-identity-monitoring": "The report identifies Bwayo as a journalist and filmmaker, describes the documentary work, unlawful-assembly charge and trial monitoring; the charge is not a finding of guilt.",
+    "bwayo-bail-application": "The report separates police bond, rearrest, counsel’s bail application and the court’s grant of bail on 6 March.",
+    "bwayo-dismissal": "On 10 August no prosecution witnesses appeared; the court refused an adjournment and dismissed for lack of evidence. The result is not attributed to bail or monitoring.",
+    "bwayo-counsel-request": "The body text records two days in custody without counsel and questioning, attributing the lawyer request to local sources; the underlying materials were not independently checked.",
+    "bwayo-later-safety": "The report records a shooting while Bwayo covered the campaign after dismissal; this is a later safety event, distinct from the case outcome.",
+    "bwayo-protection-recommendation": "The authors urge protection for election-reporting journalists; this is a recommendation, not an implemented protective measure.",
+    "wuth-samak-identities": "The joint defendants had different roles and the charges concerned Samak’s posts; neither is automatically classified as a journalist.",
+    "wuth-repost-context": "Wuth was accused of sharing without comment; the report says the posts did not name the co-plaintiff.",
+    "wuth-samak-representation": "Records the two-day trial, Samak’s self-representation and Wuth’s legal representation.",
+    "samak-defense-testimony": "Samak testified about the public-document basis and advanced truth as a defense; these are defense submissions, not proof of every underlying allegation.",
+    "wuth-defense-testimony": "Wuth explained the provenance and purpose of his repost, rather than adopting the allegation as true.",
+    "wuth-samak-acquittal": "On the judgment date both were found not guilty on all charges and the co-plaintiff’s damages request was declined.",
+    "wuth-samak-early-review": "The authors call for earlier examination to avoid a full trial; this is a retrospective recommendation, not an actual pretrial dismissal.",
+    "alnur-identity-background": "Identifies Ilyashev as an activist and blogger and describes three posts and a remote trial; the fair-trial assessment is the report’s conclusion.",
+    "alnur-conviction": "Distinguishes the prosecution’s requested prison sentence from the actual restriction-of-movement sentence and records an appeal.",
+    "alnur-appeal-protest": "Records appellate affirmance, Supreme Court denial and a subsequent request for an Attorney General protest as distinct steps; the last request has no recorded outcome.",
+    "alnur-pretrial-release-denied": "The body text explicitly records multiple denied pretrial release requests; this is not a successful bail example.",
+    "alnur-trial-release-denied": "At trial the defense sought release because the initial detention period had expired and offered bail; the court refused.",
+    "alnur-private-consultation": "Records a usual lack of confidentiality and one private consultation on 19 June; this partial allowance did not resolve all access issues.",
+    "alnur-reconsideration-recommendation": "The expert urges Supreme Court review and reversal of the appellate decision; this is a recommendation, not a recorded reversal.",
+    "alnur-remote-hearing-recommendation": "The author recommends safeguards for confidential consultation and connections in remote hearings; this does not mean they were all implemented in this case.",
+    "pichugin-identity-background": "Records Pichugin’s journalistic role, Telegram administration and charge; the statutory quotation is historical context.",
+    "pichugin-satirical-comment": "The report identifies the speech as sarcasm about religious gatherings during the pandemic; the charge is not proof of actual danger.",
+    "pichugin-defense-opinion": "The defense argued opinion rather than fact and offered linguistic testimony on metaphor; these are submissions and testimony.",
+    "pichugin-supplementary-examination": "After cross-examination the defense obtained a supplementary linguistic examination; the experts identified both fact and opinion rather than unqualified support for one side.",
+    "pichugin-verdict": "Records conviction and a fine; the author’s criticism does not change the reported judgment.",
+    "pichugin-judicial-assessment-recommendation": "The expert says the court should have examined constitutionality and independently assessed intent; this is an assessment, not a remedy already obtained.",
+    "dian-identity-posts": "The body text identifies an independent blogger, the dates of the two posts and their subject; it does not automatically establish professional journalist status.",
+    "dian-charges": "The summary records two charges in June 2020 and the cited provisions; these are not convictions.",
+    "dian-bail-trial": "Records 4,000 ringgit posted in bail and commencement of trial, not dismissal of charges.",
+    "dian-pending-hearing": "The hearing was adjourned and then rescheduled; 25 March was a future hearing date at the report cutoff, not an event already held.",
+    "dian-trialwatch-monitoring": "Records ABA Center for Human Rights monitoring under TrialWatch, without evidence that monitoring changed the outcome.",
+    "dian-dismissal-recommendation": "The author recommends acquittal, dismissal or withdrawal of charges; these are proposals, not recorded outcomes.",
+    "dian-charge-review-recommendation": "The author urges prosecutors and judges to review the connection between speech and a specific threat; this is a systemic recommendation.",
+    "alnur-virtual-connection-problems": "The report records repeated connection interruptions obstructing motions, argument and witness questioning; remote proceedings alone are not treated as a violation."
+  },
+  "resources": {
+    "ohchr-special-procedures": {
+      "name": "OHCHR: How to submit information to the Special Procedures",
+      "applicability": "For individuals, groups and civil society organizations to check the submission requirements of the Special Procedures. Whether to act is up to the relevant experts; an automatic acknowledgement does not mean they have intervened. This is not a judicial process, and a country-visit recommendation is different from submitting an individual case. Confirm the person’s consent, disclosure choices and safety risks first.",
+      "requiredMaterials": [
+        "A clear, credible and specific account of what happened and the alleged violation",
+        "Key supporting material matching the account; media reports alone are not enough",
+        "The person’s or their representative’s explicit view on disclosing their name to the parties concerned and in public reports"
+      ]
+    },
+    "cpj-emergency-help": {
+      "name": "Committee to Protect Journalists (CPJ): Journalist safety and emergencies",
+      "applicability": "Case-by-case, short-term emergency support for working journalists and media workers facing incidents linked to their journalism. Urgent situations come first, and a response or funding is not guaranteed; bloggers and activists cannot be assumed to qualify by identity alone. The page notes that information may be shared with a few trusted partners for verification.",
+      "requiredMaterials": [
+        "A description of the person’s journalism and relevant work",
+        "The incident, current needs, and how they connect to the person’s journalism",
+        "First confirm with the person what help to ask for and what information may be shared"
+      ]
+    }
+  },
+  "documents": {
+    "aigul-report": {
+      "author": "Clooney Foundation for Justice / TrialWatch (report authors); Éva Szeli (expert)"
+    },
+    "emna-report": {
+      "author": "Knox Thames, with TrialWatch"
+    },
+    "myriam-report": {
+      "author": "Mila Versteeg, with TrialWatch"
+    },
+    "shahidul-alam-report": {
+      "author": "Clooney Foundation for Justice / TrialWatch (report authors)"
+    },
+    "katsiaryna-andreyeva-daria-chultsova-report": {
+      "author": "Beth Van Schaack, assisted by the ABA Center for Human Rights; monitoring with Human Rights Embassy"
+    },
+    "mzia-amaglobeli-report": {
+      "author": "Covington & Burling LLP; TrialWatch Expert Sir Nicolas Bratza"
+    },
+    "jose-ruben-zamora-report": {
+      "author": "Jessica T. So (ABA Center for Human Rights); TrialWatch Expert Nelson Camilo Sánchez"
+    },
+    "marina-zolotova-report": {
+      "author": "American Bar Association Center for Human Rights (report authors)"
+    },
+    "svetlana-prokopyeva-report": {
+      "author": "Covington & Burling LLP (report authors)"
+    },
+    "bao-choy-report": {
+      "author": "Unnamed member of the TrialWatch Experts Panel"
+    },
+    "malaysiakini-steven-gan-report": {
+      "author": "Joan Barata, TrialWatch Expert"
+    },
+    "hajar-raissouni-report": {
+      "author": "Helena Kennedy, TrialWatch Expert"
+    },
+    "omar-radi-2020-report": {
+      "author": "Faculty and students of USC Gould School of Law International Human Rights Clinic; Hannah Garry, expert"
+    },
+    "omar-radi-ii-2022-report": {
+      "author": "USC Gould School of Law International Human Rights Clinic; Hannah R. Garry and team"
+    },
+    "cansu-piskin-report": {
+      "author": "Columbia Law School Human Rights Clinic; Stephen J. Rapp, expert"
+    },
+    "pakistan-peca-report": {
+      "author": "Clooney Foundation for Justice / TrialWatch"
+    },
+    "bwayo-report": {
+      "author": "American Bar Association Center for Human Rights / TrialWatch"
+    },
+    "wuth-samak-report": {
+      "author": "Columbia Law School Human Rights Institute; Lionel Blackman (TrialWatch expert)"
+    },
+    "alnur-report": {
+      "author": "Vânia Costa Ramos; American Bar Association Center for Human Rights / TrialWatch"
+    },
+    "pichugin-report": {
+      "author": "Oliver Wallasch / TrialWatch"
+    },
+    "dian-report": {
+      "author": "American Bar Association Center for Human Rights / TrialWatch"
+    }
+  }
+}

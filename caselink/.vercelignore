@@ -1,0 +1,18 @@
+# Only application code and curated public evidence belong in the deployment.
+node_modules/
+.next/
+.git/
+.vercel/
+.env*
+!.env.example
+.local-sources/
+.local-secrets
+docs/
+data/extracted/
+data/research/
+tmp/
+test-results/
+playwright-report/
+*.tsbuildinfo
+.DS_Store
+AGENTS.md

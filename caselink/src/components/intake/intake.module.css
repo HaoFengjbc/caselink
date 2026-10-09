@@ -1,0 +1,326 @@
+/* ═════════════════════ Intake flow (v3 · one question per screen) ═════════════════════ */
+
+.intakePage { padding-top: 20px }
+
+/* ── Flow header ── */
+.flowTop { max-width: 1280px; margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 20px; font-size: 13px; letter-spacing: .14em; color: var(--muted) }
+.backLink, .resetButton { display: inline-flex; align-items: center; gap: 8px; justify-self: start; padding: 6px 0; color: inherit; transition: color .2s }
+.backLink:hover, .resetButton:hover { color: var(--red) }
+.resetButton { justify-self: end; border: 0; background: none; font-size: 13px }
+.flowTopDark { color: var(--muted) }
+.reviewComplete { justify-self: end; display: inline-flex; align-items: center; gap: 6px; color: var(--green); font-size: 13px; letter-spacing: .14em }
+
+.flowSteps { display: flex; align-items: center; list-style: none !important; margin: 0; padding: 0 }
+.flowSteps li { display: flex; align-items: center; gap: 9px; font-size: 13px; letter-spacing: .2em; color: var(--subtle); white-space: nowrap }
+.flowSteps li:not(:last-child)::after { content: ''; width: 36px; height: 1.5px; margin: 0 16px; background: currentColor; opacity: .45 }
+/* Four steps (adaptive intake) need shorter connectors to leave room beside them. */
+.flowStepsLong li { letter-spacing: .1em }
+.flowStepsLong li:not(:last-child)::after { width: 18px; margin: 0 10px }
+@media (max-width: 1180px) { .flowStepsLong li:not(.flowCurrent) .flowLabel { display: none } }
+.flowDot { display: inline-flex; align-items: center; font-family: var(--font-display); font-size: 18px; letter-spacing: .04em }
+.flowCurrent { color: var(--ink) !important }
+.flowTopDark .flowCurrent { color: var(--ink) !important }
+.flowCurrent .flowDot { color: var(--red) }
+.flowDone { color: var(--ink-2) !important }
+.flowTopDark .flowDone { color: var(--muted) !important }
+.flowDone .flowDot { color: var(--red) }
+
+.clearNotice, .exampleBanner, .staleNote { max-width: 1060px; margin: 18px auto 0; display: flex; align-items: center; justify-content: center; gap: 12px; padding: 12px 18px; font-size: 13.5px; letter-spacing: .06em }
+.clearNotice { background: var(--surface); border: 1px solid var(--line); animation: rise .3s var(--ease) both }
+.exampleBanner { color: var(--red-strong) }
+.staleNote { color: #94620f; background: var(--amber-soft) }
+
+/* ── Question navigation (9 segments) ── */
+.stepNav { max-width: 1060px; margin: 22px auto 0; padding: 0 24px }
+.stepNav ol { list-style: none !important; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); gap: 6px }
+.stepNav button { width: 100%; padding: 6px 0 0; border: 0; background: none; text-align: left; color: var(--subtle); transition: color .2s }
+.stepNav button i { display: block; height: 3px; background: var(--line-strong); transition: background .3s }
+.stepNav button span { display: block; margin-top: 8px; font-size: 11.5px; letter-spacing: .12em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis }
+.stepNav button:hover { color: var(--ink) }
+.stepNav .navKnown i { background: var(--ink) }
+.stepNav .navKnown { color: var(--ink-2) }
+.stepNav .navUnknown i { background: repeating-linear-gradient(90deg, var(--amber) 0 6px, transparent 6px 10px) }
+.stepNav .navCurrent i { background: var(--red); height: 4px; margin-top: -1px }
+.stepNav .navCurrent { color: var(--red) }
+
+/* ── Question stage ── */
+.questionStage { max-width: 1100px; margin: 0 auto; padding: 40px 24px 24px; text-align: center }
+.counter { display: flex; flex-wrap: wrap; justify-content: center; align-items: baseline; gap: 8px; animation: rise .4s var(--ease) both }
+.counter b { font-size: 30px; font-weight: 400; color: var(--ink); line-height: 1 }
+.counter > span { font-size: 22px; color: var(--subtle) }
+.counter small { flex-basis: 100%; margin-top: 6px; font-size: 12px; letter-spacing: .24em; color: var(--muted) }
+.question { max-width: 1000px; margin: 20px auto 22px; font-size: clamp(26px, 3.4vw, 44px); line-height: 1.5; letter-spacing: .16em; color: var(--ink); outline: 0; animation: rise .5s .05s var(--ease) both }
+
+.slot { display: inline-block; min-width: min(460px, 100%); max-width: 920px; margin: 0 auto; padding: 2px 16px 12px; border-bottom: 4px solid var(--red); font-family: var(--font-display); font-size: clamp(22px, 2.9vw, 36px); font-weight: 600; line-height: 1.55; letter-spacing: .14em; color: var(--red); animation: slotIn .45s var(--ease) both }
+.slotText { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden }
+.slotUnknown { color: #e99a8e; border-bottom-style: dashed; border-bottom-color: #efb4aa }
+.slot:focus-within { border-bottom-color: var(--red-strong) }
+.slotInput { max-width: 100%; padding: 0; border: 0; background: transparent; text-align: center; font: inherit; letter-spacing: inherit; color: var(--red); outline: 0 }
+.slotInput::placeholder { color: #eda99e }
+@keyframes slotIn { from { opacity: .3; transform: translateY(6px) } to { opacity: 1; transform: none } }
+
+.hint { max-width: 660px; margin: 18px auto 0; font-size: 15px; line-height: 1.9; letter-spacing: .05em; color: var(--ink-2) }
+.exampleLink { display: inline; margin: 0 0 0 12px; padding: 0; border: 0; background: none; color: var(--red); font-size: 15px; letter-spacing: .1em; text-decoration: underline; text-underline-offset: 4px }
+.exampleLink:hover { color: var(--red-strong) }
+.examplePanel { position: relative; max-width: 720px; margin: 16px auto 0; padding: 16px 48px 10px 22px; text-align: left; background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--red); font-size: 14px; animation: rise .3s var(--ease) both }
+.examplePanel p { margin: 0 0 8px }
+.examplePanel p span { display: block; font-size: 12px; letter-spacing: .16em; color: var(--muted) }
+.examplePanel button { position: absolute; top: 10px; right: 10px; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border: 0; background: none; color: var(--muted) }
+
+.answerArea { max-width: 1000px; margin: 38px auto 0; text-align: left; animation: rise .5s .1s var(--ease) both }
+.label { display: block; margin: 40px 0 14px; font-family: var(--font-display); font-size: 15px; font-weight: 600; letter-spacing: .22em; color: var(--ink) }
+.label:first-child { margin-top: 0 }
+.label > span { margin-left: 6px; font-family: var(--font-body); font-size: 12px; font-weight: 400; letter-spacing: .1em; color: var(--subtle) }
+.charCount { display: block; margin-top: 6px; text-align: right; font-size: 12px; color: var(--subtle); letter-spacing: .06em }
+
+/* ── Choices: numbered typographic rows ── */
+.choices { display: grid; gap: 16px }
+.choiceStatus { display: flex; justify-content: space-between; gap: 12px; font-size: 12.5px; letter-spacing: .14em; color: var(--muted) }
+.choiceStatus b { color: var(--red); font-weight: 600 }
+.hotkeyHint { margin-left: auto; color: var(--subtle) }
+.choiceList { position: relative; display: grid }
+.layout_grid { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 52px; border-top: 1px solid var(--line-strong) }
+.layout_list { grid-template-columns: 1fr; border-top: 1px solid var(--line-strong) }
+
+.choice { position: relative; display: flex; align-items: center; gap: 18px; padding: 20px 6px 20px 2px; border-bottom: 1px solid var(--line-strong); cursor: pointer; transition: background .3s; animation: rise .45s var(--ease) backwards; animation-delay: calc(var(--i, 0) * 40ms) }
+.choice input, .escapeChoice input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; z-index: 2 }
+.choice:has(input:focus-visible), .escapeChoice:has(input:focus-visible) { outline: 2px solid var(--red); outline-offset: 3px }
+.choiceNumber { flex-shrink: 0; width: 30px; font-family: var(--font-display); font-size: 22px; line-height: 1; color: var(--subtle); transition: color .2s }
+.choiceText { flex: 1; min-width: 0 }
+.choiceText strong { font-family: var(--font-display); font-size: 19px; font-weight: 600; letter-spacing: .14em; line-height: 1.6; color: var(--ink); background: linear-gradient(var(--red), var(--red)) left 100% / 0 2px no-repeat; padding-bottom: 2px; transition: color .2s, background-size .35s var(--ease) }
+.choiceText small { display: block; margin-top: 4px; font-size: 13px; letter-spacing: .04em; color: var(--muted); line-height: 1.7 }
+.choiceMark { flex-shrink: 0; width: 22px; height: 22px; margin-left: auto; display: flex; align-items: center; justify-content: center; border: 1.5px solid var(--ink-2); border-radius: 50%; background: var(--paper); color: #fff; transition: background .2s, border-color .2s }
+.choiceMarkSquare { border-radius: 2px }
+.choiceMark svg { animation: pop .3s var(--ease) both }
+@keyframes pop { from { transform: scale(.3) } 70% { transform: scale(1.15) } to { transform: scale(1) } }
+.choice:hover .choiceNumber, .choice:hover .choiceText strong { color: var(--red) }
+.choice:hover .choiceText strong { background-size: 100% 2px }
+.choiceSelected { background: linear-gradient(90deg, rgba(224, 83, 63, .07), transparent 75%) }
+.choiceSelected .choiceNumber, .choiceSelected .choiceText strong { color: var(--red) }
+.choiceSelected .choiceText strong { background-size: 100% 3px }
+.choiceSelected .choiceMark { background: var(--red); border-color: var(--red) }
+
+/* Compact tokens */
+.layout_compact { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px }
+.layout_compact .choice { gap: 10px; padding: 12px 18px 12px 14px; border: 1.5px solid var(--line-strong); border-radius: 2px; background: var(--surface) }
+.layout_compact .choiceNumber { width: auto; font-size: 16px }
+.layout_compact .choiceText strong { font-size: 16px; letter-spacing: .12em }
+.layout_compact .choiceText small { font-size: 12px; margin-top: 0 }
+.layout_compact .choiceMark { width: 18px; height: 18px }
+.layout_compact .choiceSelected { border-color: var(--red); background: var(--red-soft) }
+
+/* Stages as a horizontal timeline */
+.layout_timeline { grid-template-columns: repeat(5, minmax(0, 1fr)); margin-top: 14px }
+.layout_timeline .choice { flex-direction: column; align-items: flex-start; gap: 8px; padding: 30px 20px 10px 0; border-bottom: 0; border-top: 2px solid var(--line-strong) }
+.layout_timeline .choiceMark { position: absolute; top: -12px; left: 0; margin: 0; background: var(--paper) }
+.layout_timeline .choiceSelected { border-top-color: var(--red); background: linear-gradient(180deg, rgba(224, 83, 63, .07), transparent 80%) }
+.layout_timeline .choice::after { content: '→'; position: absolute; top: -15px; right: 10px; font-size: 16px; color: var(--subtle) }
+.layout_timeline .choice:last-child::after { content: none }
+
+/* Publicity spectrum */
+.spectrumScale { display: flex; align-items: center; gap: 14px; font-size: 12px; letter-spacing: .22em; color: var(--muted) }
+.spectrumScale i { flex: 1; height: 2px; background: linear-gradient(90deg, var(--blue), var(--amber), var(--green)) }
+.layout_spectrum { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px }
+.layout_spectrum .choice { flex-direction: column; align-items: flex-start; gap: 10px; padding: 24px 22px 22px; border: 1.5px solid var(--line-strong); border-top-width: 4px; background: var(--surface) }
+.layout_spectrum .choice:nth-child(1) { border-top-color: var(--blue) }
+.layout_spectrum .choice:nth-child(2) { border-top-color: var(--amber) }
+.layout_spectrum .choice:nth-child(3) { border-top-color: var(--green) }
+.layout_spectrum .choiceText strong { font-size: 21px }
+.layout_spectrum .choiceMark { position: absolute; top: 18px; right: 18px }
+.layout_spectrum .choiceSelected { border-color: var(--red); background: var(--red-soft) }
+
+/* Escape answers */
+.escapeRow { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px; padding-top: 18px }
+.escapeHint { font-size: 13.5px; letter-spacing: .06em; color: var(--muted) }
+.escapeChoice { position: relative; display: inline-flex; align-items: center; padding: 7px 18px; border: 1.5px dashed var(--line-strong); border-radius: 2px; color: var(--ink-2); cursor: pointer; transition: border-color .2s, color .2s, background .2s }
+.escapeChoice .choiceText strong { font-size: 14px; letter-spacing: .16em; background: none; color: inherit; padding: 0 }
+.escapeChoice:hover { border-color: var(--red); color: var(--red) }
+.escapeChoice.choiceSelected { background: var(--red-soft); border: 1.5px solid var(--red); color: var(--red-strong) }
+.escapeChoice.choiceSelected .choiceText strong { color: var(--red-strong) }
+
+/* ── Key dates ── */
+.dateEmpty { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 10px 0 26px; color: var(--muted) }
+.dateEmpty > svg { color: var(--red); margin-bottom: 10px }
+.dateEmpty strong { font-family: var(--font-display); font-size: 18px; letter-spacing: .16em; color: var(--ink) }
+.dateEmpty p { margin: 4px 0 0; font-size: 14px }
+.dateList { border-top: 1px solid var(--line-strong) }
+.dateList:empty { display: none }
+.dateRow { display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1.4fr) auto 36px; gap: 20px; align-items: end; padding: 20px 0; border-bottom: 1px solid var(--line-strong); animation: rise .35s var(--ease) both }
+.dateIndex { align-self: center; font-family: var(--font-display); font-size: 28px; color: var(--red) }
+.dateField label { display: block; font-size: 12px; letter-spacing: .16em; color: var(--muted) }
+.switchLine { position: relative; display: inline-flex; align-items: center; gap: 8px; padding-bottom: 14px; font-size: 13px; color: var(--ink-2); white-space: nowrap; cursor: pointer }
+.switchLine input { position: absolute; width: 34px; height: 18px; margin: 0; opacity: 0; cursor: pointer }
+.switch { position: relative; width: 34px; height: 18px; flex-shrink: 0; border-radius: 999px; background: var(--line-strong); transition: background .2s }
+.switch::after { content: ''; position: absolute; top: 2px; left: 2px; width: 14px; height: 14px; border-radius: 50%; background: #fff; transition: transform .25s var(--ease) }
+.switchLine input:checked + .switch { background: var(--red) }
+.switchLine input:checked + .switch::after { transform: translateX(16px) }
+.switchLine input:focus-visible + .switch { outline: 2px solid var(--red); outline-offset: 2px }
+.iconButton { width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; align-self: center; border: 0; background: none; color: var(--muted); transition: color .2s }
+.iconButton:hover { color: var(--red) }
+.dateActions { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 22px; margin-top: 28px }
+.addDate { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; border: 1.5px dashed var(--ink-2); border-radius: 2px; background: transparent; color: var(--ink); font-family: var(--font-display); font-size: 15px; font-weight: 600; letter-spacing: .2em; transition: border-color .2s, color .2s }
+.addDate:hover:not(:disabled) { border-color: var(--red); color: var(--red) }
+.addDate small { font-family: var(--font-body); font-size: 12px; font-weight: 400; letter-spacing: .08em; color: var(--subtle) }
+
+.revealPanel { margin-top: 30px; padding: 2px 0 0 24px; border-left: 3px solid var(--red); animation: rise .35s var(--ease) both }
+
+/* ── Sticky action bar ── */
+.actionBar { position: sticky; bottom: 0; z-index: 20; margin-top: 20px; padding: 34px 24px 20px; background: linear-gradient(to top, var(--paper) 72%, rgba(251, 248, 241, 0)) }
+.actionInner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 16px; border-top: 1px solid var(--line-strong) }
+.localNote { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; letter-spacing: .06em; color: var(--subtle) }
+.savedDot { display: inline-block; width: 6px; height: 6px; flex-shrink: 0; border-radius: 50%; background: var(--green) }
+.actionRight { display: flex; align-items: center; gap: 16px }
+.skipButton { padding: 8px 4px; border: 0; background: none; font-size: 14px; letter-spacing: .16em; color: var(--muted); transition: color .2s }
+.skipButton:hover { color: var(--red) }
+.enterHint { display: inline-flex; align-items: center; gap: 4px; font-size: 11.5px; letter-spacing: .08em; color: var(--subtle) }
+
+/* ═════════════════════ Review · case statement (dark) ═════════════════════ */
+.reviewPage { background: var(--cream); color: var(--ink); padding-top: 20px }
+.statementStage { max-width: 1180px; margin: 0 auto; padding: 76px 24px 30px; text-align: center }
+.statementTitle { margin: 0 0 46px; font-size: 15px; letter-spacing: .62em; color: var(--ink) }
+.exampleBannerDark { display: inline-flex; align-items: center; gap: 10px; margin: -14px auto 34px; font-size: 13px; letter-spacing: .06em; color: var(--muted) }
+.staleDark { margin: -10px auto 30px; font-size: 14px; letter-spacing: .06em; color: var(--amber) }
+.statementText { max-width: 1120px; margin: 0 auto; font-family: var(--font-display); font-size: clamp(21px, 2.6vw, 34px); font-weight: 600; line-height: 2.15; letter-spacing: .14em; color: var(--ink); animation: rise .6s var(--ease) both }
+.blank, .blankUnknown { margin: 0 .3em; padding: 0 .08em 3px; color: var(--red); border-bottom: 3px solid var(--red); -webkit-box-decoration-break: clone; box-decoration-break: clone; transition: color .2s, border-color .2s, background .2s }
+.blank:hover { color: var(--red-strong); border-bottom-color: var(--red-strong); background: var(--red-soft) }
+.blankUnknown { color: var(--amber); border-bottom: 3px dashed var(--amber-line) }
+.blankUnknown:hover { background: var(--amber-soft) }
+.statementExtras { max-width: 860px; margin: 48px auto 0; display: grid; gap: 12px; text-align: left; font-size: 14.5px }
+.statementExtras > div { display: grid; grid-template-columns: 100px minmax(0, 1fr); gap: 18px; padding-top: 12px; border-top: 1px solid var(--line) }
+.statementExtras dt { font-size: 12.5px; letter-spacing: .22em; color: var(--muted); padding-top: 2px }
+.statementExtras dd { margin: 0; color: var(--ink); overflow-wrap: anywhere }
+.statementExtras dd .blank, .statementExtras dd .blankUnknown { margin: 0; border-bottom-width: 2px }
+.statementNote { max-width: 760px; margin: 36px auto 0; font-size: 13.5px; letter-spacing: .06em; color: var(--muted) }
+.statementNote b { color: var(--amber); font-weight: 600 }
+
+.submitStage { max-width: 640px; margin: 0 auto; padding: 34px 24px 110px; text-align: center }
+.modeNotice { display: inline-flex; gap: 12px; margin-bottom: 28px; padding: 14px 18px; border: 1px solid var(--line); background: var(--card); text-align: left }
+.modeNotice .savedDot { margin-top: 8px }
+.modeNotice strong { font-size: 13.5px; letter-spacing: .1em; color: var(--ink) }
+.modeNotice p { margin: 2px 0 0; font-size: 12.5px; line-height: 1.75; color: var(--muted) }
+.failureBox { margin-bottom: 24px; padding: 16px 20px; border-left: 3px solid var(--red); background: var(--red-soft); text-align: left }
+.failureBox strong { color: var(--red-strong); font-size: 14.5px; letter-spacing: .1em }
+.failureBox p { margin: 6px 0 0; font-size: 13.5px; color: var(--ink) }
+.failureBox :global(.text-link) { margin-top: 8px }
+.submitButton { width: 100%; padding: 21px 30px; font-size: 16px; letter-spacing: .26em }
+.ruleButton { width: 100%; margin-top: 14px; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 13px; border: 1.5px solid var(--line); border-radius: 3px; background: transparent; color: var(--muted); font-size: 14px; letter-spacing: .16em; transition: border-color .2s, color .2s }
+.ruleButton:hover { border-color: var(--red); color: var(--red) }
+.existingResult { display: inline-block; margin-top: 18px; color: var(--red); font-size: 13.5px; letter-spacing: .1em; text-decoration: underline; text-underline-offset: 4px }
+.submitFootnote { margin: 28px 0 0; font-size: 12.5px; line-height: 1.95; letter-spacing: .04em; color: var(--muted) }
+.busyBox { padding: 26px 22px; border: 1px solid var(--line) }
+.busyStages { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 12.5px; letter-spacing: .2em; color: var(--muted) }
+.busyStages span { animation: stagePulse 2.4s ease-in-out infinite }
+.busyStages span:nth-child(2) { animation-delay: .8s }
+.busyStages span:nth-child(3) { animation-delay: 1.6s }
+@keyframes stagePulse { 0%, 100% { color: var(--muted) } 20%, 40% { color: var(--red) } }
+.busyBar { position: relative; display: block; height: 3px; overflow: hidden; background: var(--line) }
+.busyBar i { position: absolute; inset: 0 auto 0 0; width: 40%; background: var(--red); animation: slide 1.3s ease-in-out infinite }
+@keyframes slide { from { transform: translateX(-100%) } to { transform: translateX(260%) } }
+/* Staged loading: reviewed library candidates while the AI analysis runs. */
+.waitPreview { margin-top: 22px; padding: 18px 20px 6px; border-top: 1px solid var(--line); text-align: left }
+.waitPreview h3 { margin: 0 0 6px; font-size: 15px; letter-spacing: .12em; color: var(--ink) }
+.waitPreview > p { margin: 0 0 8px !important; font-size: 12.5px !important; line-height: 1.8; color: var(--muted) }
+.waitPreview ol { list-style: none !important; margin: 0; padding: 0 }
+.waitPreview li { padding: 12px 0; border-top: 1px solid var(--line) }
+.waitPreview li a { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; color: var(--ink); transition: color .2s }
+.waitPreview li a:hover { color: var(--red) }
+.waitMeta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 6px 0 }
+.waitTier { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--green) }
+.waitTier::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--green) }
+.waitPreview li p { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin: 0 !important; font-size: 13px !important; line-height: 1.75; color: var(--muted) }
+.busyBox strong { display: block; margin-top: 16px; font-size: 16px; letter-spacing: .14em; color: var(--ink) }
+.busyBox p { margin: 6px 0 12px; font-size: 13px; color: var(--muted) }
+
+/* ═════════════════════ Demo picker dialog ═════════════════════ */
+.dialog { margin: auto; padding: 60px 64px 44px; border: 1px solid var(--line); border-radius: 0; background: var(--card); color: var(--ink); width: calc(100% - 32px); max-width: 780px; max-height: 92vh; box-shadow: var(--shadow) }
+.dialog[open] { animation: dialogIn .4s var(--ease) both }
+@keyframes dialogIn { from { opacity: 0; transform: translateY(18px) } to { opacity: 1; transform: none } }
+.dialog::backdrop { background: rgba(244, 237, 225, .78); backdrop-filter: blur(6px) }
+.dialogClose { position: absolute; top: 18px; right: 18px; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; border: 0; border-radius: 50%; background: var(--red); color: var(--card); box-shadow: 0 10px 24px -12px rgba(196, 67, 45, .8); transition: background .2s, transform .3s var(--ease) }
+.dialogClose:hover { background: var(--red-strong); transform: rotate(90deg) }
+.dialogTitle h2 { margin: 0; font-size: clamp(30px, 4vw, 42px); line-height: 1.22; letter-spacing: .22em }
+.dialogTitle :global(.bar) { color: var(--ink) }
+.dialogLead { margin: 28px 0 22px; font-size: 15px; color: var(--ink-2) }
+.demoOptions { display: grid; border-top: 1px solid var(--line-strong) }
+.demoOption { display: grid; grid-template-columns: 58px minmax(0, 1fr) auto; gap: 16px; align-items: start; padding: 24px 6px 24px 2px; border: 0; border-bottom: 1px solid var(--line-strong); background: none; text-align: left; transition: background .3s }
+.demoNumber { font-family: var(--font-display); font-size: 36px; line-height: 1; color: var(--subtle); transition: color .2s }
+.demoBody strong { display: block; font-family: var(--font-display); font-size: 20px; font-weight: 600; letter-spacing: .14em; transition: color .2s }
+.demoBody small { display: block; margin-top: 6px; font-size: 14px; line-height: 1.8; color: var(--muted) }
+.demoMeta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px }
+.demoMeta span { padding: 2px 10px; background: var(--paper-2); font-size: 12px; letter-spacing: .1em; color: var(--ink-2) }
+.demoOption:hover .demoNumber, .demoOption:hover strong { color: var(--red) }
+.demoSelected { background: linear-gradient(90deg, rgba(224, 83, 63, .08), transparent 80%) }
+.demoSelected .demoNumber, .demoSelected strong { color: var(--red) }
+.demoSelected .choiceMark { background: var(--red); border-color: var(--red) }
+.dialog > :global(.btn-primary) { width: 100%; margin-top: 30px; padding: 18px }
+.dialogFootnote { margin: 14px 0 0; text-align: center; font-size: 12.5px; letter-spacing: .06em; color: var(--muted) }
+
+/* ── Responsive ── */
+@media (max-width: 960px) {
+  .stepNav button span { display: none }
+  .layout_timeline { grid-template-columns: 1fr; margin: 0 0 0 12px }
+  .layout_timeline .choice { flex-direction: row; align-items: center; gap: 14px; padding: 16px 0 16px 30px; border-top: 0; border-left: 2px solid var(--line-strong) }
+  .layout_timeline .choiceSelected { border-left-color: var(--red); background: linear-gradient(90deg, rgba(224, 83, 63, .07), transparent 80%) }
+  .layout_timeline .choiceMark { top: 50%; left: -12px; transform: translateY(-50%) }
+  .layout_timeline .choice::after { content: none }
+  .layout_spectrum { grid-template-columns: 1fr }
+  .layout_spectrum .choice { flex-direction: row; align-items: center; padding: 18px 50px 18px 18px; border-top-width: 1.5px; border-left-width: 4px }
+  .layout_spectrum .choice:nth-child(1) { border-color: var(--line-strong); border-left-color: var(--blue) }
+  .layout_spectrum .choice:nth-child(2) { border-color: var(--line-strong); border-left-color: var(--amber) }
+  .layout_spectrum .choice:nth-child(3) { border-color: var(--line-strong); border-left-color: var(--green) }
+  .layout_spectrum .choiceSelected { border-color: var(--red) !important }
+  .layout_spectrum .choiceMark { top: 50%; transform: translateY(-50%) }
+  .localNote { display: none }
+}
+@media (max-width: 640px) {
+  .intakePage, .reviewPage { padding-top: 14px }
+  .flowTop { grid-template-columns: 1fr auto; gap: 10px; padding: 0 16px; font-size: 12px; letter-spacing: .08em }
+  .flowSteps { grid-column: 1 / -1; grid-row: 2; justify-self: center }
+  .flowSteps li { gap: 6px; font-size: 12px; letter-spacing: .1em }
+  .flowSteps li:not(:last-child)::after { width: 14px; margin: 0 8px }
+  .flowSteps li:not(.flowCurrent) .flowLabel { display: none }
+  .stepNav { margin-top: 20px; padding: 0 16px }
+  .stepNav ol { gap: 4px }
+  .clearNotice, .exampleBanner, .staleNote { margin: 14px 16px 0; flex-wrap: wrap }
+  .questionStage { padding: 40px 16px 12px }
+  .counter b { font-size: 28px }
+  .question { margin: 22px auto; font-size: 25px; letter-spacing: .08em }
+  .slot { min-width: 100%; padding: 2px 6px 10px; font-size: 21px; letter-spacing: .08em }
+  .hint { font-size: 14px }
+  .answerArea { margin-top: 36px }
+  .layout_grid { grid-template-columns: 1fr }
+  .choice { gap: 14px; padding: 16px 4px 16px 0 }
+  .choiceNumber { width: 24px; font-size: 19px }
+  .choiceText strong { font-size: 17px; letter-spacing: .08em }
+  .layout_compact { justify-content: flex-start; gap: 8px }
+  .layout_compact .choice { padding: 10px 12px }
+  .layout_compact .choiceMark { display: none }
+  .hotkeyHint, .enterHint { display: none }
+  .dateRow { grid-template-columns: 32px minmax(0, 1fr) 36px; gap: 4px 12px }
+  .dateIndex { grid-row: span 3 }
+  .dateField { grid-column: 2 }
+  .switchLine { grid-column: 2; padding: 8px 0 0 }
+  .dateRow .iconButton { grid-column: 3; grid-row: 1 }
+  .actionBar { padding: 24px 16px 14px }
+  .actionInner { gap: 8px; padding-top: 12px }
+  .actionRight { gap: 8px }
+  .actionInner :global(.btn) { padding: 12px 16px; letter-spacing: .12em }
+  .skipButton { font-size: 13px; letter-spacing: .08em }
+  .statementStage { padding: 48px 16px 20px }
+  .statementTitle { margin-bottom: 30px; letter-spacing: .4em }
+  .statementText { font-size: 19px; letter-spacing: .06em; line-height: 2.2 }
+  .statementExtras > div { grid-template-columns: 1fr; gap: 4px }
+  .submitStage { padding: 26px 16px 80px }
+  .dialog { padding: 74px 20px 26px }
+  .dialogClose { top: 14px; right: 14px }
+  .demoOption { grid-template-columns: 38px minmax(0, 1fr) auto; gap: 10px }
+  .demoNumber { font-size: 28px }
+  .demoBody strong { font-size: 17px; letter-spacing: .08em }
+}
+@media (max-width: 380px) {
+  .actionInner :global(.btn) { padding: 11px 12px }
+  .skipButton { padding: 8px 0 }
+}
+
+/* English sentences carry real spaces, so the blank margins used for Chinese are dropped. */
+:global(html[lang="en"]) .blank, :global(html[lang="en"]) .blankUnknown { margin: 0 }

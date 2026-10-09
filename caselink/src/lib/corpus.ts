@@ -1,0 +1,11 @@
+import casesJson from '../../data/cases/cases.json';
+import evidenceJson from '../../data/evidence/evidence.json';
+import documentsJson from '../../data/evidence/documents.json';
+import resourcesJson from '../../data/resources/resources.json';
+import {CaseRecordSchema,EvidenceSchema,SourceDocumentSchema,ResourceSchema} from './contracts';
+export const cases=CaseRecordSchema.array().parse(casesJson);
+export const evidence=EvidenceSchema.array().parse(evidenceJson);
+export const documents=SourceDocumentSchema.array().parse(documentsJson);
+export const resources=ResourceSchema.array().parse(resourcesJson);
+export const getCase=(id:string)=>cases.find(c=>c.caseId===id);
+export const getEvidence=(id:string)=>evidence.find(e=>e.evidenceId===id);
