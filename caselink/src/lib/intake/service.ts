@@ -1,4 +1,4 @@
-import {meteredModel} from '../usage/runtime';
+import {recordModel} from '../ai/execution';
 import {assessDomain,requireResearchScope} from '../research/domain';
 import OpenAI from 'openai';
 import {zodTextFormat} from 'openai/helpers/zod';
@@ -44,7 +44,7 @@ export function buildIntakePromptData(input:NewCaseInput,locale:Locale):string{
 
 export const openAIIntakeTransport:IntakeTransport=async({config,data,signal})=>{
   const client=new OpenAI({apiKey:config.key,maxRetries:0,timeout:config.timeoutMs});
-  return meteredModel('intake',config.model,4000,JSON.stringify({data,instructions:INTAKE_SYSTEM_PROMPT,schema:ModelIntakeOutputSchema.toJSONSchema()}),()=>client.responses.parse({model:config.model,store:false,reasoning:{effort:'low'},instructions:INTAKE_SYSTEM_PROMPT,input:[{role:'user',content:data}],text:{format:zodTextFormat(ModelIntakeOutputSchema,'caselink_intake')},max_output_tokens:4000},{signal}));
+  return recordModel('intake',config.model,()=>client.responses.parse({model:config.model,store:false,reasoning:{effort:'low'},instructions:INTAKE_SYSTEM_PROMPT,input:[{role:'user',content:data}],text:{format:zodTextFormat(ModelIntakeOutputSchema,'caselink_intake')},max_output_tokens:4000},{signal}));
 };
 
 export function validateIntakeOutput(raw:unknown,input:NewCaseInput,locale:Locale,model:string):IntakeResponse{
@@ -76,8 +76,8 @@ function readableSummary(value:string|undefined,material:string,locale:Locale):s
 function localizedError(error:unknown,locale:Locale):AnalysisError{
   const result=publicError(error);
   const messages:Partial<Record<AnalysisError['code'],[string,string]>>={
-    QUOTA_EXHAUSTED:['AI 整理因可用额度或预算限制暂不可用。请联系管理员检查 OpenAI API 可用额度及组织或项目预算，或继续手动填写。','AI intake is unavailable because of an API quota or budget limit. Ask the administrator to check OpenAI API availability and organization or project budgets, or continue manually.'],
-    RATE_LIMITED:['AI 整理暂时限流，请稍后再试或继续手动填写。','AI intake is temporarily rate limited. Try later or continue manually.'],
+    QUOTA_EXHAUSTED:['OpenAI API 返回额度或账户预算错误，案情整理未完成。请管理员检查 OpenAI API 账户，或继续手动填写。','OpenAI returned an account quota or budget error. Ask the administrator to check the OpenAI account, or continue manually.'],
+    RATE_LIMITED:['OpenAI API 暂时限流，请稍后再试或继续手动填写。','AI intake is temporarily rate limited. Try later or continue manually.'],
     UPSTREAM_ERROR:['AI 整理暂时未能完成，没有保存有效结果。可以继续手动填写。','AI intake could not complete. No valid result was saved; you can continue manually.'],
   };
   const text=messages[result.code];return text?new AnalysisError(result.code,text[locale==='en'?1:0],result.status):result;

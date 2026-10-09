@@ -1,4 +1,4 @@
-import {withTestMeter} from './fixtures/usage';
+import {withTestExecution} from './fixtures/execution';
 import {unavailableResearch} from './fixtures/research';
 import {describe,it,expect,vi} from 'vitest';
 import {EMPTY_INPUT,PROMPT_VERSION,NewCaseInputSchema,ModelAnalysisOutputSchema,type NewCaseInput} from '../src/lib/contracts';
@@ -182,7 +182,7 @@ describe('live mode, provider failures and request boundaries',()=>{
     });
     vi.stubGlobal('fetch',fetchMock);
     try{
-      const response=await withTestMeter(()=>openAITransport({config:liveConfig,data:'Only a local test fixture; no network.',signal:new AbortController().signal}));
+      const response=await withTestExecution(()=>openAITransport({config:liveConfig,data:'Only a local test fixture; no network.',signal:new AbortController().signal}));
       expect(response.output_parsed).toEqual(expected);expect(requestBody?.store).toBe(false);expect((requestBody?.text as {format:{strict:boolean}}).format.strict).toBe(true);expect((requestBody?.text as {verbosity:string}).verbosity).toBe('low');expect(requestBody?.reasoning).toEqual({effort:'low'});expect(requestBody?.max_output_tokens).toBe(9000);expect(fetchMock).toHaveBeenCalledOnce();
     }finally{vi.unstubAllGlobals();}
   });
@@ -220,7 +220,7 @@ describe('live mode, provider failures and request boundaries',()=>{
       const fetchMock=vi.fn(async()=>new Response(JSON.stringify({error:{...providerError,message:'private upstream diagnostic'}}),{status:429,headers:{'content-type':'application/json','x-request-id':'req_local_fixture'}}));
       vi.stubGlobal('fetch',fetchMock);
       try{
-        const failure=await withTestMeter(()=>generateLive(input,context(input),retrieveCases(input),liveConfig)).catch(error=>error);
+        const failure=await withTestExecution(()=>generateLive(input,context(input),retrieveCases(input),liveConfig)).catch(error=>error);
         expect(failure).toBeInstanceOf(AnalysisError);expect(failure).toMatchObject({code,status:429});
         expect(failure.message).not.toContain('private upstream diagnostic');expect(fetchMock).toHaveBeenCalledOnce();
       }finally{vi.unstubAllGlobals();}
@@ -249,18 +249,11 @@ describe('live mode, provider failures and request boundaries',()=>{
         for(const cookie of [undefined,'caselink_access=obsolete-invalid-token']){
           const request=new NextRequest('https://caselink.example/api/capabilities',{headers:cookie?{cookie}:{}});
           const response=await capabilitiesRequest(request);expect(response.status).toBe(200);
-          expect(await response.json()).toMatchObject({mode,configured,liveAvailable:false,accessRequired:false,usageControlConfigured:false});
+          expect(await response.json()).toMatchObject({mode,configured,liveAvailable:mode==='live'&&configured,accessRequired:false,paidProtectionEnabled:false,serverResultRetentionSeconds:0});
           expect(response.headers.get('set-cookie')).toBeNull();expect(response.headers.get('cache-control')).toContain('no-store');
         }
       }
     }finally{vi.unstubAllEnvs();}
-  });
-  it('does not mistake same-origin/password-free access for a distributed paid allowance',async()=>{
-    stubLiveEnv();const fetchMock=vi.fn();vi.stubGlobal('fetch',fetchMock);
-    try{for(const locale of ['zh','en'] as const){
-      const response=await analyzeRequest(new NextRequest('https://caselink.example/api/analyze',{method:'POST',headers:{host:'caselink.example',origin:'https://caselink.example','content-type':'application/json'},body:JSON.stringify({input:demo(),requestId:'request-no-password',inputVersion:1,operation:'initial',locale})}));
-      expect(response.status).toBe(503);expect(await response.json()).toMatchObject({code:'USAGE_CONTROL_UNAVAILABLE'});expect(fetchMock).not.toHaveBeenCalled();
-    }}finally{vi.unstubAllGlobals();vi.unstubAllEnvs();}
   });
   it('still blocks cross-site or oversized live requests before calling the model',async()=>{
     stubLiveEnv();const fetchMock=vi.fn();vi.stubGlobal('fetch',fetchMock);

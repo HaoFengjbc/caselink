@@ -1,4 +1,4 @@
-import {withTestMeter} from './fixtures/usage';
+import {withTestExecution} from './fixtures/execution';
 import {describe,it,expect,vi} from 'vitest';
 import {zodTextFormat} from 'openai/helpers/zod';
 import {EMPTY_INPUT,PROMPT_VERSION,WebModelAnalysisOutputSchema,AnalysisResultSchema,type NewCaseInput,type WebModelAnalysisOutput} from '../src/lib/contracts';
@@ -198,7 +198,7 @@ describe('web citation scope and preserved guards',()=>{
     const expected=output();const format=JSON.parse(JSON.stringify(zodTextFormat(WebModelAnalysisOutputSchema,'caselink_web_analysis')));expect(format.schema.required).toContain('webComparisons');expect(format.schema.required).toContain('actionWebSources');expect(format.schema.additionalProperties).toBe(false);
     let body:Record<string,unknown>={};const fetch=vi.fn(async(_url:unknown,options?:RequestInit)=>{body=JSON.parse(String(options?.body));return new Response(JSON.stringify({id:'resp_local_web',object:'response',created_at:0,status:'completed',model:'local-test-model',output:[{id:'msg_fixture',type:'message',role:'assistant',status:'completed',content:[{type:'output_text',text:JSON.stringify(expected),annotations:[]}]}]}),{headers:{'content-type':'application/json'}});});
     vi.stubGlobal('fetch',fetch);
-    try{const parsed=await withTestMeter(()=>openAITransport({config,data:'A local fixture only.',instructions:webSystemPrompt('en'),outputMode:'web',signal:new AbortController().signal}),config.model);expect(parsed.output_parsed).toEqual(expected);expect(body.store).toBe(false);expect(body.reasoning).toEqual({effort:'low'});expect(body.max_output_tokens).toBe(9000);expect((body.text as {format:{name:string}}).format.name).toBe('caselink_web_analysis');expect((body.text as {verbosity:string}).verbosity).toBe('low');expect(fetch).toHaveBeenCalledOnce();}finally{vi.unstubAllGlobals();}
+    try{const parsed=await withTestExecution(()=>openAITransport({config,data:'A local fixture only.',instructions:webSystemPrompt('en'),outputMode:'web',signal:new AbortController().signal}),config.model);expect(parsed.output_parsed).toEqual(expected);expect(body.store).toBe(false);expect(body.reasoning).toEqual({effort:'low'});expect(body.max_output_tokens).toBe(9000);expect((body.text as {format:{name:string}}).format.name).toBe('caselink_web_analysis');expect((body.text as {verbosity:string}).verbosity).toBe('low');expect(fetch).toHaveBeenCalledOnce();}finally{vi.unstubAllGlobals();}
   });
   it('keeps the independent structured-analysis deadline and rejects incomplete web outputs',async()=>{
     const pending:ModelTransport=async()=>new Promise(()=>{});

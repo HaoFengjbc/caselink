@@ -95,11 +95,12 @@ async function main() {
     const response = await request('/api/capabilities');
     assert(response.status === 200, 'CAPABILITIES_HTTP_ERROR');
     const body = await bodyOf(response);
-    const allowed = ['mode', 'configured', 'liveAvailable', 'accessRequired', 'usageControlConfigured', 'controlledSearchConfigured', 'webSearchAvailable', 'ruleAvailable', 'idempotencyResultRetentionSeconds', 'progressEvents', 'configurationNotice'];
+    const allowed = ['mode', 'configured', 'liveAvailable', 'accessRequired', 'paidProtectionEnabled', 'controlledSearchConfigured', 'webSearchAvailable', 'ruleAvailable', 'serverResultRetentionSeconds', 'idempotencyEnabled', 'progressEvents', 'configurationNotice'];
     assert(body && typeof body === 'object' && Object.keys(body).every(key => allowed.includes(key)), 'UNEXPECTED_CAPABILITIES_FIELDS');
     assert(body.ruleAvailable === true && body.accessRequired === false && typeof body.liveAvailable === 'boolean', 'RULE_UNAVAILABLE_OR_PASSWORD_REQUIRED');
-    assert(!body.liveAvailable || (body.mode === 'live' && body.configured && body.usageControlConfigured), 'LIVE_WITHOUT_USAGE_CONTROL');
+    assert(!body.liveAvailable || (body.mode === 'live' && body.configured), 'LIVE_WITHOUT_MODEL_CONFIGURATION');
     assert(!body.webSearchAvailable || (body.liveAvailable && body.controlledSearchConfigured), 'WEB_WITHOUT_SEARCH_CONTROL');
+    assert(body.paidProtectionEnabled === false && body.serverResultRetentionSeconds === 0 && body.idempotencyEnabled === false, 'UNEXPECTED_PAID_ADMISSION_OR_CACHE');
     capabilities = body;
     return { httpStatus: response.status, capabilities: body };
   });

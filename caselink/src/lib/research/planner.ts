@@ -1,5 +1,5 @@
 /** Legacy no-tools planning compatibility helper. Production researchWeb does NOT call this module; controlled queries are built by the server vocabulary. */
-import {meteredModel} from '../usage/runtime';
+import {recordModel} from '../ai/execution';
 import OpenAI from 'openai';
 import {zodTextFormat} from 'openai/helpers/zod';
 import type {NewCaseInput} from '../contracts';
@@ -20,7 +20,7 @@ export const openAIResearchPlannerTransport:ResearchPlannerTransport=async({inpu
  const client=new OpenAI({apiKey:config.key,maxRetries:0,timeout:RESEARCH_PLANNER_TIMEOUT_MS});
  const query=buildResearchQuery(input);
  const data=JSON.stringify({account:input,canonicalJurisdiction:query.jurisdiction,outputLanguage:locale==='en'?'English':'Chinese'});
- const response=await meteredModel('planning',config.model,3500,JSON.stringify({data,instructions:RESEARCH_PLANNER_INSTRUCTIONS,schema:ModelResearchPlanSchema.toJSONSchema()}),()=>client.responses.parse({
+ const response=await recordModel('planning',config.model,()=>client.responses.parse({
   model:config.model,store:false,tools:[],instructions:RESEARCH_PLANNER_INSTRUCTIONS,
   input:[{role:'user',content:data}],
   text:{format:zodTextFormat(ModelResearchPlanSchema,'public_legal_research_plan')},

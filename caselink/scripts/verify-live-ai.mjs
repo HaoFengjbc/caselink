@@ -158,9 +158,10 @@ function validateResult(raw, inputs) {
   const webIds=new Set(result.webResearch?.sources.map(s=>s.sourceId)??[]);
   for(const comparison of result.webComparisons??[])for(const id of comparison.sourceIds)assert(webIds.has(id),'INVALID_WEB_CITATION','网页比较引用不在本次搜索结果中。');
   for(const mapping of result.actionWebSources??[])for(const id of mapping.sourceIds)assert(webIds.has(id),'INVALID_WEB_CITATION','行动引用不在本次搜索结果中。');
-  assert(result.webResearch?.status==='completed'&&result.webResearch.searchCallCount>0&&webIds.size>0,'WEB_SEARCH_NOT_COMPLETED','尚未完成真实网页搜索，不记作联网验收通过。');
+  assert(result.execution?.stages.some(stage=>stage.stage==='synthesis'&&stage.status==='completed'&&stage.responseId), 'MODEL_EXECUTION_MISSING', '未返回完成的真实模型执行记录。');
+  assert(result.snapshot?.completeness==='complete', 'SNAPSHOT_MISSING', '报告缺少完整证据快照。');
   assert(citedIds.size + (result.webComparisons??[]).flatMap(c=>c.sourceIds).length > 0, 'MISSING_ACTIONS_OR_CITATIONS', '结果仅有来源列表，没有案例或行动引用。');
-  return { mode: result.mode, counts: { cases: result.comparableCases.length, actions: result.actionOptions.length, sources: sourceIds.size, citations: citedIds.size, webSources:webIds.size, webCases:result.webComparisons?.length??0 } };
+  return { mode: result.mode, webStatus: result.webResearch?.status ?? 'not_searched', execution: result.execution, counts: { cases: result.comparableCases.length, actions: result.actionOptions.length, sources: sourceIds.size, citations: citedIds.size, webSources:webIds.size, webCases:result.webComparisons?.length??0 } };
 }
 
 async function paidSmoke(origin, inputs) {
@@ -184,7 +185,7 @@ async function paidSmoke(origin, inputs) {
     await check('capabilities', async () => {
       const response = await request(origin, '/api/capabilities');
       const body = await readJson(response);
-      const allowed = ['mode', 'configured', 'liveAvailable', 'accessRequired'];
+      const allowed = ['mode', 'configured', 'liveAvailable', 'accessRequired', 'paidProtectionEnabled', 'controlledSearchConfigured', 'webSearchAvailable', 'ruleAvailable', 'serverResultRetentionSeconds', 'idempotencyEnabled', 'progressEvents', 'configurationNotice'];
       assert(body && typeof body === 'object' && Object.keys(body).every(key => allowed.includes(key)), 'INVALID_CAPABILITIES', '服务能力响应包含未预期字段。');
       assert(body.mode === 'live' && body.configured === true && body.liveAvailable === true && body.accessRequired === false, 'LIVE_NOT_READY', '尚未确认免密码的实时 AI 服务已配置；不会提交分析。');
       report.mode = 'live';
@@ -192,7 +193,7 @@ async function paidSmoke(origin, inputs) {
     });
     const analysis = await check('analysis', async () => {
       report.counts.analysisRequests += 1;
-      const response = await request(origin, '/api/analyze', { method: 'POST', headers: { 'Content-Type': 'application/json', Origin: origin, 'Sec-Fetch-Site': 'same-origin' }, body: JSON.stringify({ input: inputs.input, requestId: randomUUID() }) }, 290000);
+      const response = await request(origin, '/api/analyze', { method: 'POST', headers: { 'Content-Type': 'application/json', Origin: origin, 'Sec-Fetch-Site': 'same-origin' }, body: JSON.stringify({ input: inputs.input, requestId: randomUUID(), inputVersion: 1, operation: 'initial' }) }, 290000);
       const body = await readJson(response);
       return { httpStatus: response.status, ...validateResult(body, inputs) };
     });
