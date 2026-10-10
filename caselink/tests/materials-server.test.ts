@@ -141,29 +141,33 @@ describe('material extraction citations, attribution and multiple case separatio
     const omitted=structuredClone(docs);omitted[0].pages[0].status='omitted';
     expect(()=>validateMaterialOutput(output(docs),omitted,'en')).toThrow(/validation/);
   });
-  it('reconciles an unambiguous date format to literal evidence and routes a real mismatch to user review',async()=>{
+  it('reconciles an unambiguous date format to literal evidence and shows the original wording for a real mismatch',async()=>{
     const docs=await parsed(),model=output(docs);
     model.candidates[0].items[4].date='2026-10-03';
     const equivalent=validateMaterialOutput(model,docs,'en')[0];
     expect(equivalent.items[4]).toMatchObject({date:'3 October 2026'});expect(equivalent.items[4].dateReview).toBeUndefined();
+    model.candidates[0].items[4].date='October 2026';
+    expect(validateMaterialOutput(model,docs,'en')[0].items[4].date).toBe('October 2026');
     model.candidates[0].items[4].date='2099-12-01';model.candidates[0].items[4].text='Wrong draft says receipt was 2099-12-01.';
     model.candidates[0].conflicts=[{description:'Wrong draft conflicts about 2099-12-01.',itemIndices:[0,4]}];
     model.candidates[0].missing=['Verify 2099-12-01.'];
     const flagged=validateMaterialOutput(model,docs,'en')[0];
     expect(flagged.items).toHaveLength(5);expect(flagged.items[0].text).toBe(equivalent.items[0].text);
-    expect(flagged.items[4]).toMatchObject({date:null,dateReview:{reason:'date_mismatch',resolution:null}});
+    // The unverified date is dropped and the item reads as the document does; nothing is left for the user to review.
+    expect(flagged.items[4]).toMatchObject({date:null,text:'Mira says she received the letter on 3 October 2026.'});expect(flagged.items[4].dateReview).toBeUndefined();
     expect(flagged.items[4].sources).toEqual(equivalent.items[4].sources);
     expect(JSON.stringify(flagged)).not.toMatch(/2099-12-01|Wrong draft/);
     expect(flagged.conflicts).toHaveLength(1);expect(flagged.conflicts[0].itemIds).toContain(flagged.items[4].id);
     model.candidates[0].items[4].date=null;
-    expect(validateMaterialOutput(model,docs,'en')[0].items[4].dateReview?.reason).toBe('missing_date');
+    const undated=validateMaterialOutput(model,docs,'en')[0].items[4];
+    expect(undated.date).toBeNull();expect(undated.dateReview).toBeUndefined();
   });
-  it('keeps checked items and returns a date-review warning with exactly one model attempt',async()=>{
+  it('keeps checked items without a date-review warning, with exactly one model attempt',async()=>{
     const docs=await parsed(),model=output(docs);model.candidates[0].items[4].date='2099-12-01';
     const transport=vi.fn(async()=>({status:'completed',output_parsed:model}));
     const result=await organizeMaterials([await fixture()],metadata,{config,transport});
-    expect(result.mode).toBe('live_ai');expect(result.candidates[0].items).toHaveLength(5);
-    expect(result.warnings.join()).toContain('1 date item');expect(transport).toHaveBeenCalledOnce();
+    expect(result.mode).toBe('live_ai');expect(result.candidates[0].items).toHaveLength(5);expect(result.candidates[0].items[4].date).toBeNull();
+    expect(result.warnings.join()).not.toMatch(/date item|日期需要核对/);expect(transport).toHaveBeenCalledOnce();
   });
   it('matches PDF layout whitespace but stores the exact original page substring and original date',async()=>{
     const docs=await parsed(),model=output(docs);

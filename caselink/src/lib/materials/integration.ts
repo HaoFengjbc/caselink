@@ -13,7 +13,7 @@ function sync(input:Draft,materials:MaterialRecord):Draft{
  const facts=[...userFacts,...materials.items.filter(item=>!item.dateReview||item.dateReview.resolution).map(item=>({id:item.id,materialItemId:item.id,text:item.text,summary:item.originalText.slice(0,200),quote:item.sources[0].quote,slot:slot(item.field)}))].slice(0,12);
  return {...input,intake:{...input.intake,materials:MaterialRecordSchema.parse(materials),facts,confirmed:false}};
 }
-export function applyMaterialCandidate(input:NewCaseInput,result:MaterialResponse,candidateId:string):Draft{
+export function applyMaterialCandidate(input:NewCaseInput,result:MaterialResponse,candidateId:string,locale:'zh'|'en'='zh'):Draft{
  const selected=result.candidates.find(c=>c.id===candidateId);if(!selected)throw new Error('Select one case before adding its materials.');
  const current=draft(input),old=current.intake.materials;
  const documents=[...(old?.documents??[])];for(const {pages:_pages,...document} of result.documents){const at=documents.findIndex(d=>d.fileId===document.fileId);if(at<0)documents.push(document);else documents[at]=document;}
@@ -24,7 +24,8 @@ export function applyMaterialCandidate(input:NewCaseInput,result:MaterialRespons
  // Incremental uploads cannot silently replace contradictory single-valued assertions.
  for(const item of selected.items){if(!['country','jurisdiction','date','stage'].includes(item.field)&&!(item.date&&item.dateKind==='requested_deadline'))continue;
   const prior=old?.items.find(i=>i.field===item.field&&i.subject===item.subject&&i.dateKind===item.dateKind&&(i.date??i.text)!==(item.date??item.text)&&!i.sources.some(s=>item.sources.some(t=>s.fileId===t.fileId)));
-  if(prior&&!conflicts.some(c=>c.itemIds.includes(prior.id)&&c.itemIds.includes(item.id)))conflicts.push({id:questionId(prior.id+item.id),description:`${prior.text} / ${item.text}`,itemIds:[prior.id,item.id],resolution:null});
+  // Both accounts are shown beside the description, so it only says where they come from.
+  if(prior&&!conflicts.some(c=>c.itemIds.includes(prior.id)&&c.itemIds.includes(item.id)))conflicts.push({id:questionId(prior.id+item.id),description:locale==='en'?'The new file records this differently from the earlier one.':'新上传的文件与之前的材料记载不同。',itemIds:[prior.id,item.id],resolution:null});
  }
  const prefill=selected.prefill;
  const next:Draft={...current,country:!current.country.trim()||current.country==='unknown'?prefill.country||'unknown':current.country,
@@ -108,20 +109,25 @@ export function materialQuestions(input:NewCaseInput,locale:'zh'|'en',options:{o
  const answered=new Set(record.answers.filter(a=>a.answer.trim()).map(a=>a.questionId));
  return questions.filter(q=>!answered.has(q.id)).slice(0,3);
 }
+/** A document cannot supply the user's present goal or sharing choice; every other gap may stay unknown. */
 export function materialReviewErrors(input:NewCaseInput,locale:'zh'|'en'='zh'):string[]{
  const record=input.intake,materials=record?.materials;if(!materials)return [];
  const en=locale==='en',errors:string[]=[];
- if(!materials.items.length)errors.push(en?'Add or enter case facts before confirming.':'请先添加或填写案情内容。');
- if(materials.items.some(item=>item.dateReview&&!item.dateReview.resolution))errors.push(en?'Review the flagged dates, explicitly keep them unknown, or delete those items.':'请核对标记的日期，也可明确保留未知或删除该项。');
- if(materials.conflicts.some(c=>!c.resolution?.trim()))errors.push(en?'Record how unresolved conflicting accounts should be handled; “not sure” is allowed.':'请说明尚未处理的冲突如何记录；可以填写“不清楚”。');
- if(!record.goalText.trim()||!materials.goalConfirmed)errors.push(en?'Confirm your current work goal.':'请确认本次希望完成的工作目标。');
- if(!record.disclosureDetails.trim()||input.publicity==='unknown'||!materials.disclosureConfirmed)errors.push(en?'Confirm permitted information and recipients, including an internal-only choice if appropriate.':'请确认本次可分享的信息和接收范围，也可明确选择仅内部使用。');
+ if(!materials.items.length&&!record.narrative.trim())errors.push(en?'Add or enter case facts before confirming.':'请先添加或填写案情内容。');
+ if(!record.goalText.trim())errors.push(en?'Write one line about what you want to do now.':'请写一句你现在想完成什么。');
+ if(input.publicity==='unknown')errors.push(en?'Choose how far this information may go (keep private, ask first, or consider going public).':'请选择公开边界：先私下处理、先征求意见，或可以考虑公开。');
  return errors;
 }
-export function confirmMaterials(input:NewCaseInput):Draft{
+/**
+ * The final confirmation is the review: conflicts left unchosen keep both accounts, and dates that were
+ * never verified stay unknown. The latest-update question stays open until the user answers it.
+ */
+export function confirmMaterials(input:NewCaseInput,locale:'zh'|'en'='zh'):Draft{
  const current=draft(input),old=current.intake.materials;if(!old)return {...current,intake:{...current.intake,confirmed:true}};
- const errors=materialReviewErrors(current);if(errors.length)throw new Error(errors.join(' '));
- const next=sync(current,{...old,reviewNeeded:false,goalConfirmed:true,disclosureConfirmed:true,items:old.items.map(i=>i.status==='extracted'?{...i,status:'confirmed'}:i)});
+ const errors=materialReviewErrors(current,locale);if(errors.length)throw new Error(errors.join(' '));
+ const items=old.items.map(item=>({...item,status:item.status==='extracted'?'confirmed' as const:item.status,...(item.dateReview&&!item.dateReview.resolution?{date:null,dateReview:{...item.dateReview,resolution:'unknown' as const}}:{})}));
+ const conflicts=old.conflicts.map(conflict=>conflict.resolution?.trim()?conflict:{...conflict,resolution:locale==='en'?'Both accounts kept; to be verified.':'两种说法都保留，待核实。'});
+ const next=sync(current,{...old,items,conflicts,reviewNeeded:false,goalConfirmed:true,disclosureConfirmed:true});
  return {...next,intake:{...next.intake,confirmed:true}};
 }
 

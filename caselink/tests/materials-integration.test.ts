@@ -17,10 +17,14 @@ describe('PDF intake uses one case record and immutable source evidence',()=>{
   const input=applyMaterialCandidate(structuredClone(EMPTY_INPUT),extracted(),'case-fixture');
   expect(input).toMatchObject({country:'United Kingdom',stage:'unknown',intake:{narrative:'',jurisdiction:'england_wales',caseKind:'civil',expression:'yes',confirmed:false}});
   expect(input.intake.materials?.items).toHaveLength(1);expect(input.intake.facts[0].materialItemId).toBe('fact-allegation');
+  // Only the user's present goal and sharing choice are required; the document supplies neither.
   expect(materialReviewErrors(input)).toHaveLength(2);expect(()=>confirmMaterials(input)).toThrow();
   expect(NewCaseInputSchema.safeParse({...input,intake:{...input.intake,confirmed:true}}).success).toBe(false);
-  const unconfirmed=ready();unconfirmed.intake.materials!.goalConfirmed=false;unconfirmed.intake.materials!.disclosureConfirmed=false;
-  expect(materialReviewErrors(unconfirmed)).toHaveLength(2);expect(()=>confirmMaterials(unconfirmed)).toThrow();
+  const minimal={...input,publicity:'private' as const,intake:{...input.intake,goalText:'Understand the procedure.'}};
+  expect(materialReviewErrors(minimal)).toEqual([]);
+  const confirmed=confirmMaterials(minimal);
+  expect(confirmed.intake.materials).toMatchObject({reviewNeeded:false,goalConfirmed:true,disclosureConfirmed:true,latestConfirmed:false});
+  expect(confirmed.intake.disclosureDetails).toBe('');expect(NewCaseInputSchema.safeParse(confirmed).success).toBe(true);
  });
  it('asks only useful material gaps; goal and disclosure cannot be inferred from prior public advocacy',()=>{
   let input=applyMaterialCandidate(structuredClone(EMPTY_INPUT),extracted(),'case-fixture');
@@ -40,13 +44,20 @@ describe('PDF intake uses one case record and immutable source evidence',()=>{
   input=removeMaterialFile(input,'pdf-fixture-1');expect(input.intake.facts).toHaveLength(0);expect(input.intake.materials!.items).toHaveLength(0);expect(input.intake.confirmed).toBe(false);
   expect(input.intake.goalText).toContain('internal chronology');
  });
- it('retains conflicts until explicit resolution, including unknown; deleting a fact clears dependent conflicts',()=>{
+ it('keeps both accounts of an unchosen conflict, records a one-click choice, and drops a conflict whose side is deleted',()=>{
   const result=extracted(),candidate=result.candidates[0];candidate.items.push({...structuredClone(candidate.items[0]),id:'second-claim',text:'The reporter disputes that allegation.',originalText:'The reporter disputes that allegation.',nature:'party_statement'});
   candidate.conflicts=[{id:'conflict-fixture',description:'Company and reporter disagree.',itemIds:['fact-allegation','second-claim'],resolution:null}];
   let input=applyMaterialCandidate(structuredClone(EMPTY_INPUT),result,'case-fixture');
-  expect(materialReviewErrors(input).join()).toContain('冲突');
-  input=resolveMaterialConflict(input,'conflict-fixture','Not sure; retain both attributed accounts.');
-  expect(input.intake.materials!.items).toHaveLength(2);expect(materialReviewErrors(input).join()).not.toContain('冲突');
+  input={...input,publicity:'private',intake:{...input.intake,goalText:'Understand the procedure.'}};
+  expect(materialReviewErrors(input)).toEqual([]);
+  const kept=confirmMaterials(input,'en');
+  expect(kept.intake.materials!.conflicts[0].resolution).toBe('Both accounts kept; to be verified.');expect(kept.intake.materials!.items).toHaveLength(2);
+  expect(NewCaseInputSchema.safeParse(kept).success).toBe(true);
+  expect(confirmMaterials(input).intake.materials!.conflicts[0].resolution).toBe('两种说法都保留，待核实。');
+  input=resolveMaterialConflict(input,'conflict-fixture','Use account 2: The reporter disputes that allegation. (p. 1)');
+  expect(confirmMaterials(input,'en').intake.materials!.conflicts[0].resolution).toBe('Use account 2: The reporter disputes that allegation. (p. 1)');
+  expect(resolveMaterialConflict(input,'conflict-fixture','').intake.materials!.conflicts[0].resolution).toBeNull();
+  expect(input.intake.materials!.items).toHaveLength(2);
   input=deleteMaterialItem(input,'second-claim');expect(input.intake.materials!.conflicts).toHaveLength(0);
  });
  it('requires an explicit candidate and keeps another case out',()=>{
@@ -54,28 +65,24 @@ describe('PDF intake uses one case record and immutable source evidence',()=>{
   expect(()=>applyMaterialCandidate(structuredClone(EMPTY_INPUT),result,'')).toThrow();
   const input=applyMaterialCandidate(structuredClone(EMPTY_INPUT),result,'case-fixture');expect(JSON.stringify(input)).not.toContain('Unrelated matter');
  });
- it('requires handling only uncertain dates and preserves an explicit unknown in the existing report snapshot',async()=>{
+ it('keeps a date flagged by an older version unknown at confirmation and freezes that in the report snapshot',async()=>{
   const result=extracted(),ordinary=result.candidates[0].items[0];
   result.candidates[0].items.push({...structuredClone(ordinary),id:'date-needs-review',field:'date',dateKind:'document',date:null,text:'Date needs review; AI draft not adopted.',originalText:'Date needs review; AI draft not adopted.',uncertainty:'Review the original date.',dateReview:{reason:'date_mismatch',resolution:null},sources:[{...ordinary.sources[0],quote:'Letter dated 2024-05-10.'}]});
   let input=applyMaterialCandidate(ready(),result,'case-fixture');
-  expect(input.intake.facts.map(f=>f.materialItemId)).not.toContain('date-needs-review');expect(materialReviewErrors(input,'en').join()).toContain('flagged dates');
-  expect(()=>confirmMaterials(input)).toThrow();
+  expect(input.intake.facts.map(f=>f.materialItemId)).not.toContain('date-needs-review');expect(materialReviewErrors(input,'en')).toEqual([]);
   const bypass=structuredClone(input);bypass.intake.confirmed=true;bypass.intake.materials!.reviewNeeded=false;
   expect(NewCaseInputSchema.safeParse(bypass).success).toBe(false);
-  input=updateMaterialItem(input,'date-needs-review','An ordinary edit is not explicit date review.');
-  expect(materialReviewErrors(input,'en').join()).toContain('flagged dates');
-  const deleted=deleteMaterialItem(input,'date-needs-review');expect(materialReviewErrors(deleted,'en')).toEqual([]);
+  // Where the date question is still offered (classic questionnaire), an explicit note remains possible.
   expect(()=>resolveMaterialDateReview(input,'date-needs-review','reviewed','')).toThrow();
-  input=resolveMaterialDateReview(input,'date-needs-review','unknown',undefined,'en');
-  expect(materialReviewErrors(input,'en')).toEqual([]);input=confirmMaterials(input);
+  const reviewed=resolveMaterialDateReview(input,'date-needs-review','reviewed','The document date is 10 May; receipt date is still unknown.','en');
+  expect(reviewed.intake.materials!.items.find(i=>i.id==='date-needs-review')).toMatchObject({status:'edited',date:null,text:'The document date is 10 May; receipt date is still unknown.',dateReview:{resolution:'reviewed'}});
+  input=confirmMaterials(input,'en');expect(NewCaseInputSchema.safeParse(input).success).toBe(true);
   const item=input.intake.materials!.items.find(i=>i.id==='date-needs-review')!;
-  expect(item.date).toBeNull();expect(item.text).toContain('unknown');expect(item.sources[0].quote).toBe('Letter dated 2024-05-10.');
+  expect(item).toMatchObject({date:null,dateReview:{resolution:'unknown'}});expect(item.sources[0].quote).toBe('Letter dated 2024-05-10.');
+  expect(input.intake.facts.map(f=>f.materialItemId)).toContain('date-needs-review');
   const report=await analyzeInput(input,{forceRule:true,locale:'en'});
   expect(report.snapshot?.uploadedMaterials?.items.find(i=>i.id===item.id)?.dateReview?.resolution).toBe('unknown');
   expect(analysisMarkdown(report,input,'en')).toContain('Explicitly retained as unknown');
-  const reviewed=resolveMaterialDateReview(input,item.id,'reviewed','The document date is 10 May; receipt date is still unknown.','en');
-  expect(reviewed.intake.materials!.items.find(i=>i.id===item.id)).toMatchObject({status:'edited',date:null,text:'The document date is 10 May; receipt date is still unknown.',dateReview:{resolution:'reviewed'}});
-  expect(report.snapshot?.uploadedMaterials?.items.find(i=>i.id===item.id)?.dateReview?.resolution).toBe('unknown');
  });
  it('generates action references through the existing rule flow with a frozen private-source snapshot',async()=>{
   const input=ready(),result=await analyzeInput(input,{forceRule:true,locale:'en'});

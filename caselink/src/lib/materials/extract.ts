@@ -8,7 +8,7 @@ import {recordModel} from '../ai/execution';
 import type {MaterialConfig} from './config';
 import type {Locale} from '../i18n/locale';
 import {locateMaterialQuote,type LocatedQuote} from './citations';
-import {resolveMaterialDate} from './dates';
+import {literalMaterialDate,resolveMaterialDate} from './dates';
 import {materialValidationError,recordMaterialValidationIssue,type MaterialValidationReason} from './validation-error';
 import {MaterialFieldSchema,MaterialNatureSchema,MaterialPrefillSchema,MaterialCandidateSchema,type ParsedMaterial,type MaterialCandidate} from './contracts';
 
@@ -81,38 +81,41 @@ export function validateMaterialOutput(raw:unknown,documents:ParsedMaterial[],lo
       // An item stands only on quotes found in the upload; uncheckable claims are left out, not guessed.
       if(!unique.length){report.droppedItems++;return;}
       const sources=unique.map(source=>{const document=documentsById.get(source.fileId)!;return {...source,filename:document.filename,printedPage:document.pages.find(p=>p.pdfPage===source.pdfPage)?.printedPage??null,method:'embedded_text' as const};});
-      const date=item.date?resolveMaterialDate(item.date,sources.map(source=>source.quote)):null;
-      const dateIssue=item.date&&!date?'date_mismatch':item.dateKind!=='none'&&!date?'missing_date':null;
-      if(dateIssue)recordMaterialValidationIssue(dateIssue,{candidate:candidateIndex,item:itemIndex},'needs_review');
-      const itemId=`material-${digest([id,item.field,item.text,sources])}`;
+      const quotes=sources.map(source=>source.quote);
+      const date=item.date?resolveMaterialDate(item.date,quotes)??literalMaterialDate(item.date,quotes):null;
+      // An unverifiable date is not adopted. Prose that may repeat it is replaced by the document's own words,
+      // so the reader is never asked to review the system's bookkeeping.
+      const dateUnverified=!!item.date&&!date;
+      if(dateUnverified)recordMaterialValidationIssue('date_mismatch',{candidate:candidateIndex,item:itemIndex},'corrected');
+      const text=dateUnverified?quotes[0]!.replace(/\s+/g,' ').trim():item.text;
+      const uncertainty=dateUnverified?copy(locale,'日期未能与原文自动核对，已改用原文表述。','The date could not be checked against the excerpt, so the original wording is shown.'):item.uncertainty;
+      const itemId=`material-${digest([id,item.field,text,sources])}`;
       if(itemIds.has(itemId)){report.droppedItems++;dropped('duplicate_item',{candidate:candidateIndex,item:itemIndex});return;}
       itemIds.add(itemId);
-      // An unsupported date may also contaminate the prose. Withdraw that entire draft,
-      // retaining only the checked quotes until the user records a note or keeps it unknown.
-      const text=dateIssue?copy(locale,'此项日期待核对；AI 日期及相关草稿未采用，请查看原文。','This item needs date review. The AI date and related draft were not adopted; check the original excerpt.'):item.text;
-      const uncertainty=dateIssue?copy(locale,'无法确定日期与引文一致；请填写核对说明、明确保留未知，或删除该项。','The date could not be verified against the excerpt. Add a review note, explicitly keep it unknown, or delete this item.'):item.uncertainty;
       position.set(itemIndex,items.length);
-      items.push({...item,text,date,id:itemId,sources,uncertainty,status:'extracted' as const,originalText:text,...(dateIssue?{dateReview:{reason:dateIssue,resolution:null}}:{})});
+      items.push({...item,text,date,id:itemId,sources,uncertainty,status:'extracted' as const,originalText:text});
     });
     if(!items.length){report.droppedCandidates++;return;}
     candidateIds.add(id);
     // Prefill remains conservative: a location/scope/status needs its own cited extraction.
-    const prefill={...candidate.prefill},usableItems=items.filter(item=>!item.dateReview);
+    const prefill={...candidate.prefill},usableItems=items;
     if(!usableItems.some(i=>i.field==='country'))prefill.country='';
     if(!usableItems.some(i=>i.field==='jurisdiction'))prefill.jurisdiction='unknown';
     if(!usableItems.some(i=>i.field==='expression'))prefill.expression='unsure';
     if(!usableItems.some(i=>i.field==='stage'))prefill.stage='unknown';
     if(!usableItems.some(i=>i.field==='party'))prefill.personType='unknown';
     if(!usableItems.some(i=>['stage','claim','document_type'].includes(i.field)))prefill.caseKind='unknown';
+    // A model date that was not adopted must not come back through a conflict description or a gap.
+    const withdrawn=candidate.items.flatMap((item,index)=>{const kept=position.get(index);return kept!==undefined&&item.date&&items[kept].date===null?[{kept,date:item.date}]:[];});
     const conflicts:MaterialCandidate['conflicts']=[];
     candidate.conflicts.forEach((conflict,index)=>{
       const linked=[...new Set(conflict.itemIndices.map(i=>position.get(i)).filter((i):i is number=>i!==undefined))];
       // A conflict needs two checked items; one whose other side was left out has nothing to compare.
       if(linked.length<2){report.droppedConflicts++;dropped('invalid_conflict',{candidate:candidateIndex});return;}
-      conflicts.push({id:`conflict-${digest([id,index,conflict.itemIndices])}`,description:linked.some(i=>items[i].dateReview)?copy(locale,'这些材料记载存在待核对的日期或陈述；请对照双方原文说明如何记录。','These cited accounts contain a date or statement needing review. Compare both excerpts and record how to retain them.'):conflict.description,itemIds:linked.map(i=>items[i].id),resolution:null});
+      const tainted=withdrawn.some(entry=>linked.includes(entry.kept)||conflict.description.includes(entry.date));
+      conflicts.push({id:`conflict-${digest([id,index,conflict.itemIndices])}`,description:tainted?copy(locale,'这几处记载可能不一致，请对照原文。','These records may disagree; compare the original excerpts.'):conflict.description,itemIds:linked.map(i=>items[i].id),resolution:null});
     });
-    const withdrawnDates=candidate.items.flatMap((item,index)=>{const kept=position.get(index);return kept!==undefined&&items[kept].dateReview&&item.date?[item.date]:[];});
-    candidates.push(MaterialCandidateSchema.parse({id,label:candidate.label,prefill,items,conflicts,missing:candidate.missing.filter(text=>!withdrawnDates.some(date=>text.includes(date))).slice(0,3)}));
+    candidates.push(MaterialCandidateSchema.parse({id,label:candidate.label,prefill,items,conflicts,missing:candidate.missing.filter(text=>!withdrawn.some(entry=>text.includes(entry.date))).slice(0,3)}));
   });
   if(!candidates.length)throw materialValidationError('no_verified_items',locale);
   return candidates;

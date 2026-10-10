@@ -6,6 +6,7 @@ import {type NewCaseInput} from '../../src/lib/contracts';
 import {type MaterialResponse, type MaterialItem} from '../../src/lib/materials/contracts';
 
 // All material/model responses in this suite are simulated. The PDF is a checked-in fictional fixture.
+// The flagged items imitate drafts saved by an earlier version, which asked for a separate review of each date.
 const fixture = await readFile(fileURLToPath(new URL('../fixtures/pdf/expression-letter.pdf', import.meta.url)));
 const filename = 'fictional-date-review.pdf';
 const fileId = `pdf-${createHash('sha256').update(fixture).digest('hex')}`;
@@ -63,11 +64,8 @@ async function setup(page: Page, response = extraction()) {
   return {analyzed, materialCalls: () => materialCalls};
 }
 async function prepareOtherRequirements(page: Page) {
-  await page.getByLabel('本次工作目标', {exact: true}).fill('准备内部律师会谈，核对表达案件材料。');
-  await page.getByLabel('本次披露选择').selectOption('private');
-  await page.getByLabel('披露范围与接收对象', {exact: true}).fill('仅供内部研究团队与受委托律师；不公开身份或全文。');
-  await page.getByRole('checkbox', {name: '我确认这是本次工作目标。'}).check();
-  await page.getByRole('checkbox', {name: '我确认本次接收范围和披露限制。'}).check();
+  await page.getByRole('button', {name: '准备答辩或应诉材料', exact: true}).click();
+  await page.getByRole('radio', {name: '希望先保持私下处理', exact: true}).check();
 }
 async function finishRule(page: Page) {
   await page.getByRole('button', {name: '改用规则参考 · 不联网、不调用 AI', exact: true}).click();
@@ -75,71 +73,47 @@ async function finishRule(page: Page) {
   await expect(page.getByText('规则参考 · 未调用实时 AI', {exact: true})).toBeVisible();
 }
 
-test('MOCKED date validation: retain other facts, block confirmation, and require an explicit review note', async ({page}) => {
+test('MOCKED dates: no per-date form; an unverified date stays unknown when the case is confirmed', async ({page}) => {
   const run = await setup(page);
-  const review = page.getByTestId('material-date-review');
-  await expect(review).toContainText('还有 1 项日期需要处理');
-  await review.locator('summary').click();
-  await expect(review.locator('blockquote')).toHaveText(quote);
-  await expect(review.getByRole('button', {name: '保存核对说明', exact: true})).toBeDisabled();
-  await review.getByLabel('你的日期核对说明', {exact: true}).fill('   ');
-  await expect(review.getByRole('button', {name: '保存核对说明', exact: true})).toBeDisabled();
-  await page.getByRole('button', {name: '编辑 date-1', exact: true}).click();
-  await page.getByLabel('编辑提取笔记', {exact: true}).fill('用户普通笔记修改，仍需单独核对日期。');
-  await page.getByRole('button', {name: '完成', exact: true}).click();
-  await expect(review).toBeVisible();
-  await expect(page.locator('[data-material-item="date-1"]')).toContainText('普通笔记修改不会自动消除日期问题');
-  await prepareOtherRequirements(page);
-  await page.getByRole('button', {name: '改用规则参考 · 不联网、不调用 AI', exact: true}).click();
-  await expect(page.locator('main').getByRole('alert').last()).toContainText('日期');
-  expect(run.analyzed).toHaveLength(0);
+  await expect(page.getByTestId('material-date-review')).toHaveCount(0);
+  const flaggedPoint = page.locator('[data-material-item="date-1"]');
+  await expect(flaggedPoint).toContainText('第 1 页');
+  await flaggedPoint.getByRole('button').click();
+  const editor = page.getByRole('group', {name: '修改这一处'});
+  await expect(editor.locator('blockquote')).toContainText(quote);
   await mkdir('test-results/pdf-date-review-mocked', {recursive: true});
-  await review.screenshot({path: 'test-results/pdf-date-review-mocked/date-review-source.png'});
-  const note = '我核对了原文：14 October 2026 是对方提出的回复时间；是否构成法定期限仍需律师核实。';
-  await review.getByLabel('你的日期核对说明', {exact: true}).fill(note);
-  await review.getByRole('button', {name: '保存核对说明', exact: true}).click();
-  await expect(review).toHaveCount(0);
-  const saved = page.locator('[data-material-item="date-1"]');
-  await expect(saved).toContainText(note);
-  await saved.locator('summary').click();
-  await expect(saved.locator('blockquote')).toHaveText(quote);
-  await finishRule(page);
-  const item = run.analyzed[0].intake!.materials!.items.find(item => item.id === 'date-1')!;
-  expect(item.dateReview!.resolution).toBe('reviewed'); expect(item.date).toBeNull(); expect(item.text).toBe(note); expect(item.sources[0].quote).toBe(quote);
-  expect(run.materialCalls()).toBe(1);
-});
-
-for (const action of ['unknown', 'delete'] as const) test(`MOCKED date validation: explicit ${action} permits confirmation without invented dates`, async ({page}) => {
-  const run = await setup(page);
+  await editor.screenshot({path: 'test-results/pdf-date-review-mocked/date-review-source.png'});
+  await editor.getByRole('button', {name: '完成', exact: true}).click();
   await prepareOtherRequirements(page);
-  const review = page.getByTestId('material-date-review');
-  await review.getByRole('button', {name: action === 'unknown' ? '日期不清楚，保留未知' : '删除此日期项', exact: true}).click();
-  await expect(review).toHaveCount(0);
-  if (action === 'unknown') {
-    const saved = page.locator('[data-material-item="date-1"]');
-    await expect(saved).toContainText('日期已明确保留未知');
-    await saved.locator('summary').click(); await expect(saved.locator('blockquote')).toHaveText(quote);
-  } else await expect(page.locator('[data-material-item="date-1"]')).toHaveCount(0);
   await finishRule(page);
   const items = run.analyzed[0].intake!.materials!.items;
   expect(items.filter(item => !item.dateReview)).toHaveLength(3);
-  if (action === 'unknown') {
-    const item = items.find(item => item.id === 'date-1')!;
-    expect(item.date).toBeNull(); expect(item.dateReview!.resolution).toBe('unknown'); expect(item.text).toContain('明确保留未知'); expect(item.sources[0].quote).toBe(quote);
-  } else expect(items.some(item => item.id === 'date-1')).toBe(false);
+  const item = items.find(item => item.id === 'date-1')!;
+  expect(item.date).toBeNull(); expect(item.dateReview!.resolution).toBe('unknown'); expect(item.sources[0].quote).toBe(quote);
   expect(run.materialCalls()).toBe(1);
 });
 
-test('MOCKED date validation: show at most three cards and resolve all pending dates as unknown', async ({page}) => {
+test('MOCKED dates: a point can still be rewritten from its original wording or deleted', async ({page}) => {
+  const run = await setup(page, extraction([flagged('date-1'), flagged('date-2', 'missing_date')]));
+  await page.locator('[data-material-item="date-1"]').getByRole('button').click();
+  const editor = page.getByRole('group', {name: '修改这一处'});
+  await editor.getByRole('button', {name: '改用原文', exact: true}).click();
+  await expect(editor).toHaveCount(0);
+  await expect(page.locator('[data-material-item="date-1"]')).toContainText(quote);
+  await page.locator('[data-material-item="date-2"]').getByRole('button').click();
+  await editor.getByRole('button', {name: '删除这条', exact: true}).click();
+  await expect(page.locator('[data-material-item="date-2"]')).toHaveCount(0);
+  await prepareOtherRequirements(page); await finishRule(page);
+  const items = run.analyzed[0].intake!.materials!.items;
+  expect(items.some(item => item.id === 'date-2')).toBe(false);
+  const item = items.find(item => item.id === 'date-1')!;
+  expect(item).toMatchObject({status: 'edited', date: null, text: quote}); expect(item.dateReview!.resolution).toBe('unknown');
+  expect(run.materialCalls()).toBe(1);
+});
+
+test('MOCKED dates: five flagged dates are all kept unknown in one confirmation', async ({page}) => {
   const run = await setup(page, extraction(Array.from({length: 5}, (_, index) => flagged(`date-${index + 1}`, index === 0 ? 'missing_date' : 'date_mismatch'))));
-  const review = page.getByTestId('material-date-review');
-  await expect(review.locator('[data-date-review-item]')).toHaveCount(3);
-  await expect(review).toContainText('缺少可核对的日期');
-  await review.getByRole('button', {name: '日期不清楚，保留未知', exact: true}).first().click();
-  await expect(review.locator('[data-date-review-item]')).toHaveCount(3);
-  await expect(review.locator('[data-date-review-item="date-4"]')).toBeVisible();
-  await review.getByRole('button', {name: '将全部 4 项未处理日期保留未知', exact: true}).click();
-  await expect(review).toHaveCount(0);
+  await expect(page.locator('[data-material-item^="date-"]')).toHaveCount(5);
   await prepareOtherRequirements(page); await finishRule(page);
   const dates = run.analyzed[0].intake!.materials!.items.filter(item => item.dateReview);
   expect(dates).toHaveLength(5); expect(dates.every(item => item.date === null && item.dateReview!.resolution === 'unknown' && item.sources[0].quote === quote)).toBe(true);

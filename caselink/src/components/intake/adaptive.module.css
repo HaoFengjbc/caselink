@@ -21,6 +21,7 @@
 .sheetRow:first-child{border-top:0;padding-top:2px}
 .sheetLabel{display:flex;align-items:baseline;gap:10px;padding-top:4px;font-size:13.5px;font-weight:600;letter-spacing:.16em;color:var(--muted);white-space:nowrap}
 .sheetLabel span{font-family:var(--font-display);font-size:15px;letter-spacing:.04em;color:var(--red)}
+.sheet[lang=en] .sheetLabel{white-space:normal;letter-spacing:.05em;line-height:1.5}
 .sheetBody{min-width:0;font-size:17.5px;font-weight:500;line-height:1.85;color:var(--ink);overflow-wrap:anywhere}
 .sheetBody p{margin:0}
 .inline .sep{color:var(--muted)}
@@ -64,4 +65,18 @@
 .submit{max-width:640px;margin:60px auto 0;text-align:center}.submit>.notice{text-align:left}
 .submitNote{margin:14px 0 0;font-size:13px;line-height:1.8;color:var(--muted)}.footnote{margin:18px 0 0;font-size:12px;line-height:1.9;color:var(--subtle)}
 .classicLink :global(.text-link){font-size:inherit;color:inherit}
+/* ③ Points read from uploaded documents: page tags, one-click choices, inline goal and sharing */
+.pageTag{display:inline-block;margin-left:.6em;padding:0 7px;border:1px solid var(--line-strong);border-radius:10px;font-size:11.5px;font-weight:400;line-height:1.7;letter-spacing:.04em;color:var(--muted);white-space:nowrap;vertical-align:.12em}
+.sheetLabelWarn{color:var(--amber)}.sheetLabelWarn span{color:var(--amber-line)}
+.conflicts{list-style:none;margin:0;padding:0}.conflicts>li+li{margin-top:16px;padding-top:16px;border-top:1px dashed var(--line-strong)}
+.conflictText{font-size:16px;line-height:1.75}
+.conflictSides{list-style:none;margin:8px 0 0;padding:0;font-size:14.5px;font-weight:400;line-height:1.75;color:var(--muted)}
+.conflictSides li{display:flex;align-items:baseline;gap:10px}.conflictSides li+li{margin-top:4px}
+.sideTag{flex-shrink:0;font-size:12px;font-weight:600;letter-spacing:.06em;color:var(--amber)}
+.conflictChosen{margin-top:10px!important;font-size:14px;font-weight:400;color:var(--green)}.conflictChosen .rowEdit{margin:0 0 0 14px}
+.choiceRow{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.choiceRow button{padding:5px 13px;border:1px solid var(--line-strong);border-radius:20px;background:var(--card);font-size:13px;font-weight:400;line-height:1.6;color:var(--ink);transition:color .2s,border-color .2s,background .2s}
+.choiceRow button:hover,.choiceRow button[aria-pressed=true]{color:var(--red);border-color:var(--red);background:var(--red-soft)}
+.choiceNote{margin-top:6px!important;font-size:12.5px;font-weight:400;line-height:1.7;color:var(--subtle)}
+.inlineField{display:grid;gap:10px;font-size:15px;font-weight:400}.inlineField textarea{min-height:0;line-height:1.75}.inlineField .choiceRow{margin-top:0}.inlineField .rowEdit{justify-self:start;margin-top:0}.inlineField .fieldset{margin:0}
 @media(max-width:700px){.aiHint{flex-wrap:wrap}.aiHint>button{margin-left:30px}.headerStatement h1{letter-spacing:.4em;text-indent:.4em}.stage{padding:26px 18px 22px}.sheetRow{grid-template-columns:1fr;gap:6px;padding:16px 0}.sheetLabel{padding-top:0;font-size:12.5px}.sheetBody{font-size:16.5px}.editor{padding:16px}.followups{margin-top:40px}.submit{margin-top:44px}}

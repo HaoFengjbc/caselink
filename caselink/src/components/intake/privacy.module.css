@@ -1,0 +1,10 @@
+.privacy{margin:0 0 18px;padding:9px 0;border-bottom:1px solid var(--line);font-size:13px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px}
+.status{display:inline-flex;align-items:center;gap:7px;margin-right:auto}
+.status>svg{color:var(--green);flex-shrink:0}
+.toggle{display:inline-flex;align-items:center;gap:7px;cursor:pointer;color:var(--ink)}
+.toggle input{accent-color:var(--red);width:15px;height:15px;margin:0}
+.more{font-size:13px}
+.panel{display:grid;gap:8px;margin-top:10px;padding:12px 14px;background:var(--card);border:1px solid var(--line)}
+.panel p{margin:0;line-height:1.75}
+.legacy{margin:8px 0 0;line-height:1.75}
