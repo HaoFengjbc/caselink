@@ -4,6 +4,8 @@ import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { ArrowLeft, ArrowRight, ChevronDown, PencilLine, RotateCcw, Trash2 } from 'lucide-react';
 import type { NewCaseInput, IntakeRecord } from '@/lib/contracts';
 import { INTAKE_SLOTS, type IntakeResponse, type IntakeSlot } from '@/lib/intake/contracts';
+import type { MaterialItem } from '@/lib/materials/contracts';
+import { deleteMaterialItem, resolveMaterialConflict, updateMaterialItem } from '@/lib/materials/integration';
 import { useI18n } from '@/components/i18n/LocaleProvider';
 import { midSentence } from './StatementCard';
 import { adaptiveCopy } from './adaptive-copy';
@@ -14,7 +16,7 @@ type Draft = NewCaseInput & { intake: IntakeRecord };
 type Fact = IntakeRecord['facts'][number];
 type Question = IntakeResponse['questions'][number];
 /** What one phrase of the sheet stands for; facts, answers and gaps carry the id of their item. */
-type Target = { kind: 'place' | 'kind' | 'expression' | 'narrative' | 'goal' | 'publicity' } | { kind: 'fact' | 'answer' | 'gap'; id: string };
+type Target = { kind: 'place' | 'kind' | 'expression' | 'narrative' | 'goal' | 'publicity' } | { kind: 'fact' | 'answer' | 'gap' | 'item'; id: string };
 type Tip = { key: string; label: string; text: string; warn?: string; left: number; top?: number; bottom?: number };
 const keyOf = (target: Target) => 'id' in target ? `${target.kind}:${target.id}` : target.kind;
 const pad = (n: number) => String(n).padStart(2, '0');
@@ -23,6 +25,20 @@ function phraseText(text: string, max: number) {
   const flat = text.replace(/\s*\n+\s*/g, ' / ').replace(/[。．.!！?？;；,，:：\s]+$/u, '').trim();
   return flat.length > max ? `${flat.slice(0, max - 1).trimEnd()}…` : flat;
 }
+/** Sections for points read from uploaded documents, in reading order. */
+const MATERIAL_SECTIONS = ['other', 'event', 'claim', 'status', 'evidence', 'concern'] as const;
+type MaterialSection = typeof MATERIAL_SECTIONS[number];
+function materialSection(field: MaterialItem['field']): MaterialSection {
+  if (field === 'event' || field === 'date') return 'event';
+  if (field === 'claim' || field === 'position' || field === 'demand') return 'claim';
+  if (field === 'stage' || field === 'restriction' || field === 'prior_action') return 'status';
+  if (field === 'evidence') return 'evidence';
+  if (field === 'missing_evidence') return 'concern';
+  return 'other';
+}
+const quoteOf = (item: MaterialItem) => item.sources[0]!.quote.replace(/\s+/g, ' ').trim().slice(0, 800);
+/** Place points already read as the first phrase of the basics; their excerpt shows when pointing at it. */
+const IN_BASICS: MaterialItem['field'][] = ['country', 'jurisdiction'];
 
 /**
  * Screen ③: the AI's organization of the user's own words as a case sheet, one section per kind of point.
@@ -48,7 +64,12 @@ export default function AdaptiveStatement({ input, response, locked, onChange, o
   const [active, setActive] = useState<Target | null>(null);
   const [tip, setTip] = useState<Tip | null>(null);
   const [storyOpen, setStoryOpen] = useState(false);
+  // Edits to a document point are committed on Done, so clearing the box while retyping never deletes it.
+  const [itemDraft, setItemDraft] = useState<{ id: string; text: string } | null>(null);
+  const [disclosureOpen, setDisclosureOpen] = useState(false);
+  const materials = input.intake.materials;
   const editor = useRef<HTMLDivElement>(null);
+  const goalField = useRef<HTMLTextAreaElement>(null);
   const activeKey = active ? keyOf(active) : null;
   useEffect(() => {
     if (!activeKey) return;
@@ -79,6 +100,25 @@ export default function AdaptiveStatement({ input, response, locked, onChange, o
   const goalText = customGoal ? record.goalText.trim() : input.primaryGoal === 'unknown' ? '' : L.goals[input.primaryGoal];
   const sectioned = record.facts.some(fact => fact.slot);
   const factOf = (id: string) => record.facts.find(fact => fact.id === id);
+  const itemOf = (id: string) => materials?.items.find(item => item.id === id);
+  /** Page tag for a document point; the file number is added only when several PDFs were uploaded. */
+  function pagesOf(item: MaterialItem): string {
+    const byFile = new Map<string, number[]>();
+    for (const source of item.sources) { const pages = byFile.get(source.fileId) ?? []; if (!pages.includes(source.pdfPage)) pages.push(source.pdfPage); byFile.set(source.fileId, pages); }
+    return [...byFile].map(([fileId, pages]) => {
+      const label = c.material.page(pages.sort((a, b) => a - b).join(en ? ', ' : '、'));
+      return (materials?.documents.length ?? 0) > 1 ? `${c.material.file((materials!.documents.findIndex(document => document.fileId === fileId)) + 1)} ${label}` : label;
+    }).join(' · ');
+  }
+  function commitItem(id: string, text: string) {
+    const value = text.trim();
+    if (value && value !== itemOf(id)?.text) onChange(updateMaterialItem(input, id, value));
+    setItemDraft(null);
+  }
+  function finishEditing() {
+    if (active?.kind === 'item' && itemDraft?.id === active.id) commitItem(itemDraft.id, itemDraft.text);
+    setActive(null);
+  }
   const original = (fact: Fact) => fact.summary ?? fact.quote;
 
   function open(target: Target) {
@@ -90,6 +130,7 @@ export default function AdaptiveStatement({ input, response, locked, onChange, o
       field?.focus({ preventScroll: true });
       return;
     }
+    if (target.kind === 'item') { const item = itemOf(target.id); setItemDraft(item ? { id: item.id, text: item.text } : null); }
     setActive(current => current && keyOf(current) === keyOf(target) ? null : target);
   }
   /** Where a phrase comes from, shown beside it on hover or keyboard focus. */
@@ -98,6 +139,9 @@ export default function AdaptiveStatement({ input, response, locked, onChange, o
       const fact = factOf(target.id);
       return fact ? { label: c.tip.quote, text: fact.quote, warn: hasSourceQuote(record, fact.quote) ? undefined : c.tip.brokenQuote } : null;
     }
+    const basis = target.kind === 'place' ? materials?.items.find(item => IN_BASICS.includes(item.field)) : target.kind === 'expression' ? materials?.items.find(item => item.field === 'expression') : undefined;
+    const item = target.kind === 'item' ? itemOf(target.id) : basis;
+    if (item) return { label: `${c.material.quote} · ${pagesOf(item)}`, text: item.sources.slice(0, 2).map(source => source.quote).join('\n…\n'), warn: item.uncertainty ?? undefined };
     if (target.kind === 'answer') {
       const answer = record.answers.find(item => item.questionId === target.id);
       return answer ? { label: c.tip.answer, text: answer.question } : null;
@@ -132,7 +176,8 @@ export default function AdaptiveStatement({ input, response, locked, onChange, o
 
   function editorBody(target: Target): ReactNode {
     switch (target.kind) {
-      case 'place': return <button type="button" className="btn btn-ghost" onClick={() => onGo(0)}><ArrowLeft size={15}/>{c.editor.place}</button>;
+      case 'place': return <><label className={styles.label} htmlFor="sheet-country">{c.placeInput}</label><input id="sheet-country" className="field" maxLength={100} autoComplete="country-name" value={input.country === 'unknown' ? '' : input.country} placeholder={c.countryPlaceholder} onChange={event => { const country = event.target.value; onChange({ ...input, country, intake: { ...input.intake, jurisdiction: isUnitedKingdom(country) && uk ? input.intake.jurisdiction : 'unknown', confirmed: false } }); }}/>
+        {uk && <fieldset className={styles.fieldset}><legend>{c.jurisdiction}</legend><div className={styles.chips}>{Object.entries(c.jurisdictions).map(([key, text]) => <label key={key} className={record.jurisdiction === key ? styles.chipSelected : styles.chip}><input type="radio" name="sheet-jurisdiction" value={key} checked={record.jurisdiction === key} onChange={() => onRecord({ jurisdiction: key })}/>{text}</label>)}</div></fieldset>}</>;
       case 'kind': return <fieldset className={styles.fieldset}><legend>{c.kind}</legend><div className={styles.chips}>{Object.entries(c.kinds).map(([key, text]) => <label key={key} className={record.caseKind === key ? styles.chipSelected : styles.chip}><input type="radio" name="sheet-kind" value={key} checked={record.caseKind === key} onChange={() => onRecord({ caseKind: key as IntakeRecord['caseKind'] })}/>{text}</label>)}</div></fieldset>;
       case 'expression': return <fieldset className={styles.fieldset}><legend>{c.expression}</legend><div className={styles.chips}>{(Object.entries(c.expressions) as [NonNullable<IntakeRecord['expression']>, string][]).map(([key, text]) => <label key={key} className={expression === key ? styles.chipSelected : styles.chip}><input type="radio" name="sheet-expression" value={key} checked={expression === key} onChange={() => onChange(withExpression(input, key))}/>{text}</label>)}</div>{expression === 'no' && <p className={styles.small}>{c.outOfScopeText}</p>}</fieldset>;
       case 'narrative': return <button type="button" className="btn btn-ghost" onClick={() => onGo(1)}><ArrowLeft size={15}/>{c.editor.narrative}</button>;
@@ -148,6 +193,15 @@ export default function AdaptiveStatement({ input, response, locked, onChange, o
           {!hasSourceQuote(record, fact.quote) && <p className={styles.editorWarn}>{c.tip.brokenQuote}</p>}
           <div className={styles.editorTools}>{fact.summary && fact.text !== fact.summary && <button type="button" className="text-link" onClick={() => set(fact.summary!)}><RotateCcw size={13}/>{c.editor.restoreSummary}</button>}{fact.text !== fact.quote && <button type="button" className="text-link" onClick={() => set(fact.quote)}><RotateCcw size={13}/>{c.editor.useQuote}</button>}<button type="button" className="text-link" onClick={() => { onRecord({ facts: record.facts.filter(item => item.id !== fact.id) }); setActive(null); }}><Trash2 size={13}/>{c.editor.remove}</button></div></>;
       }
+      case 'item': {
+        const item = itemOf(target.id);
+        if (!item) return null;
+        const draft = itemDraft?.id === item.id ? itemDraft.text : item.text;
+        return <><label className={styles.label} htmlFor="sheet-item">{c.editor.fact}</label><textarea id="sheet-item" className="field" rows={2} maxLength={800} value={draft} onChange={event => setItemDraft({ id: item.id, text: event.target.value })}/>
+          {item.sources.map((source, index) => <blockquote key={`${source.fileId}-${source.pdfPage}-${index}`} className={styles.editorQuote}><span>{c.material.quote} · {pagesOf({ ...item, sources: [source] })}</span>{source.quote}</blockquote>)}
+          {item.uncertainty && <p className={styles.editorWarn}>{item.uncertainty}</p>}
+          <div className={styles.editorTools}>{item.text !== quoteOf(item) && <button type="button" className="text-link" onClick={() => { commitItem(item.id, quoteOf(item)); setActive(null); }}><RotateCcw size={13}/>{c.material.useQuote}</button>}<button type="button" className="text-link" onClick={() => { onChange(deleteMaterialItem(input, item.id)); setItemDraft(null); setActive(null); }}><Trash2 size={13}/>{c.material.remove}</button></div></>;
+      }
       case 'answer': {
         const answer = record.answers.find(item => item.questionId === target.id);
         if (!answer) return null;
@@ -159,16 +213,37 @@ export default function AdaptiveStatement({ input, response, locked, onChange, o
   /** The editor opens inside the section that holds the phrase being edited. */
   const editorFor = (targets: Target[]) => active && targets.some(target => keyOf(target) === activeKey) && <div ref={editor} className={styles.editor} role="group" aria-label={c.editor.title}>
     {editorBody(active)}
-    <div className={styles.editorActions}><button type="button" className="btn btn-primary" onClick={() => setActive(null)}>{c.editor.done}</button></div>
+    <div className={styles.editorActions}><button type="button" className="btn btn-primary" onClick={finishEditing}>{c.editor.done}</button></div>
   </div>;
 
-  type Row = { key: string; label: string; body: ReactNode; targets: Target[]; edit?: Target };
+  type Row = { key: string; label: string; body: ReactNode; targets: Target[]; edit?: Target; tone?: 'warn' };
   const rows: Row[] = [];
   const basics: Target[] = [{ kind: 'place' }, { kind: 'kind' }, { kind: 'expression' }];
   rows.push({ key: 'basics', label: c.sheet.basics, targets: basics, body: <p className={styles.inline}>
     {phrase(basics[0]!, place, placeKnown && !(uk && record.jurisdiction === 'unknown') ? 'filled' : 'gap')}<span className={styles.sep}>{en ? ', ' : '，'}</span>
     {phrase(basics[1]!, record.caseKind === 'unknown' ? c.gap.kind : (c.kinds as Record<string, string>)[record.caseKind]!, record.caseKind === 'unknown' ? 'gap' : 'filled')}<span className={styles.sep}>{en ? ', ' : '，'}</span>
     {phrase(basics[2]!, expressionText, expression === 'unsure' ? 'gap' : 'filled')}</p> });
+  if (materials) {
+    // Choosing is optional: a conflict left open is confirmed with both accounts kept.
+    if (materials.conflicts.length) rows.push({ key: 'judge', label: c.materialSheet.judge, tone: materials.conflicts.some(conflict => !conflict.resolution?.trim()) ? 'warn' : undefined, targets: [], body: <ul className={styles.conflicts}>{materials.conflicts.map(conflict => {
+      const sides = conflict.itemIds.map(itemOf).filter((item): item is MaterialItem => !!item);
+      return <li key={conflict.id}>
+        <p className={styles.conflictText}>{conflict.description}</p>
+        <ol className={styles.conflictSides}>{sides.map((item, index) => <li key={item.id}><span className={styles.sideTag}>{c.material.account(index + 1)}</span><span>{phraseText(item.text, en ? 160 : 70)}<span className={styles.pageTag}>{pagesOf(item)}</span></span></li>)}</ol>
+        {conflict.resolution?.trim()
+          ? <p className={styles.conflictChosen}>{c.material.chosen}{en ? ': ' : '：'}{conflict.resolution}<button type="button" className={styles.rowEdit} onClick={() => onChange(resolveMaterialConflict(input, conflict.id, ''))}>{c.material.rechoose}</button></p>
+          : <><div className={styles.choiceRow}>{sides.map((item, index) => <button type="button" key={item.id} onClick={() => onChange(resolveMaterialConflict(input, conflict.id, en ? `${c.material.adopt(index + 1)}: ${phraseText(item.text, 80)} (${pagesOf(item)})` : `${c.material.adopt(index + 1)}：${phraseText(item.text, 80)}（${pagesOf(item)}）`))}>{c.material.adopt(index + 1)}</button>)}<button type="button" onClick={() => onChange(resolveMaterialConflict(input, conflict.id, c.material.keepBothNote))}>{c.material.keepBoth}</button></div>
+            <p className={styles.choiceNote}>{c.material.defaultBoth}</p></>}
+      </li>;
+    })}</ul> });
+    for (const section of MATERIAL_SECTIONS) {
+      const items = materials.items.filter(item => materialSection(item.field) === section && !IN_BASICS.includes(item.field));
+      if (!items.length) continue;
+      rows.push({ key: `material-${section}`, label: c.materialSheet[section], targets: items.map(item => ({ kind: 'item', id: item.id })), body: <ul className={`${styles.points} ${section === 'event' ? styles.timeline : ''}`}>{items.map(item => <li key={item.id} data-material-item={item.id}>
+        {phrase({ kind: 'item', id: item.id }, item.text, 'filled', item.text === quoteOf(item) ? c.material.verbatim : item.status === 'edited' ? c.edited : undefined)}<span className={styles.pageTag}>{pagesOf(item)}</span>
+      </li>)}</ul> });
+    }
+  }
   if (record.facts.length) {
     const sections: (IntakeSlot | 'points')[] = sectioned ? [...INTAKE_SLOTS] : ['points'];
     for (const section of sections) {
@@ -183,16 +258,33 @@ export default function AdaptiveStatement({ input, response, locked, onChange, o
       : <p className={styles.inline}>{phrase({ kind: 'narrative' }, c.gap.narrative, 'gap')}</p> });
   }
   if (answered.length) rows.push({ key: 'answers', label: c.sheet.answers, targets: answered.map(answer => ({ kind: 'answer', id: answer.questionId })), body: <ul className={styles.points}>{answered.map(answer => <li key={answer.questionId}><span className={styles.question}>{answer.question}</span>{phrase({ kind: 'answer', id: answer.questionId }, phraseText(answer.answer, en ? 160 : 70))}</li>)}</ul> });
-  rows.push({ key: 'goal', label: c.sheet.goal, targets: [{ kind: 'goal' }], edit: { kind: 'goal' }, body: goalText ? <p className={styles.plain}>{customGoal ? goalText : midSentence(goalText, locale)}</p> : <p className={styles.inline}>{phrase({ kind: 'goal' }, c.gap.goal, 'gap')}</p> });
-  rows.push({ key: 'publicity', label: c.sheet.publicity, targets: [{ kind: 'publicity' }], edit: { kind: 'publicity' }, body: <>
-    <p className={styles.inline}>{phrase({ kind: 'publicity' }, en ? midSentence(L.publicity[input.publicity], locale) : L.publicity[input.publicity], input.publicity === 'unknown' ? 'gap' : 'filled')}</p>
-    {record.disclosureDetails.trim() && <p className={`${styles.plain} ${styles.note}`}>{record.disclosureDetails.trim()}</p>}</> });
+  if (materials) {
+    // Documents cannot supply the present goal or the sharing choice, so both are answered right on the sheet.
+    // The fields stay put while in use: a row that collapsed on blur would move the next click target.
+    const goal = record.goalText.trim();
+    const addGoal = (chip: string) => { const base = goal.replace(/[。．.;；,，\s]+$/u, ''); if (!goal.includes(chip)) onRecord({ goalText: base ? `${base}${en ? '; ' : '；'}${chip}` : chip }); goalField.current?.focus(); };
+    rows.push({ key: 'goal', label: c.sheet.goal, tone: goal ? undefined : 'warn', targets: [], body: <div className={styles.inlineField}>
+      <label className="screen-reader" htmlFor="sheet-goal-inline">{c.goalInline}</label><textarea ref={goalField} id="sheet-goal-inline" className="field" rows={2} maxLength={800} value={record.goalText} placeholder={c.goalInline} onChange={event => onRecord({ goalText: event.target.value })}/>
+      <div className={styles.choiceRow}>{c.goalChips.map(chip => <button type="button" key={chip} aria-pressed={goal.includes(chip)} onMouseDown={event => event.preventDefault()} onClick={() => addGoal(chip)}>{chip}</button>)}</div>
+    </div> });
+    rows.push({ key: 'publicity', label: c.sheet.publicity, tone: input.publicity === 'unknown' ? 'warn' : undefined, targets: [], body: <div className={styles.inlineField}>
+      <fieldset className={styles.fieldset}><legend className="screen-reader">{c.editor.publicity}</legend><div className={styles.chips}>{(['private', 'consent', 'public'] as const).map(value => <label key={value} className={input.publicity === value ? styles.chipSelected : styles.chip}><input type="radio" name="sheet-publicity-choice" value={value} checked={input.publicity === value} onChange={() => onChange({ ...input, publicity: value })}/>{L.publicity[value]}</label>)}</div></fieldset>
+      {record.disclosureDetails.trim() || disclosureOpen
+        ? <><label className="screen-reader" htmlFor="sheet-disclosure-inline">{c.editor.disclosure}</label><textarea id="sheet-disclosure-inline" className="field" rows={2} maxLength={800} value={record.disclosureDetails} placeholder={c.disclosurePlaceholder} onChange={event => onRecord({ disclosureDetails: event.target.value })}/></>
+        : <button type="button" className={styles.rowEdit} onClick={() => setDisclosureOpen(true)}><PencilLine size={13}/>{c.disclosureMore}</button>}
+    </div> });
+  } else {
+    rows.push({ key: 'goal', label: c.sheet.goal, targets: [{ kind: 'goal' }], edit: { kind: 'goal' }, body: goalText ? <p className={styles.plain}>{customGoal ? goalText : midSentence(goalText, locale)}</p> : <p className={styles.inline}>{phrase({ kind: 'goal' }, c.gap.goal, 'gap')}</p> });
+    rows.push({ key: 'publicity', label: c.sheet.publicity, targets: [{ kind: 'publicity' }], edit: { kind: 'publicity' }, body: <>
+      <p className={styles.inline}>{phrase({ kind: 'publicity' }, en ? midSentence(L.publicity[input.publicity], locale) : L.publicity[input.publicity], input.publicity === 'unknown' ? 'gap' : 'filled')}</p>
+      {record.disclosureDetails.trim() && <p className={`${styles.plain} ${styles.note}`}>{record.disclosureDetails.trim()}</p>}</> });
+  }
   if (gaps.length) rows.push({ key: 'gaps', label: c.sheet.gaps, targets: [], body: <ul className={`${styles.points} ${styles.gapPoints}`}>{gaps.map(question => <li key={question.id}>{phrase({ kind: 'gap', id: question.id }, phraseText(question.title, en ? 160 : 70), 'gap')}</li>)}</ul> });
 
   return <>
     <section className={styles.stage} aria-label={c.statementTitle} inert={locked}>
       <div className={styles.sheet} lang={en ? 'en' : 'zh-CN'}>{rows.map((row, index) => <div key={row.key} className={styles.sheetRow}>
-        <div className={styles.sheetLabel}><span>{pad(index + 1)}</span>{row.label}</div>
+        <div className={`${styles.sheetLabel} ${row.tone === 'warn' ? styles.sheetLabelWarn : ''}`}><span>{pad(index + 1)}</span>{row.label}</div>
         <div className={styles.sheetBody}>{row.body}{row.edit && editButton(row.edit)}{editorFor(row.targets)}</div>
       </div>)}</div>
       {record.facts.length > 0 && record.narrative.trim() && <details className={styles.rawStory}><summary>{c.rawSummary}<ChevronDown size={14}/></summary><p>{record.narrative}</p></details>}

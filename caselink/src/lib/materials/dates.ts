@@ -78,3 +78,14 @@ export function resolveMaterialDate(value:string,sourceQuotes:readonly string[])
   if(!candidates.length||candidates.some(date=>date.key!==key))return null;
   return candidates.find(date=>date.original.length<=80)?.original??null;
 }
+
+/**
+ * A partial date the source writes literally ("October 2026", "2026年10月") is kept exactly as written.
+ * Nothing is completed, converted or inferred: a value that does not appear in an excerpt stays unknown.
+ */
+export function literalMaterialDate(value:string,sourceQuotes:readonly string[]):string|null{
+  const requested=value.trim();
+  if(!requested||requested.length>80||!/\d{4}|\d{1,2}\s*月/u.test(requested))return null;
+  for(const quote of sourceQuotes){const original=originalMaterialQuote(quote,requested);if(original&&original.length<=80)return original;}
+  return null;
+}
