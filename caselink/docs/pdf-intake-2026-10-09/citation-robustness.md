@@ -28,3 +28,10 @@
 - 单元测试 449 项通过（另 2 项因本地缺少真实检索样本跳过）；PDF 浏览器测试 15 项通过；类型检查与生产构建通过。
 - `journey.spec.ts` 的 6 项失败在未改动的基线上同样存在（`/new` 改为先选上传或手动、结果页与接口格式已变），与本次修改无关，需另行更新测试。
 - 以上均为本地解析与模拟模型响应；新提示词与校验尚未用真实模型调用验证。
+
+## 发布
+
+- 分支 `claude/pdf-robust`（基于 `codex/caselink-pdf-intake` 的 `6bf546b`），修复提交 `628367c`。
+- 生产部署 `dpl_HdM7WBQvZKuTMohTLBqKSbfH1wv1`，正式入口 https://caselink-eight.vercel.app/new 。上一版（回退目标）`dpl_GYEFkRUjdEgS64yfthAfmpgryNi1`。
+- 发布后 `scripts/verify-live-deployment.mjs` 15/15 通过，模型请求 0。正式站关闭 AI 上传三份 PDF：中英混排样本无部首码位、无多余空格、`defamation` 完整；31 页样本读取 30 页、第 31 页列为未处理并提示；虚构 Almera 报告 19 页全部读取。未进行付费模型调用，AI 整理由使用者在正式站试用。
+- 本分支尚未合并回 `codex/caselink-pdf-intake` 或 `main`；`main` 工作区另有他人未提交的改动，合并前需协调。
