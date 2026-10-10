@@ -1,15 +1,15 @@
 import {z} from 'zod';
 import {RequestIdentitySchema,ResearchExecutionSchema} from '../workflow-contracts';
 
-// Older open tabs cannot parse dateReview; reject them before a paid extraction.
-export const MATERIAL_PROTOCOL_VERSION='2';
+// Older open tabs cannot parse dateReview (v2) or send pages read rather than total pages (v3); reject them before a paid extraction.
+export const MATERIAL_PROTOCOL_VERSION='3';
 // Deliberately below Vercel's 4.5 MB function request limit, including multipart overhead.
 export const MATERIAL_LIMITS={maxFiles:3,maxFileBytes:3*1024*1024,maxRequestBytes:4_000_000,maxTotalFileBytes:3_900_000,maxPages:30,maxTextBytes:75_000,parseTimeoutMs:15_000,requestTimeoutMs:180_000} as const;
 export const MaterialFieldSchema=z.enum(['party','country','jurisdiction','expression','document_type','stage','event','claim','position','prior_action','evidence','missing_evidence','date','demand','restriction']);
 export const MaterialNatureSchema=z.enum(['allegation','party_statement','court_finding','document_record','uncertain']);
 export const MaterialSourceSchema=z.object({fileId:z.string().min(1).max(100),filename:z.string().min(1).max(180),pdfPage:z.number().int().min(1).max(30),printedPage:z.string().max(80).nullable(),quote:z.string().min(1).max(800),method:z.literal('embedded_text')}).strict();
 export const MaterialItemSchema=z.object({id:z.string().min(1).max(100),field:MaterialFieldSchema,text:z.string().min(1).max(800),subject:z.string().max(180),nature:MaterialNatureSchema,dateKind:z.enum(['document','event','facts_as_of','requested_deadline','none']),date:z.string().max(80).nullable(),sources:z.array(MaterialSourceSchema).min(1).max(6),uncertainty:z.string().max(500).nullable(),status:z.enum(['extracted','confirmed','edited']),originalText:z.string().min(1).max(800),dateReview:z.object({reason:z.enum(['date_mismatch','missing_date']),resolution:z.enum(['reviewed','unknown']).nullable()}).strict().optional()}).strict().superRefine((item,ctx)=>{if(item.dateReview&&item.date!==null)ctx.addIssue({code:'custom',path:['date'],message:'A date needing user review must remain unknown; user notes are not sourced dates.'});});
-export const MaterialDocumentSchema=z.object({fileId:z.string().min(1).max(100),filename:z.string().min(1).max(180),size:z.number().int().nonnegative(),pageCount:z.number().int().min(1).max(30),processedPages:z.array(z.number().int().positive()).max(30),unreadablePages:z.array(z.number().int().positive()).max(30),omittedPages:z.array(z.number().int().positive()).max(30),warnings:z.array(z.string().max(500)).max(30)}).strict();
+export const MaterialDocumentSchema=z.object({fileId:z.string().min(1).max(100),filename:z.string().min(1).max(180),size:z.number().int().nonnegative(),pageCount:z.number().int().min(1).max(5000),processedPages:z.array(z.number().int().positive()).max(30),unreadablePages:z.array(z.number().int().positive()).max(30),omittedPages:z.array(z.number().int().positive()).max(5000),warnings:z.array(z.string().max(500)).max(30)}).strict();
 export const MaterialPageSchema=z.object({pdfPage:z.number().int().positive(),text:z.string().max(75000),status:z.enum(['read','blank','image_only','unreadable','omitted']),printedPage:z.string().max(80).nullable()}).strict();
 export const ParsedMaterialSchema=MaterialDocumentSchema.extend({pages:z.array(MaterialPageSchema).max(30)}).strict();
 export const MaterialConflictSchema=z.object({id:z.string().min(1).max(100),description:z.string().min(1).max(500),itemIds:z.array(z.string().min(1).max(100)).min(2).max(8),resolution:z.string().max(800).nullable()}).strict();

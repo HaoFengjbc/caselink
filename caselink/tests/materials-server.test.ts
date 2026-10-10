@@ -5,7 +5,7 @@ import {NextRequest} from 'next/server';
 import {zodTextFormat} from 'openai/helpers/zod';
 import {parseMaterials,awaitPdfWorker,materialFileId,safeMaterialFilename,type MaterialUpload} from '../src/lib/materials/parse';
 import {organizeMaterials} from '../src/lib/materials/service';
-import {MATERIAL_SYSTEM_PROMPT,ModelMaterialOutputSchema,buildMaterialPromptData,validateMaterialOutput,extractMaterials,openAIMaterialTransport,type ModelMaterialOutput,type MaterialTransport} from '../src/lib/materials/extract';
+import {MATERIAL_SYSTEM_PROMPT,ModelMaterialOutputSchema,buildMaterialPromptData,emptyMaterialValidationReport,validateMaterialOutput,extractMaterials,openAIMaterialTransport,type ModelMaterialOutput,type MaterialTransport} from '../src/lib/materials/extract';
 import {MATERIAL_LIMITS,MATERIAL_PROTOCOL_VERSION,MaterialResponseSchema,MaterialStreamEventSchema,type MaterialRequest,type ParsedMaterial,type MaterialResponse} from '../src/lib/materials/contracts';
 import {POST,maxDuration} from '../src/app/api/materials/route';
 import {readMaterialConfig} from '../src/lib/materials/config';
@@ -58,7 +58,13 @@ describe('PDF parsing with physical-page evidence and no external requests',()=>
     await expect(parseMaterialsFromNames(['corrupt.pdf'])).rejects.toMatchObject({code:'INVALID_INPUT',message:expect.stringContaining('damaged')});
     for(const bytes of [new Uint8Array(),new TextEncoder().encode('<html>not PDF</html>')])await expect(parseMaterials([{name:'fake.pdf',type:'application/pdf',bytes}],{locale:'en'})).rejects.toMatchObject({code:'INVALID_INPUT'});
     await expect(parseMaterials([{name:'large.pdf',type:'application/pdf',bytes:new Uint8Array(MATERIAL_LIMITS.maxFileBytes+1)}],{locale:'en'})).rejects.toMatchObject({code:'PAYLOAD_TOO_LARGE'});
-    await expect(parseMaterialsFromNames(['too-many-pages.pdf'])).rejects.toMatchObject({code:'PAYLOAD_TOO_LARGE'});
+  });
+  it('reads the first 30 pages of a longer PDF and lists the rest as not processed instead of refusing it',async()=>{
+    const [long]=await parseMaterialsFromNames(['too-many-pages.pdf']);
+    expect(long.pageCount).toBeGreaterThan(MATERIAL_LIMITS.maxPages);
+    expect(long.processedPages.length+long.unreadablePages.length).toBeLessThanOrEqual(MATERIAL_LIMITS.maxPages);
+    expect(long.omittedPages).toContain(MATERIAL_LIMITS.maxPages+1);expect(long.omittedPages.at(-1)).toBe(long.pageCount);
+    expect(long.warnings.join()).toMatch(/at most 30 pages/);
   });
   it('rejects duplicates, excess files and sanitized path/control-character names',async()=>{
     await expect(parseMaterialsFromNames(['expression-letter.pdf','expression-letter.pdf'])).rejects.toMatchObject({code:'INVALID_INPUT'});
@@ -67,7 +73,8 @@ describe('PDF parsing with physical-page evidence and no external requests',()=>
     expect(safeMaterialFilename('C:\\secrets\\file.pdf')).toBe('file.pdf');
   });
   it('enforces cumulative file/page limits before paid extraction',async()=>{
-    await expect(parseMaterials([await fixture()],{locale:'en',existingPageCount:29})).rejects.toMatchObject({code:'PAYLOAD_TOO_LARGE'});
+    const [partial]=await parseMaterials([await fixture()],{locale:'en',existingPageCount:29});
+    expect(partial).toMatchObject({processedPages:[1],omittedPages:[2]});expect(partial.warnings.join()).toMatch(/at most 30 pages/);
     await expect(parseMaterials([await fixture()],{locale:'en',existingFileCount:3})).rejects.toMatchObject({code:'INVALID_INPUT'});
   });
   it('reports actual omitted pages at the text limit without truncating a quoted page',async()=>{
@@ -115,15 +122,24 @@ describe('material extraction citations, attribution and multiple case separatio
     expect(result[0].items[0].sources[0].quote).toContain('Mira');expect(result[1].items[0].sources[0].quote).toContain('Leo');
     expect(result[0]).not.toHaveProperty('selected');
   });
-  it('rejects fabricated, joined, omitted-page, wrong-file citations and invalid conflicts',async()=>{
+  it('leaves out only an untraceable item, corrects a wrong page or file, drops orphaned conflicts, and fails only when nothing can be verified',async()=>{
     const docs=await parsed();
-    for(const mutate of [
-      (model:ModelMaterialOutput)=>{model.candidates[0].items[0].sources[0].quote='A court awarded GBP 20,000.';},
-      (model:ModelMaterialOutput)=>{model.candidates[0].items[0].sources[0].pdfPage=2;},
-      (model:ModelMaterialOutput)=>{model.candidates[0].items[0].sources[0].fileId='pdf-forged';},
-      (model:ModelMaterialOutput)=>{model.candidates[0].conflicts=[{description:'Invalid conflict',itemIndices:[0,47]}];},
-    ]){const model=output(docs);mutate(model);expect(()=>validateMaterialOutput(model,docs,'en')).toThrow(/validation/);}
-    const omitted=structuredClone(docs);omitted[0].pages[0].status='omitted';expect(()=>validateMaterialOutput(output(docs),omitted,'en')).toThrow(/validation/);
+    const run=(mutate:(model:ModelMaterialOutput)=>void)=>{const model=output(docs);mutate(model);const report=emptyMaterialValidationReport();return {candidates:validateMaterialOutput(model,docs,'en',report),report};};
+    const fabricated=run(model=>{model.candidates[0].items[0].sources[0].quote='A court awarded GBP 20,000.';});
+    expect(fabricated.candidates[0].items).toHaveLength(4);expect(fabricated.report).toMatchObject({droppedItems:1,droppedSources:1});
+    expect(JSON.stringify(fabricated.candidates)).not.toContain('A court awarded');
+    // The fixture has one page; a citation of page 2 or of a forged file ID is corrected to where the words are.
+    for(const mutate of [(model:ModelMaterialOutput)=>{model.candidates[0].items[0].sources[0].pdfPage=2;},(model:ModelMaterialOutput)=>{model.candidates[0].items[0].sources[0].fileId='pdf-forged';}]){
+      const corrected=run(mutate);
+      expect(corrected.candidates[0].items).toHaveLength(5);expect(corrected.report.relocatedSources).toBe(1);
+      expect(corrected.candidates[0].items[0].sources[0]).toMatchObject({fileId:docs[0].fileId,pdfPage:1});
+    }
+    const conflict=run(model=>{model.candidates[0].conflicts=[{description:'Invalid conflict',itemIndices:[0,47]}];});
+    expect(conflict.candidates[0].conflicts).toEqual([]);expect(conflict.report.droppedConflicts).toBe(1);
+    const duplicate=run(model=>{model.candidates[0].items.push(structuredClone(model.candidates[0].items[1]));});
+    expect(duplicate.candidates[0].items).toHaveLength(5);expect(duplicate.report.droppedItems).toBe(1);
+    const omitted=structuredClone(docs);omitted[0].pages[0].status='omitted';
+    expect(()=>validateMaterialOutput(output(docs),omitted,'en')).toThrow(/validation/);
   });
   it('reconciles an unambiguous date format to literal evidence and routes a real mismatch to user review',async()=>{
     const docs=await parsed(),model=output(docs);
@@ -169,12 +185,16 @@ describe('material extraction citations, attribution and multiple case separatio
   it('diagnoses only numeric positions and reason codes, without logging document or model contents',async()=>{
     const docs=await parsed(),model=output(docs);model.candidates[0].items[0].sources[0].quote='PRIVATE-MODEL-QUOTE-DO-NOT-LOG';
     const log=vi.spyOn(console,'info').mockImplementation(()=>{});
-    await expect(withTestExecution(async()=>validateMaterialOutput(model,docs,'en'))).rejects.toMatchObject({code:'INVALID_MODEL_OUTPUT',message:expect.stringContaining('Item 1:')});
+    const result=await withTestExecution(async()=>validateMaterialOutput(model,docs,'en'));
+    expect(result[0].items).toHaveLength(4);
     const diagnostic=JSON.parse(String(log.mock.calls[0][0]));
-    expect(diagnostic).toEqual({event:'caselink_material_validation',requestId:'fixture-request',reason:'quote_mismatch',candidate:0,item:0,source:0,pdfPage:1});
+    expect(diagnostic).toEqual({event:'caselink_material_validation',requestId:'fixture-request',reason:'quote_mismatch',candidate:0,item:0,source:0,pdfPage:1,disposition:'dropped'});
     expect(JSON.stringify(log.mock.calls)).not.toMatch(/PRIVATE-MODEL|Mira|expression-letter|pdf-/);
     model.candidates[0].items[0].sources[0].fileId='wrong-file';
-    expect(()=>validateMaterialOutput(model,docs,'en')).toThrow('outside this upload');
+    await withTestExecution(async()=>validateMaterialOutput(model,docs,'en'));
+    expect(JSON.parse(String(log.mock.calls.at(-1)![0]))).toMatchObject({reason:'unknown_file',disposition:'dropped'});
+    for(const item of model.candidates[0].items)item.sources[0].quote='PRIVATE-MODEL-QUOTE-DO-NOT-LOG';
+    expect(()=>validateMaterialOutput(model,docs,'en')).toThrow(/None of the AI extraction/);
   });
   it('conservatively blanks unsupported prefill and never emits goal/disclosure authorization',async()=>{
     const docs=await parsed(),model=output(docs);model.candidates[0].items=model.candidates[0].items.slice(3);
@@ -251,7 +271,7 @@ describe('service consent, usage gates and lifecycle',()=>{
     vi.stubGlobal('fetch',vi.fn(async(_url:unknown,options?:RequestInit)=>{body=JSON.parse(String(options?.body));return new Response(JSON.stringify({id:'resp_material_fixture',object:'response',created_at:0,status:'completed',model:config.model,output:[{id:'msg_fixture',type:'message',role:'assistant',status:'completed',content:[{type:'output_text',text:JSON.stringify(model),annotations:[]}]}]}),{headers:{'content-type':'application/json'}});}));
     const format=zodTextFormat(ModelMaterialOutputSchema,'caselink_materials');expect(format.strict).toBe(true);
     const response=await withTestExecution(()=>openAIMaterialTransport({config,data:buildMaterialPromptData(docs,'','en'),signal:new AbortController().signal}),config.model);
-    expect(response.output_parsed).toEqual(model);expect(body).toMatchObject({model:config.model,store:false,max_output_tokens:8000});expect(body).not.toHaveProperty('tools');expect(JSON.stringify(body)).not.toContain('input_file');
+    expect(response.output_parsed).toEqual(model);expect(body).toMatchObject({model:config.model,store:false,max_output_tokens:12000});expect(body).not.toHaveProperty('tools');expect(JSON.stringify(body)).not.toContain('input_file');
   });
 });
 

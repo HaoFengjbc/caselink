@@ -17,7 +17,7 @@ export function applyMaterialCandidate(input:NewCaseInput,result:MaterialRespons
  const selected=result.candidates.find(c=>c.id===candidateId);if(!selected)throw new Error('Select one case before adding its materials.');
  const current=draft(input),old=current.intake.materials;
  const documents=[...(old?.documents??[])];for(const {pages:_pages,...document} of result.documents){const at=documents.findIndex(d=>d.fileId===document.fileId);if(at<0)documents.push(document);else documents[at]=document;}
- if(documents.length>3||documents.reduce((n,d)=>n+d.pageCount,0)>30||documents.reduce((n,d)=>n+d.size,0)>3_900_000)throw new Error('One case accepts at most 3 PDFs and 30 physical pages.');
+ if(documents.length>3||documents.reduce((n,d)=>n+d.processedPages.length,0)>30||documents.reduce((n,d)=>n+d.size,0)>3_900_000)throw new Error('One case accepts at most 3 PDFs and 30 physical pages.');
  const items=[...(old?.items??[])];for(const item of selected.items){if(!items.some(i=>i.id===item.id))items.push(item);}
  if(items.length>48)throw new Error('The combined case exceeds 48 extracted items; review the existing materials before adding more.');
  const conflicts=[...(old?.conflicts??[])];for(const conflict of selected.conflicts)if(!conflicts.some(c=>c.id===conflict.id))conflicts.push(conflict);

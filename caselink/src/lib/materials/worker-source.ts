@@ -9,11 +9,35 @@ const {files,locale,limits,existingPageCount,pdfjsUrl}=workerData;
 const copy=(zh,en)=>locale==='en'?en:zh;
 const fail=(code,message,status=422)=>Object.assign(new Error(message),{safe:true,code,status});
 const emit=event=>parentPort.postMessage({type:'event',event});
+// PDF.js already emits the spaces between words. Adding one after every text item split words at
+// font or kerning changes ("defa mation", "2026 年") and doubled real spaces, so quotes stopped matching.
+// A space is added only where the next item starts after a visible gap on the same baseline.
+const joinTextItems=items=>{
+ let text='',last=null;
+ for(const item of items){
+  if(!('str' in item))continue;
+  const str=item.str;
+  if(last&&!last.hasEOL&&str&&text&&!/\s$/.test(text)&&!/^\s/.test(str)){
+   const t=item.transform,lt=last.transform,size=Math.hypot(t[2],t[3])||10;
+   const rise=Math.abs(t[5]-lt[5]),gap=t[4]-(lt[4]+(last.width||0));
+   // A new line PDF.js did not mark; superscripts and subscripts stay attached to their word.
+   if(rise>size*0.9)text+='\n';
+   else if(rise<=size*0.3&&gap>size*0.12)text+=' ';
+  }
+  text+=str;
+  if(item.hasEOL)text+='\n';
+  if(str||item.hasEOL)last=item;
+ }
+ // Fonts such as PingFang map some glyphs to look-alike Kangxi radicals (⽉ U+2F49 for 月); restore the
+ // ordinary characters so the text shown, sent to AI and quoted is the same text a reader sees.
+ return text.replace(/[\u2E80-\u2EFF\u2F00-\u2FDF]/g,ch=>ch.normalize('NFKC')).replace(/[\t \u00A0]+\n/g,'\n').replace(/[\t \u00A0]{2,}/g,' ').replace(/\n{3,}/g,'\n\n').trim();
+};
 (async()=>{
  const pdfjs=await import(pdfjsUrl);
  const cMapUrl=fileURLToPath(new URL('../../cmaps/',pdfjsUrl));
  const standardFontDataUrl=fileURLToPath(new URL('../../standard_fonts/',pdfjsUrl));
- let remainingBytes=limits.maxTextBytes,totalPages=existingPageCount;
+ // Pages beyond the page allowance or text budget are listed as not processed instead of refusing the whole PDF.
+ let remainingBytes=limits.maxTextBytes,remainingPages=Math.max(0,limits.maxPages-existingPageCount);
  const output=[];
  for(const file of files){
   const {filename,fileId,bytes}=file;
@@ -22,10 +46,11 @@ const emit=event=>parentPort.postMessage({type:'event',event});
   try{
    const doc=await task.promise;
    if(await doc.getPermissions()!==null)throw fail('INVALID_INPUT',copy(filename+' 已加密；请在本地提供未加密副本。',filename+' is encrypted. Provide an unencrypted copy from your device.'));
-   totalPages+=doc.numPages;
-   if(doc.numPages<1||totalPages>limits.maxPages)throw fail('PAYLOAD_TOO_LARGE',copy('本次 PDF 总页数超过 30 页；未调用 AI。请提供选定页面的副本。','The PDFs exceed 30 pages in total. AI was not called. Provide copies containing the selected pages.'),413);
-   const pages=[],warnings=[];
+   if(doc.numPages<1)throw fail('INVALID_INPUT',copy(filename+' 没有可读取的页面。',filename+' has no readable pages.'));
+   const pages=[],warnings=[],beyondAllowance=[];
    for(let pageNumber=1;pageNumber<=doc.numPages;pageNumber++){
+    if(remainingPages===0){beyondAllowance.push(pageNumber);continue;}
+    remainingPages--;
     // PDF PageLabels are metadata, not verified printed page numbers.
     const printedPage=null;
     if(remainingBytes===0){pages.push({pdfPage:pageNumber,text:'',status:'omitted',printedPage});continue;}
@@ -33,7 +58,7 @@ const emit=event=>parentPort.postMessage({type:'event',event});
     try{
      page=await doc.getPage(pageNumber);
      const content=await page.getTextContent();
-     const text=content.items.map(item=>'str' in item?item.str+(item.hasEOL?'\n':' '):'').join('').replace(/[\t ]+\n/g,'\n').trim();
+     const text=joinTextItems(content.items);
      const byteLength=Buffer.byteLength(text,'utf8');
      if(byteLength>remainingBytes){remainingBytes=0;pages.push({pdfPage:pageNumber,text:'',status:'omitted',printedPage});continue;}
      if(text.replace(/\s/g,'').length>=8){remainingBytes-=byteLength;pages.push({pdfPage:pageNumber,text,status:'read',printedPage});}
@@ -48,8 +73,10 @@ const emit=event=>parentPort.postMessage({type:'event',event});
    }
    const unreadable=pages.filter(p=>!['read','omitted'].includes(p.status));
    if(unreadable.length)warnings.push(copy('PDF 物理页 '+unreadable.map(p=>p.pdfPage).join(', ')+' 为空白、扫描图像或无法可靠提取文字；未做 OCR。请核对原件，必要时粘贴文字。','Physical PDF pages '+unreadable.map(p=>p.pdfPage).join(', ')+' are blank, image-only or lack reliable text. OCR was not performed. Check the original and paste text if needed.'));
-   const omitted=pages.filter(p=>p.status==='omitted').map(p=>p.pdfPage);
-   if(omitted.length)warnings.push(copy('超过 75,000 字节文字预算，PDF 物理页 '+omitted.join(', ')+' 未处理。','The 75,000-byte text budget was reached. Physical PDF pages '+omitted.join(', ')+' were not processed.'));
+   const overBudget=pages.filter(p=>p.status==='omitted').map(p=>p.pdfPage),omitted=[...overBudget,...beyondAllowance];
+   const range=list=>list.length>1&&list.at(-1)-list[0]===list.length-1?list[0]+'–'+list.at(-1):list.join(', ');
+   if(overBudget.length)warnings.push(copy('超过 75,000 字节文字预算，PDF 物理页 '+range(overBudget)+' 未处理。','The 75,000-byte text budget was reached. Physical PDF pages '+range(overBudget)+' were not processed.'));
+   if(beyondAllowance.length)warnings.push(copy(filename+' 共 '+doc.numPages+' 页；每次最多读取 '+limits.maxPages+' 页，PDF 物理页 '+range(beyondAllowance)+' 未处理。需要时请拆分 PDF 后再上传。',filename+' has '+doc.numPages+' pages; at most '+limits.maxPages+' pages are read per upload, so physical PDF pages '+range(beyondAllowance)+' were not processed. Split the PDF if those pages matter.'));
    const result={fileId,filename,size:file.size,pageCount:doc.numPages,pages,processedPages:pages.filter(p=>p.status==='read').map(p=>p.pdfPage),unreadablePages:unreadable.map(p=>p.pdfPage),omittedPages:omitted,warnings};
    output.push(result);emit({type:'document',document:result});
   }catch(error){

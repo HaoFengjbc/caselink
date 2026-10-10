@@ -16,6 +16,8 @@ export default function MaterialUpload({documents, locked, aiEnabled, awaitingSe
   const [files,setFiles]=useState<SelectedMaterial[]>([]); const filesRef=useRef(files); filesRef.current=files;
   const [background,setBackground]=useState(''); const [consent,setConsent]=useState(false);
   const [drag,setDrag]=useState(false); const [busy,setBusy]=useState(false); const [notice,setNotice]=useState('');
+  // Outcome notes of a completed reading (left-out items, pages not processed) are not errors.
+  const [info,setInfo]=useState('');
   const [stage,setStage]=useState(''); const [localPages,setLocalPages]=useState<ParsedMaterial[]>([]);
   const lifecycle=useRef(0);
   const pending=useRef<{token:string;controller:AbortController;ids:string[]}|null>(null);
@@ -52,11 +54,11 @@ export default function MaterialUpload({documents, locked, aiEnabled, awaitingSe
     const selected=filesRef.current.filter(file=>onlyId?file.id===onlyId:!file.processed);if(!selected.length)return;
     const ids=selected.map(file=>file.id),token=crypto.randomUUID(),controller=new AbortController(),capturedLocale=locale;
     const previousDocuments=documents.filter(doc=>!ids.includes(doc.fileId));
-    const existingPageCount=previousDocuments.reduce((sum,doc)=>sum+doc.pageCount,0),existingFileCount=previousDocuments.length;
+    const existingPageCount=previousDocuments.reduce((sum,doc)=>sum+doc.processedPages.length,0),existingFileCount=previousDocuments.length;
     const identityKey=JSON.stringify([ids,background,ai,capturedLocale,existingPageCount,existingFileCount]);
     if(intent.current?.key!==identityKey)intent.current={key:identityKey,id:crypto.randomUUID(),version:sessionInputVersion()};
     const identity=intent.current;
-    pending.current={token,controller,ids};setBusy(true);changeBusy.current(true);setNotice('');setStage(en?'Sending materials':'正在提交材料');
+    pending.current={token,controller,ids};setBusy(true);changeBusy.current(true);setNotice('');setInfo('');setStage(en?'Sending materials':'正在提交材料');
     setLocalPages(previous=>previous.filter(doc=>!ids.includes(doc.fileId)));
     const timeout=window.setTimeout(()=>controller.abort(),MATERIAL_LIMITS.requestTimeoutMs+5000);
     let ended=false;
@@ -90,8 +92,8 @@ export default function MaterialUpload({documents, locked, aiEnabled, awaitingSe
           commit(filesRef.current.map(file=>ids.includes(file.id)?{...file,state:'review',processed:result.mode==='live_ai',pageCount:result.documents.find(doc=>doc.fileId===file.id)?.pageCount}:file));
           if(result.mode==='local_text'){
             setLocalPages(previous=>[...previous.filter(doc=>!ids.includes(doc.fileId)),...result.documents]);
-            setNotice(en?'Text was extracted locally on the application server. No model was called. You can copy it into the manual description.':'已在应用服务器本地提取文字，未调用模型。可复制文字到手动描述。');
-          }else{resultCallback.current(result,background);setNotice(result.warnings.join(' '));}
+            setInfo([en?'Text was extracted locally on the application server. No model was called. You can copy it into the manual description.':'已在应用服务器本地提取文字，未调用模型。可复制文字到手动描述。',...result.warnings].join(' '));
+          }else{resultCallback.current(result,background);setInfo(result.warnings.join(' '));}
           setStage(en?'Waiting for review':'等待核对');
         }
       };
@@ -114,7 +116,7 @@ export default function MaterialUpload({documents, locked, aiEnabled, awaitingSe
     <p className={styles.scope}>{en?'Private working materials for this case. PDF bytes are processed temporarily in this application server’s memory; extracted text is sent to the configured OpenAI service only with permission. Files are not added to the case library or published. PDFs are not saved with reports; saved reports retain cited excerpts and source details. Service retention follows the provider’s policy.':'文件是本案的私有工作材料。PDF 在本应用服务器内存临时处理；仅在授权后将提取文字发送给已配置的 OpenAI 服务。文件不进入案例库、不公开发布。保存报告只保留引用片段与来源信息，不保存 PDF；模型服务留存仍以服务商政策为准。'}</p>
     <label className={styles.consent}><input type="checkbox" checked={consent&&aiEnabled} disabled={!aiEnabled||busy||locked} onChange={event=>setConsent(event.target.checked)}/><span>{en?'I agree to send the extracted text to AI to organize this case. This does not authorize public disclosure or web searches.':'我同意将提取文字交给 AI 整理本案。这不代表允许公开披露或将材料用于联网搜索。'}</span></label>
     {!aiEnabled&&<p className={styles.warning}>{en?'AI is disabled in your privacy settings. Local text extraction and manual entry remain available.':'隐私设置已关闭 AI。仍可仅提取文字或手动录入。'}</p>}
-    {notice&&<p className={styles.error} role="alert">{notice}</p>}{stage&&<div className={styles.status} role="status">{busy&&<span className="loading-ring"/>}{stage}</div>}
+    {notice&&<p className={styles.error} role="alert">{notice}</p>}{info&&<p className={styles.info} role="status">{info}</p>}{stage&&<div className={styles.status} role="status">{busy&&<span className="loading-ring"/>}{stage}</div>}
     <div className={styles.toolbar}>{busy?<button className="btn btn-ghost" onClick={()=>stop(en?'Cancelled. No late result will be applied.':'已取消，后续返回不会写入案情。')}><X size={15}/>{en?'Cancel':'取消'}</button>:<><button className="btn btn-primary" disabled={locked||awaitingSelection||!pendingFiles.length||!consent||!aiEnabled} onClick={()=>process(true)}><Upload size={16}/>{en?'Read materials and organize case':'读取材料并整理案情'}</button><button className="text-link" disabled={locked||awaitingSelection||!pendingFiles.length} onClick={()=>process(false)}>{en?'Extract text only (no AI)':'仅提取文字（不调用 AI）'}</button></>}</div>
     {localPages.map(doc=><details key={doc.fileId}><summary>{doc.filename} · {en?'Local extracted text':'本地提取文字'}</summary>{doc.pages.map(page=><div key={page.pdfPage}><p className={styles.fileMeta}>PDF {page.pdfPage} · {page.status}</p><pre className={styles.localText}>{page.text||(en?'No extractable text on this page.':'此页无可提取文字。')}</pre></div>)}</details>)}
   </section>;
