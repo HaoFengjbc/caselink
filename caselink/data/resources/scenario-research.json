@@ -1,0 +1,52 @@
+[
+  {
+    "scenarioId": "journalist-private-release",
+    "jurisdiction": "KZ",
+    "proceeding": "criminal",
+    "coreQuestion": "拘押决定是否取得、有哪些理由及替代措施，能否按正确审前程序及时申请复核？",
+    "coverage": "partial",
+    "coverageNote": "已读哈萨克斯坦刑诉法具体文书、复核和替代措施条款；缺决定、罪名及程序日期，无法给出个案期限或释放结论。",
+    "resourceIds": [
+      "kz-criminal-procedure-detention"
+    ],
+    "gaps": [
+      "缺拘押决定、宣告/送达时间与罪名；事件时版本未锁定。",
+      "预审调查与移送审判阶段须区分；已有律师继续核对，不推定国际路径资格。"
+    ]
+  },
+  {
+    "scenarioId": "blogger-public-charges",
+    "jurisdiction": "TN",
+    "proceeding": "criminal",
+    "coreQuestion": "转发讽刺内容的起诉具体依据是什么，表达限制如何按2022宪法第37与55条接受研究检验？",
+    "coverage": "partial",
+    "coverageNote": "已读突尼斯议会官方2022宪法具体条款原页；实体指控与事件时/当前刑法版本尚未可靠核实，不用宪法代替刑事程序。",
+    "resourceIds": [
+      "tn-constitution-expression"
+    ],
+    "gaps": [
+      "取得起诉或传唤文书、具体罪名和行为/程序日期；不擅定54号法令。",
+      "正式公报核对相关刑法最新修订与事件时版本；尚不能输出确定罚则、撤诉路径或期限。",
+      "宪法审查程序、主体资格和时间尚未核查。"
+    ]
+  },
+  {
+    "scenarioId": "uk-expression-civil",
+    "jurisdiction": "GB-EAW",
+    "proceeding": "civil",
+    "coreQuestion": "仅收到民事诽谤函时，应怎样准备严重损害、公共利益抗辩与诉前回应材料，并检验有限反SLAPP条件？",
+    "coverage": "checked",
+    "coverageNote": "核心诉前问题已有直接官方条文与程序文本；事实是否满足抗辩或第195条条件仍未知，尚未起诉时不启用删除诉状步骤。",
+    "resourceIds": [
+      "ew-defamation-act-2013",
+      "ew-media-protocol",
+      "ew-economic-crime-slapp",
+      "ew-cpr-slapp-strikeout"
+    ],
+    "gaps": [
+      "缺函件收件/回应日期、具体表述和损害主张；事件时版本未锁定。",
+      "公共采购不自动等于经济犯罪；第195条信念、目的和对方意图待证。",
+      "尚无当地律师；需要带函件、作品和编辑核验资料核对适用判例与程序。"
+    ]
+  }
+]

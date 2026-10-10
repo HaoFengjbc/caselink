@@ -12,14 +12,14 @@ describe('Content refresh and review metadata',()=>{
     expect(second).not.toBe(first);
     expect(first.country).toBe(original.country);
   });
-  it('translates applicability metadata without upgrading review status',()=>{
+  it('does not overwrite revised audited content with stale translations or upgrade review status',()=>{
     const original=resources[0],previous=EN_CONTENT.resources[original.resourceId];
     EN_CONTENT.resources[original.resourceId]={...previous,summary:'Summary',eligibility:['Eligibility condition'],unknowns:['Requires review']};
     try{
       const shown=localizeResource({...original,reviewStatus:'unreviewed'},'en');
-      expect(shown.summary).toBe('Summary');
-      expect(shown.eligibility).toEqual(['Eligibility condition']);
-      expect(shown.unknowns).toEqual(['Requires review']);
+      expect(shown.summary).toBe(original.summary);
+      expect(shown.eligibility).toEqual(original.eligibility);
+      expect(shown.unknowns).toEqual(original.unknowns);
       expect(shown.reviewStatus).toBe('unreviewed');
     }finally{EN_CONTENT.resources[original.resourceId]=previous;}
   });

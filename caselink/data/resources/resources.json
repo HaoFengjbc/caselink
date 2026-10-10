@@ -3,163 +3,544 @@
     "resourceId": "ohchr-special-procedures",
     "name": "联合国人权高专办：特别程序信息提交指引",
     "officialUrl": "https://spsubmission.ohchr.org/",
-    "checkedAt": "2026-10-07",
-    "applicability": "供个人、团体及社会组织核对特别程序提交要求。是否采取行动由相关专家决定，自动回执不代表已介入。该机制不是司法裁决程序；国别访问建议与个人信息提交不同。应先确认当事人同意、披露选择及安全风险。",
+    "checkedAt": "2026-10-09",
+    "applicability": "跨国研究参考，适用条件需核对。向相关特别程序提交可信的侵害信息由专家酌定；不保证介入、保密例外或救济。WGAD 的个案程序另行核对。",
     "requiredMaterials": [
       "清楚、可信、具体的事件和所涉侵害说明",
       "与陈述对应的关键佐证材料；不能仅依据媒体报道",
       "当事人或代表对向相关方及公开报告披露姓名的明确意见"
     ],
     "type": "un_mechanism",
-    "locator": "Submission of information: criteria; who can submit; what happens; confidentiality",
+    "locator": "What are the criteria applied to act on a submission? / Who can submit information, and how?；Consent and confidentiality",
     "summary": "向特别程序专家提交可信、具体的信息，是否行动由专家按任务范围决定。",
     "eligibility": [
-      "无需先穷尽国内救济，但必须核对具体任务范围。",
-      "不得仅依据媒体报道；先核对当事人同意和身份披露风险。"
+      "可由个人、团体、社会组织等提供信息；须属于专家任务范围。",
+      "不要求先穷尽国内救济或国家已缔结某一条约；但不能仅依赖媒体报道。",
+      "分别确认向接收方、公开报告披露姓名的意见；没有授权时仅准备内部材料。"
     ],
     "reviewStatus": "agent_checked",
     "agentCheckedAt": "2026-10-09",
     "teamReviewedAt": null,
     "unknowns": [
-      "团队未人工复核；提交不保证介入或救济。"
+      "尚未进行具名团队人工复核。",
+      "尚未选择具体任务授权及评估安全例外；回执不代表采取行动。"
     ],
     "tags": [
       "expression",
       "detention",
       "fair_trial"
-    ]
+    ],
+    "sourceAudit": {
+      "issuer": "联合国人权高专办（OHCHR）",
+      "version": "在线 Submission of information to the Special Procedures 指引",
+      "publishedOrEffective": "页面未标明发布/更新日；2026-10-09 读取",
+      "checkedAt": "2026-10-09",
+      "readStatus": "full_text",
+      "readUrl": "https://spsubmission.ohchr.org/",
+      "jurisdiction": [
+        "international"
+      ],
+      "proceedings": [
+        "all"
+      ],
+      "currentVersionStatus": "已读取发布机构在核查日提供的正文；不是个案适用性结论。",
+      "eventVersionStatus": "演示案未提供事件日期；不能确认事件时版本及程序条件。",
+      "provisions": [
+        {
+          "provisionId": "submission-criteria",
+          "locator": "What are the criteria applied to act on a submission? / Who can submit information, and how?",
+          "quote": "credible and detailed information",
+          "explanation": "专家按任务范围决定是否行动；资料须具体可信且不只来自媒体；不以缔约或穷尽国内救济为前提。",
+          "supports": [
+            "special_procedures_submission"
+          ]
+        },
+        {
+          "provisionId": "consent-confidentiality",
+          "locator": "Consent and confidentiality",
+          "quote": "DO or DO NOT consent",
+          "explanation": "须分别确认向政府等接收方及公开报告披露姓名的意见；向接收方默认含姓名，安全例外由专家判断。",
+          "supports": [
+            "disclosure_consent"
+          ]
+        }
+      ],
+      "confirmed": [
+        "已读条件、提交主体、回执和保密说明。",
+        "此一般特别程序来信机制不是准司法程序；WGAD另有工作方法。"
+      ],
+      "corrections": [
+        "将向机构披露与公开报告披露分为两项，避免把内部处理意愿当作外发同意。"
+      ],
+      "gaps": [
+        "尚未选择具体任务授权及评估安全例外；回执不代表采取行动。"
+      ]
+    }
   },
   {
     "resourceId": "cpj-emergency-help",
     "name": "保护记者委员会（CPJ）：记者安全与紧急协助",
     "officialUrl": "https://cpj.org/journalist-safety-and-emergencies/",
-    "checkedAt": "2026-10-07",
+    "checkedAt": "2026-10-09",
     "applicability": "面向因新闻工作遭遇相关事件的在职记者及媒体工作者，提供个案评估的短期紧急支持。优先处理紧急情形，不保证回应或资助；博主及活动人士不能只凭身份假定符合范围。页面说明信息可能与少量可信合作方共享作核验。",
     "requiredMaterials": [
-      "新闻工作背景与相关作品说明",
-      "事件、当前需求及与新闻工作的关联",
-      "先与当事人确认协助请求与信息共享范围"
+      "网页明示：事件情况、当前需求及新闻工作信息。",
+      "工作准备建议：作品与风险材料索引、安全联系方式、信息共享范围；未核实不外发。"
     ],
     "type": "assistance",
-    "locator": "Journalist Safety and Emergencies → How to Get Help — Emergencies",
+    "locator": "Journalist Safety and Emergencies — opening support / exclusions / vetting paragraphs",
     "summary": "记者安全建议与紧急协助入口。优先危机情况，无法回应所有请求。",
     "eligibility": [
-      "需说明新闻工作背景及与事件的关联。",
-      "由机构评估；不保证答复、代理或资助。"
+      "需提供新闻工作、事件及当前需要；博主身份本身不证明资格。",
+      "页面排除签证申请、移民/庇护申请、教育及与新闻事件无关的一般医疗费用。",
+      "不保证回应或资助；先确认允许核验共享的信息。"
     ],
     "reviewStatus": "agent_checked",
     "agentCheckedAt": "2026-10-09",
     "teamReviewedAt": null,
     "unknowns": [
-      "团队未人工复核；个案接收范围、可用资源与共享政策须在联系前确认。",
-      "本轮另读 https://cpj.org/emergency-response/how-to-get-help/ 的 Emergencies 部分；原条目日期与适用说明保留。"
+      "尚未进行具名团队人工复核。",
+      "是否符合新闻工作范围、紧急性、可用资源及共享授权均需个案确认。"
     ],
     "tags": [
       "journalist_safety",
       "assistance"
-    ]
+    ],
+    "sourceAudit": {
+      "issuer": "保护记者委员会（Committee to Protect Journalists, CPJ）",
+      "version": "Journalist Safety and Emergencies；并核对 How to Get Help",
+      "publishedOrEffective": "页面未标明发布/更新日；2026-10-09 读取",
+      "checkedAt": "2026-10-09",
+      "readStatus": "full_text",
+      "readUrl": "https://cpj.org/journalist-safety-and-emergencies/",
+      "jurisdiction": [
+        "international"
+      ],
+      "proceedings": [
+        "all"
+      ],
+      "currentVersionStatus": "已读取发布机构在核查日提供的正文；不是个案适用性结论。",
+      "eventVersionStatus": "演示案未提供事件日期；不能确认事件时版本及程序条件。",
+      "provisions": [
+        {
+          "provisionId": "emergency-eligibility",
+          "locator": "Journalist Safety and Emergencies — opening support / exclusions / vetting paragraphs",
+          "quote": "working journalists and media workers",
+          "explanation": "短期支持需与新闻工作相关的事件和当前安全需要相连；个案评估且不保证回应，可与少量可信伙伴核验。",
+          "supports": [
+            "journalist_emergency_assistance"
+          ]
+        }
+      ],
+      "confirmed": [
+        "已读具体援助范围、排除项及信息共享段。"
+      ],
+      "corrections": [
+        "将材料要求区分为网页明示信息与团队工作准备；保留共享风险说明。"
+      ],
+      "gaps": [
+        "是否符合新闻工作范围、紧急性、可用资源及共享授权均需个案确认。"
+      ]
+    }
   },
   {
     "resourceId": "iccpr-article-19",
     "name": "ICCPR 第 19 条：表达自由",
     "officialUrl": "https://treaties.un.org/doc/publication/unts/volume%20999/volume-999-i-14668-english.pdf",
     "checkedAt": "2026-10-09",
-    "applicability": "国际条约研究依据。需核对有关国家的缔约状态、保留、时间及管辖范围；不是自动可在当地直接援引的法律。",
+    "applicability": "跨国研究参考，适用条件需核对。条约义务、当地援引方式和国际申诉资格是不同问题。",
     "requiredMaterials": [
-      "核对原文、当前适用条件及本案材料；提交前由负责律师或协调人确认。"
+      "工作准备建议：对应事实及材料索引、事件时间、程序文件；由负责律师判断国内援引。"
     ],
     "type": "treaty",
-    "locator": "Article 19(1)–(3), printed p. 178 / PDF p. 8",
-    "summary": "保护意见及信息表达；限制需按条约条件分析。",
+    "locator": "Article 19(2)–(3), printed p. 178 / PDF p. 8",
+    "summary": "表达及其限制条件的条约研究依据。",
     "eligibility": [
-      "核对缔约及保留状态；事实须属于相应条款。"
+      "核对国家缔约、相关保留/克减、事件时间和管辖关系。",
+      "具体程序及条款触发事实须分别确认；国内法地位不由条约目录推定。"
     ],
     "reviewStatus": "agent_checked",
     "agentCheckedAt": "2026-10-09",
     "teamReviewedAt": null,
     "unknowns": [
-      "团队尚未逐条人工复核；本案适用性、当地法律地位及当前程序要求待确认。"
+      "尚未进行具名团队人工复核。",
+      "须确认事件日期、管辖关系、涉及条款的保留/克减及国内援引方式；缔约不等于国内直接适用。"
     ],
     "tags": [
       "expression",
       "defamation"
-    ]
+    ],
+    "sourceAudit": {
+      "issuer": "联合国大会；保存人：联合国秘书长",
+      "version": "UNTS vol. 999, No. 14668 英文文本",
+      "publishedOrEffective": "1966-12-16 通过；1976-03-23 总体生效（具体国家生效日另核）",
+      "checkedAt": "2026-10-09",
+      "readStatus": "full_text",
+      "readUrl": "https://treaties.un.org/doc/publication/unts/volume%20999/volume-999-i-14668-english.pdf",
+      "jurisdiction": [
+        "international"
+      ],
+      "proceedings": [
+        "all"
+      ],
+      "currentVersionStatus": "已核对条约正文；UNTC IV.4 状态页标注截至 2026-10-08，并于 2026-10-09 读取。缔约状态、保留、国内地位和机制资格分开。",
+      "eventVersionStatus": "演示案未提供事件日期；不能确认事件时版本及程序条件。",
+      "provisions": [
+        {
+          "provisionId": "art19-2-3",
+          "locator": "Article 19(2)–(3), printed p. 178 / PDF p. 8",
+          "quote": "provided by law",
+          "explanation": "表达限制须有法律依据，并为第19(3)列举目的所必要；具体限制是否满足要求尚待核查。",
+          "supports": [
+            "expression_restriction_test"
+          ]
+        }
+      ],
+      "confirmed": [
+        "已逐项读取所列条款和上下文。",
+        "UNTC IV.4 正文：哈萨克斯坦2006-01-24批准、突尼斯1969-03-18批准、英国1976-05-20批准。仅确认缔约，不推定国内直接援引。"
+      ],
+      "corrections": [
+        "增加可直接引用的条款级定位；取消以主题标签推定适用。"
+      ],
+      "gaps": [
+        "须确认事件日期、管辖关系、涉及条款的保留/克减及国内援引方式；缔约不等于国内直接适用。"
+      ],
+      "relatedSources": [
+        {
+          "title": "UNTC IV.4 缔约状态及保留（页面截至2026-10-08）",
+          "url": "https://treaties.un.org/Pages/ShowMTDSGDetails.aspx?chapter=4&lang=en&mtdsg_no=IV-4&src=UNTSONLINE&tabid=3",
+          "locator": "Participant表：Kazakhstan / Tunisia / United Kingdom；Declarations and Reservations：英国条目；脚注43（撤回部分保留）。2026-10-09读取。"
+        }
+      ],
+      "jurisdictionChecks": [
+        {
+          "jurisdiction": "KZ",
+          "status": "confirmed",
+          "topic": "participation",
+          "detail": "UNTC IV.4参与方表：2006-01-24批准ICCPR；不代表国内直接援引或个案符合条款。",
+          "sourceUrl": "https://treaties.un.org/Pages/ShowMTDSGDetails.aspx?chapter=4&lang=en&mtdsg_no=IV-4&src=UNTSONLINE&tabid=3"
+        },
+        {
+          "jurisdiction": "TN",
+          "status": "confirmed",
+          "topic": "participation",
+          "detail": "UNTC IV.4参与方表：1969-03-18批准ICCPR；不代表国内直接援引或个案符合条款。",
+          "sourceUrl": "https://treaties.un.org/Pages/ShowMTDSGDetails.aspx?chapter=4&lang=en&mtdsg_no=IV-4&src=UNTSONLINE&tabid=3"
+        },
+        {
+          "jurisdiction": "GB",
+          "status": "confirmed",
+          "topic": "participation",
+          "detail": "UNTC IV.4参与方表：1976-05-20批准ICCPR；英国保留和具体事件仍须分别审查。",
+          "sourceUrl": "https://treaties.un.org/Pages/ShowMTDSGDetails.aspx?chapter=4&lang=en&mtdsg_no=IV-4&src=UNTSONLINE&tabid=3"
+        }
+      ]
+    }
   },
   {
     "resourceId": "iccpr-article-9",
     "name": "ICCPR 第 9 条：人身自由",
     "officialUrl": "https://treaties.un.org/doc/publication/unts/volume%20999/volume-999-i-14668-english.pdf",
     "checkedAt": "2026-10-09",
-    "applicability": "国际条约研究依据。需核对有关国家的缔约状态、保留、时间及管辖范围；不是自动可在当地直接援引的法律。",
+    "applicability": "跨国研究参考，适用条件需核对。条约义务、当地援引方式和国际申诉资格是不同问题。",
     "requiredMaterials": [
-      "核对原文、当前适用条件及本案材料；提交前由负责律师或协调人确认。"
+      "工作准备建议：对应事实及材料索引、事件时间、程序文件；由负责律师判断国内援引。"
     ],
     "type": "treaty",
-    "locator": "Article 9(1)–(5), printed pp. 175–176 / PDF pp. 5–6",
-    "summary": "涉及任意拘押、拘押依据与司法审查。",
+    "locator": "Article 9(4), printed p. 176 / PDF p. 6；Article 9(3), printed p. 175 / PDF p. 5",
+    "summary": "区分刑事拘押保障与所有剥夺自由者的法院审查权。",
     "eligibility": [
-      "核对缔约及保留状态；事实须属于相应条款。"
+      "核对国家缔约、相关保留/克减、事件时间和管辖关系。",
+      "具体程序及条款触发事实须分别确认；国内法地位不由条约目录推定。"
     ],
     "reviewStatus": "agent_checked",
     "agentCheckedAt": "2026-10-09",
     "teamReviewedAt": null,
     "unknowns": [
-      "团队尚未逐条人工复核；本案适用性、当地法律地位及当前程序要求待确认。"
+      "尚未进行具名团队人工复核。",
+      "须确认事件日期、管辖关系、涉及条款的保留/克减及国内援引方式；缔约不等于国内直接适用。"
     ],
     "tags": [
       "detention"
-    ]
+    ],
+    "sourceAudit": {
+      "issuer": "联合国大会；保存人：联合国秘书长",
+      "version": "UNTS vol. 999, No. 14668 英文文本",
+      "publishedOrEffective": "1966-12-16 通过；1976-03-23 总体生效（具体国家生效日另核）",
+      "checkedAt": "2026-10-09",
+      "readStatus": "full_text",
+      "readUrl": "https://treaties.un.org/doc/publication/unts/volume%20999/volume-999-i-14668-english.pdf",
+      "jurisdiction": [
+        "international"
+      ],
+      "proceedings": [
+        "criminal",
+        "administrative"
+      ],
+      "currentVersionStatus": "已核对条约正文；UNTC IV.4 状态页标注截至 2026-10-08，并于 2026-10-09 读取。缔约状态、保留、国内地位和机制资格分开。",
+      "eventVersionStatus": "演示案未提供事件日期；不能确认事件时版本及程序条件。",
+      "provisions": [
+        {
+          "provisionId": "art9-4",
+          "locator": "Article 9(4), printed p. 176 / PDF p. 6",
+          "quote": "without delay",
+          "explanation": "被剥夺自由者有权请求法院及时审查拘押合法性。",
+          "supports": [
+            "detention_review"
+          ]
+        },
+        {
+          "provisionId": "art9-3",
+          "locator": "Article 9(3), printed p. 175 / PDF p. 5",
+          "quote": "criminal charge",
+          "explanation": "因刑事指控拘押须及时交司法官审查；不把审前羁押作为一般规则。",
+          "supports": [
+            "criminal_detention_review"
+          ]
+        }
+      ],
+      "confirmed": [
+        "已逐项读取所列条款和上下文。",
+        "UNTC IV.4 正文：哈萨克斯坦2006-01-24批准、突尼斯1969-03-18批准、英国1976-05-20批准。仅确认缔约，不推定国内直接援引。"
+      ],
+      "corrections": [
+        "增加可直接引用的条款级定位；取消以主题标签推定适用。"
+      ],
+      "gaps": [
+        "须确认事件日期、管辖关系、涉及条款的保留/克减及国内援引方式；缔约不等于国内直接适用。"
+      ],
+      "relatedSources": [
+        {
+          "title": "UNTC IV.4 缔约状态及保留（页面截至2026-10-08）",
+          "url": "https://treaties.un.org/Pages/ShowMTDSGDetails.aspx?chapter=4&lang=en&mtdsg_no=IV-4&src=UNTSONLINE&tabid=3",
+          "locator": "Participant表：Kazakhstan / Tunisia / United Kingdom；Declarations and Reservations：英国条目；脚注43（撤回部分保留）。2026-10-09读取。"
+        }
+      ],
+      "jurisdictionChecks": [
+        {
+          "jurisdiction": "KZ",
+          "status": "confirmed",
+          "topic": "participation",
+          "detail": "UNTC IV.4参与方表：2006-01-24批准ICCPR；不代表国内直接援引或个案符合条款。",
+          "sourceUrl": "https://treaties.un.org/Pages/ShowMTDSGDetails.aspx?chapter=4&lang=en&mtdsg_no=IV-4&src=UNTSONLINE&tabid=3"
+        },
+        {
+          "jurisdiction": "TN",
+          "status": "confirmed",
+          "topic": "participation",
+          "detail": "UNTC IV.4参与方表：1969-03-18批准ICCPR；不代表国内直接援引或个案符合条款。",
+          "sourceUrl": "https://treaties.un.org/Pages/ShowMTDSGDetails.aspx?chapter=4&lang=en&mtdsg_no=IV-4&src=UNTSONLINE&tabid=3"
+        },
+        {
+          "jurisdiction": "GB",
+          "status": "confirmed",
+          "topic": "participation",
+          "detail": "UNTC IV.4参与方表：1976-05-20批准ICCPR；英国保留和具体事件仍须分别审查。",
+          "sourceUrl": "https://treaties.un.org/Pages/ShowMTDSGDetails.aspx?chapter=4&lang=en&mtdsg_no=IV-4&src=UNTSONLINE&tabid=3"
+        }
+      ]
+    }
   },
   {
     "resourceId": "iccpr-article-14",
     "name": "ICCPR 第 14 条：公正审判",
     "officialUrl": "https://treaties.un.org/doc/publication/unts/volume%20999/volume-999-i-14668-english.pdf",
     "checkedAt": "2026-10-09",
-    "applicability": "国际条约研究依据。需核对有关国家的缔约状态、保留、时间及管辖范围；不是自动可在当地直接援引的法律。",
+    "applicability": "跨国研究参考，适用条件需核对。条约义务、当地援引方式和国际申诉资格是不同问题。",
     "requiredMaterials": [
-      "核对原文、当前适用条件及本案材料；提交前由负责律师或协调人确认。"
+      "工作准备建议：对应事实及材料索引、事件时间、程序文件；由负责律师判断国内援引。"
     ],
     "type": "treaty",
-    "locator": "Article 14(1)–(7), printed pp. 176–177 / PDF pp. 6–7",
-    "summary": "涵盖法院平等、公正审理及刑事程序保障。",
+    "locator": "Article 14(3)(b), (d), printed p. 177 / PDF p. 7；Article 14(1), printed p. 176 / PDF p. 6",
+    "summary": "第14(1)与仅刑事适用的第14(3)分别展示。",
     "eligibility": [
-      "核对缔约及保留状态；事实须属于相应条款。"
+      "核对国家缔约、相关保留/克减、事件时间和管辖关系。",
+      "具体程序及条款触发事实须分别确认；国内法地位不由条约目录推定。"
     ],
     "reviewStatus": "agent_checked",
     "agentCheckedAt": "2026-10-09",
     "teamReviewedAt": null,
     "unknowns": [
-      "团队尚未逐条人工复核；本案适用性、当地法律地位及当前程序要求待确认。"
+      "尚未进行具名团队人工复核。",
+      "须确认事件日期、管辖关系、涉及条款的保留/克减及国内援引方式；缔约不等于国内直接适用。"
     ],
     "tags": [
       "fair_trial",
       "lawyer_access"
-    ]
+    ],
+    "sourceAudit": {
+      "issuer": "联合国大会；保存人：联合国秘书长",
+      "version": "UNTS vol. 999, No. 14668 英文文本",
+      "publishedOrEffective": "1966-12-16 通过；1976-03-23 总体生效（具体国家生效日另核）",
+      "checkedAt": "2026-10-09",
+      "readStatus": "full_text",
+      "readUrl": "https://treaties.un.org/doc/publication/unts/volume%20999/volume-999-i-14668-english.pdf",
+      "jurisdiction": [
+        "international"
+      ],
+      "proceedings": [
+        "criminal",
+        "civil"
+      ],
+      "currentVersionStatus": "已核对条约正文；UNTC IV.4 状态页标注截至 2026-10-08，并于 2026-10-09 读取。缔约状态、保留、国内地位和机制资格分开。",
+      "eventVersionStatus": "演示案未提供事件日期；不能确认事件时版本及程序条件。",
+      "provisions": [
+        {
+          "provisionId": "art14-3-b-d",
+          "locator": "Article 14(3)(b), (d), printed p. 177 / PDF p. 7",
+          "quote": "adequate time and facilities",
+          "explanation": "刑事指控下的辩护准备、律师沟通与法律协助保障；不能直接用于民事诽谤。",
+          "supports": [
+            "criminal_defence"
+          ]
+        },
+        {
+          "provisionId": "art14-1",
+          "locator": "Article 14(1), printed p. 176 / PDF p. 6",
+          "quote": "fair and public hearing",
+          "explanation": "刑事指控及诉讼中权利义务的公正公开审理保障；公开审理有条文列明例外。",
+          "supports": [
+            "civil_fair_hearing",
+            "fair_hearing"
+          ]
+        }
+      ],
+      "confirmed": [
+        "已逐项读取所列条款和上下文。",
+        "UNTC IV.4 正文：哈萨克斯坦2006-01-24批准、突尼斯1969-03-18批准、英国1976-05-20批准。仅确认缔约，不推定国内直接援引。"
+      ],
+      "corrections": [
+        "增加可直接引用的条款级定位；取消以主题标签推定适用。"
+      ],
+      "gaps": [
+        "须确认事件日期、管辖关系、涉及条款的保留/克减及国内援引方式；缔约不等于国内直接适用。"
+      ],
+      "relatedSources": [
+        {
+          "title": "UNTC IV.4 缔约状态及保留（页面截至2026-10-08）",
+          "url": "https://treaties.un.org/Pages/ShowMTDSGDetails.aspx?chapter=4&lang=en&mtdsg_no=IV-4&src=UNTSONLINE&tabid=3",
+          "locator": "Participant表：Kazakhstan / Tunisia / United Kingdom；Declarations and Reservations：英国条目；脚注43（撤回部分保留）。2026-10-09读取。"
+        }
+      ],
+      "jurisdictionChecks": [
+        {
+          "jurisdiction": "KZ",
+          "status": "confirmed",
+          "topic": "participation",
+          "detail": "UNTC IV.4参与方表：2006-01-24批准ICCPR；不代表国内直接援引或个案符合条款。",
+          "sourceUrl": "https://treaties.un.org/Pages/ShowMTDSGDetails.aspx?chapter=4&lang=en&mtdsg_no=IV-4&src=UNTSONLINE&tabid=3"
+        },
+        {
+          "jurisdiction": "TN",
+          "status": "confirmed",
+          "topic": "participation",
+          "detail": "UNTC IV.4参与方表：1969-03-18批准ICCPR；不代表国内直接援引或个案符合条款。",
+          "sourceUrl": "https://treaties.un.org/Pages/ShowMTDSGDetails.aspx?chapter=4&lang=en&mtdsg_no=IV-4&src=UNTSONLINE&tabid=3"
+        },
+        {
+          "jurisdiction": "GB",
+          "status": "confirmed",
+          "topic": "participation",
+          "detail": "UNTC IV.4参与方表：1976-05-20批准ICCPR；英国保留和具体事件仍须分别审查。",
+          "sourceUrl": "https://treaties.un.org/Pages/ShowMTDSGDetails.aspx?chapter=4&lang=en&mtdsg_no=IV-4&src=UNTSONLINE&tabid=3"
+        }
+      ]
+    }
   },
   {
     "resourceId": "iccpr-article-12",
     "name": "ICCPR 第 12 条：迁徙与离境",
     "officialUrl": "https://treaties.un.org/doc/publication/unts/volume%20999/volume-999-i-14668-english.pdf",
     "checkedAt": "2026-10-09",
-    "applicability": "国际条约研究依据。需核对有关国家的缔约状态、保留、时间及管辖范围；不是自动可在当地直接援引的法律。",
+    "applicability": "跨国研究参考，适用条件需核对。条约义务、当地援引方式和国际申诉资格是不同问题。",
     "requiredMaterials": [
-      "核对原文、当前适用条件及本案材料；提交前由负责律师或协调人确认。"
+      "工作准备建议：对应事实及材料索引、事件时间、程序文件；由负责律师判断国内援引。"
     ],
     "type": "treaty",
-    "locator": "Article 12(1)–(4), printed p. 176 / PDF p. 6",
-    "summary": "涉及迁徙、离境及其限制条件。",
+    "locator": "Article 12(2)–(3), printed p. 176 / PDF p. 6",
+    "summary": "用于核查离境限制，不凭护照被扣即断言违反条约。",
     "eligibility": [
-      "核对缔约及保留状态；事实须属于相应条款。"
+      "核对国家缔约、相关保留/克减、事件时间和管辖关系。",
+      "具体程序及条款触发事实须分别确认；国内法地位不由条约目录推定。"
     ],
     "reviewStatus": "agent_checked",
     "agentCheckedAt": "2026-10-09",
     "teamReviewedAt": null,
     "unknowns": [
-      "团队尚未逐条人工复核；本案适用性、当地法律地位及当前程序要求待确认。"
+      "尚未进行具名团队人工复核。",
+      "须确认事件日期、管辖关系、涉及条款的保留/克减及国内援引方式；缔约不等于国内直接适用。"
     ],
     "tags": [
       "travel_restriction"
-    ]
+    ],
+    "sourceAudit": {
+      "issuer": "联合国大会；保存人：联合国秘书长",
+      "version": "UNTS vol. 999, No. 14668 英文文本",
+      "publishedOrEffective": "1966-12-16 通过；1976-03-23 总体生效（具体国家生效日另核）",
+      "checkedAt": "2026-10-09",
+      "readStatus": "full_text",
+      "readUrl": "https://treaties.un.org/doc/publication/unts/volume%20999/volume-999-i-14668-english.pdf",
+      "jurisdiction": [
+        "international"
+      ],
+      "proceedings": [
+        "all"
+      ],
+      "currentVersionStatus": "已核对条约正文；UNTC IV.4 状态页标注截至 2026-10-08，并于 2026-10-09 读取。缔约状态、保留、国内地位和机制资格分开。",
+      "eventVersionStatus": "演示案未提供事件日期；不能确认事件时版本及程序条件。",
+      "provisions": [
+        {
+          "provisionId": "art12-2-3",
+          "locator": "Article 12(2)–(3), printed p. 176 / PDF p. 6",
+          "quote": "leave any country",
+          "explanation": "离境限制须满足法律、列举目的、必要性及与公约其他权利相容等条件。",
+          "supports": [
+            "travel_restriction_review"
+          ]
+        }
+      ],
+      "confirmed": [
+        "已逐项读取所列条款和上下文。",
+        "UNTC IV.4 正文：哈萨克斯坦2006-01-24批准、突尼斯1969-03-18批准、英国1976-05-20批准。仅确认缔约，不推定国内直接援引。"
+      ],
+      "corrections": [
+        "增加可直接引用的条款级定位；取消以主题标签推定适用。"
+      ],
+      "gaps": [
+        "须确认事件日期、管辖关系、涉及条款的保留/克减及国内援引方式；缔约不等于国内直接适用。"
+      ],
+      "relatedSources": [
+        {
+          "title": "UNTC IV.4 缔约状态及保留（页面截至2026-10-08）",
+          "url": "https://treaties.un.org/Pages/ShowMTDSGDetails.aspx?chapter=4&lang=en&mtdsg_no=IV-4&src=UNTSONLINE&tabid=3",
+          "locator": "Participant表：Kazakhstan / Tunisia / United Kingdom；Declarations and Reservations：英国条目；脚注43（撤回部分保留）。2026-10-09读取。"
+        }
+      ],
+      "jurisdictionChecks": [
+        {
+          "jurisdiction": "KZ",
+          "status": "confirmed",
+          "topic": "participation",
+          "detail": "UNTC IV.4参与方表：2006-01-24批准ICCPR；不代表国内直接援引或个案符合条款。",
+          "sourceUrl": "https://treaties.un.org/Pages/ShowMTDSGDetails.aspx?chapter=4&lang=en&mtdsg_no=IV-4&src=UNTSONLINE&tabid=3"
+        },
+        {
+          "jurisdiction": "TN",
+          "status": "confirmed",
+          "topic": "participation",
+          "detail": "UNTC IV.4参与方表：1969-03-18批准ICCPR；不代表国内直接援引或个案符合条款。",
+          "sourceUrl": "https://treaties.un.org/Pages/ShowMTDSGDetails.aspx?chapter=4&lang=en&mtdsg_no=IV-4&src=UNTSONLINE&tabid=3"
+        },
+        {
+          "jurisdiction": "GB",
+          "status": "confirmed",
+          "topic": "participation",
+          "detail": "UNTC IV.4参与方表：1976-05-20批准ICCPR；英国保留和具体事件仍须分别审查。",
+          "sourceUrl": "https://treaties.un.org/Pages/ShowMTDSGDetails.aspx?chapter=4&lang=en&mtdsg_no=IV-4&src=UNTSONLINE&tabid=3"
+        }
+      ]
+    }
   },
   {
     "resourceId": "hrc-general-comment-34",
@@ -168,11 +549,11 @@
     "checkedAt": "2026-10-09",
     "applicability": "委员会对 ICCPR 的解释文件，与条约正文和当地法律地位分别核对；不是本案裁决。",
     "requiredMaterials": [
-      "核对原文、当前适用条件及本案材料；提交前由负责律师或协调人确认。"
+      "工作准备建议：标注实际受限的表达或程序事实，对照所引段落整理律师问题。"
     ],
     "type": "interpretation",
-    "locator": "CCPR/C/GC/34, paras. 11–13, 22–25, 47",
-    "summary": "解释表达自由和限制；第47段讨论诽谤法律。",
+    "locator": "CCPR/C/GC/34, para. 22, printed / PDF p. 6；CCPR/C/GC/34, para. 47, printed / PDF p. 12",
+    "summary": "第22段用于限制测试，第47段用于诽谤制度及处罚研究。",
     "eligibility": [
       "核对 ICCPR 适用性和所引段落上下文。"
     ],
@@ -180,12 +561,88 @@
     "agentCheckedAt": "2026-10-09",
     "teamReviewedAt": null,
     "unknowns": [
-      "团队尚未逐条人工复核；本案适用性、当地法律地位及当前程序要求待确认。"
+      "尚未进行具名团队人工复核。",
+      "ICCPR 在本案的适用条件、事实评价及国内程序效果仍须核对。"
     ],
     "tags": [
       "expression",
       "defamation"
-    ]
+    ],
+    "sourceAudit": {
+      "issuer": "联合国人权事务委员会",
+      "version": "CCPR/C/GC/34 英文正式文件",
+      "publishedOrEffective": "2011-09-12 发布；委员会第102届会议通过",
+      "checkedAt": "2026-10-09",
+      "readStatus": "full_text",
+      "readUrl": "https://documents.un.org/api/symbol/access?l=en&s=CCPR/C/GC/34&t=pdf",
+      "jurisdiction": [
+        "international"
+      ],
+      "proceedings": [
+        "all"
+      ],
+      "currentVersionStatus": "已读取发布机构在核查日提供的正文；不是个案适用性结论。",
+      "eventVersionStatus": "演示案未提供事件日期；不能确认事件时版本及程序条件。",
+      "provisions": [
+        {
+          "provisionId": "para22",
+          "locator": "CCPR/C/GC/34, para. 22, printed / PDF p. 6",
+          "quote": "necessity and proportionality",
+          "explanation": "限制需满足第19(3)列举目的及必要性、比例性测试；该段是委员会解释。",
+          "supports": [
+            "expression_restriction_test"
+          ]
+        },
+        {
+          "provisionId": "para47",
+          "locator": "CCPR/C/GC/34, para. 47, printed / PDF p. 12",
+          "quote": "imprisonment is never an appropriate penalty",
+          "explanation": "诽谤制度应保障表达、承认相关抗辩并避免过度处罚；委员会反对诽谤监禁处罚，不能据此宣布国内指控无效。",
+          "supports": [
+            "defamation_safeguards"
+          ]
+        }
+      ],
+      "confirmed": [
+        "已读所引段落及相邻段落；保留委员会解释文件类别。"
+      ],
+      "corrections": [
+        "以具体段落支持具体判断；不得当作国内法条或本案裁决。"
+      ],
+      "gaps": [
+        "ICCPR 在本案的适用条件、事实评价及国内程序效果仍须核对。"
+      ],
+      "relatedSources": [
+        {
+          "title": "UNTC IV.4 缔约状态及保留（页面截至2026-10-08）",
+          "url": "https://treaties.un.org/Pages/ShowMTDSGDetails.aspx?chapter=4&lang=en&mtdsg_no=IV-4&src=UNTSONLINE&tabid=3",
+          "locator": "Participant表：Kazakhstan / Tunisia / United Kingdom；Declarations and Reservations：英国条目；脚注43（撤回部分保留）。2026-10-09读取。"
+        }
+      ],
+      "jurisdictionChecks": [
+        {
+          "jurisdiction": "KZ",
+          "status": "confirmed",
+          "topic": "participation",
+          "detail": "UNTC IV.4参与方表：2006-01-24批准ICCPR；不代表国内直接援引或个案符合条款。",
+          "sourceUrl": "https://treaties.un.org/Pages/ShowMTDSGDetails.aspx?chapter=4&lang=en&mtdsg_no=IV-4&src=UNTSONLINE&tabid=3"
+        },
+        {
+          "jurisdiction": "TN",
+          "status": "confirmed",
+          "topic": "participation",
+          "detail": "UNTC IV.4参与方表：1969-03-18批准ICCPR；不代表国内直接援引或个案符合条款。",
+          "sourceUrl": "https://treaties.un.org/Pages/ShowMTDSGDetails.aspx?chapter=4&lang=en&mtdsg_no=IV-4&src=UNTSONLINE&tabid=3"
+        },
+        {
+          "jurisdiction": "GB",
+          "status": "confirmed",
+          "topic": "participation",
+          "detail": "UNTC IV.4参与方表：1976-05-20批准ICCPR；英国保留和具体事件仍须分别审查。",
+          "sourceUrl": "https://treaties.un.org/Pages/ShowMTDSGDetails.aspx?chapter=4&lang=en&mtdsg_no=IV-4&src=UNTSONLINE&tabid=3"
+        }
+      ]
+    }
   },
   {
     "resourceId": "hrc-general-comment-35",
@@ -194,11 +651,11 @@
     "checkedAt": "2026-10-09",
     "applicability": "委员会对 ICCPR 的解释文件，与条约正文和当地法律地位分别核对；不是本案裁决。",
     "requiredMaterials": [
-      "核对原文、当前适用条件及本案材料；提交前由负责律师或协调人确认。"
+      "工作准备建议：标注实际受限的表达或程序事实，对照所引段落整理律师问题。"
     ],
     "type": "interpretation",
-    "locator": "CCPR/C/GC/35, paras. 10–12",
-    "summary": "区分违法拘押与任意拘押，需结合具体情形。",
+    "locator": "CCPR/C/GC/35, para. 12, printed / PDF pp. 3–4；CCPR/C/GC/35, para. 4, printed / PDF p. 1",
+    "summary": "区分违法和任意，及不同款项的程序范围。",
     "eligibility": [
       "核对 ICCPR 适用性和所引段落上下文。"
     ],
@@ -206,11 +663,88 @@
     "agentCheckedAt": "2026-10-09",
     "teamReviewedAt": null,
     "unknowns": [
-      "团队尚未逐条人工复核；本案适用性、当地法律地位及当前程序要求待确认。"
+      "尚未进行具名团队人工复核。",
+      "ICCPR 在本案的适用条件、事实评价及国内程序效果仍须核对。"
     ],
     "tags": [
       "detention"
-    ]
+    ],
+    "sourceAudit": {
+      "issuer": "联合国人权事务委员会",
+      "version": "CCPR/C/GC/35 英文正式文件",
+      "publishedOrEffective": "2014-12-16 发布；第112届会议（2014-10）通过",
+      "checkedAt": "2026-10-09",
+      "readStatus": "full_text",
+      "readUrl": "https://documents.un.org/api/symbol/access?l=en&s=CCPR/C/GC/35&t=pdf",
+      "jurisdiction": [
+        "international"
+      ],
+      "proceedings": [
+        "criminal",
+        "administrative"
+      ],
+      "currentVersionStatus": "已读取发布机构在核查日提供的正文；不是个案适用性结论。",
+      "eventVersionStatus": "演示案未提供事件日期；不能确认事件时版本及程序条件。",
+      "provisions": [
+        {
+          "provisionId": "para12",
+          "locator": "CCPR/C/GC/35, para. 12, printed / PDF pp. 3–4",
+          "quote": "not to be equated with “against the law”",
+          "explanation": "任意性不等于违反国内法，还包括合理性、必要性、比例性及正当程序；不能仅由拘押存在得出任意结论。",
+          "supports": [
+            "arbitrary_detention_test"
+          ]
+        },
+        {
+          "provisionId": "para4",
+          "locator": "CCPR/C/GC/35, para. 4, printed / PDF p. 1",
+          "quote": "all persons deprived of liberty",
+          "explanation": "第9(4)审查保障不限于刑事拘押；第9(3)针对刑事指控。",
+          "supports": [
+            "detention_review"
+          ]
+        }
+      ],
+      "confirmed": [
+        "已读所引段落及相邻段落；保留委员会解释文件类别。"
+      ],
+      "corrections": [
+        "以具体段落支持具体判断；不得当作国内法条或本案裁决。"
+      ],
+      "gaps": [
+        "ICCPR 在本案的适用条件、事实评价及国内程序效果仍须核对。"
+      ],
+      "relatedSources": [
+        {
+          "title": "UNTC IV.4 缔约状态及保留（页面截至2026-10-08）",
+          "url": "https://treaties.un.org/Pages/ShowMTDSGDetails.aspx?chapter=4&lang=en&mtdsg_no=IV-4&src=UNTSONLINE&tabid=3",
+          "locator": "Participant表：Kazakhstan / Tunisia / United Kingdom；Declarations and Reservations：英国条目；脚注43（撤回部分保留）。2026-10-09读取。"
+        }
+      ],
+      "jurisdictionChecks": [
+        {
+          "jurisdiction": "KZ",
+          "status": "confirmed",
+          "topic": "participation",
+          "detail": "UNTC IV.4参与方表：2006-01-24批准ICCPR；不代表国内直接援引或个案符合条款。",
+          "sourceUrl": "https://treaties.un.org/Pages/ShowMTDSGDetails.aspx?chapter=4&lang=en&mtdsg_no=IV-4&src=UNTSONLINE&tabid=3"
+        },
+        {
+          "jurisdiction": "TN",
+          "status": "confirmed",
+          "topic": "participation",
+          "detail": "UNTC IV.4参与方表：1969-03-18批准ICCPR；不代表国内直接援引或个案符合条款。",
+          "sourceUrl": "https://treaties.un.org/Pages/ShowMTDSGDetails.aspx?chapter=4&lang=en&mtdsg_no=IV-4&src=UNTSONLINE&tabid=3"
+        },
+        {
+          "jurisdiction": "GB",
+          "status": "confirmed",
+          "topic": "participation",
+          "detail": "UNTC IV.4参与方表：1976-05-20批准ICCPR；英国保留和具体事件仍须分别审查。",
+          "sourceUrl": "https://treaties.un.org/Pages/ShowMTDSGDetails.aspx?chapter=4&lang=en&mtdsg_no=IV-4&src=UNTSONLINE&tabid=3"
+        }
+      ]
+    }
   },
   {
     "resourceId": "hrc-general-comment-32",
@@ -219,11 +753,11 @@
     "checkedAt": "2026-10-09",
     "applicability": "委员会对 ICCPR 的解释文件，与条约正文和当地法律地位分别核对；不是本案裁决。",
     "requiredMaterials": [
-      "核对原文、当前适用条件及本案材料；提交前由负责律师或协调人确认。"
+      "工作准备建议：标注实际受限的表达或程序事实，对照所引段落整理律师问题。"
     ],
     "type": "interpretation",
-    "locator": "CCPR/C/GC/32, paras. 22–25",
-    "summary": "解释审判保障，包括特别或军事法庭及公正公开审理。",
+    "locator": "CCPR/C/GC/32, paras. 32–34, printed / PDF p. 10",
+    "summary": "改用直接支持刑事律师沟通和辩护准备的第32–34段。",
     "eligibility": [
       "核对 ICCPR 适用性和所引段落上下文。"
     ],
@@ -231,36 +765,164 @@
     "agentCheckedAt": "2026-10-09",
     "teamReviewedAt": null,
     "unknowns": [
-      "团队尚未逐条人工复核；本案适用性、当地法律地位及当前程序要求待确认。"
+      "尚未进行具名团队人工复核。",
+      "ICCPR 在本案的适用条件、事实评价及国内程序效果仍须核对。"
     ],
     "tags": [
       "fair_trial"
-    ]
+    ],
+    "sourceAudit": {
+      "issuer": "联合国人权事务委员会",
+      "version": "CCPR/C/GC/32 英文正式文件",
+      "publishedOrEffective": "2007-08-23 发布；委员会第90届会议通过",
+      "checkedAt": "2026-10-09",
+      "readStatus": "full_text",
+      "readUrl": "https://documents.un.org/api/symbol/access?l=en&s=CCPR/C/GC/32&t=pdf",
+      "jurisdiction": [
+        "international"
+      ],
+      "proceedings": [
+        "criminal"
+      ],
+      "currentVersionStatus": "已读取发布机构在核查日提供的正文；不是个案适用性结论。",
+      "eventVersionStatus": "演示案未提供事件日期；不能确认事件时版本及程序条件。",
+      "provisions": [
+        {
+          "provisionId": "paras32-34",
+          "locator": "CCPR/C/GC/32, paras. 32–34, printed / PDF p. 10",
+          "quote": "access to documents and other evidence",
+          "explanation": "解释刑事辩护的准备时间、材料获取和及时保密律师沟通；具体不足及当地补救须由律师核对。",
+          "supports": [
+            "criminal_defence"
+          ]
+        }
+      ],
+      "confirmed": [
+        "已读所引段落及相邻段落；保留委员会解释文件类别。"
+      ],
+      "corrections": [
+        "以具体段落支持具体判断；不得当作国内法条或本案裁决。",
+        "从原22–25段更换为与律师沟通问题直接相关的32–34段。"
+      ],
+      "gaps": [
+        "ICCPR 在本案的适用条件、事实评价及国内程序效果仍须核对。"
+      ],
+      "relatedSources": [
+        {
+          "title": "UNTC IV.4 缔约状态及保留（页面截至2026-10-08）",
+          "url": "https://treaties.un.org/Pages/ShowMTDSGDetails.aspx?chapter=4&lang=en&mtdsg_no=IV-4&src=UNTSONLINE&tabid=3",
+          "locator": "Participant表：Kazakhstan / Tunisia / United Kingdom；Declarations and Reservations：英国条目；脚注43（撤回部分保留）。2026-10-09读取。"
+        }
+      ],
+      "jurisdictionChecks": [
+        {
+          "jurisdiction": "KZ",
+          "status": "confirmed",
+          "topic": "participation",
+          "detail": "UNTC IV.4参与方表：2006-01-24批准ICCPR；不代表国内直接援引或个案符合条款。",
+          "sourceUrl": "https://treaties.un.org/Pages/ShowMTDSGDetails.aspx?chapter=4&lang=en&mtdsg_no=IV-4&src=UNTSONLINE&tabid=3"
+        },
+        {
+          "jurisdiction": "TN",
+          "status": "confirmed",
+          "topic": "participation",
+          "detail": "UNTC IV.4参与方表：1969-03-18批准ICCPR；不代表国内直接援引或个案符合条款。",
+          "sourceUrl": "https://treaties.un.org/Pages/ShowMTDSGDetails.aspx?chapter=4&lang=en&mtdsg_no=IV-4&src=UNTSONLINE&tabid=3"
+        },
+        {
+          "jurisdiction": "GB",
+          "status": "confirmed",
+          "topic": "participation",
+          "detail": "UNTC IV.4参与方表：1976-05-20批准ICCPR；英国保留和具体事件仍须分别审查。",
+          "sourceUrl": "https://treaties.un.org/Pages/ShowMTDSGDetails.aspx?chapter=4&lang=en&mtdsg_no=IV-4&src=UNTSONLINE&tabid=3"
+        }
+      ]
+    }
   },
   {
     "resourceId": "wgad-submission",
-    "name": "任意拘留问题工作组：程序资料",
-    "officialUrl": "https://www.ohchr.org/sites/default/files/Documents/Publications/FactSheet26en.pdf",
+    "name": "任意拘留问题工作组：工作方法（A/HRC/36/38）",
+    "officialUrl": "https://documents.un.org/api/symbol/access?l=en&s=A/HRC/36/38&t=pdf",
     "checkedAt": "2026-10-09",
-    "applicability": "供拘押案件研究；须重新打开官方程序与问卷核对当前要求。",
+    "applicability": "供真实剥夺自由事项的条件性研究；纯民事费用压力、一般平台处罚或未拘押表达案件不能仅凭主题相近使用此机制。",
     "requiredMaterials": [
-      "核对原文、当前适用条件及本案材料；提交前由负责律师或协调人确认。"
+      "来源要求：拘押时间地点、身份、官方理由、适用法律、已行国内及国际措施及结果、最新状况。",
+      "工作准备建议：授权和披露范围记录；未确认前只制作内部候选路径对照。"
     ],
     "type": "un_mechanism",
-    "locator": "Fact Sheet No. 26, individual cases / model questionnaire",
-    "summary": "任意剥夺自由事项的研究入口；本次全文读取受阻，具体提交规则暂不作为已核实指导。",
+    "locator": "A/HRC/36/38, paras. 9–12, printed / PDF pp. 3–4；A/HRC/36/38, paras. 22–23, printed / PDF p. 5",
+    "summary": "已核查工作方法中书面材料和紧急行动条件；当前表格、渠道仍待递交前复核。",
     "eligibility": [
-      "提交方式、资格及与其他机制并行的影响须先核对。"
+      "须有可核对的剥夺自由事实及任意性理由，不凭拘押存在直接定性。",
+      "核查与其他个案机制的协调；不能照搬一般特别程序的全部操作规则。"
     ],
-    "reviewStatus": "unreviewed",
-    "agentCheckedAt": null,
+    "reviewStatus": "agent_checked",
+    "agentCheckedAt": "2026-10-09",
     "teamReviewedAt": null,
     "unknowns": [
-      "官方搜索索引可见，全文返回 403；团队须核对最新方法、表格和定位。"
+      "尚未进行具名团队人工复核。",
+      "现用问卷、递交渠道及是否存在随后程序更新未完整核查；实际提交前重新确认。",
+      "需确认确有剥夺自由、代表授权、披露风险及其他机制已受理情况。"
     ],
     "tags": [
       "detention"
-    ]
+    ],
+    "sourceAudit": {
+      "issuer": "联合国任意拘留问题工作组／人权理事会",
+      "version": "A/HRC/36/38（取代 A/HRC/33/66）",
+      "publishedOrEffective": "2017-07-13 发布",
+      "checkedAt": "2026-10-09",
+      "readStatus": "full_text",
+      "readUrl": "https://documents.un.org/api/symbol/access?l=en&s=A/HRC/36/38&t=pdf",
+      "jurisdiction": [
+        "international"
+      ],
+      "proceedings": [
+        "criminal",
+        "administrative"
+      ],
+      "currentVersionStatus": "2017 正文已读；OHCHR 当前提交指引仍链接该文件。未声称已核查全部最新操作表格。",
+      "eventVersionStatus": "演示案未提供事件日期；不能确认事件时版本及程序条件。",
+      "provisions": [
+        {
+          "provisionId": "paras9-12",
+          "locator": "A/HRC/36/38, paras. 9–12, printed / PDF pp. 3–4",
+          "quote": "Communications shall be submitted in writing",
+          "explanation": "书面材料包括身份、拘押时间地点与理由、适用法律、已采取措施和后续情况；可由本人、家属、代表等提供。",
+          "supports": [
+            "wgad_submission"
+          ]
+        },
+        {
+          "provisionId": "paras22-23",
+          "locator": "A/HRC/36/38, paras. 22–23, printed / PDF p. 5",
+          "quote": "in no way prejudge any opinion",
+          "explanation": "紧急行动与实体意见分开；紧急请求不预判拘押任意性。",
+          "supports": [
+            "wgad_urgent_action"
+          ]
+        }
+      ],
+      "confirmed": [
+        "从 OHCHR 特别程序正式入口确认指向本工作方法，并读取联合国正式正文。",
+        "第33(d)要求注意相同人和事实已交另一处理个案机构时的协调。"
+      ],
+      "corrections": [
+        "原 FactSheet26 官方地址本次读取仍失败；改为入口指向的正式工作方法，未将搜索摘要标为核实。",
+        "原unreviewed升级仅为agent_checked，未团队人工复核。"
+      ],
+      "gaps": [
+        "现用问卷、递交渠道及是否存在随后程序更新未完整核查；实际提交前重新确认。",
+        "需确认确有剥夺自由、代表授权、披露风险及其他机制已受理情况。"
+      ],
+      "relatedSources": [
+        {
+          "title": "OHCHR特别程序提交入口",
+          "url": "https://spsubmission.ohchr.org/",
+          "locator": "What are Communications? 后的WGAD工作方法链接，跳至 https://ap.ohchr.org/documents/dpage_e.aspx?si=A/HRC/36/38。"
+        }
+      ]
+    }
   },
   {
     "resourceId": "hrc-individual-communications",
@@ -273,98 +935,405 @@
     ],
     "type": "un_mechanism",
     "locator": "First Optional Protocol, Articles 1–5, printed pp. 302–303 / PDF pp. 63–64",
-    "summary": "第一任择议定书规定个人来文程序。",
+    "summary": "第一任择议定书的条件性个人来文机制；不能与条约缔约身份或一般特别程序混同。",
     "eligibility": [
-      "核对有关国家是否受第一任择议定书拘束。",
-      "核对用尽国内救济要求和例外；并行国际程序须专门审查。"
+      "被诉国须接受第一任择议定书；英国不符合该项，不应推荐。",
+      "KZ/TN 的缔约身份不免除管辖、时间、受害人、国内救济及重复程序检查。"
     ],
     "reviewStatus": "agent_checked",
     "agentCheckedAt": "2026-10-09",
     "teamReviewedAt": null,
     "unknowns": [
-      "团队尚未逐条人工复核；本案适用性、当地法律地位及当前程序要求待确认。"
+      "尚未进行具名团队人工复核。",
+      "本案受害人/代表资格、救济有效性与进展、重复程序、事件时间仍未知；不保证可受理。",
+      "当前表格和工作规则尚未逐项复核；本记录不是可直接递交的操作清单。"
     ],
     "tags": [
       "expression",
       "detention",
       "fair_trial"
-    ]
+    ],
+    "sourceAudit": {
+      "issuer": "第一任择议定书缔约国；人权事务委员会执行机制",
+      "version": "UNTS vol. 999, No. 14668 英文文本；另核 UNTC IV.5 状态表",
+      "publishedOrEffective": "1966-12-16 通过；1976-03-23 总体生效",
+      "checkedAt": "2026-10-09",
+      "readStatus": "full_text",
+      "readUrl": "https://treaties.un.org/doc/publication/unts/volume%20999/volume-999-i-14668-english.pdf",
+      "jurisdiction": [
+        "international"
+      ],
+      "proceedings": [
+        "all"
+      ],
+      "currentVersionStatus": "已读取发布机构在核查日提供的正文；不是个案适用性结论。",
+      "eventVersionStatus": "演示案未提供事件日期；不能确认事件时版本及程序条件。",
+      "provisions": [
+        {
+          "provisionId": "op1-arts1-5",
+          "locator": "First Optional Protocol, Articles 1–5, printed pp. 302–303 / PDF pp. 63–64",
+          "quote": "exhausted all available domestic remedies",
+          "explanation": "需被诉国接受第一任择议定书、受害人及管辖联系；通常穷尽救济，并核对重复国际程序、保留和例外。",
+          "supports": [
+            "hrc_individual_communication"
+          ]
+        }
+      ],
+      "confirmed": [
+        "已读第1–5条。",
+        "UNTC IV.5 2026-10-09 状态表：哈萨克斯坦2009-06-30批准、突尼斯2011-06-29加入；英国未列为缔约方。",
+        "哈萨克斯坦声明限定于议定书对其生效后的国家行为、遗漏、决定。"
+      ],
+      "corrections": [
+        "明确 ICCPR 缔约与个人来文资格不同；英国示例不得据 ICCPR 身份推荐该机制。"
+      ],
+      "gaps": [
+        "本案受害人/代表资格、救济有效性与进展、重复程序、事件时间仍未知；不保证可受理。",
+        "当前表格和工作规则尚未逐项复核；本记录不是可直接递交的操作清单。"
+      ],
+      "relatedSources": [
+        {
+          "title": "UNTC IV.5 第一任择议定书状态（截至2026-10-09）",
+          "url": "https://treaties.un.org/Pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-5&chapter=4&clang=_en",
+          "locator": "Participant表：Kazakhstan、Tunisia及完整列表（无英国）；Declarations and Reservations：Kazakhstan。"
+        },
+        {
+          "title": "ICCPR第一任择议定书正文",
+          "url": "https://treaties.un.org/doc/publication/unts/volume%20999/volume-999-i-14668-english.pdf",
+          "locator": "Articles 1–5, printed pp.302–303 / PDF pp.63–64"
+        }
+      ],
+      "jurisdictionChecks": [
+        {
+          "jurisdiction": "KZ",
+          "status": "confirmed",
+          "topic": "mechanism_eligibility",
+          "detail": "仅确认国家接受程序：2009-06-30批准；KZ声明限对其生效后国家行为。个案的时间、受害人、救济和重复程序条件未确认。",
+          "sourceUrl": "https://treaties.un.org/Pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-5&chapter=4&clang=_en"
+        },
+        {
+          "jurisdiction": "TN",
+          "status": "confirmed",
+          "topic": "mechanism_eligibility",
+          "detail": "仅确认国家接受程序：2011-06-29加入；个案的时间、受害人、救济和重复程序条件未确认。",
+          "sourceUrl": "https://treaties.un.org/Pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-5&chapter=4&clang=_en"
+        },
+        {
+          "jurisdiction": "GB",
+          "status": "not_met",
+          "topic": "mechanism_eligibility",
+          "detail": "英国未在第一任择议定书参与方表，不能以ICCPR缔约身份或第41条国家间来文声明替代个人来文资格。",
+          "sourceUrl": "https://treaties.un.org/Pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-5&chapter=4&clang=_en"
+        }
+      ]
+    }
   },
   {
     "resourceId": "echr-article-10",
     "name": "欧洲人权公约第 10 条：表达自由",
     "officialUrl": "https://www.echr.coe.int/documents/d/echr/convention_ENG",
     "checkedAt": "2026-10-09",
-    "applicability": "区域条约；需确认被诉国、管辖关系、相关时间及条款适用范围。不得直接套用于欧洲之外的案件。",
+    "applicability": "区域条约研究参考，适用条件需核对。三国演示中用于英国研究；不能因表达或拘押主题相同推荐为哈萨克斯坦、突尼斯适用依据。",
     "requiredMaterials": [
       "核对原文、当前适用条件及本案材料；提交前由负责律师或协调人确认。"
     ],
     "type": "treaty",
     "locator": "Article 10(1)–(2), printed pp. 12–13 / PDF p. 8",
-    "summary": "表达自由及限制条件。",
+    "summary": "区域表达权框架；并不自动决定英格兰和威尔士诽谤抗辩成立。",
     "eligibility": [
-      "当地援引方式与向欧洲人权法院申请的可受理性分别审查。"
+      "须涉及缔约国管辖和相应条款事实；不得按欧洲地理位置推定缔约。",
+      "当地援引路径、国家责任和向欧洲人权法院申请资格分别研究。"
     ],
     "reviewStatus": "agent_checked",
     "agentCheckedAt": "2026-10-09",
     "teamReviewedAt": null,
     "unknowns": [
-      "团队尚未逐条人工复核；本案适用性、当地法律地位及当前程序要求待确认。"
+      "尚未进行具名团队人工复核。",
+      "须确认被诉国家责任、事件时管辖、条款触发事实及相关保留/克减；国内援引和ECtHR可受理性分别判断。"
     ],
     "tags": [
       "expression",
       "defamation"
-    ]
+    ],
+    "sourceAudit": {
+      "issuer": "欧洲委员会；欧洲人权法院官方英文汇编",
+      "version": "经第11、14、15号议定书修订的公约正文",
+      "publishedOrEffective": "1950-11-04 开放签署；1953-09-03 生效；所读汇编纳入2021-08-01生效的第15号议定书",
+      "checkedAt": "2026-10-09",
+      "readStatus": "full_text",
+      "readUrl": "https://www.echr.coe.int/documents/d/echr/convention_ENG",
+      "jurisdiction": [
+        "Council of Europe"
+      ],
+      "proceedings": [
+        "all"
+      ],
+      "currentVersionStatus": "所读是官方现行入口汇编；三国示例中仅英国属于 ECHR 缔约国。当前保留/克减的完整状态页读取受限，未作穷尽排除。",
+      "eventVersionStatus": "演示案未提供事件日期；不能确认事件时版本及程序条件。",
+      "provisions": [
+        {
+          "provisionId": "art10-2",
+          "locator": "Article 10(1)–(2), printed pp. 12–13 / PDF p. 8",
+          "quote": "necessary in a democratic society",
+          "explanation": "限制须由法律规定、服务第10(2)列举目的并属民主社会所必要；声誉保护需与表达权一并分析。",
+          "supports": [
+            "expression_restriction_test"
+          ]
+        }
+      ],
+      "confirmed": [
+        "已读条款上下文；英国为缔约国的历史生效记录见法院官方说明册第23页。"
+      ],
+      "corrections": [
+        "用条款而不是欧洲地理标签判断范围；刑事权利与民事保障分开。"
+      ],
+      "gaps": [
+        "须确认被诉国家责任、事件时管辖、条款触发事实及相关保留/克减；国内援引和ECtHR可受理性分别判断。"
+      ],
+      "relatedSources": [
+        {
+          "title": "ECtHR：The European Convention on Human Rights — A living instrument",
+          "url": "https://rm.coe.int/convention-instrument-eng/1680a3f605",
+          "locator": "印刷pp.22–23 / PDF pp.12–13，Chart of signatures and ratifications；英国行；该册不是实时保留清单。"
+        },
+        {
+          "title": "欧洲委员会当前成员国页",
+          "url": "https://www.coe.int/en/web/portal/members-states",
+          "locator": "Member states完整列表，英国在列，哈萨克斯坦与突尼斯不在列；2026-10-09读取。非成员判断结合公约第59条与法院缔约表，不把地理位置当资格。"
+        }
+      ],
+      "jurisdictionChecks": [
+        {
+          "jurisdiction": "GB",
+          "status": "confirmed",
+          "topic": "participation",
+          "detail": "ECtHR官方缔约表：1951-03-08批准，1953-09-03生效；现行欧洲委员会成员名单交叉确认。当前保留/克减、个案管辖仍需核对。",
+          "sourceUrl": "https://rm.coe.int/convention-instrument-eng/1680a3f605"
+        },
+        {
+          "jurisdiction": "KZ",
+          "status": "not_met",
+          "topic": "participation",
+          "detail": "不属于ECHR缔约国；未列法院缔约表和欧洲委员会成员表。本案不得按欧洲地理关联推定适用。",
+          "sourceUrl": "https://www.coe.int/en/web/portal/members-states"
+        },
+        {
+          "jurisdiction": "TN",
+          "status": "not_met",
+          "topic": "participation",
+          "detail": "不属于ECHR缔约国；未列法院缔约表和欧洲委员会成员表。表达主题相同不能替代缔约资格。",
+          "sourceUrl": "https://www.coe.int/en/web/portal/members-states"
+        }
+      ]
+    }
   },
   {
     "resourceId": "echr-article-5",
     "name": "欧洲人权公约第 5 条：人身自由",
     "officialUrl": "https://www.echr.coe.int/documents/d/echr/convention_ENG",
     "checkedAt": "2026-10-09",
-    "applicability": "区域条约；需确认被诉国、管辖关系、相关时间及条款适用范围。不得直接套用于欧洲之外的案件。",
+    "applicability": "区域条约研究参考，适用条件需核对。三国演示中用于英国研究；不能因表达或拘押主题相同推荐为哈萨克斯坦、突尼斯适用依据。",
     "requiredMaterials": [
       "核对原文、当前适用条件及本案材料；提交前由负责律师或协调人确认。"
     ],
     "type": "treaty",
-    "locator": "Article 5(1)–(5), printed pp. 8–9 / PDF p. 6",
-    "summary": "人身自由、拘押依据与审查。",
+    "locator": "Article 5(4), printed p. 9 / PDF p. 6",
+    "summary": "涉及剥夺自由及法院审查；不推荐给未拘押的民事示例。",
     "eligibility": [
-      "当地援引方式与向欧洲人权法院申请的可受理性分别审查。"
+      "须涉及缔约国管辖和相应条款事实；不得按欧洲地理位置推定缔约。",
+      "当地援引路径、国家责任和向欧洲人权法院申请资格分别研究。"
     ],
     "reviewStatus": "agent_checked",
     "agentCheckedAt": "2026-10-09",
     "teamReviewedAt": null,
     "unknowns": [
-      "团队尚未逐条人工复核；本案适用性、当地法律地位及当前程序要求待确认。"
+      "尚未进行具名团队人工复核。",
+      "须确认被诉国家责任、事件时管辖、条款触发事实及相关保留/克减；国内援引和ECtHR可受理性分别判断。"
     ],
     "tags": [
       "detention"
-    ]
+    ],
+    "sourceAudit": {
+      "issuer": "欧洲委员会；欧洲人权法院官方英文汇编",
+      "version": "经第11、14、15号议定书修订的公约正文",
+      "publishedOrEffective": "1950-11-04 开放签署；1953-09-03 生效；所读汇编纳入2021-08-01生效的第15号议定书",
+      "checkedAt": "2026-10-09",
+      "readStatus": "full_text",
+      "readUrl": "https://www.echr.coe.int/documents/d/echr/convention_ENG",
+      "jurisdiction": [
+        "Council of Europe"
+      ],
+      "proceedings": [
+        "criminal",
+        "administrative"
+      ],
+      "currentVersionStatus": "所读是官方现行入口汇编；三国示例中仅英国属于 ECHR 缔约国。当前保留/克减的完整状态页读取受限，未作穷尽排除。",
+      "eventVersionStatus": "演示案未提供事件日期；不能确认事件时版本及程序条件。",
+      "provisions": [
+        {
+          "provisionId": "art5-4",
+          "locator": "Article 5(4), printed p. 9 / PDF p. 6",
+          "quote": "decided speedily by a court",
+          "explanation": "受公约管辖的拘押合法性审查保障；仅有民事诉讼压力不触发本条拘押保障。",
+          "supports": [
+            "detention_review"
+          ]
+        }
+      ],
+      "confirmed": [
+        "已读条款上下文；英国为缔约国的历史生效记录见法院官方说明册第23页。"
+      ],
+      "corrections": [
+        "用条款而不是欧洲地理标签判断范围；刑事权利与民事保障分开。"
+      ],
+      "gaps": [
+        "须确认被诉国家责任、事件时管辖、条款触发事实及相关保留/克减；国内援引和ECtHR可受理性分别判断。"
+      ],
+      "relatedSources": [
+        {
+          "title": "ECtHR：The European Convention on Human Rights — A living instrument",
+          "url": "https://rm.coe.int/convention-instrument-eng/1680a3f605",
+          "locator": "印刷pp.22–23 / PDF pp.12–13，Chart of signatures and ratifications；英国行；该册不是实时保留清单。"
+        },
+        {
+          "title": "欧洲委员会当前成员国页",
+          "url": "https://www.coe.int/en/web/portal/members-states",
+          "locator": "Member states完整列表，英国在列，哈萨克斯坦与突尼斯不在列；2026-10-09读取。非成员判断结合公约第59条与法院缔约表，不把地理位置当资格。"
+        }
+      ],
+      "jurisdictionChecks": [
+        {
+          "jurisdiction": "GB",
+          "status": "confirmed",
+          "topic": "participation",
+          "detail": "ECtHR官方缔约表：1951-03-08批准，1953-09-03生效；现行欧洲委员会成员名单交叉确认。当前保留/克减、个案管辖仍需核对。",
+          "sourceUrl": "https://rm.coe.int/convention-instrument-eng/1680a3f605"
+        },
+        {
+          "jurisdiction": "KZ",
+          "status": "not_met",
+          "topic": "participation",
+          "detail": "不属于ECHR缔约国；未列法院缔约表和欧洲委员会成员表。本案不得按欧洲地理关联推定适用。",
+          "sourceUrl": "https://www.coe.int/en/web/portal/members-states"
+        },
+        {
+          "jurisdiction": "TN",
+          "status": "not_met",
+          "topic": "participation",
+          "detail": "不属于ECHR缔约国；未列法院缔约表和欧洲委员会成员表。表达主题相同不能替代缔约资格。",
+          "sourceUrl": "https://www.coe.int/en/web/portal/members-states"
+        }
+      ]
+    }
   },
   {
     "resourceId": "echr-article-6",
     "name": "欧洲人权公约第 6 条：公正审判",
     "officialUrl": "https://www.echr.coe.int/documents/d/echr/convention_ENG",
     "checkedAt": "2026-10-09",
-    "applicability": "区域条约；需确认被诉国、管辖关系、相关时间及条款适用范围。不得直接套用于欧洲之外的案件。",
+    "applicability": "区域条约研究参考，适用条件需核对。三国演示中用于英国研究；不能因表达或拘押主题相同推荐为哈萨克斯坦、突尼斯适用依据。",
     "requiredMaterials": [
       "核对原文、当前适用条件及本案材料；提交前由负责律师或协调人确认。"
     ],
     "type": "treaty",
-    "locator": "Article 6(1)–(3), printed pp. 9–11 / PDF pp. 6–7",
-    "summary": "民事权利义务及刑事指控的公正审理保障。",
+    "locator": "Article 6(1), printed p. 9 / PDF p. 6；Article 6(3), printed p. 10 / PDF p. 7",
+    "summary": "公正审理的民事与刑事条款分开。",
     "eligibility": [
-      "当地援引方式与向欧洲人权法院申请的可受理性分别审查。"
+      "须涉及缔约国管辖和相应条款事实；不得按欧洲地理位置推定缔约。",
+      "当地援引路径、国家责任和向欧洲人权法院申请资格分别研究。"
     ],
     "reviewStatus": "agent_checked",
     "agentCheckedAt": "2026-10-09",
     "teamReviewedAt": null,
     "unknowns": [
-      "团队尚未逐条人工复核；本案适用性、当地法律地位及当前程序要求待确认。"
+      "尚未进行具名团队人工复核。",
+      "须确认被诉国家责任、事件时管辖、条款触发事实及相关保留/克减；国内援引和ECtHR可受理性分别判断。"
     ],
     "tags": [
       "fair_trial"
-    ]
+    ],
+    "sourceAudit": {
+      "issuer": "欧洲委员会；欧洲人权法院官方英文汇编",
+      "version": "经第11、14、15号议定书修订的公约正文",
+      "publishedOrEffective": "1950-11-04 开放签署；1953-09-03 生效；所读汇编纳入2021-08-01生效的第15号议定书",
+      "checkedAt": "2026-10-09",
+      "readStatus": "full_text",
+      "readUrl": "https://www.echr.coe.int/documents/d/echr/convention_ENG",
+      "jurisdiction": [
+        "Council of Europe"
+      ],
+      "proceedings": [
+        "criminal",
+        "civil"
+      ],
+      "currentVersionStatus": "所读是官方现行入口汇编；三国示例中仅英国属于 ECHR 缔约国。当前保留/克减的完整状态页读取受限，未作穷尽排除。",
+      "eventVersionStatus": "演示案未提供事件日期；不能确认事件时版本及程序条件。",
+      "provisions": [
+        {
+          "provisionId": "art6-1",
+          "locator": "Article 6(1), printed p. 9 / PDF p. 6",
+          "quote": "civil rights and obligations",
+          "explanation": "民事权利义务与刑事指控的公正审理保障；民事示例只引用第6(1)，不借用刑事最低权利。",
+          "supports": [
+            "civil_fair_hearing",
+            "fair_hearing"
+          ]
+        },
+        {
+          "provisionId": "art6-3",
+          "locator": "Article 6(3), printed p. 10 / PDF p. 7",
+          "quote": "criminal offence",
+          "explanation": "第6(3)辩护最低权利针对刑事指控，不能直接支持民事同名结论。",
+          "supports": [
+            "criminal_defence"
+          ]
+        }
+      ],
+      "confirmed": [
+        "已读条款上下文；英国为缔约国的历史生效记录见法院官方说明册第23页。"
+      ],
+      "corrections": [
+        "用条款而不是欧洲地理标签判断范围；刑事权利与民事保障分开。"
+      ],
+      "gaps": [
+        "须确认被诉国家责任、事件时管辖、条款触发事实及相关保留/克减；国内援引和ECtHR可受理性分别判断。"
+      ],
+      "relatedSources": [
+        {
+          "title": "ECtHR：The European Convention on Human Rights — A living instrument",
+          "url": "https://rm.coe.int/convention-instrument-eng/1680a3f605",
+          "locator": "印刷pp.22–23 / PDF pp.12–13，Chart of signatures and ratifications；英国行；该册不是实时保留清单。"
+        },
+        {
+          "title": "欧洲委员会当前成员国页",
+          "url": "https://www.coe.int/en/web/portal/members-states",
+          "locator": "Member states完整列表，英国在列，哈萨克斯坦与突尼斯不在列；2026-10-09读取。非成员判断结合公约第59条与法院缔约表，不把地理位置当资格。"
+        }
+      ],
+      "jurisdictionChecks": [
+        {
+          "jurisdiction": "GB",
+          "status": "confirmed",
+          "topic": "participation",
+          "detail": "ECtHR官方缔约表：1951-03-08批准，1953-09-03生效；现行欧洲委员会成员名单交叉确认。当前保留/克减、个案管辖仍需核对。",
+          "sourceUrl": "https://rm.coe.int/convention-instrument-eng/1680a3f605"
+        },
+        {
+          "jurisdiction": "KZ",
+          "status": "not_met",
+          "topic": "participation",
+          "detail": "不属于ECHR缔约国；未列法院缔约表和欧洲委员会成员表。本案不得按欧洲地理关联推定适用。",
+          "sourceUrl": "https://www.coe.int/en/web/portal/members-states"
+        },
+        {
+          "jurisdiction": "TN",
+          "status": "not_met",
+          "topic": "participation",
+          "detail": "不属于ECHR缔约国；未列法院缔约表和欧洲委员会成员表。表达主题相同不能替代缔约资格。",
+          "sourceUrl": "https://www.coe.int/en/web/portal/members-states"
+        }
+      ]
+    }
   },
   {
     "resourceId": "ecthr-applicants",
@@ -373,11 +1342,12 @@
     "checkedAt": "2026-10-09",
     "applicability": "仅在欧洲人权公约的国家、时间、管辖及受害人范围内考虑。",
     "requiredMaterials": [
-      "核对原文、当前适用条件及本案材料；提交前由负责律师或协调人确认。"
+      "工作准备建议：国内裁判与送达索引、救济记录、代表授权及拟投诉事项。",
+      "完整正式表格、签署、附件与期限要求由负责律师按现行规则47另行确认。"
     ],
     "type": "regional_mechanism",
-    "locator": "How to make a valid application; Rule 47; Admissibility Guide",
-    "summary": "申请须符合规定格式；形式完整不代表可受理。",
+    "locator": "Apply to the Court — How to make a valid application；Sending applications（不是Rule47全文核实）",
+    "summary": "已读申请说明；Rule47完整条文与本案可受理性仍须复核。",
     "eligibility": [
       "由律师核对国内救济、期限计算、重复程序及 Rule 47 文件要求。",
       "本工具不计算申请期限，不承诺立案。"
@@ -386,13 +1356,88 @@
     "agentCheckedAt": "2026-10-09",
     "teamReviewedAt": null,
     "unknowns": [
-      "团队尚未逐条人工复核；本案适用性、当地法律地位及当前程序要求待确认。"
+      "尚未进行具名团队人工复核。",
+      "Rule47 PDF 初次可识别但重复正文读取失败；未据它填写完整材料清单或计算期限。",
+      "须由律师审查国内救济、最终裁决和送达日期、受害人资格、国家责任、重复程序及期限规则。"
     ],
     "tags": [
       "expression",
       "detention",
       "fair_trial"
-    ]
+    ],
+    "sourceAudit": {
+      "issuer": "欧洲人权法院（ECtHR）",
+      "version": "Apply to the Court 在线申请说明",
+      "publishedOrEffective": "页面未标明更新日；2026-10-09 读取",
+      "checkedAt": "2026-10-09",
+      "readStatus": "partial_text",
+      "readUrl": "https://www.echr.coe.int/apply-to-the-court",
+      "jurisdiction": [
+        "Council of Europe"
+      ],
+      "proceedings": [
+        "all"
+      ],
+      "currentVersionStatus": "已读取发布机构在核查日提供的正文；不是个案适用性结论。",
+      "eventVersionStatus": "演示案未提供事件日期；不能确认事件时版本及程序条件。",
+      "provisions": [
+        {
+          "provisionId": "valid-application",
+          "locator": "How to make a valid application；Sending applications",
+          "quote": "complies with Rule 47",
+          "explanation": "申请须满足规则47的信息及文件要求；形式不足可能不获审查，形式完整也不等于可受理。",
+          "supports": [
+            "ecthr_application_preparation"
+          ]
+        }
+      ],
+      "confirmed": [
+        "已读取申请说明页面正文与其对Rule47的要求。",
+        "该页面提示邮寄要求，并明确传真不会中断四个月期限。"
+      ],
+      "corrections": [
+        "将读取范围限定为申请说明，未把链接可见当作完整规则审阅。"
+      ],
+      "gaps": [
+        "Rule47 PDF 初次可识别但重复正文读取失败；未据它填写完整材料清单或计算期限。",
+        "须由律师审查国内救济、最终裁决和送达日期、受害人资格、国家责任、重复程序及期限规则。"
+      ],
+      "relatedSources": [
+        {
+          "title": "ECtHR：The European Convention on Human Rights — A living instrument",
+          "url": "https://rm.coe.int/convention-instrument-eng/1680a3f605",
+          "locator": "印刷pp.22–23 / PDF pp.12–13，Chart of signatures and ratifications；英国行；该册不是实时保留清单。"
+        },
+        {
+          "title": "欧洲委员会当前成员国页",
+          "url": "https://www.coe.int/en/web/portal/members-states",
+          "locator": "Member states完整列表，英国在列，哈萨克斯坦与突尼斯不在列；2026-10-09读取。非成员判断结合公约第59条与法院缔约表，不把地理位置当资格。"
+        }
+      ],
+      "jurisdictionChecks": [
+        {
+          "jurisdiction": "GB",
+          "status": "confirmed",
+          "topic": "participation",
+          "detail": "ECtHR官方缔约表：1951-03-08批准，1953-09-03生效；现行欧洲委员会成员名单交叉确认。当前保留/克减、个案管辖仍需核对。",
+          "sourceUrl": "https://rm.coe.int/convention-instrument-eng/1680a3f605"
+        },
+        {
+          "jurisdiction": "KZ",
+          "status": "not_met",
+          "topic": "participation",
+          "detail": "不属于ECHR缔约国；未列法院缔约表和欧洲委员会成员表。本案不得按欧洲地理关联推定适用。",
+          "sourceUrl": "https://www.coe.int/en/web/portal/members-states"
+        },
+        {
+          "jurisdiction": "TN",
+          "status": "not_met",
+          "topic": "participation",
+          "detail": "不属于ECHR缔约国；未列法院缔约表和欧洲委员会成员表。表达主题相同不能替代缔约资格。",
+          "sourceUrl": "https://www.coe.int/en/web/portal/members-states"
+        }
+      ]
+    }
   },
   {
     "resourceId": "frontline-protection-grants",
@@ -401,24 +1446,63 @@
     "checkedAt": "2026-10-09",
     "applicability": "限于和平人权活动所致风险及符合计划的保护费用；不是通用诉讼资助。",
     "requiredMaterials": [
-      "核对原文、当前适用条件及本案材料；提交前由负责律师或协调人确认。"
+      "来源要求及工作准备：保护需要与和平活动的关联、具体费用预算、安全联系方式。",
+      "获批后按要求留存支出收据与完工报告；本工具不保证批准或额度。"
     ],
     "type": "assistance",
-    "locator": "Protection Grants — eligible security costs; exclusions; application and reporting",
+    "locator": "Protection Grants — eligible provisions；does not provide funding；application and reporting",
     "summary": "为处于风险中的人权捍卫者提供安全保护资助的评估入口。",
     "eligibility": [
-      "核对活动、风险、具体保护费用及计划排除项。",
-      "需安全联系方式与预算；批准与金额由机构决定。"
+      "需核对和平人权活动与具体风险的关联；职业标签本身不够。",
+      "不资助追溯费用、同目的重复受资助项目、已流亡者费用、一般生活费等；机构最终评估。",
+      "需安全且获准使用的联系方式、项目预算，并按要求保留报告和收据；一般不承担全部预算。"
     ],
     "reviewStatus": "agent_checked",
     "agentCheckedAt": "2026-10-09",
     "teamReviewedAt": null,
     "unknowns": [
-      "团队尚未逐条人工复核；本案适用性、当地法律地位及当前程序要求待确认。"
+      "尚未进行具名团队人工复核。",
+      "是否属于计划所指人权捍卫者、预算资格、资金可用性及安全联络授权待确认。"
     ],
     "tags": [
       "assistance",
       "journalist_safety"
-    ]
+    ],
+    "sourceAudit": {
+      "issuer": "Front Line Defenders",
+      "version": "Protection Grants 在线计划说明",
+      "publishedOrEffective": "页面未标明更新日；2026-10-09 读取",
+      "checkedAt": "2026-10-09",
+      "readStatus": "full_text",
+      "readUrl": "https://www.frontlinedefenders.org/en/programme/protection-grants",
+      "jurisdiction": [
+        "international"
+      ],
+      "proceedings": [
+        "all"
+      ],
+      "currentVersionStatus": "已读取发布机构在核查日提供的正文；不是个案适用性结论。",
+      "eventVersionStatus": "演示案未提供事件日期；不能确认事件时版本及程序条件。",
+      "provisions": [
+        {
+          "provisionId": "grant-scope-exclusions",
+          "locator": "Protection Grants — eligible provisions；does not provide funding；application and reporting",
+          "quote": "supporting legal fees for HRDs who are being judicially harassed",
+          "explanation": "保护资助可包含遭司法骚扰的人权捍卫者法律费用；需符合和平活动风险与保护用途，非通用诉讼基金。",
+          "supports": [
+            "defender_protection_assistance"
+          ]
+        }
+      ],
+      "confirmed": [
+        "已读安全保护范围、排除项目、安全联系方式及报告/收据要求。"
+      ],
+      "corrections": [
+        "明确法律费用可能覆盖，但不能把任意诉讼都称为可获资助。"
+      ],
+      "gaps": [
+        "是否属于计划所指人权捍卫者、预算资格、资金可用性及安全联络授权待确认。"
+      ]
+    }
   }
 ]

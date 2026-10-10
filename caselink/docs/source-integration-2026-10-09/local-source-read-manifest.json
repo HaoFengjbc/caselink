@@ -1,0 +1,36 @@
+{
+  "checkedAt": "2026-10-09",
+  "note": "本地直接正式来源读取的校验记录；原始文件是临时读取材料，不作为上传案情或团队审核证据。原网址与读取范围见local-rules.md及sourceAudit。",
+  "reads": [
+    {
+      "id": "kz_official_russian_html",
+      "sha256": "07b2c70649386a79537c916fb6e5397b27bacc9f90f4387da074963687ae25a0",
+      "bytes": 2964195
+    },
+    {
+      "id": "tn_parliament_constitution_pdf",
+      "sha256": "0f292e706681494857770cb513b853415b28f225beeb95dc607e06f1f77c67fd",
+      "bytes": 7658310
+    },
+    {
+      "id": "ew_defamation_s1_xml",
+      "sha256": "211c2b9cbcd72b1c18a3aff7e02cee19cefc0f614ca5d9023b7b05414caa1c4c",
+      "bytes": 8046
+    },
+    {
+      "id": "ew_defamation_s4_xml",
+      "sha256": "138743e2b92f67013708a351f82d10899e2844d8520cff5be8809ce235738689",
+      "bytes": 10275
+    },
+    {
+      "id": "ew_eccta_s195_xml",
+      "sha256": "7b47f2a53c4957f55c87e78d469bcebc9ff5360ab1446fb3e64e053e9d8a3239",
+      "bytes": 21296
+    },
+    {
+      "id": "ew_cpr3_html",
+      "sha256": "4db453548f7c8d437bce1fdc9d04b0a6e849c7cd78247820eb3d2926fb3de7f3",
+      "bytes": 137306
+    }
+  ]
+}

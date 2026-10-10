@@ -1,0 +1,410 @@
+[
+  {
+    "caseId": "emna-chargui",
+    "originalFactsAsOf": "2021-06",
+    "checkedAt": "2026-10-09",
+    "searchStatus": "updates_found",
+    "summary": "找到报告后2022年UPR及2025年非洲委员会平行报告中的公开倡议材料；没有找到足以核实原刑事上诉最终结果的新正文。原报告记载的德国庇护不作为新增变化，2022年CFJ网页发布日期也不改写2021-06事实截至日。",
+    "events": [
+      {
+        "eventId": "emna-followup-hrw-upr",
+        "proceeding": "Emna Chargui；2020年转发疫情讽刺诗相关刑事程序（原报告2021-06）；后续国别人权审议倡议",
+        "subjects": [
+          "Emna Chargui"
+        ],
+        "eventDate": "2022-03-30",
+        "datePrecision": "day",
+        "actors": [
+          "Human Rights Watch"
+        ],
+        "action": "公开发布第四轮突尼斯UPR提交材料，在表达自由部分列入该案并提出停止惩罚公共议题表达等建议。",
+        "executionStatus": "implemented",
+        "outcome": "确认的是材料公开发表；未由此确认上诉结果、撤罪或国家采纳建议。",
+        "relationshipToOutcome": "sequence_only",
+        "causalAttribution": null,
+        "sourceIds": [
+          "tn-hrw-upr-20220330"
+        ],
+        "unknowns": [
+          "日期为公开发表日，具体向联合国递交日和官方收件记录本次未核实。",
+          "UPR国别材料不是个人申诉受理或本案司法裁判。"
+        ]
+      },
+      {
+        "eventId": "emna-followup-hrw-achpr-publication",
+        "proceeding": "Emna Chargui；2020年转发疫情讽刺诗相关刑事程序（原报告2021-06）；后续区域国别审议倡议",
+        "subjects": [
+          "Emna Chargui"
+        ],
+        "eventDate": "2025-09-26",
+        "datePrecision": "day",
+        "actors": [
+          "Human Rights Watch"
+        ],
+        "action": "公开发布非洲人权和民族权委员会平行报告，并在案例附录列入该案；机构正文称该报告为第85届会议提交材料。",
+        "executionStatus": "implemented",
+        "outcome": "仅确认公开文件及机构对提交的陈述；未查到该案裁判因此改变或委员会受理个人案件的证据。",
+        "relationshipToOutcome": "sequence_only",
+        "causalAttribution": null,
+        "sourceIds": [
+          "tn-hrw-achpr-20250926"
+        ],
+        "unknowns": [
+          "2025-09-26为发布日期；正文提及2025-10-21至30日会议，不能据此前发布日期确定实际递交日。",
+          "未独立取得委员会收件或该项材料采纳记录；不是个案申诉。",
+          "附录重述历史判刑，不证明该刑罚到2025年仍在执行。"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "sourceId": "tn-hrw-upr-20220330",
+        "title": "Universal Periodic Review Submission on Tunisia",
+        "url": "https://www.hrw.org/news/2022/03/30/universal-periodic-review-submission-tunisia",
+        "publisher": "Human Rights Watch",
+        "publishedAt": "2022-03-30",
+        "locator": "Fourth Cycle, 41st Session; Freedom of Expression → Activists, bloggers, and journalists, paragraphs naming Chargui and Bribri, notes 22 and 24",
+        "quote": "Fourth Cycle of the Universal Periodic Review, 41st Session",
+        "readStatus": "partial_text",
+        "checkedAt": "2026-10-09",
+        "reviewStatus": "agent_checked",
+        "teamReviewedAt": null,
+        "teamReviewer": null
+      },
+      {
+        "sourceId": "tn-hrw-achpr-20250926",
+        "title": "Rapport parallèle sur la mise en œuvre par la Tunisie de la Charte africaine des droits de l’homme et des peuples, et du Protocole relatif à cette Charte",
+        "url": "https://www.hrw.org/fr/news/2025/09/26/rapport-parallele-sur-la-mise-en-oeuvre-par-la-tunisie-de-la-charte-africaine-des",
+        "publisher": "Human Rights Watch",
+        "publishedAt": "2025-09-26",
+        "locator": "Opening submission description; Annex case list items 8 (Bribri), 11 (Chargui), notes 48 and 51",
+        "quote": "Soumis à la Commission africaine des droits de l’homme et des peuples",
+        "readStatus": "partial_text",
+        "checkedAt": "2026-10-09",
+        "reviewStatus": "agent_checked",
+        "teamReviewedAt": null,
+        "teamReviewer": null
+      },
+      {
+        "sourceId": "emna-cfj-report-landing-20220126",
+        "title": "Tunisia vs. Emna Chargui",
+        "url": "https://cfj.org/reports/tunisia-vs-emna-chargui/",
+        "publisher": "Clooney Foundation for Justice",
+        "publishedAt": "2022-01-26",
+        "locator": "Publication date, synopsis and report download link",
+        "quote": "Published 26 January 2022",
+        "readStatus": "full_text",
+        "checkedAt": "2026-10-09",
+        "reviewStatus": "agent_checked",
+        "teamReviewedAt": null,
+        "teamReviewer": null
+      }
+    ],
+    "searchedSources": [
+      "检索英文/法文 Emna Chargui、Emna Charki、Emna Charqui 与 appeal/appel、2021–2026；阿拉伯文 آمنة الشرقي 与 استئناف。",
+      "读取CFJ报告落地页及既有2021-06报告记录；CFJ 2020声明和2021-06发布说明仅作基线定位。",
+      "读取HRW 2022 UPR和2025非洲委员会平行报告涉及Emna的正文及引注；检查Amnesty、国家人权/宗教自由报告与其他检索命中是否仅重述2020事件。"
+    ],
+    "unknowns": [
+      "本次公开检索未找到2021-06后该刑事上诉的可核查终局裁判；不等于没有变化或仍然未决。",
+      "未核实当前旅行、威胁、居留及庇护状态，不把2021记录延伸至2026。",
+      "没有法院案号、裁判原件、代理律师现时确认或机制收件证据；需要团队取得公开裁判或获授权的律师核对。",
+      "仅标机构曾公开涉及该案，不声称当前接案或与CaseLink合作。"
+    ]
+  },
+  {
+    "caseId": "myriam-bribri",
+    "originalFactsAsOf": "2021-06",
+    "checkedAt": "2026-10-09",
+    "searchStatus": "updates_found",
+    "summary": "补入2021-12不利判决、律师上诉、2022年预定听证和公开倡议，以及CFJ称辩护团队曾在上诉听证使用报告。2022/2025国别审议材料继续提及该案，但本轮未核实终局上诉结果；宣判日、上诉日和缓刑表述存在来源差异。",
+    "events": [
+      {
+        "eventId": "myriam-followup-conviction",
+        "proceeding": "Myriam Bribri；2020年评论警察暴力视频、电信法第86条相关刑事程序（原报告2021-06）",
+        "subjects": [
+          "Myriam Bribri"
+        ],
+        "eventDate": "2021-12",
+        "datePrecision": "month",
+        "actors": [
+          "Sfax一审法院（据HRW、Amnesty及Front Line Defenders公开报道）"
+        ],
+        "action": "来源报告法院作出四个月监禁及500突尼斯第纳尔罚金的定罪裁判。",
+        "executionStatus": "implemented",
+        "outcome": "相较原报告仍在审理的状态，这是不利一审结果；不表示监禁已执行，也不是终局上诉结局。",
+        "relationshipToOutcome": "sequence_only",
+        "causalAttribution": null,
+        "sourceIds": [
+          "myriam-hrw-20220125",
+          "myriam-amnesty-20220928",
+          "myriam-fld-20220927"
+        ],
+        "unknowns": [
+          "HRW/FLD写2021-12-21，Amnesty法文写12-20，故只存月级日期。",
+          "Amnesty法文写avec sursis，HRW写上诉期间暂时自由；未读判决原件，不合并为已确定的缓刑/执行结论。",
+          "原材料对起诉的描述和NGO法律评价不是本系统独立法院事实认定。"
+        ]
+      },
+      {
+        "eventId": "myriam-followup-defence-appeal",
+        "proceeding": "Myriam Bribri；2020年评论警察暴力视频、电信法第86条相关刑事程序（原报告2021-06）",
+        "subjects": [
+          "Myriam Bribri"
+        ],
+        "eventDate": "2021-12",
+        "datePrecision": "month",
+        "actors": [
+          "Myriam Bribri的辩护律师"
+        ],
+        "action": "就一审判决启动上诉；Amnesty另记检方也上诉。",
+        "executionStatus": "implemented",
+        "outcome": "确认公开来源记载律师已采取程序行动；HRW于2022-01-25报告她上诉期间暂时自由，未说明上诉成功。",
+        "relationshipToOutcome": "sequence_only",
+        "causalAttribution": null,
+        "sourceIds": [
+          "myriam-amnesty-20220928",
+          "myriam-fld-20220927",
+          "myriam-hrw-20220125"
+        ],
+        "unknowns": [
+          "FLD写12-22启动程序，Amnesty写12-23提出上诉，可能是不同程序节点，本次不能消解；按月记录。",
+          "缺递交凭证、案号、检方上诉范围及最终裁判。"
+        ]
+      },
+      {
+        "eventId": "myriam-followup-scheduled-hearing",
+        "proceeding": "Myriam Bribri；2020年评论警察暴力视频、电信法第86条相关刑事程序（原报告2021-06）",
+        "subjects": [
+          "Myriam Bribri"
+        ],
+        "eventDate": "2022-09-28",
+        "datePrecision": "day",
+        "actors": [
+          "Sfax上诉法院（据FLD 2022-09-27预告）"
+        ],
+        "action": "公开资料预告2022-09-28上诉听证。",
+        "executionStatus": "planned",
+        "outcome": "该来源证明排期，不能证明当日实际开庭或裁判。",
+        "relationshipToOutcome": "sequence_only",
+        "causalAttribution": null,
+        "sourceIds": [
+          "myriam-fld-20220927",
+          "myriam-amnesty-20220928"
+        ],
+        "unknowns": [
+          "没有该日庭审记录；后续来源存在其他拟裁判日期线索，未据此推定实际发生。"
+        ]
+      },
+      {
+        "eventId": "myriam-followup-amnesty-advocacy",
+        "proceeding": "Myriam Bribri；2020年评论警察暴力视频、电信法第86条相关刑事程序（原报告2021-06）",
+        "subjects": [
+          "Myriam Bribri"
+        ],
+        "eventDate": "2022-09-28",
+        "datePrecision": "day",
+        "actors": [
+          "Amnesty International；Amna Guellali"
+        ],
+        "action": "在预定上诉听证前公开发表声明，要求撤销定罪和刑罚。",
+        "executionStatus": "implemented",
+        "outcome": "公开声明确已发表；撤销定罪是声明诉求，本次未证明实现。",
+        "relationshipToOutcome": "sequence_only",
+        "causalAttribution": null,
+        "sourceIds": [
+          "myriam-amnesty-20220928"
+        ],
+        "unknowns": [
+          "没有材料证明声明导致法院改变决定，也不能假定当事人对新的公开使用继续同意。"
+        ]
+      },
+      {
+        "eventId": "myriam-followup-report-used-appeal",
+        "proceeding": "Myriam Bribri；2020年评论警察暴力视频、电信法第86条相关刑事程序（原报告2021-06）",
+        "subjects": [
+          "Myriam Bribri"
+        ],
+        "eventDate": null,
+        "datePrecision": "unknown",
+        "actors": [
+          "Myriam Bribri的辩护团队；CFJ/TrialWatch（报告提供方）"
+        ],
+        "action": "CFJ官方页面记载辩护团队在上诉听证中使用TrialWatch公平审判报告。",
+        "executionStatus": "implemented",
+        "outcome": "具体使用方式、听证日期及法院如何处理报告未说明；本轮未查明终局结果。",
+        "relationshipToOutcome": "attributed_claim",
+        "causalAttribution": "CFJ页面引述Myriam称TrialWatch扩大国际关注并给当局压力；这是当事人的归属陈述，不是本系统认定报告导致司法结果。",
+        "sourceIds": [
+          "myriam-cfj-appeal-testimonial"
+        ],
+        "unknowns": [
+          "网页未给发布日期或听证日期，不能把2026-10-09核查日当行动日。",
+          "暂无上诉卷宗独立验证报告是否正式提交、作为何种证据或被法院引用。",
+          "机构曾参与该案不代表当前可接案或已有合作。"
+        ]
+      },
+      {
+        "eventId": "myriam-followup-hrw-upr",
+        "proceeding": "Myriam Bribri；2020年评论警察暴力视频、电信法第86条相关刑事程序（原报告2021-06）；后续国别人权审议倡议",
+        "subjects": [
+          "Myriam Bribri"
+        ],
+        "eventDate": "2022-03-30",
+        "datePrecision": "day",
+        "actors": [
+          "Human Rights Watch"
+        ],
+        "action": "公开发布第四轮突尼斯UPR提交材料，在表达自由部分列入该案并提出停止惩罚公共议题表达等建议。",
+        "executionStatus": "implemented",
+        "outcome": "确认的是材料公开发表；未由此确认上诉结果、撤罪或国家采纳建议。",
+        "relationshipToOutcome": "sequence_only",
+        "causalAttribution": null,
+        "sourceIds": [
+          "tn-hrw-upr-20220330"
+        ],
+        "unknowns": [
+          "日期为公开发表日，具体向联合国递交日和官方收件记录本次未核实。",
+          "UPR国别材料不是个人申诉受理或本案司法裁判。"
+        ]
+      },
+      {
+        "eventId": "myriam-followup-hrw-achpr-publication",
+        "proceeding": "Myriam Bribri；2020年评论警察暴力视频、电信法第86条相关刑事程序（原报告2021-06）；后续区域国别审议倡议",
+        "subjects": [
+          "Myriam Bribri"
+        ],
+        "eventDate": "2025-09-26",
+        "datePrecision": "day",
+        "actors": [
+          "Human Rights Watch"
+        ],
+        "action": "公开发布非洲人权和民族权委员会平行报告，并在案例附录列入该案；机构正文称该报告为第85届会议提交材料。",
+        "executionStatus": "implemented",
+        "outcome": "仅确认公开文件及机构对提交的陈述；未查到该案裁判因此改变或委员会受理个人案件的证据。",
+        "relationshipToOutcome": "sequence_only",
+        "causalAttribution": null,
+        "sourceIds": [
+          "tn-hrw-achpr-20250926"
+        ],
+        "unknowns": [
+          "2025-09-26为发布日期；正文提及2025-10-21至30日会议，不能据此前发布日期确定实际递交日。",
+          "未独立取得委员会收件或该项材料采纳记录；不是个案申诉。",
+          "附录重述历史判刑，不证明该刑罚到2025年仍在执行。"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "sourceId": "myriam-hrw-20220125",
+        "title": "Tunisian Activist Sentenced to Prison over Criticism of Police",
+        "url": "https://www.hrw.org/news/2022/01/25/tunisian-activist-sentenced-prison-over-criticism-police",
+        "publisher": "Human Rights Watch",
+        "publishedAt": "2022-01-25",
+        "locator": "Opening two paragraphs: sentence reported for December 21, 2021; provisional liberty pending appeal",
+        "quote": "She remains provisionally free pending her appeal.",
+        "readStatus": "full_text",
+        "checkedAt": "2026-10-09",
+        "reviewStatus": "agent_checked",
+        "teamReviewedAt": null,
+        "teamReviewer": null
+      },
+      {
+        "sourceId": "myriam-amnesty-20220928",
+        "title": "Tunisie. Les accusations sans fondement pesant sur Myriam Bribri doivent être abandonnées",
+        "url": "https://www.amnesty.org/fr/latest/news/2022/09/tunisia-drop-bogus-charges-against-activist-myriam-bribri/",
+        "publisher": "Amnesty International",
+        "publishedAt": "2022-09-28",
+        "locator": "Opening statement by Amna Guellali; Informations complémentaires, paragraph beginning Le 20 décembre 2021",
+        "quote": "L’avocat de Myriam Bribri a fait appel de ce verdict le 23 décembre 2021.",
+        "readStatus": "full_text",
+        "checkedAt": "2026-10-09",
+        "reviewStatus": "agent_checked",
+        "teamReviewedAt": null,
+        "teamReviewer": null
+      },
+      {
+        "sourceId": "myriam-fld-20220927",
+        "title": "Woman human rights defender Meriem Bribri appeal session is scheduled for 28 September 2022",
+        "url": "https://www.frontlinedefenders.org/en/case/woman-human-rights-defender-meriem-bribri-appeal-session-scheduled-28-september-2022",
+        "publisher": "Front Line Defenders",
+        "publishedAt": "2022-09-27",
+        "locator": "Update dated 27 September 2022; retained update dated 24 December 2021, paragraph on appeal starting December 22",
+        "quote": "On 22 December, the lawyer of the woman human rights defender had started an appeal process against the conviction.",
+        "readStatus": "full_text",
+        "checkedAt": "2026-10-09",
+        "reviewStatus": "agent_checked",
+        "teamReviewedAt": null,
+        "teamReviewer": null
+      },
+      {
+        "sourceId": "myriam-cfj-appeal-testimonial",
+        "title": "Testimonial Slides Archive — Myriam Bribri",
+        "url": "https://cfj.org/testimonials/",
+        "publisher": "Clooney Foundation for Justice",
+        "publishedAt": null,
+        "locator": "Myriam Bribri section, attributed testimonial and immediately following Our Impact text",
+        "quote": "Myriam Bribri's defense team used TrialWatch’s Fairness Report at her appeal hearing.",
+        "readStatus": "partial_text",
+        "checkedAt": "2026-10-09",
+        "reviewStatus": "agent_checked",
+        "teamReviewedAt": null,
+        "teamReviewer": null
+      },
+      {
+        "sourceId": "tn-hrw-upr-20220330",
+        "title": "Universal Periodic Review Submission on Tunisia",
+        "url": "https://www.hrw.org/news/2022/03/30/universal-periodic-review-submission-tunisia",
+        "publisher": "Human Rights Watch",
+        "publishedAt": "2022-03-30",
+        "locator": "Fourth Cycle, 41st Session; Freedom of Expression → Activists, bloggers, and journalists, paragraphs naming Chargui and Bribri, notes 22 and 24",
+        "quote": "Fourth Cycle of the Universal Periodic Review, 41st Session",
+        "readStatus": "partial_text",
+        "checkedAt": "2026-10-09",
+        "reviewStatus": "agent_checked",
+        "teamReviewedAt": null,
+        "teamReviewer": null
+      },
+      {
+        "sourceId": "tn-hrw-achpr-20250926",
+        "title": "Rapport parallèle sur la mise en œuvre par la Tunisie de la Charte africaine des droits de l’homme et des peuples, et du Protocole relatif à cette Charte",
+        "url": "https://www.hrw.org/fr/news/2025/09/26/rapport-parallele-sur-la-mise-en-oeuvre-par-la-tunisie-de-la-charte-africaine-des",
+        "publisher": "Human Rights Watch",
+        "publishedAt": "2025-09-26",
+        "locator": "Opening submission description; Annex case list items 8 (Bribri), 11 (Chargui), notes 48 and 51",
+        "quote": "Soumis à la Commission africaine des droits de l’homme et des peuples",
+        "readStatus": "partial_text",
+        "checkedAt": "2026-10-09",
+        "reviewStatus": "agent_checked",
+        "teamReviewedAt": null,
+        "teamReviewer": null
+      },
+      {
+        "sourceId": "myriam-cpj-snjt-timep-upr2022",
+        "title": "Joint Stakeholder Submission to the UN Human Rights Council: Universal Periodic Review – Republic of Tunisia, 41st Session",
+        "url": "https://cpj.org/wp-content/uploads/2022/10/UPR-Tunisia-2022-CPJ-SNJT-TIMEP-FINAL.pdf",
+        "publisher": "Committee to Protect Journalists; National Syndicate for Tunisian Journalists; Tahrir Institute for Middle East Policy",
+        "publishedAt": null,
+        "locator": "Cover PDF p.1; paragraph 54 PDF p.9 (printed 9); recommendations paragraph 55 PDF pp.10–11",
+        "quote": "Joint Stakeholder Submission to the UN Human Rights Council",
+        "readStatus": "partial_text",
+        "checkedAt": "2026-10-09",
+        "reviewStatus": "agent_checked",
+        "teamReviewedAt": null,
+        "teamReviewer": null
+      }
+    ],
+    "searchedSources": [
+      "英文/法文 Myriam Bribri、Meriem Bribri/Breibri 与 appeal/appel/acquittée/2021–2026；阿拉伯文 مريم البريبري 与 استئناف。",
+      "直接读取HRW 2022-01-25访谈报道、Amnesty 2022-09-28法文声明、FLD 2021-12-24与2022-09-27更新、CFJ testimonial对应段落。",
+      "直接读取HRW 2022UPR、2025非洲委员会平行报告及CPJ/SNJT/TIMEP联合UPR PDF封面、§54–55；联合PDF证明公开材料，递交日不明故未重复计成已提交事件。",
+      "读取Inkyfada 2022-11-24采访中的本人表述作风险背景；WJWC 2022-10-09页面只预告10-12裁判，不是最终结果证据；未据此添加新判决。"
+    ],
+    "unknowns": [
+      "终局上诉、可能的再审及监禁实际执行情况本次未核实；未找到更新不等于没有变化。",
+      "一审判决20/21日及上诉22/23日冲突保留，需判决与递交凭证消解。",
+      "未核实2026当前威胁状态与任何新的、不同程序；不把同名其他案件并入。",
+      "公开倡议、辩护使用研究报告及国别审议材料不能相加为成功行动数量。"
+    ]
+  }
+]

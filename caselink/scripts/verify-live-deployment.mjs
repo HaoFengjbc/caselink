@@ -11,7 +11,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const require = createRequire(import.meta.url);
 const modules = new Map();
 const moduleUrls = new Map();
-const fixtureAllowlist=new Set(['src/lib/workflow-contracts.ts','src/lib/contracts.ts','src/lib/intake/contracts.ts','src/lib/research/contracts.ts','src/lib/research/plan.ts','data/demo/fixtures.ts']);
+const fixtureAllowlist=new Set(['src/lib/legal-contracts.ts','src/lib/workflow-contracts.ts','src/lib/contracts.ts','src/lib/intake/contracts.ts','src/lib/research/contracts.ts','src/lib/research/plan.ts','data/demo/fixtures.ts']);
 async function fixtureModule(relative) {
   if(!fixtureAllowlist.has(relative))throw new Error('LOCAL_INPUT_ERROR');
   if (modules.has(relative)) return modules.get(relative);
@@ -22,6 +22,10 @@ async function fixtureModule(relative) {
       await fixtureModule('src/lib/workflow-contracts.ts');
       const dependency=moduleUrls.get('src/lib/workflow-contracts.ts');
       source=source.replace(/\bfrom\s*['"]\.\.?\/workflow-contracts['"]/g,`from ${JSON.stringify(dependency)}`);
+    }
+    if(relative==='src/lib/contracts.ts'){
+      await fixtureModule('src/lib/legal-contracts.ts');
+      source=source.replace(/\bfrom\s*['"]\.\/legal-contracts['"]/g,`from ${JSON.stringify(moduleUrls.get('src/lib/legal-contracts.ts'))}`);
     }
     if(relative==='src/lib/contracts.ts')for(const kind of ['intake','research']){
       const dependency=`src/lib/${kind}/contracts.ts`;await fixtureModule(dependency);

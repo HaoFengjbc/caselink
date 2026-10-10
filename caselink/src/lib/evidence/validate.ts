@@ -1,3 +1,4 @@
+import {buildLegalResearch,validateLegalCitations,legalJurisdiction,legalProceeding} from '../legal-research';
 import { cases, documents, evidence, resources } from '../corpus';
 import { ActionOptionSchema, ModelAnalysisOutputSchema, WebModelAnalysisOutputSchema, type WebModelAnalysisOutput, type ModelAnalysisOutput, type NewCaseInput, type Evidence, type CaseRecord } from '../contracts';
 import { AnalysisError } from '../ai/errors';
@@ -104,6 +105,8 @@ function validateModelCore(raw:unknown,input:NewCaseInput,context:AnalysisContex
   const parsed=ModelAnalysisOutputSchema.safeParse(raw);
   if(!parsed.success)fail('AI 返回格式不合法或内容不完整，未生成有效结果。');
   const result=parsed.data;
+  const legalErrors=validateLegalCitations(result,input,buildLegalResearch(input,locale));
+  if(legalErrors.length)fail(legalErrors.join('；'));
   if(needsGoalClarification(input)){
     const allowed=buildRuleReference(input,undefined,locale).actionOptions.map(a=>ActionOptionSchema.parse(a));
     if(JSON.stringify(result.actionOptions)!==JSON.stringify(allowed))fail('目标未确定时，行动仅限服务器提供的需求澄清与材料梳理模板，不能生成具体程序目标。');
@@ -127,6 +130,16 @@ function validateModelCore(raw:unknown,input:NewCaseInput,context:AnalysisContex
     checkPrivateContactBoundary(action.steps,input);
     if(action.goal!==input.primaryGoal)fail('生成方案更改了用户的当前目标。');
     if(action.resourceIds.some(id=>!context.resources.some(r=>r.resourceId===id)))fail('生成方案引用了未经提供的机构入口。');
+    for(const id of action.resourceIds){
+      const resource=context.resources.find(r=>r.resourceId===id)!;const audit=resource.sourceAudit;
+      const jurisdiction=legalJurisdiction(input),country=jurisdiction.startsWith('GB-')?'GB':jurisdiction;
+      if(audit?.jurisdictionChecks?.some(c=>c.jurisdiction===country&&c.status==='not_met'))fail('本案不满足该资源的国家或机制资格，不能推荐为适用依据。');
+      if(['domestic_law','procedure_rule'].includes(resource.type??'')&&!audit?.jurisdiction.includes(jurisdiction))fail('当地规则与本案具体法域不匹配。');
+      const proceeding=legalProceeding(input);
+      if(audit&&proceeding==='civil'&&!audit.proceedings.includes('civil')&&!audit.proceedings.includes('all'))fail('不能将仅刑事或拘押程序资源推荐为民事案件依据。');
+      if(['domestic_law','procedure_rule','treaty','interpretation'].includes(resource.type??'')&&!(action.legalCitations??[]).some(c=>c.resourceId===id))fail('法律依据必须对应本行动中的具体判断和条款，不能仅附资源ID。');
+    }
+
     if(action.resourceIds.includes('cpj-emergency-help')&&input.background.personType!=='journalist'&&!input.background.activities.some(a=>a==='reporting'||a==='investigation_report'))fail('当前资料没有确认新闻工作背景，不能默认适用记者协助入口。');
     if(action.requiresPublicity&&publicityRestricted&&action.applicability==='priority')fail(disclosureNotes?'你提供了具体披露说明或补充回答；总体可公开不能覆盖这些边界。请先逐项确认可披露内容、接收对象、方式与同意范围。':'生成方案违反了当前公开限制。');
     if(privateScope&&action.requiresPublicity&&action.applicability!=='defer')fail('具体披露边界尚未核实时，公开传播必须暂缓；只能先内部梳理并确认同意范围。');

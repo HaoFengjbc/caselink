@@ -1,3 +1,4 @@
+import {buildLegalResearch,attachRuleLegalCitations} from '../legal-research';
 import {captureReportSnapshot} from '../reports/snapshot';
 import {assessDomain,requireResearchScope} from '../research/domain';
 import {resolveJurisdiction} from '../jurisdiction';
@@ -10,7 +11,8 @@ import { retrieveNarrativeCandidates } from '../retrieval/candidates';
 import { buildRuleReference } from '../retrieval/rules';
 import { contextFor, collectSources, validateModelOutput, validateWebModelOutput } from '../evidence/validate';
 import { presetOutput } from '../../../data/demo/presets';
-import { cases } from '../corpus';
+import { cases,followups } from '../corpus';
+import {buildNextSteps,validateNextStepLinks} from '../next-steps';
 import type { Locale } from '../i18n/locale';
 import { hashInput } from './hash';
 import { readConfig, requireLiveConfiguration, type ServerConfig } from './config';
@@ -43,6 +45,7 @@ export async function analyzeInput(raw:NewCaseInput,options:{forceRule?:boolean;
   const domain=assessDomain(input,locale),jurisdiction=resolveJurisdiction(input);
   if(domain.status!=='in_scope')matches=[];
   const context=contextFor(matches);
+  const legalResearch=buildLegalResearch(input,locale);
   let mode:AnalysisResult['mode'];let output:ModelAnalysisOutput|WebModelAnalysisOutput;let webResearch:WebResearch|undefined;
   let attempts=0;const recovery:NonNullable<AnalysisResult['researchAssessment']>['recovery']='not_needed';
   if(options.forceRule){mode='rule_reference';output=buildRuleReference(input,matches,locale);}
@@ -68,6 +71,7 @@ export async function analyzeInput(raw:NewCaseInput,options:{forceRule?:boolean;
     // Matching labels and dimensions are deterministic, never upgraded by the model.
     output.comparableCases=output.comparableCases.map(c=>{const match=matches.find(m=>m.record.caseId===c.caseId);return match?{...c,relevance:match.comparison.relevance,matchDimensions:match.comparison.matchDimensions}:c;});
   }
+  if(mode!=='live_ai')output=attachRuleLegalCitations(output,legalResearch);
   output=webResearch?.status==='completed'
     ?validateWebModelOutput(output,input,context,webResearch,locale)
     :validateModelOutput(output,input,context,locale);
@@ -106,7 +110,12 @@ export async function analyzeInput(raw:NewCaseInput,options:{forceRule?:boolean;
   for(const e of context.evidence)if(historicalIds.has(e.evidenceId)&&!sourceIds.has(e.evidenceId)){referencedSources.push(e);sourceIds.add(e.evidenceId);}
   // Chinese results keep their original shape; only other languages are tagged.
   checkCancelled();
-  const result=AnalysisResultSchema.parse({...output,domain,jurisdiction,execution:currentExecution()??{...executionFor(options.identity??{requestId:randomUUID(),inputVersion:1,operation:'initial'}),actualCostUsd:mode==='live_ai'?null:0},...(webResearch?{webResearch}:{}),actionOrigins,researchAssessment,analysisId:randomUUID(),schemaVersion:SCHEMA_VERSION,inputHash,corpusVersion:CORPUS_VERSION,promptVersion:PROMPT_VERSION,createdAt:new Date().toISOString(),mode,historicalComparisons,sources:referencedSources,...(locale==='zh'?{}:{locale})});
+  const nextSteps=buildNextSteps(input,output,legalResearch,followups,locale);
+  const followupCaseIds=new Set([...output.comparableCases.map(c=>c.caseId),...nextSteps.flatMap(step=>step.history.map(h=>h.caseId))]);
+  const selectedFollowups=followups.filter(f=>followupCaseIds.has(f.caseId));
+  const nextStepErrors=validateNextStepLinks(nextSteps,output,legalResearch,selectedFollowups);
+  if(nextStepErrors.length)throw new AnalysisError('INVALID_MODEL_OUTPUT',nextStepErrors.join('；'),502);
+  const result=AnalysisResultSchema.parse({...output,legalResearch,nextSteps,followups:selectedFollowups,domain,jurisdiction,execution:currentExecution()??{...executionFor(options.identity??{requestId:randomUUID(),inputVersion:1,operation:'initial'}),actualCostUsd:mode==='live_ai'?null:0},...(webResearch?{webResearch}:{}),actionOrigins,researchAssessment,analysisId:randomUUID(),schemaVersion:SCHEMA_VERSION,inputHash,corpusVersion:CORPUS_VERSION,promptVersion:PROMPT_VERSION,createdAt:new Date().toISOString(),mode,historicalComparisons,sources:referencedSources,...(locale==='zh'?{}:{locale})});
   result.snapshot=captureReportSnapshot(result,locale);
   return result;
 }

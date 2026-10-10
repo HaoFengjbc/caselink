@@ -1,0 +1,456 @@
+[
+  {
+    "resourceId": "kz-criminal-procedure-detention",
+    "name": "哈萨克斯坦刑事诉讼法：拘押文书、复核与替代措施",
+    "officialUrl": "https://old.adilet.zan.kz/rus/docs/K1400000231",
+    "checkedAt": "2026-10-09",
+    "applicability": "用于刑事审前拘押的文书和复核研究；不是对本案拘押违法或应获释的结论。",
+    "requiredMaterials": [
+      "拘押决定与宣告/送达记录",
+      "准确罪名、刑罚范围和程序阶段",
+      "拘押理由及更轻措施的评估材料"
+    ],
+    "type": "procedure_rule",
+    "locator": "Article 140(2); Article 107(1)(1), (2), (3); Article 147(1), (1-1), (2); Article 148(7-1)",
+    "summary": "用于刑事审前拘押的文书和复核研究；不是对本案拘押违法或应获释的结论。",
+    "eligibility": [
+      "限哈萨克斯坦刑事程序；第107条路径针对审前调查中的侦查法官决定。",
+      "必须核对决定种类、作出及宣告日期、申请人身份和期限恢复条件。",
+      "拘押通常涉及第147(1)条刑罚门槛及例外；不能只凭记者身份判断。"
+    ],
+    "reviewStatus": "agent_checked",
+    "agentCheckedAt": "2026-10-09",
+    "teamReviewedAt": null,
+    "unknowns": [
+      "虚构示例未给事件日期、准确罪名或拘押决定，不能计算申请期限或保证替代措施。",
+      "现有律师已索取文书，无需重复问是否已有律师；应确认是否取得及宣告时间。",
+      "俄文条文和本案对应适用由当地律师复核；没有团队人工审核。"
+    ],
+    "tags": [
+      "expression",
+      "local_rule"
+    ],
+    "sourceAudit": {
+      "issuer": "哈萨克斯坦立法机关；司法部法律与法律信息研究所 Adilet 发布",
+      "version": "2014-07-04 No.231-V；Adilet 2026-10-09读取的俄文合并正文",
+      "publishedOrEffective": "法典2014-07-04制定；各修订生效依条文脚注，未以制定日冒充全部条文生效日。",
+      "checkedAt": "2026-10-09",
+      "readStatus": "partial_text",
+      "readUrl": "https://old.adilet.zan.kz/rus/docs/K1400000231",
+      "jurisdiction": [
+        "KZ"
+      ],
+      "proceedings": [
+        "criminal"
+      ],
+      "currentVersionStatus": "已读取第5、107、140、147、148条及对应脚注。107条列2025-07-16 No.210-VIII修订；140条列2020-07-07 No.361-VI修订及2026-06-10宪法法院注释；147条列2019-12-27 No.292-VI修订。未通读全法典。",
+      "eventVersionStatus": "第5条以程序行为/决定发生时生效法为准；示例无该日期，事件时版本未锁定。",
+      "provisions": [
+        {
+          "provisionId": "art140-2",
+          "locator": "Article 140(2)",
+          "quote": "Копия постановления вручается лицу",
+          "explanation": "刑事强制措施决定应载明涉嫌罪行和理由，向被采取措施者交付副本并说明申诉程序；现有材料尚不能证明文书未依法交付。",
+          "supports": [
+            "kz_detention_order_copy"
+          ]
+        },
+        {
+          "provisionId": "art107-1-2",
+          "locator": "Article 107(1)(1), (2), (3)",
+          "quote": "в течение трех суток с момента его оглашения",
+          "explanation": "审前调查中，嫌疑人及辩护人等可对侦查法官的拘押或延押决定提出复核；第107(2)条规定自宣告起三日，正当理由逾期可申请恢复，不能根据“未来两周审查”推算期限。",
+          "supports": [
+            "kz_detention_review"
+          ]
+        },
+        {
+          "provisionId": "art147-1-2",
+          "locator": "Article 147(1), (1-1), (2); Article 148(7-1)",
+          "quote": "невозможность применения менее строгих мер пресечения",
+          "explanation": "第147条要求审查更轻措施能否采用，申请与法官决定须说明理由；拘押还有刑罚门槛及列明例外，不能直接推出本案应获释。",
+          "supports": [
+            "kz_detention_alternatives"
+          ]
+        }
+      ],
+      "confirmed": [
+        "同机构俄文正文直接读取，英文入口明确为非正式译文，不以英文单独确定现行法。",
+        "已核对复核、文书及更轻措施的具体条款。"
+      ],
+      "corrections": [
+        "不将审前复核等同审判阶段上诉；不生成未经材料核算的截止日期。"
+      ],
+      "gaps": [
+        "虚构示例未给事件日期、准确罪名或拘押决定，不能计算申请期限或保证替代措施。",
+        "现有律师已索取文书，无需重复问是否已有律师；应确认是否取得及宣告时间。",
+        "俄文条文和本案对应适用由当地律师复核；没有团队人工审核。"
+      ]
+    }
+  },
+  {
+    "resourceId": "tn-constitution-expression",
+    "name": "突尼斯2022年宪法：表达自由与限制条件",
+    "officialUrl": "https://www.arp.tn/document/download/82535",
+    "checkedAt": "2026-10-09",
+    "applicability": "为转发讽刺内容遭刑事起诉提供国内宪法研究框架；不证明具体罪名、案件应撤诉或某申诉程序可受理。",
+    "requiredMaterials": [
+      "完整转发内容及语境",
+      "起诉/传唤文书与适用法条",
+      "行为、起诉及庭审日期"
+    ],
+    "type": "domestic_law",
+    "locator": "Article 37; printed pp.12–13 / PDF pp.14–15; Article 55; printed p.16 / PDF p.18",
+    "summary": "为转发讽刺内容遭刑事起诉提供国内宪法研究框架；不证明具体罪名、案件应撤诉或某申诉程序可受理。",
+    "eligibility": [
+      "限突尼斯；2022宪法第37、55条，不沿用2014宪法的条号。",
+      "须识别限制所依据法律、目的、必要性与比例；刑事起诉文书未取得前不确定实体罪名。"
+    ],
+    "reviewStatus": "agent_checked",
+    "agentCheckedAt": "2026-10-09",
+    "teamReviewedAt": null,
+    "unknowns": [
+      "已核对宪法正文；没有可靠锁定本案具体刑事指控、行为时及当前该罪名法律的版本。",
+      "不因网络转发自行认定适用2022年第54号法令第24条；其最新修订、生效及有利刑法溯及问题尚需正式公报核对。",
+      "未核实可用宪法审查程序、提出主体或期限；宪法不替代刑事程序法。",
+      "阿拉伯文中文说明待团队和当地律师复核；无具名人工审核。"
+    ],
+    "tags": [
+      "expression",
+      "local_rule"
+    ],
+    "sourceAudit": {
+      "issuer": "突尼斯共和国；国民代表大会官方参考文本",
+      "version": "2022-07-25宪法；议会官方扫描本；2026-10-09核读第37、55条原页",
+      "publishedOrEffective": "名义日期2022-07-25；2022-08-17颁布。第142条规定自选举机构宣布公投最终结果之日起生效，并由总统颁布公布；本次未独立核查该最终结果决定的生效时间线。",
+      "checkedAt": "2026-10-09",
+      "readStatus": "partial_text",
+      "readUrl": "https://www.arp.tn/document/download/82535",
+      "jurisdiction": [
+        "TN"
+      ],
+      "proceedings": [
+        "criminal",
+        "civil",
+        "administrative"
+      ],
+      "currentVersionStatus": "议会参考文本当前仍提供2022宪法；本次完整阅读引用页，未以网页存在证明2026年所有配套法或可用程序。另核对总理府官方2023印本入口。",
+      "eventVersionStatus": "示例没有行为/起诉日期，不能确定事件时宪法及实体刑法版本。",
+      "provisions": [
+        {
+          "provisionId": "art37",
+          "locator": "Article 37; printed pp.12–13 / PDF pp.14–15",
+          "quote": "حرية الرأي والفكر والتعبير والإعلام والنشر مضمونة",
+          "explanation": "第37条保障意见、思想、表达、信息和出版自由并禁止事前审查；该保障需与具体起诉条款及第55条限制条件一并研究。",
+          "supports": [
+            "tn_expression_guarantee"
+          ]
+        },
+        {
+          "provisionId": "art55",
+          "locator": "Article 55; printed p.16 / PDF p.18",
+          "quote": "ومتناسبة مع دواعيها",
+          "explanation": "第55条要求权利限制有法律依据、民主制度中的必要性及规定目的，不损及权利实质并符合比例；本案起诉依据和限制理由未知，不能先判不合宪。",
+          "supports": [
+            "tn_expression_limit_test"
+          ]
+        }
+      ],
+      "confirmed": [
+        "议会扫描本PDF第14–15及18页视觉核对，明确第37与55条。",
+        "范围是已读条款，未声称刑事法或司法机制全面覆盖。",
+        "另视觉核对PDF第49–50页（印刷47–48页）第141–142条及2022-08-17签署信息。"
+      ],
+      "corrections": [
+        "使用2022年宪法条号；不将历史54号法令罚则当作2026年现行已核查法。"
+      ],
+      "gaps": [
+        "已核对宪法正文；没有可靠锁定本案具体刑事指控、行为时及当前该罪名法律的版本。",
+        "不因网络转发自行认定适用2022年第54号法令第24条；其最新修订、生效及有利刑法溯及问题尚需正式公报核对。",
+        "未核实可用宪法审查程序、提出主体或期限；宪法不替代刑事程序法。",
+        "阿拉伯文中文说明待团队和当地律师复核；无具名人工审核。"
+      ]
+    }
+  },
+  {
+    "resourceId": "ew-defamation-act-2013",
+    "name": "Defamation Act 2013：严重损害与公共利益抗辩",
+    "officialUrl": "https://www.legislation.gov.uk/ukpga/2013/26",
+    "checkedAt": "2026-10-09",
+    "applicability": "英格兰和威尔士民事诽谤的严重损害门槛与公共利益抗辩；公共采购主题不能单独证明抗辩成立。",
+    "requiredMaterials": [
+      "被指摘的具体表述和发表日期",
+      "函件中损害主张及索赔者身份",
+      "采访核验、编辑判断与发表时相信公共利益的材料"
+    ],
+    "type": "domestic_law",
+    "locator": "Section 1(1)–(2); as-enacted printed p.1 / PDF p.5; Section 4(1)–(5); as-enacted printed pp.2–3 / PDF pp.6–7",
+    "summary": "英格兰和威尔士民事诽谤的严重损害门槛与公共利益抗辩；公共采购主题不能单独证明抗辩成立。",
+    "eligibility": [
+      "限英格兰和威尔士民事诽谤；不得套用苏格兰或北爱尔兰。",
+      "第4条要求公共利益事项与合理相信发表符合公共利益；法院考虑全部情形及编辑判断。",
+      "第1(2)条额外财务损失条件只适用于营利法人。"
+    ],
+    "reviewStatus": "agent_checked",
+    "agentCheckedAt": "2026-10-09",
+    "teamReviewedAt": null,
+    "unknowns": [
+      "索赔者是否营利法人、具体含义与严重损害依据未知。",
+      "无事件日期；不能据今日条文替代发表时法律与判例分析。",
+      "真实、诚实意见等其他抗辩及判例未作穷尽覆盖；本案由当地律师审查。"
+    ],
+    "tags": [
+      "expression",
+      "local_rule"
+    ],
+    "sourceAudit": {
+      "issuer": "英国议会 / 英国国家档案馆 legislation.gov.uk",
+      "version": "2013 c.26，sections 1 and 4，官方latest revised XML及原始PDF交叉读取",
+      "publishedOrEffective": "2013-04-25制定；第1、4条2014-01-01生效（SI 2013/3027 art.2）",
+      "checkedAt": "2026-10-09",
+      "readStatus": "partial_text",
+      "readUrl": "https://www.legislation.gov.uk/ukpga/2013/26",
+      "jurisdiction": [
+        "GB-EAW"
+      ],
+      "proceedings": [
+        "civil"
+      ],
+      "currentVersionStatus": "2026-10-09已读取官方 /section/1/data.xml 和 /section/4/data.xml 当前条文及生效注记；原始PDF正文页1–3交叉核对。",
+      "eventVersionStatus": "示例无发表/函件日期，事件时版本及适用判例未锁定。",
+      "provisions": [
+        {
+          "provisionId": "s1",
+          "locator": "Section 1(1)–(2); as-enacted printed p.1 / PDF p.5",
+          "quote": "serious harm to the reputation of the claimant",
+          "explanation": "第1条要求发表已造成或可能造成名誉严重损害；营利法人还须严重财务损失，不能只凭收到律师函认定损害成立。",
+          "supports": [
+            "ew_serious_harm"
+          ]
+        },
+        {
+          "provisionId": "s4",
+          "locator": "Section 4(1)–(5); as-enacted printed pp.2–3 / PDF pp.6–7",
+          "quote": "the defendant reasonably believed",
+          "explanation": "第4条公共利益抗辩须同时证明事项涉及公共利益及被告合理相信发表符合公共利益；应保存发表时的核验和编辑判断材料。",
+          "supports": [
+            "ew_public_interest_defence"
+          ]
+        }
+      ],
+      "confirmed": [
+        "已读官方现行XML和PDF相关条文；条文地域范围E+W。"
+      ],
+      "corrections": [
+        "不把公共采购报道自动判作抗辩成立。"
+      ],
+      "gaps": [
+        "索赔者是否营利法人、具体含义与严重损害依据未知。",
+        "无事件日期；不能据今日条文替代发表时法律与判例分析。",
+        "真实、诚实意见等其他抗辩及判例未作穷尽覆盖；本案由当地律师审查。"
+      ]
+    }
+  },
+  {
+    "resourceId": "ew-media-protocol",
+    "name": "Pre-action Protocol for Media and Communications Claims：民事诉前回应",
+    "officialUrl": "https://www.justice.gov.uk/courts/procedure-rules/civil/protocol/prot_def",
+    "checkedAt": "2026-10-09",
+    "applicability": "英格兰和威尔士媒体争议诉前程序，适合仅收到律师函的阶段；不代表已起诉或已成立SLAPP。",
+    "requiredMaterials": [
+      "完整函件、收件时间与其中回应期限",
+      "具体报道、对方指摘表述及含义",
+      "严重损害主张与尚缺资料清单"
+    ],
+    "type": "procedure_rule",
+    "locator": "Paragraphs 3.2, 3.6–3.7",
+    "summary": "英格兰和威尔士媒体争议诉前程序，适合仅收到律师函的阶段；不代表已起诉或已成立SLAPP。",
+    "eligibility": [
+      "限媒体与传播民事诉前争议（§1.1）；不是刑事辩护规则。",
+      "§3.2列明诽谤函件应说明的内容，§3.6–3.7规定回应与具体索取资料。",
+      "须核对函件是否要求短于14日回应；协议所述14日不是可忽略函件或法院命令的安全期限。"
+    ],
+    "reviewStatus": "agent_checked",
+    "agentCheckedAt": "2026-10-09",
+    "teamReviewedAt": null,
+    "unknowns": [
+      "虚构示例尚无准确收件日与回应期限；不计算截止日。",
+      "已知尚未收到法院文件，不重复追问是否已有判决。",
+      "只拟内部回应提纲；任何联系或发送需当事人另行决定。"
+    ],
+    "tags": [
+      "expression",
+      "local_rule"
+    ],
+    "sourceAudit": {
+      "issuer": "英格兰和威尔士民事程序规则体系；英国司法部发布",
+      "version": "司法部现行在线协议；页面标注2019-10-01更新",
+      "publishedOrEffective": "网页更新2019-10-01；本次未核查全部历史修订及过渡规则。",
+      "checkedAt": "2026-10-09",
+      "readStatus": "partial_text",
+      "readUrl": "https://www.justice.gov.uk/courts/procedure-rules/civil/protocol/prot_def",
+      "jurisdiction": [
+        "GB-EAW"
+      ],
+      "proceedings": [
+        "civil"
+      ],
+      "currentVersionStatus": "2026-10-09直接读取司法部正文§1.1–1.4、3.1–3.7；不将页面更新日当成全部规则生效日。",
+      "eventVersionStatus": "函件日期未知；律师须核对收件时协议版本与任何法院命令。",
+      "provisions": [
+        {
+          "provisionId": "paras3-2-3-6-3-7",
+          "locator": "Paragraphs 3.2, 3.6–3.7",
+          "quote": "as soon as reasonably possible",
+          "explanation": "诉前协议要求尽快完整回应；预计无法在14日或函件所定更短期间回应时，应说明拟回应日期，并具体列出所需资料或拒绝理由；当前应先由律师核对函件及拟稿。",
+          "supports": [
+            "ew_preaction_response"
+          ]
+        }
+      ],
+      "confirmed": [
+        "已读正文而非搜索片段，明确区分14日指引与个案实际期限。"
+      ],
+      "corrections": [],
+      "gaps": [
+        "虚构示例尚无准确收件日与回应期限；不计算截止日。",
+        "已知尚未收到法院文件，不重复追问是否已有判决。",
+        "只拟内部回应提纲；任何联系或发送需当事人另行决定。"
+      ]
+    }
+  },
+  {
+    "resourceId": "ew-economic-crime-slapp",
+    "name": "Economic Crime and Corporate Transparency Act 2023：范围有限的SLAPP定义",
+    "officialUrl": "https://www.legislation.gov.uk/ukpga/2023/56/section/195",
+    "checkedAt": "2026-10-09",
+    "applicability": "第195条是与经济犯罪有关的特定SLAPP定义，不覆盖所有公共利益报道或所有诽谤威胁。",
+    "requiredMaterials": [
+      "索赔函和相关行为记录",
+      "报道与具体经济犯罪线索的对应表",
+      "发表时信念和公共利益目的材料"
+    ],
+    "type": "domestic_law",
+    "locator": "Section 195(1)(a)–(d), (3); printed pp.191–192 / PDF pp.203–204",
+    "summary": "第195条是与经济犯罪有关的特定SLAPP定义，不覆盖所有公共利益报道或所有诽谤威胁。",
+    "eligibility": [
+      "须核对第195(1)(a)–(d)全部条件，以及第195(3)条经济犯罪信息关联。",
+      "公共采购主题不自动等于经济犯罪；失衡费用或压制效果也不能单独证明定义成立。",
+      "此处只按英格兰和威尔士民事程序研究，不外推到其他英国法域。"
+    ],
+    "reviewStatus": "agent_checked",
+    "agentCheckedAt": "2026-10-09",
+    "teamReviewedAt": null,
+    "unknowns": [
+      "尚无已提起的诉讼；经济犯罪关联、合理相信/怀疑及对方超常损害意图未知。",
+      "具体经济犯罪须再核对第193条与Schedule11；本次不对采购事实作犯罪定性。"
+    ],
+    "tags": [
+      "expression",
+      "local_rule"
+    ],
+    "sourceAudit": {
+      "issuer": "英国议会 / 英国国家档案馆 legislation.gov.uk",
+      "version": "2023 c.56 section195；官方latest revised XML",
+      "publishedOrEffective": "2023-10-26御准；未先前生效部分自2025-06-18生效（SI2025/718 reg.2(b)）。",
+      "checkedAt": "2026-10-09",
+      "readStatus": "partial_text",
+      "readUrl": "https://www.legislation.gov.uk/ukpga/2023/56/section/195",
+      "jurisdiction": [
+        "GB-EAW"
+      ],
+      "proceedings": [
+        "civil"
+      ],
+      "currentVersionStatus": "2026-10-09已读官方第195条XML及原始PDF；另读SI2025/718第2条，非只据2025年规则汇总页。",
+      "eventVersionStatus": "事件/起诉日期未知，须核对2025-06-18生效与具体程序时间。",
+      "provisions": [
+        {
+          "provisionId": "s195",
+          "locator": "Section 195(1)(a)–(d), (3); printed pp.191–192 / PDF pp.203–204",
+          "quote": "has to do with economic crime",
+          "explanation": "第195条须同时满足压制表达、经济犯罪信息关联、打击经济犯罪的公共利益目的及超出正常诉讼的损害意图等条件；目前不能确认该威胁属于此法定义的SLAPP。",
+          "supports": [
+            "ew_slapp_economic_crime_scope"
+          ]
+        }
+      ],
+      "confirmed": [
+        "直接读第195条全部小节，未把有限保护扩为全部诽谤案件。",
+        "SI2025/718第2条确认相关条款2025-06-18生效。"
+      ],
+      "corrections": [
+        "未采用“2025-04-06全面生效”的过度概括。"
+      ],
+      "gaps": [
+        "尚无已提起的诉讼；经济犯罪关联、合理相信/怀疑及对方超常损害意图未知。",
+        "具体经济犯罪须再核对第193条与Schedule11；本次不对采购事实作犯罪定性。"
+      ]
+    }
+  },
+  {
+    "resourceId": "ew-cpr-slapp-strikeout",
+    "name": "Civil Procedure Rules 3.4(2)(d)：特定SLAPP删除诉状规则",
+    "officialUrl": "https://www.justice.gov.uk/courts/procedure-rules/civil/rules/part03-",
+    "checkedAt": "2026-10-09",
+    "applicability": "本条允许法院在特定SLAPP定义与原告证明门槛均满足时删除诉状；仅有律师函时不能描述为现可提交该申请。",
+    "requiredMaterials": [
+      "已提交的诉状（如有）",
+      "第195条各条件的证据",
+      "诉讼阶段及律师程序评估"
+    ],
+    "type": "procedure_rule",
+    "locator": "CPR 3.4(2)(d)(i)–(ii)",
+    "summary": "本条允许法院在特定SLAPP定义与原告证明门槛均满足时删除诉状；仅有律师函时不能描述为现可提交该申请。",
+    "eligibility": [
+      "需要已存在诉状/诉讼并满足ECCTA2023第195条定义。",
+      "原告未证明其在庭审成功更有可能，法院才可按3.4(2)(d)删除；不保证胜诉。"
+    ],
+    "reviewStatus": "agent_checked",
+    "agentCheckedAt": "2026-10-09",
+    "teamReviewedAt": null,
+    "unknowns": [
+      "示例明确尚无法院文件，当前该具体诉讼步骤不具备已确认条件。",
+      "提出申请的证据、程序、费用及时间由当地律师评估；此处未核查其他删除诉状路径。"
+    ],
+    "tags": [
+      "expression",
+      "local_rule"
+    ],
+    "sourceAudit": {
+      "issuer": "Civil Procedure Rule Committee；英国司法部发布",
+      "version": "CPR3.4(2)(d)，司法部现行在线规则",
+      "publishedOrEffective": "该项SLAPP修订2025-06-18生效（SI2025/106 rr.1(2),4 与SI2025/718衔接）。",
+      "checkedAt": "2026-10-09",
+      "readStatus": "partial_text",
+      "readUrl": "https://www.justice.gov.uk/courts/procedure-rules/civil/rules/part03-",
+      "jurisdiction": [
+        "GB-EAW"
+      ],
+      "proceedings": [
+        "civil"
+      ],
+      "currentVersionStatus": "2026-10-09直接读取当前CPR3.4全文；生效衔接见官方SI2025/718解释注。",
+      "eventVersionStatus": "虚构示例尚未起诉；若后续起诉，按届时规则另核。",
+      "provisions": [
+        {
+          "provisionId": "rule3-4-2-d",
+          "locator": "CPR 3.4(2)(d)(i)–(ii)",
+          "quote": "the claimant has failed to show",
+          "explanation": "CPR3.4(2)(d)针对符合第195条定义的诉讼，并要求原告未证明其庭审胜诉更有可能；只有律师函的当前阶段，应保留候选路径而非声称已可删除诉状。",
+          "supports": [
+            "ew_slapp_procedural_route"
+          ]
+        }
+      ],
+      "confirmed": [
+        "已读司法部规则正文和生效衔接；区分诉前威胁与法院中的诉状。"
+      ],
+      "corrections": [],
+      "gaps": [
+        "示例明确尚无法院文件，当前该具体诉讼步骤不具备已确认条件。",
+        "提出申请的证据、程序、费用及时间由当地律师评估；此处未核查其他删除诉状路径。"
+      ]
+    }
+  }
+]

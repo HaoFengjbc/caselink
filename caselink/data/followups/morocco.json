@@ -1,0 +1,309 @@
+[
+  {
+    "caseId": "hajar-raissouni",
+    "originalFactsAsOf": "2020-08",
+    "checkedAt": "2026-10-09",
+    "searchStatus": "updates_found",
+    "summary": "追加HRW在2022年实际发布的个案调查与2020年11月、2021年3月仍遭污名报道的记录。未找到可靠新裁决；原2019年赦免和2020年7月离境属于基线之前，不计新增胜诉。",
+    "events": [
+      {
+        "eventId": "hajar-followup-2020-11-smear-report",
+        "proceeding": "2019年非法堕胎/婚外性行为刑案获赦之后的持续风险；非新刑事判决",
+        "subjects": [
+          "Hajar Raissouni"
+        ],
+        "eventDate": "2020-11",
+        "datePrecision": "month",
+        "actors": [
+          "Barlamane网站（HRW记录的发布者）"
+        ],
+        "action": "据HRW后续调查，网站在其离境后仍刊载针对原案及私生活的污名文章。",
+        "executionStatus": "implemented",
+        "outcome": "这是已记录的持续风险事件，不是倡议成功；HRW描述及当事人否认均须保留归属。",
+        "relationshipToOutcome": "sequence_only",
+        "causalAttribution": null,
+        "sourceIds": [
+          "hajar-source-hrw-2022-07-28"
+        ],
+        "unknowns": [
+          "本项目未独立核验攻击文章中的指控，不复述为事实；未核实新的法律程序。"
+        ]
+      },
+      {
+        "eventId": "hajar-followup-2021-03-smear-report",
+        "proceeding": "2019年非法堕胎/婚外性行为刑案获赦之后的持续风险；非新刑事判决",
+        "subjects": [
+          "Hajar Raissouni"
+        ],
+        "eventDate": "2021-03",
+        "datePrecision": "month",
+        "actors": [
+          "Hajar Raissouni",
+          "Barlamane网站（HRW记录的发布者）"
+        ],
+        "action": "据HRW记录，她发表批评污名报道的文章后，Barlamane再刊载攻击性内容。",
+        "executionStatus": "implemented",
+        "outcome": "公开表达后仍有骚扰风险的时间顺序已记录；本项目不自行认定具体加害者动机或因果。",
+        "relationshipToOutcome": "sequence_only",
+        "causalAttribution": null,
+        "sourceIds": [
+          "hajar-source-hrw-2022-07-28"
+        ],
+        "unknowns": [
+          "未确认是否就这些文章另行提起程序及其结果。"
+        ]
+      },
+      {
+        "eventId": "hajar-followup-2022-07-28-hrw-report",
+        "proceeding": "HRW公开调查报告中Hajar Raissouni个案章节",
+        "subjects": [
+          "Hajar Raissouni"
+        ],
+        "eventDate": "2022-07-28",
+        "datePrecision": "day",
+        "actors": [
+          "Human Rights Watch",
+          "Hajar Raissouni（受访者）"
+        ],
+        "action": "发表含个案访谈和来源注释的报告，保存原案及获赦后仍受骚扰的情况。",
+        "executionStatus": "implemented",
+        "outcome": "调查出版已经实施；没有证据把之后的司法、职业或安全变化归因于本报告。",
+        "relationshipToOutcome": "sequence_only",
+        "causalAttribution": null,
+        "sourceIds": [
+          "hajar-source-hrw-2022-07-28"
+        ],
+        "unknowns": [
+          "2022年之后当前居所、安全、职业状态或新诉讼本次未可靠确认。"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "sourceId": "hajar-source-hrw-2022-07-28",
+        "title": "“They’ll Get You No Matter What”: Morocco’s Playbook to Crush Dissent",
+        "url": "https://www.hrw.org/report/2022/07/28/theyll-get-you-no-matter-what/moroccos-playbook-crush-dissent",
+        "publisher": "Human Rights Watch",
+        "publishedAt": "2022-07-28",
+        "locator": "第3节Hajar Raissouni，Sentence and Pardon末三段（2020年11月、2021年3月）；该节脚注97–99",
+        "quote": "After her departure, Raissouni remained a target of repeated slanderous articles by pro-Makhzen media.",
+        "readStatus": "full_text",
+        "checkedAt": "2026-10-09",
+        "reviewStatus": "agent_checked",
+        "teamReviewedAt": null,
+        "teamReviewer": null
+      },
+      {
+        "sourceId": "hajar-source-mcjn-2022-11-02",
+        "title": "Hajar Raissouni: There is a force bigger than me that is pushing me to fight for freedom",
+        "url": "https://mariecolvinnetwork.org/en/1743/",
+        "publisher": "Marie Colvin Journalists’ Network",
+        "publishedAt": "2022-11-02",
+        "locator": "仅搜索索引出现采访与护照线索；web正文报错，普通curl返回404，未把索引认作正文",
+        "quote": "",
+        "readStatus": "search_only",
+        "checkedAt": "2026-10-09",
+        "reviewStatus": "unreviewed",
+        "teamReviewedAt": null,
+        "teamReviewer": null
+      }
+    ],
+    "searchedSources": [
+      "已读HRW2022年报告全文相关章节及2024年CPJ访谈对其既往风险的回顾。",
+      "检索Hajar Raissouni 2021–2026、harassment、followup、exile；RSF与Front Line Defenders索引主要为2019旧案。",
+      "Marie Colvin Journalists’ Network 2022-11-02采访仅索引可见；web正文失败、普通curl404，护照与迁居线索未作为确定事件写入。",
+      "CFJ报告页面的2022上线日期/2023目录不用于把2020报告或2019赦免重标为新进展。"
+    ],
+    "unknowns": [
+      "未发现报告后可靠新裁决，不等于案件没有变化。",
+      "2022采访中的护照及居住变化需读原文或正式记录后才能补录。",
+      "Soulaimane Raissouni的2024赦免不是Hajar的案件更新。"
+    ]
+  },
+  {
+    "caseId": "omar-radi-ii-2022",
+    "originalFactsAsOf": "2022-07",
+    "checkedAt": "2026-10-09",
+    "searchStatus": "updates_found",
+    "summary": "追加2023年最高法院驳回、IFJ公开倡议、2024年赦免释放及CPJ对获释后威胁和法律身份不明的访谈。赦免未写成撤销定罪；未把其他记者的指控、刑期或受骚扰方式合并进Omar。",
+    "events": [
+      {
+        "eventId": "omar-ii-followup-2023-07-18-cassation",
+        "proceeding": "Omar Radi II：2020-07-29拘押、2021年六年刑/2022年上诉的国家安全及性犯罪指控案；非2020推文案",
+        "subjects": [
+          "Omar Radi"
+        ],
+        "eventDate": "2023-07-18",
+        "datePrecision": "day",
+        "actors": [
+          "摩洛哥最高法院（Cour de cassation，IFJ所述）"
+        ],
+        "action": "驳回Omar Radi的撤销审上诉，维持六年刑。",
+        "executionStatus": "implemented",
+        "outcome": "原上诉后的救济受挫；事件由IFJ正文报告，未取得最高法院裁定原文。",
+        "relationshipToOutcome": "sequence_only",
+        "causalAttribution": null,
+        "sourceIds": [
+          "omar-ii-source-ifj-2023-07-20"
+        ],
+        "unknowns": [
+          "未取得裁定案号、完整理由及同案其他被告结果。"
+        ]
+      },
+      {
+        "eventId": "omar-ii-followup-2023-07-20-ifj-statement",
+        "proceeding": "Omar Radi II：2020-07-29拘押、2021年六年刑/2022年上诉的国家安全及性犯罪指控案；非2020推文案",
+        "subjects": [
+          "Omar Radi"
+        ],
+        "eventDate": "2023-07-20",
+        "datePrecision": "day",
+        "actors": [
+          "International Federation of Journalists",
+          "Anthony Bellanger（时任秘书长，声明署名）"
+        ],
+        "action": "公开批评程序不公，呼吁司法独立处理记者案件，并重申对监控指控的调查要求。",
+        "executionStatus": "implemented",
+        "outcome": "声明已经发布；没有证据证明这份声明导致后来的赦免或改变法院决定。",
+        "relationshipToOutcome": "sequence_only",
+        "causalAttribution": null,
+        "sourceIds": [
+          "omar-ii-source-ifj-2023-07-20"
+        ],
+        "unknowns": [
+          "倡议后当局答复与具体影响未知；历史参与不代表该机构当前承接新案。"
+        ]
+      },
+      {
+        "eventId": "omar-ii-followup-2024-07-29-release",
+        "proceeding": "Omar Radi II：2020-07-29拘押、2021年六年刑/2022年上诉的国家安全及性犯罪指控案；非2020推文案",
+        "subjects": [
+          "Omar Radi"
+        ],
+        "eventDate": "2024-07-29",
+        "datePrecision": "day",
+        "actors": [
+          "摩洛哥国王Mohammed VI（赦免）",
+          "摩洛哥监狱当局（释放，IFJ所述）"
+        ],
+        "action": "在皇家赦免后获释。",
+        "executionStatus": "implemented",
+        "outcome": "释放事实由IFJ正文确认；后续CPJ访谈显示赦免具体法律效果仍不清，不能等同无罪或刑事记录已删除。",
+        "relationshipToOutcome": "sequence_only",
+        "causalAttribution": null,
+        "sourceIds": [
+          "omar-ii-source-ifj-2024-07-30",
+          "omar-ii-source-cpj-2024-10-21"
+        ],
+        "unknowns": [
+          "未取得本人的赦免文书及刑事记录证明；不推断共同被告或另案被告同样结果。"
+        ]
+      },
+      {
+        "eventId": "omar-ii-followup-2024-07-30-ifj-snpm",
+        "proceeding": "Omar Radi II：2020-07-29拘押、2021年六年刑/2022年上诉的国家安全及性犯罪指控案；非2020推文案",
+        "subjects": [
+          "Omar Radi"
+        ],
+        "eventDate": "2024-07-30",
+        "datePrecision": "day",
+        "actors": [
+          "International Federation of Journalists",
+          "Syndicat National de la Presse Marocaine（SNPM）"
+        ],
+        "action": "发表欢迎获释及要求停止追诉记者、维护新闻自由的声明；SNPM提出改革法律制度的倡议。",
+        "executionStatus": "implemented",
+        "outcome": "这次声明在获释次日发布，不能将其写为导致前一天释放的行动；制度改革只是呼吁，未证实施行。",
+        "relationshipToOutcome": "sequence_only",
+        "causalAttribution": null,
+        "sourceIds": [
+          "omar-ii-source-ifj-2024-07-30"
+        ],
+        "unknowns": [
+          "后续制度改革及当前接案意愿未核实。"
+        ]
+      },
+      {
+        "eventId": "omar-ii-followup-2024-10-21-cpj-risk-check",
+        "proceeding": "Omar Radi II：2020-07-29拘押、2021年六年刑/2022年上诉的国家安全及性犯罪指控案；非2020推文案",
+        "subjects": [
+          "Omar Radi"
+        ],
+        "eventDate": "2024-10-21",
+        "datePrecision": "day",
+        "actors": [
+          "Committee to Protect Journalists",
+          "Omar Radi（受访者）"
+        ],
+        "action": "发布获释后跟进访谈，并已向司法部询问赦免条款、向内政部询问骚扰情况。",
+        "executionStatus": "implemented",
+        "outcome": "CPJ称未获两部回复。Radi报告先被跟踪、召开发布会后遭威胁电话；他表示法律身份不明影响复工。这是当事人陈述与CPJ核查行动，不是已确定的现行职业法规则。",
+        "relationshipToOutcome": "sequence_only",
+        "causalAttribution": null,
+        "sourceIds": [
+          "omar-ii-source-cpj-2024-10-21"
+        ],
+        "unknowns": [
+          "访谈及向政府发信的确切日期未披露；事件日是文章发布日期。",
+          "不同记者遭遇不同：CPJ明确Radi当时主要报告跟踪/威胁，不能套用另两人的污名报道事实。",
+          "2024-10之后当前安全及赦免法律效果本次未进一步确认。"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "sourceId": "omar-ii-source-ifj-2023-07-20",
+        "title": "Maroc: Rejet du pourvoi en cassation de deux journalistes",
+        "url": "https://www.ifj.org/media-centre/news/detail/article/maroc-le-pourvoi-en-cassation-de-deux-journalistes-a-ete-rejete",
+        "publisher": "International Federation of Journalists",
+        "publishedAt": "2023-07-20",
+        "locator": "导语及正文第1–2段（7月18日终审）；Anthony Bellanger声明段",
+        "quote": "La cour de Cassation marocaine a rejeté le 18 juillet le pourvoi",
+        "readStatus": "full_text",
+        "checkedAt": "2026-10-09",
+        "reviewStatus": "agent_checked",
+        "teamReviewedAt": null,
+        "teamReviewer": null
+      },
+      {
+        "sourceId": "omar-ii-source-ifj-2024-07-30",
+        "title": "Morocco: Journalists Omar Radi, Taoufik Bouachrine, and Soulaimane Raissouni released after royal pardon",
+        "url": "https://www.ifj.org/media-centre/news/detail/article/morocco-journalists-omar-radi-taoufik-bouachrine-and-soulaimane-raissouni-released-after-royal-pardon",
+        "publisher": "International Federation of Journalists",
+        "publishedAt": "2024-07-30",
+        "locator": "导语（2024-07-29获释）；第2段IFJ与SNPM；后部SNPM与Tim Dawson声明",
+        "quote": "were released on 29 July after receiving pardons from King Mohamed VI.",
+        "readStatus": "full_text",
+        "checkedAt": "2026-10-09",
+        "reviewStatus": "agent_checked",
+        "teamReviewedAt": null,
+        "teamReviewer": null
+      },
+      {
+        "sourceId": "omar-ii-source-cpj-2024-10-21",
+        "title": "Morocco’s pardoned journalists face smears, threats after prison",
+        "url": "https://cpj.org/2024/10/moroccos-pardoned-journalists-face-smears-threats-after-prison/",
+        "publisher": "Committee to Protect Journalists",
+        "publishedAt": "2024-10-21",
+        "locator": "正文第4–7段（赦免效力不清、采访与向两部询问未获回复）；Threatening phone calls中Radi专属段",
+        "quote": "I cannot work in journalism until I figure out my unclear legal status",
+        "readStatus": "full_text",
+        "checkedAt": "2026-10-09",
+        "reviewStatus": "agent_checked",
+        "teamReviewedAt": null,
+        "teamReviewer": null
+      }
+    ],
+    "searchedSources": [
+      "已读IFJ 2023-07-20与2024-07-30声明、CPJ2024-10-21采访；PEN2025案页作为线索并返回其CPJ原始采访。",
+      "检索Omar Radi 2023–2026、pardon、appeal、CFJ、PEN、CPJ、IFJ；始终限定2020年7月开始的六年刑案。",
+      "欧洲议会2023-01-19决议的英语、法语、爱沙尼亚语与EUR-Lex官方入口均停在人机验证页；不把搜索正文摘要当原文核实或建立事件。",
+      "PEN案页将几名记者遭遇作概述，实际采用CPJ对Omar的专属描述；没有照抄其国王姓名拼写错误。"
+    ],
+    "unknowns": [
+      "最高法院裁定及个人赦免文书未取得；本次更新主要由实际倡议者/采访者公开记录支持。",
+      "2024-10后是否消除犯罪记录、取得记者资质及停止骚扰仍未确认。",
+      "Imad Stitou、Soulaimane Raissouni、Taoufik Bouachrine各自程序与结果均未归入本案。"
+    ]
+  }
+]

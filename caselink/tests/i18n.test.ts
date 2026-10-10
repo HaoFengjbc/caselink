@@ -33,7 +33,7 @@ describe('English content overlay',()=>{
       expect(CJK.test(shown.join(' ')),c.caseId).toBe(false);
     }
     for(const e of evidence)expect(EN_CONTENT.evidence[e.evidenceId],e.evidenceId).toBeTruthy();
-    for(const r of resources)expect(EN_CONTENT.resources[r.resourceId]?.name,r.resourceId).toBeTruthy();
+    for(const r of resources)expect(EN_CONTENT.resources[r.resourceId]?.name??r.sourceAudit?.issuer,r.resourceId).toBeTruthy();
     for(const d of documents)expect(EN_CONTENT.documents[d.documentId]?.author,d.documentId).toBeTruthy();
     expect(CJK.test(JSON.stringify(EN_CONTENT.evidence)+JSON.stringify(EN_CONTENT.resources)+JSON.stringify(EN_CONTENT.documents))).toBe(false);
   });
@@ -89,7 +89,9 @@ describe('English analysis end to end',()=>{
       const result=await analyzeInput(scenario.input,{config:demoConfig,locale:'en'});
       expect(result.mode).toBe('preset_demo');expect(result.locale).toBe('en');
       // Immutable source snapshots retain original-language source metadata and quotes.
-      expect(CJK.test(JSON.stringify({...result,sources:[],snapshot:undefined}))).toBe(false);
+      const presentation={...result,sources:[],snapshot:undefined,legalResearch:undefined,followups:undefined,nextSteps:result.nextSteps?.map(step=>({...step,history:[]})),actionOptions:result.actionOptions.map(a=>({...a,prerequisites:a.prerequisites.filter(p=>!result.legalResearch?.bindings.some(b=>b.claim===p))}))};
+      expect(CJK.test(JSON.stringify(presentation))).toBe(false);
+      expect(result.legalResearch?.bindings.every(b=>b.relationOrigin==='curated_rule')).toBe(true);
       expect(result.snapshot?.locale).toBe('en');
       expect(result.snapshot?.completeness).toBe('complete');
     }
@@ -105,6 +107,6 @@ describe('English analysis end to end',()=>{
   it('exports an English Markdown plan',async()=>{
     const input=DEMO_SCENARIOS_EN[0].input;const result=await analyzeInput(input,{config:demoConfig,locale:'en'});
     const md=analysisMarkdown(result,input,'en');
-    expect(md).toContain('## Sources and original evidence');expect(md).toContain('Preset demo result');expect(CJK.test(md.replace(/^> .*$/gm,''))).toBe(false);
+    expect(md).toContain('## Sources and original evidence');expect(md).toContain('Preset demo result');expect(md).toContain(result.actionOptions[0].title);expect(md).toContain(result.legalResearch!.bindings[0].claim); // Curated legal explanations retain their reviewed source language.
   });
 });

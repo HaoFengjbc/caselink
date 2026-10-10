@@ -2,11 +2,12 @@
 import Link from 'next/link';
 import NewAnalysisButton from '@/components/intake/NewAnalysisButton';
 import {ArrowLeft,ArrowUpRight} from 'lucide-react';
-import {cases,getCase,documents,evidence} from '@/lib/corpus';
+import {cases,getCase,documents,evidence,followups} from '@/lib/corpus';
 import {countryName,localizeCase,localizeDocument} from '@/lib/i18n/content';
 import {useI18n} from '@/components/i18n/LocaleProvider';
 import {EvidenceButton} from '@/components/results/EvidenceButton';
 import styles from './cases.module.css';
+import {FollowupTimeline} from '@/components/results/NextSteps';
 const pad=(n:number)=>String(n).padStart(2,'0');
 const SECTION_IDS=['timeline','actions','outcomes','recommendations'];
 export default function CaseDetailView({caseId}:{caseId:string}){
@@ -27,7 +28,8 @@ export default function CaseDetailView({caseId}:{caseId:string}){
    </div>
   </section>
   <div className={styles.detailBody}>
-   <div className="notice">{c.statusSummary}</div>
+   <div className="notice">{c.statusSummary}<p>{locale==='en'?'Original report cut-off: ':'原报告事实截至：'}{c.lastKnownStatusAsOf} · {locale==='en'?'Later public material is appended separately below.':'报告后公开材料在下方另行追加，不改写原报告。'}</p></div>
+   {followups.filter(f=>f.caseId===c.caseId).map(f=><section id="followups" key={f.caseId}><FollowupTimeline followup={f} locale={locale}/></section>)}
    <nav className={styles.sectionNav} aria-label={v.nav}>{SECTION_IDS.map((id,i)=><a key={id} href={`#${id}`}><span>{pad(i+1)}</span>{v.sections[i]}</a>)}</nav>
    <div className={styles.detailGrid}><div>
     <section id="timeline" className={styles.detailSection}><span className="eyebrow">{v.timelineEyebrow}</span><h2>{v.timelineTitle}</h2><div className={styles.timeline}>{c.events.map(e=><article key={e.eventId}><div className={styles.timelineDate}>{e.date.value||v.dateUnknown}<span>{L.stages[e.stageAtEvent]}</span></div><div className={styles.timelineBody}><p>{e.description}</p><EvidenceButton ids={e.evidenceIds}/></div></article>)}</div></section>

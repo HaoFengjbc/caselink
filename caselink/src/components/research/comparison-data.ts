@@ -6,7 +6,7 @@ import {localizeResource} from '@/lib/i18n/content';
 export const COMPARISON_MAX_BYTES=3_000_000;
 const labels={zh:{detained:'拘押或人身自由受限',lawyer_access:'律师协助问题',file_access:'获取案卷问题',threats:'威胁',expression_restricted:'表达受限'},en:{detained:'Detention or restrictions on liberty',lawyer_access:'Access to counsel',file_access:'Access to case files',threats:'Threats',expression_restricted:'Restrictions on expression'}};
 const loc=(zh:string,en:string,locale:'zh'|'en')=>locale==='zh'?zh:en;
-export function resourceDescriptor(r:Resource):SourceDescriptor{return {sourceId:r.resourceId,category:r.type==='assistance'?'assistance':r.type==='un_mechanism'||r.type==='regional_mechanism'?'mechanism':'international_standard',reviewStatus:r.reviewStatus??'unreviewed',applicability:[r.applicability,...r.eligibility??[]],locator:r.locator??r.officialUrl,agentCheckedAt:r.agentCheckedAt??null,teamReviewedAt:r.teamReviewedAt??null,unknowns:r.unknowns??[]};}
+export function resourceDescriptor(r:Resource):SourceDescriptor{return {sourceId:r.resourceId,category:r.type==='domestic_law'||r.type==='procedure_rule'?'domestic_law':r.type==='assistance'?'assistance':r.type==='un_mechanism'||r.type==='regional_mechanism'?'mechanism':'international_standard',reviewStatus:r.reviewStatus??'unreviewed',applicability:[r.applicability,...r.eligibility??[]],locator:r.locator??r.officialUrl,agentCheckedAt:r.agentCheckedAt??null,teamReviewedAt:r.teamReviewedAt??null,unknowns:r.unknowns??[]};}
 /** No new legal classification: common themes are existing corpus labels, scoped to selected records. */
 export function commonIssuesFromSnapshot(snapshot:ReportSnapshot):ComparisonBrief['commonIssues']{
  const locale=snapshot.locale;
