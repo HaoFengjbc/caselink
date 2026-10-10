@@ -1,92 +1,161 @@
-# CaseLink
+# CaseLink developer guide
 
-面向 TrialWatch 内部倡议人员与法律研究人员的表达案件研究原型。合作当地律师、NGO 案件协调人、媒体法务与安全编辑也可使用。工作范围包括由新闻、发言、发帖或其他表达活动引发的刑事追诉、拘押、诽谤或 SLAPP 风险、出境限制、平台与行政处罚。
+CaseLink is a Next.js application for evidence-based research and case preparation involving journalism, public expression, and related criminal or civil proceedings. It combines a curated historical corpus, legal provisions, optional OpenAI research, and editable working documents.
 
-本轮定位是：**正式案例库为主干，条款级法律依据与历史后续分别核查、固定在报告快照中；联网资料仍明确待核实**。一般纠纷不进入完整付费研究；表达关联不清楚时先确认。项目是独立原型，不声称获得 TrialWatch 官方认可。
+[Project overview](../README.md) · [Documentation index](docs/README.md) · [Current release and known gaps](docs/current-release.md) · [Live application](https://caselink-eight.vercel.app/new)
 
-当前生产整合提交为 `2c7f7b4`：包含用户已修复的 PDF 版本 `628367c`，以及法律研究链、历史后续、What’s Next、内部材料包。`main` 已包含两条工作线；最新合并与部署证据见 [合并发布记录](docs/source-integration-2026-10-09/delivery.md#9-合并发布2026-10-09)。
+## Requirements
 
-2026-10-09 内部测试调整：按用户要求移除站内付费保护，实时 AI 仅需已有的服务端 API key 和模型配置，不再依赖 Redis、价格表、日预算、会话/IP 配额或并发额度。前端手动重试没有次数上限。已更新生产，真实 AI 报告生成通过；最新验证和独立待修问题见 [生产记录](docs/iteration-2026-10-09/direct-ai-release.md)。此前发布历史仍保留。
+- Node.js 24, as specified in `package.json` and `.nvmrc`.
+- npm and the committed `package-lock.json`.
+- Google Chrome for the existing Playwright configuration.
+- An OpenAI API key and access to the configured models only if you enable live AI.
 
-## PDF 自动整理案情
+The application is in this directory. If you cloned the repository as `caselink`, the application path is `caselink/caselink` relative to the clone's parent directory.
 
-本地已集成上传 → 按页读取 → AI 结构化预填 → 原文核对／冲突处理 → 现有行动参考。入口 `/new` 默认上传，`/new?entry=manual` 保留手动填写。可提取文字的 PDF 支持 1–3 份、每份 3 MiB、合计 3.9 MB、30 个物理页；扫描 OCR 暂不支持。选择文件不会调用 AI，须另行同意并点击处理。
+## Local setup
 
-PDF 功能已上线，沿用当前生产直连 AI 路径，无需 Redis。真实双 PDF 提取成功：18 个提取项、1 处日期冲突；正式页解析与规则流程通过。完整记录见 [PDF 生产发布](docs/pdf-intake-2026-10-09/production-release.md)。demo 模式只返回本地文字，不伪造 AI 预填。限制、隐私、测试证据、截图和复现步骤见 [PDF 建档验收](docs/pdf-intake-2026-10-09/acceptance.md)。
-
-
-## 本地运行
-
-Node.js 24 与 npm，依赖只安装在项目内：
+Run these commands from the application directory:
 
 ```sh
-cd /Users/fenghao/Desktop/hackhaton/caselink
 npm ci
+cp .env.example .env.local
 ANALYSIS_MODE=demo npm run dev
 ```
 
-打开 `http://127.0.0.1:3000`。明确指定 demo 可覆盖已有 `.env.local` 的 live 设置；演示与规则模式不调用模型。
+Open [http://127.0.0.1:3000](http://127.0.0.1:3000). Setting `ANALYSIS_MODE=demo` explicitly overrides an existing live setting in `.env.local`. Demo and rule modes do not call paid models or web search. Do not overwrite an existing `.env.local` when updating an established checkout.
+
+For a local production build:
+
+```sh
+npm run build
+ANALYSIS_MODE=demo npm start
+```
+
+Builds intentionally use webpack through the package script. Do not replace the existing build configuration as part of routine setup.
+
+## Live AI configuration
+
+Edit the ignored `.env.local` file on your own machine. Configure the same variables through your hosting provider for deployed environments.
+
+| Variable | Purpose |
+| --- | --- |
+| `ANALYSIS_MODE` | `demo` by default; `live` enables configured provider use |
+| `OPENAI_API_KEY` | Server-side API key; never place it in a `NEXT_PUBLIC_` variable |
+| `OPENAI_MODEL` | Analysis and research model; the checked-in example uses `gpt-6.1-sol` |
+| `OPENAI_INTAKE_MODEL` | Intake and material extraction model; the example uses `gpt-6-luna` |
+| `OPENAI_WEB_SEARCH_ENABLED` | Set `false` to disable live web research; otherwise available in configured live mode |
+| `OPENAI_REASONING_EFFORT` | `low`, `medium`, or `high`; default `low` |
+| `AI_TIMEOUT_MS` | Synthesis timeout, up to 90,000 milliseconds |
+| `AI_INTAKE_TIMEOUT_MS` | Manual intake model timeout; default 30,000 milliseconds |
+| `AI_MATERIAL_TIMEOUT_MS` | PDF extraction model timeout; default 120,000 milliseconds |
+
+The complete example is in [`.env.example`](.env.example). Keep real credentials out of source files, commits, logs, screenshots, and exported reports. Model names are configuration values and require access on the API account being used.
+
+Web research uses the existing OpenAI Responses API and `web_search` tool. No Brave Search account or key is required. The capability endpoint reports `webSearchProvider: "openai"` and `webSearchAvailable`. It also reports `controlledSearchConfigured: false`, because OpenAI can expand public queries; this flag does not mean OpenAI search is unavailable.
+
+The application has no built-in paid-use budget, quota, Redis requirement, or distributed concurrency gate. An explicit live submission or retry can incur provider charges. A successful capability response confirms configuration presence, not successful provider connectivity.
+
+## Research execution and evidence
+
+A research operation performs source discovery, reading of selected pages, and synthesis. Discovery requests permit up to three web-tool calls; reading permits up to six. Discovery and reading share a 65-second deadline. There is no automatic second research round or SDK retry. Further research requires another explicit user action.
+
+The search model receives server-validated public categories and legal topics. Raw case narratives, names, uploaded text, disclosure notes, and unrestricted research plans are excluded from its input. Intake and synthesis use models without web-search tools and can receive case data when the user enables AI.
+
+Cited passages are accepted only when they are associated with a candidate page opened during the reading stage. URL matching removes `utm_*` tracking parameters without broadly treating different URLs as equivalent. `pageOpened` records tool behavior; it does not prove complete reading, accuracy, or human review.
+
+A failed or uncited search remains explicitly unavailable. Independently valid action cards can survive removal of an invalid card; a failure affecting the result as a whole still follows the rule-reference fallback. The result records execution mode, stage timings, model and token usage, and failure details without logging the raw case narrative.
+
+Treaty applicability, domestic legal effect, mechanism eligibility, and case-specific conditions are separate checks. Unknown conditions do not become satisfied by default. Sources labeled `agent_checked` are not promoted to `team_verified` by automated validation.
+
+## Pages and routes
+
+| Route | Purpose |
+| --- | --- |
+| `/` | Project introduction and fictional examples |
+| `/new` | PDF intake or manual case entry |
+| `/new?entry=manual` | Direct manual entry, independent of uploads |
+| `/review` | Review case facts, goals, disclosure choices, and preferences |
+| `/analysis` | Legal questions, action references, sources, What's Next, and downloads |
+| `/history` | Reports explicitly saved in the current browser |
+| `/cases` | Curated public historical case library |
+| `/compare` | Compare two to four historical cases and export a brief |
+| `/resources` | International resources and local legal rules |
+| `/api/capabilities` | Public configuration and feature availability |
+
+The UI supports Chinese and English. Historical quotations and archived research retain their original language and review status.
+
+## PDF intake
+
+Manual input works without a PDF. The PDF workflow supports one to three text-based PDFs, up to 3 MiB each, 3,900,000 bytes in total, and 30 physical pages per case. The multipart request limit is 4,000,000 bytes and the extracted-text limit is 75,000 UTF-8 bytes. Scanned-page OCR is not implemented.
+
+Choosing files does not call AI. Processing requires a separate action and consent. Extracted facts retain their source document, physical page, and original quotation. The review workflow keeps contradictions and uncertain dates visible. Demo mode can expose locally extracted text without pretending that AI extraction occurred.
+
+Original PDFs are not stored as an application server-side file collection. Saved reports retain the material index and cited excerpts needed for their snapshots rather than silently adding entire original files.
+
+## Privacy, editing, and snapshots
+
+Case data and results remain in memory by default. A user may explicitly save a report to this browser with a one-, seven-, or thirty-day retention choice. Refresh recovery is a separate opt-in using this tab's session storage, for at most 24 hours. Downloads have no application-enforced retention period after they leave the browser.
+
+AI preferences do not erase case facts, goals, or disclosure restrictions. Editing working documents preserves user changes; changing a proposition requires its citations to be checked again. Reports use their generated-time source snapshots in the UI, history, and exports. New corpus data must not silently rewrite an old report.
+
+The server does not keep a report-result cache, anonymous usage cookie, or cross-device case database. Request IDs and input versions help discard stale client responses; they do not guarantee cross-instance deduplication. OpenAI requests use `store: false`, which is not a statement about every upstream retention policy.
+
+The application never automatically contacts organizations, publishes a case, or submits materials on a user's behalf.
+
+## Validation
+
+Run from the application directory:
 
 ```sh
 npm run typecheck
 npm test
 npm run build
-ANALYSIS_MODE=demo npm start
 ```
 
-本机附带运行时：`/Users/fenghao/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin`。构建沿用 webpack 配置；不迁移项目、不修改全局运行时。早期 `../caselink-v1-classic` 与 `../caselink-v2-modern` 继续保留。
+The unit-test configuration disables ambient live web search. Offline and mocked tests are not evidence of actual provider calls.
 
-## 功能入口
+With a local demo server running, a targeted browser check can be run as follows:
 
-| 路径 | 用途 |
-| --- | --- |
-| `/new` | PDF 上传建档；`?entry=manual` 直接描述，`?mode=classic` 提供逐题视图。所有入口共享同一案情、追问、确认和结果。 |
-| `/review` | 核对案情、目标和披露限制；AI 开关与保存偏好独立于事实。 |
-| `/analysis` | 具体事实→研究问题→条款定位→条件；既有行动卡下的 What’s Next、历史行动与差异；报告及内部材料包下载、主动保存与快照。 |
-| `/history` | 仅主动保存的本浏览器报告；到期清理、删除、可恢复备份及旧文件导入。 |
-| `/cases` | 22 个公开案件及原文、页码、历史行动、结果与冲突；另附 6 案公开后续时间线，原报告截止日期不改。 |
-| `/compare` | 选择 2–4 个公开案例，并排比较、共同主题、差异、未知项、固定快照及交接简报导出。 |
-| `/resources` | 16 条国际资源与 6 条当地规则，分别显示类别、原文定位、版本、适用条件和机器/人工审核状态。 |
+```sh
+TEST_BASE_URL=http://127.0.0.1:3000 npx playwright test tests/e2e/openai-search.spec.ts
+```
 
-主页提供记者拘押、博主表达处罚风险、英国民事诽谤或 SLAPP 风险三类**虚构**输入。英国演示用于展示具体法域确认及正式库覆盖不足，不承诺找到英国可比案例。规则模式、预置演示、实时模型结果分别标识，不能互称。操作路径见 [研究工作区与演示](docs/iteration-2026-10-09/research-workspace.md)。
+That browser check replays recorded fictional output and verifies the interface and downloads without making model requests. `npm run test:e2e` runs the broader suite; the [current release record](docs/current-release.md) documents six existing failures in the legacy journey suite and two skipped unit tests.
 
-## 隐私与历史
+Free deployment checks explicitly use rule/manual modes:
 
-新工作流程默认只在内存保存案情和结果；不自动写入 localStorage 或 IndexedDB。AI 是否启用不会清空案情、目标或披露限制。用户主动保存某一报告后，才在本浏览器 localStorage 留存；可选 1、7、30 天有效期。刷新恢复是另一项明确同意，在本标签页 sessionStorage 保存最多 24 小时。新建案件回到默认设置。浏览器清除网站数据会影响已保存资料。
+```sh
+node scripts/verify-live-deployment.mjs https://caselink-eight.vercel.app
+```
 
-旧版自动保存数据不静默删除或迁移；界面提供明确的恢复与清理入口。删除旧报告不清空正在编辑的新草稿。跨标签页删除标记只保留不含原始案情的标识。未保存内容刷新会丢失，应按实际需要选择保存或下载。
+The following command is a separate, explicit paid smoke test. It sends one fictional ordinary case through the real analysis API, reads no credentials itself, and never retries:
 
-新报告固定生成时的案例、引文、文档、资源与网页资料。历史页面、证据弹窗和导出读取同一快照。旧报告没有的内容显示限制，不从今天的库补成当时记录。JSON 备份与导入统一使用字节和条目上限，过大的备份拆分或明确阻止；下载文件的保管期限由用户管理。
+```sh
+node scripts/verify-openai-search.mjs http://127.0.0.1:3000 --run-paid-smoke
+```
 
-CaseLink 不在服务端缓存案情或报告，不建立匿名用量 Cookie，也没有服务器幂等结果缓存。请求 ID 和输入版本用于前端关联草稿、取消和丢弃迟到结果；重复 HTTP 请求会分别执行，不宣称跨实例去重。OpenAI 请求继续使用 `store: false`，这不代表上游平台没有自身的留存政策。没有账号、跨设备同步或复杂团队协作。
+It writes to `test-results/openai-search-20261010/`; preserve any earlier local results before reusing that location. Always distinguish actual provider calls, recorded-output browser replay, and rule-mode verification when reporting results.
 
+## Deployment
 
-## 研究与调用方式
+The repository contains one active application under `caselink/`. For a GitHub-backed Vercel import, set the project's **Root Directory** to `caselink` and use Node.js 24. The committed `vercel.json` specifies `npm ci` and `npm run build` with the Next.js framework.
 
-- 完整研究付费前校验表达关联；PDF 建档先在同意与文件限制下提取材料，再判断表达关联，不因缺少手写叙述而拦截上传。明确无关则停止完整研究；信息不足则要求确认。三个英国法域使用 `GB` 与同一规范枚举；更换国家不会继续采用旧英国法域。
-- 默认仅一轮研究。用户主动点击补查才创建新的操作与请求标识；不得在没有结果时自动补搜。一次研究包含公开来源发现、来源页面读取和模型综合；发现阶段请求最多 3 次工具调用，读取请求最多 6 次，共享 65 秒。案情整理是独立付费入口。
-- 联网恢复使用现有 OpenAI API 的 `web_search`，不要求 Brave 密钥。搜索模型只接收服务端构造并校验的公开地区、程序和议题；不接收原始案情、姓名、上传原文或自由研究计划。工具可能基于公开资料扩展查询，不再声称查询逐字固定。完整案情仍仅发送给无搜索工具的整理/综合阶段。
-- 发现阶段选出最多 3 个来源；读取阶段必须完成候选 URL 的 `open_page`，其引用段落才可进入综合。只有搜索摘要、未打开或不在候选中的页面不能当作已读取来源。`pageOpened` 仅表示工具完成打开，不证明全文完整、理解准确或团队人工核实。
-- 实时 OpenAI 配置齐全即启用搜索；`OPENAI_WEB_SEARCH_ENABLED=false` 可明确关闭。搜索失败或无可用引用时保留案例库分析并如实显示失败。规则/关闭 AI 模式不联网。
-- 无站内费用预算、额度或并发门槛。每次明确提交或重试均可调用模型；取消、重复点击保护和输入版本守卫继续保留。上游 API 自身返回的限流或额度错误仍如实显示，不伪装成功。
-- 记录阶段耗时、模型与 token/工具用量、失败阶段，不记录原始案情日志。没有后端实时事件时仅显示处理中，不用计时动画冒充研究阶段。
+The existing production site is [caselink-eight.vercel.app](https://caselink-eight.vercel.app). Creating this GitHub repository does not connect it to Vercel or change production deployment settings. Continue to make deployment an explicit action until an automatic deployment workflow is intentionally configured.
 
-本轮保留既有模型配置，不以换模型替代边界修复。`.env.example` 和 B 的 [研究与用量说明](docs/research-usage.md) 列出配置。不要把密钥放聊天、源码或提交。联网复用已配置的 OpenAI 密钥与模型；原 Brave 适配器仅为兼容保留，不是默认路径。OpenAI 账户级设置没有在此次修改中变更。
+For an already linked and authenticated local checkout, the project's existing CLI workflow is:
 
-## 资料与审核
+```sh
+npm exec --yes --package=vercel@62.7.0 -- vercel deploy --dry --json --scope hao-s-projects-2154e1c6
+npm exec --yes --package=vercel@62.7.0 -- vercel deploy --prod --yes --scope hao-s-projects-2154e1c6
+```
 
-实际盘点：22 案、14 个国家或地区、21 份文档、804 页、187 条引文。182 条保留原 `verified` 标签，5 条保留冲突；不代表本轮完成具名团队人工审核、原案独立调查或全部原文精读。文档与原始页码没有因程序测试通过而升级审核状态。
+Inspect the dry-run upload list first. `.vercelignore` excludes private environment files, credentials, local research, documentation, generated PDFs, tests, scripts, and build artifacts. A deployment must be checked independently of Git push; changing environment variables also requires a new deployment before they affect the application.
 
-本轮逐条复核 16 条既有国际资源，全部 `agent_checked`（15 条官方正文、1 条部分正文）；新增 6 条当地规则、10 个具体条款。全部仍未团队人工审核。WGAD改用官方工作方法可读正文；ECtHR附件等局部缺口保留。跨国研究参考的适用条件需核对，不能直接推定国内适用或机构接案。详见[逐条资源复核](docs/source-integration-2026-10-09/resource-audit.md)、[当地规则核查](docs/source-integration-2026-10-09/local-rules.md)和[第一阶段验收](docs/source-integration-2026-10-09/stage-1-acceptance.md)。
+## Data and source rights
 
-全22案完成结构化轻筛，选择哈萨克斯坦、突尼斯、摩洛哥各2案深追，单独追加24条事件/行动（包括不利裁判、仅计划、仅建议及持续风险）。实施标签不是成功标签，未查到后续不代表没有变化。历史机构只表示曾参与，不能推定现在接案。新 What’s Next 将历史行动、法律依据和一般工作准备分开，提供责任人、材料、成果与暂停条件；内部材料包可直接用于时间线、来源索引和律师问题讨论。原报告、后续、资源和行动均冻结，英文界面保留新策展说明的审读语言并提示翻译待复核。完整交付见[本轮交付与演示](docs/source-integration-2026-10-09/delivery.md)。
+The checked-in corpus contains 22 historical cases, 21 source documents, 187 evidence excerpts, 16 international resources, and six local rules. Follow-ups are separate records: planned actions, implemented actions, adverse results, release, dismissal, and domestic implementation must remain distinct.
 
-此次合并保留用户已经修复的 PDF/录入系统，不将现有用户陈述伪装成文件或法院认定；缺可信文件页码时明确不填。材料包读取报告已保存的上传材料索引和引用，不回填旧快照。所有对外动作仍需用户决定，应用不自动联系、公开或递交。合并版已部署，未重新引入付费门槛。
+Source status, temporal cutoffs, conflicts, and missing information are part of the data. The corpus is not a global-law database. A source being publicly accessible, machine-checked, or cited by a successful test does not establish redistribution rights or professional legal review.
 
-多案比較只归纳选定案例中记载的现象，不推断国家发生率，不把行动与结果的时间先后写成因果。缺失的结构化法域、程序类型、罪名等保持“未记载”。一般材料整理建议明确是建议。
-
-原始资料不加入 public；运行时只读已整理 JSON。`scripts/extract_pdfs.py` 与 `scripts/check_evidence.py` 用于开发阶段提取和核对，`node scripts/research-inventory.mjs` 重跑数量盘点。
-
-## 源码及第三方许可
-
-当前未发现可确认的项目开源许可证，`private: true` 不是许可证。本轮未替所有者选择许可。原报告、摘录、翻译和第三方网站材料的权利独立于代码；公开可访问不等于自由再分发。当前保留链接和必要摘录，公开或商业分发前仍需团队核对权利方条件。详情见 [研究工作区说明](docs/iteration-2026-10-09/research-workspace.md)。
+No open-source license has been selected. The repository is private. Source reports, quotations, translations, and third-party content have rights separate from the application code.
