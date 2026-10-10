@@ -1,0 +1,30 @@
+
+> caselink@0.1.0 test:e2e
+> playwright test tests/e2e/source-integration.spec.ts tests/e2e/pdf-intake.spec.ts tests/e2e/pdf-date-review.spec.ts tests/e2e/pdf-runtime.spec.ts
+
+
+Running 19 tests using 1 worker
+
+(node:42047) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/e2e/pdf-date-review.spec.ts:78:1 › MOCKED date validation: retain other facts, block confirmation, and require an explicit review note (6.0s)
+  ✓   2 tests/e2e/pdf-date-review.spec.ts:112:54 › MOCKED date validation: explicit unknown permits confirmation without invented dates (3.2s)
+  ✓   3 tests/e2e/pdf-date-review.spec.ts:112:54 › MOCKED date validation: explicit delete permits confirmation without invented dates (3.2s)
+  ✓   4 tests/e2e/pdf-date-review.spec.ts:133:1 › MOCKED date validation: show at most three cards and resolve all pending dates as unknown (3.2s)
+  ✓   5 tests/e2e/pdf-intake.spec.ts:21:1 › MOCKED provider: two PDFs -> source review -> conflict -> goal/disclosure -> existing rule analysis (5.2s)
+  ✓   6 tests/e2e/pdf-intake.spec.ts:44:1 › MOCKED provider: select a case before applying facts; removing a file invalidates its facts (1.3s)
+  ✓   7 tests/e2e/pdf-intake.spec.ts:48:1 › AI off, unsupported file, oversized file and refresh do not trigger model requests (444ms)
+  ✓   8 tests/e2e/pdf-intake.spec.ts:53:1 › MOCKED provider: cancelled late response cannot populate review; retry can (394ms)
+  ✓   9 tests/e2e/pdf-intake.spec.ts:57:1 › manual entry remains available from its dedicated entry URL (2.2s)
+  ✓  10 tests/e2e/pdf-intake.spec.ts:62:1 › MOCKED provider: only new PDF is sent, same-case confirmation preserves edited notes (550ms)
+  ✓  11 tests/e2e/pdf-intake.spec.ts:69:1 › MOCKED provider: server configuration failure is shown and retry does not reuse old result (376ms)
+  ✓  12 tests/e2e/pdf-intake.spec.ts:74:1 › MOCKED slow provider: browser waits beyond the former 60-second cutoff without another request (415ms)
+  ✓  13 tests/e2e/pdf-intake.spec.ts:84:1 › MOCKED validation failure: parsed text remains available without another call and removal clears it (441ms)
+  ✓  14 tests/e2e/pdf-runtime.spec.ts:6:1 › REAL local parser: two text PDFs, a scan, blank, corrupt, encrypted, long and over-budget files (651ms)
+  ✓  15 tests/e2e/pdf-runtime.spec.ts:22:1 › REAL browser upload: AI off can read text, reports scans honestly, and never creates extracted facts (2.7s)
+  ✓  16 tests/e2e/source-integration.spec.ts:13:12 › 来源链、主动保存与真实导出：记者受限 (2.5s)
+  ✓  17 tests/e2e/source-integration.spec.ts:13:12 › 来源链、主动保存与真实导出：博主被诉 (2.5s)
+  ✓  18 tests/e2e/source-integration.spec.ts:13:12 › 来源链、主动保存与真实导出：英国调查报道 (2.4s)
+  ✓  19 tests/e2e/source-integration.spec.ts:73:1 › 六案详情保留原截至日期并展开真实后续来源 (647ms)
+
+  19 passed (38.9s)

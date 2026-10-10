@@ -1,6 +1,6 @@
 # PDF 建档生产发布
 
-> 当前生产修复为 `9657313`：[日期格式匹配与人工核对](date-review-fix.md)。此前 [30 秒超时修复](timeout-fix.md) 为 `c44840c`，[排版引文校验与诊断](validation-fix.md) 为 `babb63f`。下文保留首次上线验收事实。
+> 当前生产整合为 `2c7f7b4`，已保留用户 PDF 修复 `628367c` 并合入法律研究链、历史后续与内部材料包，见 [合并发布](../source-integration-2026-10-09/delivery.md#9-合并发布2026-10-09)。PDF 修复历史：[逐项引文核对](citation-robustness.md)、[日期核对](date-review-fix.md)、[超时](timeout-fix.md)、[排版校验](validation-fix.md)。下文保留首次上线验收事实。
 
 2026-10-09，America/New_York。用户明确要求“上到生产页面”，本轮完成发布。
 
