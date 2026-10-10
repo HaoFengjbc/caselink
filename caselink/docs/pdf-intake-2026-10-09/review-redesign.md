@@ -23,3 +23,4 @@
 
 - 分支 `claude/pdf-review-redesign`（基于 main `79f40cd`），生产部署 `dpl_GtZxGEU4gELBZ4GKtpGWVcoVMHMQ`，可回滚至 `dpl_267odKQmLdRFM7gMZ7XLxwMBT3SJ`。
 - 上线后对生产环境运行：模拟材料的整理表冒烟检查（拦截所有 AI 请求，确认零调用）与 3 项日期流程（仅规则参考，不联网、不调用 AI），全部通过。
+- 随后与 `codex/whats-next-mvp`（`c0d6342`）一起合并进 main（`be57309`，合并时只调整了 What's Next 浏览器测试里 AI 开关的标签），生产部署 `dpl_FadMKBRm8qX9HyXZjaGjsYtDWD8p`，可回滚至 `dpl_GtZxGEU4gELBZ4GKtpGWVcoVMHMQ`（仅本改版）或 `dpl_267odKQmLdRFM7gMZ7XLxwMBT3SJ`（两者之前）。合并后单元测试 550 项通过，浏览器测试 24 项通过（另有 `journey.spec.ts` 6 项原有失败），生产构建通过；上线后在生产环境运行整理表冒烟检查、3 项日期流程与 4 项 What's Next 流程，全部通过，均为规则参考或拦截 AI 请求，未调用付费 AI。

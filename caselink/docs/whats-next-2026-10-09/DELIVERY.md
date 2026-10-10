@@ -1,5 +1,7 @@
 # CaseLink What’s Next — 本轮交付与验收
 
+> 上线状态（2026-10-09 20:57 补记）：本分支已与 PDF 整理页改版一起合并进 main（`be57309`）并部署到生产（`dpl_FadMKBRm8qX9HyXZjaGjsYtDWD8p`）。上线后 `tests/e2e/whats-next.spec.ts` 4 项在生产环境以规则参考运行通过；下文“未部署”指本轮交付当时的状态。真实 AI 与人工评价的验收缺口不变。
+
 2026-10-09，America/New_York。工程实现已完成；真实AI与目标用户／当地律师人工评价仍未通过验收，准确状态见下文。
 
 ## 本地演示
