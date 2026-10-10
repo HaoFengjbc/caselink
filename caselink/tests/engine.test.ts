@@ -52,7 +52,8 @@ describe('rule plans adapt to goals and restrictions',()=>{
     const lawyer=buildRuleReference(lawyerInput,retrieveCases(lawyerInput,cases.filter(c=>['aigul-utepova','emna-chargui','myriam-bribri'].includes(c.caseId))));
     expect(release.actionOptions[0].steps).not.toEqual(lawyer.actionOptions[0].steps);
     expect(lawyer.actionOptions[0].supportingEvidenceIds).toContain('emna-lawyer');
-    expect(release.actionOptions[0].title).toContain('既有进展');
+    // An earlier attempt is followed up in the reason and the first step, not by a title prefix.
+    expect(release.actionOptions[0].reason).toContain('已有尝试');expect(release.actionOptions[0].steps[0]).toContain('回执');
   });
   it('publicity changes the actual applicability of external advocacy',()=>{
     const input=demo(1);const open=buildRuleReference(input);const privatePlan=buildRuleReference({...input,publicity:'private'});

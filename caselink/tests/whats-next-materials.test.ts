@@ -25,7 +25,7 @@ describe('case-filled working materials',()=>{
  });
  it('exports user-edited text with a recheck marker without upgrading actual progress',async()=>{
   const result=await analyzeInput(WHATS_NEXT_INPUTS[0],{forceRule:true});const d=structuredClone(result.snapshot!.whatsNext!.documents[1]);d.markdown+='\n用户新增命题：仍待文书核对。';d.status='user_edited';d.citationState='needs_review';const md=workingDocumentMarkdown(d);
-  expect(md).toContain('用户新增命题');expect(md).toContain('原引用与命题须重新核对');expect(md).toContain('draft');expect(md).toContain('不会将行动标记为');
+  expect(md).toContain('用户新增命题');expect(md).toContain('原引用与命题须重新核对');expect(md).toContain('用户记录的实际进度: 仅草稿');expect(md).toContain('不会将行动标记为');
  });
  it('marks missing or non-supporting binding metadata for rechecking',async()=>{
   const input=WHATS_NEXT_INPUTS[0],result=await analyzeInput(input,{forceRule:true});const snapshot=result.snapshot!,binding=snapshot.legalResearch!.bindings.find(b=>snapshot.whatsNext!.priorities.some(t=>t.legalBindingIds.includes(b.bindingId)))!;

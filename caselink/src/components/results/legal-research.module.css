@@ -1,35 +1,42 @@
-.research { margin-bottom: 32px; padding: 24px; background: #fff; border: 1px solid #dce3df; border-radius: 14px; }
-.research h2 { margin: 10px 0; font-size: 1.45rem; }
-.question { font-weight: 650; line-height: 1.65; }
-.note { color: #5a6660; line-height: 1.7; font-size: .84rem; }
-.binding { margin-top: 14px; border: 1px solid #dce3df; border-radius: 10px; background: #fff; overflow-wrap: anywhere; }
-.binding > summary { cursor: pointer; padding: 16px; display: flex; flex-direction: column; gap: 8px; }
-.binding > summary::before { content: '+ 展开依据 / Details'; font-size: .7rem; color: #506558; }
-.binding[open] > summary::before { content: '− 收起依据 / Close'; }
-.binding > summary strong { font-size: .94rem; font-weight: 550; line-height: 1.7; }
-.locator { font-size: .74rem; color: #52685c; font-weight: 650; }
-.status { width: fit-content; background: #f0f4ef; color: #405c4c; padding: 4px 7px; border-radius: 4px; font-size: .68rem; }
-.body { padding: 0 18px 18px; border-top: 1px solid #edf0ed; }
-.body h4 { margin: 20px 0 8px; font-size: .85rem; }
-.body p, .body li { line-height: 1.75; font-size: .86rem; }
-.body a { font-size: .8rem; color: #2b6550; text-decoration: underline; }
-.body blockquote { margin: 12px 0; padding: 12px 14px; background: #f8faf8; border-left: 3px solid #c3d5c8; line-height: 1.7; font-size: .85rem; white-space: pre-wrap; }
-.body blockquote p { margin-top: 0; }
-.body small { color: #616d67; font-size: .72rem; line-height: 1.6; }
-.conditions { padding: 0; list-style: none; }
-.conditions li { padding: 10px 0; border-bottom: 1px solid #edf0ed; }
-.conditions span { display: inline-block; background: #fff3d9; color: #735324; padding: 2px 5px; border-radius: 3px; font-size: .65rem; margin-right: 8px; }
-.conditions [data-condition='confirmed'] span { color: #305c44; background: #e9f3eb; }
-.conditions [data-condition='not_met'] span, .warning { color: #8b3b35; }
-.conditions p { margin: 5px 0 0; }
-.metadata { margin-top: 22px; padding-top: 12px; border-top: 1px solid #dce3df; }
-.metadata > div { display: grid; grid-template-columns: minmax(95px, .4fr) 1fr; gap: 16px; margin: 9px 0; font-size: .75rem; line-height: 1.65; }
-.metadata dt { color: #66736b; }
-.metadata dd { margin: 0; }
-.id { display: block; margin-top: 16px; }
-.gaps { margin-top: 16px; color: #725625; font-size: .8rem; line-height: 1.75; }
-.gaps summary { cursor: pointer; }
-.actionCitations { margin: 18px 0; }
-.actionCitations > h4 { font-size: .82rem; }
-@media (max-width: 640px) { .research { padding: 16px; } .metadata > div { display: block; } .metadata dt { margin-bottom: 4px; } }
-@media print { .research, .binding { break-inside: auto; } .binding > summary::before { display: none; } }
+.research { min-width: 0; margin: 40px 0 0; overflow-wrap: anywhere }
+.research h2 { margin: 0 0 6px; font-size: 21px; letter-spacing: .16em }
+.note { margin: 0 0 14px; font-size: 13.5px; line-height: 1.75; color: var(--muted) }
+.row { border-top: 1px solid var(--line) }
+.row:last-of-type { border-bottom: 1px solid var(--line) }
+.row > summary { display: grid; grid-template-columns: minmax(150px, .9fr) minmax(0, 1.6fr) auto 16px; align-items: baseline; gap: 6px 18px; padding: 14px 2px; list-style: none; cursor: pointer }
+.row > summary::-webkit-details-marker { display: none }
+.row > summary:hover .name { color: var(--red) }
+.name { font-size: 15px; font-weight: 600; line-height: 1.6; transition: color .2s }
+.summaryClaim { font-size: 14px; line-height: 1.7; color: var(--ink-2) }
+.chips { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px }
+.chips i { padding: 1px 8px; border-radius: 10px; background: var(--amber-soft); color: var(--amber); font-size: 12px; font-style: normal; white-space: nowrap }
+.chips i[data-tone="muted"] { background: var(--band); color: var(--muted) }
+.toggle { align-self: center; color: var(--muted); transition: transform .3s var(--ease) }
+.row[open] .toggle { transform: rotate(45deg); color: var(--red) }
+.body { padding: 0 2px 18px }
+.binding + .binding { margin-top: 18px; padding-top: 16px; border-top: 1px dashed var(--line-strong) }
+.claim { margin: 0; font-size: 14.5px; font-weight: 500; line-height: 1.75 }
+.locator { display: inline-block; margin-right: 10px; font-size: 12px; font-weight: 400; letter-spacing: .04em; color: var(--muted) }
+.binding blockquote { margin: 10px 0; padding: 8px 14px; border-left: 2px solid var(--line-strong); background: var(--paper); font-size: 13.5px; line-height: 1.75; color: var(--ink-2); white-space: pre-wrap }
+.why { margin: 8px 0 0; font-size: 13.5px; line-height: 1.75; color: var(--muted) }
+.conditions { margin: 10px 0 0; padding: 0; list-style: none }
+.conditions li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; padding: 6px 0; font-size: 13.5px; line-height: 1.7; color: var(--ink-2) }
+.conditions span { padding: 0 7px; border-radius: 3px; background: var(--amber-soft); color: var(--amber); font-size: 12px }
+.conditions [data-condition='confirmed'] span { background: var(--green-soft); color: var(--green) }
+.conditions [data-condition='not_met'] span { background: var(--red-soft); color: var(--red-strong) }
+.conditions strong { font-weight: 500; color: var(--ink) }
+.facts { margin-top: 12px }
+.facts h4 { margin: 0 0 4px; font-size: 12.5px; font-weight: 500; letter-spacing: .14em; color: var(--muted) }
+.facts ul { margin: 0; padding-left: 18px; font-size: 13.5px; line-height: 1.75 }
+.facts small { display: block; font-size: 12px; color: var(--subtle) }
+.meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 16px; margin: 12px 0 0; font-size: 12.5px; color: var(--subtle) }
+.meta a { display: inline-flex; align-items: center; gap: 3px; color: var(--red-strong); text-decoration: underline; text-underline-offset: 3px }
+.warning { color: var(--red-strong); font-size: 13.5px }
+.gaps { margin-top: 12px; font-size: 13px; line-height: 1.75; color: var(--muted) }
+.gaps summary { cursor: pointer }
+.actionCitations { margin-top: 22px }
+.actionCitations h4 { margin: 0 0 8px; font-size: 15px; letter-spacing: .18em }
+.actionCitations ul { margin: 0; padding-left: 20px; font-size: 14px; line-height: 1.8; color: var(--ink-2) }
+.actionCitations b { display: block; font-weight: 500; color: var(--ink) }
+@media (max-width: 700px) { .row > summary { grid-template-columns: minmax(0, 1fr) 16px } .summaryClaim, .chips { grid-column: 1 } .chips { justify-content: flex-start } .toggle { grid-column: 2; grid-row: 1 } }
+@media print { .row > summary { grid-template-columns: 1fr } .toggle { display: none } }
