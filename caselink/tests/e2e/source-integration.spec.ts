@@ -25,12 +25,13 @@ for(const [label,localId] of [
  await expect(page.getByRole('region',{name:'本案法律研究链'})).toBeVisible();
  const binding=report.snapshot.legalResearch.bindings.find((b:{resourceId:string})=>b.resourceId===localId);
  expect(binding).toBeTruthy();
- const card=page.locator(`[data-binding-id="${binding.bindingId}"]`).first();
- if(!await card.evaluate(el=>(el as HTMLDetailsElement).open))await card.locator('summary').click();
- await expect(card.getByRole('heading',{name:'相关事实与来源归属'})).toBeVisible();
- await expect(card.getByRole('heading',{name:'原文与准确定位'})).toBeVisible();
- await expect(card.getByText('用户陈述，未经独立核实；不是法院认定或原始指控文书')).toBeVisible();
- await expect(card.getByText('Agent 已检查来源；团队未人工复核')).toBeVisible();
+ // One line per source; the provision's text, facts and review state open with it.
+ const row=page.locator(`[data-resource-id="${binding.resourceId}"]`).first();await row.locator('summary').click();
+ const card=row.locator(`[data-binding-id="${binding.bindingId}"]`);
+ await expect(card.getByText(binding.claim).first()).toBeVisible();
+ await expect(card.getByRole('heading',{name:'相关事实'})).toBeVisible();
+ await expect(card.getByText('用户陈述',{exact:true}).first()).toBeVisible();
+ await expect(card.getByText(/Agent 已检查来源，团队未人工复核/)).toBeVisible();
  const savedBefore=await page.evaluate(()=>Object.keys(localStorage).filter(k=>k.startsWith('caselink.report.v1.')));
  expect(savedBefore).toHaveLength(0);
  const downloading=page.waitForEvent('download');await page.getByRole('button',{name:'下载 Markdown'}).click();
@@ -38,7 +39,7 @@ for(const [label,localId] of [
  const markdown=await readFile(path,'utf8');expect(markdown).toContain(binding.claim);expect(markdown).toContain(binding.bindingId);expect(markdown).toContain('团队人工审核');
  await expect(page.getByRole('region',{name:'What’s Next'}).first()).toBeVisible();
  const step=report.snapshot.nextSteps[0];
- const next=page.locator(`[data-next-step="${step.actionId}"]`);await next.getByText('材料、历史依据与暂停条件',{exact:true}).click();
+ const next=page.locator(`[data-next-step="${step.actionId}"]`);await page.locator('article').filter({has:next}).getByText('步骤、依据与条件',{exact:true}).click();
  await expect(next.getByRole('heading',{name:'谁曾实际做过什么'})).toBeVisible();
  await expect(next.getByText(step.deliverables[0],{exact:true})).toBeVisible();
  if(label==='英国调查报道'){expect(step.history).toHaveLength(0);await expect(next.getByText(/未找到与本项准备直接对应/)).toBeVisible();}
@@ -63,6 +64,7 @@ for(const [label,localId] of [
  await page.goto(`/analysis?id=${report.analysisId}`);
  await expect(page.getByRole('region',{name:'本案法律研究链'})).toBeVisible();
  await page.reload();await expect(page.getByRole('region',{name:'本案法律研究链'})).toBeVisible();
+ await page.locator('article').filter({has:page.locator(`[data-next-step="${step.actionId}"]`)}).getByText('步骤、依据与条件',{exact:true}).click();
  await page.locator(`[data-next-step="${step.actionId}"]`).screenshot({path:testInfo.outputPath(`${localId}-next-step.png`)});
  await page.screenshot({path:testInfo.outputPath(`${localId}.png`),fullPage:true});
  await page.setViewportSize({width:390,height:844});

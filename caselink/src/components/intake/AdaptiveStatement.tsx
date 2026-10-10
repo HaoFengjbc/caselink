@@ -6,6 +6,7 @@ import type { NewCaseInput, IntakeRecord } from '@/lib/contracts';
 import { INTAKE_SLOTS, type IntakeResponse, type IntakeSlot } from '@/lib/intake/contracts';
 import type { MaterialItem } from '@/lib/materials/contracts';
 import { deleteMaterialItem, resolveMaterialConflict, updateMaterialItem } from '@/lib/materials/integration';
+import { materialPages } from '@/lib/materials/pages';
 import { useI18n } from '@/components/i18n/LocaleProvider';
 import { midSentence } from './StatementCard';
 import { adaptiveCopy } from './adaptive-copy';
@@ -101,15 +102,7 @@ export default function AdaptiveStatement({ input, response, locked, onChange, o
   const sectioned = record.facts.some(fact => fact.slot);
   const factOf = (id: string) => record.facts.find(fact => fact.id === id);
   const itemOf = (id: string) => materials?.items.find(item => item.id === id);
-  /** Page tag for a document point; the file number is added only when several PDFs were uploaded. */
-  function pagesOf(item: MaterialItem): string {
-    const byFile = new Map<string, number[]>();
-    for (const source of item.sources) { const pages = byFile.get(source.fileId) ?? []; if (!pages.includes(source.pdfPage)) pages.push(source.pdfPage); byFile.set(source.fileId, pages); }
-    return [...byFile].map(([fileId, pages]) => {
-      const label = c.material.page(pages.sort((a, b) => a - b).join(en ? ', ' : '、'));
-      return (materials?.documents.length ?? 0) > 1 ? `${c.material.file((materials!.documents.findIndex(document => document.fileId === fileId)) + 1)} ${label}` : label;
-    }).join(' · ');
-  }
+  const pagesOf = (item: Pick<MaterialItem, 'sources'>) => materialPages(item, materials?.documents ?? [], locale);
   function commitItem(id: string, text: string) {
     const value = text.trim();
     if (value && value !== itemOf(id)?.text) onChange(updateMaterialItem(input, id, value));

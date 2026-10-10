@@ -43,7 +43,7 @@ for(let index=0;index<3;index++)test(`陌生手动案件 ${index+1}: 三份真�
   const ready=page.waitForEvent('download');await workspace.locator(`[data-download-kind="${kind}"]`).click();const download=await ready;
   const path=testInfo.outputPath(download.suggestedFilename());await download.saveAs(path);const markdown=await readFile(path,'utf8');
   expect(markdown).toContain(WHATS_NEXT_INPUTS[index].intake!.narrative);expect(markdown).toContain(WHATS_NEXT_INPUTS[index].intake!.disclosureDetails);
-  expect(markdown).toContain('冻结来源与命题定位');expect(markdown).toContain('用户记录的实际进度: draft');expect(markdown.length).toBeGreaterThan(900);
+  expect(markdown).toContain('冻结来源与命题定位');expect(markdown).toContain('用户记录的实际进度: 仅草稿');expect(markdown.length).toBeGreaterThan(900);
  }
  expect(await page.evaluate(()=>Object.keys(localStorage).filter(k=>k.startsWith('caselink.report.v1.')))).toHaveLength(0);
  await workspace.getByRole('button',{name:'编辑本案草稿',exact:true}).click();const editor=workspace.getByRole('textbox',{name:'本案材料正文'});
@@ -54,7 +54,7 @@ for(let index=0;index<3;index++)test(`陌生手动案件 ${index+1}: 三份真�
  const saved=await page.evaluate(()=>Object.entries(localStorage).filter(([k])=>k.startsWith('caselink.report.v1.')).map(([,v])=>JSON.parse(v)));
  expect(saved).toHaveLength(1);expect(saved[0].result.snapshot.whatsNext.documents.find((d:{kind:string})=>d.kind==='lawyer_brief').citationState).toBe('needs_review');
  if(index===0){
-  await workspace.getByRole('link',{name:'补充缺失信息',exact:true}).first().click();
+  await page.getByRole('link',{name:'去补充（不知道也可以）'}).click();
   await page.getByRole('navigation',{name:'先听懂案情，再决定下一问'}).getByRole('button',{name:/用自己的话说/}).click();
   await page.getByLabel('案情原始描述').fill(WHATS_NEXT_INPUTS[0].intake!.narrative+'补充事实：家属称律师已于2026-10-09会面，但会面记录尚未提供。');
   await page.getByRole('button',{name:'先不用 AI，直接下一步',exact:true}).click();

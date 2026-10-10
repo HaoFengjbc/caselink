@@ -35,7 +35,6 @@ type RuleText = {
     steps: string[]; materials: string[]; collaborators: string[]; followUp: string[]; differences: string[]; uncertainties: string[];
   };
   primary: {
-    followupPrefix: string; reasonIntro: (goal: string) => string;
     reasonFollowup: string; reasonIncompatible: string; reasonNoEvidence: string; reasonNoLawyer: string;
     prerequisiteGoal: string; prerequisiteFindLawyer: string; prerequisiteCheckLawyer: string; prerequisiteIncompatible: string;
     timingUnknown: string; timingStage: (stage: string) => string; followupStep: string;
@@ -76,11 +75,11 @@ const ZH: RuleText = {
       followUp: ['是否已获得受理或补件信息', '当事人与律师能否参加相关程序', '最终裁判是否明确改变原判、改变哪些部分'],
       differences: ['Aigul的定罪上诉被驳回；Emna的上诉在报告时未决，这两种状态必须区分。', 'Emna宣判日存在报告内部冲突，不能计算精确行动间隔，也不能移用其历史期限。'] },
   },
-  base: { leadRole: '当事人本人或其明确授权的协助者', prerequisite: '确认当事人的诉求及允许共享的资料范围', timing: '按实际事件与已收到的通知安排，不计算法定期限', step: '核对材料' },
+  base: { leadRole: '当事人或其授权的协助者', prerequisite: '确认当事人的诉求及允许共享的资料范围', timing: '按实际事件和通知安排', step: '核对材料' },
   timeline: {
     titleFollowup: '先核对已尝试行动的回应与下一节点', title: '建立可交给协助者的一页案情记录',
     reasonFollowup: '已有行动记录，先确认是否收到回应、尚缺什么，再决定是否调整；不默认重复申请。', reason: '清楚的阶段、文件与近期节点有助于协助者判断下一步。此项是一般准备建议。',
-    timingDates: n => `已提供${n}个日期或事件，请按确认页中的节点与负责人员核对安排；大约时间需要再次确认，不当作法定期限。`, timingNoDates: '先按原叙述和补充回答排序已有事件；只核实有争议的日期，不把缺少日期当成尚未发生。',
+    timingDates: n => `按已给的 ${n} 个日期核对，不当作法定期限`, timingNoDates: '先按已知事件排序，日期待核',
     step1: '用“日期／机关或角色／发生事项／材料位置／未确定内容”五栏建立时间线，近似日期单独标明。',
     step2Followup: '单列此前行动、提交凭证、已收到回应和尚未回应部分，向原负责人员核对后决定补件或调整。',
     step2: '将尚未做过、材料没有提到和确实不知道分别记录，避免把未知写成未发生。',
@@ -98,7 +97,7 @@ const ZH: RuleText = {
     reasonPrivate: '公开限制尚不支持传播，当前只准备内部资料；未经重新确认，不开展公开倡导。', reasonConsent: '需先取得具体披露同意，再由适当组织判断公开或外部机制是否适合当前目标。',
     reasonPublic: goal => `可考虑公开，但需把“${goal}”与传播目的对齐，并核实合作方与安全条件。`,
     prerequisites: ['明确当事人是否同意披露姓名、案情以及可能被转给政府或其他相关方的信息', '与律师核对披露对正在进行程序的影响', '确认合作机构当前范围、材料要求及信息处理方式；历史参与不等于今天承诺受理'],
-    timingPrivate: '先保持私下处理；只有用户重新确认公开范围后才评估下一步。', timing: '在当事人确认披露范围、律师核对程序风险并确认合作方之后。',
+    timingPrivate: '先私下处理，确认公开范围后再评估', timing: '确认披露范围、律师核对风险之后',
     steps: ['先填写内部表：“希望解决什么／可公开哪些事实／必须删除什么／谁批准／谁负责反馈”。私下或未知状态在此停止，不发布。', '若获得具体授权，制作去除非必要身份信息的一页摘要，按已核实事实、当事人陈述、待核实内容分栏，附可核对材料目录。', '与适当组织核对是否能做庭审观察、事实核实或外部机制材料评估；不把联合国国别访问建议当成已受理的个案程序。', '如考虑特别程序，先阅读已核实官方指引，核对可信事实材料、当事人同意及可能披露给相关方的内容，再由授权人员决定是否提交。', '草稿可用：“我们希望就〔当前目标〕请求评估。已确认事实为〔事实与来源〕，当前阶段为〔阶段〕，可披露范围为〔授权〕，希望了解适用范围与材料要求。”本工具不会发送。', '若实际获准开展，记录发出版本、接收方、回应、补件及对外公开范围；回执不等于介入或结果改变。'],
     materials: ['经当事人确认的信息披露与授权记录', '去除非必要身份信息的事实摘要及佐证目录', '面向合作方的具体请求草稿', '风险、撤回或修改公开信息的处理预案'], collaborators: ['有相关工作范围、待核实是否接受协作的公益组织', '现有律师与获授权的案件协调人员'],
     followUp: ['是否仅有收件回执，还是有实质回应／补件请求', '实际披露范围是否仍符合授权', '公开或联系后是否出现新的安全顾虑，需要调整范围'],
@@ -106,10 +105,9 @@ const ZH: RuleText = {
     uncertainties: ['公开倡导和外部机制不是替代本地法律程序的保证。', '任何机制是否采取行动、回应时间及具体结果均未知。'],
   },
   primary: {
-    followupPrefix: '核对既有进展，再评估：', reasonIntro: goal => `围绕“${goal}”整理下一步。`,
-    reasonFollowup: '已有尝试，先核对其回应和材料缺口，避免重复提交。', reasonIncompatible: '目标与已知阶段或拘押状态仍需对照确认。', reasonNoEvidence: '未匹配到直接相关历史行动依据，本卡仅为一般准备参考。', reasonNoLawyer: '需先获得适当的本地法律支持。',
+    reasonFollowup: '已有尝试，先核对其回应和材料缺口，避免重复提交。', reasonIncompatible: '目标与已知阶段或拘押状态仍需对照确认。', reasonNoEvidence: '没有直接对应的历史行动，作为一般准备。', reasonNoLawyer: '需先获得适当的本地法律支持。',
     prerequisiteGoal: '由当事人确认当前目标与可共享的信息范围', prerequisiteFindLawyer: '先找到能够处理本地相关程序的律师；组织可协助寻找，但不替代律师作程序判断。', prerequisiteCheckLawyer: '确认现有律师能处理当前机关与程序。', prerequisiteIncompatible: '先确认当前阶段、拘押状态或判决是否已作出，再决定是否启动具体行动。',
-    timingUnknown: '先核对阶段，不建议立即提交具体程序申请。', timingStage: stage => `在“${stage}”阶段，由律师核对当前可行路径；具体日期以实际通知为准。`,
+    timingUnknown: '先核对阶段，暂不提交程序申请', timingStage: stage => `${stage}：先由律师核对可行路径`,
     followupStep: '先向原负责人员核对已经提出的请求、回执和回应，标出仍未解决部分；以下步骤仅补缺或调整，不默认重新提交。',
     collaboratorLawyer: '适当的本地律师', collaboratorNgo: '现有公益组织可按授权协助整理材料', collaboratorCoordinator: '经当事人同意的案件协调人员',
     differencesFallback: '历史材料或当前可比背景不足，具体路径与结果不能直接移用；本卡只在实际列出的证据范围内提供参考。',
@@ -149,11 +147,11 @@ const EN: RuleText = {
       followUp: ['Whether the filing was accepted or more documents were requested', 'Whether the person and the lawyer can attend the relevant proceedings', 'Whether the final ruling clearly changes the original judgment, and which parts'],
       differences: ['Aigul’s appeal against her conviction was rejected; Emna’s appeal was pending at the time of the report — these two states must be kept apart.', 'Emna’s verdict date conflicts within her report, so precise intervals cannot be calculated and her historical deadlines cannot be reused.'] },
   },
-  base: { leadRole: 'The person or a helper they explicitly authorize', prerequisite: 'Confirm the person’s stated goal and what information may be shared', timing: 'Use actual events and notices received; no legal deadlines are calculated', step: 'Check the materials' },
+  base: { leadRole: 'The person or an authorized helper', prerequisite: 'Confirm the person’s stated goal and what information may be shared', timing: 'Follow actual events and notices', step: 'Check the materials' },
   timeline: {
     titleFollowup: 'First check responses to past actions and the next milestone', title: 'Build a one-page case record to hand to helpers',
     reasonFollowup: 'There are earlier actions on record: first confirm whether responses came back and what is still missing, then decide whether to adjust — no refiling by default.', reason: 'A clear picture of the stage, documents and upcoming milestones helps helpers judge the next step. This is a general preparation suggestion.',
-    timingDates: n => `You provided ${n} date${n === 1 ? '' : 's'} or event${n === 1 ? '' : 's'}; check the arrangements against the milestones and people on the review page. Approximate times need reconfirming and are not treated as legal deadlines.`, timingNoDates: 'Order events already described in the account and answers; clarify disputed dates without treating a missing date as an event that never happened.',
+    timingDates: n => `Check against the ${n} date${n === 1 ? '' : 's'} given; not a legal deadline`, timingNoDates: 'Order known events first; dates to verify',
     step1: 'Build a five-column timeline — date / authority or role / what happened / where the document is / what is still unconfirmed — and mark approximate dates separately.',
     step2Followup: 'List earlier actions, filing receipts, responses received and parts still unanswered; check with the person originally responsible before adding documents or adjusting.',
     step2: 'Record separately what has not been done, what the material does not mention, and what is genuinely unknown, so unknowns are not written up as things that never happened.',
@@ -171,7 +169,7 @@ const EN: RuleText = {
     reasonPrivate: 'The publicity limits do not allow outreach yet, so only internal material is prepared; no public advocacy without reconfirming.', reasonConsent: 'Specific consent to disclose comes first; then a suitable organization can judge whether going public or an outside mechanism fits the current goal.',
     reasonPublic: goal => `Going public is possible, but it must serve “${goal}”, and partners and safety conditions must be checked.`,
     prerequisites: ['Confirm whether the person agrees to disclose their name, the facts of the case, and information that may be passed to the government or other parties', 'Check with the lawyer how disclosure could affect ongoing proceedings', 'Confirm the partner organization’s current scope, material requirements and how it handles information; past involvement is no promise to take a case today'],
-    timingPrivate: 'Keep it private for now; only assess next steps after the user reconfirms what may be made public.', timing: 'After the person confirms the scope of disclosure, the lawyer checks procedural risks, and a partner is confirmed.',
+    timingPrivate: 'Private for now; reassess once public scope is confirmed', timing: 'After disclosure scope and risks are checked',
     steps: ['First fill in an internal sheet: “what we want to solve / which facts may be shared / what must be removed / who approves / who handles feedback”. If the status is private or unknown, stop here — nothing is published.', 'If specific consent is given, prepare a one-page summary without unnecessary identifying details, splitting verified facts, the person’s account and points still to verify, with an index of supporting material.', 'Check with suitable organizations whether they can observe the trial, verify facts, or assess material for an outside mechanism; a UN country-visit recommendation is not an individual case that has been taken up.', 'If considering the Special Procedures, first read the verified official guidance and check credible factual material, the person’s consent and what may be disclosed to the parties concerned; an authorized person then decides whether to submit.', 'A draft you can adapt: “We would like an assessment regarding [current goal]. The confirmed facts are [facts and sources], the current stage is [stage], what may be disclosed is [consent], and we would like to understand the scope and material requirements.” This tool sends nothing.', 'If you do go ahead, record the version sent, the recipient, responses, extra requests and how much was made public; an acknowledgement is not intervention or a changed outcome.'],
     materials: ['A record of the person’s confirmed consent and authorization to disclose', 'A factual summary without unnecessary identifying details, with an index of evidence', 'A draft of the specific request to the partner', 'A plan for risks and for withdrawing or correcting public information'], collaborators: ['NGOs working in the area — still to be checked whether they take on cases', 'The existing lawyer and an authorized case coordinator'],
     followUp: ['Whether there is only an acknowledgement, or a substantive response / request for more material', 'Whether what was actually disclosed still matches the consent given', 'Whether going public or making contact has raised new safety concerns that call for narrowing the scope'],
@@ -179,10 +177,9 @@ const EN: RuleText = {
     uncertainties: ['Public advocacy and outside mechanisms are no guarantee and do not replace local legal proceedings.', 'Whether any mechanism acts, how long a response takes, and what results follow are all unknown.'],
   },
   primary: {
-    followupPrefix: 'Check existing progress, then assess: ', reasonIntro: goal => `Next steps organized around “${goal}”.`,
-    reasonFollowup: 'There are earlier attempts: first check their responses and missing material to avoid refiling.', reasonIncompatible: 'The goal still needs checking against the known stage or detention status.', reasonNoEvidence: 'No directly relevant historical action was matched, so this card is general preparation only.', reasonNoLawyer: 'Suitable local legal support is needed first.',
+    reasonFollowup: 'There are earlier attempts: first check their responses and missing material to avoid refiling.', reasonIncompatible: 'The goal still needs checking against the known stage or detention status.', reasonNoEvidence: 'No matching historical action; general preparation.', reasonNoLawyer: 'Suitable local legal support is needed first.',
     prerequisiteGoal: 'The person confirms the current goal and what information may be shared', prerequisiteFindLawyer: 'First find a lawyer who can handle the relevant local proceedings; an organization can help look, but it does not replace a lawyer’s procedural judgment.', prerequisiteCheckLawyer: 'Confirm the existing lawyer can handle the current authority and procedure.', prerequisiteIncompatible: 'First confirm the current stage, detention status, or whether a judgment has been issued, before starting any specific action.',
-    timingUnknown: 'Confirm the stage first; filing a specific procedural application right away is not recommended.', timingStage: stage => `At the “${stage}” stage, the lawyer checks which routes are currently available; actual dates follow the official notices.`,
+    timingUnknown: 'Confirm the stage first; no filing yet', timingStage: stage => `${stage}: a lawyer checks the routes first`,
     followupStep: 'First check with the person originally responsible the requests already made, receipts and responses, and mark what is still unresolved; the steps below only fill gaps or adjust — no refiling by default.',
     collaboratorLawyer: 'A suitable local lawyer', collaboratorNgo: 'The existing NGO can help organize material, as authorized', collaboratorCoordinator: 'A case coordinator the person has agreed to',
     differencesFallback: 'Historical material or comparable background is insufficient, so specific routes and results cannot be reused directly; this card only refers to the evidence actually listed.',
@@ -284,8 +281,8 @@ export function buildRuleReference(input:NewCaseInput,matches=retrieveCases(inpu
     const first:ActionOption={...base(input,'primary-'+input.primaryGoal,T),materials:plan.materials,followUp:plan.followUp,
       supportingEvidenceIds,basisType:supportingEvidenceIds.length?basis.basisType:'general_preparation',
       applicability:incompatible?'conditional':hasLawyer&&input.stage!=='unknown'?'priority':'conditional',
-      title:(followup?p.followupPrefix:'')+plan.title,
-      reason:[p.reasonIntro(L.goals[input.primaryGoal]),followup?p.reasonFollowup:'',incompatible?p.reasonIncompatible:'',!supportingEvidenceIds.length?p.reasonNoEvidence:'',!hasLawyer?p.reasonNoLawyer:''].filter(Boolean).join(T.sep),
+      title:plan.title,
+      reason:[followup?p.reasonFollowup:'',incompatible?p.reasonIncompatible:'',!supportingEvidenceIds.length?p.reasonNoEvidence:'',!hasLawyer?p.reasonNoLawyer:''].filter(Boolean).join(T.sep),
       prerequisites:[p.prerequisiteGoal,...(!hasLawyer?[p.prerequisiteFindLawyer]:[p.prerequisiteCheckLawyer]),...(incompatible?[p.prerequisiteIncompatible]:[])],
       timing:input.stage==='unknown'?p.timingUnknown:p.timingStage(L.stages[input.stage]),
       steps:followup?[p.followupStep,...plan.steps]:plan.steps,

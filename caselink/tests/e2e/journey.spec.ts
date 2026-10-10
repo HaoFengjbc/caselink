@@ -11,7 +11,7 @@ test('完整示例：证据、导出、修改公开限制、旧结果过期与�
  await page.screenshot({path:'test-results/analysis-desktop.png',fullPage:true});
  const evidence=page.getByRole('button',{name:/查看原文依据/}).first();await evidence.click();await expect(page.getByRole('dialog')).toBeVisible();await expect(page.getByRole('dialog').locator('blockquote').first()).toBeVisible();await expect(page.getByRole('dialog').getByRole('link',{name:/打开官方 PDF/}).first()).toHaveAttribute('href',/cfj.org.*#page=\d+/);await page.keyboard.press('Escape');await expect(page.getByRole('dialog')).not.toBeVisible();await expect(evidence).toBeFocused();
  const dl=page.waitForEvent('download');await page.getByRole('button',{name:'下载 Markdown'}).click();const download=await dl;const path=testInfo.outputPath(download.suggestedFilename());await download.saveAs(path);const md=await readFile(path,'utf8');expect(md).toContain('预置演示结果');expect(md).toContain('## 原文证据与来源');expect(md).toContain('2020-07-03');expect(md).toContain('2020-07-13');expect(md).toContain('PDF 第');
- await expect(page.getByRole('tab',{name:/行动参考/})).toHaveAttribute('aria-selected','true');await page.getByRole('tab',{name:/已核实案例/}).click();await expect(page.getByRole('heading',{name:'哪些经验值得参考'})).toBeVisible();await page.reload();await expect(page.getByRole('heading',{name:'你的案件，下一步怎么走。'})).toBeVisible();expect(requests).toBe(1);
+ await expect(page.getByRole('tab',{name:/行动参考/})).toHaveAttribute('aria-selected','true');await page.getByRole('tab',{name:/已核实案例/}).click();await expect(page.getByRole('heading',{name:'哪些经验值得参考'})).toBeVisible();await page.reload();await expect(page.getByRole('heading',{name:'下一步怎么做',exact:true})).toBeVisible();expect(requests).toBe(1);
  await page.getByRole('link',{name:'修改限制',exact:true}).click();await page.getByRole('radio',{name:'希望先保持私下处理',exact:false}).check();await page.goto('/analysis');await expect(page.getByRole('heading',{name:'案情或参考资料已更新，需要重新分析'})).toBeVisible();
  await page.getByRole('link',{name:'确认案情并重新分析'}).click();await page.getByRole('button',{name:'查找案例并生成行动参考'}).click();await expect(page).toHaveURL(/\/analysis$/);await expect(page.getByText('规则参考 · 未调用实时 AI')).toBeVisible();expect(requests).toBe(2);await expect(page.getByText('暂缓考虑',{exact:true})).toBeVisible();
  await page.pdf({path:'test-results/analysis-print.pdf',format:'A4',printBackground:true});
@@ -46,10 +46,10 @@ test('中英切换：英文示例、英文结果、语言记忆与切回中文',
  await page.getByRole('button',{name:'Try a demo case'}).click();await page.getByRole('button',{name:/Blogger charged/}).click();await page.getByRole('button',{name:'Load example and review'}).click();
  await expect(page).toHaveURL(/\/review$/);await expect(page.getByRole('heading',{name:'Case statement'})).toBeVisible();
  await page.getByRole('button',{name:'Find cases and draft an action plan'}).click();await expect(page).toHaveURL(/\/analysis$/);
- await expect(page.getByRole('heading',{name:'Your case: what to do next.'})).toBeVisible();await expect(page.getByText('Preset demo result · no live AI')).toBeVisible();
+ await expect(page.getByRole('heading',{name:'What to do next',exact:true})).toBeVisible();await expect(page.getByText('Preset demo result · no live AI')).toBeVisible();
  expect(/[一-鿿]/.test(await page.locator('main').innerText())).toBe(false);
- await page.reload();await expect(page.getByRole('heading',{name:'Your case: what to do next.'})).toBeVisible();
- await page.getByRole('button',{name:'中文',exact:true}).click();await expect(page.getByRole('heading',{name:'你的案件，下一步怎么走。'})).toBeVisible();await expect(page.getByText('这份方案是以英文生成的',{exact:false})).toBeVisible();
+ await page.reload();await expect(page.getByRole('heading',{name:'What to do next',exact:true})).toBeVisible();
+ await page.getByRole('button',{name:'中文',exact:true}).click();await expect(page.getByRole('heading',{name:'下一步怎么做',exact:true})).toBeVisible();await expect(page.getByText('这份方案是以英文生成的',{exact:false})).toBeVisible();
  expect(errors).toEqual([]);
 });
 

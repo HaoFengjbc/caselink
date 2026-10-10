@@ -1,46 +1,69 @@
 'use client';
+import {ArrowUpRight,Plus} from 'lucide-react';
 import type {ActionOption,Resource} from '@/lib/contracts';
 import type {LegalBinding,LegalResearch} from '@/lib/legal-contracts';
 import {useI18n} from '@/components/i18n/LocaleProvider';
+import {safeSourceUrl} from '@/components/research/comparison-data';
+import {workingLabels} from './working-documents';
 import {useReportSnapshot} from './SnapshotContext';
 import styles from './legal-research.module.css';
 
 type Locale='zh'|'en';
 const text=(locale:Locale,zh:string,en:string)=>locale==='en'?en:zh;
-const kindLabels:Record<string,[string,string]>={treaty:['条约','Treaty'],interpretation:['解释文件','Interpretation'],domestic_law:['国内法','Domestic law'],procedure_rule:['程序规则','Procedure rule'],un_mechanism:['联合国机制','UN mechanism'],regional_mechanism:['区域机制','Regional mechanism'],assistance:['援助机构','Assistance provider'],general_resource:['研究资源','Research resource']};
-const reviewLabels:Record<string,[string,string]>={unreviewed:['待核实','Unreviewed'],agent_checked:['Agent 已检查来源；团队未人工复核','Source checked by agent; team review pending'],team_verified:['已记录团队人工复核','Recorded team review'],legacy_recorded:['历史标签；本轮未升级审核','Legacy label; review not upgraded'],conflict:['存在冲突','Conflict']};
-const stateLabels={confirmed:['已确认（限所述范围）','Confirmed within the stated scope'],unknown:['待确认','To confirm'],not_met:['条件不满足','Condition not met']} as const;
-function sourceReview(resource:Resource,locale:Locale):string{
- const status=resource.reviewStatus==='team_verified'&&(!resource.teamReviewer||!resource.teamReviewedAt)?'unreviewed':resource.reviewStatus??'unreviewed';
- return (reviewLabels[status]??reviewLabels.unreviewed)[locale==='en'?1:0];
+/** Short source tag for a fact a provision relies on. */
+function factSource(fact:LegalBinding['factBasis'][number],locale:Locale):string{
+ if(fact.origin==='document'&&fact.fileName&&fact.page)return `${fact.fileName} ${text(locale,`第 ${fact.page} 页`,`p. ${fact.page}`)}`;
+ return fact.origin==='opposing_allegation'?text(locale,'对方指控','Opposing allegation'):fact.origin==='court_finding'?text(locale,'法院认定','Court finding'):text(locale,'用户陈述','User statement');
 }
-/** Used by both the research chain and the citation attached to an individual action. */
-export function LegalBindingCard({binding,resource,locale,open=false,compact=false}:{binding:LegalBinding;resource?:Resource;locale:Locale;open?:boolean;compact?:boolean}){
- const audit=resource?.sourceAudit;const provision=audit?.provisions.find(p=>p.provisionId===binding.provisionId);
+function reviewOf(resource:Resource|undefined,locale:Locale):string{
+ if(!resource)return text(locale,'来源记录缺失','Source record missing');
+ const W=workingLabels[locale],status=resource.reviewStatus==='team_verified'&&(!resource.teamReviewer||!resource.teamReviewedAt)?'unreviewed':resource.reviewStatus??'unreviewed';
+ return [resource.sourceAudit?.checkedAt??resource.checkedAt,resource.sourceAudit?W.read[resource.sourceAudit.readStatus]:'',W.review[status]].filter(Boolean).join(' · ');
+}
+/** One provision: the proposition, the original words, open conditions, and where the facts come from. */
+function BindingDetail({binding,resource,locale}:{binding:LegalBinding;resource?:Resource;locale:Locale}){
+ const audit=resource?.sourceAudit,provision=audit?.provisions.find(p=>p.provisionId===binding.provisionId);
  const supported=!!provision?.supports.includes(binding.claimKey)&&provision.explanation===binding.claim;
- return <details className={styles.binding} open={open} data-binding-id={binding.bindingId} data-applicability={binding.applicability}>
-  <summary><span className={styles.locator}>{resource?.name??binding.resourceId} · {provision?.locator??binding.provisionId}</span><strong>{binding.claim}</strong><span className={styles.status}>{binding.applicability==='excluded'?text(locale,'已排除','Excluded'):binding.applicability==='conditional'?text(locale,'有条件研究参考','Conditional research reference'):text(locale,'跨国研究参考，适用条件需核对','Cross-border research reference; check conditions')}</span></summary>
-  <div className={styles.body}>
-   <p className={styles.note}>{text(locale,'条文支持的是上方这句判断，不代表本案已满足条件，也不为整张行动卡或预期结果背书。','The provision supports the sentence above. It does not establish this matter’s eligibility or endorse the whole action card or its expected outcome.')}</p>
-   {!compact&&<div><h4>{text(locale,'需要研究的问题','Research question')}</h4><p>{binding.issue}</p></div>}
-   <div><h4>{text(locale,'相关事实与来源归属','Related facts and provenance')}</h4>{binding.factBasis.length?binding.factBasis.map((fact,index)=><blockquote key={index}><p>{fact.text}</p><small>{fact.origin==='document'&&fact.fileName&&fact.page?`${fact.fileName} · ${text(locale,'真实文件页码','Document page')} ${fact.page}`:fact.origin==='opposing_allegation'?text(locale,'对方指控，未认定为事实','Opposing allegation; not an established fact'):fact.origin==='court_finding'?text(locale,'法院认定（按已记录文书来源）','Court finding, per the recorded document source'):text(locale,'用户陈述，未经独立核实；不是法院认定或原始指控文书','User statement, not independently verified; not a court finding or an original charge document')}</small></blockquote>):<p>{text(locale,'缺少可关联的具体陈述。','No specific statement is recorded.')}</p>}</div>
-   <div><h4>{text(locale,'原文与准确定位','Source text and exact location')}</h4>{supported&&provision?<><blockquote lang="und">{provision.quote}</blockquote><p>{provision.locator}</p><p>{provision.explanation}</p></>:<p className={styles.warning}>{text(locale,'此快照缺少支持该判断的原文记录；不能视为已核实法律依据。','This snapshot lacks a supporting text record; do not treat this as verified legal support.')}</p>}{resource&&<a href={audit?.readUrl??resource.officialUrl} target="_blank" rel="noreferrer">{text(locale,'打开核查所用官方来源','Open the official source used for checking')}</a>}</div>
-   <div><h4>{text(locale,'为什么相关','Why it is relevant')}</h4><p>{binding.relevance}</p><small>{binding.relationOrigin==='curated_rule'?text(locale,'关联分析：服务器策展规则，不是法律结论','Relationship analysis: server-curated rule, not a legal determination'):text(locale,'关联分析：AI，需人工判断','Relationship analysis: AI, requires human judgment')}</small></div>
-   <div><h4>{text(locale,'适用条件与未知项','Conditions and unknowns')}</h4><ul className={styles.conditions}>{binding.conditions.map((condition,index)=><li key={index} data-condition={condition.status}><span>{stateLabels[condition.status][locale==='en'?1:0]}</span><strong>{condition.label}</strong><p>{condition.detail}</p></li>)}</ul></div>
-   <div><h4>{text(locale,'下一步需核实或准备','Next checks and preparation')}</h4><ul>{binding.nextChecks.map((item,index)=><li key={index}>{item}</li>)}</ul></div>
-   <dl className={styles.metadata}><div><dt>{text(locale,'来源类别','Source category')}</dt><dd>{(kindLabels[resource?.type??'general_resource']??kindLabels.general_resource)[locale==='en'?1:0]}</dd></div><div><dt>{text(locale,'来源检查与人工审核','Source check and human review')}</dt><dd>{resource?sourceReview(resource,locale):text(locale,'来源元数据缺失','Source metadata absent')}{resource?.teamReviewedAt&&resource.teamReviewer&&resource.reviewStatus==='team_verified'?` · ${resource.teamReviewer} · ${resource.teamReviewedAt}`:''}</dd></div><div><dt>{text(locale,'读取范围','Reading scope')}</dt><dd>{audit?.readStatus==='full_text'?text(locale,'已读取官方正文','Official text read'):audit?.readStatus==='partial_text'?text(locale,'仅实际取得的正文部分；缺口见核查记录','Only the retrieved source passages; see audit gaps'):text(locale,'正文读取未确认','Source-text reading unconfirmed')}</dd></div><div><dt>{text(locale,'发布机关与版本','Issuer and version')}</dt><dd>{audit?`${audit.issuer} · ${audit.version} · ${audit.publishedOrEffective}`:'—'}</dd></div><div><dt>{text(locale,'来源实际核查日','Actual source-check date')}</dt><dd>{audit?.checkedAt??'—'}</dd></div><div><dt>{text(locale,'事实截至','Facts as of')}</dt><dd>{binding.factsAsOf}</dd></div><div><dt>{text(locale,'法律核查截至','Law checked as of')}</dt><dd>{binding.lawAsOf}</dd></div></dl>
-   {!!audit?.relatedSources?.length&&<div><h4>{text(locale,'缔约或配套来源（独立核查）','Participation and related official sources (separately checked)')}</h4><ul>{audit.relatedSources.map(source=><li key={source.url}><a href={source.url} target="_blank" rel="noreferrer">{source.title}</a> · {source.locator}</li>)}</ul></div>}
-   {!!audit?.gaps.length&&<p className={styles.note}>{text(locale,'来源核查缺口：','Source-audit gaps: ')}{audit.gaps.join('；')}</p>}
-   <small className={styles.id}>{binding.bindingId} · {binding.claimKey}</small>
-  </div>
+ const W=workingLabels[locale],url=safeSourceUrl(audit?.readUrl??resource?.officialUrl??'');
+ return <div className={styles.binding} data-binding-id={binding.bindingId}>
+  <p className={styles.claim}><span className={styles.locator}>{provision?.locator??binding.provisionId}</span>{binding.claim}</p>
+  {supported&&provision?<blockquote lang="und">{provision.quote}</blockquote>:<p className={styles.warning}>{text(locale,'快照里没有支持这句判断的原文，不能当作已核实的依据。','The snapshot has no source text for this proposition; do not treat it as verified.')}</p>}
+  {binding.relevance&&<p className={styles.why}>{binding.relevance}</p>}
+  {!!binding.conditions.length&&<ul className={styles.conditions}>{binding.conditions.map((condition,index)=><li key={index} data-condition={condition.status}><span>{W.condition[condition.status]}</span><strong>{condition.label}</strong>{condition.detail}</li>)}</ul>}
+  {!!binding.factBasis.length&&<div className={styles.facts}><h4>{text(locale,'相关事实','Related facts')}</h4><ul>{binding.factBasis.slice(0,3).map((fact,index)=><li key={index}>{fact.text}<small>{factSource(fact,locale)}</small></li>)}</ul>{binding.factBasis.length>3&&<small>{text(locale,`另有 ${binding.factBasis.length-3} 条，见工作草稿`,`${binding.factBasis.length-3} more in the working drafts`)}</small>}</div>}
+  {!!binding.nextChecks.length&&<div className={styles.facts}><h4>{text(locale,'下一步核对','Check next')}</h4><ul>{binding.nextChecks.map((item,index)=><li key={index}>{item}</li>)}</ul></div>}
+  <p className={styles.meta}>{url&&<a href={url} target="_blank" rel="noreferrer">{text(locale,'打开原文','Open source')}<ArrowUpRight size={13}/></a>}<span>{reviewOf(resource,locale)}</span></p>
+ </div>;
+}
+/** Bindings grouped by source document, so several paragraphs of one text read as one line. */
+function groups(bindings:LegalBinding[]){const map=new Map<string,LegalBinding[]>();for(const b of bindings)map.set(b.resourceId,[...(map.get(b.resourceId)??[]),b]);return [...map.values()];}
+const openLabels=(bindings:LegalBinding[])=>[...new Set(bindings.flatMap(b=>b.conditions.filter(c=>c.status==='unknown').map(c=>c.label)))];
+/** One source per line; conditions most sources share are stated once above the list instead. */
+function LawRow({bindings,resources,locale,shared}:{bindings:LegalBinding[];resources:Resource[];locale:Locale;shared:Set<string>}){
+ const first=bindings[0]!,resource=resources.find(r=>r.resourceId===first.resourceId);
+ const unconfirmed=openLabels(bindings).filter(label=>!shared.has(label));
+ const excluded=bindings.every(b=>b.applicability==='excluded');
+ return <details className={styles.row} data-resource-id={first.resourceId}>
+  <summary><span className={styles.name}>{resource?.name??first.resourceId}</span><span className={styles.summaryClaim}>{first.claim}</span>
+   <span className={styles.chips}>{bindings.length>1&&<i data-tone="muted">{text(locale,`共 ${bindings.length} 处`,`${bindings.length} passages`)}</i>}{excluded&&<i data-tone="muted">{text(locale,'已排除','Excluded')}</i>}{unconfirmed.slice(0,2).map(label=><i key={label}>{text(locale,`待确认：${label}`,`To confirm: ${label}`)}</i>)}{unconfirmed.length>2&&<i>+{unconfirmed.length-2}</i>}</span><Plus size={16} className={styles.toggle} aria-hidden="true"/></summary>
+  <div className={styles.body}>{bindings.map(binding=><BindingDetail key={binding.bindingId} binding={binding} resource={resource} locale={locale}/>)}</div>
  </details>;
 }
 export function LegalResearchView({research,resources,locale}:{research?:LegalResearch;resources:Resource[];locale:Locale}){
- if(!research)return <section className={styles.research}><h2>{text(locale,'本案法律研究','Legal research for this matter')}</h2><p>{text(locale,'这份历史报告没有保存逐条法律研究链；未从当前资源库回填。','This historical report did not save a provision-level research chain; the current catalog has not been used to backfill it.')}</p></section>;
- return <section className={styles.research} aria-label={text(locale,'本案法律研究链','Matter-specific legal research chain')}><header><span className="eyebrow">{text(locale,'事实 → 问题 → 条文 → 条件 → 准备','Facts → question → provision → conditions → preparation')}</span><h2>{text(locale,'本案法律研究','Legal research for this matter')}</h2><p className={styles.question}>{research.coreQuestion}</p><p>{research.coverageNote}</p><p className={styles.note}>{text(locale,'这是带条件的研究依据，不代表律师已审核本案。一般材料整理建议另列，不强配法条。','These are conditional research references, not a lawyer’s review of this matter. General preparation is identified separately without forcing a legal citation.')}{locale==='en'?' Source quotations and curated legal explanations retain their reviewed language; translation review pending.':''}</p></header>{research.bindings.map((binding,index)=><LegalBindingCard key={binding.bindingId} binding={binding} resource={resources.find(r=>r.resourceId===binding.resourceId)} locale={locale} open={index===0}/>)}{!!research.gaps.length&&<details className={styles.gaps}><summary>{text(locale,'覆盖缺口与待办','Coverage gaps and open items')} · {research.gaps.length}</summary><ul>{research.gaps.map((gap,index)=><li key={index}>{gap}</li>)}</ul></details>}</section>;
+ if(!research)return <section className={styles.research}><h2>{text(locale,'法律依据','Legal basis')}</h2><p className={styles.note}>{text(locale,'这份历史报告没有保存逐条法律研究；不从当前资料库补齐。','This saved report has no provision-level research; it is not rebuilt from the current catalog.')}</p></section>;
+ const rows=groups(research.bindings);
+ // A condition most sources share is said once above the list rather than on every line.
+ const counts=new Map<string,number>();for(const bindings of rows)for(const label of openLabels(bindings))counts.set(label,(counts.get(label)??0)+1);
+ const shared=new Set(rows.length>1?[...counts].filter(([,n])=>n>=2&&n*2>=rows.length).map(([label])=>label):[]);
+ return <section className={styles.research} aria-label={text(locale,'本案法律研究链','Matter-specific legal research chain')}>
+  <h2>{text(locale,'法律依据','Legal basis')}</h2>{(research.coverageNote||shared.size>0)&&<p className={styles.note}>{research.coverageNote}{shared.size>0&&text(locale,`多数条文还需确认：${[...shared].join('、')}。`,` Most of them still need: ${[...shared].join(', ')}.`)}</p>}
+  {rows.length?rows.map(bindings=><LawRow key={bindings[0]!.resourceId} bindings={bindings} resources={resources} locale={locale} shared={shared}/>):<p className={styles.note}>{text(locale,'没有找到可直接对应的条文；不强配法条。','No directly matching provision; none is forced.')}</p>}
+  {!!research.gaps.length&&<details className={styles.gaps}><summary>{text(locale,'覆盖缺口','Coverage gaps')} · {research.gaps.length}</summary><ul>{research.gaps.map((gap,index)=><li key={index}>{gap}</li>)}</ul></details>}
+ </section>;
 }
+/** The provisions behind one action, as plain lines inside that action's details. */
 export function ActionLegalCitations({action}:{action:ActionOption}){
  const {locale}=useI18n();const snapshot=useReportSnapshot();const refs=action.legalCitations??[];
  if(!refs.length)return null;
- return <div className={styles.actionCitations}><h4>{text(locale,'与本项准备直接关联的法律判断','Legal propositions directly related to this preparation')}</h4>{refs.map(ref=>{const binding=snapshot?.legalResearch?.bindings.find(b=>b.bindingId===ref.bindingId&&b.claimKey===ref.claimKey&&b.resourceId===ref.resourceId&&b.provisionId===ref.provisionId);return binding?<LegalBindingCard key={ref.bindingId} binding={binding} resource={snapshot?.resources.find(r=>r.resourceId===ref.resourceId)} locale={locale} compact/>:<p key={ref.bindingId} className={styles.warning}>{text(locale,'历史快照未保留此引用的完整依据；不从当前目录补齐：','This snapshot does not preserve the citation’s full support; no current-catalog backfill: ')}{ref.bindingId}</p>;})}</div>;
+ return <div className={styles.actionCitations}><h4>{text(locale,'相关条文','Related provisions')}</h4><ul>{refs.map(ref=>{const binding=snapshot?.legalResearch?.bindings.find(b=>b.bindingId===ref.bindingId&&b.claimKey===ref.claimKey&&b.resourceId===ref.resourceId&&b.provisionId===ref.provisionId);const resource=snapshot?.resources.find(r=>r.resourceId===ref.resourceId);const provision=resource?.sourceAudit?.provisions.find(p=>p.provisionId===ref.provisionId);return binding?<li key={ref.bindingId}><b>{resource?.name??ref.resourceId} · {provision?.locator??ref.provisionId}</b>{binding.claim}</li>:<li key={ref.bindingId} className={styles.warning}>{text(locale,'这份快照没有保留这条引用的完整依据；不从当前目录补齐。','This snapshot does not keep the full support for this citation; it is not backfilled.')}</li>;})}</ul></div>;
 }

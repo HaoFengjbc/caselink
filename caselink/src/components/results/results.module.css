@@ -13,22 +13,10 @@
 .exportButtons button { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; padding: 7px 12px; border: 1px solid var(--line-strong); border-radius: 2px; background: transparent; color: var(--ink); font-size: 12.5px; letter-spacing: .12em; transition: border-color .2s, color .2s }
 .exportButtons button:hover { border-color: var(--red); color: var(--red) }
 
-.heroCard { margin-top: 36px; padding: 28px 48px 0; background: var(--card); border: 1px solid var(--line); box-shadow: var(--shadow); text-align: center; overflow: hidden; animation: rise .6s var(--ease) both }
-.heroCardTop { display: flex; justify-content: space-between; gap: 16px; font-size: 12.5px; letter-spacing: .16em; color: var(--muted) }
 .planLabel { font-family: var(--font-display); font-size: 14px; letter-spacing: .4em; color: var(--ink) }
-.heroCard h1 { margin: 44px 0 18px; font-size: clamp(28px, 3.6vw, 46px); letter-spacing: .18em; color: var(--ink) }
-.heroStatement { max-width: 920px; margin: 0 auto; font-family: var(--font-display); font-size: clamp(17px, 1.8vw, 23px); font-weight: 600; line-height: 2.1; letter-spacing: .12em; color: var(--ink) }
 .fill { margin: 0 .25em; padding-bottom: 2px; color: var(--red); border-bottom: 3px solid var(--red); -webkit-box-decoration-break: clone; box-decoration-break: clone; transition: color .2s, border-color .2s }
 .fill:hover { color: var(--red-strong); border-bottom-color: var(--red-strong) }
 .fillStatic { margin: 0 .2em; padding-bottom: 2px; border-bottom: 1.5px solid var(--line-strong); -webkit-box-decoration-break: clone; box-decoration-break: clone }
-.heroMeta { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px 24px; margin: 28px 0 42px; font-size: 13px; letter-spacing: .06em; color: var(--muted) }
-.heroMeta b { font-weight: 500; color: var(--ink) }
-.heroMeta a { margin-left: 10px; color: var(--red); text-decoration: underline; text-underline-offset: 4px }
-.heroMeta :global(.tag-outline) { color: var(--muted) }
-.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 0 -48px; padding: 24px 48px 22px; background: var(--band) }
-.stats > div { display: flex; flex-direction: column-reverse; align-items: center; gap: 4px }
-.stats dd { margin: 0; font-size: 44px; line-height: 1; color: var(--ink) }
-.stats dt { font-size: 12.5px; letter-spacing: .16em; color: var(--muted) }
 
 /* ── Tabs (segmented, like a toggle) ── */
 .tabBar { position: sticky; top: var(--header-h); z-index: 10; display: flex; justify-content: center; padding: 16px 24px; background: rgba(251, 248, 241, .94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line) }
@@ -40,7 +28,7 @@
 .resultTabs .activeTab span { color: var(--red) }
 
 /* ── Layout ── */
-.resultLayout { max-width: 1280px; margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 56px; align-items: start }
+.resultLayout { max-width: 1000px; margin: 0 auto; padding: 0 24px 40px; display: grid; grid-template-columns: minmax(0, 1fr); align-items: start }
 .tabPanel { margin-top: 46px; animation: rise .4s var(--ease) both }
 .hiddenPanel { display: none }
 .sectionIntroduction { margin-bottom: 26px }
@@ -48,27 +36,23 @@
 .sectionIntroduction p { margin: 0; color: var(--muted); font-size: 14.5px }
 
 /* ── Action card ── */
-.actionCard { min-width: 0; overflow-wrap: anywhere; position: relative; margin-bottom: 26px; padding: 30px 34px 0; background: var(--surface); border: 1px solid var(--line); border-top: 4px solid var(--subtle) }
+.actionCard { min-width: 0; overflow-wrap: anywhere; position: relative; margin-bottom: 16px; padding: 24px 30px 0; background: var(--surface); border: 1px solid var(--line); border-top: 4px solid var(--subtle) }
 .actionCard[data-applicability="priority"] { border-top-color: var(--green) }
 .actionCard[data-applicability="conditional"] { border-top-color: var(--amber) }
 .actionTop > div { min-width: 0 }
 .actionTop { display: flex; gap: 22px; align-items: flex-start }
-.actionNumber { font-family: var(--font-display); font-size: 64px; line-height: .85; color: var(--red) }
+.actionNumber { flex-shrink: 0; width: 52px; font-family: var(--font-display); font-size: 48px; line-height: .9; color: var(--red) }
 .actionCard[data-applicability="defer"] .actionNumber { color: var(--subtle) }
 .suggestionLabel { font-size: 12px; letter-spacing: .14em; color: var(--subtle) }
-.actionTop h3 { margin: 10px 0 0; font-size: 23px; line-height: 1.55; letter-spacing: .12em }
-.actionReason { margin: 18px 0 20px; font-size: 15.5px; color: var(--ink-2) }
-.actionQuick { display: grid; grid-template-columns: 1fr 1fr; gap: 0 28px; margin: 0 0 24px }
-.actionQuick > div { padding-top: 12px; border-top: 2px solid var(--ink) }
-.actionQuick dt { font-size: 12px; letter-spacing: .2em; color: var(--muted) }
-.actionQuick dd { margin: 4px 0 0; font-size: 14.5px; line-height: 1.75 }
-.actionDetails { margin: 0 -34px; border-top: 1px solid var(--line) }
-.actionDetails summary { display: flex; align-items: center; justify-content: space-between; padding: 18px 34px; list-style: none; font-family: var(--font-display); font-size: 15px; font-weight: 600; letter-spacing: .2em; transition: color .2s }
+.actionTop h3 { margin: 2px 0 0; font-size: 21px; line-height: 1.5; letter-spacing: .08em }
+.actionReason { margin: 6px 0 0; font-size: 15px; line-height: 1.8; color: var(--ink-2) }
+.actionDetails { margin: 0 -30px; border-top: 1px solid var(--line) }
+.actionDetails summary { display: flex; align-items: center; justify-content: space-between; padding: 14px 30px; list-style: none; font-family: var(--font-display); font-size: 14.5px; font-weight: 600; letter-spacing: .2em; transition: color .2s }
 .actionDetails summary::-webkit-details-marker { display: none }
 .actionDetails summary:hover { color: var(--red) }
 .chevron { transition: transform .3s var(--ease) }
 .actionDetails[open] .chevron { transform: rotate(45deg) }
-.actionDetailBody { padding: 4px 34px 28px; animation: rise .3s var(--ease) both }
+.actionDetailBody { padding: 4px 30px 24px; animation: rise .3s var(--ease) both }
 .actionDetailBody h4 { margin: 28px 0 12px; font-size: 15px; letter-spacing: .18em }
 .actionDetailBody ul { margin: 0; padding-left: 20px; font-size: 14.5px; color: var(--ink-2) }
 .actionDetailBody li { margin-bottom: 4px; line-height: 1.8 }
@@ -89,7 +73,7 @@
 .limitations { margin-top: 26px; padding: 18px 20px; border: 1px dashed var(--line-strong) }
 .limitations strong { display: block; margin-bottom: 6px; font-family: var(--font-display); font-size: 14.5px; letter-spacing: .16em; color: var(--red-strong) }
 .limitations li { font-size: 13.5px; color: var(--muted) }
-.actionEvidence { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin: 0 -34px; padding: 14px 34px; border-top: 1px solid var(--line); background: var(--paper); font-size: 12.5px; letter-spacing: .1em; color: var(--muted) }
+.actionEvidence { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin: 18px -30px 0; padding: 12px 30px; border-top: 1px solid var(--line); background: var(--paper); font-size: 12.5px; letter-spacing: .1em; color: var(--muted) }
 
 /* ── Evidence button & drawer ── */
 .evidenceButton { display: inline-flex; align-items: center; gap: 7px; padding: 6px 0; border: 0; background: none; color: var(--red); font-size: 13.5px; letter-spacing: .1em; text-decoration: underline; text-underline-offset: 4px; transition: color .2s }
@@ -162,30 +146,14 @@
 .sourceRow small { font-size: 12px; color: var(--muted) }
 
 /* ── Aside ── */
-.resultAside { position: sticky; top: calc(var(--header-h) + 96px); margin-top: 46px; display: grid; gap: 22px }
-.nextStep { padding: 26px 24px; background: var(--cream); border-top: 3px solid var(--red); color: var(--ink) }
-.nextStep h3 { color: var(--ink); font-size: 19px; letter-spacing: .14em; line-height: 1.6 }
-.nextStep ul { margin: 0 0 18px; padding-left: 18px; font-size: 13.5px; color: var(--muted) }
-.nextStep li { margin-bottom: 6px }
-.nextStep p { font-size: 13.5px; color: var(--muted) }
-.nextStep :global(.text-link) { color: var(--red) }
-.asideSourceNote { padding-top: 14px; border-top: 2px solid var(--ink) }
-.asideSourceNote strong { font-family: var(--font-display); font-size: 14.5px; letter-spacing: .16em }
-.asideSourceNote p { margin: 6px 0 10px; font-size: 13px; color: var(--muted) }
-.asideSourceNote :global(.text-link) { font-size: 13px }
 .clearButton { justify-self: start; font-size: 13px !important; color: var(--muted) !important }
 .clearButton:hover { color: var(--red) !important }
 .printSources { display: none }
 
-@media (max-width: 1040px) {
-  .resultLayout { grid-template-columns: minmax(0, 1fr); gap: 0 }
-  .resultAside { position: static; margin-top: 30px }
-}
 @media (max-width: 760px) {
   .resultBreadcrumb { grid-template-columns: 1fr auto }
   .resultBreadcrumb > :global(ol) { grid-column: 1 / -1; grid-row: 2; justify-self: center }
-  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 0 }
-  .actionQuick, .twoCol, .comparability, .gapGrid { grid-template-columns: 1fr }
+  .twoCol, .comparability, .gapGrid { grid-template-columns: 1fr }
   .historyRow { grid-template-columns: 1fr; gap: 8px }
 }
 @media (max-width: 640px) {
@@ -193,12 +161,6 @@
   .resultBreadcrumb { grid-template-columns: minmax(0, 1fr); font-size: 12px; letter-spacing: .08em }
   .exportButtons { grid-row: 3; justify-self: start; justify-content: flex-start }
   .exportButtons button { padding: 6px 9px; font-size: 12px; letter-spacing: .04em }
-  .heroCard { margin-top: 26px; padding: 20px 18px 0 }
-  .heroCard h1 { margin: 30px 0 14px; font-size: 25px; letter-spacing: .1em }
-  .heroStatement { font-size: 16.5px; letter-spacing: .06em }
-  .heroMeta { margin: 22px 0 30px; gap: 8px 14px }
-  .stats { margin: 0 -18px; padding: 20px 18px }
-  .stats dd { font-size: 36px }
   .tabBar { padding: 12px 16px }
   .resultTabs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100% }
   .resultTabs button { justify-content: center; gap: 4px; padding: 9px 4px; font-size: 12.5px; letter-spacing: .04em; white-space: normal; line-height: 1.35; text-align: center }
@@ -209,7 +171,8 @@
   .actionTop { gap: 14px }
   .actionNumber { font-size: 46px }
   .actionTop h3 { font-size: 18.5px; letter-spacing: .06em }
-  .actionDetails, .actionEvidence { margin: 0 -18px }
+  .actionDetails { margin: 0 -18px }
+  .actionEvidence { margin: 16px -18px 0 }
   .actionDetails summary { padding: 16px 18px }
   .actionDetailBody { padding: 4px 18px 22px }
   .actionEvidence { padding: 12px 18px }
@@ -224,9 +187,6 @@
 }
 @media print {
   .hero { background: none; color: black; padding: 0 }
-  .heroCard { background: none; box-shadow: none; border: 0; color: black }
-  .heroCard h1, .heroStatement, .stats dd { color: black }
-  .stats { background: none }
   .hiddenPanel { display: block !important }
   .resultTabs, .tabBar, .evidenceDialog, .resultBreadcrumb { display: none }
   .resultLayout { display: block; padding: 0 }
@@ -261,7 +221,7 @@
 .webCitations a svg { flex-shrink:0 }
 .webComparison .comparability { margin:22px 0 0 }
 .webComparison .comparability li, .webComparison .comparability p { font-size:16px; line-height:1.85 }
-.actionWebEvidence { margin:0 -34px; padding:10px 34px 0; background:var(--paper); border-top:1px solid var(--line) }
+.actionWebEvidence { margin:0 -30px; padding:10px 30px 0; background:var(--paper); border-top:1px solid var(--line) }
 .actionWebEvidence .webCitations { margin-bottom:16px }
 .researchReport { border:1px solid var(--line-strong); background:var(--surface); margin:24px 0 32px }
 .researchReport summary { display:flex; align-items:center; justify-content:space-between; gap:18px; padding:24px 28px; list-style:none; cursor:pointer }
@@ -287,23 +247,75 @@
 @media(max-width:650px) { .researchReport summary,.researchReportBody { padding:20px } .researchMetadata > div { grid-template-columns:1fr; gap:4px } .researchNotice { padding:20px } .actionWebEvidence { margin:0 -18px; padding:10px 18px 0 } .webComparisonTop { align-items:start } }
 @media print { .researchReportBody,.researchReport,.webComparison,.researchNotice { display:block!important } .webCitations a { color:#000; border-color:#aaa } .researchStatus,.webComparisonMeta { color:#222 } }
 
-.actionOrigin{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:13px;color:var(--muted,#646175);margin:0 0 22px}.actionOrigin span{font-weight:600}.actionOrigin small{font-size:12px}.researchAssessment{padding:18px 22px;margin:20px 0;border-left:3px solid #b15b3f;background:#f4eee2}.researchAssessment p{margin:6px 0;line-height:1.65}
 
 /* Three kinds of basis: reviewed library source, web finding to verify, AI-drafted suggestion. */
-.tierLegend { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px 20px; margin: -20px 0 30px; font-size: 12.5px; letter-spacing: .06em; color: var(--muted) }
-.tierLegend span { color: var(--ink); font-weight: 600; letter-spacing: .16em }
-.tierLegend i { display: inline-flex; align-items: center; gap: 7px; font-style: normal }
-.tierLegend i::before, .tierDot, .tierTag::before, .actionOrigin span::before { content: ''; display: inline-block; flex-shrink: 0; width: 8px; height: 8px; border-radius: 50%; background: var(--red) }
-.tierLegend i[data-tier="verified"]::before, .tierDot[data-tier="verified"], .tierTag[data-tier="verified"]::before { background: var(--green) }
-.tierLegend i[data-tier="web"]::before, .tierDot[data-tier="web"] { background: var(--amber-line) }
-.actionOrigin span { display: inline-flex; align-items: center; gap: 7px }
-.actionOrigin[data-origin="rule"] span::before, .actionOrigin[data-origin="preset"] span::before { background: var(--subtle) }
+.tierDot, .tierTag::before { content: ''; display: inline-block; flex-shrink: 0; width: 8px; height: 8px; border-radius: 50%; background: var(--red) }
+.tierDot[data-tier="verified"], .tierTag[data-tier="verified"]::before { background: var(--green) }
+.tierDot[data-tier="web"] { background: var(--amber-line) }
 .tierTag { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border: 1px solid var(--green); border-radius: 2px; background: var(--green-soft); color: var(--green); font-size: 12px; letter-spacing: .08em }
-.recordDetails { max-width: 900px; margin: 0 auto 30px; padding-top: 14px; border-top: 1px solid var(--line); text-align: left }
-.recordDetails summary { display: flex; justify-content: center; gap: 6px; font-size: 13px; letter-spacing: .08em; color: var(--muted); cursor: pointer; list-style: none }
-.recordDetails summary::-webkit-details-marker { display: none }
-.recordDetails summary::after { content: '+'; color: var(--red) }
-.recordDetails[open] summary::after { content: '−' }
 .scopeNotice { margin: 0 0 22px; padding: 14px 18px; border-left: 3px solid var(--amber-line); background: var(--amber-soft); color: var(--ink); font-size: 14px; line-height: 1.8 }
-@media (max-width: 640px) { .tierLegend { justify-content: flex-start; margin: -12px 0 24px } }
-@media print { .recordDetails summary::after { content: '' } }
+
+/* Summary: goal, place and sharing on one line; save and the case record beneath. */
+.summary { margin: 26px auto 0; max-width: 952px; padding: 22px 30px 18px; background: var(--card); border: 1px solid var(--line); box-shadow: var(--shadow); animation: rise .6s var(--ease) both }
+.summaryTop { display: flex; justify-content: space-between; gap: 16px; font-size: 12.5px; letter-spacing: .16em; color: var(--muted) }
+.summary h1 { margin: 14px 0 10px; font-size: clamp(24px, 2.6vw, 32px); letter-spacing: .14em; color: var(--ink) }
+.summaryLine { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 22px; margin: 0; font-size: 14.5px; line-height: 1.9; color: var(--muted) }
+.summaryLine b { font-weight: 500; color: var(--ink) }
+.summaryLine a:not(.fill) { margin-left: 8px; color: var(--red); text-decoration: underline; text-underline-offset: 4px }
+.summaryChips { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 0 }
+.summaryChips :global(.tag-outline) { color: var(--muted) }
+.saveRow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin: 16px 0 0; padding-top: 14px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted) }
+.saveRow label { display: inline-flex; align-items: center; gap: 6px }
+.saveRow select { padding: 3px 4px; border: 1px solid var(--line-strong); background: transparent; color: var(--ink) }
+.saveRow :global(.text-link) { margin-left: auto; font-size: 13px }
+.recordDetails { margin-top: 10px; font-size: 13px }
+.recordDetails summary { width: fit-content; color: var(--muted); cursor: pointer }
+.recordDetails summary:hover { color: var(--red) }
+.panelTitle { margin: 0 0 18px; font-size: clamp(22px, 2.4vw, 27px); letter-spacing: .18em }
+/* Action card: what, why, who and when; the rest is one click away. */
+.actionMeta { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 18px; margin: 8px 0 0; font-size: 13.5px; color: var(--muted) }
+.actionMeta > span { display: inline-flex; align-items: center; gap: 6px }
+.actionMeta svg { color: var(--subtle) }
+.actionPrep { margin: 14px 0 0 74px }
+.actionPrep strong { font-size: 12.5px; font-weight: 500; letter-spacing: .16em; color: var(--muted) }
+.actionPrep ul { margin: 4px 0 0; padding-left: 18px; font-size: 14.5px; line-height: 1.85 }
+.basisTags { display: flex; flex-wrap: wrap; gap: 6px }
+.basisTags i { padding: 1px 9px; border-radius: 10px; background: var(--band); color: var(--muted); font-size: 12px; font-style: normal; letter-spacing: .04em }
+.basisTags i[data-origin="ai"] { background: var(--red-soft); color: var(--red-strong) }
+.originNote { margin: 0 0 6px; font-size: 13px !important; color: var(--muted) !important }
+.supplement { display: inline-flex; align-items: baseline; gap: 8px }
+.supplement :global(.text-link) { font-size: 13px }
+.supplement small { font-size: 12px; color: var(--subtle) }
+.supplementForm { margin-top: 12px }
+.footnote { margin: 34px 0 0; padding-top: 14px; border-top: 1px solid var(--line); font-size: 12.5px; line-height: 1.8; color: var(--subtle) }
+.sourcesDetails { margin-top: 26px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line) }
+.sourcesDetails > summary { display: flex; align-items: center; justify-content: space-between; padding: 14px 2px; list-style: none; font-size: 14px; letter-spacing: .08em; color: var(--muted); cursor: pointer }
+.sourcesDetails > summary::-webkit-details-marker { display: none }
+.sourcesDetails[open] .chevron { transform: rotate(45deg) }
+.clearButton { justify-self: start; margin-top: 18px }
+/* Uploaded materials snapshot, in the same page-tag form as the review sheet. */
+.materialSnapshot { min-width: 0; margin-top: 34px; overflow-wrap: anywhere }
+.materialSnapshot h2 { margin: 0 0 6px; font-size: 21px; letter-spacing: .16em }
+.materialNote { margin: 0 0 10px; font-size: 13px; line-height: 1.75; color: var(--muted) }
+.materialFile { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; margin: 4px 0; font-size: 13.5px; color: var(--muted) }
+.materialFile svg { color: var(--red) }
+.materialFile b { font-weight: 500; color: var(--ink) }
+.materialIssue { color: var(--amber); font-size: 13px }
+.materialConflict { display: flex; flex-wrap: wrap; gap: 4px 10px; margin: 10px 0; padding: 10px 14px; background: var(--amber-soft); font-size: 14px; line-height: 1.7 }
+.materialConflict span { color: var(--muted) }
+.materialItems { margin: 12px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--line) }
+.materialItems li { border-bottom: 1px solid var(--line) }
+.materialItems summary { padding: 10px 2px; font-size: 14.5px; line-height: 1.75; cursor: pointer }
+.materialItems blockquote { margin: 0 0 12px; padding: 4px 12px; border-left: 2px solid var(--line-strong); font-size: 13.5px; line-height: 1.75; color: var(--ink-2); white-space: pre-wrap }
+.materialItems blockquote span { display: block; font-size: 12px; color: var(--muted) }
+.pageTag { display: inline-block; margin-left: .6em; padding: 0 7px; border: 1px solid var(--line-strong); border-radius: 10px; font-size: 11.5px; line-height: 1.7; letter-spacing: .04em; color: var(--muted); white-space: nowrap; vertical-align: .12em }
+.editedTag { margin-left: .5em; font-size: 12px; color: var(--muted) }
+@media (max-width: 640px) {
+  .summary { padding: 18px 18px 14px }
+  .actionPrep { margin-left: 0 }
+  .saveRow :global(.text-link) { margin-left: 0 }
+}
+@media print {
+  .summary { background: none; box-shadow: none; border: 0; padding: 0 }
+  .sourcesDetails > * { display: block !important }
+}

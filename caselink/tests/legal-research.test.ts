@@ -24,7 +24,7 @@ describe('case-specific legal research',()=>{
   expect(validateLegalCitations(output,input,research)).toEqual([]);
   expect(output.actionOptions.find(action=>action.actionId==='prepare-case-file')?.legalCitations).toBeUndefined();
   const html=renderToStaticMarkup(createElement(LegalResearchView,{research,resources,locale:'zh'}));
-  expect(html).toContain('相关事实与来源归属');expect(html).toContain('原文与准确定位');expect(html).toContain('适用条件与未知项');expect(html).toContain('下一步需核实或准备');
+  expect(html).toContain('相关事实');expect(html).toContain('下一步核对');expect(html).toContain('待确认');expect(html).toContain(research.bindings[0].claim);expect(html).toContain('打开原文');
  });
  it('does not infer criminal procedure merely from a retained example ID after narrative edits',()=>{
   const input=demo(1);input.background.description='用户改写：尚不清楚是民事还是行政程序。';
