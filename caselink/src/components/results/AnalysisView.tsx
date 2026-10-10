@@ -1,6 +1,7 @@
 'use client';
 import MaterialSnapshot from './MaterialSnapshot';
 import WhatsNextWorkspace,{NextQuestions,OtherPaths} from './WhatsNextWorkspace';
+import CaseIssues,{openIssue} from './CaseIssues';
 import {evidenceSourceLink,sourceFormatNote} from '@/lib/evidence/source-links';
 import {useEffect,useState} from 'react';
 import Link from 'next/link';
@@ -43,7 +44,7 @@ function ActionCard({a,index,webIds,webSources,origin}:{a:ActionOption,index:num
    <p className={styles.actionMeta}><span><UserRound size={14} aria-hidden="true"/><span className="screen-reader">{x.lead}: </span>{a.leadRole}</span><span><Clock3 size={14} aria-hidden="true"/><span className="screen-reader">{x.timing}: </span>{a.timing}</span>{a.applicability!=='priority'&&<span className={`tag ${applicabilityTag[a.applicability]}`}>{L.applicability[a.applicability]}</span>}</p>
   </div></div>
   {prepare.length>0&&<div className={styles.actionPrep}><strong>{x.prepare}</strong><ul>{prepare.map((item,i)=><li key={i}>{item}</li>)}</ul></div>}
-  <div className={styles.actionEvidence}><span className={styles.basisTags}>{origin&&<i data-origin={origin.origin}>{origin.origin==='ai'?x.origin.ai:origin.origin==='preset'?x.origin.preset:x.origin.rule}</i>}<i>{L.basis[a.basisType]}</i>{!!a.legalCitations?.length&&<i>{x.provisions(a.legalCitations.length)}</i>}</span>{(a.supportingEvidenceIds.length>0||!webIds.length)&&<EvidenceButton ids={a.supportingEvidenceIds}/>}</div>
+  <div className={styles.actionEvidence}><span className={styles.basisTags}>{origin&&<i data-origin={origin.origin}>{origin.origin==='ai'?x.origin.ai:origin.origin==='preset'?x.origin.preset:x.origin.rule}</i>}<i>{L.basis[a.basisType]}</i>{!!a.legalCitations?.length&&<i>{x.provisions(a.legalCitations.length)}</i>}{a.issueIds?.map(id=><button type="button" key={id} className={styles.issueLink} onClick={()=>openIssue(id)}>{x.issueLink(Number(id.replace('issue-','')))}</button>)}</span>{(a.supportingEvidenceIds.length>0||!webIds.length)&&<EvidenceButton ids={a.supportingEvidenceIds}/>}</div>
   {webIds.length>0&&<div className={styles.actionWebEvidence}><WebCitations ids={webIds} sources={webSources}/></div>}
   <details className={styles.actionDetails}><summary>{x.details}<Plus size={18} className={styles.chevron}/></summary><div className={styles.actionDetailBody}>
    {origin?.reason&&<p className={styles.originNote}>{origin.reason}</p>}
@@ -87,6 +88,7 @@ export default function AnalysisView({reportId}:{reportId?:string}){const {local
  const placeText=input.intake?[input.country==='unknown'?adaptiveCopy[locale].unknown:countryName(input.country,locale),result.jurisdiction?.jurisdictionCode&&result.jurisdiction.jurisdictionCode!=='unknown'&&result.jurisdiction.jurisdictionCode!=='national'?jurisdictionNames[result.jurisdiction.jurisdictionCode]??result.jurisdiction.legalSystem:'',(adaptiveCopy[locale].kinds as Record<string,string>)[input.intake.caseKind]].filter(Boolean).join(' · '):'';
  const knownResources=input.resources.filter(resource=>resource!=='unknown');
  const supportText=input.intake?(knownResources.map(resource=>L.resources[resource]).join(list)||(locale==='en'?'See the original case record':'支持情况见原始记录')):(input.resources.map(resource=>L.resources[resource]).join(list)||x.notProvided);
+ const issues=snapshot.caseIssues??[];
  const webChip=result.webResearch?(result.webResearch.status==='completed'&&webCount?x.webChip(webCount):t.web.status[result.webResearch.status]):'';
  return <ReportSnapshotProvider snapshot={snapshot}><main data-top="dark" className={styles.analysisPage}>
   <section className={styles.hero}>
@@ -110,12 +112,13 @@ export default function AnalysisView({reportId}:{reportId?:string}){const {local
   <div className={styles.tabBar}><div className={styles.resultTabs} role="tablist" aria-label={x.tabsLabel}>{tabs.map(([id,label,n,tier])=><button key={id} id={`tab-${id}`} role="tab" aria-selected={tab===id} aria-controls={`panel-${id}`} onClick={()=>setTab(id)} className={tab===id?styles.activeTab:''}>{tier&&<i className={styles.tierDot} data-tier={tier} aria-hidden="true"/>}{label}<span>{n}</span></button>)}</div></div>
   <div className={styles.resultLayout}>
    <section id="panel-actions" role="tabpanel" aria-labelledby="tab-actions" className={`${styles.tabPanel} ${tab!=='actions'?styles.hiddenPanel:''}`}>
+    <CaseIssues issues={issues}/>
     <h2 className={styles.panelTitle}>{x.actionsTitle(result.actionOptions.length)}</h2>
     {result.actionOptions.map((a,i)=><ActionCard key={a.actionId} a={a} index={i} webIds={(result.actionWebSources??[]).filter(ref=>ref.actionId===a.actionId).flatMap(ref=>ref.sourceIds)} webSources={result.webResearch?.sources??[]} origin={result.actionOrigins?.find(origin=>origin.actionId===a.actionId)}/>)}{!result.actionOptions.length&&<div className="panel"><h3>{x.noActionsTitle}</h3><p>{x.noActionsText}</p></div>}
     <NextQuestions plan={snapshot.whatsNext} missing={result.missingInformation} editHref={editHref} onEditFacts={editSnapshot}>{!reportId&&<span className={`${styles.supplement} no-print`}><button className="text-link" disabled={supplement||!readPreferences().aiEnabled} onClick={()=>setSupplement(true)}>{locale==='en'?'Run one more research round':'主动补查一轮'}</button><small>{locale==='en'?'May use extra quota':'可能产生额外用量'}</small></span>}</NextQuestions>
     {supplement&&<div className={styles.supplementForm}><AnalysisSubmit currentInput={input} operation="supplement" parentAnalysisId={result.analysisId} prepare={()=>input} hasResult={false} stale={false} offerRule submitLabel={locale==='en'?'Submit additional research':'确认发起补查'}/></div>}
     {snapshot.whatsNext&&<WhatsNextWorkspace key={result.analysisId} result={{...result,snapshot}} reportId={reportId}/>}
-    <LegalResearchView research={snapshot.legalResearch} resources={snapshot.resources} locale={locale}/>
+    {!issues.length&&<LegalResearchView research={snapshot.legalResearch} resources={snapshot.resources} locale={locale}/>}
     <OtherPaths plan={snapshot.whatsNext}/>
     <p className={styles.footnote}>{x.footnote}</p>
    </section>
@@ -135,7 +138,7 @@ export default function AnalysisView({reportId}:{reportId?:string}){const {local
     <div className={styles.sourcesList}><h3>{x.sources}</h3>{result.sources.map((e,i)=><div key={e.evidenceId} className={styles.sourceRow}><span className={styles.sourceIndex}>{pad(i+1)}</span><div><strong>{caseOf(e.caseId)?.title}</strong><p>{e.explanation}</p><small>{x.sourceLine(e.pdfPage,docOf(e.documentId)?.publishedDate??'')}</small></div><EvidenceButton ids={[e.evidenceId]} label={x.sourceButton}/></div>)}</div>
    </section>
    {snapshot.uploadedMaterials&&<MaterialSnapshot materials={snapshot.uploadedMaterials} locale={locale}/>}
-   <details className={styles.sourcesDetails}><summary>{x.sourcesSummary(snapshot.cases.length,snapshot.evidence.length,snapshot.resources.length)}<Plus size={16} className={styles.chevron}/></summary><EvidenceLayers snapshot={snapshot}/></details>
+   <details className={styles.sourcesDetails}><summary>{x.sourcesSummary(snapshot.cases.length,snapshot.evidence.length,snapshot.resources.length)}<Plus size={16} className={styles.chevron}/></summary>{issues.length>0&&<LegalResearchView research={snapshot.legalResearch} resources={snapshot.resources} locale={locale}/>}<EvidenceLayers snapshot={snapshot}/></details>
    {!reportId&&<button className={`${styles.clearButton} text-link no-print`} onClick={()=>{if(window.confirm(x.clearConfirm)){clearSession();setState({input:null,result:null,stale:false})}}}><Trash2 size={13}/>{x.clear}</button>}
   </div>
   <section className={styles.printSources}><h2>{x.printTitle}</h2>{result.sources.map(e=>{const d=docOf(e.documentId);return <article key={e.evidenceId}><h3>{caseOf(e.caseId)?.title} · {x.printPage(e.pdfPage)}</h3><blockquote>{e.exactQuote}</blockquote><p>{e.explanation}</p><p>{x.printReport(d?.publishedDate??'',d?.factsAsOf??'',e.evidenceId)}</p><p>{x.printAuthor(d?.author??'',e.printedPage,d?.checkedAt??'',L.origins[e.origin])}</p><p>{sourceFormatNote(e,locale)}</p><a href={evidenceSourceLink(e)}>{x.printLink}</a></article>})}</section>

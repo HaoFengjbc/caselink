@@ -295,7 +295,12 @@
 .clearButton { justify-self: start; margin-top: 18px }
 /* Uploaded materials snapshot, in the same page-tag form as the review sheet. */
 .materialSnapshot { min-width: 0; margin-top: 34px; overflow-wrap: anywhere }
-.materialSnapshot h2 { margin: 0 0 6px; font-size: 21px; letter-spacing: .16em }
+.materialFold { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line) }
+.materialFold > summary { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; padding: 14px 2px; list-style: none; cursor: pointer }
+.materialFold > summary::-webkit-details-marker { display: none }
+.materialFold > summary span { font-size: 15px; font-weight: 600; letter-spacing: .12em }
+.materialFold > summary small { font-size: 13px; color: var(--muted) }
+.materialFold > summary:hover span { color: var(--red) }
 .materialNote { margin: 0 0 10px; font-size: 13px; line-height: 1.75; color: var(--muted) }
 .materialFile { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; margin: 4px 0; font-size: 13.5px; color: var(--muted) }
 .materialFile svg { color: var(--red) }
@@ -319,3 +324,5 @@
   .summary { background: none; box-shadow: none; border: 0; padding: 0 }
   .sourcesDetails > * { display: block !important }
 }
+.issueLink { padding: 1px 9px; border: 1px solid var(--red); border-radius: 10px; background: transparent; color: var(--red-strong); font-size: 12px; letter-spacing: .04em; cursor: pointer }
+.issueLink:hover { background: var(--red-soft) }

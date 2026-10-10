@@ -16,6 +16,18 @@ export const workingLabels={
  en:{status:{generated:'Generated',user_edited:'Edited by user',needs_merge:'Facts changed; merge needed'},progress:{draft:'Draft only',reviewed:'User recorded: reviewed',completed:'User recorded: completed',sent:'User recorded: sent'},condition:{confirmed:'Confirmed',unknown:'To confirm',not_met:'Not met'},origin:{user_statement:'User statement',document_record:'Document record',court_finding:'Court finding',external_report:'External report',model_inference:'Model inference'},read:{full_text:'Official text read',partial_text:'Partly read',blocked:'Text unavailable',not_checked:'Text not read'},review:{unreviewed:'Unreviewed',agent_checked:'Source checked by agent; team review pending',team_verified:'Team reviewed',legacy_recorded:'Original library record',conflict:'Conflicting sources'}},
 } as const;
 
+const MONTHS=['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
+/** Chinese drafts read dates the Chinese way: "10 January 2019" becomes 2019年1月10日; anything unrecognized stays as written. */
+function displayDate(date:string,locale:Locale):string{
+ if(locale==='en')return date;
+ const month=(name:string)=>MONTHS.indexOf(name.toLowerCase().slice(0,3))+1;
+ let m=date.match(/(\d{1,2})(?:st|nd|rd|th)?\s+([A-Za-z]{3,9})\.?,?\s+(\d{4})/);if(m&&month(m[2]!)>0)return `${m[3]}年${month(m[2]!)}月${Number(m[1])}日`;
+ m=date.match(/([A-Za-z]{3,9})\.?\s+(\d{1,2})(?:st|nd|rd|th)?,?\s+(\d{4})/);if(m&&month(m[1]!)>0)return `${m[3]}年${month(m[1]!)}月${Number(m[2])}日`;
+ m=date.match(/([A-Za-z]{3,9})\.?,?\s+(\d{4})/);if(m&&month(m[1]!)>0)return `${m[2]}年${month(m[1]!)}月`;
+ m=date.match(/^(\d{4})-(\d{2})-(\d{2})$/);if(m)return `${m[1]}年${Number(m[2])}月${Number(m[3])}日`;
+ return date;
+}
+
 /** Frozen records only. A legacy report is never rebuilt from today's catalog. */
 export function buildWorkingDocuments(input:NewCaseInput,result:AnalysisResult,locale:Locale='zh'):WorkingDocument[]{
  const snapshot=snapshotForResult(result),plan=snapshot.whatsNext;
@@ -39,9 +51,16 @@ export function buildWorkingDocuments(input:NewCaseInput,result:AnalysisResult,l
  const intro=(kind:WorkKind)=>[`# ${documentTitles[locale][kind]}`,'',`${tr('程序位置','Procedural position')}: ${procedure}`,`${tr('目标','Goal')}: ${goal}`,`${tr('披露选择','Disclosure choice')}: ${disclosure}`,tr('内部工作草稿：事实来自使用者和所列材料，未经独立核实；生成或下载不代表已复核、已联系或已提交。','Internal working draft: facts come from the user and the listed materials and are not independently verified; generating or downloading it is not review, contact or filing.'),''];
  const priorActions=input.priorActions.status==='described'?`${input.priorActions.date||unknownDate}: ${input.priorActions.description}`:input.priorActions.status==='none'?tr('用户称尚未采取行动；不能据此推断没有其他人采取行动。','User reports no prior action; this does not establish that no one else acted.'):tr('未确认是否已有行动；请核对有无提交、回执和律师沟通，避免重复或冲突。','Prior action unknown; check submissions, receipts and counsel communications to avoid duplicate or conflicting steps.');
  const sourceLines=sourceAppendix(snapshot,locale);
+ const paren=(value:string)=>en?` (${value})`:`（${value}）`;
+ const layer=(a:NonNullable<ReportSnapshot['caseIssues']>[number]['authorities'][number])=>a.kind==='case'?tr('已核实案例','reviewed case'):a.kind==='international'?tr('国际标准','international standard'):a.check==='quote_matched'?tr('本地法，原文已核对','local law, wording matched'):tr('本地法，资料库','local law, catalog');
+ const issueLines=(snapshot.caseIssues??[]).length?[`## ${tr('关键问题','Key questions')}`,...(snapshot.caseIssues??[]).flatMap((issue,index)=>[`### ${index+1}. ${issue.question}`,
+  ...(issue.facts.length?[`${tr('事实','Facts')}: ${issue.facts.map(f=>`${f.text}${paren(f.pageLabel??tr('用户陈述','user account'))}`).join(en?'; ':'；')}`]:[]),
+  ...(issue.authorities.length?[`${tr('依据','Basis')}:`,...issue.authorities.flatMap(a=>[`- ${a.title}${a.locator?` · ${a.locator}`:''}${paren(layer(a))}: ${a.point}`,...(a.quote?[`  > ${a.quote.replace(/\s+/g,' ')}`]:[]),...(a.url?[`  ${tr('原文','Source')}: ${a.url}`]:[])])]:[]),
+  ...(issue.application?[`${tr('对本案（AI 分析）','For this case (AI analysis)')}: ${issue.application}`]:[]),
+  ...(issue.nextStep?[`${tr('下一步','Next step')}: ${issue.nextStep}`]:[]),'']),'']:[];
  const timeline=[...intro('timeline'),`## ${tr('本案叙述','Account')}`,account,'',
   `## ${tr('事件与日期','Events and dates')}`,`| ${tr('日期','Date')} | ${tr('事件','Event')} | ${tr('出处','Source')} |`,'| --- | --- | --- |',
-  ...plan.facts.map(f=>`| ${cell(f.date?`${f.date}${f.precision==='approximate'?tr('（大概）',' (approx.)'):''}`:unknownDate)} | ${cell(f.text)} | ${cell(`${W.origin[f.origin]} · ${f.sourceLabel}`)} |`),
+  ...plan.facts.map(f=>`| ${cell(f.date?`${displayDate(f.date,locale)}${f.precision==='approximate'?tr('（大概）',' (approx.)'):''}`:unknownDate)} | ${cell(f.text)} | ${cell(`${W.origin[f.origin]} · ${f.sourceLabel}`)} |`),
   ...input.keyDates.filter(d=>!plan.facts.some(f=>f.date===d.date&&f.text.includes(d.event))).map(d=>`| ${cell(d.date)||unknownDate} | ${cell(d.event)} | ${d.approximate?tr('大概时间；不是法定期限','Approximate; not a legal deadline'):tr('用户提供的日期，待核','User-provided date, to verify')} |`),
   '',tr('没有日期的事件要与文书和送达记录核对；系统不计算任何期限。','Undated events need checking against documents and service records; no deadline is calculated.'),
   '',`## ${tr('已采取的行动','Prior actions')}`,priorActions,
@@ -49,7 +68,7 @@ export function buildWorkingDocuments(input:NewCaseInput,result:AnalysisResult,l
   ...(materials?.items.length?materials.items.flatMap(item=>[`- ${item.text}`,...item.sources.map(s=>`  ${s.filename} ${page(s.pdfPage)} · ${tr('原文','Original')}: ${s.quote.replace(/\s+/g,' ').trim()}`),...(item.uncertainty?[`  ${tr('待核','To check')}: ${item.uncertainty}`]:[])]):[tr('本报告未保存新案材料的文件名/页码索引；只能依据上面的用户陈述，不能伪造文书名、案号或页码。取得真实文书后再补充。','This report did not save a filename/page index for new-case materials. Only the user statements above are available; filenames, case numbers and pages are never invented. Add the actual documents when obtained.')]),
   '',`## ${tr('还缺的材料','Missing material')}`,...missing.map(m=>`- [ ] ${m}`),'',`## ${tr('待核问题','Questions to verify')}`,...plan.questions.map(q=>`- ${q.question} — ${q.reason}`),'',...sourceLines];
  const seeFacts=tr('见上方「本案事实」','See case facts above');
- const matrix=[...intro('issue_matrix'),`## ${tr('本案事实','Case facts')}`,...(plan.facts.length?plan.facts.map(factLine):[`- ${account}`]),'',
+ const matrix=[...intro('issue_matrix'),`## ${tr('本案事实','Case facts')}`,...(plan.facts.length?plan.facts.map(factLine):[`- ${account}`]),'',...issueLines,
   tr('下表是待研究的问题和材料任务，不是本案已成立的结论；表中没有反证不等于不存在反证。','These are research issues and material tasks, not established findings; no counter-evidence in the table does not mean there is none.'),'',
   `| ${tr('问题','Issue')} | ${tr('相关事实与证据','Facts and evidence')} | ${tr('条文与命题','Provision and proposition')} | ${tr('适用条件','Conditions')} | ${tr('还要核对','To check')} |`,'| --- | --- | --- | --- | --- |',
   ...bindings.filter(b=>plan.priorities.some(task=>task.legalBindingIds.includes(b.bindingId))).map(b=>{const r=snapshot.resources.find(r=>r.resourceId===b.resourceId),p=r?.sourceAudit?.provisions.find(p=>p.provisionId===b.provisionId);return `| ${cell(b.issue)} | ${cell(b.factBasis.map(f=>`${f.text}${f.fileName?` (${f.fileName}${f.page?` ${page(f.page)}`:''})`:''}`).join(' / ')||seeFacts)} | ${cell(`${r?.name??b.resourceId} · ${p?.locator??b.provisionId}: ${b.claim}`)} | ${cell(b.conditions.map(c=>`${c.label}: ${W.condition[c.status]}`).join(' / '))} | ${cell(b.nextChecks.join(' / ')||tr('请当地律师核对法律根据、现行版本及文书；目前不能确定救济或时限。','Local counsel must confirm legal basis, current version and documents; remedies and deadlines are undetermined.'))} |`;}),
@@ -62,7 +81,7 @@ export function buildWorkingDocuments(input:NewCaseInput,result:AnalysisResult,l
   `${tr('现有支持','Existing support')}: ${support}${input.resourceConstraints?` · ${input.resourceConstraints}`:''}`,
   `${tr('简要时序','Short chronology')}: ${plan.facts.filter(f=>f.date).slice(0,3).map(f=>`${f.date} ${f.text}`).join(' / ')||tr('日期未确认；无法判断期限、紧迫程度和适用的法律版本，也不推算期限。','Dates are unconfirmed; deadlines, urgency and the applicable legal version cannot be assessed or calculated.')}`,
   `${tr('已采取行动','Prior actions')}: ${input.priorActions.status==='described'?input.priorActions.description:input.priorActions.status==='none'?tr('用户称尚无','User reports none'):tr('未确认；请先核对已有提交及回执','Unconfirmed; check existing submissions and receipts')}`,
-  '',`## ${tr('请律师优先判断','Priority questions for counsel')}`,...plan.questions.slice(0,4).map((q,i)=>`${i+1}. ${q.question} — ${q.reason}`),
+  '',...issueLines,`## ${tr('请律师优先判断','Priority questions for counsel')}`,...plan.questions.slice(0,4).map((q,i)=>`${i+1}. ${q.question} — ${q.reason}`),
   ...(plan.questions.length<2?unique(missing).slice(0,2-plan.questions.length).map((q,i)=>`${plan.questions.length+i+1}. ${tr('请核对：','Please verify: ')}${q}`):[]),
   '',`## ${tr('相关条款与历史参考','Authorities and historical reference')}`,
   ...bindings.filter((b,i,all)=>plan.priorities.some(t=>t.legalBindingIds.includes(b.bindingId))&&all.findIndex(x=>x.resourceId===b.resourceId)===i).slice(0,3).map(b=>{const r=snapshot.resources.find(r=>r.resourceId===b.resourceId),p=r?.sourceAudit?.provisions.find(p=>p.provisionId===b.provisionId);return `- ${r?.name??b.resourceId} · ${p?.locator??b.provisionId}: ${compact(b.claim,en?130:45)}`;}),

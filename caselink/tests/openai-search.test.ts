@@ -53,7 +53,7 @@ describe('OpenAI search restoration (mocked SDK HTTP, no real provider calls)',(
    expect(body).toMatchObject({model:'test-model',store:false,tool_choice:'required',tools:[{type:'web_search',external_web_access:true}]});
    expect(JSON.stringify(body)).not.toMatch(/Violet Hush|PRIVATE_|offline-fixture-key/);
   }
-  expect(JSON.parse(http.mock.calls[0][1].body).max_tool_calls).toBe(3);expect(JSON.parse(http.mock.calls[1][1].body).max_tool_calls).toBe(6);
+  expect(JSON.parse(http.mock.calls[0][1].body).max_tool_calls).toBe(4);expect(JSON.parse(http.mock.calls[1][1].body).max_tool_calls).toBe(8);
   expect(JSON.parse(http.mock.calls[1][1].body).input[0].content).toContain(url);
  });
  it('excludes injected planner prose and rejects query tampering before any request',async()=>{
@@ -80,7 +80,7 @@ describe('OpenAI search restoration (mocked SDK HTTP, no real provider calls)',(
   expect(await researchWeb(input(),readConfig())).toMatchObject({status:'no_results',sources:[]});
  });
  it('accepts four reading tool actions but still rejects a response beyond the reading budget',async()=>{
-  for(const [count,status] of [[4,'completed'],[7,'unavailable']] as const){
+  for(const [count,status] of [[4,'completed'],[9,'unavailable']] as const){
    const http=vi.fn().mockResolvedValueOnce(Response.json(discovery())).mockResolvedValueOnce(Response.json(response([...Array.from({length:count},()=>tool('open_page')),message('The selected judgment states the outcome of this fictional proceeding.')])));vi.stubGlobal('fetch',http);
    expect((await researchWeb(input(),readConfig())).status).toBe(status);expect(http).toHaveBeenCalledTimes(2);
   }

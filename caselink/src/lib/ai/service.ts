@@ -24,6 +24,7 @@ import {researchWeb,type WebSearchTransport} from '../research/provider';
 import type {WebResearch} from '../research/contracts';
 import type {ResearchPlannerTransport} from '../research/planner';
 import {needsGoalClarification,normalizeConfirmedGoal} from '../intake/analysis';
+import {buildCaseIssues} from '../issues/build';
 const webComparisonCount=(value:ModelAnalysisOutput|WebModelAnalysisOutput)=>Array.isArray((value as WebModelAnalysisOutput).webComparisons)?(value as WebModelAnalysisOutput).webComparisons.length:0;
 
 export async function analyzeInput(raw:NewCaseInput,options:{forceRule?:boolean;signal?:AbortSignal;config?:ServerConfig;transport?:ModelTransport;researchTransport?:WebSearchTransport;researchPlannerTransport?:ResearchPlannerTransport;locale?:Locale;identity?:RequestIdentity;allowPreparationFallback?:boolean}={}):Promise<AnalysisResult>{
@@ -119,6 +120,10 @@ export async function analyzeInput(raw:NewCaseInput,options:{forceRule?:boolean;
   const historicalIds=new Set(adoptedMatches.flatMap(m=>[...m.record.interventions.filter(i=>i.executionStatus==='implemented').flatMap(i=>i.evidenceIds),...m.record.outcomes.flatMap(o=>o.evidenceIds)]));
   const referencedSources=collectSources(output,context);const sourceIds=new Set(referencedSources.map(s=>s.evidenceId));
   for(const e of context.evidence)if(historicalIds.has(e.evidenceId)&&!sourceIds.has(e.evidenceId)){referencedSources.push(e);sourceIds.add(e.evidenceId);}
+  // Key questions are checked before display: unverifiable local-law quotes are dropped, and raw model drafts are never stored.
+  const issueResult=await buildCaseIssues(output,{input,research:legalResearch,context,webResearch,locale,mode,signal:options.signal,budgetMs:Math.max(1000,Math.min(15_000,deadlineAt-Date.now()-3000))});
+  output.actionOptions=output.actionOptions.map(({issueIds:_drafted,...action})=>{const linked=issueResult.actionIssueIds.get(action.actionId);return linked?.length?{...action,issueIds:linked}:action;});
+  delete output.issues;
   // Chinese results keep their original shape; only other languages are tagged.
   checkCancelled();
   const nextSteps=buildNextSteps(input,output,legalResearch,followups,locale);
@@ -128,7 +133,7 @@ export async function analyzeInput(raw:NewCaseInput,options:{forceRule?:boolean;
   const selectedFollowups=followups.filter(f=>followupCaseIds.has(f.caseId));
   const nextStepErrors=validateNextStepLinks(nextSteps,output,legalResearch,selectedFollowups,locale);
   if(nextStepErrors.length)throw new AnalysisError('INVALID_MODEL_OUTPUT',nextStepErrors.join('；'),502);
-  const result=AnalysisResultSchema.parse({...output,legalResearch,nextSteps,whatsNext,followups:selectedFollowups,domain,jurisdiction,execution:currentExecution()??{...executionFor(options.identity??{requestId:randomUUID(),inputVersion:1,operation:'initial'}),actualCostUsd:mode==='live_ai'?null:0},...(webResearch?{webResearch}:{}),actionOrigins,researchAssessment,analysisId:randomUUID(),schemaVersion:SCHEMA_VERSION,inputHash,corpusVersion:CORPUS_VERSION,promptVersion:PROMPT_VERSION,createdAt:new Date().toISOString(),mode,historicalComparisons,sources:referencedSources,...(locale==='zh'?{}:{locale})});
+  const result=AnalysisResultSchema.parse({...output,legalResearch,nextSteps,whatsNext,followups:selectedFollowups,domain,jurisdiction,execution:currentExecution()??{...executionFor(options.identity??{requestId:randomUUID(),inputVersion:1,operation:'initial'}),actualCostUsd:mode==='live_ai'?null:0},caseIssues:issueResult.issues,...(webResearch?{webResearch}:{}),actionOrigins,researchAssessment,analysisId:randomUUID(),schemaVersion:SCHEMA_VERSION,inputHash,corpusVersion:CORPUS_VERSION,promptVersion:PROMPT_VERSION,createdAt:new Date().toISOString(),mode,historicalComparisons,sources:referencedSources,...(locale==='zh'?{}:{locale})});
   result.snapshot=captureReportSnapshot(result,locale,input);
   const documents=buildWorkingDocuments(input,result,locale);
   result.whatsNext!.documents=documents;result.snapshot.whatsNext=structuredClone(result.whatsNext!);

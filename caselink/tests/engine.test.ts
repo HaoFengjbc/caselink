@@ -175,7 +175,7 @@ describe('live mode, provider failures and request boundaries',()=>{
   });
   it('serializes the installed SDK Zod format and parses a local mocked HTTP response',async()=>{
     const format=zodTextFormat(ModelAnalysisOutputSchema,'caselink_analysis');
-    const json=JSON.parse(JSON.stringify(format));expect(json.type).toBe('json_schema');expect(json.strict).toBe(true);expect(json.schema.additionalProperties).toBe(false);expect(json.schema.required).toEqual(['comparableCases','actionOptions','missingInformation','limitations']);
+    const json=JSON.parse(JSON.stringify(format));expect(json.type).toBe('json_schema');expect(json.strict).toBe(true);expect(json.schema.additionalProperties).toBe(false);expect(json.schema.required).toEqual(['comparableCases','actionOptions','missingInformation','limitations','issues']);
     const expected=buildRuleReference(demo());let requestBody:Record<string,unknown>|undefined;
     const fetchMock=vi.fn(async(_url:unknown,options?:RequestInit)=>{
       requestBody=JSON.parse(String(options?.body));

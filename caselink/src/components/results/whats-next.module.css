@@ -47,6 +47,14 @@
 .progress label { display: block; margin: 10px 0 }
 .progress select { margin-left: 6px; padding: 5px; border: 1px solid var(--line-strong) }
 .progress textarea { display: block; width: 100%; min-height: 64px; margin-top: 6px; padding: 8px; border: 1px solid var(--line-strong) }
+/* Attachments: the timeline and the issue table, one line each */
+.attachments { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px; margin-top: 10px; font-size: 13.5px; color: var(--muted) }
+.attachments > span:first-child { font-size: 12.5px; letter-spacing: .14em }
+.attachment { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 6px; color: var(--ink) }
+.attachment svg { color: var(--red) }
+.attachment i { font-style: normal; font-size: 12px; color: var(--amber) }
+.attachment button { padding: 2px 8px; border: 1px solid var(--line-strong); border-radius: 2px; background: transparent; color: var(--ink); font-size: 12.5px; cursor: pointer }
+.attachment button:hover, .attachment button[aria-expanded=true], .attachment[data-active] button[data-document-tab] { border-color: var(--red); color: var(--red) }
 /* Other routes */
 .paths { margin: 34px 0 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line) }
 .paths > summary { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 14px; padding: 14px 2px; list-style: none; cursor: pointer }

@@ -35,7 +35,9 @@ export function buildResearchQuery(input:NewCaseInput,abstractPlan:ResearchPlan=
  const subject=topics.filter(x=>x!==APPROVED_ISSUES.press_freedom).slice(0,2).join(' ')||APPROVED_ISSUES.press_freedom;
  const prefix=`${location} ${APPROVED_KINDS[caseKind]} ${APPROVED_STAGES[input.stage]}`;
  const suffix=attempt===1?'case judgment':'comparative legal safeguards case report';
- const searchTerms=[`${prefix} journalism expression ${subject} ${suffix}`,`${location} journalism expression ${APPROVED_REMEDIES[input.primaryGoal]} ${suffix}`];
+ // A recognized jurisdiction also gets one search for the governing legal text itself, so the analysis can quote local law.
+ const lawTerm=jurisdiction.recognized?`${location} ${caseKind==='unknown'?'':`${APPROVED_KINDS[caseKind]} `}law ${subject} official legislation text`:null;
+ const searchTerms=[`${prefix} journalism expression ${subject} ${suffix}`,`${location} journalism expression ${APPROVED_REMEDIES[input.primaryGoal]} ${suffix}`,...(lawTerm?[lawTerm]:[])];
  const plan:ResearchPlan={domain:'expression_media',relationship:'journalist or public speaker and legal authority or claimant',disputedConduct:topics,harms:[],remedies:[APPROVED_REMEDIES[input.primaryGoal]],evidenceIssues:[],excludedIssues:[],uncertainties:['Search labels are broad approved categories, not legal findings.'],searchQueries:searchTerms,coverage:'limited'};
  return {jurisdiction,caseKind,stage:input.stage,topics,searchTerms:[...new Set(searchTerms)],plan,attempt,strategy:attempt===1?'direct_comparison':'broader_legal_analogy'};
 }

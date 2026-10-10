@@ -24,7 +24,7 @@ export function createControlledSearchTransport(fetcher:typeof fetch=fetch,env:R
   for(const goal of ['release','lawyer','conditions','drop_charges','change_judgment','other','unknown'] as const){
    for(const term of buildResearchQuery({...canonicalInput,primaryGoal:goal},query.plan,query.attempt).searchTerms)possible.add(term);
   }
-  if(query.searchTerms.length>2||query.searchTerms.some(term=>!possible.has(term)))throw new Error('unapproved_search_query');
+  if(query.searchTerms.length>3||query.searchTerms.some(term=>!possible.has(term)))throw new Error('unapproved_search_query');
   const output:unknown[]=[],actualQueries:string[]=[];
   for(const term of query.searchTerms){
    if(signal.aborted)throw new AnalysisError('CANCELLED','本次研究已取消。',499);
