@@ -1,0 +1,339 @@
+{
+ "httpStatus": 200,
+ "wallClockMs": 76048,
+ "analyzeRequests": 1,
+ "forceRule": null,
+ "refusedAiEndpoints": [],
+ "input": {
+  "country": "菲律宾",
+  "stage": "unknown",
+  "primaryGoal": "other",
+  "publicity": "consent",
+  "background": {
+   "activities": [],
+   "personType": "unknown",
+   "description": ""
+  },
+  "intake": {
+   "jurisdiction": "unknown",
+   "caseKind": "criminal",
+   "expression": "yes",
+   "narrative": "（虚构案例）我是菲律宾宿务省一家地方新闻网站的记者。2023年4月12日，我们依据公开采购记录发表报道，指出一名市议员的亲属公司拿到了两份道路维修合同。2023年11月网站改版时，我们更正了报道中的一个错别字，正文没有其他变化。2024年9月，这名议员以网络诽谤为由，依据《2012年网络犯罪预防法》向市检察官办公室提出控告。2025年2月检察官认定有合理根据，向地区审判法院起诉，法院签发了逮捕令，我已缴纳保释金获释。网站负责人也被列为共同被告。传讯定于2026年11月。我们已委托一位当地律师，但律师刚接手。",
+   "goalText": "弄清控告是否已超过追诉时效、更正错别字算不算重新发表、报道公职人员的事是否有特别保护，以及传讯前可以提出哪些动议；并为律师整理一份事实清单。",
+   "disclosureDetails": "可以私下告诉记者保护组织；律师同意前不公开议员姓名，也不发布与本案有关的新报道。"
+  }
+ },
+ "result": {
+  "mode": "live_ai",
+  "promptVersion": "4.6",
+  "execution": {
+   "requestId": "2d6fd28f-2e79-46a0-b6f0-5203f13b1ad9",
+   "inputVersion": 10,
+   "operation": "initial",
+   "round": 1,
+   "stages": [
+    {
+     "stage": "search",
+     "elapsedMs": 18392,
+     "model": "gpt-6.1-sol",
+     "responseId": "resp_0cf2ea63283ac502016aca810745c887d29a889d674668ef5a",
+     "inputTokens": 16401,
+     "outputTokens": 713,
+     "toolCalls": 2,
+     "status": "completed"
+    },
+    {
+     "stage": "reading",
+     "elapsedMs": 12933,
+     "model": "gpt-6.1-sol",
+     "responseId": "resp_021c01afdfcd30be016aca81198fc887d2ae2aa711e73bf5e7",
+     "inputTokens": 6312,
+     "outputTokens": 551,
+     "toolCalls": 2,
+     "status": "completed"
+    },
+    {
+     "stage": "synthesis",
+     "elapsedMs": 42954,
+     "model": "gpt-6.1-sol",
+     "responseId": "resp_081c9bbe2edc52a8016aca812691cc87d2959d1354226a48a3",
+     "inputTokens": 48149,
+     "outputTokens": 2804,
+     "toolCalls": 0,
+     "status": "completed"
+    }
+   ],
+   "failureStage": null,
+   "controlledSearch": false,
+   "reservedCostUsd": null,
+   "actualCostUsd": null
+  },
+  "jurisdiction": {
+   "countryCode": "PH",
+   "country": "Philippines",
+   "jurisdictionCode": "national",
+   "legalSystem": null,
+   "recognized": true
+  },
+  "limitations": [
+   "本次联网研究未获得可用的引用材料；分析仅使用正式库参考与一般准备。",
+   "你提供了自由填写的披露边界，系统不能确认已完整理解其中限制；总体可公开不等于同意某次具体披露。任何对外分享前，须与当事人逐项核实内容、接收者、方式和同意范围。",
+   "本案明确为虚构案例；事实来自已确认叙述，没有上传文书或独立核实材料。",
+   "本轮没有菲律宾时效、重新发表、公职人员报道保护或动议规则的权威正文，不能判断时效届满或列出确定可用的动议。",
+   "国际资料为agent_checked，未具名团队人工复核；机制资格与提交授权仍待核查。公开传播暂缓，律师同意前不公开议员姓名或发布新报道。"
+  ],
+  "webResearch": {
+   "status": "no_results",
+   "searchedAt": "2026-10-10T18:16:39.062Z",
+   "searchTerms": [
+    "Philippines criminal journalism online defamation cyber libel case judgment",
+    "Philippines journalism expression documented legal response case judgment",
+    "Philippines online defamation cyber libel law official legislation text"
+   ],
+   "passages": [],
+   "sources": [],
+   "searchCallCount": 2,
+   "failureReason": "no_citations",
+   "plan": {
+    "domain": "expression_media",
+    "relationship": "journalist or public speaker and legal authority or claimant",
+    "disputedConduct": [
+     "journalism freedom of expression",
+     "online defamation cyber libel"
+    ],
+    "harms": [],
+    "remedies": [
+     "documented legal response"
+    ],
+    "evidenceIssues": [],
+    "excludedIssues": [],
+    "uncertainties": [
+     "Search labels are broad approved categories, not legal findings."
+    ],
+    "searchQueries": [
+     "Philippines criminal journalism online defamation cyber libel case judgment",
+     "Philippines journalism expression documented legal response case judgment",
+     "Philippines online defamation cyber libel law official legislation text"
+    ],
+    "coverage": "limited"
+   },
+   "planningMode": "structured_fallback",
+   "actualQueries": [],
+   "attempts": [
+    {
+     "attempt": 1,
+     "reason": "initial",
+     "startedAt": "2026-10-10T18:16:39.062Z",
+     "status": "no_results",
+     "searchTerms": [
+      "Philippines criminal journalism online defamation cyber libel case judgment",
+      "Philippines journalism expression documented legal response case judgment",
+      "Philippines online defamation cyber libel law official legislation text"
+     ],
+     "actualQueries": [],
+     "searchCallCount": 2,
+     "sourceCount": 0,
+     "failureReason": "no_citations"
+    }
+   ],
+   "relevanceStatus": "not_assessed"
+  },
+  "legalBindings": [
+   {
+    "bindingId": "legal-ph-iccpr-article-19-art19-2-3",
+    "resourceId": "iccpr-article-19",
+    "applicability": "research_reference"
+   },
+   {
+    "bindingId": "legal-ph-hrc-general-comment-34-para22",
+    "resourceId": "hrc-general-comment-34",
+    "applicability": "research_reference"
+   },
+   {
+    "bindingId": "legal-ph-hrc-general-comment-34-para25",
+    "resourceId": "hrc-general-comment-34",
+    "applicability": "research_reference"
+   },
+   {
+    "bindingId": "legal-ph-hrc-general-comment-34-paras33-35",
+    "resourceId": "hrc-general-comment-34",
+    "applicability": "research_reference"
+   },
+   {
+    "bindingId": "legal-ph-hrc-general-comment-34-para47",
+    "resourceId": "hrc-general-comment-34",
+    "applicability": "research_reference"
+   },
+   {
+    "bindingId": "legal-ph-iccpr-article-9-art9-1-2",
+    "resourceId": "iccpr-article-9",
+    "applicability": "research_reference"
+   },
+   {
+    "bindingId": "legal-ph-iccpr-article-9-art9-4",
+    "resourceId": "iccpr-article-9",
+    "applicability": "research_reference"
+   },
+   {
+    "bindingId": "legal-ph-hrc-general-comment-35-paras39-40",
+    "resourceId": "hrc-general-comment-35",
+    "applicability": "research_reference"
+   },
+   {
+    "bindingId": "legal-ph-iccpr-article-14-art14-3-b-d",
+    "resourceId": "iccpr-article-14",
+    "applicability": "research_reference"
+   },
+   {
+    "bindingId": "legal-ph-hrc-general-comment-32-paras32-34",
+    "resourceId": "hrc-general-comment-32",
+    "applicability": "research_reference"
+   }
+  ],
+  "caseIssues": [
+   {
+    "issueId": "issue-1",
+    "question": "错别字更正会影响这次网络诽谤控告的时效吗？",
+    "facts": [
+     {
+      "text": "报道于2023年4月12日发表，2023年11月改版时更正一个错别字，正文没有其他变化。",
+      "origin": "user",
+      "pageLabel": null
+     },
+     {
+      "text": "议员于2024年9月向市检察官办公室提出网络诽谤控告。",
+      "origin": "user",
+      "pageLabel": null
+     }
+    ],
+    "authorities": [
+     {
+      "kind": "case",
+      "check": "library",
+      "title": "Asad Ali Toor",
+      "locator": null,
+      "point": "Toor案记录了针对具体投诉和后续传唤分别提出异议的做法。",
+      "quote": null,
+      "url": null,
+      "hostname": null,
+      "bindingId": null,
+      "caseId": "asad-ali-toor",
+      "evidenceIds": [
+       "toor-quash-request",
+       "toor-later-notices"
+      ]
+     }
+    ],
+    "application": "该比较提示先区分首次发表、更正及控告所指行为，并逐项对应文书。它没有解决本案时效起算、中断或更正是否构成重新发表的问题，这些应列为当地规则检索的首要争点。",
+    "nextStep": "记者固定版本差异与日期证据，律师检索菲律宾时效及重新发表裁判并核对控方主张。",
+    "origin": "ai"
+   },
+   {
+    "issueId": "issue-2",
+    "question": "采购报道涉及市议员，哪些抗辩值得核对？",
+    "facts": [
+     {
+      "text": "记者依据公开采购记录报道市议员亲属公司取得两份道路维修合同。",
+      "origin": "user",
+      "pageLabel": null
+     },
+     {
+      "text": "议员以网络诽谤提出控告，网站负责人也被列为共同被告。",
+      "origin": "user",
+      "pageLabel": null
+     }
+    ],
+    "authorities": [
+     {
+      "kind": "international",
+      "check": "catalog",
+      "title": "人权事务委员会一般性意见第 34 号：表达与诽谤",
+      "locator": "CCPR/C/GC/34, para. 47, printed / PDF p. 12",
+      "point": "诽谤制度应保障表达、承认相关抗辩并避免过度处罚；委员会反对诽谤监禁处罚，不能据此宣布国内指控无效。",
+      "quote": "imprisonment is never an appropriate penalty",
+      "url": "https://documents.un.org/api/symbol/access?l=en&s=CCPR/C/GC/34&t=pdf",
+      "hostname": "documents.un.org",
+      "bindingId": "legal-ph-hrc-general-comment-34-para47",
+      "caseId": null,
+      "evidenceIds": []
+     }
+    ],
+    "application": "采购记录与报道语句的准确对应可用于准备抗辩研究。第47段提供诽谤保障的国际研究方向，但不直接确认菲律宾对公职人员报道的特别保护或本案抗辩成立。",
+    "nextStep": "编辑制作语句与采购证据对照表，律师另查当地公职人员报道抗辩及共同被告责任依据。",
+    "origin": "ai"
+   },
+   {
+    "issueId": "issue-3",
+    "question": "律师刚接手，传讯前应核对哪些动议条件？",
+    "facts": [
+     {
+      "text": "2025年2月检察官认定有合理根据并向地区审判法院起诉，记者已缴纳保释金获释。",
+      "origin": "user",
+      "pageLabel": null
+     },
+     {
+      "text": "传讯定于2026年11月，已委托的当地律师刚接手案件。",
+      "origin": "user",
+      "pageLabel": null
+     }
+    ],
+    "authorities": [
+     {
+      "kind": "international",
+      "check": "catalog",
+      "title": "人权事务委员会一般性意见第 32 号：公正审判",
+      "locator": "CCPR/C/GC/32, paras. 32–34, printed / PDF p. 10",
+      "point": "解释刑事辩护的准备时间、材料获取和及时保密律师沟通；具体不足及当地补救须由律师核对。",
+      "quote": "access to documents and other evidence",
+      "url": "https://documents.un.org/api/symbol/access?l=en&s=CCPR/C/GC/32&t=pdf",
+      "hostname": "documents.un.org",
+      "bindingId": "legal-ph-hrc-general-comment-32-paras32-34",
+      "caseId": null,
+      "evidenceIds": []
+     }
+    ],
+    "application": "应围绕律师取得完整案卷和讨论争点的实际安排准备传讯，而非按当前拘押处理。所列解释提供辩护准备的研究方向，没有确定具体当地动议名称、提出顺序或期限。",
+    "nextStep": "律师核对案卷与传讯通知，形成逐项列明当地依据和条件的动议选项表。",
+    "origin": "ai"
+   }
+  ],
+  "actionOptions": [
+   {
+    "actionId": "action-1",
+    "title": "固定发表与控告时间线",
+    "reason": "首次发表与改版更正的区别是时效研究的事实起点。",
+    "basisType": "general_preparation",
+    "applicability": "priority",
+    "issueIds": [
+     "issue-1"
+    ],
+    "resourceIds": []
+   },
+   {
+    "actionId": "action-2",
+    "title": "整理公共事务报道抗辩材料",
+    "reason": "采购记录与被指诽谤语句的对应关系需要先固定。",
+    "basisType": "general_preparation",
+    "applicability": "priority",
+    "issueIds": [
+     "issue-2"
+    ],
+    "resourceIds": [
+     "hrc-general-comment-34"
+    ]
+   },
+   {
+    "actionId": "action-3",
+    "title": "核对传讯前动议选项",
+    "reason": "律师刚接手，应先确定案卷缺项与传讯前程序选择。",
+    "basisType": "general_preparation",
+    "applicability": "conditional",
+    "issueIds": [
+     "issue-1",
+     "issue-3"
+    ],
+    "resourceIds": []
+   }
+  ]
+ }
+}

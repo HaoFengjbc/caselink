@@ -1,0 +1,16 @@
+[
+ {
+  "event": "caselink_search_diagnostics",
+  "requestId": "2d6fd28f-2e79-46a0-b6f0-5203f13b1ad9",
+  "searchCalls": 2,
+  "candidates": 4,
+  "openCalls": 2,
+  "openedCandidates": 2,
+  "annotations": 0,
+  "citedParagraphs": 0,
+  "droppedUnopened": 0,
+  "passages": 0,
+  "sources": 0,
+  "failureReason": "no_citations"
+ }
+]
