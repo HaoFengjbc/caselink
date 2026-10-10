@@ -12,6 +12,7 @@ data/extracted/
 data/research/
 tmp/
 test-results/
+output/
 playwright-report/
 *.tsbuildinfo
 .DS_Store
