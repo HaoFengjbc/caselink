@@ -1,0 +1,103 @@
+Vercel CLI 62.7.0
+Deploying caselink
+Uploading [--------------------] (0.0B/172.9KB)
+Uploading [=====---------------] (46.2KB/172.9KB)
+Uploading [==========----------] (93.0KB/172.9KB)
+Uploading [===============-----] (135.3KB/172.9KB)
+Uploading [====================] (172.9KB/172.9KB)
+  Inspect         https://vercel.com/hao-s-projects-2154e1c6/caselink/CUwRyLRmquQdAsM4UF8JWDyvomZH
+  Production      https://caselink-9ge46rcvg-hao-s-projects-2154e1c6.vercel.app
+Building…
+Building…
+Running build in Washington, D.C., USA (East) – iad1
+Build machine configuration: 2 cores, 8 GB
+Retrieving list of deployment files...
+Downloading 186 deployment files...
+Restored build cache from previous deployment (7dRFqeA1qGEPGfTd1qQe3XffPDEK)
+Running "vercel build"
+Vercel CLI 62.7.0
+Running "install" command: `npm ci`...
+added 85 packages, and audited 86 packages in 12s
+24 packages are looking for funding
+run `npm fund` for details
+found 0 vulnerabilities
+Detected Next.js version: 16.4.0
+Running "npm run build"
+> caselink@0.1.0 build
+> next build --webpack
+▲ Next.js 16.4.0 (webpack)
+Applying modifyConfig from Vercel
+✓ Running next.config.ts took 132ms
+Creating an optimized production build ...
+✓ Compiled successfully in 10.3s
+Running TypeScript ...
+Finished TypeScript in 2.8s ...
+Collecting page data using 1 worker ...
+Generating static pages using 1 worker (0/37) ...
+Generating static pages using 1 worker (9/37)
+Generating static pages using 1 worker (18/37)
+Generating static pages using 1 worker (27/37)
+✓ Generating static pages using 1 worker (37/37) in 476ms
+Finalizing page optimization ...
+Collecting build traces ...
+Running onBuildComplete from Vercel
+Route (app)
+┌ ƒ /
+├ ƒ /_not-found
+├ ƒ /analysis
+├ ƒ /api/analyze
+├ ƒ /api/capabilities
+├ ƒ /api/intake
+├ ƒ /api/materials
+├ ƒ /cases
+├ ƒ /cases/[id]
+├ ƒ /compare
+├ ƒ /history
+├ ○ /icon.svg
+├ ƒ /new
+├ ƒ /resources
+└ ƒ /review
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+Build Completed in /vercel/output [46s]
+Deploying outputs...
+[2K[1A[2K[G  Production      https://caselink-9ge46rcvg-hao-s-projects-2154e1c6.vercel.app
+Completing…
+▲ Aliased         https://caselink-eight.vercel.app
+{
+  "status": "ok",
+  "deployment": {
+    "id": "dpl_CUwRyLRmquQdAsM4UF8JWDyvomZH",
+    "url": "https://caselink-9ge46rcvg-hao-s-projects-2154e1c6.vercel.app",
+    "productionUrl": "https://caselink-eight.vercel.app",
+    "inspectorUrl": "https://vercel.com/hao-s-projects-2154e1c6/caselink/CUwRyLRmquQdAsM4UF8JWDyvomZH",
+    "readyState": "READY",
+    "target": "production",
+    "deploymentApiUrl": "https://api.vercel.com/v13/deployments/dpl_CUwRyLRmquQdAsM4UF8JWDyvomZH",
+    "buildMachine": {
+      "cores": 2,
+      "memory": 8192,
+      "machine": "basic",
+      "selectionType": "fixed",
+      "selectionSource": "plan-default"
+    },
+    "deploymentProtection": [
+      "vercel_authentication"
+    ]
+  },
+  "message": "Deployment caselink-9ge46rcvg-hao-s-projects-2154e1c6.vercel.app ready. Production URL: https://caselink-eight.vercel.app",
+  "next": [
+    {
+      "command": "vercel curl https://caselink-eight.vercel.app",
+      "when": "Verify deployment, including when Deployment Protection is enabled"
+    },
+    {
+      "command": "vercel inspect caselink-9ge46rcvg-hao-s-projects-2154e1c6.vercel.app --scope hao-s-projects-2154e1c6",
+      "when": "Inspect deployment"
+    },
+    {
+      "command": "vercel deploy --prod --scope hao-s-projects-2154e1c6",
+      "when": "Promote to production"
+    }
+  ]
+}

@@ -3,7 +3,7 @@ import {readFile} from 'node:fs/promises';
 
 // Replay the recorded fictional live output to check display and actual downloads.
 // No model/search request is allowed in this browser regression.
-const evidenceDir='docs/openai-search-2026-10-10';
+const evidenceDir=process.env.E2E_RESEARCH_EVIDENCE_DIR||'docs/openai-search-2026-10-10';
 test.beforeEach(async({page})=>{page.setDefaultTimeout(10_000);});
 test('recorded OpenAI research: cited pages, measured queries, export and frozen snapshot',async({page},testInfo)=>{
  const input=JSON.parse(await readFile(`${evidenceDir}/sample-input.json`,'utf8'));

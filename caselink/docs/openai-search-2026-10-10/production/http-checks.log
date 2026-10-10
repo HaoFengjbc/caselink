@@ -1,0 +1,18 @@
+(node:86725) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS capabilities_and_rule_availability
+PASS invalid_input_rejected
+PASS explicit_force_rule_journalist-private-release
+PASS explicit_force_rule_blogger-public-charges
+PASS explicit_force_rule_uk-expression-civil
+PASS cross_site_analysis_rejected
+PASS manual_intake_available
+PASS page_/
+PASS page_/new
+PASS page_/cases
+PASS page_/compare
+PASS page_/resources
+PASS case_aigul-utepova
+PASS case_myriam-bribri
+PASS case_emna-chargui
+{"status":"passed","counts":{"passed":15,"checks":15},"modelRequests":0,"report":"test-results/live-deployment-http.json"}

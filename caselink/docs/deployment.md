@@ -1,3 +1,5 @@
+> 最新发布（2026-10-10）：OpenAI 联网搜索已恢复并完成真实线上验证。部署 `dpl_CUwRyLRmquQdAsM4UF8JWDyvomZH`，详见 [当前生产发布记录](openai-search-2026-10-10/production-release.md)。以下保留历史发布事实。
+
 > 历史版本记录：下文保留先前实现或验收事实，不代表当前生产版本。本轮已于 2026-10-09 发布，当前部署、15 项线上验证及 AI/搜索关闭状态见 [生产发布记录](iteration-2026-10-09/production-release.md)。定位、隐私和研究控制以 [README](../README.md) 与 [本轮验收](iteration-2026-10-09/acceptance.md) 为准。
 
 # Vercel 部署

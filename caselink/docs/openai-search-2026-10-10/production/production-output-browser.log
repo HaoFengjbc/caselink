@@ -1,0 +1,8 @@
+
+Running 1 test using 1 worker
+
+(node:86807) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/e2e/openai-search.spec.ts:8:1 › recorded OpenAI research: cited pages, measured queries, export and frozen snapshot (6.0s)
+
+  1 passed (6.5s)

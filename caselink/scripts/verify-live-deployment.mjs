@@ -136,7 +136,11 @@ async function main() {
       const body = await bodyOf(response);
       const parsed = contracts.AnalysisResultSchema.safeParse(body);
       assert(parsed.success && parsed.data.mode === 'rule_reference', 'RULE_MODE_OR_SCHEMA_ERROR');
-      assert(parsed.data.actionOptions.length > 0 && parsed.data.sources.length > 0, 'RULE_CONTENT_MISSING');
+      assert(parsed.data.actionOptions.length > 0 && parsed.data.whatsNext?.priorities.length === 3 && parsed.data.whatsNext.documents.length === 3, 'RULE_CONTENT_MISSING');
+      // A civil matter may have no applicable historical case. Never require
+      // fabricated criminal-case sources just to make a release probe pass.
+      assert(parsed.data.comparableCases.length === 0 || parsed.data.sources.length > 0, 'COMPARISON_SOURCES_MISSING');
+      if (scenario.input.intake?.caseKind === 'civil') assert(parsed.data.comparableCases.length === 0, 'UNEXPECTED_CIVIL_HISTORICAL_MATCH');
       assert(parsed.data.sources.every(source => evidenceIds.has(source.evidenceId)), 'UNKNOWN_EVIDENCE_REFERENCE');
       assert(parsed.data.promptVersion === contracts.PROMPT_VERSION && parsed.data.corpusVersion === contracts.CORPUS_VERSION, 'RELEASE_VERSION_MISMATCH');
       assert(parsed.data.snapshot?.completeness === 'complete' && parsed.data.snapshot.corpusVersion === parsed.data.corpusVersion, 'SNAPSHOT_MISSING');

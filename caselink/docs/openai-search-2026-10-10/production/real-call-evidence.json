@@ -1,0 +1,79 @@
+{
+  "checkedAt": "2026-10-10T16:09:34.562Z",
+  "target": "https://caselink-eight.vercel.app",
+  "fixture": "V-92 fictional ordinary manual input, no exampleId",
+  "status": "passed",
+  "httpStatus": 200,
+  "elapsedMs": 66769,
+  "mode": "live_ai",
+  "promptVersion": "4.4",
+  "errorCode": null,
+  "searchStatus": "completed",
+  "failureReason": null,
+  "actualQueries": [
+    "site.supremecourt.uk Bloomberg LP ZXC 2022 judgment privacy",
+    "site.judiciary.uk \"Banks\" \"Cadwalladr\" \"2023\"",
+    "site.supremecourt.uk \"Lachaux\" \"2019\" \"Independent\""
+  ],
+  "searchCalls": 1,
+  "sources": [
+    {
+      "sourceId": "web-1",
+      "url": "https://supremecourt.uk/uploads/uksc_2020_0122_press_summary_3e62011350.pdf?utm_source=openai",
+      "title": "Bloomberg LP (Appellant) v ZXC (Respondent)",
+      "hostname": "supremecourt.uk",
+      "citationKind": "url_annotation",
+      "pageOpened": true
+    }
+  ],
+  "comparisonCount": 0,
+  "documentCount": 3,
+  "execution": {
+    "requestId": "0a8108ff-5a21-40b3-9291-b536ff6c488f",
+    "inputVersion": 1,
+    "operation": "initial",
+    "round": 1,
+    "stages": [
+      {
+        "stage": "search",
+        "elapsedMs": 13004,
+        "model": "gpt-6.1-sol",
+        "responseId": "resp_005f55f278c73591016aca62fce48887d2909750ccd393bb90",
+        "inputTokens": 13202,
+        "outputTokens": 565,
+        "toolCalls": 1,
+        "status": "completed"
+      },
+      {
+        "stage": "reading",
+        "elapsedMs": 25688,
+        "model": "gpt-6.1-sol",
+        "responseId": "resp_0b9ffd90fb89ce0b016aca630980fc87d29726747290608154",
+        "inputTokens": 13327,
+        "outputTokens": 1241,
+        "toolCalls": 1,
+        "status": "completed"
+      },
+      {
+        "stage": "synthesis",
+        "elapsedMs": 27354,
+        "model": "gpt-6.1-sol",
+        "responseId": "resp_0e1a728cafd0fd55016aca63233e0087d2bdd69e2573d98bd2",
+        "inputTokens": 38404,
+        "outputTokens": 1545,
+        "toolCalls": 0,
+        "status": "completed"
+      }
+    ],
+    "failureStage": null,
+    "controlledSearch": false,
+    "reservedCostUsd": null,
+    "actualCostUsd": null
+  },
+  "actualCostUsd": null,
+  "notes": [
+    "Provider response IDs and token/tool counts are measured; no price or bill was queried.",
+    "pageOpened means the tool opened the cited URL, not verified accuracy or complete reading.",
+    "No production deployment is performed by this script."
+  ]
+}

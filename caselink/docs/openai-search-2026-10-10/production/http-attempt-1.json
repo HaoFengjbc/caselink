@@ -1,0 +1,173 @@
+{
+  "status": "failed",
+  "origin": "https://caselink-eight.vercel.app",
+  "checkedAt": "2026-10-10T16:08:34.744Z",
+  "capabilities": {
+    "mode": "live",
+    "configured": true,
+    "liveAvailable": true,
+    "accessRequired": false,
+    "paidProtectionEnabled": false,
+    "controlledSearchConfigured": false,
+    "webSearchProvider": "openai",
+    "webSearchAvailable": true,
+    "ruleAvailable": true,
+    "materialExtractionAvailable": true,
+    "materialTextReadingAvailable": true,
+    "materialLimits": {
+      "maxFiles": 3,
+      "maxFileBytes": 3145728,
+      "maxRequestBytes": 4000000,
+      "maxTotalFileBytes": 3900000,
+      "maxPages": 30,
+      "maxTextBytes": 75000,
+      "parseTimeoutMs": 15000,
+      "requestTimeoutMs": 180000
+    },
+    "materialProgressEvents": true,
+    "materialResultRetentionSeconds": 0,
+    "serverResultRetentionSeconds": 0,
+    "idempotencyEnabled": false,
+    "progressEvents": false,
+    "configurationNotice": "Configuration presence is not a live provider connectivity verification."
+  },
+  "anonymous": true,
+  "modelRequests": 0,
+  "latencyMs": 7502,
+  "checks": [
+    {
+      "name": "capabilities_and_rule_availability",
+      "status": "passed",
+      "latencyMs": 937,
+      "httpStatus": 200,
+      "capabilities": {
+        "mode": "live",
+        "configured": true,
+        "liveAvailable": true,
+        "accessRequired": false,
+        "paidProtectionEnabled": false,
+        "controlledSearchConfigured": false,
+        "webSearchProvider": "openai",
+        "webSearchAvailable": true,
+        "ruleAvailable": true,
+        "materialExtractionAvailable": true,
+        "materialTextReadingAvailable": true,
+        "materialLimits": {
+          "maxFiles": 3,
+          "maxFileBytes": 3145728,
+          "maxRequestBytes": 4000000,
+          "maxTotalFileBytes": 3900000,
+          "maxPages": 30,
+          "maxTextBytes": 75000,
+          "parseTimeoutMs": 15000,
+          "requestTimeoutMs": 180000
+        },
+        "materialProgressEvents": true,
+        "materialResultRetentionSeconds": 0,
+        "serverResultRetentionSeconds": 0,
+        "idempotencyEnabled": false,
+        "progressEvents": false,
+        "configurationNotice": "Configuration presence is not a live provider connectivity verification."
+      }
+    },
+    {
+      "name": "invalid_input_rejected",
+      "status": "passed",
+      "latencyMs": 1168,
+      "httpStatus": 400,
+      "errorCode": "INVALID_INPUT"
+    },
+    {
+      "name": "explicit_force_rule_journalist-private-release",
+      "status": "passed",
+      "latencyMs": 1627,
+      "httpStatus": 200,
+      "mode": "rule_reference",
+      "counts": {
+        "actions": 3,
+        "cases": 3,
+        "sources": 26
+      }
+    },
+    {
+      "name": "explicit_force_rule_blogger-public-charges",
+      "status": "passed",
+      "latencyMs": 1420,
+      "httpStatus": 200,
+      "mode": "rule_reference",
+      "counts": {
+        "actions": 3,
+        "cases": 3,
+        "sources": 29
+      }
+    },
+    {
+      "name": "explicit_force_rule_uk-expression-civil",
+      "status": "failed",
+      "latencyMs": 90,
+      "errorCode": "RULE_CONTENT_MISSING"
+    },
+    {
+      "name": "cross_site_analysis_rejected",
+      "status": "passed",
+      "latencyMs": 151,
+      "httpStatus": 403,
+      "errorCode": "FORBIDDEN"
+    },
+    {
+      "name": "manual_intake_available",
+      "status": "passed",
+      "latencyMs": 507,
+      "httpStatus": 200,
+      "mode": "manual"
+    },
+    {
+      "name": "page_/",
+      "status": "passed",
+      "latencyMs": 344,
+      "httpStatus": 200
+    },
+    {
+      "name": "page_/new",
+      "status": "passed",
+      "latencyMs": 148,
+      "httpStatus": 200
+    },
+    {
+      "name": "page_/cases",
+      "status": "passed",
+      "latencyMs": 94,
+      "httpStatus": 200
+    },
+    {
+      "name": "page_/compare",
+      "status": "passed",
+      "latencyMs": 80,
+      "httpStatus": 200
+    },
+    {
+      "name": "page_/resources",
+      "status": "passed",
+      "latencyMs": 82,
+      "httpStatus": 200
+    },
+    {
+      "name": "case_aigul-utepova",
+      "status": "passed",
+      "latencyMs": 321,
+      "httpStatus": 200
+    },
+    {
+      "name": "case_emna-chargui",
+      "status": "passed",
+      "latencyMs": 349,
+      "httpStatus": 200
+    },
+    {
+      "name": "case_myriam-bribri",
+      "status": "passed",
+      "latencyMs": 847,
+      "httpStatus": 200
+    }
+  ]
+}

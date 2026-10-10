@@ -20,12 +20,45 @@
     "failedSearchRuns": 1,
     "billingUsd": null
   },
-  "productionDeployed": false,
+  "productionDeployed": true,
   "gitPushed": false,
   "baseCommit": "d461ba6",
   "branch": "codex/restore-openai-search",
   "finalAfterLiveRun": [
     "Keep retrieved-source panel visible when zero comparisons were selected.",
     "Preserve bracketed neutral-citation years; existing recorded output unchanged."
-  ]
+  ],
+  "production": {
+    "deploymentId": "dpl_CUwRyLRmquQdAsM4UF8JWDyvomZH",
+    "url": "https://caselink-eight.vercel.app",
+    "deployedCommit": "9d30064",
+    "applicationCommit": "5603cfe",
+    "rollbackDeploymentId": "dpl_7dRFqeA1qGEPGfTd1qQe3XffPDEK",
+    "checkedAt": "2026-10-10T16:09:34.562Z",
+    "status": "Ready",
+    "httpChecks": {
+      "passed": 15,
+      "total": 15,
+      "modelRequests": 0
+    },
+    "browser": {
+      "passed": 3,
+      "kind": "2 existing-output/UI checks plus 1 production-output replay; no model calls",
+      "actualDownloadsFromProductionOutput": 4
+    },
+    "realProvider": {
+      "status": "passed",
+      "analysisRequests": 1,
+      "modelRequests": 3,
+      "inputTokens": 64933,
+      "outputTokens": 3351,
+      "toolActions": 2,
+      "elapsedMs": 66769,
+      "sources": 1,
+      "documents": 3,
+      "billingUsd": null
+    },
+    "environmentModified": false,
+    "gitPushed": false
+  }
 }

@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "1.0",
+  "country": "United Kingdom",
+  "stage": "unknown",
+  "currentProblems": [
+    "unknown"
+  ],
+  "background": {
+    "activities": [],
+    "personType": "unknown",
+    "description": ""
+  },
+  "primaryGoal": "other",
+  "keyDates": [],
+  "resources": [],
+  "resourceConstraints": "",
+  "priorActions": {
+    "status": "unknown",
+    "description": "",
+    "date": ""
+  },
+  "publicity": "private",
+  "isExample": false,
+  "exampleId": null,
+  "intake": {
+    "version": 1,
+    "jurisdiction": "england_wales",
+    "caseKind": "civil",
+    "narrative": "【陌生虚构案件 V-92】社区记者温栩在英格兰和威尔士报道污水排放后，于2026-10-06收到承包商要求道歉的民事律师函。编辑部保存函件及两份检测记录。尚未收到法院文件，也没有聘请律师。承包商否认污染与其有关。",
+    "goalText": "整理发表依据、对方指摘与损害主张，供当地法律顾问评估。",
+    "disclosureDetails": "仅内部整理，未经具体授权不对外发送、不公开姓名。",
+    "answers": [],
+    "facts": [],
+    "confirmed": true,
+    "expression": "yes"
+  }
+}

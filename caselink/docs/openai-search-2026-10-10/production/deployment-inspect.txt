@@ -1,0 +1,48 @@
+Vercel CLI 62.7.0
+Fetching deployment "caselink-eight.vercel.app" in hao-s-projects-2154e1c6
+> Fetched deployment "caselink-9ge46rcvg-hao-s-projects-2154e1c6.vercel.app" in hao-s-projects-2154e1c6 [536ms]
+
+  General
+
+    id		dpl_CUwRyLRmquQdAsM4UF8JWDyvomZH
+    name	caselink
+    target	production
+    status	● Ready
+    url		https://caselink-9ge46rcvg-hao-s-projects-2154e1c6.vercel.app
+    created	Sat Oct 10 2026 12:07:20 GMT-0400 (Eastern Daylight Time) [1m ago]
+
+
+  Build Machine
+
+    requested build machine basic
+    actual assigned cores   2 vCPU (actual assignment)
+    memory                  8192 MiB
+    selection type          fixed
+    selection source        plan-default
+
+
+  Duration
+
+    build duration	58s
+    post-build duration	unavailable
+    billable duration	unavailable
+    CPU Minutes Usage	unavailable
+
+
+  Aliases
+
+    ╶ https://caselink-eight.vercel.app
+    ╶ https://caselink-hao-s-projects-2154e1c6.vercel.app
+    
+
+  Builds
+
+    ┌ .        [0ms]
+    ├── λ index (1.45MB) [iad1]
+    ├── λ _not-found (1.45MB) [iad1]
+    ├── λ _not-found.rsc (1.45MB) [iad1]
+    ├── λ analysis (1.45MB) [iad1]
+    ├── λ analysis.rsc (1.45MB) [iad1]
+    └── 28 output items hidden
+    
+

@@ -1,0 +1,29 @@
+{
+  "mode": "live",
+  "configured": true,
+  "liveAvailable": true,
+  "accessRequired": false,
+  "paidProtectionEnabled": false,
+  "controlledSearchConfigured": false,
+  "webSearchProvider": "openai",
+  "webSearchAvailable": true,
+  "ruleAvailable": true,
+  "materialExtractionAvailable": true,
+  "materialTextReadingAvailable": true,
+  "materialLimits": {
+    "maxFiles": 3,
+    "maxFileBytes": 3145728,
+    "maxRequestBytes": 4000000,
+    "maxTotalFileBytes": 3900000,
+    "maxPages": 30,
+    "maxTextBytes": 75000,
+    "parseTimeoutMs": 15000,
+    "requestTimeoutMs": 180000
+  },
+  "materialProgressEvents": true,
+  "materialResultRetentionSeconds": 0,
+  "serverResultRetentionSeconds": 0,
+  "idempotencyEnabled": false,
+  "progressEvents": false,
+  "configurationNotice": "Configuration presence is not a live provider connectivity verification."
+}

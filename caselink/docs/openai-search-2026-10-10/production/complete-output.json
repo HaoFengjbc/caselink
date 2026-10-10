@@ -1,0 +1,2799 @@
+{
+  "comparableCases": [],
+  "actionOptions": [
+    {
+      "actionId": "prepare-publication-basis",
+      "goal": "other",
+      "title": "整理发表依据",
+      "applicability": "priority",
+      "reason": "两份检测记录与报道表述的对应关系，是当前评估的基础。",
+      "leadRole": "编辑部材料负责人",
+      "prerequisites": [
+        "限定于获准参与的内部人员，不向检测机构或其他外部人员发送材料。"
+      ],
+      "timing": "内部整理时立即开展",
+      "steps": [
+        "保存报道发表版本，逐句编号标出污染及承包商相关表述。",
+        "将两份检测记录对应至报道句子，标注支持范围与缺口。",
+        "按发表前后区分核验记录，记录当时编辑判断的依据。"
+      ],
+      "materials": [
+        "报道发表版本及修改记录",
+        "两份检测记录及来源索引"
+      ],
+      "collaborators": [
+        "参与报道的内部记者",
+        "负责发表的编辑"
+      ],
+      "followUp": [
+        "检测地点、时间和方法能否对应报道中的排放事件。",
+        "哪些材料涉及污染存在，哪些涉及承包商关联，哪些尚缺佐证。"
+      ],
+      "supportingEvidenceIds": [],
+      "differences": [],
+      "uncertainties": [
+        "用户称编辑部保存检测记录，但本次未提供正文，无法评价其证明范围。",
+        "承包商否认污染与其有关；污染来源及责任归属仍有争议。"
+      ],
+      "basisType": "general_preparation",
+      "requiresPublicity": false,
+      "resourceIds": [],
+      "legalCitations": []
+    },
+    {
+      "actionId": "map-letter-and-harm",
+      "goal": "other",
+      "title": "拆解指摘与损害主张",
+      "applicability": "priority",
+      "reason": "目前仅有收函叙述，须从完整函件区分实际指摘、请求与损害说法。",
+      "leadRole": "内部案件整理人",
+      "prerequisites": [],
+      "timing": "取得内部函件副本后",
+      "steps": [
+        "逐项摘录函件指摘及道歉要求，分别标注对应报道表述。",
+        "单列对方所称损害、金额及依据，未提及的项目记为未载明。",
+        "分列函件日期、收件日期及要求回应日期，保留收件凭据。"
+      ],
+      "materials": [
+        "完整律师函及附件",
+        "收件凭据与指摘对照表"
+      ],
+      "collaborators": [
+        "函件内部保管人",
+        "编辑部材料负责人"
+      ],
+      "followUp": [
+        "函件是否明确索赔主体、争议含义及损害材料。",
+        "后续来函是否改变请求或新增法院文件，收到时单独登记。"
+      ],
+      "supportingEvidenceIds": [],
+      "differences": [],
+      "uncertainties": [
+        "用户所述2026-10-06是收件日；函件制作日期及要求回应日期未提供。",
+        "目前只明确要求道歉，尚不能确认对方是否提出赔偿或具体损害主张。"
+      ],
+      "basisType": "general_preparation",
+      "requiresPublicity": false,
+      "resourceIds": [],
+      "legalCitations": []
+    },
+    {
+      "actionId": "prepare-adviser-review",
+      "goal": "other",
+      "title": "编制顾问评估提纲",
+      "applicability": "priority",
+      "reason": "尚未聘请律师，可先形成内部评估包并划清日后分享授权。",
+      "leadRole": "编辑部协调负责人",
+      "prerequisites": [
+        "本轮只制作内部材料；向具体法律顾问分享前另行确认接收者、内容和身份披露范围。"
+      ],
+      "timing": "完成两张对照表后",
+      "steps": [
+        "合并发表依据与函件指摘表，编制使用内部代号的材料目录。",
+        "列出待顾问评估的问题，覆盖证据缺口、对方请求与回应安排。",
+        "制作分享授权清单，列明拟接收者、拟分享文件及姓名处理方式。"
+      ],
+      "materials": [
+        "内部事实时序及材料目录",
+        "顾问问题与分享授权清单"
+      ],
+      "collaborators": [
+        "记者本人",
+        "编辑部授权决策人"
+      ],
+      "followUp": [
+        "是否找到熟悉英格兰和威尔士媒体民事争议的顾问及明确评估范围。",
+        "授权后顾问是否提出补证或回应安排，内部包据此更新而不自动外发。"
+      ],
+      "supportingEvidenceIds": [],
+      "differences": [],
+      "uncertainties": [
+        "向法律顾问评估的最终目标已明确，但现有授权仍限内部整理。",
+        "函件所引法律依据及具体请求尚待读取，暂不确定抗辩或程序路径。"
+      ],
+      "basisType": "general_preparation",
+      "requiresPublicity": false,
+      "resourceIds": [],
+      "legalCitations": []
+    }
+  ],
+  "missingInformation": [
+    "完整律师函及附件，包括指摘原句、索赔主体、请求、损害依据和要求回应日期。",
+    "报道的准确发表日期、发表版本，以及污染和承包商关联的具体表述。",
+    "两份检测记录正文、采样背景，以及发表前已掌握的采访核验和编辑判断记录。",
+    "将来拟授权哪位法律顾问接收哪些材料，以及是否允许披露姓名。"
+  ],
+  "limitations": [
+    "联网工具已打开被引用的来源页面；不代表已完整读取、事实准确或团队人工核实。联网资料作为正式案例库的补充。",
+    "你提供了自由填写的披露边界，系统不能确认已完整理解其中限制；总体可公开不等于同意某次具体披露。任何对外分享前，须与当事人逐项核实内容、接收者、方式和同意范围。",
+    "这是用户标注的虚构案件；收函、尚无法院文件及未聘律师均来自用户叙述，未获独立核实。所述报道与律师函的先后关系不能单独证明压制表达的动机。",
+    "本次没有正式案例库案件或原文证据；提供的网页涉及不同的民事隐私争点，未选作实质比较。全部行动均为一般内部准备。",
+    "现有法律研究未绑定本案核心当地规则的确定适用结论；资源中的agent_checked不是团队人工复核，国际研究参考也不能据此确定国内抗辩、期限或救济资格。"
+  ],
+  "analysisId": "653ae2fe-89b0-4d88-9111-5372b1909219",
+  "schemaVersion": "1.0",
+  "inputHash": "258a68dba8befdbe9ee596181fc2358b67ac86396ab28c3ee4ed49f4ea2a330d",
+  "corpusVersion": "2026-10-09.v5",
+  "promptVersion": "4.4",
+  "createdAt": "2026-10-10T16:09:34.501Z",
+  "mode": "live_ai",
+  "webResearch": {
+    "status": "completed",
+    "searchedAt": "2026-10-10T16:08:28.384Z",
+    "searchTerms": [
+      "England and Wales civil procedure unconfirmed journalism expression journalism freedom of expression case judgment",
+      "England and Wales journalism expression documented legal response case judgment"
+    ],
+    "passages": [
+      {
+        "text": "以下仅依据所提供并成功打开的页面，讨论**英格兰和威尔士的民事案件**。其中，Bloomberg 案的背景涉及刑事调查，但所报告的诉讼属于滥用私人信息的民事侵权案件，并非刑事定罪程序。其来源是最高法院新闻摘要；摘要明确说明，只有完整判决才是权威裁判文件。(supremecourt.uk)",
+        "sourceIds": [
+          "web-1"
+        ]
+      },
+      {
+        "text": "**事实及程序结果：**Bloomberg 根据执法机关的一封保密司法协助请求函，报道了 ZXC 正受到调查及调查事项。Bloomberg 拒绝删除报道后，ZXC 申请临时禁令未获成功，但随后提起的滥用私人信息诉讼获得支持。Bloomberg 向上诉法院上诉失败，最高法院亦一致驳回其上诉。摘要同时说明，既有报道限制继续有效。(supremecourt.uk)",
+        "sourceIds": [
+          "web-1"
+        ]
+      },
+      {
+        "text": "**裁判要点：**受到刑事调查但尚未被起诉的人，通常对有关调查的信息具有合理隐私期待；这是分析起点，而非绝对禁止报道。法院须先结合全部情形判断隐私期待，再权衡《欧洲人权公约》第8条的隐私权与第10条的表达自由。滥用私人信息与诽谤不同：即使信息真实，也可能受到隐私保护。请求函的保密性是重要因素，但不自动决定信息属于私人信息，也不当然排除公共利益论证。(supremecourt.uk)",
+        "sourceIds": [
+          "web-1"
+        ]
+      },
+      {
+        "text": "**结论：**成功取得的材料分别涉及报道刑事调查时的民事隐私保护，以及诽谤诉讼中公共利益抗辩、上诉和费用的不同阶段；它们不能合并成“未经确认的新闻一律违法”或“新闻表达一律免责”的规则。现有材料也不足以判断任何未提供事实的具体案件。(supremecourt.uk)",
+        "sourceIds": [
+          "web-1"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "sourceId": "web-1",
+        "url": "https://supremecourt.uk/uploads/uksc_2020_0122_press_summary_3e62011350.pdf?utm_source=openai",
+        "title": "Bloomberg LP (Appellant) v ZXC (Respondent)",
+        "hostname": "supremecourt.uk",
+        "citationKind": "url_annotation",
+        "pageOpened": true
+      }
+    ],
+    "searchCallCount": 1,
+    "failureReason": null,
+    "plan": {
+      "domain": "expression_media",
+      "relationship": "journalist or public speaker and legal authority or claimant",
+      "disputedConduct": [
+        "journalism freedom of expression"
+      ],
+      "harms": [],
+      "remedies": [
+        "documented legal response"
+      ],
+      "evidenceIssues": [],
+      "excludedIssues": [],
+      "uncertainties": [
+        "Search labels are broad approved categories, not legal findings."
+      ],
+      "searchQueries": [
+        "England and Wales civil procedure unconfirmed journalism expression journalism freedom of expression case judgment",
+        "England and Wales journalism expression documented legal response case judgment"
+      ],
+      "coverage": "limited"
+    },
+    "planningMode": "structured_fallback",
+    "actualQueries": [
+      "site.supremecourt.uk Bloomberg LP ZXC 2022 judgment privacy",
+      "site.judiciary.uk \"Banks\" \"Cadwalladr\" \"2023\"",
+      "site.supremecourt.uk \"Lachaux\" \"2019\" \"Independent\""
+    ],
+    "attempts": [
+      {
+        "attempt": 1,
+        "reason": "initial",
+        "startedAt": "2026-10-10T16:08:28.384Z",
+        "status": "completed",
+        "searchTerms": [
+          "England and Wales civil procedure unconfirmed journalism expression journalism freedom of expression case judgment",
+          "England and Wales journalism expression documented legal response case judgment"
+        ],
+        "actualQueries": [
+          "site.supremecourt.uk Bloomberg LP ZXC 2022 judgment privacy",
+          "site.judiciary.uk \"Banks\" \"Cadwalladr\" \"2023\"",
+          "site.supremecourt.uk \"Lachaux\" \"2019\" \"Independent\""
+        ],
+        "searchCallCount": 1,
+        "sourceCount": 1,
+        "failureReason": null
+      }
+    ],
+    "relevanceStatus": "not_assessed"
+  },
+  "webComparisons": [],
+  "actionWebSources": [],
+  "actionOrigins": [
+    {
+      "actionId": "prepare-publication-basis",
+      "origin": "ai",
+      "reason": null
+    },
+    {
+      "actionId": "map-letter-and-harm",
+      "origin": "ai",
+      "reason": null
+    },
+    {
+      "actionId": "prepare-adviser-review",
+      "origin": "ai",
+      "reason": null
+    }
+  ],
+  "researchAssessment": {
+    "status": "no_relevant_cases",
+    "attempts": 1,
+    "recovery": "not_needed",
+    "note": "本次未选出合适的案例比较。取得来源不等于相关，也不代表不存在类似案件。"
+  },
+  "legalResearch": {
+    "coreQuestion": "先核对表达活动与所述措施的关联、决定主体和实际程序，再研究对应保障。",
+    "coverage": "gap",
+    "coverageNote": "当前问题没有精细当地规则覆盖；国际参考不替代国内法律或程序。",
+    "bindings": [
+      {
+        "bindingId": "legal-gb-eaw-iccpr-article-19-art19-2-3",
+        "issue": "哪些表达受到何种限制？法律根据、所称目的与必要性/比例性的事实材料是什么？",
+        "claim": "表达限制须有法律依据，并为第19(3)列举目的所必要；具体限制是否满足要求尚待核查。",
+        "claimKey": "expression_restriction_test",
+        "resourceId": "iccpr-article-19",
+        "provisionId": "art19-2-3",
+        "factBasis": [
+          {
+            "text": "【陌生虚构案件 V-92】社区记者温栩在英格兰和威尔士报道污水排放后，于2026-10-06收到承包商要求道歉的民事律师函。编辑部保存函件及两份检测记录。尚未收到法院文件，也没有聘请律师。承包商否认污染与其有关。",
+            "origin": "user_statement",
+            "fileName": null,
+            "page": null
+          }
+        ],
+        "relevance": "本案的民事表达争议与这一条有关（规则关联）；要件、文书和版本仍须核对。",
+        "conditions": [
+          {
+            "label": "具体法域",
+            "status": "confirmed",
+            "detail": "用户陈述法域：GB-EAW；仅确认研究范围。"
+          },
+          {
+            "label": "程序类型",
+            "status": "confirmed",
+            "detail": "本案：民事；条文适用于：各类程序。"
+          },
+          {
+            "label": "当前缔约状态（独立官方记录）",
+            "status": "confirmed",
+            "detail": "UNTC IV.4：1976-05-20批准ICCPR；按第49条1976-08-20生效，相关英国保留、领土及国内效果另核。"
+          },
+          {
+            "label": "事件时管辖、相关保留与国内援引",
+            "status": "unknown",
+            "detail": "当前缔约情况与个案适用分别处理；仍须核对事件时管辖、相关保留/克减及国内援引方式。"
+          }
+        ],
+        "nextChecks": [
+          "尚未进行具名团队人工复核。",
+          "须确认事件日期、管辖关系、涉及条款的保留/克减及国内援引方式；缔约不等于国内直接适用。",
+          "工作准备建议：对应事实及材料索引、事件时间、程序文件；由负责律师判断国内援引。"
+        ],
+        "applicability": "research_reference",
+        "factsAsOf": "本次用户陈述；独立事实截至日期未确认",
+        "lawAsOf": "2026-10-09 · 已核对条约正文；UNTC IV.4当前状态页于2026-10-09重新读取（页面状态同日）。当前参与、保留、事件时适用及国内效果分别处理。",
+        "relationOrigin": "curated_rule"
+      },
+      {
+        "bindingId": "legal-gb-eaw-hrc-general-comment-34-para22",
+        "issue": "哪些表达受到何种限制？法律根据、所称目的与必要性/比例性的事实材料是什么？",
+        "claim": "限制需满足第19(3)列举目的及必要性、比例性测试；该段是委员会解释。",
+        "claimKey": "expression_restriction_test",
+        "resourceId": "hrc-general-comment-34",
+        "provisionId": "para22",
+        "factBasis": [
+          {
+            "text": "【陌生虚构案件 V-92】社区记者温栩在英格兰和威尔士报道污水排放后，于2026-10-06收到承包商要求道歉的民事律师函。编辑部保存函件及两份检测记录。尚未收到法院文件，也没有聘请律师。承包商否认污染与其有关。",
+            "origin": "user_statement",
+            "fileName": null,
+            "page": null
+          }
+        ],
+        "relevance": "本案的民事表达争议与这一条有关（规则关联）；要件、文书和版本仍须核对。",
+        "conditions": [
+          {
+            "label": "具体法域",
+            "status": "confirmed",
+            "detail": "用户陈述法域：GB-EAW；仅确认研究范围。"
+          },
+          {
+            "label": "程序类型",
+            "status": "confirmed",
+            "detail": "本案：民事；条文适用于：各类程序。"
+          },
+          {
+            "label": "当前缔约状态（独立官方记录）",
+            "status": "confirmed",
+            "detail": "UNTC IV.4：1976-05-20批准ICCPR；按第49条1976-08-20生效，相关英国保留、领土及国内效果另核。"
+          },
+          {
+            "label": "事件时管辖、相关保留与国内援引",
+            "status": "unknown",
+            "detail": "当前缔约情况与个案适用分别处理；仍须核对事件时管辖、相关保留/克减及国内援引方式。"
+          }
+        ],
+        "nextChecks": [
+          "尚未进行具名团队人工复核。",
+          "ICCPR 在本案的适用条件、事实评价及国内程序效果仍须核对。",
+          "工作准备建议：标注实际受限的表达或程序事实，对照所引段落整理律师问题。"
+        ],
+        "applicability": "research_reference",
+        "factsAsOf": "本次用户陈述；独立事实截至日期未确认",
+        "lawAsOf": "2026-10-09 · 已读取发布机构在核查日提供的正文；不是个案适用性结论。",
+        "relationOrigin": "curated_rule"
+      },
+      {
+        "bindingId": "legal-gb-eaw-hrc-general-comment-34-para25",
+        "issue": "哪些表达受到何种限制？法律根据、所称目的与必要性/比例性的事实材料是什么？",
+        "claim": "第25段用于研究限制规则是否公开可及、足够明确以及是否赋予不受限制的裁量；先取得实际所引规则及受限表述，不据主题相近宣布国内规则无效。",
+        "claimKey": "expression_legality_test",
+        "resourceId": "hrc-general-comment-34",
+        "provisionId": "para25",
+        "factBasis": [
+          {
+            "text": "【陌生虚构案件 V-92】社区记者温栩在英格兰和威尔士报道污水排放后，于2026-10-06收到承包商要求道歉的民事律师函。编辑部保存函件及两份检测记录。尚未收到法院文件，也没有聘请律师。承包商否认污染与其有关。",
+            "origin": "user_statement",
+            "fileName": null,
+            "page": null
+          }
+        ],
+        "relevance": "本案的民事表达争议与这一条有关（规则关联）；要件、文书和版本仍须核对。",
+        "conditions": [
+          {
+            "label": "具体法域",
+            "status": "confirmed",
+            "detail": "用户陈述法域：GB-EAW；仅确认研究范围。"
+          },
+          {
+            "label": "程序类型",
+            "status": "confirmed",
+            "detail": "本案：民事；条文适用于：各类程序。"
+          },
+          {
+            "label": "当前缔约状态（独立官方记录）",
+            "status": "confirmed",
+            "detail": "UNTC IV.4：1976-05-20批准ICCPR；按第49条1976-08-20生效，相关英国保留、领土及国内效果另核。"
+          },
+          {
+            "label": "事件时管辖、相关保留与国内援引",
+            "status": "unknown",
+            "detail": "当前缔约情况与个案适用分别处理；仍须核对事件时管辖、相关保留/克减及国内援引方式。"
+          }
+        ],
+        "nextChecks": [
+          "尚未进行具名团队人工复核。",
+          "ICCPR 在本案的适用条件、事实评价及国内程序效果仍须核对。",
+          "工作准备建议：标注实际受限的表达或程序事实，对照所引段落整理律师问题。"
+        ],
+        "applicability": "research_reference",
+        "factsAsOf": "本次用户陈述；独立事实截至日期未确认",
+        "lawAsOf": "2026-10-09 · 已读取发布机构在核查日提供的正文；不是个案适用性结论。",
+        "relationOrigin": "curated_rule"
+      },
+      {
+        "bindingId": "legal-gb-eaw-hrc-general-comment-34-paras33-35",
+        "issue": "哪些表达受到何种限制？法律根据、所称目的与必要性/比例性的事实材料是什么？",
+        "claim": "第33–35段要求逐项研究限制的合法目的、较少侵害的替代方式、比例及所称威胁与表达之间的具体直接关联；先后发生不能单独证明因果或限制不合法。",
+        "claimKey": "expression_necessity_proportionality",
+        "resourceId": "hrc-general-comment-34",
+        "provisionId": "paras33-35",
+        "factBasis": [
+          {
+            "text": "【陌生虚构案件 V-92】社区记者温栩在英格兰和威尔士报道污水排放后，于2026-10-06收到承包商要求道歉的民事律师函。编辑部保存函件及两份检测记录。尚未收到法院文件，也没有聘请律师。承包商否认污染与其有关。",
+            "origin": "user_statement",
+            "fileName": null,
+            "page": null
+          }
+        ],
+        "relevance": "本案的民事表达争议与这一条有关（规则关联）；要件、文书和版本仍须核对。",
+        "conditions": [
+          {
+            "label": "具体法域",
+            "status": "confirmed",
+            "detail": "用户陈述法域：GB-EAW；仅确认研究范围。"
+          },
+          {
+            "label": "程序类型",
+            "status": "confirmed",
+            "detail": "本案：民事；条文适用于：各类程序。"
+          },
+          {
+            "label": "当前缔约状态（独立官方记录）",
+            "status": "confirmed",
+            "detail": "UNTC IV.4：1976-05-20批准ICCPR；按第49条1976-08-20生效，相关英国保留、领土及国内效果另核。"
+          },
+          {
+            "label": "事件时管辖、相关保留与国内援引",
+            "status": "unknown",
+            "detail": "当前缔约情况与个案适用分别处理；仍须核对事件时管辖、相关保留/克减及国内援引方式。"
+          }
+        ],
+        "nextChecks": [
+          "尚未进行具名团队人工复核。",
+          "ICCPR 在本案的适用条件、事实评价及国内程序效果仍须核对。",
+          "工作准备建议：标注实际受限的表达或程序事实，对照所引段落整理律师问题。"
+        ],
+        "applicability": "research_reference",
+        "factsAsOf": "本次用户陈述；独立事实截至日期未确认",
+        "lawAsOf": "2026-10-09 · 已读取发布机构在核查日提供的正文；不是个案适用性结论。",
+        "relationOrigin": "curated_rule"
+      }
+    ],
+    "gaps": [
+      "正式文书、行为及送达日期、事件时法律版本与当地适用方式仍须逐项核对。",
+      "当前问题的核心当地规则尚无已绑定的可靠正文；不输出依赖其适用的确定结论。"
+    ],
+    "mechanisms": [
+      {
+        "mechanismId": "hrc-individual-communications",
+        "title": "联合国人权事务委员会：个人来文资格研究",
+        "state": "not_met",
+        "conditions": [
+          {
+            "label": "第一任择议定书的国家／领土资格",
+            "status": "not_met",
+            "detail": "1976-05-20批准ICCPR；英国未参加第一任择议定书。ICCPR缔约不能替代个人来文国家资格。"
+          },
+          {
+            "label": "本人／代理资格及权利范围",
+            "status": "unknown",
+            "detail": "确认受国家管辖的受害人、代理授权及具体ICCPR权利；不能用历史案件当本案证明。"
+          },
+          {
+            "label": "国内救济及可主张例外",
+            "status": "unknown",
+            "detail": "列出每项已使用和未使用救济、决定及日期，再核对不可获得、无效或不合理拖延等可主张例外。"
+          },
+          {
+            "label": "其他国际程序、保留和事件时间",
+            "status": "unknown",
+            "detail": "核对是否正在其他国际调查／解决程序审查、国家保留和事件时间。"
+          },
+          {
+            "label": "指定机制、材料与用途的提交授权",
+            "status": "not_met",
+            "detail": "现有披露范围限制外发：仅内部整理，未经具体授权不对外发送、不公开姓名。。内部资格研究和三份内部草稿仍可继续。"
+          },
+          {
+            "label": "向政府等接收方披露姓名",
+            "status": "unknown",
+            "detail": "须单独记录同意或不同意及风险；允许向律师分享不包含政府或机构。"
+          },
+          {
+            "label": "公开报告披露姓名",
+            "status": "unknown",
+            "detail": "当前不公开；不能据此自动排除内部研究或所有机制。须与机制实际公开及安全例外安排核对，不能承诺全程保密。"
+          }
+        ],
+        "resourceIds": [
+          "hrc-individual-communications"
+        ],
+        "disclosure": [
+          "这是人权事务委员会（条约机构），不是人权理事会；不得把内部材料标为已递交。"
+        ],
+        "nextChecks": [
+          "取得国内决定、救济时序、代理授权、其他国际程序记录及可主张例外的依据。"
+        ]
+      },
+      {
+        "mechanismId": "ohchr-special-procedures",
+        "title": "特别程序：任务与披露条件研究",
+        "state": "not_met",
+        "conditions": [
+          {
+            "label": "条约缔约和用尽国内救济",
+            "status": "confirmed",
+            "detail": "一般特别程序来函不以两者为共同前提；此项只说明门槛不存在，不表示个案获接纳。"
+          },
+          {
+            "label": "具体任务范围与可信详细事实",
+            "status": "unknown",
+            "detail": "按具体事实核对表达自由或人权维护者等任务范围，材料不能只依赖媒体报道；专家自行决定是否行动。"
+          },
+          {
+            "label": "指定机制、材料与用途的提交授权",
+            "status": "not_met",
+            "detail": "现有披露范围限制外发：仅内部整理，未经具体授权不对外发送、不公开姓名。。内部资格研究和三份内部草稿仍可继续。"
+          },
+          {
+            "label": "向政府等接收方披露姓名",
+            "status": "unknown",
+            "detail": "须单独记录同意或不同意及风险；允许向律师分享不包含政府或机构。"
+          },
+          {
+            "label": "公开报告披露姓名",
+            "status": "unknown",
+            "detail": "当前不公开；不能据此自动排除内部研究或所有机制。须与机制实际公开及安全例外安排核对，不能承诺全程保密。"
+          }
+        ],
+        "resourceIds": [
+          "ohchr-special-procedures"
+        ],
+        "disclosure": [
+          "政府等接收方通常收到姓名；公开报告姓名是另一项选择。安全例外需明确提出并核对；回执不是已行动。"
+        ],
+        "nextChecks": [
+          "确认具体任务、希望机制提出的请求、可靠佐证及两项姓名披露选择。"
+        ]
+      },
+      {
+        "mechanismId": "wgad-submission",
+        "title": "任意拘留问题工作组：独立程序研究",
+        "state": "not_met",
+        "conditions": [
+          {
+            "label": "剥夺自由事实",
+            "status": "unknown",
+            "detail": "尚无本案当前剥夺自由的充分记录；历史拘押、已获释或一般民事压力不能证明目前被拘押。"
+          },
+          {
+            "label": "普通程序材料及任意性研究",
+            "status": "unknown",
+            "detail": "按A/HRC/36/38第8–12段整理拘押时间地点、机关、理由、法律、国内与其他国际步骤、结果及最新情况。"
+          },
+          {
+            "label": "独立工作方法与紧急行动",
+            "status": "unknown",
+            "detail": "第22–23段要求具体紧急情形；紧急呼吁不预断任意拘留意见。不能机械套用HRC用尽救济条件或一般特别程序全部规则。"
+          },
+          {
+            "label": "指定机制、材料与用途的提交授权",
+            "status": "not_met",
+            "detail": "现有披露范围限制外发：仅内部整理，未经具体授权不对外发送、不公开姓名。。内部资格研究和三份内部草稿仍可继续。"
+          },
+          {
+            "label": "向政府等接收方披露姓名",
+            "status": "unknown",
+            "detail": "须单独记录同意或不同意及风险；允许向律师分享不包含政府或机构。"
+          },
+          {
+            "label": "公开报告披露姓名",
+            "status": "unknown",
+            "detail": "当前不公开；不能据此自动排除内部研究或所有机制。须与机制实际公开及安全例外安排核对，不能承诺全程保密。"
+          }
+        ],
+        "resourceIds": [
+          "wgad-submission"
+        ],
+        "disclosure": [
+          "向政府传送、意见公开及安全安排需逐项复核；意见不等于国内执行、释放或赔付。"
+        ],
+        "nextChecks": [
+          "查现用问卷、独立方法后续修订、实际紧急事实和其他机制协调；本轮只准备内部材料。"
+        ]
+      },
+      {
+        "mechanismId": "ecthr-applicants",
+        "title": "欧洲人权法院：候选资格研究",
+        "state": "not_met",
+        "conditions": [
+          {
+            "label": "欧洲公约国家与事件时间",
+            "status": "confirmed",
+            "detail": "英国为欧洲公约缔约方；具体领土、事件、权利和程序仍须另核。"
+          },
+          {
+            "label": "区域机制个案受理条件",
+            "status": "unknown",
+            "detail": "欧洲人权法院属于欧洲公约体系，不是ICCPR法院。国内救济、最终决定日期、时限及重复程序未完整核查，当前仅资格研究。"
+          },
+          {
+            "label": "指定机制、材料与用途的提交授权",
+            "status": "not_met",
+            "detail": "现有披露范围限制外发：仅内部整理，未经具体授权不对外发送、不公开姓名。。内部资格研究和三份内部草稿仍可继续。"
+          },
+          {
+            "label": "向政府等接收方披露姓名",
+            "status": "unknown",
+            "detail": "须单独记录同意或不同意及风险；允许向律师分享不包含政府或机构。"
+          },
+          {
+            "label": "公开报告披露姓名",
+            "status": "unknown",
+            "detail": "当前不公开；不能据此自动排除内部研究或所有机制。须与机制实际公开及安全例外安排核对，不能承诺全程保密。"
+          }
+        ],
+        "resourceIds": [
+          "ecthr-applicants"
+        ],
+        "disclosure": [
+          "不生成可直接递交成稿；公开及匿名安排需按法院规则另核。"
+        ],
+        "nextChecks": [
+          "请具备该体系经验的律师核对国家、事件日期、最终国内决定、资格及完整受理规则。"
+        ]
+      }
+    ]
+  },
+  "followups": [],
+  "nextSteps": [
+    {
+      "actionId": "prepare-publication-basis",
+      "purpose": "将“整理发表依据”推进到可供内部讨论的材料；是否采用程序或对外路径仍由指定人员决定。",
+      "owner": "编辑部材料负责人；TrialWatch 研究员整理材料，当地律师判断法律适用与程序，当事人决定披露。",
+      "materials": [
+        "实际持有的函件或法院文书、具体表述、对方请求、发表依据与送达记录；未知分别保留。"
+      ],
+      "deliverables": [
+        "给当地律师的事实与问题表：先确认请求依据与程序，再筛选对应规则；不预设诽谤、严重损害或特定反SLAPP途径。"
+      ],
+      "stopConditions": [
+        "未经针对具体材料、接收者及方式的明确同意，不发送、联系、公开或递交；本模块只准备内部材料。",
+        "现有私下／具体披露限制继续有效；公开倡议暂不推进，不把私下渠道当作绕过限制的许可。",
+        "法律版本、资格、程序阶段或必要文书未核实时，暂不实施相关法律步骤；内部索引和问题准备可继续。"
+      ],
+      "legalBindingIds": [],
+      "history": [],
+      "basisGaps": [
+        "未找到与本项准备直接对应且程序可比较的已实施历史行动；此项仍是一般工作准备，不冒充历史成功路径。",
+        "本项没有直接支持的逐条法律／机制引用；在补齐前仅做材料准备。"
+      ]
+    },
+    {
+      "actionId": "map-letter-and-harm",
+      "purpose": "将“拆解指摘与损害主张”推进到可供内部讨论的材料；是否采用程序或对外路径仍由指定人员决定。",
+      "owner": "内部案件整理人；TrialWatch 研究员整理材料，当地律师判断法律适用与程序，当事人决定披露。",
+      "materials": [
+        "实际持有的函件或法院文书、具体表述、对方请求、发表依据与送达记录；未知分别保留。"
+      ],
+      "deliverables": [
+        "给当地律师的事实与问题表：先确认请求依据与程序，再筛选对应规则；不预设诽谤、严重损害或特定反SLAPP途径。"
+      ],
+      "stopConditions": [
+        "未经针对具体材料、接收者及方式的明确同意，不发送、联系、公开或递交；本模块只准备内部材料。",
+        "现有私下／具体披露限制继续有效；公开倡议暂不推进，不把私下渠道当作绕过限制的许可。",
+        "法律版本、资格、程序阶段或必要文书未核实时，暂不实施相关法律步骤；内部索引和问题准备可继续。"
+      ],
+      "legalBindingIds": [],
+      "history": [],
+      "basisGaps": [
+        "未找到与本项准备直接对应且程序可比较的已实施历史行动；此项仍是一般工作准备，不冒充历史成功路径。",
+        "本项没有直接支持的逐条法律／机制引用；在补齐前仅做材料准备。"
+      ]
+    },
+    {
+      "actionId": "prepare-adviser-review",
+      "purpose": "将“编制顾问评估提纲”推进到可供内部讨论的材料；是否采用程序或对外路径仍由指定人员决定。",
+      "owner": "编辑部协调负责人；TrialWatch 研究员整理材料，当地律师判断法律适用与程序，当事人决定披露。",
+      "materials": [
+        "实际持有的函件或法院文书、具体表述、对方请求、发表依据与送达记录；未知分别保留。"
+      ],
+      "deliverables": [
+        "给当地律师的事实与问题表：先确认请求依据与程序，再筛选对应规则；不预设诽谤、严重损害或特定反SLAPP途径。"
+      ],
+      "stopConditions": [
+        "未经针对具体材料、接收者及方式的明确同意，不发送、联系、公开或递交；本模块只准备内部材料。",
+        "现有私下／具体披露限制继续有效；公开倡议暂不推进，不把私下渠道当作绕过限制的许可。",
+        "法律版本、资格、程序阶段或必要文书未核实时，暂不实施相关法律步骤；内部索引和问题准备可继续。"
+      ],
+      "legalBindingIds": [],
+      "history": [],
+      "basisGaps": [
+        "未找到与本项准备直接对应且程序可比较的已实施历史行动；此项仍是一般工作准备，不冒充历史成功路径。",
+        "本项没有直接支持的逐条法律／机制引用；在补齐前仅做材料准备。"
+      ]
+    }
+  ],
+  "whatsNext": {
+    "version": 1,
+    "inputHash": "258a68dba8befdbe9ee596181fc2358b67ac86396ab28c3ee4ed49f4ea2a330d",
+    "facts": [
+      {
+        "factId": "account-1",
+        "text": "【陌生虚构案件 V-92】社区记者温栩在英格兰和威尔士报道污水排放后，于2026-10-06收到承包商要求道歉的民事律师函。",
+        "quote": "【陌生虚构案件 V-92】社区记者温栩在英格兰和威尔士报道污水排放后，于2026-10-06收到承包商要求道歉的民事律师函。",
+        "origin": "user_statement",
+        "sourceLabel": "用户叙述；未经独立核实",
+        "date": "2026-10-06",
+        "precision": "day"
+      },
+      {
+        "factId": "account-2",
+        "text": "编辑部保存函件及两份检测记录。",
+        "quote": "编辑部保存函件及两份检测记录。",
+        "origin": "user_statement",
+        "sourceLabel": "用户叙述；未经独立核实",
+        "date": null,
+        "precision": "unknown"
+      },
+      {
+        "factId": "account-3",
+        "text": "尚未收到法院文件，也没有聘请律师。",
+        "quote": "尚未收到法院文件，也没有聘请律师。",
+        "origin": "user_statement",
+        "sourceLabel": "用户叙述；未经独立核实",
+        "date": null,
+        "precision": "unknown"
+      },
+      {
+        "factId": "account-4",
+        "text": "承包商否认污染与其有关。",
+        "quote": "承包商否认污染与其有关。",
+        "origin": "user_statement",
+        "sourceLabel": "用户叙述；未经独立核实",
+        "date": null,
+        "precision": "unknown"
+      }
+    ],
+    "priorities": [
+      {
+        "taskId": "work-timeline",
+        "kind": "timeline",
+        "title": "整理函件、发表依据与程序时间线",
+        "whyNow": "把函件、发表依据和程序日期按时间排好。",
+        "factIds": [
+          "account-1",
+          "account-2",
+          "account-3",
+          "account-4"
+        ],
+        "role": "案件协调人／法律研究人员准备；当事人核对",
+        "assignment": "unassigned",
+        "status": "draft_generated",
+        "available": [
+          "已保存本次用户陈述 4 项；这些不是独立核实事实。"
+        ],
+        "missing": [
+          {
+            "item": "完整律师函、被指摘表述及收件记录",
+            "why": "决定适用程序、管辖及可核实的事实范围；尚无对应原件不能下结论。",
+            "role": "当地律师候选（尚未确认委托）"
+          },
+          {
+            "item": "事件、通知、送达及已有请求的日期来源",
+            "why": "日期需逐项与文书核对，才能由当地律师判断时点与期限；系统不计算期限。",
+            "role": "案件协调人核对，当地律师判断"
+          }
+        ],
+        "legalBindingIds": [],
+        "history": [],
+        "basisGaps": [
+          "一般资料准备，不硬配历史先例或法条。"
+        ],
+        "stopConditions": [
+          "内部起草可以继续；对外发送、公开和递交没有自动授权。",
+          "仅内部整理，未经具体授权不对外发送、不公开姓名。"
+        ]
+      },
+      {
+        "taskId": "work-issue_matrix",
+        "kind": "issue_matrix",
+        "title": "对照本案问题、证据与法律研究依据",
+        "whyNow": "每个问题对应哪些事实、证据和条文，哪些条件还没确认。",
+        "factIds": [
+          "account-1",
+          "account-2",
+          "account-3",
+          "account-4"
+        ],
+        "role": "案件协调人／法律研究人员准备；当事人核对",
+        "assignment": "unassigned",
+        "status": "draft_generated",
+        "available": [
+          "已保存本次用户陈述 4 项；这些不是独立核实事实。"
+        ],
+        "missing": [
+          {
+            "item": "完整律师函、被指摘表述及收件记录",
+            "why": "决定适用程序、管辖及可核实的事实范围；尚无对应原件不能下结论。",
+            "role": "当地律师候选（尚未确认委托）"
+          },
+          {
+            "item": "事件、通知、送达及已有请求的日期来源",
+            "why": "日期需逐项与文书核对，才能由当地律师判断时点与期限；系统不计算期限。",
+            "role": "案件协调人核对，当地律师判断"
+          }
+        ],
+        "legalBindingIds": [
+          "legal-gb-eaw-iccpr-article-19-art19-2-3",
+          "legal-gb-eaw-hrc-general-comment-34-para22",
+          "legal-gb-eaw-hrc-general-comment-34-para25",
+          "legal-gb-eaw-hrc-general-comment-34-paras33-35"
+        ],
+        "history": [],
+        "basisGaps": [
+          "暂无程序相容且证据充分的历史行动；继续一般资料准备。",
+          "正式文书、行为及送达日期、事件时法律版本与当地适用方式仍须逐项核对。",
+          "当前问题的核心当地规则尚无已绑定的可靠正文；不输出依赖其适用的确定结论。"
+        ],
+        "stopConditions": [
+          "内部起草可以继续；对外发送、公开和递交没有自动授权。",
+          "仅内部整理，未经具体授权不对外发送、不公开姓名。",
+          "资格、当地法律版本或文书未核实，暂停依赖其成立的程序步骤。"
+        ]
+      },
+      {
+        "taskId": "work-lawyer_brief",
+        "kind": "lawyer_brief",
+        "title": "形成供当地律师核对的一页内部简报",
+        "whyNow": "一页纸交给当地律师：要点、问题和所需材料。",
+        "factIds": [
+          "account-1",
+          "account-2",
+          "account-3",
+          "account-4"
+        ],
+        "role": "法律研究人员起草；当地律师候选（尚未确认委托）核对",
+        "assignment": "unassigned",
+        "status": "draft_generated",
+        "available": [
+          "已保存本次用户陈述 4 项；这些不是独立核实事实。"
+        ],
+        "missing": [
+          {
+            "item": "完整律师函、被指摘表述及收件记录",
+            "why": "决定适用程序、管辖及可核实的事实范围；尚无对应原件不能下结论。",
+            "role": "当地律师候选（尚未确认委托）"
+          },
+          {
+            "item": "事件、通知、送达及已有请求的日期来源",
+            "why": "日期需逐项与文书核对，才能由当地律师判断时点与期限；系统不计算期限。",
+            "role": "案件协调人核对，当地律师判断"
+          },
+          {
+            "item": "合适当地律师候选及委托授权范围",
+            "why": "有律师不等于已取得会面或案卷；未确认委托不分派真实人员。",
+            "role": "当事人或获授权协调人"
+          }
+        ],
+        "legalBindingIds": [
+          "legal-gb-eaw-iccpr-article-19-art19-2-3",
+          "legal-gb-eaw-hrc-general-comment-34-para22",
+          "legal-gb-eaw-hrc-general-comment-34-para25",
+          "legal-gb-eaw-hrc-general-comment-34-paras33-35"
+        ],
+        "history": [],
+        "basisGaps": [
+          "暂无程序相容且证据充分的历史行动；继续一般资料准备。",
+          "正式文书、行为及送达日期、事件时法律版本与当地适用方式仍须逐项核对。",
+          "当前问题的核心当地规则尚无已绑定的可靠正文；不输出依赖其适用的确定结论。"
+        ],
+        "stopConditions": [
+          "内部起草可以继续；对外发送、公开和递交没有自动授权。",
+          "仅内部整理，未经具体授权不对外发送、不公开姓名。",
+          "资格、当地法律版本或文书未核实，暂停依赖其成立的程序步骤。"
+        ]
+      }
+    ],
+    "paths": [
+      {
+        "pathId": "research-hrc-individual-communications",
+        "title": "联合国人权事务委员会：个人来文资格研究",
+        "state": "paused",
+        "reason": "已知实质资格条件不符合，暂停依赖该资格成立的路径；内部事实整理仍可继续。",
+        "conditions": [
+          "不满足 · 第一任择议定书的国家／领土资格: 1976-05-20批准ICCPR；英国未参加第一任择议定书。ICCPR缔约不能替代个人来文国家资格。",
+          "待确认 · 本人／代理资格及权利范围: 确认受国家管辖的受害人、代理授权及具体ICCPR权利；不能用历史案件当本案证明。",
+          "待确认 · 国内救济及可主张例外: 列出每项已使用和未使用救济、决定及日期，再核对不可获得、无效或不合理拖延等可主张例外。",
+          "待确认 · 其他国际程序、保留和事件时间: 核对是否正在其他国际调查／解决程序审查、国家保留和事件时间。",
+          "不满足 · 指定机制、材料与用途的提交授权: 现有披露范围限制外发：仅内部整理，未经具体授权不对外发送、不公开姓名。。内部资格研究和三份内部草稿仍可继续。",
+          "待确认 · 向政府等接收方披露姓名: 须单独记录同意或不同意及风险；允许向律师分享不包含政府或机构。",
+          "待确认 · 公开报告披露姓名: 当前不公开；不能据此自动排除内部研究或所有机制。须与机制实际公开及安全例外安排核对，不能承诺全程保密。",
+          "这是人权事务委员会（条约机构），不是人权理事会；不得把内部材料标为已递交。",
+          "取得国内决定、救济时序、代理授权、其他国际程序记录及可主张例外的依据。"
+        ],
+        "legalBindingIds": [],
+        "role": "法律研究人员准备；当地律师和当事人核对"
+      },
+      {
+        "pathId": "research-ohchr-special-procedures",
+        "title": "特别程序：任务与披露条件研究",
+        "state": "conditional",
+        "reason": "只做内部资格研究和材料清单；条件未确认前不能提交。",
+        "conditions": [
+          "已确认 · 条约缔约和用尽国内救济: 一般特别程序来函不以两者为共同前提；此项只说明门槛不存在，不表示个案获接纳。",
+          "待确认 · 具体任务范围与可信详细事实: 按具体事实核对表达自由或人权维护者等任务范围，材料不能只依赖媒体报道；专家自行决定是否行动。",
+          "不满足 · 指定机制、材料与用途的提交授权: 现有披露范围限制外发：仅内部整理，未经具体授权不对外发送、不公开姓名。。内部资格研究和三份内部草稿仍可继续。",
+          "待确认 · 向政府等接收方披露姓名: 须单独记录同意或不同意及风险；允许向律师分享不包含政府或机构。",
+          "待确认 · 公开报告披露姓名: 当前不公开；不能据此自动排除内部研究或所有机制。须与机制实际公开及安全例外安排核对，不能承诺全程保密。",
+          "政府等接收方通常收到姓名；公开报告姓名是另一项选择。安全例外需明确提出并核对；回执不是已行动。",
+          "确认具体任务、希望机制提出的请求、可靠佐证及两项姓名披露选择。"
+        ],
+        "legalBindingIds": [],
+        "role": "法律研究人员准备；当地律师和当事人核对"
+      },
+      {
+        "pathId": "research-wgad-submission",
+        "title": "任意拘留问题工作组：独立程序研究",
+        "state": "paused",
+        "reason": "尚无本案剥夺自由事实支持，暂不推进拘押程序材料。",
+        "conditions": [
+          "待确认 · 剥夺自由事实: 尚无本案当前剥夺自由的充分记录；历史拘押、已获释或一般民事压力不能证明目前被拘押。",
+          "待确认 · 普通程序材料及任意性研究: 按A/HRC/36/38第8–12段整理拘押时间地点、机关、理由、法律、国内与其他国际步骤、结果及最新情况。",
+          "待确认 · 独立工作方法与紧急行动: 第22–23段要求具体紧急情形；紧急呼吁不预断任意拘留意见。不能机械套用HRC用尽救济条件或一般特别程序全部规则。",
+          "不满足 · 指定机制、材料与用途的提交授权: 现有披露范围限制外发：仅内部整理，未经具体授权不对外发送、不公开姓名。。内部资格研究和三份内部草稿仍可继续。",
+          "待确认 · 向政府等接收方披露姓名: 须单独记录同意或不同意及风险；允许向律师分享不包含政府或机构。",
+          "待确认 · 公开报告披露姓名: 当前不公开；不能据此自动排除内部研究或所有机制。须与机制实际公开及安全例外安排核对，不能承诺全程保密。",
+          "向政府传送、意见公开及安全安排需逐项复核；意见不等于国内执行、释放或赔付。",
+          "查现用问卷、独立方法后续修订、实际紧急事实和其他机制协调；本轮只准备内部材料。"
+        ],
+        "legalBindingIds": [],
+        "role": "法律研究人员准备；当地律师和当事人核对"
+      },
+      {
+        "pathId": "research-ecthr-applicants",
+        "title": "欧洲人权法院：候选资格研究",
+        "state": "conditional",
+        "reason": "只做内部资格研究和材料清单；条件未确认前不能提交。",
+        "conditions": [
+          "已确认 · 欧洲公约国家与事件时间: 英国为欧洲公约缔约方；具体领土、事件、权利和程序仍须另核。",
+          "待确认 · 区域机制个案受理条件: 欧洲人权法院属于欧洲公约体系，不是ICCPR法院。国内救济、最终决定日期、时限及重复程序未完整核查，当前仅资格研究。",
+          "不满足 · 指定机制、材料与用途的提交授权: 现有披露范围限制外发：仅内部整理，未经具体授权不对外发送、不公开姓名。。内部资格研究和三份内部草稿仍可继续。",
+          "待确认 · 向政府等接收方披露姓名: 须单独记录同意或不同意及风险；允许向律师分享不包含政府或机构。",
+          "待确认 · 公开报告披露姓名: 当前不公开；不能据此自动排除内部研究或所有机制。须与机制实际公开及安全例外安排核对，不能承诺全程保密。",
+          "不生成可直接递交成稿；公开及匿名安排需按法院规则另核。",
+          "请具备该体系经验的律师核对国家、事件日期、最终国内决定、资格及完整受理规则。"
+        ],
+        "legalBindingIds": [],
+        "role": "法律研究人员准备；当地律师和当事人核对"
+      },
+      {
+        "pathId": "external-disclosure",
+        "title": "对外提交、联系与公开倡议",
+        "state": "paused",
+        "reason": "本轮生成内部材料，不执行外部动作；总体公开选择不代表具体同意。",
+        "conditions": [
+          "仅内部整理，未经具体授权不对外发送、不公开姓名。",
+          "当前公开偏好：希望先保持私下处理"
+        ],
+        "legalBindingIds": [],
+        "role": "当事人决定；指定人员实施（未指派）"
+      }
+    ],
+    "questions": [
+      {
+        "questionId": "current-stage",
+        "question": "现在处于哪个阶段（通知、调查、开庭或其他）？",
+        "reason": "阶段决定能研究哪些程序。",
+        "blocks": [
+          "local-procedure"
+        ],
+        "role": "当地律师候选（尚未确认委托）"
+      }
+    ],
+    "documents": [
+      {
+        "kind": "timeline",
+        "title": "案件时间线与材料索引",
+        "markdown": "# 案件时间线与材料索引\n\n程序位置: United Kingdom / 英格兰与威尔士 / 民事 / 不清楚\n目标: 整理发表依据、对方指摘与损害主张，供当地法律顾问评估。\n披露选择: 希望先保持私下处理 · 仅内部整理，未经具体授权不对外发送、不公开姓名。\n内部工作草稿：事实来自使用者和所列材料，未经独立核实；生成或下载不代表已复核、已联系或已提交。\n\n## 本案叙述\n【陌生虚构案件 V-92】社区记者温栩在英格兰和威尔士报道污水排放后，于2026-10-06收到承包商要求道歉的民事律师函。编辑部保存函件及两份检测记录。尚未收到法院文件，也没有聘请律师。承包商否认污染与其有关。\n\n## 事件与日期\n| 日期 | 事件 | 出处 |\n| --- | --- | --- |\n| 2026-10-06 | 【陌生虚构案件 V-92】社区记者温栩在英格兰和威尔士报道污水排放后，于2026-10-06收到承包商要求道歉的民事律师函。 | 用户陈述 · 用户叙述；未经独立核实 |\n| 日期未确认 | 编辑部保存函件及两份检测记录。 | 用户陈述 · 用户叙述；未经独立核实 |\n| 日期未确认 | 尚未收到法院文件，也没有聘请律师。 | 用户陈述 · 用户叙述；未经独立核实 |\n| 日期未确认 | 承包商否认污染与其有关。 | 用户陈述 · 用户叙述；未经独立核实 |\n\n没有日期的事件要与文书和送达记录核对；系统不计算任何期限。\n\n## 已采取的行动\n未确认是否已有行动；请核对有无提交、回执和律师沟通，避免重复或冲突。\n\n## 本案材料索引\n本报告未保存新案材料的文件名/页码索引；只能依据上面的用户陈述，不能伪造文书名、案号或页码。取得真实文书后再补充。\n\n## 还缺的材料\n- [ ] 完整律师函、被指摘表述及收件记录 — 决定适用程序、管辖及可核实的事实范围；尚无对应原件不能下结论。\n- [ ] 事件、通知、送达及已有请求的日期来源 — 日期需逐项与文书核对，才能由当地律师判断时点与期限；系统不计算期限。\n- [ ] 合适当地律师候选及委托授权范围 — 有律师不等于已取得会面或案卷；未确认委托不分派真实人员。\n\n## 待核问题\n- 现在处于哪个阶段（通知、调查、开庭或其他）？ — 阶段决定能研究哪些程序。\n\n## 冻结来源与命题定位\n引用只支持所列研究命题，不证明用户案情，也不代表团队人工复核；改动命题后须重新核对。\n\n### ICCPR 第 19 条：表达自由 · Article 19(2)–(3), printed p. 178 / PDF p. 8\n表达限制须有法律依据，并为第19(3)列举目的所必要；具体限制是否满足要求尚待核查。\n> provided by law\n原文: https://treaties.un.org/doc/publication/unts/volume%20999/volume-999-i-14668-english.pdf\n适用条件: 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认\n来源核查: 2026-10-09 · 已读官方全文 · Agent 已检查来源，团队未人工复核\n\n### 人权事务委员会一般性意见第 34 号：表达与诽谤 · CCPR/C/GC/34, para. 22, printed / PDF p. 6\n限制需满足第19(3)列举目的及必要性、比例性测试；该段是委员会解释。\n> necessity and proportionality\n原文: https://documents.un.org/api/symbol/access?l=en&s=CCPR/C/GC/34&t=pdf\n适用条件: 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认\n来源核查: 2026-10-09 · 已读官方全文 · Agent 已检查来源，团队未人工复核\n\n### 人权事务委员会一般性意见第 34 号：表达与诽谤 · CCPR/C/GC/34, para. 25, PDF / printed pp. 6–7\n第25段用于研究限制规则是否公开可及、足够明确以及是否赋予不受限制的裁量；先取得实际所引规则及受限表述，不据主题相近宣布国内规则无效。\n> sufficient precision\n原文: https://documents.un.org/api/symbol/access?l=en&s=CCPR/C/GC/34&t=pdf\n适用条件: 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认\n来源核查: 2026-10-09 · 已读官方全文 · Agent 已检查来源，团队未人工复核\n\n### 人权事务委员会一般性意见第 34 号：表达与诽谤 · CCPR/C/GC/34, paras. 33–35, PDF / printed p. 8\n第33–35段要求逐项研究限制的合法目的、较少侵害的替代方式、比例及所称威胁与表达之间的具体直接关联；先后发生不能单独证明因果或限制不合法。\n> must not be overbroad\n原文: https://documents.un.org/api/symbol/access?l=en&s=CCPR/C/GC/34&t=pdf\n适用条件: 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认\n来源核查: 2026-10-09 · 已读官方全文 · Agent 已检查来源，团队未人工复核",
+        "generatedMarkdown": "# 案件时间线与材料索引\n\n程序位置: United Kingdom / 英格兰与威尔士 / 民事 / 不清楚\n目标: 整理发表依据、对方指摘与损害主张，供当地法律顾问评估。\n披露选择: 希望先保持私下处理 · 仅内部整理，未经具体授权不对外发送、不公开姓名。\n内部工作草稿：事实来自使用者和所列材料，未经独立核实；生成或下载不代表已复核、已联系或已提交。\n\n## 本案叙述\n【陌生虚构案件 V-92】社区记者温栩在英格兰和威尔士报道污水排放后，于2026-10-06收到承包商要求道歉的民事律师函。编辑部保存函件及两份检测记录。尚未收到法院文件，也没有聘请律师。承包商否认污染与其有关。\n\n## 事件与日期\n| 日期 | 事件 | 出处 |\n| --- | --- | --- |\n| 2026-10-06 | 【陌生虚构案件 V-92】社区记者温栩在英格兰和威尔士报道污水排放后，于2026-10-06收到承包商要求道歉的民事律师函。 | 用户陈述 · 用户叙述；未经独立核实 |\n| 日期未确认 | 编辑部保存函件及两份检测记录。 | 用户陈述 · 用户叙述；未经独立核实 |\n| 日期未确认 | 尚未收到法院文件，也没有聘请律师。 | 用户陈述 · 用户叙述；未经独立核实 |\n| 日期未确认 | 承包商否认污染与其有关。 | 用户陈述 · 用户叙述；未经独立核实 |\n\n没有日期的事件要与文书和送达记录核对；系统不计算任何期限。\n\n## 已采取的行动\n未确认是否已有行动；请核对有无提交、回执和律师沟通，避免重复或冲突。\n\n## 本案材料索引\n本报告未保存新案材料的文件名/页码索引；只能依据上面的用户陈述，不能伪造文书名、案号或页码。取得真实文书后再补充。\n\n## 还缺的材料\n- [ ] 完整律师函、被指摘表述及收件记录 — 决定适用程序、管辖及可核实的事实范围；尚无对应原件不能下结论。\n- [ ] 事件、通知、送达及已有请求的日期来源 — 日期需逐项与文书核对，才能由当地律师判断时点与期限；系统不计算期限。\n- [ ] 合适当地律师候选及委托授权范围 — 有律师不等于已取得会面或案卷；未确认委托不分派真实人员。\n\n## 待核问题\n- 现在处于哪个阶段（通知、调查、开庭或其他）？ — 阶段决定能研究哪些程序。\n\n## 冻结来源与命题定位\n引用只支持所列研究命题，不证明用户案情，也不代表团队人工复核；改动命题后须重新核对。\n\n### ICCPR 第 19 条：表达自由 · Article 19(2)–(3), printed p. 178 / PDF p. 8\n表达限制须有法律依据，并为第19(3)列举目的所必要；具体限制是否满足要求尚待核查。\n> provided by law\n原文: https://treaties.un.org/doc/publication/unts/volume%20999/volume-999-i-14668-english.pdf\n适用条件: 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认\n来源核查: 2026-10-09 · 已读官方全文 · Agent 已检查来源，团队未人工复核\n\n### 人权事务委员会一般性意见第 34 号：表达与诽谤 · CCPR/C/GC/34, para. 22, printed / PDF p. 6\n限制需满足第19(3)列举目的及必要性、比例性测试；该段是委员会解释。\n> necessity and proportionality\n原文: https://documents.un.org/api/symbol/access?l=en&s=CCPR/C/GC/34&t=pdf\n适用条件: 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认\n来源核查: 2026-10-09 · 已读官方全文 · Agent 已检查来源，团队未人工复核\n\n### 人权事务委员会一般性意见第 34 号：表达与诽谤 · CCPR/C/GC/34, para. 25, PDF / printed pp. 6–7\n第25段用于研究限制规则是否公开可及、足够明确以及是否赋予不受限制的裁量；先取得实际所引规则及受限表述，不据主题相近宣布国内规则无效。\n> sufficient precision\n原文: https://documents.un.org/api/symbol/access?l=en&s=CCPR/C/GC/34&t=pdf\n适用条件: 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认\n来源核查: 2026-10-09 · 已读官方全文 · Agent 已检查来源，团队未人工复核\n\n### 人权事务委员会一般性意见第 34 号：表达与诽谤 · CCPR/C/GC/34, paras. 33–35, PDF / printed p. 8\n第33–35段要求逐项研究限制的合法目的、较少侵害的替代方式、比例及所称威胁与表达之间的具体直接关联；先后发生不能单独证明因果或限制不合法。\n> must not be overbroad\n原文: https://documents.un.org/api/symbol/access?l=en&s=CCPR/C/GC/34&t=pdf\n适用条件: 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认\n来源核查: 2026-10-09 · 已读官方全文 · Agent 已检查来源，团队未人工复核",
+        "inputHash": "258a68dba8befdbe9ee596181fc2358b67ac86396ab28c3ee4ed49f4ea2a330d",
+        "status": "generated",
+        "citationState": "source_linked",
+        "progress": "draft",
+        "progressNote": ""
+      },
+      {
+        "kind": "issue_matrix",
+        "title": "问题—证据—法律依据表",
+        "markdown": "# 问题—证据—法律依据表\n\n程序位置: United Kingdom / 英格兰与威尔士 / 民事 / 不清楚\n目标: 整理发表依据、对方指摘与损害主张，供当地法律顾问评估。\n披露选择: 希望先保持私下处理 · 仅内部整理，未经具体授权不对外发送、不公开姓名。\n内部工作草稿：事实来自使用者和所列材料，未经独立核实；生成或下载不代表已复核、已联系或已提交。\n\n## 本案事实\n- 【陌生虚构案件 V-92】社区记者温栩在英格兰和威尔士报道污水排放后，于2026-10-06收到承包商要求道歉的民事律师函。（用户陈述；用户叙述；未经独立核实）\n- 编辑部保存函件及两份检测记录。（用户陈述；用户叙述；未经独立核实）\n- 尚未收到法院文件，也没有聘请律师。（用户陈述；用户叙述；未经独立核实）\n- 承包商否认污染与其有关。（用户陈述；用户叙述；未经独立核实）\n\n下表是待研究的问题和材料任务，不是本案已成立的结论；表中没有反证不等于不存在反证。\n\n| 问题 | 相关事实与证据 | 条文与命题 | 适用条件 | 还要核对 |\n| --- | --- | --- | --- | --- |\n| 哪些表达受到何种限制？法律根据、所称目的与必要性/比例性的事实材料是什么？ | 【陌生虚构案件 V-92】社区记者温栩在英格兰和威尔士报道污水排放后，于2026-10-06收到承包商要求道歉的民事律师函。编辑部保存函件及两份检测记录。尚未收到法院文件，也没有聘请律师。承包商否认污染与其有关。 | ICCPR 第 19 条：表达自由 · Article 19(2)–(3), printed p. 178 / PDF p. 8: 表达限制须有法律依据，并为第19(3)列举目的所必要；具体限制是否满足要求尚待核查。 | 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认 | 尚未进行具名团队人工复核。 / 须确认事件日期、管辖关系、涉及条款的保留/克减及国内援引方式；缔约不等于国内直接适用。 / 工作准备建议：对应事实及材料索引、事件时间、程序文件；由负责律师判断国内援引。 |\n| 哪些表达受到何种限制？法律根据、所称目的与必要性/比例性的事实材料是什么？ | 【陌生虚构案件 V-92】社区记者温栩在英格兰和威尔士报道污水排放后，于2026-10-06收到承包商要求道歉的民事律师函。编辑部保存函件及两份检测记录。尚未收到法院文件，也没有聘请律师。承包商否认污染与其有关。 | 人权事务委员会一般性意见第 34 号：表达与诽谤 · CCPR/C/GC/34, para. 22, printed / PDF p. 6: 限制需满足第19(3)列举目的及必要性、比例性测试；该段是委员会解释。 | 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认 | 尚未进行具名团队人工复核。 / ICCPR 在本案的适用条件、事实评价及国内程序效果仍须核对。 / 工作准备建议：标注实际受限的表达或程序事实，对照所引段落整理律师问题。 |\n| 哪些表达受到何种限制？法律根据、所称目的与必要性/比例性的事实材料是什么？ | 【陌生虚构案件 V-92】社区记者温栩在英格兰和威尔士报道污水排放后，于2026-10-06收到承包商要求道歉的民事律师函。编辑部保存函件及两份检测记录。尚未收到法院文件，也没有聘请律师。承包商否认污染与其有关。 | 人权事务委员会一般性意见第 34 号：表达与诽谤 · CCPR/C/GC/34, para. 25, PDF / printed pp. 6–7: 第25段用于研究限制规则是否公开可及、足够明确以及是否赋予不受限制的裁量；先取得实际所引规则及受限表述，不据主题相近宣布国内规则无效。 | 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认 | 尚未进行具名团队人工复核。 / ICCPR 在本案的适用条件、事实评价及国内程序效果仍须核对。 / 工作准备建议：标注实际受限的表达或程序事实，对照所引段落整理律师问题。 |\n| 哪些表达受到何种限制？法律根据、所称目的与必要性/比例性的事实材料是什么？ | 【陌生虚构案件 V-92】社区记者温栩在英格兰和威尔士报道污水排放后，于2026-10-06收到承包商要求道歉的民事律师函。编辑部保存函件及两份检测记录。尚未收到法院文件，也没有聘请律师。承包商否认污染与其有关。 | 人权事务委员会一般性意见第 34 号：表达与诽谤 · CCPR/C/GC/34, paras. 33–35, PDF / printed p. 8: 第33–35段要求逐项研究限制的合法目的、较少侵害的替代方式、比例及所称威胁与表达之间的具体直接关联；先后发生不能单独证明因果或限制不合法。 | 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认 | 尚未进行具名团队人工复核。 / ICCPR 在本案的适用条件、事实评价及国内程序效果仍须核对。 / 工作准备建议：标注实际受限的表达或程序事实，对照所引段落整理律师问题。 |\n| 现在处于哪个阶段（通知、调查、开庭或其他）？ | 见上方「本案事实」 | 一般事实核对，不强配法条 | 阶段决定能研究哪些程序。 | 当地律师候选（尚未确认委托） |\n\n## 材料缺口\n- 完整律师函、被指摘表述及收件记录 — 决定适用程序、管辖及可核实的事实范围；尚无对应原件不能下结论。\n- 事件、通知、送达及已有请求的日期来源 — 日期需逐项与文书核对，才能由当地律师判断时点与期限；系统不计算期限。\n- 合适当地律师候选及委托授权范围 — 有律师不等于已取得会面或案卷；未确认委托不分派真实人员。\n\n## 法律与机制条件\n- 联合国人权事务委员会：个人来文资格研究: 第一任择议定书的国家／领土资格 不满足；本人／代理资格及权利范围 待确认；国内救济及可主张例外 待确认；其他国际程序、保留和事件时间 待确认；指定机制、材料与用途的提交授权 不满足；向政府等接收方披露姓名 待确认；公开报告披露姓名 待确认 · 这是人权事务委员会（条约机构），不是人权理事会；不得把内部材料标为已递交。\n- 特别程序：任务与披露条件研究: 条约缔约和用尽国内救济 已确认；具体任务范围与可信详细事实 待确认；指定机制、材料与用途的提交授权 不满足；向政府等接收方披露姓名 待确认；公开报告披露姓名 待确认 · 政府等接收方通常收到姓名；公开报告姓名是另一项选择。安全例外需明确提出并核对；回执不是已行动。\n- 任意拘留问题工作组：独立程序研究: 剥夺自由事实 待确认；普通程序材料及任意性研究 待确认；独立工作方法与紧急行动 待确认；指定机制、材料与用途的提交授权 不满足；向政府等接收方披露姓名 待确认；公开报告披露姓名 待确认 · 向政府传送、意见公开及安全安排需逐项复核；意见不等于国内执行、释放或赔付。\n- 欧洲人权法院：候选资格研究: 欧洲公约国家与事件时间 已确认；区域机制个案受理条件 待确认；指定机制、材料与用途的提交授权 不满足；向政府等接收方披露姓名 待确认；公开报告披露姓名 待确认 · 不生成可直接递交成稿；公开及匿名安排需按法院规则另核。\n\n## 冻结来源与命题定位\n引用只支持所列研究命题，不证明用户案情，也不代表团队人工复核；改动命题后须重新核对。\n\n### ICCPR 第 19 条：表达自由 · Article 19(2)–(3), printed p. 178 / PDF p. 8\n表达限制须有法律依据，并为第19(3)列举目的所必要；具体限制是否满足要求尚待核查。\n> provided by law\n原文: https://treaties.un.org/doc/publication/unts/volume%20999/volume-999-i-14668-english.pdf\n适用条件: 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认\n来源核查: 2026-10-09 · 已读官方全文 · Agent 已检查来源，团队未人工复核\n\n### 人权事务委员会一般性意见第 34 号：表达与诽谤 · CCPR/C/GC/34, para. 22, printed / PDF p. 6\n限制需满足第19(3)列举目的及必要性、比例性测试；该段是委员会解释。\n> necessity and proportionality\n原文: https://documents.un.org/api/symbol/access?l=en&s=CCPR/C/GC/34&t=pdf\n适用条件: 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认\n来源核查: 2026-10-09 · 已读官方全文 · Agent 已检查来源，团队未人工复核\n\n### 人权事务委员会一般性意见第 34 号：表达与诽谤 · CCPR/C/GC/34, para. 25, PDF / printed pp. 6–7\n第25段用于研究限制规则是否公开可及、足够明确以及是否赋予不受限制的裁量；先取得实际所引规则及受限表述，不据主题相近宣布国内规则无效。\n> sufficient precision\n原文: https://documents.un.org/api/symbol/access?l=en&s=CCPR/C/GC/34&t=pdf\n适用条件: 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认\n来源核查: 2026-10-09 · 已读官方全文 · Agent 已检查来源，团队未人工复核\n\n### 人权事务委员会一般性意见第 34 号：表达与诽谤 · CCPR/C/GC/34, paras. 33–35, PDF / printed p. 8\n第33–35段要求逐项研究限制的合法目的、较少侵害的替代方式、比例及所称威胁与表达之间的具体直接关联；先后发生不能单独证明因果或限制不合法。\n> must not be overbroad\n原文: https://documents.un.org/api/symbol/access?l=en&s=CCPR/C/GC/34&t=pdf\n适用条件: 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认\n来源核查: 2026-10-09 · 已读官方全文 · Agent 已检查来源，团队未人工复核",
+        "generatedMarkdown": "# 问题—证据—法律依据表\n\n程序位置: United Kingdom / 英格兰与威尔士 / 民事 / 不清楚\n目标: 整理发表依据、对方指摘与损害主张，供当地法律顾问评估。\n披露选择: 希望先保持私下处理 · 仅内部整理，未经具体授权不对外发送、不公开姓名。\n内部工作草稿：事实来自使用者和所列材料，未经独立核实；生成或下载不代表已复核、已联系或已提交。\n\n## 本案事实\n- 【陌生虚构案件 V-92】社区记者温栩在英格兰和威尔士报道污水排放后，于2026-10-06收到承包商要求道歉的民事律师函。（用户陈述；用户叙述；未经独立核实）\n- 编辑部保存函件及两份检测记录。（用户陈述；用户叙述；未经独立核实）\n- 尚未收到法院文件，也没有聘请律师。（用户陈述；用户叙述；未经独立核实）\n- 承包商否认污染与其有关。（用户陈述；用户叙述；未经独立核实）\n\n下表是待研究的问题和材料任务，不是本案已成立的结论；表中没有反证不等于不存在反证。\n\n| 问题 | 相关事实与证据 | 条文与命题 | 适用条件 | 还要核对 |\n| --- | --- | --- | --- | --- |\n| 哪些表达受到何种限制？法律根据、所称目的与必要性/比例性的事实材料是什么？ | 【陌生虚构案件 V-92】社区记者温栩在英格兰和威尔士报道污水排放后，于2026-10-06收到承包商要求道歉的民事律师函。编辑部保存函件及两份检测记录。尚未收到法院文件，也没有聘请律师。承包商否认污染与其有关。 | ICCPR 第 19 条：表达自由 · Article 19(2)–(3), printed p. 178 / PDF p. 8: 表达限制须有法律依据，并为第19(3)列举目的所必要；具体限制是否满足要求尚待核查。 | 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认 | 尚未进行具名团队人工复核。 / 须确认事件日期、管辖关系、涉及条款的保留/克减及国内援引方式；缔约不等于国内直接适用。 / 工作准备建议：对应事实及材料索引、事件时间、程序文件；由负责律师判断国内援引。 |\n| 哪些表达受到何种限制？法律根据、所称目的与必要性/比例性的事实材料是什么？ | 【陌生虚构案件 V-92】社区记者温栩在英格兰和威尔士报道污水排放后，于2026-10-06收到承包商要求道歉的民事律师函。编辑部保存函件及两份检测记录。尚未收到法院文件，也没有聘请律师。承包商否认污染与其有关。 | 人权事务委员会一般性意见第 34 号：表达与诽谤 · CCPR/C/GC/34, para. 22, printed / PDF p. 6: 限制需满足第19(3)列举目的及必要性、比例性测试；该段是委员会解释。 | 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认 | 尚未进行具名团队人工复核。 / ICCPR 在本案的适用条件、事实评价及国内程序效果仍须核对。 / 工作准备建议：标注实际受限的表达或程序事实，对照所引段落整理律师问题。 |\n| 哪些表达受到何种限制？法律根据、所称目的与必要性/比例性的事实材料是什么？ | 【陌生虚构案件 V-92】社区记者温栩在英格兰和威尔士报道污水排放后，于2026-10-06收到承包商要求道歉的民事律师函。编辑部保存函件及两份检测记录。尚未收到法院文件，也没有聘请律师。承包商否认污染与其有关。 | 人权事务委员会一般性意见第 34 号：表达与诽谤 · CCPR/C/GC/34, para. 25, PDF / printed pp. 6–7: 第25段用于研究限制规则是否公开可及、足够明确以及是否赋予不受限制的裁量；先取得实际所引规则及受限表述，不据主题相近宣布国内规则无效。 | 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认 | 尚未进行具名团队人工复核。 / ICCPR 在本案的适用条件、事实评价及国内程序效果仍须核对。 / 工作准备建议：标注实际受限的表达或程序事实，对照所引段落整理律师问题。 |\n| 哪些表达受到何种限制？法律根据、所称目的与必要性/比例性的事实材料是什么？ | 【陌生虚构案件 V-92】社区记者温栩在英格兰和威尔士报道污水排放后，于2026-10-06收到承包商要求道歉的民事律师函。编辑部保存函件及两份检测记录。尚未收到法院文件，也没有聘请律师。承包商否认污染与其有关。 | 人权事务委员会一般性意见第 34 号：表达与诽谤 · CCPR/C/GC/34, paras. 33–35, PDF / printed p. 8: 第33–35段要求逐项研究限制的合法目的、较少侵害的替代方式、比例及所称威胁与表达之间的具体直接关联；先后发生不能单独证明因果或限制不合法。 | 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认 | 尚未进行具名团队人工复核。 / ICCPR 在本案的适用条件、事实评价及国内程序效果仍须核对。 / 工作准备建议：标注实际受限的表达或程序事实，对照所引段落整理律师问题。 |\n| 现在处于哪个阶段（通知、调查、开庭或其他）？ | 见上方「本案事实」 | 一般事实核对，不强配法条 | 阶段决定能研究哪些程序。 | 当地律师候选（尚未确认委托） |\n\n## 材料缺口\n- 完整律师函、被指摘表述及收件记录 — 决定适用程序、管辖及可核实的事实范围；尚无对应原件不能下结论。\n- 事件、通知、送达及已有请求的日期来源 — 日期需逐项与文书核对，才能由当地律师判断时点与期限；系统不计算期限。\n- 合适当地律师候选及委托授权范围 — 有律师不等于已取得会面或案卷；未确认委托不分派真实人员。\n\n## 法律与机制条件\n- 联合国人权事务委员会：个人来文资格研究: 第一任择议定书的国家／领土资格 不满足；本人／代理资格及权利范围 待确认；国内救济及可主张例外 待确认；其他国际程序、保留和事件时间 待确认；指定机制、材料与用途的提交授权 不满足；向政府等接收方披露姓名 待确认；公开报告披露姓名 待确认 · 这是人权事务委员会（条约机构），不是人权理事会；不得把内部材料标为已递交。\n- 特别程序：任务与披露条件研究: 条约缔约和用尽国内救济 已确认；具体任务范围与可信详细事实 待确认；指定机制、材料与用途的提交授权 不满足；向政府等接收方披露姓名 待确认；公开报告披露姓名 待确认 · 政府等接收方通常收到姓名；公开报告姓名是另一项选择。安全例外需明确提出并核对；回执不是已行动。\n- 任意拘留问题工作组：独立程序研究: 剥夺自由事实 待确认；普通程序材料及任意性研究 待确认；独立工作方法与紧急行动 待确认；指定机制、材料与用途的提交授权 不满足；向政府等接收方披露姓名 待确认；公开报告披露姓名 待确认 · 向政府传送、意见公开及安全安排需逐项复核；意见不等于国内执行、释放或赔付。\n- 欧洲人权法院：候选资格研究: 欧洲公约国家与事件时间 已确认；区域机制个案受理条件 待确认；指定机制、材料与用途的提交授权 不满足；向政府等接收方披露姓名 待确认；公开报告披露姓名 待确认 · 不生成可直接递交成稿；公开及匿名安排需按法院规则另核。\n\n## 冻结来源与命题定位\n引用只支持所列研究命题，不证明用户案情，也不代表团队人工复核；改动命题后须重新核对。\n\n### ICCPR 第 19 条：表达自由 · Article 19(2)–(3), printed p. 178 / PDF p. 8\n表达限制须有法律依据，并为第19(3)列举目的所必要；具体限制是否满足要求尚待核查。\n> provided by law\n原文: https://treaties.un.org/doc/publication/unts/volume%20999/volume-999-i-14668-english.pdf\n适用条件: 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认\n来源核查: 2026-10-09 · 已读官方全文 · Agent 已检查来源，团队未人工复核\n\n### 人权事务委员会一般性意见第 34 号：表达与诽谤 · CCPR/C/GC/34, para. 22, printed / PDF p. 6\n限制需满足第19(3)列举目的及必要性、比例性测试；该段是委员会解释。\n> necessity and proportionality\n原文: https://documents.un.org/api/symbol/access?l=en&s=CCPR/C/GC/34&t=pdf\n适用条件: 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认\n来源核查: 2026-10-09 · 已读官方全文 · Agent 已检查来源，团队未人工复核\n\n### 人权事务委员会一般性意见第 34 号：表达与诽谤 · CCPR/C/GC/34, para. 25, PDF / printed pp. 6–7\n第25段用于研究限制规则是否公开可及、足够明确以及是否赋予不受限制的裁量；先取得实际所引规则及受限表述，不据主题相近宣布国内规则无效。\n> sufficient precision\n原文: https://documents.un.org/api/symbol/access?l=en&s=CCPR/C/GC/34&t=pdf\n适用条件: 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认\n来源核查: 2026-10-09 · 已读官方全文 · Agent 已检查来源，团队未人工复核\n\n### 人权事务委员会一般性意见第 34 号：表达与诽谤 · CCPR/C/GC/34, paras. 33–35, PDF / printed p. 8\n第33–35段要求逐项研究限制的合法目的、较少侵害的替代方式、比例及所称威胁与表达之间的具体直接关联；先后发生不能单独证明因果或限制不合法。\n> must not be overbroad\n原文: https://documents.un.org/api/symbol/access?l=en&s=CCPR/C/GC/34&t=pdf\n适用条件: 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认\n来源核查: 2026-10-09 · 已读官方全文 · Agent 已检查来源，团队未人工复核",
+        "inputHash": "258a68dba8befdbe9ee596181fc2358b67ac86396ab28c3ee4ed49f4ea2a330d",
+        "status": "generated",
+        "citationState": "source_linked",
+        "progress": "draft",
+        "progressNote": ""
+      },
+      {
+        "kind": "lawyer_brief",
+        "title": "给当地律师的一页内部简报",
+        "markdown": "# 给当地律师的一页内部简报\n生成日期: 2026-10-10\n程序位置: United Kingdom / 英格兰与威尔士 / 民事 / 不清楚\n目标: 整理发表依据、对方指摘与损害主张，供当地法律顾问评估。\n披露选择: 希望先保持私下处理 · 仅内部整理，未经具体授权不对外发送、不公开姓名。\n内部工作草稿；事实未经独立核实。生成不是已复核、已联系或已提交。\n\n## 本案摘要\n【陌生虚构案件 V-92】社区记者温栩在英格兰和威尔士报道污水排放后，于2026-10-06收到承包商要求道歉的民事律师函。编辑部保存函件及两份检测记录。尚未收到法院文件，也没有聘请律师。承包商否认污染与其有关。\n现有支持: 用户称尚无律师；尚未确认委托\n简要时序: 2026-10-06 【陌生虚构案件 V-92】社区记者温栩在英格兰和威尔士报道污水排放后，于2026-10-06收到承包商要求道歉的民事律师函。\n已采取行动: 未确认；请先核对已有提交及回执\n\n## 请律师优先判断\n1. 现在处于哪个阶段（通知、调查、开庭或其他）？ — 阶段决定能研究哪些程序。\n2. 请核对：完整律师函、被指摘表述及收件记录 — 决定适用程序、管辖及可核实的事实范围；尚无对应原件不能下结论。\n\n## 相关条款与历史参考\n- ICCPR 第 19 条：表达自由 · Article 19(2)–(3), printed p. 178 / PDF p. 8: 表达限制须有法律依据，并为第19(3)列举目的所必要；具体限制是否满足要求尚待核查。\n- 人权事务委员会一般性意见第 34 号：表达与诽谤 · CCPR/C/GC/34, para. 22, printed / PDF p. 6: 限制需满足第19(3)列举目的及必要性、比例性测试；该段是委员会解释。\n暂无与本案程序和议题相符的已实施历史行动；继续上面的资料准备，不推断策略效果。\n\n## 最需要核对的文书与日期\n- 完整律师函、被指摘表述及收件记录（当地律师候选（尚未确认委托））\n- 事件、通知、送达及已有请求的日期来源（案件协调人核对，当地律师判断）\n- 合适当地律师候选及委托授权范围（当事人或获授权协调人）\n国际原则、当地法律效果和机制资格要分别核对；国际意见不等于国内执行。任何外发须按上面的披露选择另行确认。\n\n—— 以下为引用附件，独立于一页简报正文 ——\n## 冻结来源与命题定位\n引用只支持所列研究命题，不证明用户案情，也不代表团队人工复核；改动命题后须重新核对。\n\n### ICCPR 第 19 条：表达自由 · Article 19(2)–(3), printed p. 178 / PDF p. 8\n表达限制须有法律依据，并为第19(3)列举目的所必要；具体限制是否满足要求尚待核查。\n> provided by law\n原文: https://treaties.un.org/doc/publication/unts/volume%20999/volume-999-i-14668-english.pdf\n适用条件: 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认\n来源核查: 2026-10-09 · 已读官方全文 · Agent 已检查来源，团队未人工复核\n\n### 人权事务委员会一般性意见第 34 号：表达与诽谤 · CCPR/C/GC/34, para. 22, printed / PDF p. 6\n限制需满足第19(3)列举目的及必要性、比例性测试；该段是委员会解释。\n> necessity and proportionality\n原文: https://documents.un.org/api/symbol/access?l=en&s=CCPR/C/GC/34&t=pdf\n适用条件: 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认\n来源核查: 2026-10-09 · 已读官方全文 · Agent 已检查来源，团队未人工复核\n\n### 人权事务委员会一般性意见第 34 号：表达与诽谤 · CCPR/C/GC/34, para. 25, PDF / printed pp. 6–7\n第25段用于研究限制规则是否公开可及、足够明确以及是否赋予不受限制的裁量；先取得实际所引规则及受限表述，不据主题相近宣布国内规则无效。\n> sufficient precision\n原文: https://documents.un.org/api/symbol/access?l=en&s=CCPR/C/GC/34&t=pdf\n适用条件: 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认\n来源核查: 2026-10-09 · 已读官方全文 · Agent 已检查来源，团队未人工复核\n\n### 人权事务委员会一般性意见第 34 号：表达与诽谤 · CCPR/C/GC/34, paras. 33–35, PDF / printed p. 8\n第33–35段要求逐项研究限制的合法目的、较少侵害的替代方式、比例及所称威胁与表达之间的具体直接关联；先后发生不能单独证明因果或限制不合法。\n> must not be overbroad\n原文: https://documents.un.org/api/symbol/access?l=en&s=CCPR/C/GC/34&t=pdf\n适用条件: 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认\n来源核查: 2026-10-09 · 已读官方全文 · Agent 已检查来源，团队未人工复核",
+        "generatedMarkdown": "# 给当地律师的一页内部简报\n生成日期: 2026-10-10\n程序位置: United Kingdom / 英格兰与威尔士 / 民事 / 不清楚\n目标: 整理发表依据、对方指摘与损害主张，供当地法律顾问评估。\n披露选择: 希望先保持私下处理 · 仅内部整理，未经具体授权不对外发送、不公开姓名。\n内部工作草稿；事实未经独立核实。生成不是已复核、已联系或已提交。\n\n## 本案摘要\n【陌生虚构案件 V-92】社区记者温栩在英格兰和威尔士报道污水排放后，于2026-10-06收到承包商要求道歉的民事律师函。编辑部保存函件及两份检测记录。尚未收到法院文件，也没有聘请律师。承包商否认污染与其有关。\n现有支持: 用户称尚无律师；尚未确认委托\n简要时序: 2026-10-06 【陌生虚构案件 V-92】社区记者温栩在英格兰和威尔士报道污水排放后，于2026-10-06收到承包商要求道歉的民事律师函。\n已采取行动: 未确认；请先核对已有提交及回执\n\n## 请律师优先判断\n1. 现在处于哪个阶段（通知、调查、开庭或其他）？ — 阶段决定能研究哪些程序。\n2. 请核对：完整律师函、被指摘表述及收件记录 — 决定适用程序、管辖及可核实的事实范围；尚无对应原件不能下结论。\n\n## 相关条款与历史参考\n- ICCPR 第 19 条：表达自由 · Article 19(2)–(3), printed p. 178 / PDF p. 8: 表达限制须有法律依据，并为第19(3)列举目的所必要；具体限制是否满足要求尚待核查。\n- 人权事务委员会一般性意见第 34 号：表达与诽谤 · CCPR/C/GC/34, para. 22, printed / PDF p. 6: 限制需满足第19(3)列举目的及必要性、比例性测试；该段是委员会解释。\n暂无与本案程序和议题相符的已实施历史行动；继续上面的资料准备，不推断策略效果。\n\n## 最需要核对的文书与日期\n- 完整律师函、被指摘表述及收件记录（当地律师候选（尚未确认委托））\n- 事件、通知、送达及已有请求的日期来源（案件协调人核对，当地律师判断）\n- 合适当地律师候选及委托授权范围（当事人或获授权协调人）\n国际原则、当地法律效果和机制资格要分别核对；国际意见不等于国内执行。任何外发须按上面的披露选择另行确认。\n\n—— 以下为引用附件，独立于一页简报正文 ——\n## 冻结来源与命题定位\n引用只支持所列研究命题，不证明用户案情，也不代表团队人工复核；改动命题后须重新核对。\n\n### ICCPR 第 19 条：表达自由 · Article 19(2)–(3), printed p. 178 / PDF p. 8\n表达限制须有法律依据，并为第19(3)列举目的所必要；具体限制是否满足要求尚待核查。\n> provided by law\n原文: https://treaties.un.org/doc/publication/unts/volume%20999/volume-999-i-14668-english.pdf\n适用条件: 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认\n来源核查: 2026-10-09 · 已读官方全文 · Agent 已检查来源，团队未人工复核\n\n### 人权事务委员会一般性意见第 34 号：表达与诽谤 · CCPR/C/GC/34, para. 22, printed / PDF p. 6\n限制需满足第19(3)列举目的及必要性、比例性测试；该段是委员会解释。\n> necessity and proportionality\n原文: https://documents.un.org/api/symbol/access?l=en&s=CCPR/C/GC/34&t=pdf\n适用条件: 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认\n来源核查: 2026-10-09 · 已读官方全文 · Agent 已检查来源，团队未人工复核\n\n### 人权事务委员会一般性意见第 34 号：表达与诽谤 · CCPR/C/GC/34, para. 25, PDF / printed pp. 6–7\n第25段用于研究限制规则是否公开可及、足够明确以及是否赋予不受限制的裁量；先取得实际所引规则及受限表述，不据主题相近宣布国内规则无效。\n> sufficient precision\n原文: https://documents.un.org/api/symbol/access?l=en&s=CCPR/C/GC/34&t=pdf\n适用条件: 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认\n来源核查: 2026-10-09 · 已读官方全文 · Agent 已检查来源，团队未人工复核\n\n### 人权事务委员会一般性意见第 34 号：表达与诽谤 · CCPR/C/GC/34, paras. 33–35, PDF / printed p. 8\n第33–35段要求逐项研究限制的合法目的、较少侵害的替代方式、比例及所称威胁与表达之间的具体直接关联；先后发生不能单独证明因果或限制不合法。\n> must not be overbroad\n原文: https://documents.un.org/api/symbol/access?l=en&s=CCPR/C/GC/34&t=pdf\n适用条件: 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认\n来源核查: 2026-10-09 · 已读官方全文 · Agent 已检查来源，团队未人工复核",
+        "inputHash": "258a68dba8befdbe9ee596181fc2358b67ac86396ab28c3ee4ed49f4ea2a330d",
+        "status": "generated",
+        "citationState": "source_linked",
+        "progress": "draft",
+        "progressNote": ""
+      }
+    ],
+    "generationMode": "ai_assisted",
+    "limitations": [
+      "三份工作草稿由已确认输入与服务器核查的引用确定性填充；AI仅在标示的分析层参与。",
+      "未完成团队人工或当地律师复核；生成不等于已复核、已发送、已提交或获得帮助。"
+    ]
+  },
+  "historicalComparisons": [],
+  "sources": [],
+  "snapshot": {
+    "version": 1,
+    "capturedAt": "2026-10-10T16:09:34.503Z",
+    "corpusVersion": "2026-10-09.v5",
+    "completeness": "complete",
+    "locale": "zh",
+    "cases": [],
+    "evidence": [],
+    "documents": [],
+    "resources": [
+      {
+        "resourceId": "ohchr-special-procedures",
+        "name": "联合国人权高专办：特别程序信息提交指引",
+        "officialUrl": "https://spsubmission.ohchr.org/",
+        "checkedAt": "2026-10-09",
+        "applicability": "跨国研究参考，适用条件需核对。向相关特别程序提交可信的侵害信息由专家酌定；不保证介入、保密例外或救济。WGAD 的个案程序另行核对。",
+        "requiredMaterials": [
+          "清楚、可信、具体的事件和所涉侵害说明",
+          "与陈述对应的关键佐证材料；不能仅依据媒体报道",
+          "当事人或代表对向相关方及公开报告披露姓名的明确意见"
+        ],
+        "type": "un_mechanism",
+        "locator": "What are the criteria applied to act on a submission? / Who can submit information, and how?；Consent and confidentiality",
+        "summary": "向特别程序专家提交可信、具体的信息，是否行动由专家按任务范围决定。",
+        "eligibility": [
+          "可由个人、团体、社会组织等提供信息；须属于专家任务范围。",
+          "不要求先穷尽国内救济或国家已缔结某一条约；但不能仅依赖媒体报道。",
+          "分别确认向接收方、公开报告披露姓名的意见；没有授权时仅准备内部材料。"
+        ],
+        "reviewStatus": "agent_checked",
+        "agentCheckedAt": "2026-10-09",
+        "teamReviewedAt": null,
+        "unknowns": [
+          "尚未进行具名团队人工复核。",
+          "尚未选择具体任务授权及评估安全例外；回执不代表采取行动。"
+        ],
+        "tags": [
+          "expression",
+          "detention",
+          "fair_trial"
+        ],
+        "sourceAudit": {
+          "issuer": "联合国人权高专办（OHCHR）",
+          "version": "在线 Submission of information to the Special Procedures 指引",
+          "publishedOrEffective": "页面未标明发布/更新日；2026-10-09 读取",
+          "checkedAt": "2026-10-09",
+          "readStatus": "full_text",
+          "readUrl": "https://spsubmission.ohchr.org/",
+          "jurisdiction": [
+            "international"
+          ],
+          "proceedings": [
+            "all"
+          ],
+          "currentVersionStatus": "已读取发布机构在核查日提供的正文；不是个案适用性结论。",
+          "eventVersionStatus": "演示案未提供事件日期；不能确认事件时版本及程序条件。",
+          "legalEffect": "机制工作方法或提交指引；不赋予个案可受理、行动或国内执行保证。",
+          "language": "English official source",
+          "translationStatus": "中文为Agent研究说明，非经团队核定的正式译文；正式原文控制。",
+          "provisions": [
+            {
+              "provisionId": "submission-criteria",
+              "locator": "What are the criteria applied to act on a submission? / Who can submit information, and how?",
+              "quote": "credible and detailed information",
+              "explanation": "专家按任务范围决定是否行动；资料须具体可信且不只来自媒体；不以缔约或穷尽国内救济为前提。",
+              "supports": [
+                "special_procedures_submission"
+              ]
+            },
+            {
+              "provisionId": "consent-confidentiality",
+              "locator": "Consent and confidentiality",
+              "quote": "DO or DO NOT consent",
+              "explanation": "须分别确认向政府等接收方及公开报告披露姓名的意见；向接收方默认含姓名，安全例外由专家判断。",
+              "supports": [
+                "disclosure_consent"
+              ]
+            }
+          ],
+          "confirmed": [
+            "已读条件、提交主体、回执和保密说明。",
+            "此一般特别程序来信机制不是准司法程序；WGAD另有工作方法。"
+          ],
+          "corrections": [
+            "将向机构披露与公开报告披露分为两项，避免把内部处理意愿当作外发同意。"
+          ],
+          "gaps": [
+            "尚未选择具体任务授权及评估安全例外；回执不代表采取行动。"
+          ]
+        }
+      },
+      {
+        "resourceId": "iccpr-article-19",
+        "name": "ICCPR 第 19 条：表达自由",
+        "officialUrl": "https://treaties.un.org/doc/publication/unts/volume%20999/volume-999-i-14668-english.pdf",
+        "checkedAt": "2026-10-09",
+        "applicability": "跨国研究参考，适用条件需核对。条约义务、当地援引方式和国际申诉资格是不同问题。",
+        "requiredMaterials": [
+          "工作准备建议：对应事实及材料索引、事件时间、程序文件；由负责律师判断国内援引。"
+        ],
+        "type": "treaty",
+        "locator": "Article 19(2)–(3), printed p. 178 / PDF p. 8",
+        "summary": "表达及其限制条件的条约研究依据。",
+        "eligibility": [
+          "核对国家缔约、相关保留/克减、事件时间和管辖关系。",
+          "具体程序及条款触发事实须分别确认；国内法地位不由条约目录推定。"
+        ],
+        "reviewStatus": "agent_checked",
+        "agentCheckedAt": "2026-10-09",
+        "teamReviewedAt": null,
+        "unknowns": [
+          "尚未进行具名团队人工复核。",
+          "须确认事件日期、管辖关系、涉及条款的保留/克减及国内援引方式；缔约不等于国内直接适用。"
+        ],
+        "tags": [
+          "expression",
+          "defamation"
+        ],
+        "sourceAudit": {
+          "issuer": "联合国大会；保存人：联合国秘书长",
+          "version": "UNTS vol. 999, No. 14668 英文文本",
+          "publishedOrEffective": "1966-12-16 通过；1976-03-23 总体生效（具体国家生效日另核）",
+          "checkedAt": "2026-10-09",
+          "readStatus": "full_text",
+          "readUrl": "https://treaties.un.org/doc/publication/unts/volume%20999/volume-999-i-14668-english.pdf",
+          "jurisdiction": [
+            "international"
+          ],
+          "proceedings": [
+            "all"
+          ],
+          "currentVersionStatus": "已核对条约正文；UNTC IV.4当前状态页于2026-10-09重新读取（页面状态同日）。当前参与、保留、事件时适用及国内效果分别处理。",
+          "eventVersionStatus": "演示案未提供事件日期；不能确认事件时版本及程序条件。",
+          "legalEffect": "国际条约；国家/领土及时点适用、保留和国内援引效果分别核对。",
+          "language": "English official source",
+          "translationStatus": "中文为Agent研究说明，非经团队核定的正式译文；正式原文控制。",
+          "provisions": [
+            {
+              "provisionId": "art19-2-3",
+              "locator": "Article 19(2)–(3), printed p. 178 / PDF p. 8",
+              "quote": "provided by law",
+              "explanation": "表达限制须有法律依据，并为第19(3)列举目的所必要；具体限制是否满足要求尚待核查。",
+              "supports": [
+                "expression_restriction_test"
+              ]
+            }
+          ],
+          "confirmed": [
+            "已逐项读取所列条款和上下文。",
+            "UNTC IV.4 正文：哈萨克斯坦2006-01-24批准、突尼斯1969-03-18批准、英国1976-05-20批准。仅确认缔约，不推定国内直接援引。"
+          ],
+          "corrections": [
+            "增加可直接引用的条款级定位；取消以主题标签推定适用。"
+          ],
+          "gaps": [
+            "须确认事件日期、管辖关系、涉及条款的保留/克减及国内援引方式；缔约不等于国内直接适用。"
+          ],
+          "relatedSources": [
+            {
+              "title": "UNTC IV.4 当前状态及领土脚注，2026-10-09读取",
+              "url": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en",
+              "locator": "参与方表（KZ/TN/GB/CN/RU/BY；MY未列）；Hong Kong脚注6。相关保留、克减及事件时适用仍须逐案核对。"
+            }
+          ],
+          "jurisdictionChecks": [
+            {
+              "jurisdiction": "KZ",
+              "status": "confirmed",
+              "topic": "participation",
+              "detail": "UNTC IV.4：2006-01-24批准ICCPR，按第49条2006-04-24生效；国内效果及具体事件适用另核。",
+              "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
+            },
+            {
+              "jurisdiction": "TN",
+              "status": "confirmed",
+              "topic": "participation",
+              "detail": "UNTC IV.4：1969-03-18批准ICCPR；1976-03-23起生效，国内效果及具体事件适用另核。",
+              "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
+            },
+            {
+              "jurisdiction": "GB",
+              "status": "confirmed",
+              "topic": "participation",
+              "detail": "UNTC IV.4：1976-05-20批准ICCPR；按第49条1976-08-20生效，相关英国保留、领土及国内效果另核。",
+              "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
+            },
+            {
+              "jurisdiction": "HK",
+              "status": "confirmed",
+              "topic": "participation",
+              "detail": "UNTC IV.4脚注6明确香港特别行政区继续适用ICCPR；不能由中国内地未批准推导不适用，具体保留及国内效果另核。",
+              "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
+            },
+            {
+              "jurisdiction": "CN",
+              "status": "not_met",
+              "topic": "participation",
+              "detail": "UNTC IV.4：中国于1998-10-05签署、尚未批准；中国内地不据此承担ICCPR缔约义务。香港等领土安排必须另查。",
+              "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
+            },
+            {
+              "jurisdiction": "MY",
+              "status": "not_met",
+              "topic": "participation",
+              "detail": "UNTC IV.4参与方表没有马来西亚；本轮ICCPR资料只可作清楚标示的比较标准，不当作其条约义务。",
+              "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
+            },
+            {
+              "jurisdiction": "RU",
+              "status": "confirmed",
+              "topic": "participation",
+              "detail": "UNTC IV.4：俄罗斯（原苏联）1973-10-16批准ICCPR，公约1976-03-23生效；具体保留、事件管辖及国内效果另核。",
+              "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
+            },
+            {
+              "jurisdiction": "BY",
+              "status": "confirmed",
+              "topic": "participation",
+              "detail": "UNTC IV.4：白俄罗斯于1973-11-12批准ICCPR，公约1976-03-23生效；第一任择议定书退出不能视作退出ICCPR。",
+              "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
+            }
+          ]
+        }
+      },
+      {
+        "resourceId": "hrc-general-comment-34",
+        "name": "人权事务委员会一般性意见第 34 号：表达与诽谤",
+        "officialUrl": "https://documents.un.org/api/symbol/access?l=en&s=CCPR/C/GC/34&t=pdf",
+        "checkedAt": "2026-10-09",
+        "applicability": "委员会对 ICCPR 的解释文件，与条约正文和当地法律地位分别核对；不是本案裁决。",
+        "requiredMaterials": [
+          "工作准备建议：标注实际受限的表达或程序事实，对照所引段落整理律师问题。"
+        ],
+        "type": "interpretation",
+        "locator": "CCPR/C/GC/34, para. 22, printed / PDF p. 6；CCPR/C/GC/34, para. 47, printed / PDF p. 12；CCPR/C/GC/34, para. 25, PDF / printed pp. 6–7；CCPR/C/GC/34, paras. 33–35, PDF / printed p. 8",
+        "summary": "第22、25、33–35段分别研究限制目的、可及明确的规则、必要性与比例，第47段研究诽谤保障。",
+        "eligibility": [
+          "核对 ICCPR 适用性和所引段落上下文。"
+        ],
+        "reviewStatus": "agent_checked",
+        "agentCheckedAt": "2026-10-09",
+        "teamReviewedAt": null,
+        "unknowns": [
+          "尚未进行具名团队人工复核。",
+          "ICCPR 在本案的适用条件、事实评价及国内程序效果仍须核对。"
+        ],
+        "tags": [
+          "expression",
+          "defamation"
+        ],
+        "sourceAudit": {
+          "issuer": "联合国人权事务委员会",
+          "version": "CCPR/C/GC/34 英文正式文件",
+          "publishedOrEffective": "2011-09-12 发布；委员会第102届会议通过",
+          "checkedAt": "2026-10-09",
+          "readStatus": "full_text",
+          "readUrl": "https://documents.un.org/api/symbol/access?l=en&s=CCPR/C/GC/34&t=pdf",
+          "jurisdiction": [
+            "international"
+          ],
+          "proceedings": [
+            "all"
+          ],
+          "currentVersionStatus": "已读取发布机构在核查日提供的正文；不是个案适用性结论。",
+          "eventVersionStatus": "解释文件发布日和相关事件日期分别记录；个案所涉条约、管辖及国内程序效果仍需核对。",
+          "legalEffect": "人权事务委员会对ICCPR的解释性文件，不是新颁国内法律或本案裁决。",
+          "language": "English official source",
+          "translationStatus": "中文为Agent研究说明，非经团队核定的正式译文；正式原文控制。",
+          "provisions": [
+            {
+              "provisionId": "para22",
+              "locator": "CCPR/C/GC/34, para. 22, printed / PDF p. 6",
+              "quote": "necessity and proportionality",
+              "explanation": "限制需满足第19(3)列举目的及必要性、比例性测试；该段是委员会解释。",
+              "supports": [
+                "expression_restriction_test"
+              ]
+            },
+            {
+              "provisionId": "para47",
+              "locator": "CCPR/C/GC/34, para. 47, printed / PDF p. 12",
+              "quote": "imprisonment is never an appropriate penalty",
+              "explanation": "诽谤制度应保障表达、承认相关抗辩并避免过度处罚；委员会反对诽谤监禁处罚，不能据此宣布国内指控无效。",
+              "supports": [
+                "defamation_safeguards"
+              ]
+            },
+            {
+              "provisionId": "para25",
+              "locator": "CCPR/C/GC/34, para. 25, PDF / printed pp. 6–7",
+              "quote": "sufficient precision",
+              "explanation": "第25段用于研究限制规则是否公开可及、足够明确以及是否赋予不受限制的裁量；先取得实际所引规则及受限表述，不据主题相近宣布国内规则无效。",
+              "supports": [
+                "expression_legality_test"
+              ]
+            },
+            {
+              "provisionId": "paras33-35",
+              "locator": "CCPR/C/GC/34, paras. 33–35, PDF / printed p. 8",
+              "quote": "must not be overbroad",
+              "explanation": "第33–35段要求逐项研究限制的合法目的、较少侵害的替代方式、比例及所称威胁与表达之间的具体直接关联；先后发生不能单独证明因果或限制不合法。",
+              "supports": [
+                "expression_necessity_proportionality"
+              ]
+            }
+          ],
+          "confirmed": [
+            "已读所引段落及相邻段落；保留委员会解释文件类别。",
+            "2026-10-09增量重读所引核心段落及上下文，保持agent_checked，未团队人工复核。"
+          ],
+          "corrections": [
+            "以具体段落支持具体判断；不得当作国内法条或本案裁决。"
+          ],
+          "gaps": [
+            "ICCPR 在本案的适用条件、事实评价及国内程序效果仍须核对。"
+          ],
+          "relatedSources": [
+            {
+              "title": "UNTC IV.4 当前状态及领土脚注，2026-10-09读取",
+              "url": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en",
+              "locator": "参与方表（KZ/TN/GB/CN/RU/BY；MY未列）；Hong Kong脚注6。相关保留、克减及事件时适用仍须逐案核对。"
+            }
+          ],
+          "jurisdictionChecks": [
+            {
+              "jurisdiction": "KZ",
+              "status": "confirmed",
+              "topic": "participation",
+              "detail": "UNTC IV.4：2006-01-24批准ICCPR，按第49条2006-04-24生效；国内效果及具体事件适用另核。",
+              "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
+            },
+            {
+              "jurisdiction": "TN",
+              "status": "confirmed",
+              "topic": "participation",
+              "detail": "UNTC IV.4：1969-03-18批准ICCPR；1976-03-23起生效，国内效果及具体事件适用另核。",
+              "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
+            },
+            {
+              "jurisdiction": "GB",
+              "status": "confirmed",
+              "topic": "participation",
+              "detail": "UNTC IV.4：1976-05-20批准ICCPR；按第49条1976-08-20生效，相关英国保留、领土及国内效果另核。",
+              "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
+            },
+            {
+              "jurisdiction": "HK",
+              "status": "confirmed",
+              "topic": "participation",
+              "detail": "UNTC IV.4脚注6明确香港特别行政区继续适用ICCPR；不能由中国内地未批准推导不适用，具体保留及国内效果另核。",
+              "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
+            },
+            {
+              "jurisdiction": "CN",
+              "status": "not_met",
+              "topic": "participation",
+              "detail": "UNTC IV.4：中国于1998-10-05签署、尚未批准；中国内地不据此承担ICCPR缔约义务。香港等领土安排必须另查。",
+              "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
+            },
+            {
+              "jurisdiction": "MY",
+              "status": "not_met",
+              "topic": "participation",
+              "detail": "UNTC IV.4参与方表没有马来西亚；本轮ICCPR资料只可作清楚标示的比较标准，不当作其条约义务。",
+              "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
+            },
+            {
+              "jurisdiction": "RU",
+              "status": "confirmed",
+              "topic": "participation",
+              "detail": "UNTC IV.4：俄罗斯（原苏联）1973-10-16批准ICCPR，公约1976-03-23生效；具体保留、事件管辖及国内效果另核。",
+              "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
+            },
+            {
+              "jurisdiction": "BY",
+              "status": "confirmed",
+              "topic": "participation",
+              "detail": "UNTC IV.4：白俄罗斯于1973-11-12批准ICCPR，公约1976-03-23生效；第一任择议定书退出不能视作退出ICCPR。",
+              "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
+            }
+          ]
+        }
+      },
+      {
+        "resourceId": "wgad-submission",
+        "name": "任意拘留问题工作组：工作方法（A/HRC/36/38）",
+        "officialUrl": "https://documents.un.org/api/symbol/access?l=en&s=A/HRC/36/38&t=pdf",
+        "checkedAt": "2026-10-09",
+        "applicability": "供真实剥夺自由事项的条件性研究；纯民事费用压力、一般平台处罚或未拘押表达案件不能仅凭主题相近使用此机制。",
+        "requiredMaterials": [
+          "来源要求：拘押时间地点、身份、官方理由、适用法律、已行国内及国际措施及结果、最新状况。",
+          "工作准备建议：授权和披露范围记录；未确认前只制作内部候选路径对照。"
+        ],
+        "type": "un_mechanism",
+        "locator": "A/HRC/36/38, paras. 9–12, printed / PDF pp. 3–4；A/HRC/36/38, paras. 22–23, printed / PDF p. 5",
+        "summary": "已核查工作方法中书面材料和紧急行动条件；当前表格、渠道仍待递交前复核。",
+        "eligibility": [
+          "须有可核对的剥夺自由事实及任意性理由，不凭拘押存在直接定性。",
+          "核查与其他个案机制的协调；不能照搬一般特别程序的全部操作规则。"
+        ],
+        "reviewStatus": "agent_checked",
+        "agentCheckedAt": "2026-10-09",
+        "teamReviewedAt": null,
+        "unknowns": [
+          "尚未进行具名团队人工复核。",
+          "现用问卷、递交渠道及是否存在随后程序更新未完整核查；实际提交前重新确认。",
+          "需确认确有剥夺自由、代表授权、披露风险及其他机制已受理情况。"
+        ],
+        "tags": [
+          "detention"
+        ],
+        "sourceAudit": {
+          "issuer": "联合国任意拘留问题工作组／人权理事会",
+          "version": "A/HRC/36/38（取代 A/HRC/33/66）",
+          "publishedOrEffective": "2017-07-13 发布",
+          "checkedAt": "2026-10-09",
+          "readStatus": "full_text",
+          "readUrl": "https://documents.un.org/api/symbol/access?l=en&s=A/HRC/36/38&t=pdf",
+          "jurisdiction": [
+            "international"
+          ],
+          "proceedings": [
+            "all"
+          ],
+          "currentVersionStatus": "2026-10-09已读A/HRC/36/38核心段落；当前特别程序提交首页仍链接该工作方法。独立WGAD介绍页读取失败，现用问卷及其他更新未完整核查。",
+          "eventVersionStatus": "演示案未提供事件日期；不能确认事件时版本及程序条件。",
+          "legalEffect": "机制工作方法或提交指引；不赋予个案可受理、行动或国内执行保证。",
+          "language": "English official source",
+          "translationStatus": "中文为Agent研究说明，非经团队核定的正式译文；正式原文控制。",
+          "provisions": [
+            {
+              "provisionId": "paras9-12",
+              "locator": "A/HRC/36/38, paras. 9–12, printed / PDF pp. 3–4",
+              "quote": "Communications shall be submitted in writing",
+              "explanation": "书面材料包括身份、拘押时间地点与理由、适用法律、已采取措施和后续情况；可由本人、家属、代表等提供。",
+              "supports": [
+                "wgad_submission"
+              ]
+            },
+            {
+              "provisionId": "paras22-23",
+              "locator": "A/HRC/36/38, paras. 22–23, printed / PDF p. 5",
+              "quote": "in no way prejudge any opinion",
+              "explanation": "紧急行动与实体意见分开；紧急请求不预判拘押任意性。",
+              "supports": [
+                "wgad_urgent_action"
+              ]
+            }
+          ],
+          "confirmed": [
+            "从 OHCHR 特别程序正式入口确认指向本工作方法，并读取联合国正式正文。",
+            "第33(d)要求注意相同人和事实已交另一处理个案机构时的协调。"
+          ],
+          "corrections": [
+            "原 FactSheet26 官方地址本次读取仍失败；改为入口指向的正式工作方法，未将搜索摘要标为核实。",
+            "原unreviewed升级仅为agent_checked，未团队人工复核。"
+          ],
+          "gaps": [
+            "现用问卷、递交渠道及是否存在随后程序更新未完整核查；实际提交前重新确认。",
+            "需确认确有剥夺自由、代表授权、披露风险及其他机制已受理情况。"
+          ],
+          "relatedSources": [
+            {
+              "title": "OHCHR特别程序提交入口",
+              "url": "https://spsubmission.ohchr.org/",
+              "locator": "What are Communications? 后的WGAD工作方法链接，跳至 https://ap.ohchr.org/documents/dpage_e.aspx?si=A/HRC/36/38。"
+            },
+            {
+              "title": "OHCHR当前特别程序提交指南链接WGAD独立方法",
+              "url": "https://spsubmission.ohchr.org/",
+              "locator": "Methods of work of the Working Group on Arbitrary Detention，链接 A/HRC/36/38"
+            }
+          ]
+        }
+      },
+      {
+        "resourceId": "hrc-individual-communications",
+        "name": "人权事务委员会：个人来文",
+        "officialUrl": "https://treaties.un.org/doc/publication/unts/volume%20999/volume-999-i-14668-english.pdf",
+        "checkedAt": "2026-10-09",
+        "applicability": "仅针对接受相应程序的国家，须核对受害人资格、国内救济、重复程序及保留。",
+        "requiredMaterials": [
+          "核对原文、当前适用条件及本案材料；提交前由负责律师或协调人确认。"
+        ],
+        "type": "un_mechanism",
+        "locator": "First Optional Protocol, Articles 1–5, printed pp. 302–303 / PDF pp. 63–64",
+        "summary": "第一任择议定书的条件性个人来文机制；不能与条约缔约身份或一般特别程序混同。",
+        "eligibility": [
+          "被诉国须接受第一任择议定书；英国不符合该项，不应推荐。",
+          "KZ/TN 的缔约身份不免除管辖、时间、受害人、国内救济及重复程序检查。"
+        ],
+        "reviewStatus": "agent_checked",
+        "agentCheckedAt": "2026-10-09",
+        "teamReviewedAt": null,
+        "unknowns": [
+          "尚未进行具名团队人工复核。",
+          "本案受害人/代表资格、救济有效性与进展、重复程序、事件时间仍未知；不保证可受理。",
+          "当前表格和工作规则尚未逐项复核；本记录不是可直接递交的操作清单。"
+        ],
+        "tags": [
+          "expression",
+          "detention",
+          "fair_trial"
+        ],
+        "sourceAudit": {
+          "issuer": "第一任择议定书缔约国；人权事务委员会执行机制",
+          "version": "UNTS vol. 999, No. 14668 英文文本；另核 UNTC IV.5 状态表",
+          "publishedOrEffective": "1966-12-16 通过；1976-03-23 总体生效",
+          "checkedAt": "2026-10-09",
+          "readStatus": "full_text",
+          "readUrl": "https://treaties.un.org/doc/publication/unts/volume%20999/volume-999-i-14668-english.pdf",
+          "jurisdiction": [
+            "international"
+          ],
+          "proceedings": [
+            "all"
+          ],
+          "currentVersionStatus": "已读取发布机构在核查日提供的正文；不是个案适用性结论。",
+          "eventVersionStatus": "演示案未提供事件日期；不能确认事件时版本及程序条件。",
+          "legalEffect": "机制工作方法或提交指引；不赋予个案可受理、行动或国内执行保证。",
+          "language": "English official source",
+          "translationStatus": "中文为Agent研究说明，非经团队核定的正式译文；正式原文控制。",
+          "provisions": [
+            {
+              "provisionId": "op1-arts1-5",
+              "locator": "First Optional Protocol, Articles 1–5, printed pp. 302–303 / PDF pp. 63–64",
+              "quote": "exhausted all available domestic remedies",
+              "explanation": "需被诉国接受第一任择议定书、受害人及管辖联系；通常穷尽救济，并核对重复国际程序、保留和例外。",
+              "supports": [
+                "hrc_individual_communication"
+              ]
+            }
+          ],
+          "confirmed": [
+            "已读第1–5条。",
+            "UNTC IV.5 2026-10-09 状态表：哈萨克斯坦2009-06-30批准、突尼斯2011-06-29加入；英国未列为缔约方。",
+            "哈萨克斯坦声明限定于议定书对其生效后的国家行为、遗漏、决定。"
+          ],
+          "corrections": [
+            "明确 ICCPR 缔约与个人来文资格不同；英国示例不得据 ICCPR 身份推荐该机制。"
+          ],
+          "gaps": [
+            "本案受害人/代表资格、救济有效性与进展、重复程序、事件时间仍未知；不保证可受理。",
+            "当前表格和工作规则尚未逐项复核；本记录不是可直接递交的操作清单。"
+          ],
+          "relatedSources": [
+            {
+              "title": "UNTC IV.5当前状态、声明与退出脚注",
+              "url": "https://treaties.un.org/Pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-5&chapter=4&clang=_en",
+              "locator": "Participant表、KZ/RU声明、Belarus脚注6；OP原文第1–5、9、12条。"
+            }
+          ],
+          "jurisdictionChecks": [
+            {
+              "jurisdiction": "KZ",
+              "status": "confirmed",
+              "topic": "mechanism_eligibility",
+              "detail": "2006-01-24批准ICCPR；2009-06-30批准OP。OP声明限生效后国家行为；事件时间与国家管辖仍须个案核对。",
+              "sourceUrl": "https://treaties.un.org/Pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-5&chapter=4&clang=_en"
+            },
+            {
+              "jurisdiction": "TN",
+              "status": "confirmed",
+              "topic": "mechanism_eligibility",
+              "detail": "1969-03-18批准ICCPR；2011-06-29加入OP。国内援引、事件时间及受理要件另核。",
+              "sourceUrl": "https://treaties.un.org/Pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-5&chapter=4&clang=_en"
+            },
+            {
+              "jurisdiction": "GB",
+              "status": "not_met",
+              "topic": "mechanism_eligibility",
+              "detail": "1976-05-20批准ICCPR；英国未参加第一任择议定书。ICCPR缔约不能替代个人来文国家资格。",
+              "sourceUrl": "https://treaties.un.org/Pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-5&chapter=4&clang=_en"
+            },
+            {
+              "jurisdiction": "HK",
+              "status": "not_met",
+              "topic": "mechanism_eligibility",
+              "detail": "UNTC IV.4脚注6记载ICCPR在香港特别行政区继续适用。不得从中国内地状态推导；香港未获第一任择议定书程序的领土适用。",
+              "sourceUrl": "https://treaties.un.org/Pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-5&chapter=4&clang=_en"
+            },
+            {
+              "jurisdiction": "CN",
+              "status": "not_met",
+              "topic": "mechanism_eligibility",
+              "detail": "中国1998-10-05签署ICCPR，当前未批准（香港等领土安排须独立核对）；未参加OP1。这里只可作清楚标示的比较标准。",
+              "sourceUrl": "https://treaties.un.org/Pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-5&chapter=4&clang=_en"
+            },
+            {
+              "jurisdiction": "MY",
+              "status": "not_met",
+              "topic": "mechanism_eligibility",
+              "detail": "马来西亚未列ICCPR/OP1参与方表。可保留国际比较标准，不写作其ICCPR条约义务。",
+              "sourceUrl": "https://treaties.un.org/Pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-5&chapter=4&clang=_en"
+            },
+            {
+              "jurisdiction": "RU",
+              "status": "confirmed",
+              "topic": "mechanism_eligibility",
+              "detail": "ICCPR参与方；OP于1991-10-01加入，声明限其生效后情势/事件。不得将历史欧洲人权法院程序迁移至2022-09-16之后的新事件。",
+              "sourceUrl": "https://treaties.un.org/Pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-5&chapter=4&clang=_en"
+            },
+            {
+              "jurisdiction": "BY",
+              "status": "not_met",
+              "topic": "mechanism_eligibility",
+              "detail": "白俄罗斯仍为ICCPR参与方，但OP退出于2023-02-08生效。新来文受此限制；退出前已提交事项须按OP第12(2)条另核，旧案不自动关闭。",
+              "sourceUrl": "https://treaties.un.org/Pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-5&chapter=4&clang=_en"
+            }
+          ]
+        }
+      },
+      {
+        "resourceId": "ecthr-applicants",
+        "name": "欧洲人权法院：申请与可受理性",
+        "officialUrl": "https://www.echr.coe.int/apply-to-the-court",
+        "checkedAt": "2026-10-09",
+        "applicability": "仅在欧洲人权公约的国家、时间、管辖及受害人范围内考虑。",
+        "requiredMaterials": [
+          "工作准备建议：国内裁判与送达索引、救济记录、代表授权及拟投诉事项。",
+          "完整正式表格、签署、附件与期限要求由负责律师按现行规则47另行确认。"
+        ],
+        "type": "regional_mechanism",
+        "locator": "Apply to the Court — How to make a valid application；Sending applications（不是Rule47全文核实）",
+        "summary": "已读申请说明；Rule47完整条文与本案可受理性仍须复核。",
+        "eligibility": [
+          "由律师核对国内救济、期限计算、重复程序及 Rule 47 文件要求。",
+          "本工具不计算申请期限，不承诺立案。"
+        ],
+        "reviewStatus": "agent_checked",
+        "agentCheckedAt": "2026-10-09",
+        "teamReviewedAt": null,
+        "unknowns": [
+          "尚未进行具名团队人工复核。",
+          "Rule47 PDF 初次可识别但重复正文读取失败；未据它填写完整材料清单或计算期限。",
+          "须由律师审查国内救济、最终裁决和送达日期、受害人资格、国家责任、重复程序及期限规则。"
+        ],
+        "tags": [
+          "expression",
+          "detention",
+          "fair_trial"
+        ],
+        "sourceAudit": {
+          "issuer": "欧洲人权法院（ECtHR）",
+          "version": "Apply to the Court 在线申请说明",
+          "publishedOrEffective": "页面未标明更新日；2026-10-09 读取",
+          "checkedAt": "2026-10-09",
+          "readStatus": "partial_text",
+          "readUrl": "https://www.echr.coe.int/apply-to-the-court",
+          "jurisdiction": [
+            "Council of Europe"
+          ],
+          "proceedings": [
+            "all"
+          ],
+          "currentVersionStatus": "已读取发布机构在核查日提供的正文；不是个案适用性结论。",
+          "eventVersionStatus": "演示案未提供事件日期；不能确认事件时版本及程序条件。",
+          "legalEffect": "区域机制申请指引；欧洲公约体系与ICCPR程序分开。",
+          "language": "English official source",
+          "translationStatus": "中文为Agent研究说明，非经团队核定的正式译文；正式原文控制。",
+          "provisions": [
+            {
+              "provisionId": "valid-application",
+              "locator": "How to make a valid application；Sending applications",
+              "quote": "complies with Rule 47",
+              "explanation": "申请须满足规则47的信息及文件要求；形式不足可能不获审查，形式完整也不等于可受理。",
+              "supports": [
+                "ecthr_application_preparation"
+              ]
+            }
+          ],
+          "confirmed": [
+            "已读取申请说明页面正文与其对Rule47的要求。",
+            "该页面提示邮寄要求，并明确传真不会中断四个月期限。"
+          ],
+          "corrections": [
+            "将读取范围限定为申请说明，未把链接可见当作完整规则审阅。"
+          ],
+          "gaps": [
+            "Rule47 PDF 初次可识别但重复正文读取失败；未据它填写完整材料清单或计算期限。",
+            "须由律师审查国内救济、最终裁决和送达日期、受害人资格、国家责任、重复程序及期限规则。"
+          ],
+          "relatedSources": [
+            {
+              "title": "ECtHR：The European Convention on Human Rights — A living instrument",
+              "url": "https://rm.coe.int/convention-instrument-eng/1680a3f605",
+              "locator": "印刷pp.22–23 / PDF pp.12–13，Chart of signatures and ratifications；英国行；该册不是实时保留清单。"
+            },
+            {
+              "title": "欧洲委员会当前成员国页",
+              "url": "https://www.coe.int/en/web/portal/members-states",
+              "locator": "Member states完整列表，英国在列，哈萨克斯坦与突尼斯不在列；2026-10-09读取。非成员判断结合公约第59条与法院缔约表，不把地理位置当资格。"
+            },
+            {
+              "title": "ECtHR全院决议：俄罗斯停止缔约及余留管辖",
+              "url": "https://www.echr.coe.int/documents/d/echr/resolution_echr_cessation_membership_russia_coe_eng",
+              "locator": "2022-03-22 resolution, declarations 1–2, PDF p.2；后2022-09-16的新事件不能迁移旧路径。"
+            }
+          ],
+          "jurisdictionChecks": [
+            {
+              "jurisdiction": "GB",
+              "status": "confirmed",
+              "topic": "participation",
+              "detail": "ECtHR官方缔约表：1951-03-08批准，1953-09-03生效；现行欧洲委员会成员名单交叉确认。当前保留/克减、个案管辖仍需核对。",
+              "sourceUrl": "https://rm.coe.int/convention-instrument-eng/1680a3f605"
+            },
+            {
+              "jurisdiction": "KZ",
+              "status": "not_met",
+              "topic": "participation",
+              "detail": "不属于ECHR缔约国；未列法院缔约表和欧洲委员会成员表。本案不得按欧洲地理关联推定适用。",
+              "sourceUrl": "https://www.coe.int/en/web/portal/members-states"
+            },
+            {
+              "jurisdiction": "TN",
+              "status": "not_met",
+              "topic": "participation",
+              "detail": "不属于ECHR缔约国；未列法院缔约表和欧洲委员会成员表。表达主题相同不能替代缔约资格。",
+              "sourceUrl": "https://www.coe.int/en/web/portal/members-states"
+            }
+          ]
+        }
+      }
+    ],
+    "webResearch": {
+      "status": "completed",
+      "searchedAt": "2026-10-10T16:08:28.384Z",
+      "searchTerms": [
+        "England and Wales civil procedure unconfirmed journalism expression journalism freedom of expression case judgment",
+        "England and Wales journalism expression documented legal response case judgment"
+      ],
+      "passages": [
+        {
+          "text": "以下仅依据所提供并成功打开的页面，讨论**英格兰和威尔士的民事案件**。其中，Bloomberg 案的背景涉及刑事调查，但所报告的诉讼属于滥用私人信息的民事侵权案件，并非刑事定罪程序。其来源是最高法院新闻摘要；摘要明确说明，只有完整判决才是权威裁判文件。(supremecourt.uk)",
+          "sourceIds": [
+            "web-1"
+          ]
+        },
+        {
+          "text": "**事实及程序结果：**Bloomberg 根据执法机关的一封保密司法协助请求函，报道了 ZXC 正受到调查及调查事项。Bloomberg 拒绝删除报道后，ZXC 申请临时禁令未获成功，但随后提起的滥用私人信息诉讼获得支持。Bloomberg 向上诉法院上诉失败，最高法院亦一致驳回其上诉。摘要同时说明，既有报道限制继续有效。(supremecourt.uk)",
+          "sourceIds": [
+            "web-1"
+          ]
+        },
+        {
+          "text": "**裁判要点：**受到刑事调查但尚未被起诉的人，通常对有关调查的信息具有合理隐私期待；这是分析起点，而非绝对禁止报道。法院须先结合全部情形判断隐私期待，再权衡《欧洲人权公约》第8条的隐私权与第10条的表达自由。滥用私人信息与诽谤不同：即使信息真实，也可能受到隐私保护。请求函的保密性是重要因素，但不自动决定信息属于私人信息，也不当然排除公共利益论证。(supremecourt.uk)",
+          "sourceIds": [
+            "web-1"
+          ]
+        },
+        {
+          "text": "**结论：**成功取得的材料分别涉及报道刑事调查时的民事隐私保护，以及诽谤诉讼中公共利益抗辩、上诉和费用的不同阶段；它们不能合并成“未经确认的新闻一律违法”或“新闻表达一律免责”的规则。现有材料也不足以判断任何未提供事实的具体案件。(supremecourt.uk)",
+          "sourceIds": [
+            "web-1"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "sourceId": "web-1",
+          "url": "https://supremecourt.uk/uploads/uksc_2020_0122_press_summary_3e62011350.pdf?utm_source=openai",
+          "title": "Bloomberg LP (Appellant) v ZXC (Respondent)",
+          "hostname": "supremecourt.uk",
+          "citationKind": "url_annotation",
+          "pageOpened": true
+        }
+      ],
+      "searchCallCount": 1,
+      "failureReason": null,
+      "plan": {
+        "domain": "expression_media",
+        "relationship": "journalist or public speaker and legal authority or claimant",
+        "disputedConduct": [
+          "journalism freedom of expression"
+        ],
+        "harms": [],
+        "remedies": [
+          "documented legal response"
+        ],
+        "evidenceIssues": [],
+        "excludedIssues": [],
+        "uncertainties": [
+          "Search labels are broad approved categories, not legal findings."
+        ],
+        "searchQueries": [
+          "England and Wales civil procedure unconfirmed journalism expression journalism freedom of expression case judgment",
+          "England and Wales journalism expression documented legal response case judgment"
+        ],
+        "coverage": "limited"
+      },
+      "planningMode": "structured_fallback",
+      "actualQueries": [
+        "site.supremecourt.uk Bloomberg LP ZXC 2022 judgment privacy",
+        "site.judiciary.uk \"Banks\" \"Cadwalladr\" \"2023\"",
+        "site.supremecourt.uk \"Lachaux\" \"2019\" \"Independent\""
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "reason": "initial",
+          "startedAt": "2026-10-10T16:08:28.384Z",
+          "status": "completed",
+          "searchTerms": [
+            "England and Wales civil procedure unconfirmed journalism expression journalism freedom of expression case judgment",
+            "England and Wales journalism expression documented legal response case judgment"
+          ],
+          "actualQueries": [
+            "site.supremecourt.uk Bloomberg LP ZXC 2022 judgment privacy",
+            "site.judiciary.uk \"Banks\" \"Cadwalladr\" \"2023\"",
+            "site.supremecourt.uk \"Lachaux\" \"2019\" \"Independent\""
+          ],
+          "searchCallCount": 1,
+          "sourceCount": 1,
+          "failureReason": null
+        }
+      ],
+      "relevanceStatus": "not_assessed"
+    },
+    "legalResearch": {
+      "coreQuestion": "先核对表达活动与所述措施的关联、决定主体和实际程序，再研究对应保障。",
+      "coverage": "gap",
+      "coverageNote": "当前问题没有精细当地规则覆盖；国际参考不替代国内法律或程序。",
+      "bindings": [
+        {
+          "bindingId": "legal-gb-eaw-iccpr-article-19-art19-2-3",
+          "issue": "哪些表达受到何种限制？法律根据、所称目的与必要性/比例性的事实材料是什么？",
+          "claim": "表达限制须有法律依据，并为第19(3)列举目的所必要；具体限制是否满足要求尚待核查。",
+          "claimKey": "expression_restriction_test",
+          "resourceId": "iccpr-article-19",
+          "provisionId": "art19-2-3",
+          "factBasis": [
+            {
+              "text": "【陌生虚构案件 V-92】社区记者温栩在英格兰和威尔士报道污水排放后，于2026-10-06收到承包商要求道歉的民事律师函。编辑部保存函件及两份检测记录。尚未收到法院文件，也没有聘请律师。承包商否认污染与其有关。",
+              "origin": "user_statement",
+              "fileName": null,
+              "page": null
+            }
+          ],
+          "relevance": "本案的民事表达争议与这一条有关（规则关联）；要件、文书和版本仍须核对。",
+          "conditions": [
+            {
+              "label": "具体法域",
+              "status": "confirmed",
+              "detail": "用户陈述法域：GB-EAW；仅确认研究范围。"
+            },
+            {
+              "label": "程序类型",
+              "status": "confirmed",
+              "detail": "本案：民事；条文适用于：各类程序。"
+            },
+            {
+              "label": "当前缔约状态（独立官方记录）",
+              "status": "confirmed",
+              "detail": "UNTC IV.4：1976-05-20批准ICCPR；按第49条1976-08-20生效，相关英国保留、领土及国内效果另核。"
+            },
+            {
+              "label": "事件时管辖、相关保留与国内援引",
+              "status": "unknown",
+              "detail": "当前缔约情况与个案适用分别处理；仍须核对事件时管辖、相关保留/克减及国内援引方式。"
+            }
+          ],
+          "nextChecks": [
+            "尚未进行具名团队人工复核。",
+            "须确认事件日期、管辖关系、涉及条款的保留/克减及国内援引方式；缔约不等于国内直接适用。",
+            "工作准备建议：对应事实及材料索引、事件时间、程序文件；由负责律师判断国内援引。"
+          ],
+          "applicability": "research_reference",
+          "factsAsOf": "本次用户陈述；独立事实截至日期未确认",
+          "lawAsOf": "2026-10-09 · 已核对条约正文；UNTC IV.4当前状态页于2026-10-09重新读取（页面状态同日）。当前参与、保留、事件时适用及国内效果分别处理。",
+          "relationOrigin": "curated_rule"
+        },
+        {
+          "bindingId": "legal-gb-eaw-hrc-general-comment-34-para22",
+          "issue": "哪些表达受到何种限制？法律根据、所称目的与必要性/比例性的事实材料是什么？",
+          "claim": "限制需满足第19(3)列举目的及必要性、比例性测试；该段是委员会解释。",
+          "claimKey": "expression_restriction_test",
+          "resourceId": "hrc-general-comment-34",
+          "provisionId": "para22",
+          "factBasis": [
+            {
+              "text": "【陌生虚构案件 V-92】社区记者温栩在英格兰和威尔士报道污水排放后，于2026-10-06收到承包商要求道歉的民事律师函。编辑部保存函件及两份检测记录。尚未收到法院文件，也没有聘请律师。承包商否认污染与其有关。",
+              "origin": "user_statement",
+              "fileName": null,
+              "page": null
+            }
+          ],
+          "relevance": "本案的民事表达争议与这一条有关（规则关联）；要件、文书和版本仍须核对。",
+          "conditions": [
+            {
+              "label": "具体法域",
+              "status": "confirmed",
+              "detail": "用户陈述法域：GB-EAW；仅确认研究范围。"
+            },
+            {
+              "label": "程序类型",
+              "status": "confirmed",
+              "detail": "本案：民事；条文适用于：各类程序。"
+            },
+            {
+              "label": "当前缔约状态（独立官方记录）",
+              "status": "confirmed",
+              "detail": "UNTC IV.4：1976-05-20批准ICCPR；按第49条1976-08-20生效，相关英国保留、领土及国内效果另核。"
+            },
+            {
+              "label": "事件时管辖、相关保留与国内援引",
+              "status": "unknown",
+              "detail": "当前缔约情况与个案适用分别处理；仍须核对事件时管辖、相关保留/克减及国内援引方式。"
+            }
+          ],
+          "nextChecks": [
+            "尚未进行具名团队人工复核。",
+            "ICCPR 在本案的适用条件、事实评价及国内程序效果仍须核对。",
+            "工作准备建议：标注实际受限的表达或程序事实，对照所引段落整理律师问题。"
+          ],
+          "applicability": "research_reference",
+          "factsAsOf": "本次用户陈述；独立事实截至日期未确认",
+          "lawAsOf": "2026-10-09 · 已读取发布机构在核查日提供的正文；不是个案适用性结论。",
+          "relationOrigin": "curated_rule"
+        },
+        {
+          "bindingId": "legal-gb-eaw-hrc-general-comment-34-para25",
+          "issue": "哪些表达受到何种限制？法律根据、所称目的与必要性/比例性的事实材料是什么？",
+          "claim": "第25段用于研究限制规则是否公开可及、足够明确以及是否赋予不受限制的裁量；先取得实际所引规则及受限表述，不据主题相近宣布国内规则无效。",
+          "claimKey": "expression_legality_test",
+          "resourceId": "hrc-general-comment-34",
+          "provisionId": "para25",
+          "factBasis": [
+            {
+              "text": "【陌生虚构案件 V-92】社区记者温栩在英格兰和威尔士报道污水排放后，于2026-10-06收到承包商要求道歉的民事律师函。编辑部保存函件及两份检测记录。尚未收到法院文件，也没有聘请律师。承包商否认污染与其有关。",
+              "origin": "user_statement",
+              "fileName": null,
+              "page": null
+            }
+          ],
+          "relevance": "本案的民事表达争议与这一条有关（规则关联）；要件、文书和版本仍须核对。",
+          "conditions": [
+            {
+              "label": "具体法域",
+              "status": "confirmed",
+              "detail": "用户陈述法域：GB-EAW；仅确认研究范围。"
+            },
+            {
+              "label": "程序类型",
+              "status": "confirmed",
+              "detail": "本案：民事；条文适用于：各类程序。"
+            },
+            {
+              "label": "当前缔约状态（独立官方记录）",
+              "status": "confirmed",
+              "detail": "UNTC IV.4：1976-05-20批准ICCPR；按第49条1976-08-20生效，相关英国保留、领土及国内效果另核。"
+            },
+            {
+              "label": "事件时管辖、相关保留与国内援引",
+              "status": "unknown",
+              "detail": "当前缔约情况与个案适用分别处理；仍须核对事件时管辖、相关保留/克减及国内援引方式。"
+            }
+          ],
+          "nextChecks": [
+            "尚未进行具名团队人工复核。",
+            "ICCPR 在本案的适用条件、事实评价及国内程序效果仍须核对。",
+            "工作准备建议：标注实际受限的表达或程序事实，对照所引段落整理律师问题。"
+          ],
+          "applicability": "research_reference",
+          "factsAsOf": "本次用户陈述；独立事实截至日期未确认",
+          "lawAsOf": "2026-10-09 · 已读取发布机构在核查日提供的正文；不是个案适用性结论。",
+          "relationOrigin": "curated_rule"
+        },
+        {
+          "bindingId": "legal-gb-eaw-hrc-general-comment-34-paras33-35",
+          "issue": "哪些表达受到何种限制？法律根据、所称目的与必要性/比例性的事实材料是什么？",
+          "claim": "第33–35段要求逐项研究限制的合法目的、较少侵害的替代方式、比例及所称威胁与表达之间的具体直接关联；先后发生不能单独证明因果或限制不合法。",
+          "claimKey": "expression_necessity_proportionality",
+          "resourceId": "hrc-general-comment-34",
+          "provisionId": "paras33-35",
+          "factBasis": [
+            {
+              "text": "【陌生虚构案件 V-92】社区记者温栩在英格兰和威尔士报道污水排放后，于2026-10-06收到承包商要求道歉的民事律师函。编辑部保存函件及两份检测记录。尚未收到法院文件，也没有聘请律师。承包商否认污染与其有关。",
+              "origin": "user_statement",
+              "fileName": null,
+              "page": null
+            }
+          ],
+          "relevance": "本案的民事表达争议与这一条有关（规则关联）；要件、文书和版本仍须核对。",
+          "conditions": [
+            {
+              "label": "具体法域",
+              "status": "confirmed",
+              "detail": "用户陈述法域：GB-EAW；仅确认研究范围。"
+            },
+            {
+              "label": "程序类型",
+              "status": "confirmed",
+              "detail": "本案：民事；条文适用于：各类程序。"
+            },
+            {
+              "label": "当前缔约状态（独立官方记录）",
+              "status": "confirmed",
+              "detail": "UNTC IV.4：1976-05-20批准ICCPR；按第49条1976-08-20生效，相关英国保留、领土及国内效果另核。"
+            },
+            {
+              "label": "事件时管辖、相关保留与国内援引",
+              "status": "unknown",
+              "detail": "当前缔约情况与个案适用分别处理；仍须核对事件时管辖、相关保留/克减及国内援引方式。"
+            }
+          ],
+          "nextChecks": [
+            "尚未进行具名团队人工复核。",
+            "ICCPR 在本案的适用条件、事实评价及国内程序效果仍须核对。",
+            "工作准备建议：标注实际受限的表达或程序事实，对照所引段落整理律师问题。"
+          ],
+          "applicability": "research_reference",
+          "factsAsOf": "本次用户陈述；独立事实截至日期未确认",
+          "lawAsOf": "2026-10-09 · 已读取发布机构在核查日提供的正文；不是个案适用性结论。",
+          "relationOrigin": "curated_rule"
+        }
+      ],
+      "gaps": [
+        "正式文书、行为及送达日期、事件时法律版本与当地适用方式仍须逐项核对。",
+        "当前问题的核心当地规则尚无已绑定的可靠正文；不输出依赖其适用的确定结论。"
+      ],
+      "mechanisms": [
+        {
+          "mechanismId": "hrc-individual-communications",
+          "title": "联合国人权事务委员会：个人来文资格研究",
+          "state": "not_met",
+          "conditions": [
+            {
+              "label": "第一任择议定书的国家／领土资格",
+              "status": "not_met",
+              "detail": "1976-05-20批准ICCPR；英国未参加第一任择议定书。ICCPR缔约不能替代个人来文国家资格。"
+            },
+            {
+              "label": "本人／代理资格及权利范围",
+              "status": "unknown",
+              "detail": "确认受国家管辖的受害人、代理授权及具体ICCPR权利；不能用历史案件当本案证明。"
+            },
+            {
+              "label": "国内救济及可主张例外",
+              "status": "unknown",
+              "detail": "列出每项已使用和未使用救济、决定及日期，再核对不可获得、无效或不合理拖延等可主张例外。"
+            },
+            {
+              "label": "其他国际程序、保留和事件时间",
+              "status": "unknown",
+              "detail": "核对是否正在其他国际调查／解决程序审查、国家保留和事件时间。"
+            },
+            {
+              "label": "指定机制、材料与用途的提交授权",
+              "status": "not_met",
+              "detail": "现有披露范围限制外发：仅内部整理，未经具体授权不对外发送、不公开姓名。。内部资格研究和三份内部草稿仍可继续。"
+            },
+            {
+              "label": "向政府等接收方披露姓名",
+              "status": "unknown",
+              "detail": "须单独记录同意或不同意及风险；允许向律师分享不包含政府或机构。"
+            },
+            {
+              "label": "公开报告披露姓名",
+              "status": "unknown",
+              "detail": "当前不公开；不能据此自动排除内部研究或所有机制。须与机制实际公开及安全例外安排核对，不能承诺全程保密。"
+            }
+          ],
+          "resourceIds": [
+            "hrc-individual-communications"
+          ],
+          "disclosure": [
+            "这是人权事务委员会（条约机构），不是人权理事会；不得把内部材料标为已递交。"
+          ],
+          "nextChecks": [
+            "取得国内决定、救济时序、代理授权、其他国际程序记录及可主张例外的依据。"
+          ]
+        },
+        {
+          "mechanismId": "ohchr-special-procedures",
+          "title": "特别程序：任务与披露条件研究",
+          "state": "not_met",
+          "conditions": [
+            {
+              "label": "条约缔约和用尽国内救济",
+              "status": "confirmed",
+              "detail": "一般特别程序来函不以两者为共同前提；此项只说明门槛不存在，不表示个案获接纳。"
+            },
+            {
+              "label": "具体任务范围与可信详细事实",
+              "status": "unknown",
+              "detail": "按具体事实核对表达自由或人权维护者等任务范围，材料不能只依赖媒体报道；专家自行决定是否行动。"
+            },
+            {
+              "label": "指定机制、材料与用途的提交授权",
+              "status": "not_met",
+              "detail": "现有披露范围限制外发：仅内部整理，未经具体授权不对外发送、不公开姓名。。内部资格研究和三份内部草稿仍可继续。"
+            },
+            {
+              "label": "向政府等接收方披露姓名",
+              "status": "unknown",
+              "detail": "须单独记录同意或不同意及风险；允许向律师分享不包含政府或机构。"
+            },
+            {
+              "label": "公开报告披露姓名",
+              "status": "unknown",
+              "detail": "当前不公开；不能据此自动排除内部研究或所有机制。须与机制实际公开及安全例外安排核对，不能承诺全程保密。"
+            }
+          ],
+          "resourceIds": [
+            "ohchr-special-procedures"
+          ],
+          "disclosure": [
+            "政府等接收方通常收到姓名；公开报告姓名是另一项选择。安全例外需明确提出并核对；回执不是已行动。"
+          ],
+          "nextChecks": [
+            "确认具体任务、希望机制提出的请求、可靠佐证及两项姓名披露选择。"
+          ]
+        },
+        {
+          "mechanismId": "wgad-submission",
+          "title": "任意拘留问题工作组：独立程序研究",
+          "state": "not_met",
+          "conditions": [
+            {
+              "label": "剥夺自由事实",
+              "status": "unknown",
+              "detail": "尚无本案当前剥夺自由的充分记录；历史拘押、已获释或一般民事压力不能证明目前被拘押。"
+            },
+            {
+              "label": "普通程序材料及任意性研究",
+              "status": "unknown",
+              "detail": "按A/HRC/36/38第8–12段整理拘押时间地点、机关、理由、法律、国内与其他国际步骤、结果及最新情况。"
+            },
+            {
+              "label": "独立工作方法与紧急行动",
+              "status": "unknown",
+              "detail": "第22–23段要求具体紧急情形；紧急呼吁不预断任意拘留意见。不能机械套用HRC用尽救济条件或一般特别程序全部规则。"
+            },
+            {
+              "label": "指定机制、材料与用途的提交授权",
+              "status": "not_met",
+              "detail": "现有披露范围限制外发：仅内部整理，未经具体授权不对外发送、不公开姓名。。内部资格研究和三份内部草稿仍可继续。"
+            },
+            {
+              "label": "向政府等接收方披露姓名",
+              "status": "unknown",
+              "detail": "须单独记录同意或不同意及风险；允许向律师分享不包含政府或机构。"
+            },
+            {
+              "label": "公开报告披露姓名",
+              "status": "unknown",
+              "detail": "当前不公开；不能据此自动排除内部研究或所有机制。须与机制实际公开及安全例外安排核对，不能承诺全程保密。"
+            }
+          ],
+          "resourceIds": [
+            "wgad-submission"
+          ],
+          "disclosure": [
+            "向政府传送、意见公开及安全安排需逐项复核；意见不等于国内执行、释放或赔付。"
+          ],
+          "nextChecks": [
+            "查现用问卷、独立方法后续修订、实际紧急事实和其他机制协调；本轮只准备内部材料。"
+          ]
+        },
+        {
+          "mechanismId": "ecthr-applicants",
+          "title": "欧洲人权法院：候选资格研究",
+          "state": "not_met",
+          "conditions": [
+            {
+              "label": "欧洲公约国家与事件时间",
+              "status": "confirmed",
+              "detail": "英国为欧洲公约缔约方；具体领土、事件、权利和程序仍须另核。"
+            },
+            {
+              "label": "区域机制个案受理条件",
+              "status": "unknown",
+              "detail": "欧洲人权法院属于欧洲公约体系，不是ICCPR法院。国内救济、最终决定日期、时限及重复程序未完整核查，当前仅资格研究。"
+            },
+            {
+              "label": "指定机制、材料与用途的提交授权",
+              "status": "not_met",
+              "detail": "现有披露范围限制外发：仅内部整理，未经具体授权不对外发送、不公开姓名。。内部资格研究和三份内部草稿仍可继续。"
+            },
+            {
+              "label": "向政府等接收方披露姓名",
+              "status": "unknown",
+              "detail": "须单独记录同意或不同意及风险；允许向律师分享不包含政府或机构。"
+            },
+            {
+              "label": "公开报告披露姓名",
+              "status": "unknown",
+              "detail": "当前不公开；不能据此自动排除内部研究或所有机制。须与机制实际公开及安全例外安排核对，不能承诺全程保密。"
+            }
+          ],
+          "resourceIds": [
+            "ecthr-applicants"
+          ],
+          "disclosure": [
+            "不生成可直接递交成稿；公开及匿名安排需按法院规则另核。"
+          ],
+          "nextChecks": [
+            "请具备该体系经验的律师核对国家、事件日期、最终国内决定、资格及完整受理规则。"
+          ]
+        }
+      ]
+    },
+    "followups": [],
+    "nextSteps": [
+      {
+        "actionId": "prepare-publication-basis",
+        "purpose": "将“整理发表依据”推进到可供内部讨论的材料；是否采用程序或对外路径仍由指定人员决定。",
+        "owner": "编辑部材料负责人；TrialWatch 研究员整理材料，当地律师判断法律适用与程序，当事人决定披露。",
+        "materials": [
+          "实际持有的函件或法院文书、具体表述、对方请求、发表依据与送达记录；未知分别保留。"
+        ],
+        "deliverables": [
+          "给当地律师的事实与问题表：先确认请求依据与程序，再筛选对应规则；不预设诽谤、严重损害或特定反SLAPP途径。"
+        ],
+        "stopConditions": [
+          "未经针对具体材料、接收者及方式的明确同意，不发送、联系、公开或递交；本模块只准备内部材料。",
+          "现有私下／具体披露限制继续有效；公开倡议暂不推进，不把私下渠道当作绕过限制的许可。",
+          "法律版本、资格、程序阶段或必要文书未核实时，暂不实施相关法律步骤；内部索引和问题准备可继续。"
+        ],
+        "legalBindingIds": [],
+        "history": [],
+        "basisGaps": [
+          "未找到与本项准备直接对应且程序可比较的已实施历史行动；此项仍是一般工作准备，不冒充历史成功路径。",
+          "本项没有直接支持的逐条法律／机制引用；在补齐前仅做材料准备。"
+        ]
+      },
+      {
+        "actionId": "map-letter-and-harm",
+        "purpose": "将“拆解指摘与损害主张”推进到可供内部讨论的材料；是否采用程序或对外路径仍由指定人员决定。",
+        "owner": "内部案件整理人；TrialWatch 研究员整理材料，当地律师判断法律适用与程序，当事人决定披露。",
+        "materials": [
+          "实际持有的函件或法院文书、具体表述、对方请求、发表依据与送达记录；未知分别保留。"
+        ],
+        "deliverables": [
+          "给当地律师的事实与问题表：先确认请求依据与程序，再筛选对应规则；不预设诽谤、严重损害或特定反SLAPP途径。"
+        ],
+        "stopConditions": [
+          "未经针对具体材料、接收者及方式的明确同意，不发送、联系、公开或递交；本模块只准备内部材料。",
+          "现有私下／具体披露限制继续有效；公开倡议暂不推进，不把私下渠道当作绕过限制的许可。",
+          "法律版本、资格、程序阶段或必要文书未核实时，暂不实施相关法律步骤；内部索引和问题准备可继续。"
+        ],
+        "legalBindingIds": [],
+        "history": [],
+        "basisGaps": [
+          "未找到与本项准备直接对应且程序可比较的已实施历史行动；此项仍是一般工作准备，不冒充历史成功路径。",
+          "本项没有直接支持的逐条法律／机制引用；在补齐前仅做材料准备。"
+        ]
+      },
+      {
+        "actionId": "prepare-adviser-review",
+        "purpose": "将“编制顾问评估提纲”推进到可供内部讨论的材料；是否采用程序或对外路径仍由指定人员决定。",
+        "owner": "编辑部协调负责人；TrialWatch 研究员整理材料，当地律师判断法律适用与程序，当事人决定披露。",
+        "materials": [
+          "实际持有的函件或法院文书、具体表述、对方请求、发表依据与送达记录；未知分别保留。"
+        ],
+        "deliverables": [
+          "给当地律师的事实与问题表：先确认请求依据与程序，再筛选对应规则；不预设诽谤、严重损害或特定反SLAPP途径。"
+        ],
+        "stopConditions": [
+          "未经针对具体材料、接收者及方式的明确同意，不发送、联系、公开或递交；本模块只准备内部材料。",
+          "现有私下／具体披露限制继续有效；公开倡议暂不推进，不把私下渠道当作绕过限制的许可。",
+          "法律版本、资格、程序阶段或必要文书未核实时，暂不实施相关法律步骤；内部索引和问题准备可继续。"
+        ],
+        "legalBindingIds": [],
+        "history": [],
+        "basisGaps": [
+          "未找到与本项准备直接对应且程序可比较的已实施历史行动；此项仍是一般工作准备，不冒充历史成功路径。",
+          "本项没有直接支持的逐条法律／机制引用；在补齐前仅做材料准备。"
+        ]
+      }
+    ],
+    "whatsNext": {
+      "version": 1,
+      "inputHash": "258a68dba8befdbe9ee596181fc2358b67ac86396ab28c3ee4ed49f4ea2a330d",
+      "facts": [
+        {
+          "factId": "account-1",
+          "text": "【陌生虚构案件 V-92】社区记者温栩在英格兰和威尔士报道污水排放后，于2026-10-06收到承包商要求道歉的民事律师函。",
+          "quote": "【陌生虚构案件 V-92】社区记者温栩在英格兰和威尔士报道污水排放后，于2026-10-06收到承包商要求道歉的民事律师函。",
+          "origin": "user_statement",
+          "sourceLabel": "用户叙述；未经独立核实",
+          "date": "2026-10-06",
+          "precision": "day"
+        },
+        {
+          "factId": "account-2",
+          "text": "编辑部保存函件及两份检测记录。",
+          "quote": "编辑部保存函件及两份检测记录。",
+          "origin": "user_statement",
+          "sourceLabel": "用户叙述；未经独立核实",
+          "date": null,
+          "precision": "unknown"
+        },
+        {
+          "factId": "account-3",
+          "text": "尚未收到法院文件，也没有聘请律师。",
+          "quote": "尚未收到法院文件，也没有聘请律师。",
+          "origin": "user_statement",
+          "sourceLabel": "用户叙述；未经独立核实",
+          "date": null,
+          "precision": "unknown"
+        },
+        {
+          "factId": "account-4",
+          "text": "承包商否认污染与其有关。",
+          "quote": "承包商否认污染与其有关。",
+          "origin": "user_statement",
+          "sourceLabel": "用户叙述；未经独立核实",
+          "date": null,
+          "precision": "unknown"
+        }
+      ],
+      "priorities": [
+        {
+          "taskId": "work-timeline",
+          "kind": "timeline",
+          "title": "整理函件、发表依据与程序时间线",
+          "whyNow": "把函件、发表依据和程序日期按时间排好。",
+          "factIds": [
+            "account-1",
+            "account-2",
+            "account-3",
+            "account-4"
+          ],
+          "role": "案件协调人／法律研究人员准备；当事人核对",
+          "assignment": "unassigned",
+          "status": "draft_generated",
+          "available": [
+            "已保存本次用户陈述 4 项；这些不是独立核实事实。"
+          ],
+          "missing": [
+            {
+              "item": "完整律师函、被指摘表述及收件记录",
+              "why": "决定适用程序、管辖及可核实的事实范围；尚无对应原件不能下结论。",
+              "role": "当地律师候选（尚未确认委托）"
+            },
+            {
+              "item": "事件、通知、送达及已有请求的日期来源",
+              "why": "日期需逐项与文书核对，才能由当地律师判断时点与期限；系统不计算期限。",
+              "role": "案件协调人核对，当地律师判断"
+            }
+          ],
+          "legalBindingIds": [],
+          "history": [],
+          "basisGaps": [
+            "一般资料准备，不硬配历史先例或法条。"
+          ],
+          "stopConditions": [
+            "内部起草可以继续；对外发送、公开和递交没有自动授权。",
+            "仅内部整理，未经具体授权不对外发送、不公开姓名。"
+          ]
+        },
+        {
+          "taskId": "work-issue_matrix",
+          "kind": "issue_matrix",
+          "title": "对照本案问题、证据与法律研究依据",
+          "whyNow": "每个问题对应哪些事实、证据和条文，哪些条件还没确认。",
+          "factIds": [
+            "account-1",
+            "account-2",
+            "account-3",
+            "account-4"
+          ],
+          "role": "案件协调人／法律研究人员准备；当事人核对",
+          "assignment": "unassigned",
+          "status": "draft_generated",
+          "available": [
+            "已保存本次用户陈述 4 项；这些不是独立核实事实。"
+          ],
+          "missing": [
+            {
+              "item": "完整律师函、被指摘表述及收件记录",
+              "why": "决定适用程序、管辖及可核实的事实范围；尚无对应原件不能下结论。",
+              "role": "当地律师候选（尚未确认委托）"
+            },
+            {
+              "item": "事件、通知、送达及已有请求的日期来源",
+              "why": "日期需逐项与文书核对，才能由当地律师判断时点与期限；系统不计算期限。",
+              "role": "案件协调人核对，当地律师判断"
+            }
+          ],
+          "legalBindingIds": [
+            "legal-gb-eaw-iccpr-article-19-art19-2-3",
+            "legal-gb-eaw-hrc-general-comment-34-para22",
+            "legal-gb-eaw-hrc-general-comment-34-para25",
+            "legal-gb-eaw-hrc-general-comment-34-paras33-35"
+          ],
+          "history": [],
+          "basisGaps": [
+            "暂无程序相容且证据充分的历史行动；继续一般资料准备。",
+            "正式文书、行为及送达日期、事件时法律版本与当地适用方式仍须逐项核对。",
+            "当前问题的核心当地规则尚无已绑定的可靠正文；不输出依赖其适用的确定结论。"
+          ],
+          "stopConditions": [
+            "内部起草可以继续；对外发送、公开和递交没有自动授权。",
+            "仅内部整理，未经具体授权不对外发送、不公开姓名。",
+            "资格、当地法律版本或文书未核实，暂停依赖其成立的程序步骤。"
+          ]
+        },
+        {
+          "taskId": "work-lawyer_brief",
+          "kind": "lawyer_brief",
+          "title": "形成供当地律师核对的一页内部简报",
+          "whyNow": "一页纸交给当地律师：要点、问题和所需材料。",
+          "factIds": [
+            "account-1",
+            "account-2",
+            "account-3",
+            "account-4"
+          ],
+          "role": "法律研究人员起草；当地律师候选（尚未确认委托）核对",
+          "assignment": "unassigned",
+          "status": "draft_generated",
+          "available": [
+            "已保存本次用户陈述 4 项；这些不是独立核实事实。"
+          ],
+          "missing": [
+            {
+              "item": "完整律师函、被指摘表述及收件记录",
+              "why": "决定适用程序、管辖及可核实的事实范围；尚无对应原件不能下结论。",
+              "role": "当地律师候选（尚未确认委托）"
+            },
+            {
+              "item": "事件、通知、送达及已有请求的日期来源",
+              "why": "日期需逐项与文书核对，才能由当地律师判断时点与期限；系统不计算期限。",
+              "role": "案件协调人核对，当地律师判断"
+            },
+            {
+              "item": "合适当地律师候选及委托授权范围",
+              "why": "有律师不等于已取得会面或案卷；未确认委托不分派真实人员。",
+              "role": "当事人或获授权协调人"
+            }
+          ],
+          "legalBindingIds": [
+            "legal-gb-eaw-iccpr-article-19-art19-2-3",
+            "legal-gb-eaw-hrc-general-comment-34-para22",
+            "legal-gb-eaw-hrc-general-comment-34-para25",
+            "legal-gb-eaw-hrc-general-comment-34-paras33-35"
+          ],
+          "history": [],
+          "basisGaps": [
+            "暂无程序相容且证据充分的历史行动；继续一般资料准备。",
+            "正式文书、行为及送达日期、事件时法律版本与当地适用方式仍须逐项核对。",
+            "当前问题的核心当地规则尚无已绑定的可靠正文；不输出依赖其适用的确定结论。"
+          ],
+          "stopConditions": [
+            "内部起草可以继续；对外发送、公开和递交没有自动授权。",
+            "仅内部整理，未经具体授权不对外发送、不公开姓名。",
+            "资格、当地法律版本或文书未核实，暂停依赖其成立的程序步骤。"
+          ]
+        }
+      ],
+      "paths": [
+        {
+          "pathId": "research-hrc-individual-communications",
+          "title": "联合国人权事务委员会：个人来文资格研究",
+          "state": "paused",
+          "reason": "已知实质资格条件不符合，暂停依赖该资格成立的路径；内部事实整理仍可继续。",
+          "conditions": [
+            "不满足 · 第一任择议定书的国家／领土资格: 1976-05-20批准ICCPR；英国未参加第一任择议定书。ICCPR缔约不能替代个人来文国家资格。",
+            "待确认 · 本人／代理资格及权利范围: 确认受国家管辖的受害人、代理授权及具体ICCPR权利；不能用历史案件当本案证明。",
+            "待确认 · 国内救济及可主张例外: 列出每项已使用和未使用救济、决定及日期，再核对不可获得、无效或不合理拖延等可主张例外。",
+            "待确认 · 其他国际程序、保留和事件时间: 核对是否正在其他国际调查／解决程序审查、国家保留和事件时间。",
+            "不满足 · 指定机制、材料与用途的提交授权: 现有披露范围限制外发：仅内部整理，未经具体授权不对外发送、不公开姓名。。内部资格研究和三份内部草稿仍可继续。",
+            "待确认 · 向政府等接收方披露姓名: 须单独记录同意或不同意及风险；允许向律师分享不包含政府或机构。",
+            "待确认 · 公开报告披露姓名: 当前不公开；不能据此自动排除内部研究或所有机制。须与机制实际公开及安全例外安排核对，不能承诺全程保密。",
+            "这是人权事务委员会（条约机构），不是人权理事会；不得把内部材料标为已递交。",
+            "取得国内决定、救济时序、代理授权、其他国际程序记录及可主张例外的依据。"
+          ],
+          "legalBindingIds": [],
+          "role": "法律研究人员准备；当地律师和当事人核对"
+        },
+        {
+          "pathId": "research-ohchr-special-procedures",
+          "title": "特别程序：任务与披露条件研究",
+          "state": "conditional",
+          "reason": "只做内部资格研究和材料清单；条件未确认前不能提交。",
+          "conditions": [
+            "已确认 · 条约缔约和用尽国内救济: 一般特别程序来函不以两者为共同前提；此项只说明门槛不存在，不表示个案获接纳。",
+            "待确认 · 具体任务范围与可信详细事实: 按具体事实核对表达自由或人权维护者等任务范围，材料不能只依赖媒体报道；专家自行决定是否行动。",
+            "不满足 · 指定机制、材料与用途的提交授权: 现有披露范围限制外发：仅内部整理，未经具体授权不对外发送、不公开姓名。。内部资格研究和三份内部草稿仍可继续。",
+            "待确认 · 向政府等接收方披露姓名: 须单独记录同意或不同意及风险；允许向律师分享不包含政府或机构。",
+            "待确认 · 公开报告披露姓名: 当前不公开；不能据此自动排除内部研究或所有机制。须与机制实际公开及安全例外安排核对，不能承诺全程保密。",
+            "政府等接收方通常收到姓名；公开报告姓名是另一项选择。安全例外需明确提出并核对；回执不是已行动。",
+            "确认具体任务、希望机制提出的请求、可靠佐证及两项姓名披露选择。"
+          ],
+          "legalBindingIds": [],
+          "role": "法律研究人员准备；当地律师和当事人核对"
+        },
+        {
+          "pathId": "research-wgad-submission",
+          "title": "任意拘留问题工作组：独立程序研究",
+          "state": "paused",
+          "reason": "尚无本案剥夺自由事实支持，暂不推进拘押程序材料。",
+          "conditions": [
+            "待确认 · 剥夺自由事实: 尚无本案当前剥夺自由的充分记录；历史拘押、已获释或一般民事压力不能证明目前被拘押。",
+            "待确认 · 普通程序材料及任意性研究: 按A/HRC/36/38第8–12段整理拘押时间地点、机关、理由、法律、国内与其他国际步骤、结果及最新情况。",
+            "待确认 · 独立工作方法与紧急行动: 第22–23段要求具体紧急情形；紧急呼吁不预断任意拘留意见。不能机械套用HRC用尽救济条件或一般特别程序全部规则。",
+            "不满足 · 指定机制、材料与用途的提交授权: 现有披露范围限制外发：仅内部整理，未经具体授权不对外发送、不公开姓名。。内部资格研究和三份内部草稿仍可继续。",
+            "待确认 · 向政府等接收方披露姓名: 须单独记录同意或不同意及风险；允许向律师分享不包含政府或机构。",
+            "待确认 · 公开报告披露姓名: 当前不公开；不能据此自动排除内部研究或所有机制。须与机制实际公开及安全例外安排核对，不能承诺全程保密。",
+            "向政府传送、意见公开及安全安排需逐项复核；意见不等于国内执行、释放或赔付。",
+            "查现用问卷、独立方法后续修订、实际紧急事实和其他机制协调；本轮只准备内部材料。"
+          ],
+          "legalBindingIds": [],
+          "role": "法律研究人员准备；当地律师和当事人核对"
+        },
+        {
+          "pathId": "research-ecthr-applicants",
+          "title": "欧洲人权法院：候选资格研究",
+          "state": "conditional",
+          "reason": "只做内部资格研究和材料清单；条件未确认前不能提交。",
+          "conditions": [
+            "已确认 · 欧洲公约国家与事件时间: 英国为欧洲公约缔约方；具体领土、事件、权利和程序仍须另核。",
+            "待确认 · 区域机制个案受理条件: 欧洲人权法院属于欧洲公约体系，不是ICCPR法院。国内救济、最终决定日期、时限及重复程序未完整核查，当前仅资格研究。",
+            "不满足 · 指定机制、材料与用途的提交授权: 现有披露范围限制外发：仅内部整理，未经具体授权不对外发送、不公开姓名。。内部资格研究和三份内部草稿仍可继续。",
+            "待确认 · 向政府等接收方披露姓名: 须单独记录同意或不同意及风险；允许向律师分享不包含政府或机构。",
+            "待确认 · 公开报告披露姓名: 当前不公开；不能据此自动排除内部研究或所有机制。须与机制实际公开及安全例外安排核对，不能承诺全程保密。",
+            "不生成可直接递交成稿；公开及匿名安排需按法院规则另核。",
+            "请具备该体系经验的律师核对国家、事件日期、最终国内决定、资格及完整受理规则。"
+          ],
+          "legalBindingIds": [],
+          "role": "法律研究人员准备；当地律师和当事人核对"
+        },
+        {
+          "pathId": "external-disclosure",
+          "title": "对外提交、联系与公开倡议",
+          "state": "paused",
+          "reason": "本轮生成内部材料，不执行外部动作；总体公开选择不代表具体同意。",
+          "conditions": [
+            "仅内部整理，未经具体授权不对外发送、不公开姓名。",
+            "当前公开偏好：希望先保持私下处理"
+          ],
+          "legalBindingIds": [],
+          "role": "当事人决定；指定人员实施（未指派）"
+        }
+      ],
+      "questions": [
+        {
+          "questionId": "current-stage",
+          "question": "现在处于哪个阶段（通知、调查、开庭或其他）？",
+          "reason": "阶段决定能研究哪些程序。",
+          "blocks": [
+            "local-procedure"
+          ],
+          "role": "当地律师候选（尚未确认委托）"
+        }
+      ],
+      "documents": [
+        {
+          "kind": "timeline",
+          "title": "案件时间线与材料索引",
+          "markdown": "# 案件时间线与材料索引\n\n程序位置: United Kingdom / 英格兰与威尔士 / 民事 / 不清楚\n目标: 整理发表依据、对方指摘与损害主张，供当地法律顾问评估。\n披露选择: 希望先保持私下处理 · 仅内部整理，未经具体授权不对外发送、不公开姓名。\n内部工作草稿：事实来自使用者和所列材料，未经独立核实；生成或下载不代表已复核、已联系或已提交。\n\n## 本案叙述\n【陌生虚构案件 V-92】社区记者温栩在英格兰和威尔士报道污水排放后，于2026-10-06收到承包商要求道歉的民事律师函。编辑部保存函件及两份检测记录。尚未收到法院文件，也没有聘请律师。承包商否认污染与其有关。\n\n## 事件与日期\n| 日期 | 事件 | 出处 |\n| --- | --- | --- |\n| 2026-10-06 | 【陌生虚构案件 V-92】社区记者温栩在英格兰和威尔士报道污水排放后，于2026-10-06收到承包商要求道歉的民事律师函。 | 用户陈述 · 用户叙述；未经独立核实 |\n| 日期未确认 | 编辑部保存函件及两份检测记录。 | 用户陈述 · 用户叙述；未经独立核实 |\n| 日期未确认 | 尚未收到法院文件，也没有聘请律师。 | 用户陈述 · 用户叙述；未经独立核实 |\n| 日期未确认 | 承包商否认污染与其有关。 | 用户陈述 · 用户叙述；未经独立核实 |\n\n没有日期的事件要与文书和送达记录核对；系统不计算任何期限。\n\n## 已采取的行动\n未确认是否已有行动；请核对有无提交、回执和律师沟通，避免重复或冲突。\n\n## 本案材料索引\n本报告未保存新案材料的文件名/页码索引；只能依据上面的用户陈述，不能伪造文书名、案号或页码。取得真实文书后再补充。\n\n## 还缺的材料\n- [ ] 完整律师函、被指摘表述及收件记录 — 决定适用程序、管辖及可核实的事实范围；尚无对应原件不能下结论。\n- [ ] 事件、通知、送达及已有请求的日期来源 — 日期需逐项与文书核对，才能由当地律师判断时点与期限；系统不计算期限。\n- [ ] 合适当地律师候选及委托授权范围 — 有律师不等于已取得会面或案卷；未确认委托不分派真实人员。\n\n## 待核问题\n- 现在处于哪个阶段（通知、调查、开庭或其他）？ — 阶段决定能研究哪些程序。\n\n## 冻结来源与命题定位\n引用只支持所列研究命题，不证明用户案情，也不代表团队人工复核；改动命题后须重新核对。\n\n### ICCPR 第 19 条：表达自由 · Article 19(2)–(3), printed p. 178 / PDF p. 8\n表达限制须有法律依据，并为第19(3)列举目的所必要；具体限制是否满足要求尚待核查。\n> provided by law\n原文: https://treaties.un.org/doc/publication/unts/volume%20999/volume-999-i-14668-english.pdf\n适用条件: 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认\n来源核查: 2026-10-09 · 已读官方全文 · Agent 已检查来源，团队未人工复核\n\n### 人权事务委员会一般性意见第 34 号：表达与诽谤 · CCPR/C/GC/34, para. 22, printed / PDF p. 6\n限制需满足第19(3)列举目的及必要性、比例性测试；该段是委员会解释。\n> necessity and proportionality\n原文: https://documents.un.org/api/symbol/access?l=en&s=CCPR/C/GC/34&t=pdf\n适用条件: 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认\n来源核查: 2026-10-09 · 已读官方全文 · Agent 已检查来源，团队未人工复核\n\n### 人权事务委员会一般性意见第 34 号：表达与诽谤 · CCPR/C/GC/34, para. 25, PDF / printed pp. 6–7\n第25段用于研究限制规则是否公开可及、足够明确以及是否赋予不受限制的裁量；先取得实际所引规则及受限表述，不据主题相近宣布国内规则无效。\n> sufficient precision\n原文: https://documents.un.org/api/symbol/access?l=en&s=CCPR/C/GC/34&t=pdf\n适用条件: 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认\n来源核查: 2026-10-09 · 已读官方全文 · Agent 已检查来源，团队未人工复核\n\n### 人权事务委员会一般性意见第 34 号：表达与诽谤 · CCPR/C/GC/34, paras. 33–35, PDF / printed p. 8\n第33–35段要求逐项研究限制的合法目的、较少侵害的替代方式、比例及所称威胁与表达之间的具体直接关联；先后发生不能单独证明因果或限制不合法。\n> must not be overbroad\n原文: https://documents.un.org/api/symbol/access?l=en&s=CCPR/C/GC/34&t=pdf\n适用条件: 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认\n来源核查: 2026-10-09 · 已读官方全文 · Agent 已检查来源，团队未人工复核",
+          "generatedMarkdown": "# 案件时间线与材料索引\n\n程序位置: United Kingdom / 英格兰与威尔士 / 民事 / 不清楚\n目标: 整理发表依据、对方指摘与损害主张，供当地法律顾问评估。\n披露选择: 希望先保持私下处理 · 仅内部整理，未经具体授权不对外发送、不公开姓名。\n内部工作草稿：事实来自使用者和所列材料，未经独立核实；生成或下载不代表已复核、已联系或已提交。\n\n## 本案叙述\n【陌生虚构案件 V-92】社区记者温栩在英格兰和威尔士报道污水排放后，于2026-10-06收到承包商要求道歉的民事律师函。编辑部保存函件及两份检测记录。尚未收到法院文件，也没有聘请律师。承包商否认污染与其有关。\n\n## 事件与日期\n| 日期 | 事件 | 出处 |\n| --- | --- | --- |\n| 2026-10-06 | 【陌生虚构案件 V-92】社区记者温栩在英格兰和威尔士报道污水排放后，于2026-10-06收到承包商要求道歉的民事律师函。 | 用户陈述 · 用户叙述；未经独立核实 |\n| 日期未确认 | 编辑部保存函件及两份检测记录。 | 用户陈述 · 用户叙述；未经独立核实 |\n| 日期未确认 | 尚未收到法院文件，也没有聘请律师。 | 用户陈述 · 用户叙述；未经独立核实 |\n| 日期未确认 | 承包商否认污染与其有关。 | 用户陈述 · 用户叙述；未经独立核实 |\n\n没有日期的事件要与文书和送达记录核对；系统不计算任何期限。\n\n## 已采取的行动\n未确认是否已有行动；请核对有无提交、回执和律师沟通，避免重复或冲突。\n\n## 本案材料索引\n本报告未保存新案材料的文件名/页码索引；只能依据上面的用户陈述，不能伪造文书名、案号或页码。取得真实文书后再补充。\n\n## 还缺的材料\n- [ ] 完整律师函、被指摘表述及收件记录 — 决定适用程序、管辖及可核实的事实范围；尚无对应原件不能下结论。\n- [ ] 事件、通知、送达及已有请求的日期来源 — 日期需逐项与文书核对，才能由当地律师判断时点与期限；系统不计算期限。\n- [ ] 合适当地律师候选及委托授权范围 — 有律师不等于已取得会面或案卷；未确认委托不分派真实人员。\n\n## 待核问题\n- 现在处于哪个阶段（通知、调查、开庭或其他）？ — 阶段决定能研究哪些程序。\n\n## 冻结来源与命题定位\n引用只支持所列研究命题，不证明用户案情，也不代表团队人工复核；改动命题后须重新核对。\n\n### ICCPR 第 19 条：表达自由 · Article 19(2)–(3), printed p. 178 / PDF p. 8\n表达限制须有法律依据，并为第19(3)列举目的所必要；具体限制是否满足要求尚待核查。\n> provided by law\n原文: https://treaties.un.org/doc/publication/unts/volume%20999/volume-999-i-14668-english.pdf\n适用条件: 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认\n来源核查: 2026-10-09 · 已读官方全文 · Agent 已检查来源，团队未人工复核\n\n### 人权事务委员会一般性意见第 34 号：表达与诽谤 · CCPR/C/GC/34, para. 22, printed / PDF p. 6\n限制需满足第19(3)列举目的及必要性、比例性测试；该段是委员会解释。\n> necessity and proportionality\n原文: https://documents.un.org/api/symbol/access?l=en&s=CCPR/C/GC/34&t=pdf\n适用条件: 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认\n来源核查: 2026-10-09 · 已读官方全文 · Agent 已检查来源，团队未人工复核\n\n### 人权事务委员会一般性意见第 34 号：表达与诽谤 · CCPR/C/GC/34, para. 25, PDF / printed pp. 6–7\n第25段用于研究限制规则是否公开可及、足够明确以及是否赋予不受限制的裁量；先取得实际所引规则及受限表述，不据主题相近宣布国内规则无效。\n> sufficient precision\n原文: https://documents.un.org/api/symbol/access?l=en&s=CCPR/C/GC/34&t=pdf\n适用条件: 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认\n来源核查: 2026-10-09 · 已读官方全文 · Agent 已检查来源，团队未人工复核\n\n### 人权事务委员会一般性意见第 34 号：表达与诽谤 · CCPR/C/GC/34, paras. 33–35, PDF / printed p. 8\n第33–35段要求逐项研究限制的合法目的、较少侵害的替代方式、比例及所称威胁与表达之间的具体直接关联；先后发生不能单独证明因果或限制不合法。\n> must not be overbroad\n原文: https://documents.un.org/api/symbol/access?l=en&s=CCPR/C/GC/34&t=pdf\n适用条件: 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认\n来源核查: 2026-10-09 · 已读官方全文 · Agent 已检查来源，团队未人工复核",
+          "inputHash": "258a68dba8befdbe9ee596181fc2358b67ac86396ab28c3ee4ed49f4ea2a330d",
+          "status": "generated",
+          "citationState": "source_linked",
+          "progress": "draft",
+          "progressNote": ""
+        },
+        {
+          "kind": "issue_matrix",
+          "title": "问题—证据—法律依据表",
+          "markdown": "# 问题—证据—法律依据表\n\n程序位置: United Kingdom / 英格兰与威尔士 / 民事 / 不清楚\n目标: 整理发表依据、对方指摘与损害主张，供当地法律顾问评估。\n披露选择: 希望先保持私下处理 · 仅内部整理，未经具体授权不对外发送、不公开姓名。\n内部工作草稿：事实来自使用者和所列材料，未经独立核实；生成或下载不代表已复核、已联系或已提交。\n\n## 本案事实\n- 【陌生虚构案件 V-92】社区记者温栩在英格兰和威尔士报道污水排放后，于2026-10-06收到承包商要求道歉的民事律师函。（用户陈述；用户叙述；未经独立核实）\n- 编辑部保存函件及两份检测记录。（用户陈述；用户叙述；未经独立核实）\n- 尚未收到法院文件，也没有聘请律师。（用户陈述；用户叙述；未经独立核实）\n- 承包商否认污染与其有关。（用户陈述；用户叙述；未经独立核实）\n\n下表是待研究的问题和材料任务，不是本案已成立的结论；表中没有反证不等于不存在反证。\n\n| 问题 | 相关事实与证据 | 条文与命题 | 适用条件 | 还要核对 |\n| --- | --- | --- | --- | --- |\n| 哪些表达受到何种限制？法律根据、所称目的与必要性/比例性的事实材料是什么？ | 【陌生虚构案件 V-92】社区记者温栩在英格兰和威尔士报道污水排放后，于2026-10-06收到承包商要求道歉的民事律师函。编辑部保存函件及两份检测记录。尚未收到法院文件，也没有聘请律师。承包商否认污染与其有关。 | ICCPR 第 19 条：表达自由 · Article 19(2)–(3), printed p. 178 / PDF p. 8: 表达限制须有法律依据，并为第19(3)列举目的所必要；具体限制是否满足要求尚待核查。 | 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认 | 尚未进行具名团队人工复核。 / 须确认事件日期、管辖关系、涉及条款的保留/克减及国内援引方式；缔约不等于国内直接适用。 / 工作准备建议：对应事实及材料索引、事件时间、程序文件；由负责律师判断国内援引。 |\n| 哪些表达受到何种限制？法律根据、所称目的与必要性/比例性的事实材料是什么？ | 【陌生虚构案件 V-92】社区记者温栩在英格兰和威尔士报道污水排放后，于2026-10-06收到承包商要求道歉的民事律师函。编辑部保存函件及两份检测记录。尚未收到法院文件，也没有聘请律师。承包商否认污染与其有关。 | 人权事务委员会一般性意见第 34 号：表达与诽谤 · CCPR/C/GC/34, para. 22, printed / PDF p. 6: 限制需满足第19(3)列举目的及必要性、比例性测试；该段是委员会解释。 | 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认 | 尚未进行具名团队人工复核。 / ICCPR 在本案的适用条件、事实评价及国内程序效果仍须核对。 / 工作准备建议：标注实际受限的表达或程序事实，对照所引段落整理律师问题。 |\n| 哪些表达受到何种限制？法律根据、所称目的与必要性/比例性的事实材料是什么？ | 【陌生虚构案件 V-92】社区记者温栩在英格兰和威尔士报道污水排放后，于2026-10-06收到承包商要求道歉的民事律师函。编辑部保存函件及两份检测记录。尚未收到法院文件，也没有聘请律师。承包商否认污染与其有关。 | 人权事务委员会一般性意见第 34 号：表达与诽谤 · CCPR/C/GC/34, para. 25, PDF / printed pp. 6–7: 第25段用于研究限制规则是否公开可及、足够明确以及是否赋予不受限制的裁量；先取得实际所引规则及受限表述，不据主题相近宣布国内规则无效。 | 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认 | 尚未进行具名团队人工复核。 / ICCPR 在本案的适用条件、事实评价及国内程序效果仍须核对。 / 工作准备建议：标注实际受限的表达或程序事实，对照所引段落整理律师问题。 |\n| 哪些表达受到何种限制？法律根据、所称目的与必要性/比例性的事实材料是什么？ | 【陌生虚构案件 V-92】社区记者温栩在英格兰和威尔士报道污水排放后，于2026-10-06收到承包商要求道歉的民事律师函。编辑部保存函件及两份检测记录。尚未收到法院文件，也没有聘请律师。承包商否认污染与其有关。 | 人权事务委员会一般性意见第 34 号：表达与诽谤 · CCPR/C/GC/34, paras. 33–35, PDF / printed p. 8: 第33–35段要求逐项研究限制的合法目的、较少侵害的替代方式、比例及所称威胁与表达之间的具体直接关联；先后发生不能单独证明因果或限制不合法。 | 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认 | 尚未进行具名团队人工复核。 / ICCPR 在本案的适用条件、事实评价及国内程序效果仍须核对。 / 工作准备建议：标注实际受限的表达或程序事实，对照所引段落整理律师问题。 |\n| 现在处于哪个阶段（通知、调查、开庭或其他）？ | 见上方「本案事实」 | 一般事实核对，不强配法条 | 阶段决定能研究哪些程序。 | 当地律师候选（尚未确认委托） |\n\n## 材料缺口\n- 完整律师函、被指摘表述及收件记录 — 决定适用程序、管辖及可核实的事实范围；尚无对应原件不能下结论。\n- 事件、通知、送达及已有请求的日期来源 — 日期需逐项与文书核对，才能由当地律师判断时点与期限；系统不计算期限。\n- 合适当地律师候选及委托授权范围 — 有律师不等于已取得会面或案卷；未确认委托不分派真实人员。\n\n## 法律与机制条件\n- 联合国人权事务委员会：个人来文资格研究: 第一任择议定书的国家／领土资格 不满足；本人／代理资格及权利范围 待确认；国内救济及可主张例外 待确认；其他国际程序、保留和事件时间 待确认；指定机制、材料与用途的提交授权 不满足；向政府等接收方披露姓名 待确认；公开报告披露姓名 待确认 · 这是人权事务委员会（条约机构），不是人权理事会；不得把内部材料标为已递交。\n- 特别程序：任务与披露条件研究: 条约缔约和用尽国内救济 已确认；具体任务范围与可信详细事实 待确认；指定机制、材料与用途的提交授权 不满足；向政府等接收方披露姓名 待确认；公开报告披露姓名 待确认 · 政府等接收方通常收到姓名；公开报告姓名是另一项选择。安全例外需明确提出并核对；回执不是已行动。\n- 任意拘留问题工作组：独立程序研究: 剥夺自由事实 待确认；普通程序材料及任意性研究 待确认；独立工作方法与紧急行动 待确认；指定机制、材料与用途的提交授权 不满足；向政府等接收方披露姓名 待确认；公开报告披露姓名 待确认 · 向政府传送、意见公开及安全安排需逐项复核；意见不等于国内执行、释放或赔付。\n- 欧洲人权法院：候选资格研究: 欧洲公约国家与事件时间 已确认；区域机制个案受理条件 待确认；指定机制、材料与用途的提交授权 不满足；向政府等接收方披露姓名 待确认；公开报告披露姓名 待确认 · 不生成可直接递交成稿；公开及匿名安排需按法院规则另核。\n\n## 冻结来源与命题定位\n引用只支持所列研究命题，不证明用户案情，也不代表团队人工复核；改动命题后须重新核对。\n\n### ICCPR 第 19 条：表达自由 · Article 19(2)–(3), printed p. 178 / PDF p. 8\n表达限制须有法律依据，并为第19(3)列举目的所必要；具体限制是否满足要求尚待核查。\n> provided by law\n原文: https://treaties.un.org/doc/publication/unts/volume%20999/volume-999-i-14668-english.pdf\n适用条件: 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认\n来源核查: 2026-10-09 · 已读官方全文 · Agent 已检查来源，团队未人工复核\n\n### 人权事务委员会一般性意见第 34 号：表达与诽谤 · CCPR/C/GC/34, para. 22, printed / PDF p. 6\n限制需满足第19(3)列举目的及必要性、比例性测试；该段是委员会解释。\n> necessity and proportionality\n原文: https://documents.un.org/api/symbol/access?l=en&s=CCPR/C/GC/34&t=pdf\n适用条件: 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认\n来源核查: 2026-10-09 · 已读官方全文 · Agent 已检查来源，团队未人工复核\n\n### 人权事务委员会一般性意见第 34 号：表达与诽谤 · CCPR/C/GC/34, para. 25, PDF / printed pp. 6–7\n第25段用于研究限制规则是否公开可及、足够明确以及是否赋予不受限制的裁量；先取得实际所引规则及受限表述，不据主题相近宣布国内规则无效。\n> sufficient precision\n原文: https://documents.un.org/api/symbol/access?l=en&s=CCPR/C/GC/34&t=pdf\n适用条件: 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认\n来源核查: 2026-10-09 · 已读官方全文 · Agent 已检查来源，团队未人工复核\n\n### 人权事务委员会一般性意见第 34 号：表达与诽谤 · CCPR/C/GC/34, paras. 33–35, PDF / printed p. 8\n第33–35段要求逐项研究限制的合法目的、较少侵害的替代方式、比例及所称威胁与表达之间的具体直接关联；先后发生不能单独证明因果或限制不合法。\n> must not be overbroad\n原文: https://documents.un.org/api/symbol/access?l=en&s=CCPR/C/GC/34&t=pdf\n适用条件: 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认\n来源核查: 2026-10-09 · 已读官方全文 · Agent 已检查来源，团队未人工复核",
+          "generatedMarkdown": "# 问题—证据—法律依据表\n\n程序位置: United Kingdom / 英格兰与威尔士 / 民事 / 不清楚\n目标: 整理发表依据、对方指摘与损害主张，供当地法律顾问评估。\n披露选择: 希望先保持私下处理 · 仅内部整理，未经具体授权不对外发送、不公开姓名。\n内部工作草稿：事实来自使用者和所列材料，未经独立核实；生成或下载不代表已复核、已联系或已提交。\n\n## 本案事实\n- 【陌生虚构案件 V-92】社区记者温栩在英格兰和威尔士报道污水排放后，于2026-10-06收到承包商要求道歉的民事律师函。（用户陈述；用户叙述；未经独立核实）\n- 编辑部保存函件及两份检测记录。（用户陈述；用户叙述；未经独立核实）\n- 尚未收到法院文件，也没有聘请律师。（用户陈述；用户叙述；未经独立核实）\n- 承包商否认污染与其有关。（用户陈述；用户叙述；未经独立核实）\n\n下表是待研究的问题和材料任务，不是本案已成立的结论；表中没有反证不等于不存在反证。\n\n| 问题 | 相关事实与证据 | 条文与命题 | 适用条件 | 还要核对 |\n| --- | --- | --- | --- | --- |\n| 哪些表达受到何种限制？法律根据、所称目的与必要性/比例性的事实材料是什么？ | 【陌生虚构案件 V-92】社区记者温栩在英格兰和威尔士报道污水排放后，于2026-10-06收到承包商要求道歉的民事律师函。编辑部保存函件及两份检测记录。尚未收到法院文件，也没有聘请律师。承包商否认污染与其有关。 | ICCPR 第 19 条：表达自由 · Article 19(2)–(3), printed p. 178 / PDF p. 8: 表达限制须有法律依据，并为第19(3)列举目的所必要；具体限制是否满足要求尚待核查。 | 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认 | 尚未进行具名团队人工复核。 / 须确认事件日期、管辖关系、涉及条款的保留/克减及国内援引方式；缔约不等于国内直接适用。 / 工作准备建议：对应事实及材料索引、事件时间、程序文件；由负责律师判断国内援引。 |\n| 哪些表达受到何种限制？法律根据、所称目的与必要性/比例性的事实材料是什么？ | 【陌生虚构案件 V-92】社区记者温栩在英格兰和威尔士报道污水排放后，于2026-10-06收到承包商要求道歉的民事律师函。编辑部保存函件及两份检测记录。尚未收到法院文件，也没有聘请律师。承包商否认污染与其有关。 | 人权事务委员会一般性意见第 34 号：表达与诽谤 · CCPR/C/GC/34, para. 22, printed / PDF p. 6: 限制需满足第19(3)列举目的及必要性、比例性测试；该段是委员会解释。 | 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认 | 尚未进行具名团队人工复核。 / ICCPR 在本案的适用条件、事实评价及国内程序效果仍须核对。 / 工作准备建议：标注实际受限的表达或程序事实，对照所引段落整理律师问题。 |\n| 哪些表达受到何种限制？法律根据、所称目的与必要性/比例性的事实材料是什么？ | 【陌生虚构案件 V-92】社区记者温栩在英格兰和威尔士报道污水排放后，于2026-10-06收到承包商要求道歉的民事律师函。编辑部保存函件及两份检测记录。尚未收到法院文件，也没有聘请律师。承包商否认污染与其有关。 | 人权事务委员会一般性意见第 34 号：表达与诽谤 · CCPR/C/GC/34, para. 25, PDF / printed pp. 6–7: 第25段用于研究限制规则是否公开可及、足够明确以及是否赋予不受限制的裁量；先取得实际所引规则及受限表述，不据主题相近宣布国内规则无效。 | 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认 | 尚未进行具名团队人工复核。 / ICCPR 在本案的适用条件、事实评价及国内程序效果仍须核对。 / 工作准备建议：标注实际受限的表达或程序事实，对照所引段落整理律师问题。 |\n| 哪些表达受到何种限制？法律根据、所称目的与必要性/比例性的事实材料是什么？ | 【陌生虚构案件 V-92】社区记者温栩在英格兰和威尔士报道污水排放后，于2026-10-06收到承包商要求道歉的民事律师函。编辑部保存函件及两份检测记录。尚未收到法院文件，也没有聘请律师。承包商否认污染与其有关。 | 人权事务委员会一般性意见第 34 号：表达与诽谤 · CCPR/C/GC/34, paras. 33–35, PDF / printed p. 8: 第33–35段要求逐项研究限制的合法目的、较少侵害的替代方式、比例及所称威胁与表达之间的具体直接关联；先后发生不能单独证明因果或限制不合法。 | 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认 | 尚未进行具名团队人工复核。 / ICCPR 在本案的适用条件、事实评价及国内程序效果仍须核对。 / 工作准备建议：标注实际受限的表达或程序事实，对照所引段落整理律师问题。 |\n| 现在处于哪个阶段（通知、调查、开庭或其他）？ | 见上方「本案事实」 | 一般事实核对，不强配法条 | 阶段决定能研究哪些程序。 | 当地律师候选（尚未确认委托） |\n\n## 材料缺口\n- 完整律师函、被指摘表述及收件记录 — 决定适用程序、管辖及可核实的事实范围；尚无对应原件不能下结论。\n- 事件、通知、送达及已有请求的日期来源 — 日期需逐项与文书核对，才能由当地律师判断时点与期限；系统不计算期限。\n- 合适当地律师候选及委托授权范围 — 有律师不等于已取得会面或案卷；未确认委托不分派真实人员。\n\n## 法律与机制条件\n- 联合国人权事务委员会：个人来文资格研究: 第一任择议定书的国家／领土资格 不满足；本人／代理资格及权利范围 待确认；国内救济及可主张例外 待确认；其他国际程序、保留和事件时间 待确认；指定机制、材料与用途的提交授权 不满足；向政府等接收方披露姓名 待确认；公开报告披露姓名 待确认 · 这是人权事务委员会（条约机构），不是人权理事会；不得把内部材料标为已递交。\n- 特别程序：任务与披露条件研究: 条约缔约和用尽国内救济 已确认；具体任务范围与可信详细事实 待确认；指定机制、材料与用途的提交授权 不满足；向政府等接收方披露姓名 待确认；公开报告披露姓名 待确认 · 政府等接收方通常收到姓名；公开报告姓名是另一项选择。安全例外需明确提出并核对；回执不是已行动。\n- 任意拘留问题工作组：独立程序研究: 剥夺自由事实 待确认；普通程序材料及任意性研究 待确认；独立工作方法与紧急行动 待确认；指定机制、材料与用途的提交授权 不满足；向政府等接收方披露姓名 待确认；公开报告披露姓名 待确认 · 向政府传送、意见公开及安全安排需逐项复核；意见不等于国内执行、释放或赔付。\n- 欧洲人权法院：候选资格研究: 欧洲公约国家与事件时间 已确认；区域机制个案受理条件 待确认；指定机制、材料与用途的提交授权 不满足；向政府等接收方披露姓名 待确认；公开报告披露姓名 待确认 · 不生成可直接递交成稿；公开及匿名安排需按法院规则另核。\n\n## 冻结来源与命题定位\n引用只支持所列研究命题，不证明用户案情，也不代表团队人工复核；改动命题后须重新核对。\n\n### ICCPR 第 19 条：表达自由 · Article 19(2)–(3), printed p. 178 / PDF p. 8\n表达限制须有法律依据，并为第19(3)列举目的所必要；具体限制是否满足要求尚待核查。\n> provided by law\n原文: https://treaties.un.org/doc/publication/unts/volume%20999/volume-999-i-14668-english.pdf\n适用条件: 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认\n来源核查: 2026-10-09 · 已读官方全文 · Agent 已检查来源，团队未人工复核\n\n### 人权事务委员会一般性意见第 34 号：表达与诽谤 · CCPR/C/GC/34, para. 22, printed / PDF p. 6\n限制需满足第19(3)列举目的及必要性、比例性测试；该段是委员会解释。\n> necessity and proportionality\n原文: https://documents.un.org/api/symbol/access?l=en&s=CCPR/C/GC/34&t=pdf\n适用条件: 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认\n来源核查: 2026-10-09 · 已读官方全文 · Agent 已检查来源，团队未人工复核\n\n### 人权事务委员会一般性意见第 34 号：表达与诽谤 · CCPR/C/GC/34, para. 25, PDF / printed pp. 6–7\n第25段用于研究限制规则是否公开可及、足够明确以及是否赋予不受限制的裁量；先取得实际所引规则及受限表述，不据主题相近宣布国内规则无效。\n> sufficient precision\n原文: https://documents.un.org/api/symbol/access?l=en&s=CCPR/C/GC/34&t=pdf\n适用条件: 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认\n来源核查: 2026-10-09 · 已读官方全文 · Agent 已检查来源，团队未人工复核\n\n### 人权事务委员会一般性意见第 34 号：表达与诽谤 · CCPR/C/GC/34, paras. 33–35, PDF / printed p. 8\n第33–35段要求逐项研究限制的合法目的、较少侵害的替代方式、比例及所称威胁与表达之间的具体直接关联；先后发生不能单独证明因果或限制不合法。\n> must not be overbroad\n原文: https://documents.un.org/api/symbol/access?l=en&s=CCPR/C/GC/34&t=pdf\n适用条件: 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认\n来源核查: 2026-10-09 · 已读官方全文 · Agent 已检查来源，团队未人工复核",
+          "inputHash": "258a68dba8befdbe9ee596181fc2358b67ac86396ab28c3ee4ed49f4ea2a330d",
+          "status": "generated",
+          "citationState": "source_linked",
+          "progress": "draft",
+          "progressNote": ""
+        },
+        {
+          "kind": "lawyer_brief",
+          "title": "给当地律师的一页内部简报",
+          "markdown": "# 给当地律师的一页内部简报\n生成日期: 2026-10-10\n程序位置: United Kingdom / 英格兰与威尔士 / 民事 / 不清楚\n目标: 整理发表依据、对方指摘与损害主张，供当地法律顾问评估。\n披露选择: 希望先保持私下处理 · 仅内部整理，未经具体授权不对外发送、不公开姓名。\n内部工作草稿；事实未经独立核实。生成不是已复核、已联系或已提交。\n\n## 本案摘要\n【陌生虚构案件 V-92】社区记者温栩在英格兰和威尔士报道污水排放后，于2026-10-06收到承包商要求道歉的民事律师函。编辑部保存函件及两份检测记录。尚未收到法院文件，也没有聘请律师。承包商否认污染与其有关。\n现有支持: 用户称尚无律师；尚未确认委托\n简要时序: 2026-10-06 【陌生虚构案件 V-92】社区记者温栩在英格兰和威尔士报道污水排放后，于2026-10-06收到承包商要求道歉的民事律师函。\n已采取行动: 未确认；请先核对已有提交及回执\n\n## 请律师优先判断\n1. 现在处于哪个阶段（通知、调查、开庭或其他）？ — 阶段决定能研究哪些程序。\n2. 请核对：完整律师函、被指摘表述及收件记录 — 决定适用程序、管辖及可核实的事实范围；尚无对应原件不能下结论。\n\n## 相关条款与历史参考\n- ICCPR 第 19 条：表达自由 · Article 19(2)–(3), printed p. 178 / PDF p. 8: 表达限制须有法律依据，并为第19(3)列举目的所必要；具体限制是否满足要求尚待核查。\n- 人权事务委员会一般性意见第 34 号：表达与诽谤 · CCPR/C/GC/34, para. 22, printed / PDF p. 6: 限制需满足第19(3)列举目的及必要性、比例性测试；该段是委员会解释。\n暂无与本案程序和议题相符的已实施历史行动；继续上面的资料准备，不推断策略效果。\n\n## 最需要核对的文书与日期\n- 完整律师函、被指摘表述及收件记录（当地律师候选（尚未确认委托））\n- 事件、通知、送达及已有请求的日期来源（案件协调人核对，当地律师判断）\n- 合适当地律师候选及委托授权范围（当事人或获授权协调人）\n国际原则、当地法律效果和机制资格要分别核对；国际意见不等于国内执行。任何外发须按上面的披露选择另行确认。\n\n—— 以下为引用附件，独立于一页简报正文 ——\n## 冻结来源与命题定位\n引用只支持所列研究命题，不证明用户案情，也不代表团队人工复核；改动命题后须重新核对。\n\n### ICCPR 第 19 条：表达自由 · Article 19(2)–(3), printed p. 178 / PDF p. 8\n表达限制须有法律依据，并为第19(3)列举目的所必要；具体限制是否满足要求尚待核查。\n> provided by law\n原文: https://treaties.un.org/doc/publication/unts/volume%20999/volume-999-i-14668-english.pdf\n适用条件: 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认\n来源核查: 2026-10-09 · 已读官方全文 · Agent 已检查来源，团队未人工复核\n\n### 人权事务委员会一般性意见第 34 号：表达与诽谤 · CCPR/C/GC/34, para. 22, printed / PDF p. 6\n限制需满足第19(3)列举目的及必要性、比例性测试；该段是委员会解释。\n> necessity and proportionality\n原文: https://documents.un.org/api/symbol/access?l=en&s=CCPR/C/GC/34&t=pdf\n适用条件: 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认\n来源核查: 2026-10-09 · 已读官方全文 · Agent 已检查来源，团队未人工复核\n\n### 人权事务委员会一般性意见第 34 号：表达与诽谤 · CCPR/C/GC/34, para. 25, PDF / printed pp. 6–7\n第25段用于研究限制规则是否公开可及、足够明确以及是否赋予不受限制的裁量；先取得实际所引规则及受限表述，不据主题相近宣布国内规则无效。\n> sufficient precision\n原文: https://documents.un.org/api/symbol/access?l=en&s=CCPR/C/GC/34&t=pdf\n适用条件: 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认\n来源核查: 2026-10-09 · 已读官方全文 · Agent 已检查来源，团队未人工复核\n\n### 人权事务委员会一般性意见第 34 号：表达与诽谤 · CCPR/C/GC/34, paras. 33–35, PDF / printed p. 8\n第33–35段要求逐项研究限制的合法目的、较少侵害的替代方式、比例及所称威胁与表达之间的具体直接关联；先后发生不能单独证明因果或限制不合法。\n> must not be overbroad\n原文: https://documents.un.org/api/symbol/access?l=en&s=CCPR/C/GC/34&t=pdf\n适用条件: 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认\n来源核查: 2026-10-09 · 已读官方全文 · Agent 已检查来源，团队未人工复核",
+          "generatedMarkdown": "# 给当地律师的一页内部简报\n生成日期: 2026-10-10\n程序位置: United Kingdom / 英格兰与威尔士 / 民事 / 不清楚\n目标: 整理发表依据、对方指摘与损害主张，供当地法律顾问评估。\n披露选择: 希望先保持私下处理 · 仅内部整理，未经具体授权不对外发送、不公开姓名。\n内部工作草稿；事实未经独立核实。生成不是已复核、已联系或已提交。\n\n## 本案摘要\n【陌生虚构案件 V-92】社区记者温栩在英格兰和威尔士报道污水排放后，于2026-10-06收到承包商要求道歉的民事律师函。编辑部保存函件及两份检测记录。尚未收到法院文件，也没有聘请律师。承包商否认污染与其有关。\n现有支持: 用户称尚无律师；尚未确认委托\n简要时序: 2026-10-06 【陌生虚构案件 V-92】社区记者温栩在英格兰和威尔士报道污水排放后，于2026-10-06收到承包商要求道歉的民事律师函。\n已采取行动: 未确认；请先核对已有提交及回执\n\n## 请律师优先判断\n1. 现在处于哪个阶段（通知、调查、开庭或其他）？ — 阶段决定能研究哪些程序。\n2. 请核对：完整律师函、被指摘表述及收件记录 — 决定适用程序、管辖及可核实的事实范围；尚无对应原件不能下结论。\n\n## 相关条款与历史参考\n- ICCPR 第 19 条：表达自由 · Article 19(2)–(3), printed p. 178 / PDF p. 8: 表达限制须有法律依据，并为第19(3)列举目的所必要；具体限制是否满足要求尚待核查。\n- 人权事务委员会一般性意见第 34 号：表达与诽谤 · CCPR/C/GC/34, para. 22, printed / PDF p. 6: 限制需满足第19(3)列举目的及必要性、比例性测试；该段是委员会解释。\n暂无与本案程序和议题相符的已实施历史行动；继续上面的资料准备，不推断策略效果。\n\n## 最需要核对的文书与日期\n- 完整律师函、被指摘表述及收件记录（当地律师候选（尚未确认委托））\n- 事件、通知、送达及已有请求的日期来源（案件协调人核对，当地律师判断）\n- 合适当地律师候选及委托授权范围（当事人或获授权协调人）\n国际原则、当地法律效果和机制资格要分别核对；国际意见不等于国内执行。任何外发须按上面的披露选择另行确认。\n\n—— 以下为引用附件，独立于一页简报正文 ——\n## 冻结来源与命题定位\n引用只支持所列研究命题，不证明用户案情，也不代表团队人工复核；改动命题后须重新核对。\n\n### ICCPR 第 19 条：表达自由 · Article 19(2)–(3), printed p. 178 / PDF p. 8\n表达限制须有法律依据，并为第19(3)列举目的所必要；具体限制是否满足要求尚待核查。\n> provided by law\n原文: https://treaties.un.org/doc/publication/unts/volume%20999/volume-999-i-14668-english.pdf\n适用条件: 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认\n来源核查: 2026-10-09 · 已读官方全文 · Agent 已检查来源，团队未人工复核\n\n### 人权事务委员会一般性意见第 34 号：表达与诽谤 · CCPR/C/GC/34, para. 22, printed / PDF p. 6\n限制需满足第19(3)列举目的及必要性、比例性测试；该段是委员会解释。\n> necessity and proportionality\n原文: https://documents.un.org/api/symbol/access?l=en&s=CCPR/C/GC/34&t=pdf\n适用条件: 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认\n来源核查: 2026-10-09 · 已读官方全文 · Agent 已检查来源，团队未人工复核\n\n### 人权事务委员会一般性意见第 34 号：表达与诽谤 · CCPR/C/GC/34, para. 25, PDF / printed pp. 6–7\n第25段用于研究限制规则是否公开可及、足够明确以及是否赋予不受限制的裁量；先取得实际所引规则及受限表述，不据主题相近宣布国内规则无效。\n> sufficient precision\n原文: https://documents.un.org/api/symbol/access?l=en&s=CCPR/C/GC/34&t=pdf\n适用条件: 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认\n来源核查: 2026-10-09 · 已读官方全文 · Agent 已检查来源，团队未人工复核\n\n### 人权事务委员会一般性意见第 34 号：表达与诽谤 · CCPR/C/GC/34, paras. 33–35, PDF / printed p. 8\n第33–35段要求逐项研究限制的合法目的、较少侵害的替代方式、比例及所称威胁与表达之间的具体直接关联；先后发生不能单独证明因果或限制不合法。\n> must not be overbroad\n原文: https://documents.un.org/api/symbol/access?l=en&s=CCPR/C/GC/34&t=pdf\n适用条件: 具体法域: 已确认 / 程序类型: 已确认 / 当前缔约状态（独立官方记录）: 已确认 / 事件时管辖、相关保留与国内援引: 待确认\n来源核查: 2026-10-09 · 已读官方全文 · Agent 已检查来源，团队未人工复核",
+          "inputHash": "258a68dba8befdbe9ee596181fc2358b67ac86396ab28c3ee4ed49f4ea2a330d",
+          "status": "generated",
+          "citationState": "source_linked",
+          "progress": "draft",
+          "progressNote": ""
+        }
+      ],
+      "generationMode": "ai_assisted",
+      "limitations": [
+        "三份工作草稿由已确认输入与服务器核查的引用确定性填充；AI仅在标示的分析层参与。",
+        "未完成团队人工或当地律师复核；生成不等于已复核、已发送、已提交或获得帮助。"
+      ]
+    },
+    "sourceDescriptors": [
+      {
+        "sourceId": "ohchr-special-procedures",
+        "category": "mechanism",
+        "reviewStatus": "agent_checked",
+        "applicability": [
+          "跨国研究参考，适用条件需核对。向相关特别程序提交可信的侵害信息由专家酌定；不保证介入、保密例外或救济。WGAD 的个案程序另行核对。",
+          "可由个人、团体、社会组织等提供信息；须属于专家任务范围。",
+          "不要求先穷尽国内救济或国家已缔结某一条约；但不能仅依赖媒体报道。",
+          "分别确认向接收方、公开报告披露姓名的意见；没有授权时仅准备内部材料。"
+        ],
+        "locator": "What are the criteria applied to act on a submission? / Who can submit information, and how?；Consent and confidentiality",
+        "agentCheckedAt": "2026-10-09",
+        "teamReviewedAt": null,
+        "unknowns": [
+          "尚未进行具名团队人工复核。",
+          "尚未选择具体任务授权及评估安全例外；回执不代表采取行动。"
+        ]
+      },
+      {
+        "sourceId": "iccpr-article-19",
+        "category": "international_standard",
+        "reviewStatus": "agent_checked",
+        "applicability": [
+          "跨国研究参考，适用条件需核对。条约义务、当地援引方式和国际申诉资格是不同问题。",
+          "核对国家缔约、相关保留/克减、事件时间和管辖关系。",
+          "具体程序及条款触发事实须分别确认；国内法地位不由条约目录推定。"
+        ],
+        "locator": "Article 19(2)–(3), printed p. 178 / PDF p. 8",
+        "agentCheckedAt": "2026-10-09",
+        "teamReviewedAt": null,
+        "unknowns": [
+          "尚未进行具名团队人工复核。",
+          "须确认事件日期、管辖关系、涉及条款的保留/克减及国内援引方式；缔约不等于国内直接适用。"
+        ]
+      },
+      {
+        "sourceId": "hrc-general-comment-34",
+        "category": "international_standard",
+        "reviewStatus": "agent_checked",
+        "applicability": [
+          "委员会对 ICCPR 的解释文件，与条约正文和当地法律地位分别核对；不是本案裁决。",
+          "核对 ICCPR 适用性和所引段落上下文。"
+        ],
+        "locator": "CCPR/C/GC/34, para. 22, printed / PDF p. 6；CCPR/C/GC/34, para. 47, printed / PDF p. 12；CCPR/C/GC/34, para. 25, PDF / printed pp. 6–7；CCPR/C/GC/34, paras. 33–35, PDF / printed p. 8",
+        "agentCheckedAt": "2026-10-09",
+        "teamReviewedAt": null,
+        "unknowns": [
+          "尚未进行具名团队人工复核。",
+          "ICCPR 在本案的适用条件、事实评价及国内程序效果仍须核对。"
+        ]
+      },
+      {
+        "sourceId": "wgad-submission",
+        "category": "mechanism",
+        "reviewStatus": "agent_checked",
+        "applicability": [
+          "供真实剥夺自由事项的条件性研究；纯民事费用压力、一般平台处罚或未拘押表达案件不能仅凭主题相近使用此机制。",
+          "须有可核对的剥夺自由事实及任意性理由，不凭拘押存在直接定性。",
+          "核查与其他个案机制的协调；不能照搬一般特别程序的全部操作规则。"
+        ],
+        "locator": "A/HRC/36/38, paras. 9–12, printed / PDF pp. 3–4；A/HRC/36/38, paras. 22–23, printed / PDF p. 5",
+        "agentCheckedAt": "2026-10-09",
+        "teamReviewedAt": null,
+        "unknowns": [
+          "尚未进行具名团队人工复核。",
+          "现用问卷、递交渠道及是否存在随后程序更新未完整核查；实际提交前重新确认。",
+          "需确认确有剥夺自由、代表授权、披露风险及其他机制已受理情况。"
+        ]
+      },
+      {
+        "sourceId": "hrc-individual-communications",
+        "category": "mechanism",
+        "reviewStatus": "agent_checked",
+        "applicability": [
+          "仅针对接受相应程序的国家，须核对受害人资格、国内救济、重复程序及保留。",
+          "被诉国须接受第一任择议定书；英国不符合该项，不应推荐。",
+          "KZ/TN 的缔约身份不免除管辖、时间、受害人、国内救济及重复程序检查。"
+        ],
+        "locator": "First Optional Protocol, Articles 1–5, printed pp. 302–303 / PDF pp. 63–64",
+        "agentCheckedAt": "2026-10-09",
+        "teamReviewedAt": null,
+        "unknowns": [
+          "尚未进行具名团队人工复核。",
+          "本案受害人/代表资格、救济有效性与进展、重复程序、事件时间仍未知；不保证可受理。",
+          "当前表格和工作规则尚未逐项复核；本记录不是可直接递交的操作清单。"
+        ]
+      },
+      {
+        "sourceId": "ecthr-applicants",
+        "category": "mechanism",
+        "reviewStatus": "agent_checked",
+        "applicability": [
+          "仅在欧洲人权公约的国家、时间、管辖及受害人范围内考虑。",
+          "由律师核对国内救济、期限计算、重复程序及 Rule 47 文件要求。",
+          "本工具不计算申请期限，不承诺立案。"
+        ],
+        "locator": "Apply to the Court — How to make a valid application；Sending applications（不是Rule47全文核实）",
+        "agentCheckedAt": "2026-10-09",
+        "teamReviewedAt": null,
+        "unknowns": [
+          "尚未进行具名团队人工复核。",
+          "Rule47 PDF 初次可识别但重复正文读取失败；未据它填写完整材料清单或计算期限。",
+          "须由律师审查国内救济、最终裁决和送达日期、受害人资格、国家责任、重复程序及期限规则。"
+        ]
+      },
+      {
+        "sourceId": "web-1",
+        "category": "public_web",
+        "reviewStatus": "unreviewed",
+        "applicability": [
+          "Unverified public supplement; independent review required."
+        ],
+        "locator": "https://supremecourt.uk/uploads/uksc_2020_0122_press_summary_3e62011350.pdf?utm_source=openai",
+        "agentCheckedAt": null,
+        "teamReviewedAt": null,
+        "unknowns": [
+          "Applicability and factual support need review."
+        ]
+      }
+    ]
+  },
+  "domain": {
+    "status": "in_scope",
+    "reason": "用户确认法律事项与新闻或表达活动相关；具体事实与法律适用仍须核对。",
+    "clarification": null,
+    "resourceIds": []
+  },
+  "jurisdiction": {
+    "countryCode": "GB",
+    "country": "United Kingdom",
+    "jurisdictionCode": "england_wales",
+    "legalSystem": "England and Wales",
+    "recognized": true
+  },
+  "execution": {
+    "requestId": "0a8108ff-5a21-40b3-9291-b536ff6c488f",
+    "inputVersion": 1,
+    "operation": "initial",
+    "round": 1,
+    "stages": [
+      {
+        "stage": "search",
+        "elapsedMs": 13004,
+        "model": "gpt-6.1-sol",
+        "responseId": "resp_005f55f278c73591016aca62fce48887d2909750ccd393bb90",
+        "inputTokens": 13202,
+        "outputTokens": 565,
+        "toolCalls": 1,
+        "status": "completed"
+      },
+      {
+        "stage": "reading",
+        "elapsedMs": 25688,
+        "model": "gpt-6.1-sol",
+        "responseId": "resp_0b9ffd90fb89ce0b016aca630980fc87d29726747290608154",
+        "inputTokens": 13327,
+        "outputTokens": 1241,
+        "toolCalls": 1,
+        "status": "completed"
+      },
+      {
+        "stage": "synthesis",
+        "elapsedMs": 27354,
+        "model": "gpt-6.1-sol",
+        "responseId": "resp_0e1a728cafd0fd55016aca63233e0087d2bdd69e2573d98bd2",
+        "inputTokens": 38404,
+        "outputTokens": 1545,
+        "toolCalls": 0,
+        "status": "completed"
+      }
+    ],
+    "failureStage": null,
+    "controlledSearch": false,
+    "reservedCostUsd": null,
+    "actualCostUsd": null
+  }
+}
