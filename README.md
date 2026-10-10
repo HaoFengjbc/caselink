@@ -61,4 +61,4 @@ Repository descriptions and current developer documentation are in English. Orig
 
 ## Project status and rights
 
-CaseLink is an independent research prototype. It does not claim official TrialWatch endorsement and does not replace advice from qualified local counsel. The repository is private. No open-source license has been selected; source reports, excerpts, translations, and third-party materials retain their separate rights.
+CaseLink is an independent research prototype. It does not claim official TrialWatch endorsement and does not replace advice from qualified local counsel. The repository is public for project evaluation. No open-source license has been selected; source reports, excerpts, translations, and third-party materials retain their separate rights.

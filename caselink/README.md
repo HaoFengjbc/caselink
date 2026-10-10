@@ -158,4 +158,4 @@ The checked-in corpus contains 22 historical cases, 21 source documents, 187 evi
 
 Source status, temporal cutoffs, conflicts, and missing information are part of the data. The corpus is not a global-law database. A source being publicly accessible, machine-checked, or cited by a successful test does not establish redistribution rights or professional legal review.
 
-No open-source license has been selected. The repository is private. Source reports, quotations, translations, and third-party content have rights separate from the application code.
+No open-source license has been selected. The repository is public for project evaluation. Source reports, quotations, translations, and third-party content have rights separate from the application code.
