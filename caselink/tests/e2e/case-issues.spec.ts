@@ -40,3 +40,20 @@ test('key questions show facts, three kinds of basis, the analysis and links fro
  const text=await readFile((await (await downloading).path())!,'utf8');
  expect(errors).toEqual([]);expect(text).toContain('## 关键问题');
 });
+
+// Same rule analysis; the key questions cite no local law, and the note says only that.
+test('says plainly when no local law was found',async({page})=>{
+ await page.route('**/api/analyze',async route=>{
+  const response=await route.fetch({postData:JSON.stringify({...route.request().postDataJSON(),forceRule:true})});const result=await response.json();
+  const binding=result.legalResearch.bindings[0];
+  const caseIssues=[{issueId:'issue-1',question:'这篇采购报道属于受保护的公共事务讨论吗？',origin:'ai',facts:[{text:'文章讨论市政采购。',origin:'user',pageLabel:null}],
+   authorities:[{kind:'international',check:'catalog',title:'ICCPR 第 19 条：表达自由',locator:'Article 19(2)–(3)',point:binding.claim,quote:'provided by law',url:'https://www.ohchr.org/en/instruments-mechanisms/instruments/international-covenant-civil-and-political-rights',hostname:'www.ohchr.org',bindingId:binding.bindingId,caseId:null,evidenceIds:[]}],
+   application:'可围绕公共事务讨论整理抗辩材料。',nextStep:'当地律师核对抗辩要件。'}];
+  result.caseIssues=caseIssues;result.snapshot.caseIssues=caseIssues;
+  await route.fulfill({response,json:result});
+ });
+ await page.goto('/');await page.getByRole('button',{name:'体验示例案件'}).click();await page.getByRole('button',{name:/记者受限/}).click();await page.getByRole('button',{name:'载入示例并查看案情'}).click();
+ await page.getByRole('button',{name:'查找案例并生成行动参考'}).click();await expect(page).toHaveURL(/\/analysis$/);
+ const issues=page.getByRole('region',{name:'本案的关键问题'});
+ await expect(issues.getByText('每个问题写明事实、依据、对本案的意义和下一步。这次没有找到本地法律依据，本地法请当地律师确认。',{exact:true})).toBeVisible();
+});
