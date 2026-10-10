@@ -14,6 +14,11 @@ const NUMBERED=/第\s*[0-9一二三四五六七八九十百千]+(?:[（(][0-9一
 // Same bounded checks the action cards use: no definite findings of illegality and no promised outcomes.
 const DEFINITE=/(?:本案|本次拘押|该拘押|该起诉|该限制|该判决|定罪)(?:当然|显然|明确|已|已经|必然|确定|属于|构成|是|已构成){0,3}(?:违法|非法|违宪|违反|无效)|\b(?:this|the current)\s+(?:detention|prosecution|restriction|case|conviction)\s+(?:is|clearly is|definitely is)\s+(?:unlawful|illegal|unconstitutional|void)\b/i;
 const PROMISE=/(?:一定|必然|肯定|保证|确保)(?:会|能|可以)?(?:胜诉|无罪|撤销|撤诉|获释|成功)|\b(?:will|guarantee[sd]?|certainly)\s+(?:win|succeed|be (?:acquitted|released|overturned))\b/i;
+// Each fact is tagged with its source on the page, so a “据用户叙述，” prefix only repeats the tag.
+const SOURCE_PREFIX=/^(?:据|根据|按)?(?:用户|当事人|你|您|本人)的?(?:叙述|陈述|所述|自述|称|表示|说)[，,：:]\s*|^(?:according to|as stated by|per) (?:the )?(?:user|person|client)(?:['’]s (?:account|statement))?[,:]\s*/i;
+const plainFact=(text:string)=>text.replace(SOURCE_PREFIX,'').trim()||text;
+// The prompt's internal word for a catalog entry (“绑定”, binding) never reaches the page.
+const plainText=(text:string)=>text.replace(/(?:该|此|这个|这一|本)项?绑定/g,'该条').replace(/\b(?:this|the) binding\b/gi,'this provision');
 const PUBLISH_NOW=/(?:立即|直接|现在就|马上)(?:向媒体|发布|公开|发帖|联系媒体)|\b(?:immediately|right away|now)\b[^.\n]{0,20}?\b(?:publish|post|go public|contact (?:the )?(?:media|press))\b/i;
 
 function binding(research:LegalResearch,id:string|null):LegalBinding|undefined{return id?research.bindings.find(b=>b.bindingId===id&&b.applicability!=='excluded'&&!b.conditions.some(c=>c.status==='not_met')):undefined;}
@@ -61,8 +66,8 @@ export async function buildCaseIssues(output:ModelAnalysisOutput,options:{input:
  for(const issue of drafts){
   const facts=issue.facts.flatMap((fact):CaseIssue['facts']=>{
    if(fact.materialItemId){const item=materials?.items.find(i=>i.id===fact.materialItemId);return item?[{text:fact.text,origin:'document' as const,pageLabel:materialPages(item,documents,locale)}]:[];}
-   if(fact.factId)return input.intake?.facts.some(f=>f.id===fact.factId)?[{text:fact.text,origin:'user' as const,pageLabel:null}]:[];
-   return [{text:fact.text,origin:'user' as const,pageLabel:null}];
+   if(fact.factId)return input.intake?.facts.some(f=>f.id===fact.factId)?[{text:plainFact(fact.text),origin:'user' as const,pageLabel:null}]:[];
+   return [{text:plainFact(fact.text),origin:'user' as const,pageLabel:null}];
   });
   const authorities:CaseIssueAuthority[]=[];
   for(const a of issue.authorities){
@@ -78,11 +83,11 @@ export async function buildCaseIssues(output:ModelAnalysisOutput,options:{input:
    if(source&&quote)authorities.push({kind:'local',check:'quote_matched',title:source.title,locator:a.locator,point:a.point,quote,url:source.url,hostname:source.hostname,bindingId:null,caseId:null,evidenceIds:[]});
   }
   if(!facts.length&&!authorities.length)continue;
-  const application=issue.application.trim();
+  const application=plainText(issue.application.trim());
   const usable=authorities.length>0&&application&&!DEFINITE.test(application)&&!PROMISE.test(application)&&citesOnlyKnownProvisions(application,authorities);
   const nextStep=issue.nextStep.trim();
   const restricted=input.publicity!=='public'||!!input.intake?.disclosureDetails.trim();
-  issues.push(CaseIssueSchema.parse({issueId:issue.issueId,question:issue.question,facts,authorities:authorities.map(a=>({...a,point:DEFINITE.test(a.point)||PROMISE.test(a.point)?tr(locale,'与本问题相关；具体适用须由律师判断。','Relevant to this question; a lawyer must judge how it applies.'):a.point})),application:usable?application:null,nextStep:nextStep&&!(restricted&&PUBLISH_NOW.test(nextStep))?nextStep:null,origin:'ai'}));
+  issues.push(CaseIssueSchema.parse({issueId:issue.issueId,question:issue.question,facts,authorities:authorities.map(a=>({...a,point:DEFINITE.test(a.point)||PROMISE.test(a.point)?tr(locale,'与本问题相关；具体适用须由律师判断。','Relevant to this question; a lawyer must judge how it applies.'):plainText(a.point)})),application:usable?application:null,nextStep:nextStep&&!(restricted&&PUBLISH_NOW.test(nextStep))?nextStep:null,origin:'ai'}));
  }
  if(!issues.some(issue=>issue.authorities.length))return fallback();
  const kept=new Set(issues.map(issue=>issue.issueId));

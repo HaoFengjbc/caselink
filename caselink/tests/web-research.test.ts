@@ -38,7 +38,8 @@ describe('research queries contain only canonical labels',()=>{
   i.background.description='AliceSensitive alice@example.net was accused of defamation on 2026-10-08.';
   i.background.personType='other';const q=buildResearchQuery(i);const body=JSON.stringify(q);
   expect(body).not.toMatch(/AliceSensitive|555-0109|Hidden Road|2026-10-08|alice@example/);
-  expect(q.searchTerms.join(' ')).toMatch(/journalism/);expect(q.searchTerms.join(' ')).not.toMatch(/fair trial|defamation/);
+  // The stated subject travels only as the server's own label.
+  expect(q.searchTerms.join(' ')).toMatch(/journalism/);expect(q.searchTerms.join(' ')).toMatch(/defamation/);expect(q.searchTerms.join(' ')).not.toMatch(/fair trial/);
   expect(q.plan.coverage).toBe('limited');
  });
  it('unknown country uses visibly broad comparative terms without forwarding free jurisdiction',()=>{

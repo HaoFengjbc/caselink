@@ -25,6 +25,22 @@ function libertySignals(text:string,explicitFlag:boolean,explicitlyNone:boolean)
  return {libertyConcern,detentionExplicit,detained:libertyConcern};
 }
 
+/**
+ * Defamation is a research question when a clause names it without negating it (“也不是诽谤” does not count),
+ * or when one clause has a lawyer's letter demanding an apology, retraction, removal or correction.
+ */
+export function defamationSignals(text:string){
+ const clauses=text.split(/[。；;,.，!?！？\n]+|\bbut\b|但是|但/).map(value=>value.trim()).filter(Boolean);
+ const named=/(?:诽谤|誹謗|名誉|名譽|声誉|聲譽|\bdefamation\b|\bdefamatory\b|\blibel(?:lous)?\b|\bslander\b)/i;
+ const letter=/(?:律师函|律師函|律师信|律師信|\bdemand letter\b|\bletter (?:before|of) claim\b|\bpre-action letter\b|\bcease and desist\b)/i;
+ const demand=/(?:道歉|致歉|撤回|撤稿|删除|刪除|删帖|更正|澄清|\bapolog|\bretract|\bwithdraw|\btake down\b|\bremove\b|\bcorrection\b)/i;
+ const negated=/(?:不是|并非|並非|不涉及|没有|沒有|不属于|不屬於|无关|無關|并未|並未|从未|從未|不构成|不構成|\bnot\b|\bno\b|\bnever\b|\bisn['’]t\b|\bwasn['’]t\b|\bnor\b)[^。\n]{0,8}$/i;
+ const affirmed=(clause:string,pattern:RegExp)=>{const match=pattern.exec(clause);return !!match&&!negated.test(clause.slice(0,match.index));};
+ const defamation=clauses.some(clause=>affirmed(clause,named)||(affirmed(clause,letter)&&affirmed(clause,demand)));
+ const online=defamation&&/(?:网络|網路|网上|網上|在线|線上|网站|網站|网页|網頁|社交媒体|社交媒體|社群媒體|帖子|推文|脸书|臉書|\bonline\b|\binternet\b|\bcyber|\bwebsite\b|\bsocial media\b)/i.test(text);
+ return {defamation,online};
+}
+
 /** Select research questions from confirmed fields, never from fixture IDs or nationality alone. */
 export function issueSignals(input:NewCaseInput){
  const text=[input.background.description,input.intake?.narrative??'',...(input.intake?.facts.map(f=>f.text)??[]),...(input.intake?.materials?.items.map(item=>item.text)??[])].join('\n');
@@ -35,9 +51,9 @@ export function issueSignals(input:NewCaseInput){
  }
  const expression=input.intake?.expression!=='no'&&(input.intake?.expression==='yes'||input.currentProblems.includes('expression_restricted')||input.background.activities.some(a=>['reporting','investigation_report','social_media','repost'].includes(a)));
  const liberty=libertySignals(text,input.currentProblems.includes('detained'),input.currentProblems.includes('none'));
- const defamation=/(?:诽谤|誹謗|名誉|名譽|\bdefamation\b|\bdefamatory\b|\blibel\b|\bslander\b)/i.test(text);
+ const {defamation,online}=defamationSignals(text);
  const defence=input.currentProblems.some(p=>['lawyer_access','file_access'].includes(p))||['trial','appeal','postjudgment'].includes(input.stage);
- return {text,proceeding,expression,...liberty,defamation,defence,jurisdiction:resolveJurisdiction(input)};
+ return {text,proceeding,expression,...liberty,defamation,online,defence,jurisdiction:resolveJurisdiction(input)};
 }
 
 export function selectIssueLegalRefs(input:NewCaseInput,_locale:Locale='zh'):IssueLegalRef[]{

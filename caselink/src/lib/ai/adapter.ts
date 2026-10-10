@@ -2,7 +2,7 @@ import {recordModel,type ProviderUsage} from './execution';
 import OpenAI from 'openai';
 import { zodTextFormat } from 'openai/helpers/zod';
 import { ModelAnalysisOutputSchema, WebModelAnalysisOutputSchema, type WebModelAnalysisOutput, type NewCaseInput, type ModelAnalysisOutput } from '../contracts';
-import { type AnalysisContext, validateModelOutput, lockUnspecifiedGoalActions, validateWebModelOutput, lockWebUnspecifiedGoalActions } from '../evidence/validate';
+import { type AnalysisContext, validateModelOutput, lockUnspecifiedGoalActions, validateWebModelOutput, lockWebUnspecifiedGoalActions, dropIneligibleResources } from '../evidence/validate';
 import { type MatchedCase } from '../retrieval/match';
 import { type ServerConfig } from './config';
 import { AnalysisError, publicError } from './errors';
@@ -21,13 +21,13 @@ export const openAITransport:ModelTransport=async({config,data,signal,instructio
 export async function generateLive(input:NewCaseInput,context:AnalysisContext,matches:MatchedCase[],config:ServerConfig,signal?:AbortSignal,transport:ModelTransport=openAITransport,locale:Locale='zh'):Promise<ModelAnalysisOutput>{
   input=normalizeConfirmedGoal(input);
   const raw=await generateStructured(config,buildPromptData(input,context,matches,locale),systemPrompt(locale),'corpus',signal,transport);
-  return validateModelOutput(lockUnspecifiedGoalActions(raw,input,locale),input,context,locale);
+  return validateModelOutput(lockUnspecifiedGoalActions(dropIneligibleResources(raw,input),input,locale),input,context,locale);
 }
 
 export async function generateWebLive(input:NewCaseInput,context:AnalysisContext,matches:MatchedCase[],research:WebResearch,config:ServerConfig,signal?:AbortSignal,transport:ModelTransport=openAITransport,locale:Locale='zh'):Promise<WebModelAnalysisOutput>{
   input=normalizeConfirmedGoal(input);
   const raw=await generateStructured(config,buildWebPromptData(input,context,matches,research,locale),webSystemPrompt(locale)+(research.sources.every(source=>!source.pageOpened)?'\n'+CONTROLLED_SNIPPET_NOTICE:''),'web',signal,transport);
-  return validateWebModelOutput(lockWebUnspecifiedGoalActions(raw,input,locale),input,context,research,locale);
+  return validateWebModelOutput(lockWebUnspecifiedGoalActions(dropIneligibleResources(raw,input),input,locale),input,context,research,locale);
 }
 
 async function generateStructured(config:ServerConfig,data:string,instructions:string,outputMode:'corpus'|'web',signal:AbortSignal|undefined,transport:ModelTransport):Promise<unknown>{

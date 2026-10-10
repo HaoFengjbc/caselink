@@ -11,7 +11,7 @@ import { AnalysisResultSchema, NewCaseInputSchema, SCHEMA_VERSION, CORPUS_VERSIO
 import { retrieveCases } from '../retrieval/match';
 import { retrieveNarrativeCandidates } from '../retrieval/candidates';
 import { buildRuleReference } from '../retrieval/rules';
-import { contextFor, collectSources, validateModelOutput, validateWebModelOutput } from '../evidence/validate';
+import { contextFor, eligibleContext, collectSources, validateModelOutput, validateWebModelOutput } from '../evidence/validate';
 import { presetOutput } from '../../../data/demo/presets';
 import { cases,followups } from '../corpus';
 import {buildNextSteps,validateNextStepLinks} from '../next-steps';
@@ -47,10 +47,11 @@ export async function analyzeInput(raw:NewCaseInput,options:{forceRule?:boolean;
   // unrelated, no library case is offered as a comparison.
   const domain=assessDomain(input,locale),jurisdiction=resolveJurisdiction(input);
   if(domain.status!=='in_scope'||legalProceeding(input)!=='criminal')matches=[];
-  const context=contextFor(matches);
+  // The model sees only catalog resources this case could use; another country's law or an entry the person does not qualify for is never offered.
+  const context=eligibleContext(contextFor(matches),input);
   const legalResearch=buildLegalResearch(input,locale);
   let mode:AnalysisResult['mode'];let output:ModelAnalysisOutput|WebModelAnalysisOutput;let webResearch:WebResearch|undefined;
-  let preparationFailure:string|undefined;
+  let preparationFailure:string|undefined,preparationReason:string|undefined;
   let attempts=0;const recovery:NonNullable<AnalysisResult['researchAssessment']>['recovery']='not_needed';
   if(options.forceRule){mode='rule_reference';output=buildRuleReference(input,matches,locale);}
   else if(config!.mode==='demo'){
@@ -78,6 +79,8 @@ export async function analyzeInput(raw:NewCaseInput,options:{forceRule?:boolean;
     }catch(error){
       if(!options.allowPreparationFallback||options.signal?.aborted||(error instanceof AnalysisError&&error.code==='CANCELLED'))throw error;
       preparationFailure=error instanceof AnalysisError?error.code:'UPSTREAM_ERROR';
+      // Validation messages are fixed server wording; showing which check failed avoids another paid run to find out.
+      if(error instanceof AnalysisError&&error.code==='INVALID_MODEL_OUTPUT')preparationReason=error.message.slice(0,160);
       mode='rule_reference';output=buildRuleReference(input,matches,locale);
     }
   }
@@ -128,7 +131,7 @@ export async function analyzeInput(raw:NewCaseInput,options:{forceRule?:boolean;
   checkCancelled();
   const nextSteps=buildNextSteps(input,output,legalResearch,followups,locale);
   const whatsNext=buildWhatsNext(input,output,legalResearch,followups,inputHash,mode,locale);
-  if(preparationFailure){const note=locale==='en'?`AI organization did not complete (${preparationFailure}). These are case-filled rule drafts, not successful AI output.`:`AI 整理未完成（${preparationFailure}）；已保留本案填充的规则材料，不计真实 AI 成功。`;output.limitations=[note,...output.limitations].slice(0,12);whatsNext.limitations.unshift(note);}
+  if(preparationFailure){const note=locale==='en'?`AI organization did not complete (${preparationFailure}). These are case-filled rule drafts, not successful AI output.`:`AI 整理未完成（${preparationFailure}）${preparationReason?`：${preparationReason.replace(/[。；;]+$/,'')}`:''}；已保留本案填充的规则材料，不计真实 AI 成功。`;output.limitations=[note,...output.limitations].slice(0,12);whatsNext.limitations.unshift(note);}
   const followupCaseIds=new Set([...output.comparableCases.map(c=>c.caseId),...nextSteps.flatMap(step=>step.history.map(h=>h.caseId)),...whatsNext.priorities.flatMap(task=>task.history.map(h=>h.caseId))]);
   const selectedFollowups=followups.filter(f=>followupCaseIds.has(f.caseId));
   const nextStepErrors=validateNextStepLinks(nextSteps,output,legalResearch,selectedFollowups,locale);

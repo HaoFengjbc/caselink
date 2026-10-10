@@ -69,6 +69,13 @@ describe('key questions are checked before display',()=>{
   const {issues}=await buildCaseIssues(output,{input:value,research:legal,context,locale:'zh',mode:'live_ai',verify:vi.fn()});
   expect(issues[0]!.application).toBeNull();
  });
+ it('drops the “据用户叙述” prefix and the internal word “绑定” from what the page shows',async()=>{
+  const {value,legal,context,output}=base();const binding=legal.bindings.find(b=>b.applicability!=='excluded'&&!b.conditions.some(c=>c.status==='not_met'))!;
+  output.issues=[issue({facts:[{text:'据用户叙述，文章于 2012 年 5 月发表。',materialItemId:null,factId:null}],authorities:[{kind:'international',bindingId:binding.bindingId,sourceId:null,quote:null,locator:null,caseId:null,evidenceIds:[],point:'该绑定要求限制须有法律依据。'}]})];
+  const {issues}=await buildCaseIssues(output,{input:value,research:legal,context,locale:'zh',mode:'live_ai',verify:vi.fn()});
+  expect(issues[0]!.facts[0]!.text).toBe('文章于 2012 年 5 月发表。');
+  expect(issues[0]!.authorities[0]!.point).toBe('该条要求限制须有法律依据。');
+ });
  it('drops facts that point at material that does not exist',async()=>{
   const {value,legal,context,output}=base();const binding=legal.bindings.find(b=>b.applicability!=='excluded'&&!b.conditions.some(c=>c.status==='not_met'))!;
   output.issues=[issue({facts:[{text:'虚构的材料事实。',materialItemId:'material-missing',factId:null},{text:'用户叙述。',materialItemId:null,factId:null}],authorities:[{kind:'international',bindingId:binding.bindingId,sourceId:null,quote:null,locator:null,caseId:null,evidenceIds:[],point:'相关。'}]})];

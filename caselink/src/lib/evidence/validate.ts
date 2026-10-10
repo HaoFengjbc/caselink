@@ -131,16 +131,11 @@ function validateModelCore(raw:unknown,input:NewCaseInput,context:AnalysisContex
     if(action.goal!==input.primaryGoal)fail('生成方案更改了用户的当前目标。');
     if(action.resourceIds.some(id=>!context.resources.some(r=>r.resourceId===id)))fail('生成方案引用了未经提供的机构入口。');
     for(const id of action.resourceIds){
-      const resource=context.resources.find(r=>r.resourceId===id)!;const audit=resource.sourceAudit;
-      const jurisdiction=legalJurisdiction(input),country=jurisdiction.startsWith('GB-')?'GB':jurisdiction;
-      if(audit?.jurisdictionChecks?.some(c=>c.jurisdiction===country&&c.status==='not_met'))fail('本案不满足该资源的国家或机制资格，不能推荐为适用依据。');
-      if(['domestic_law','procedure_rule'].includes(resource.type??'')&&!audit?.jurisdiction.includes(jurisdiction))fail('当地规则与本案具体法域不匹配。');
-      const proceeding=legalProceeding(input);
-      if(audit&&proceeding==='civil'&&!audit.proceedings.includes('civil')&&!audit.proceedings.includes('all'))fail('不能将仅刑事或拘押程序资源推荐为民事案件依据。');
+      const resource=context.resources.find(r=>r.resourceId===id)!;
+      const ineligible=resourceIneligibility(resource,input);if(ineligible)fail(ineligible);
       if(['domestic_law','procedure_rule','treaty','interpretation'].includes(resource.type??'')&&!(action.legalCitations??[]).some(c=>c.resourceId===id))fail('法律依据必须对应本行动中的具体判断和条款，不能仅附资源ID。');
     }
 
-    if(action.resourceIds.includes('cpj-emergency-help')&&input.background.personType!=='journalist'&&!input.background.activities.some(a=>a==='reporting'||a==='investigation_report'))fail('当前资料没有确认新闻工作背景，不能默认适用记者协助入口。');
     if(action.requiresPublicity&&publicityRestricted&&action.applicability==='priority')fail(disclosureNotes?'你提供了具体披露说明或补充回答；总体可公开不能覆盖这些边界。请先逐项确认可披露内容、接收对象、方式与同意范围。':'生成方案违反了当前公开限制。');
     if(privateScope&&action.requiresPublicity&&action.applicability!=='defer')fail('具体披露边界尚未核实时，公开传播必须暂缓；只能先内部梳理并确认同意范围。');
     if(publicityRestricted&&/(?:立即|直接|现在就|马上)(?:向媒体|发布|公开|发帖|联系媒体)/.test(text))fail('生成步骤要求立即公开，违反了用户的公开限制。');
@@ -148,6 +143,7 @@ function validateModelCore(raw:unknown,input:NewCaseInput,context:AnalysisContex
     if(publicityRestricted&&(!action.requiresPublicity||disclosureNotes)){
       for(const m of action.steps.join('\n').matchAll(/(?:向媒体发布|对外发布|发布声明|公开传播|媒体传播|发布案情|联系媒体|公开报道|公开.{0,6}(?:姓名|名字|身份|联系方式))/g)){
         const before=action.steps.join('\n').slice(Math.max(0,(m.index??0)-12),m.index);
+        if(m[0]==='公开报道'&&publishedReportNoun(action.steps.join('\n'),m.index??0))continue;
         if(!/(?:不|勿|禁止|暂缓)[^。\n]{0,10}$/.test(before))fail('行动步骤包含未标识的公开传播，违反当前公开限制。');
       }
       failUnlessNegated(action.steps.join('\n'),/\b(?:press release|public statement|publish(?:ing)? (?:the )?(?:case|story|details|statement|names?|identit(?:y|ies)|contact details)|go(?:ing)? public|media outreach|contact(?:ing)? (?:the )?(?:media|press|journalists)|public campaign|publici[sz]e|social media campaign)\b/gi,'行动步骤包含公开传播，具体披露边界尚未核实，不能据此实施。');
@@ -185,6 +181,38 @@ function validateModelCore(raw:unknown,input:NewCaseInput,context:AnalysisContex
     result.limitations=[note,...result.limitations.filter(item=>item!==note)].slice(0,12);
   }
   return result;
+}
+
+/** In a reporting case “公开报道” is often the article already published (涉案的公开报道、报道原文), not a step that publishes anything. */
+function publishedReportNoun(text:string,index:number):boolean{
+  return /(?:涉案|原|该|这篇|那篇|此篇|本篇|这份|那份|此前|已经|已|相关|被诉|被控|争议|所涉|上述|前述)的?$/.test(text.slice(Math.max(0,index-6),index))
+    ||/^的?(?:原文|全文|截图|链接|内容|文本|发表时间|发表日期|标题|存档|网页|版本)/.test(text.slice(index+4,index+12));
+}
+
+/** Whether this case can use a catalog resource at all, judged from the confirmed case alone. The same rule screens what the model is offered and what it may return. */
+export function resourceIneligibility(resource:AnalysisContext['resources'][number],input:NewCaseInput):string|null{
+  const audit=resource.sourceAudit;
+  const jurisdiction=legalJurisdiction(input),country=jurisdiction.startsWith('GB-')?'GB':jurisdiction;
+  if(audit?.jurisdictionChecks?.some(c=>c.jurisdiction===country&&c.status==='not_met'))return '本案不满足该资源的国家或机制资格，不能推荐为适用依据。';
+  if(['domestic_law','procedure_rule'].includes(resource.type??'')&&!audit?.jurisdiction.includes(jurisdiction))return '当地规则与本案具体法域不匹配。';
+  if(audit&&legalProceeding(input)==='civil'&&!audit.proceedings.includes('civil')&&!audit.proceedings.includes('all'))return '不能将仅刑事或拘押程序资源推荐为民事案件依据。';
+  if(resource.resourceId==='cpj-emergency-help'&&input.background.personType!=='journalist'&&!input.background.activities.some(a=>a==='reporting'||a==='investigation_report'))return '当前资料没有确认新闻工作背景，不能默认适用记者协助入口。';
+  return null;
+}
+/** The model is offered only resources this case could use, so it cannot pick another country's law or an entry the person does not qualify for. */
+export function eligibleContext(context:AnalysisContext,input:NewCaseInput):AnalysisContext{
+  return {...context,resources:context.resources.filter(resource=>!resourceIneligibility(resource,input))};
+}
+/** A catalog link the case cannot use is removed from that action instead of discarding the whole analysis. Unknown ids are left for validation to reject. */
+export function dropIneligibleResources(raw:unknown,input:NewCaseInput):unknown{
+  if(!raw||typeof raw!=='object'||!Array.isArray((raw as {actionOptions?:unknown}).actionOptions))return raw;
+  const usable=(id:unknown)=>{const resource=resources.find(r=>r.resourceId===id);return !resource||!resourceIneligibility(resource,input);};
+  const actionOptions=(raw as {actionOptions:unknown[]}).actionOptions.map(action=>{
+    const value=action as {resourceIds?:unknown;legalCitations?:unknown};
+    if(!value||typeof value!=='object'||!Array.isArray(value.resourceIds)||value.resourceIds.every(usable))return action;
+    return {...value,resourceIds:value.resourceIds.filter(usable),...(Array.isArray(value.legalCitations)?{legalCitations:value.legalCitations.filter(c=>usable((c as {resourceId?:unknown}|null)?.resourceId))}:{})};
+  });
+  return {...raw,actionOptions};
 }
 
 export function collectSources(output:ModelAnalysisOutput,context:AnalysisContext):Evidence[]{

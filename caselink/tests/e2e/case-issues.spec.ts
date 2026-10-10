@@ -20,6 +20,7 @@ test('key questions show facts, three kinds of basis, the analysis and links fro
  await page.getByRole('button',{name:'查找案例并生成行动参考'}).click();await expect(page).toHaveURL(/\/analysis$/);
  const issues=page.getByRole('region',{name:'本案的关键问题'});
  await expect(issues.getByRole('heading',{name:'本案的 2 个关键问题'})).toBeVisible();
+ await expect(issues.getByText(/标“原文已核对”的本地法条，服务器已打开原网页逐字核对/)).toBeVisible();
  const first=issues.locator('#issue-1');
  await expect(first.getByText('第 4 页',{exact:true})).toBeVisible();await expect(first.getByText('用户陈述',{exact:true})).toBeVisible();
  await expect(first.getByText('本地法 · 原文已核对',{exact:true})).toBeVisible();await expect(first.getByText('国际标准',{exact:true})).toBeVisible();

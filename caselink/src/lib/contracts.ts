@@ -13,7 +13,7 @@ export type {IntakeRecord} from './intake/contracts';
 
 export const SCHEMA_VERSION = '1.0' as const;
 export const CORPUS_VERSION = '2026-10-09.v5';
-export const PROMPT_VERSION = '4.5';
+export const PROMPT_VERSION = '4.6';
 export const StageSchema = z.enum(['investigation','pretrial','trial','appeal','postjudgment','unknown']);
 export const PersonTypeSchema = z.enum(['journalist','blogger','activist','other','unknown']);
 export const BackgroundTagSchema = z.enum(['reporting','investigation_report','social_media','repost','other','unknown']);

@@ -20,9 +20,14 @@ export default function CaseIssues({issues}:{issues:CaseIssue[]}){
  const {locale}=useI18n();
  if(!issues.length)return null;
  const ruleOnly=issues.every(issue=>issue.origin==='rule');
+ const local=issues.flatMap(issue=>issue.authorities.filter(a=>a.kind==='local'));
+ // Say only what this result actually contains about local law.
+ const localNote=local.some(a=>a.check==='quote_matched')?text(locale,'标“原文已核对”的本地法条，服务器已打开原网页逐字核对。','Local law marked “wording matched” was checked word for word against the source page.')
+  :local.length?text(locale,'本地法条来自 CaseLink 资料库。','Local law comes from the CaseLink catalog.')
+  :text(locale,'这次没有找到本地法律依据，现有依据只有国际标准，本地法请当地律师确认。','No local law was found this time; the basis is international standards only, so a local lawyer should confirm the local law.');
  return <section className={styles.issues} aria-label={text(locale,'本案的关键问题','Key questions in this case')}>
   <h2>{text(locale,`本案的 ${issues.length} 个关键问题`,issues.length===1?'The key question in this case':`${issues.length} key questions in this case`)}</h2>
-  <p className={styles.note}>{ruleOnly?text(locale,'规则参考：只列出可能相关的问题和条文，没有针对本案事实的分析。','Rule-based: possibly relevant questions and provisions only, without analysis of this case’s facts.'):text(locale,'每个问题写明事实、依据、对本案的意义和下一步。本地法律的引文已由服务器打开原网页逐字核对。','Each question sets out the facts, the basis, what it means here and the next step. Local-law quotations were matched word for word against the source page.')}</p>
+  <p className={styles.note}>{ruleOnly?text(locale,'规则参考：只列出可能相关的问题和条文，没有针对本案事实的分析。','Rule-based: possibly relevant questions and provisions only, without analysis of this case’s facts.'):`${text(locale,'每个问题写明事实、依据、对本案的意义和下一步。','Each question sets out the facts, the basis, what it means here and the next step. ')}${localNote}`}</p>
   {issues.map((issue,index)=>{
    const counts=[['local',text(locale,'本地法','local law')],['international',text(locale,'国际标准','international')],['case',text(locale,'案例','cases')]] as const;
    return <details key={issue.issueId} id={issue.issueId} className={styles.issue} open={index===0}>
