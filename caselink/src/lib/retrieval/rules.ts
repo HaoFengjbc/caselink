@@ -247,13 +247,29 @@ export function buildRuleReference(input:NewCaseInput,matches=retrieveCases(inpu
     if(input.background.personType==='unknown')missing.push(m.person);
     if(!input.resources.includes('lawyer'))missing.push(m.lawyer);
     if(!input.keyDates.length)missing.push(m.dates);
-    if(input.publicity!=='public')missing.push(m.publicity);
+    if(input.publicity==='unknown')missing.push(m.publicity);
     if(input.priorActions.status==='unknown')missing.push(m.prior);
   }
   const limitations=[...T.limitations];
   if(!matches.length)limitations.unshift(T.noMatches);
   const actionOptions:ActionOption[]=[];
   if(needsGoalClarification(input))actionOptions.push(clarify(input,T),timeline(input,T));
+  else if(input.intake?.caseKind==='civil' && !hasCustomGoal(input)) {
+    const en=locale==='en';
+    actionOptions.push({...base(input,'primary-'+input.primaryGoal,T),
+      title:en?'Prepare the civil-expression file for local legal review':'为当地律师准备民事表达争议材料',
+      reason:en?'The stated goal and demand letter call for a civil-procedure review; the material does not establish that a claim has been filed or that the threat qualifies as a SLAPP.':'围绕已选择的目标核对律师函与民事程序；现有材料不证明已立案，也不证明威胁已构成 SLAPP。',
+      leadRole:en?'Internal researcher and newsroom editor; local lawyer decides the legal route':'内部研究人员与编辑整理；当地律师判断法律路径',applicability:'conditional',
+      prerequisites:[en?'Retain the stated internal-only boundary; check authority before any external disclosure.':'保留用户已说明的内部处理边界，任何对外披露前核对授权。',en?'Check jurisdiction, the demand or court documents and the actual procedural position with local counsel.':'由当地律师核对具体法域、函件或法院文书和实际程序状态。'],
+      timing:en?'Prepare internally now; verify actual document dates without calculating deadlines.':'可先内部整理；核对实际文件日期，不据此推算法定期限。',
+      steps:en?['Index the demand letter, published words and retained reporting sources; distinguish allegations from the journalist’s account.','Prepare a questions sheet on serious harm, potential defences, the pre-action protocol and the limited statutory SLAPP scope.','Have local counsel assess the documents, appropriate response, representation and any actual time limit before deciding on a step.']:['给函件、被指表达及已保留的报道依据建立索引，区分对方指控和当事人陈述。','整理严重损害、可能的抗辩、诉前程序及范围有限的反 SLAPP 条件问题表。','由当地律师评估文书、回应方式、代理需要和实际期限，再决定下一步。'],
+      materials:en?['Demand letter and the complete publication with context','Reporting-source index and any court documents actually received']:['律师函、完整报道及发表语境','报道来源索引，以及实际收到的法院文书（如有）'],
+      collaborators:[en?'Local media-law counsel, subject to mandate and consent':'当地媒体法律师，须核对委托与分享同意'],
+      followUp:en?['Record whether a claim is actually issued and which court is involved.','Record counsel’s answers and any authorised next step separately from the initial threat.']:['分别记录是否实际立案、具体法院及送达状态。','保留律师问题答复与获授权的下一步，不把威胁等同于法院决定。'],
+      differences:[en?'Criminal interrogation and defence-participation examples do not establish civil procedural rights.':'刑事讯问及辩护人在场的历史记录不能证明民事程序权利。'],
+      uncertainties:[en?'The claim basis, event-date law and statutory eligibility require local review.':'索赔依据、事件时法律版本和具体程序资格需当地律师核对。']});
+    actionOptions.push(timeline(input,T));
+  }
   else if(hasCustomGoal(input)) {
     const preparation=timeline(input,T);
     preparation.title=locale==='en'?'Prepare a record around your stated goal':'围绕已说明的具体诉求准备案情记录';

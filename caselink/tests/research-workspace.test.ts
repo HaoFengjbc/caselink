@@ -14,10 +14,10 @@ describe('public research resources',()=>{
   expect(evidence.filter(e=>e.reviewStatus==='conflict')).toHaveLength(5);
  });
  it('has official source metadata with separate agent and human review',()=>{
-  expect(resources.length).toBe(16);expect(new Set(resources.map(r=>r.resourceId)).size).toBe(16);
+  expect(resources.filter(r=>!['domestic_law','procedure_rule'].includes(r.type??'')).length).toBe(16);expect(new Set(resources.map(r=>r.resourceId)).size).toBe(resources.length);
   for(const r of resources){expect(ResourceSchema.safeParse(r).success).toBe(true);expect(r.type).toBeTruthy();expect(r.locator).toBeTruthy();expect(r.summary).toBeTruthy();expect(r.eligibility?.length).toBeGreaterThan(0);expect(r.unknowns?.length).toBeGreaterThan(0);expect(r.teamReviewedAt).toBeNull();expect(r.reviewStatus).not.toBe('team_verified');expect(safeSourceUrl(r.officialUrl)).toBeTruthy();}
-  expect(resources.find(r=>r.resourceId==='wgad-submission')?.reviewStatus).toBe('unreviewed');
-  expect(resources.find(r=>r.resourceId==='ohchr-special-procedures')?.checkedAt).toBe('2026-10-07');
+  const wgad=resources.find(r=>r.resourceId==='wgad-submission')!;expect(wgad.sourceAudit?.readUrl).toMatch(/un\.org|ohchr\.org/);expect(wgad.sourceAudit?.provisions.length).toBeGreaterThan(0);expect(wgad.reviewStatus).toBe('agent_checked');
+  expect(resources.find(r=>r.resourceId==='ohchr-special-procedures')?.checkedAt).toBe('2026-10-09');
  });
  it('rejects executable URLs from imported content',()=>{expect(safeSourceUrl('javascript:alert(1)')).toBeNull();expect(safeSourceUrl('https://name:pass@example.com')).toBeNull();});
 });

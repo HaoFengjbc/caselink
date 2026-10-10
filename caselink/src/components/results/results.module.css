@@ -9,7 +9,7 @@
 .resultBreadcrumb > a:hover { color: var(--red) }
 .resultBreadcrumb :global(ol li) { color: var(--muted) !important }
 .resultBreadcrumb :global(ol li[aria-current]) { color: var(--ink) !important }
-.exportButtons { justify-self: end; display: flex; gap: 6px }
+.exportButtons { justify-self: end; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; min-width: 0; max-width: 100% }
 .exportButtons button { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; padding: 7px 12px; border: 1px solid var(--line-strong); border-radius: 2px; background: transparent; color: var(--ink); font-size: 12.5px; letter-spacing: .12em; transition: border-color .2s, color .2s }
 .exportButtons button:hover { border-color: var(--red); color: var(--red) }
 
@@ -189,7 +189,8 @@
 }
 @media (max-width: 640px) {
   .hero { padding: 14px 16px 40px }
-  .resultBreadcrumb { font-size: 12px; letter-spacing: .08em }
+  .resultBreadcrumb { grid-template-columns: minmax(0, 1fr); font-size: 12px; letter-spacing: .08em }
+  .exportButtons { grid-row: 3; justify-self: start; justify-content: flex-start }
   .exportButtons button { padding: 6px 9px; font-size: 12px; letter-spacing: .04em }
   .heroCard { margin-top: 26px; padding: 20px 18px 0 }
   .heroCard h1 { margin: 30px 0 14px; font-size: 25px; letter-spacing: .1em }

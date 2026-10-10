@@ -1,0 +1,32 @@
+.nextSteps { margin: 20px 0; padding: 20px; border: 1px solid #cfded5; border-radius: 10px; background: #f8fbf8; }
+.heading { display: flex; align-items: baseline; flex-wrap: wrap; gap: 8px 14px; }
+.heading > span { font-size: .73rem; font-weight: 750; letter-spacing: .04em; color: #386047; }
+.heading h4 { margin: 0; font-size: .96rem; }
+.nextSteps p, .nextSteps li, .followups p, .followups li { font-size: .84rem; line-height: 1.75; }
+.owner { color: #46594d; }
+.products { padding-left: 22px; font-weight: 550; }
+.products li { padding-left: 3px; margin: 9px 0; }
+.detail { border-top: 1px solid #dce5de; margin-top: 18px; padding-top: 14px; }
+.detail > summary, .gaps > summary { cursor: pointer; font-size: .8rem; font-weight: 600; }
+.detailBody h5 { font-size: .83rem; margin: 20px 0 8px; }
+.detailBody small { display: block; color: #67736c; font-size: .72rem; }
+.history { margin: 12px 0; padding: 14px; border: 1px solid #dae4dd; border-radius: 8px; background: #fff; }
+.historyMeta { display: grid; gap: 5px; font-size: .8rem; }
+.historyMeta span, .note { color: #69726c; font-size: .75rem !important; line-height: 1.7; }
+.source { margin: 12px 0; padding: 12px; border: 1px solid #e1e7e2; border-radius: 7px; background: #fcfdfb; font-size: .77rem; line-height: 1.7; overflow-wrap: anywhere; }
+.source summary { cursor: pointer; }
+.source a { color: #285c42; text-decoration: underline; }
+.source blockquote { border-left: 3px solid #cbdccf; margin: 10px 0; padding: 4px 12px; white-space: pre-wrap; }
+.basisGaps { color: #715b35; }
+.stops { border-left: 3px solid #d7c795; padding: 8px 8px 8px 28px; }
+.followups { padding: 18px 0; }
+.followups > h3 { font-size: 1rem; }
+.event { border: 1px solid #dde4de; border-radius: 8px; margin: 12px 0; }
+.event > summary { cursor: pointer; padding: 14px; display: flex; flex-direction: column; gap: 7px; }
+.event > summary span { font-size: .72rem; color: #637169; }
+.event > summary strong { font-size: .85rem; line-height: 1.7; font-weight: 550; }
+.eventBody { padding: 2px 16px 16px; }
+.eventBody small { font-size: .72rem; color: #69726c; }
+.gaps { margin-top: 16px; }
+.warning { color: #893c36; }
+@media(max-width:640px) { .nextSteps { padding: 15px; } .history { padding: 10px; } }

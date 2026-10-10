@@ -9,7 +9,7 @@ const script=path.join(root,'scripts/verify-live-ai.mjs');
 const deploymentScript=path.join(root,'scripts/verify-live-deployment.mjs');
 // Deny any fetch, writes or reads outside the exact fixture/evidence files in this child process.
 const guard=`import fs from 'node:fs/promises';
-const allowed=new Set(${JSON.stringify(['src/lib/materials/contracts.ts','src/lib/workflow-contracts.ts','src/lib/contracts.ts','src/lib/intake/contracts.ts','src/lib/research/contracts.ts','src/lib/research/plan.ts','data/demo/fixtures.ts','data/evidence/evidence.json'].map(file=>path.join(root,file)))});
+const allowed=new Set(${JSON.stringify(['src/lib/materials/contracts.ts','src/lib/legal-contracts.ts','src/lib/workflow-contracts.ts','src/lib/contracts.ts','src/lib/intake/contracts.ts','src/lib/research/contracts.ts','src/lib/research/plan.ts','data/demo/fixtures.ts','data/evidence/evidence.json'].map(file=>path.join(root,file)))});
 const originalRead=fs.readFile.bind(fs);
 fs.readFile=async(file,...args)=>{if(!allowed.has(String(file)))throw new Error('Unexpected input read');return originalRead(file,...args);};
 fs.writeFile=async()=>{throw new Error('Unexpected write');};

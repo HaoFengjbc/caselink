@@ -4,6 +4,7 @@ import {MaterialResponseSchema,type MaterialResponse} from '../src/lib/materials
 import {applyMaterialCandidate,removeMaterialFile,updateMaterialItem,deleteMaterialItem,resolveMaterialConflict,materialQuestions,materialReviewErrors,confirmMaterials,resolveMaterialDateReview} from '../src/lib/materials/integration';
 import {analyzeInput} from '../src/lib/ai/service';
 import {analysisMarkdown} from '../src/components/results/export';
+import {workPackMarkdown} from '../src/components/results/work-pack';
 import {buildResearchQuery} from '../src/lib/research/query';
 import {availableIntakeQuestions} from '../src/lib/intake/questions';
 
@@ -81,9 +82,13 @@ describe('PDF intake uses one case record and immutable source evidence',()=>{
   expect(result.mode).toBe('rule_reference');expect(result.actionOptions.length).toBeGreaterThan(0);expect(AnalysisResultSchema.safeParse(result).success).toBe(true);
   expect(result.snapshot?.uploadedMaterials?.items[0].sources[0].quote).toContain('Morgan Vale');
   expect(result.snapshot?.sourceDescriptors.some(s=>s.category==='uploaded_material')).toBe(true);
+  expect(result.snapshot?.legalResearch?.bindings.length).toBeGreaterThan(0);
+  expect(result.snapshot?.nextSteps?.length).toBeGreaterThan(0);
+  expect(result.snapshot?.sourceDescriptors.some(s=>s.category==='domestic_law')).toBe(true);
   input.intake.materials!.items[0].text='Later user edit';
   expect(result.snapshot?.uploadedMaterials?.items[0].text).not.toBe('Later user edit');
   const markdown=analysisMarkdown(result,input,'en');expect(markdown).toContain('not the original PDFs');expect(markdown).toContain('fictional-letter.pdf · pdf-fixture-1 · PDF 1');
+  const pack=workPackMarkdown(result,input,'en');expect(pack).toContain('fictional-letter.pdf · pdf-fixture-1 · PDF 1');expect(pack).toContain('The fictional company alleges');expect(pack).toContain(result.snapshot!.legalResearch!.bindings[0].resourceId);expect(pack).not.toContain('Later user edit');
   expect(JSON.stringify(result.snapshot)).not.toContain('"pages"');expect(JSON.stringify(result.snapshot)).not.toContain('Reply requested');
  });
  it('never puts private names, excerpts or uploaded filenames into public search queries',()=>{

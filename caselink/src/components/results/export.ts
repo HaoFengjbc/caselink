@@ -12,13 +12,13 @@ import {countryName,localizeCase,localizeDocument,localizeEvidence,localizeResou
 export function analysisMarkdown(result:AnalysisResult,input:NewCaseInput,locale:Locale='zh'){
  const snapshot = snapshotForResult(result);
  locale = result.snapshot?.locale ?? locale;
- result = { ...result, sources: result.sources.map(source => snapshot.evidence.find(e => e.evidenceId === source.evidenceId) ?? source), webResearch: snapshot.webResearch };
+ result = { ...result, legalResearch: snapshot.legalResearch, followups: snapshot.followups, nextSteps: snapshot.nextSteps, sources: result.sources.map(source => snapshot.evidence.find(e => e.evidenceId === source.evidenceId) ?? source), webResearch: snapshot.webResearch };
  input=normalizeConfirmedGoal(input);
  let original=locale==='en'?englishMarkdown(result,input):chineseMarkdown(result,input);
  original = original.replace('\n\n##', `\n${locale === 'en' ? 'Snapshot' : '历史快照'}: ${snapshot.completeness === 'complete' ? (locale === 'en' ? 'Generation-time evidence preserved' : '生成时证据已固定') : (locale === 'en' ? 'Legacy partial record; missing cases/documents/resources are not reconstructed from today’s library.' : '旧版不完整记录；缺失的案例、文档和资源未用当前库回填。')}\n\n##`);
  const record=input.intake;
  const marker=locale==='en'?'## Historical comparison':'## 历史比较';
- if(!record)return original.replace(marker,webResearchMarkdown(result,locale)+'\n'+marker);
+ if(!record)return original.replace(marker,legalResearchMarkdown(result,locale)+'\n'+historicalFollowupMarkdown(result,locale)+'\n'+webResearchMarkdown(result,locale)+'\n'+marker);
  const en=locale==='en';
  const section=['',en?'## Full user-provided case record':'## 完整案情记录（使用者提供，未经独立核实）',
  `${en?'Jurisdiction':'具体辖区'}: ${record.jurisdiction||'—'}`,`${en?'Procedure type':'程序类型'}: ${record.caseKind}`,
@@ -28,7 +28,7 @@ export function analysisMarkdown(result:AnalysisResult,input:NewCaseInput,locale
  ...record.facts.flatMap(fact=>[`${en?'Reviewed note (not independent evidence)':'已核对笔记（非独立证据）'}: ${fact.text}`,`${en?'Original words':'对应原话'}: ${fact.quote}`]),''];
  if(snapshot.uploadedMaterials){const m=snapshot.uploadedMaterials,c=materialsCopy[locale];section.push('',`## ${c.privateSource}`,c.historical,...m.items.flatMap(item=>[`${c.fields[item.field]}: ${item.text}`,`${item.subject} · ${c.natures[item.nature]}${item.date?` · ${c.dates[item.dateKind]}: ${item.date}`:''}`,...(item.dateReview?[`${en?'Date review':'日期核对'}: ${item.dateReview.resolution==='unknown'?(en?'Explicitly retained as unknown':'明确保留未知'):item.dateReview.resolution==='reviewed'?(en?'User review note, not independent verification':'用户核对说明，并非独立核实'):en?'Pending':'待核对'}`]:[]),...item.sources.flatMap(source=>[`${source.filename} · ${source.fileId} · PDF ${source.pdfPage}`,`> ${source.quote}`])]),...m.conflicts.map(conflict=>`${en?'Conflict':'冲突'}: ${conflict.description} · ${en?'User review':'用户核对'}: ${conflict.resolution??'—'}`));}
  original=original.replace(marker,section.join('\n')+'\n'+marker);
- return original.replace(marker,webResearchMarkdown(result,locale)+'\n'+marker);
+ return original.replace(marker,legalResearchMarkdown(result,locale)+'\n'+historicalFollowupMarkdown(result,locale)+'\n'+webResearchMarkdown(result,locale)+'\n'+marker);
 }
 /** Adaptive records keep free-form answers below; empty legacy fields must not
  * contradict those answers with misleading summaries such as "Tried: unknown". */
@@ -82,7 +82,7 @@ function actionWebMarkdown(result:AnalysisResult,actionId:string,locale:Locale):
  const ids=(result.actionWebSources??[]).filter(ref=>ref.actionId===actionId).flatMap(ref=>ref.sourceIds);
  const origin=result.actionOrigins?.find(item=>item.actionId===actionId);
  const text=origin?.origin==='ai'?(locale==='en'?'AI-generated for this case':'AI 根据本案生成'):origin?.origin==='preset'?(locale==='en'?'Preset example':'预置示例'):(locale==='en'?'Fixed-rule preparation':'规则生成的一般准备');
- return [...(origin?[`${locale==='en'?'Content origin':'内容来源'}: ${text}`,...(origin.reason?[origin.reason]:[])]:[]),...(ids.length?['',`**${ui[locale].web.citations}**`,...webReferenceLines(result,ids)]:[])];
+ return [...actionLegalMarkdown(result,actionId,locale),...actionNextStepMarkdown(result,actionId,locale),...(origin?[`${locale==='en'?'Content origin':'内容来源'}: ${text}`,...(origin.reason?[origin.reason]:[])]:[]),...(ids.length?['',`**${ui[locale].web.citations}**`,...webReferenceLines(result,ids)]:[])];
 }
 /** Export the entire research payload; only catalogued web sources become links. */
 export function webResearchMarkdown(result:AnalysisResult,locale:Locale='zh'):string{
@@ -114,5 +114,63 @@ export function webResearchMarkdown(result:AnalysisResult,locale:Locale='zh'):st
  if(!research.passages.length)lines.push('',w.noPassages);
  lines.push('',`### ${w.sources}`,w.sourceNote);
  for(const source of research.sources)lines.push('',`- ${webMarkdownCitation(source)}`,`  ${webMarkdownText(source.hostname)}`,...(source.citationKind?[`  ${citationProvenance(source,locale)}`]:[]));
+ return [...lines,''].join('\n');
+}
+
+function actionLegalMarkdown(result:AnalysisResult,actionId:string,locale:Locale):string[]{
+ const english=locale==='en';const snapshot=snapshotForResult(result);const action=result.actionOptions.find(item=>item.actionId===actionId);
+ return (action?.legalCitations??[]).flatMap(citation=>{
+  const binding=snapshot.legalResearch?.bindings.find(item=>item.bindingId===citation.bindingId&&item.claimKey===citation.claimKey&&item.resourceId===citation.resourceId&&item.provisionId===citation.provisionId);
+  return binding?[`${english?'Supported legal proposition (conditions remain to be checked)':'附带法律判断（仍须核对适用条件）'}: ${binding.claim}`,`${english?'Exact citation; supports this sentence only':'准确引用，仅支持此句'}: ${binding.bindingId} / ${binding.resourceId} / ${binding.provisionId} / ${binding.claimKey}`]:[`${english?'Citation absent from historical snapshot; no current-catalog backfill':'历史快照缺少该引用，不从当前目录回填'}: ${citation.bindingId}`];
+ });
+}
+/** Same generation-time object and resource copies as the result page, never today's catalog. */
+export function legalResearchMarkdown(result:AnalysisResult,locale:Locale='zh'):string{
+ const english=locale==='en';const snapshot=snapshotForResult(result);const research=snapshot.legalResearch;
+ const lines=['',english?'## Matter-specific legal research':'## 本案法律研究链','',english?'Facts → question → provision → conditions → preparation. Research references are not a lawyer’s case assessment.':'事实 → 问题 → 条文 → 条件 → 准备。研究依据不等于律师已审核本案。'];
+ if(!research)return [...lines,english?'This historical report did not preserve provision-level research; no current-catalog backfill.':'本报告未保存逐条法律研究记录，未从当前资源库回填。',''].join('\n');
+ if(english)lines.push('Source quotations and curated legal explanations retain their reviewed language; translation review pending.');
+ lines.push('',research.coreQuestion,`${english?'Source coverage':'来源覆盖'}: ${research.coverage}`,research.coverageNote);
+ for(const binding of research.bindings){
+  const resource=snapshot.resources.find(item=>item.resourceId===binding.resourceId);const audit=resource?.sourceAudit;const provision=audit?.provisions.find(item=>item.provisionId===binding.provisionId&&item.supports.includes(binding.claimKey)&&item.explanation===binding.claim);
+  lines.push('',`### ${binding.bindingId}`,`${english?'Question':'研究问题'}: ${binding.issue}`,`${english?'Proposition supported by the source':'来源支持的判断'}: ${binding.claim}`,`${english?'Applicability status':'适用状态'}: ${binding.applicability}`,`${english?'Source category (separate from review)':'来源类别（独立于审核状态）'}: ${resource?.type??'not_recorded'}`);
+  for(const fact of binding.factBasis)lines.push(`${english?'Related fact':'相关事实'}: ${fact.text}`,`${english?'Provenance':'归属'}: ${fact.origin}${fact.origin==='document'&&fact.fileName&&fact.page?` · ${fact.fileName} · ${english?'page':'真实页码'} ${fact.page}`:english?' · no document or court finding is implied':' · 不声称来自文件或法院认定'}`);
+  if(provision)lines.push(`${english?'Exact locator':'原文定位'}: ${provision.locator}`,`> ${provision.quote.replace(/\n/g,'\n> ')}`,provision.explanation);
+  else lines.push(english?'Supporting source text is missing from this snapshot; verification is not established.':'本快照缺少支持此判断的原文记录，不能视为已核实法律依据。');
+  if(resource)lines.push(`${english?'Official source':'官方来源'}: ${audit?.readUrl??resource.officialUrl}`,`${english?'Issuer / version / publication or effective information':'发布机关 / 版本 / 发布或生效信息'}: ${audit?`${audit.issuer} / ${audit.version} / ${audit.publishedOrEffective}`:'—'}`,`${english?'Source check':'来源检查'}: ${resource.reviewStatus??'unreviewed'} · ${audit?.readStatus??'not_checked'} · ${audit?.checkedAt??resource.checkedAt}`,`${english?'Human team review':'团队人工审核'}: ${resource.reviewStatus==='team_verified'&&resource.teamReviewer&&resource.teamReviewedAt?`${resource.teamReviewer} / ${resource.teamReviewedAt}`:english?'Not performed or not recorded; agent check is not team review':'尚未进行或未记录；Agent 检查不等于团队人工复核'}`);
+  lines.push(`${english?'Why relevant':'为什么相关'}: ${binding.relevance}`,`${english?'Relationship origin':'关联分析来源'}: ${binding.relationOrigin}`,`${english?'Facts as of':'事实截至'}: ${binding.factsAsOf}`,`${english?'Law checked as of':'法律核查截至'}: ${binding.lawAsOf}`,'',`**${english?'Conditions and unknowns':'适用条件与未知项'}**`,...binding.conditions.map(condition=>`- [${condition.status}] ${condition.label}: ${condition.detail}`),'',`**${english?'Next checks and preparation':'下一步需核实或准备'}**`,...binding.nextChecks.map(item=>`- ${item}`));
+  for(const related of audit?.relatedSources??[])lines.push(`${english?'Related official source':'配套官方来源'}: ${related.title} · ${related.locator} · ${related.url}`);
+  if(audit?.gaps.length)lines.push(`${english?'Source-audit gaps':'来源核查缺口'}: ${audit.gaps.join('; ')}`);
+ }
+ if(research.gaps.length)lines.push('',`### ${english?'Coverage gaps':'覆盖缺口'}`,...research.gaps.map(gap=>`- ${gap}`));
+ return [...lines,''].join('\n');
+}
+
+function actionNextStepMarkdown(result:AnalysisResult,actionId:string,locale:Locale):string[]{
+ const english=locale==='en';const snapshot=snapshotForResult(result);const step=snapshot.nextSteps?.find(item=>item.actionId===actionId);if(!step)return [];
+ const lines=['',...(english?['Historical source descriptions retain their reviewed language; translation review pending.']:[]),`**What’s Next · ${english?'Concrete working products':'具体工作成果'}**`,step.purpose,`${english?'Who prepares / decides':'谁准备／谁判断'}: ${step.owner}`,`**${english?'Materials for this round':'本轮材料'}**`,...step.materials.map(item=>`- ${item}`),`**${english?'Deliverables':'具体交付物'}**`,...step.deliverables.map(item=>`- ${item}`),`**${english?'Stop conditions':'暂停条件'}**`,...step.stopConditions.map(item=>`- ${item}`),`${english?'Legal binding IDs':'逐条法律引用'}: ${step.legalBindingIds.join(', ')|| (english?'None; general preparation':'无；一般工作准备')}`];
+ for(const history of step.history){
+  const record=snapshot.cases.find(item=>item.caseId===history.caseId);const followup=snapshot.followups?.find(item=>item.caseId===history.caseId);
+  lines.push('',`**${english?'Historical action':'历史行动'} · ${record?.title??history.caseId}**`,`${history.date} · ${history.actor} · ${history.action}`,`${english?'Execution (not a success label)':'执行状态（不是成功标签）'}: ${history.executionStatus}`,`${english?'Recorded outcome':'记录的后续结果'}: ${history.outcome}`,english?'A sequence is not causation. Prior involvement is not proof of current availability or partnership.':'时间先后不等于因果。曾参与该案不表示现在接案或与我们合作。',...history.differences.map(item=>`- ${item}`));
+  for(const id of history.evidenceIds){const excerpt=snapshot.evidence.find(item=>item.evidenceId===id);if(excerpt)lines.push(`- ${id} · PDF ${excerpt.pdfPage} · ${evidenceSourceLink(excerpt)}`,`  > ${excerpt.exactQuote.replace(/\n/g,'\n  > ')}`);else lines.push(`${english?'Evidence missing from snapshot':'快照缺少历史引文'}: ${id}`);}
+  for(const id of history.sourceIds){const source=followup?.sources.find(item=>item.sourceId===id);if(source)lines.push(`- ${id} · ${source.title} · ${source.locator} · ${source.url}`,`  > ${source.quote.replace(/\n/g,'\n  > ')}`,`  ${source.readStatus} · ${source.reviewStatus} · ${source.checkedAt} · ${english?'Team review pending':'团队人工复核未完成'}`);else lines.push(`${english?'Follow-up source missing from snapshot':'快照缺少后续来源'}: ${id}`);}
+ }
+ if(step.basisGaps.length)lines.push('',`**${english?'Support gaps':'依据缺口'}**`,...step.basisGaps.map(item=>`- ${item}`));
+ return lines;
+}
+export function historicalFollowupMarkdown(result:AnalysisResult,locale:Locale='zh'):string{
+ const english=locale==='en';const followups=snapshotForResult(result).followups;
+ const lines=['',english?'## Appended public follow-up records':'## 追加的公开追踪记录',''];
+ if(!followups)return [...lines,english?'No follow-up snapshot was saved in this historical report; no current-catalog backfill.':'本历史报告没有保存后续追踪快照，不从当前库回填。',''].join('\n');
+ if(!followups.length)return [...lines,english?'No procedurally relevant followed case was linked. This is a coverage limit, not a finding that no comparable history exists.':'本报告没有关联程序可比较的后续追踪案。这是覆盖限制，不代表不存在可比历史。',''].join('\n');
+ if(english)lines.push('Source quotations and curated historical descriptions retain their reviewed language; translation review pending.');
+ for(const followup of followups){
+  lines.push(`### ${followup.caseId}`,`${english?'Original facts as of':'原报告事实截至'}: ${followup.originalFactsAsOf}`,`${english?'Follow-up checked':'本轮追踪核查'}: ${followup.checkedAt}`,`${english?'Coverage status':'追踪状态'}: ${followup.searchStatus}`,followup.summary,english?'Not finding an update does not establish that nothing changed. Publication, submission and institutional acceptance are separate.':'未找到更新不等于没有变化；公开发表、递交材料与机构受理分别判断。');
+  for(const event of [...followup.events].sort((a,b)=>(a.eventDate??'9999').localeCompare(b.eventDate??'9999'))){
+   lines.push('',`#### ${event.eventId}`,`${english?'Proceeding and subjects':'具体程序与当事人'}: ${event.proceeding} · ${event.subjects.join(' / ')}`,`${english?'Event date / precision':'事件日期／精度'}: ${event.eventDate??(english?'Unspecified':'未明确')} / ${event.datePrecision}`,`${english?'Actors and action':'参与者与行动'}: ${event.actors.join(' / ')} · ${event.action}`,`${english?'Execution (not success)':'执行状态（非成功标签）'}: ${event.executionStatus}`,`${english?'Subsequent outcome':'后续结果'}: ${event.outcome}`,`${english?'Relationship to outcome':'与结果关系'}: ${event.relationshipToOutcome} · ${english?'No independent causal inference':'不独立推断因果'}`,`${english?'Attributed source claim':'来源归属说法'}: ${event.causalAttribution??'—'}`,...event.unknowns.map(item=>`- ${item}`));
+   for(const id of event.sourceIds){const source=followup.sources.find(item=>item.sourceId===id);if(source)lines.push(`- ${id} · ${source.title} · ${source.publisher} · ${source.locator}`,`  ${english?'Publication date (not automatically the event date)':'发布日期（不自动等于事件日期）'}: ${source.publishedAt??'—'}`,`  > ${source.quote.replace(/\n/g,'\n  > ')}`,`  ${source.url}`,`  ${source.readStatus} · ${source.reviewStatus} · ${source.checkedAt} · ${english?'Team review pending':'团队人工审核未完成'}`);}
+  }
+  lines.push('',`**${english?'Gaps and search scope':'缺口与检索范围'}**`,...followup.unknowns.map(item=>`- ${item}`),followup.searchedSources.join(' / '));
+ }
  return [...lines,''].join('\n');
 }

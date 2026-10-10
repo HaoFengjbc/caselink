@@ -1,0 +1,336 @@
+{
+  "checkedAt": "2026-10-09",
+  "scope": "22案结构化记录轻筛，非22案逐案联网更新；实施数不是成功数",
+  "cases": [
+    {
+      "caseId": "aigul-utepova",
+      "country": "哈萨克斯坦",
+      "originalReportDate": "2022-04",
+      "originalFactsAsOf": "2022-04",
+      "interventionsByStatus": {
+        "implemented": 5,
+        "recommended_only": 0,
+        "unknown": 0
+      },
+      "recommendations": 1,
+      "deepFollowupSelected": true,
+      "reason": "同国成组并复用阶段一法域",
+      "reviewType": "existing_structured_record_screening"
+    },
+    {
+      "caseId": "emna-chargui",
+      "country": "突尼斯",
+      "originalReportDate": "2021-06",
+      "originalFactsAsOf": "2021-06",
+      "interventionsByStatus": {
+        "implemented": 5,
+        "recommended_only": 0,
+        "unknown": 0
+      },
+      "recommendations": 1,
+      "deepFollowupSelected": true,
+      "reason": "同国成组并复用阶段一法域",
+      "reviewType": "existing_structured_record_screening"
+    },
+    {
+      "caseId": "myriam-bribri",
+      "country": "突尼斯",
+      "originalReportDate": "2021-06",
+      "originalFactsAsOf": "2021-06",
+      "interventionsByStatus": {
+        "implemented": 3,
+        "recommended_only": 0,
+        "unknown": 0
+      },
+      "recommendations": 2,
+      "deepFollowupSelected": true,
+      "reason": "同国成组并复用阶段一法域",
+      "reviewType": "existing_structured_record_screening"
+    },
+    {
+      "caseId": "shahidul-alam",
+      "country": "孟加拉国",
+      "originalReportDate": "2023-01",
+      "originalFactsAsOf": "2023-01",
+      "interventionsByStatus": {
+        "implemented": 4,
+        "recommended_only": 0,
+        "unknown": 0
+      },
+      "recommendations": 1,
+      "deepFollowupSelected": false,
+      "reason": "本轮不深追踪；仅结构化初筛，未声称检索到最新状态",
+      "reviewType": "existing_structured_record_screening"
+    },
+    {
+      "caseId": "katsiaryna-andreyeva-daria-chultsova",
+      "country": "白俄罗斯",
+      "originalReportDate": "2021-10",
+      "originalFactsAsOf": "2021-10",
+      "interventionsByStatus": {
+        "implemented": 3,
+        "recommended_only": 0,
+        "unknown": 0
+      },
+      "recommendations": 1,
+      "deepFollowupSelected": false,
+      "reason": "本轮不深追踪；仅结构化初筛，未声称检索到最新状态",
+      "reviewType": "existing_structured_record_screening"
+    },
+    {
+      "caseId": "mzia-amaglobeli",
+      "country": "格鲁吉亚",
+      "originalReportDate": "2026-01",
+      "originalFactsAsOf": "2026-01",
+      "interventionsByStatus": {
+        "implemented": 3,
+        "recommended_only": 0,
+        "unknown": 1
+      },
+      "recommendations": 0,
+      "deepFollowupSelected": false,
+      "reason": "本轮不深追踪；仅结构化初筛，未声称检索到最新状态",
+      "reviewType": "existing_structured_record_screening"
+    },
+    {
+      "caseId": "jose-ruben-zamora",
+      "country": "危地马拉",
+      "originalReportDate": "2024-02",
+      "originalFactsAsOf": "2024-02",
+      "interventionsByStatus": {
+        "implemented": 3,
+        "recommended_only": 0,
+        "unknown": 0
+      },
+      "recommendations": 1,
+      "deepFollowupSelected": false,
+      "reason": "本轮不深追踪；仅结构化初筛，未声称检索到最新状态",
+      "reviewType": "existing_structured_record_screening"
+    },
+    {
+      "caseId": "marina-zolotova",
+      "country": "白俄罗斯",
+      "originalReportDate": "2019-07",
+      "originalFactsAsOf": "2019-07-26",
+      "interventionsByStatus": {
+        "implemented": 1,
+        "recommended_only": 0,
+        "unknown": 0
+      },
+      "recommendations": 1,
+      "deepFollowupSelected": false,
+      "reason": "本轮不深追踪；仅结构化初筛，未声称检索到最新状态",
+      "reviewType": "existing_structured_record_screening"
+    },
+    {
+      "caseId": "svetlana-prokopyeva",
+      "country": "俄罗斯",
+      "originalReportDate": "2021-01",
+      "originalFactsAsOf": "2021-01",
+      "interventionsByStatus": {
+        "implemented": 4,
+        "recommended_only": 0,
+        "unknown": 0
+      },
+      "recommendations": 0,
+      "deepFollowupSelected": false,
+      "reason": "本轮不深追踪；仅结构化初筛，未声称检索到最新状态",
+      "reviewType": "existing_structured_record_screening"
+    },
+    {
+      "caseId": "bao-choy",
+      "country": "中国香港",
+      "originalReportDate": "2021-07",
+      "originalFactsAsOf": "2021-07",
+      "interventionsByStatus": {
+        "implemented": 3,
+        "recommended_only": 0,
+        "unknown": 0
+      },
+      "recommendations": 1,
+      "deepFollowupSelected": false,
+      "reason": "本轮不深追踪；仅结构化初筛，未声称检索到最新状态",
+      "reviewType": "existing_structured_record_screening"
+    },
+    {
+      "caseId": "malaysiakini-steven-gan",
+      "country": "马来西亚",
+      "originalReportDate": "2021-10",
+      "originalFactsAsOf": "2021-10",
+      "interventionsByStatus": {
+        "implemented": 5,
+        "recommended_only": 0,
+        "unknown": 0
+      },
+      "recommendations": 1,
+      "deepFollowupSelected": false,
+      "reason": "本轮不深追踪；仅结构化初筛，未声称检索到最新状态",
+      "reviewType": "existing_structured_record_screening"
+    },
+    {
+      "caseId": "hajar-raissouni",
+      "country": "摩洛哥",
+      "originalReportDate": "2020-08",
+      "originalFactsAsOf": "2020-08",
+      "interventionsByStatus": {
+        "implemented": 3,
+        "recommended_only": 0,
+        "unknown": 0
+      },
+      "recommendations": 0,
+      "deepFollowupSelected": true,
+      "reason": "补充第三组同国案例，区分赦免、定罪及持续限制",
+      "reviewType": "existing_structured_record_screening"
+    },
+    {
+      "caseId": "omar-radi-2020",
+      "country": "摩洛哥",
+      "originalReportDate": "2020-09",
+      "originalFactsAsOf": "2020-09",
+      "interventionsByStatus": {
+        "implemented": 5,
+        "recommended_only": 0,
+        "unknown": 0
+      },
+      "recommendations": 1,
+      "deepFollowupSelected": false,
+      "reason": "与Omar Radi II为同人不同程序；本轮选后者，不混同2020推文案",
+      "reviewType": "existing_structured_record_screening"
+    },
+    {
+      "caseId": "omar-radi-ii-2022",
+      "country": "摩洛哥",
+      "originalReportDate": "2022-07",
+      "originalFactsAsOf": "2022-07",
+      "interventionsByStatus": {
+        "implemented": 4,
+        "recommended_only": 0,
+        "unknown": 0
+      },
+      "recommendations": 0,
+      "deepFollowupSelected": true,
+      "reason": "补充第三组同国案例，区分赦免、定罪及持续限制",
+      "reviewType": "existing_structured_record_screening"
+    },
+    {
+      "caseId": "cansu-piskin",
+      "country": "土耳其",
+      "originalReportDate": "2019-07",
+      "originalFactsAsOf": "2019-07",
+      "interventionsByStatus": {
+        "implemented": 3,
+        "recommended_only": 0,
+        "unknown": 0
+      },
+      "recommendations": 0,
+      "deepFollowupSelected": false,
+      "reason": "本轮不深追踪；仅结构化初筛，未声称检索到最新状态",
+      "reviewType": "existing_structured_record_screening"
+    },
+    {
+      "caseId": "asad-ali-toor",
+      "country": "巴基斯坦",
+      "originalReportDate": "2023-09",
+      "originalFactsAsOf": "2023-09",
+      "interventionsByStatus": {
+        "implemented": 2,
+        "recommended_only": 0,
+        "unknown": 0
+      },
+      "recommendations": 1,
+      "deepFollowupSelected": false,
+      "reason": "本轮不深追踪；仅结构化初筛，未声称检索到最新状态",
+      "reviewType": "existing_structured_record_screening"
+    },
+    {
+      "caseId": "bilal-ghauri",
+      "country": "巴基斯坦",
+      "originalReportDate": "2023-09",
+      "originalFactsAsOf": "2023-09",
+      "interventionsByStatus": {
+        "implemented": 2,
+        "recommended_only": 0,
+        "unknown": 0
+      },
+      "recommendations": 1,
+      "deepFollowupSelected": false,
+      "reason": "本轮不深追踪；仅结构化初筛，未声称检索到最新状态",
+      "reviewType": "existing_structured_record_screening"
+    },
+    {
+      "caseId": "moses-bwayo",
+      "country": "乌干达",
+      "originalReportDate": "2021-01",
+      "originalFactsAsOf": "2021-01",
+      "interventionsByStatus": {
+        "implemented": 3,
+        "recommended_only": 0,
+        "unknown": 0
+      },
+      "recommendations": 1,
+      "deepFollowupSelected": false,
+      "reason": "本轮不深追踪；仅结构化初筛，未声称检索到最新状态",
+      "reviewType": "existing_structured_record_screening"
+    },
+    {
+      "caseId": "wuth-boonlert-samak-donnapee",
+      "country": "泰国",
+      "originalReportDate": "2020-07",
+      "originalFactsAsOf": "2020-07",
+      "interventionsByStatus": {
+        "implemented": 2,
+        "recommended_only": 0,
+        "unknown": 0
+      },
+      "recommendations": 1,
+      "deepFollowupSelected": false,
+      "reason": "本轮不深追踪；仅结构化初筛，未声称检索到最新状态",
+      "reviewType": "existing_structured_record_screening"
+    },
+    {
+      "caseId": "alnur-ilyashev",
+      "country": "哈萨克斯坦",
+      "originalReportDate": "2021-03",
+      "originalFactsAsOf": "2021-03",
+      "interventionsByStatus": {
+        "implemented": 4,
+        "recommended_only": 0,
+        "unknown": 0
+      },
+      "recommendations": 2,
+      "deepFollowupSelected": true,
+      "reason": "同国成组并复用阶段一法域",
+      "reviewType": "existing_structured_record_screening"
+    },
+    {
+      "caseId": "alexander-pichugin",
+      "country": "俄罗斯",
+      "originalReportDate": "2022-04",
+      "originalFactsAsOf": "2022-04",
+      "interventionsByStatus": {
+        "implemented": 2,
+        "recommended_only": 0,
+        "unknown": 0
+      },
+      "recommendations": 1,
+      "deepFollowupSelected": false,
+      "reason": "本轮不深追踪；仅结构化初筛，未声称检索到最新状态",
+      "reviewType": "existing_structured_record_screening"
+    },
+    {
+      "caseId": "dian-abdullah",
+      "country": "马来西亚",
+      "originalReportDate": "2021-03-24",
+      "originalFactsAsOf": "2021-03-24",
+      "interventionsByStatus": {
+        "implemented": 2,
+        "recommended_only": 0,
+        "unknown": 0
+      },
+      "recommendations": 2,
+      "deepFollowupSelected": false,
+      "reason": "本轮不深追踪；仅结构化初筛，未声称检索到最新状态",
+      "reviewType": "existing_structured_record_screening"
+    }
+  ]
+}

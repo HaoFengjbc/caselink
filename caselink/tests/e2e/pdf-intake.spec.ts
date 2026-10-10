@@ -1,6 +1,6 @@
 import {test,expect,type Page} from '@playwright/test';
 import {createHash} from 'node:crypto';
-import {mkdir} from 'node:fs/promises';
+import {mkdir,readFile} from 'node:fs/promises';
 import type {MaterialResponse,MaterialItem,ParsedMaterial} from '../../src/lib/materials/contracts';
 
 // Synthetic public test materials only. The material provider is explicitly mocked in these tests.
@@ -18,7 +18,7 @@ async function mockMaterials(page:Page,response:MaterialResponse=result,onCall?:
 async function upload(page:Page,selected=files){await page.getByLabel('选择案件 PDF').setInputFiles(selected);await expect(page.getByText(selected[0].name,{exact:true})).toBeVisible();await page.getByRole('checkbox',{name:/我同意将提取文字交给 AI/}).check();await page.getByRole('button',{name:'读取材料并整理案情',exact:true}).click();}
 async function fillRequired(page:Page){await page.getByLabel('请说明如何处理这处冲突').fill('已核对原律师函，使用 10 月 1 日作为对方提出的时间要求，报告中的 10 月 3 日暂不采用；法定期限仍需律师核实。');await page.getByLabel('本次工作目标',{exact:true}).fill('准备内部律师会谈，比较公开表达案件中可参考的行动。');await page.getByLabel('本次披露选择').selectOption('private');await page.getByLabel('披露范围与接收对象',{exact:true}).fill('仅供 TrialWatch 内部研究团队和受委托律师使用；不公开身份和全文。');await page.getByRole('checkbox',{name:'我确认这是本次工作目标。'}).check();await page.getByRole('checkbox',{name:'我确认本次接收范围和披露限制。'}).check();await page.getByRole('checkbox',{name:/我已核对日期和当前状态/}).check();}
 
-test('MOCKED provider: two PDFs -> source review -> conflict -> goal/disclosure -> existing rule analysis',async({page})=>{
+test('MOCKED provider: two PDFs -> source review -> conflict -> goal/disclosure -> existing rule analysis',async({page},testInfo)=>{
  let calls=0;const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));await mockMaterials(page,result,()=>calls++);await page.goto('/new');
  await expect(page.getByRole('heading',{level:1})).toHaveText('上传案件材料');await page.getByLabel('选择案件 PDF').setInputFiles(files);await expect(page.getByText(files[1].name,{exact:true})).toBeVisible();expect(calls).toBe(0);await expect(page.getByRole('button',{name:'读取材料并整理案情',exact:true})).toBeDisabled();
  await page.getByRole('checkbox',{name:/我同意将提取文字交给 AI/}).check();await page.getByRole('button',{name:'读取材料并整理案情',exact:true}).click();await expect(page.getByRole('heading',{level:1})).toHaveText('案情整理');expect(calls).toBe(1);
@@ -31,6 +31,8 @@ test('MOCKED provider: two PDFs -> source review -> conflict -> goal/disclosure 
  await page.getByRole('checkbox',{name:'我确认本次接收范围和披露限制。'}).uncheck();await page.getByRole('button',{name:'确认案情，生成行动参考',exact:true}).click();await expect(page.locator('main').getByRole('alert').last()).toContainText('接收范围');await page.getByRole('checkbox',{name:'我确认本次接收范围和披露限制。'}).check();
  await page.getByRole('button',{name:'确认案情，生成行动参考',exact:true}).click();await expect(page).toHaveURL(/\/analysis$/);await expect(page.getByText('规则参考 · 未调用实时 AI')).toBeVisible();await page.evaluate(()=>window.scrollTo(0,0));await page.screenshot({path:'test-results/pdf-intake-mocked/action-reference.png',fullPage:true});
  const snapshot=page.getByTestId('material-snapshot');await expect(snapshot).toContainText('本案上传材料');await expect(snapshot).toContainText('未保存原 PDF');
+ await expect(page.getByRole('region',{name:'本案法律研究链'})).toBeVisible();await expect(page.getByRole('region',{name:'What’s Next'}).first()).toBeVisible();
+ const downloadEvent=page.waitForEvent('download');await page.getByRole('button',{name:'下载内部材料包'}).click();const download=await downloadEvent;const packPath=testInfo.outputPath('merged-pdf-working-pack.md');await download.saveAs(packPath);const pack=await readFile(packPath,'utf8');expect(pack).toContain('fictional-lawyer-letter.pdf');expect(pack).toContain('The letter alleges defamation');expect(pack).toContain('用户核对笔记');expect(pack).toContain('法律与机制原文');
  expect(await page.evaluate(()=>Object.keys(localStorage).some(key=>key.startsWith('caselink.report.v1.')))).toBe(false);
  await page.getByRole('button',{name:'主动保存到历史',exact:true}).click();await expect(page.getByText('已保存到本浏览器；到期后下次访问会清理，清除网站数据也会删除。',{exact:true})).toBeVisible();
  const saved=await page.evaluate(()=>Object.keys(localStorage).map(key=>localStorage.getItem(key)??'').find(value=>value.includes('MOCKED')||value.includes('reply-date-conflict'))??'');expect(saved).toContain('The letter alleges defamation');expect(saved).not.toContain('"pages":');

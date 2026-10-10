@@ -64,7 +64,7 @@ export function localizeEvidence(item: Evidence, locale: Locale): Evidence {
 
 export function localizeResource(item: Resource, locale: Locale): Resource {
   const t = locale === 'en' ? EN_CONTENT.resources[item.resourceId] : undefined;
-  return t ? { ...item, name: t.name, applicability: t.applicability, requiredMaterials: t.requiredMaterials,
+  return t && !item.sourceAudit ? { ...item, name: t.name, applicability: t.applicability, requiredMaterials: t.requiredMaterials,
     summary: t.summary ?? item.summary,
     eligibility: t.eligibility ?? item.eligibility,
     unknowns: t.unknowns ?? item.unknowns,
