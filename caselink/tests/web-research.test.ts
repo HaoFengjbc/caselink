@@ -259,3 +259,14 @@ describe('research transport and cancellation',()=>{
   expect(r.status).toBe('unavailable');expect(mock).not.toHaveBeenCalled();
  });
 });
+
+describe('source URL keys',()=>{
+ it('ignore only utm_* tracking parameters',async()=>{
+  const {citationUrlKey}=await import('../src/lib/research/provider');
+  expect(citationUrlKey('https://lawphil.net/a.html?utm_source=openai')).toBe('https://lawphil.net/a.html');
+  expect(citationUrlKey('https://x.org/p?id=3&utm_source=openai&utm_medium=x#frag')).toBe('https://x.org/p?id=3#frag');
+  expect(citationUrlKey('https://x.org/p?id=3')).toBe('https://x.org/p?id=3');
+  expect(citationUrlKey('https://x.org/%e4%b8%ad?q=%2f')).toBe('https://x.org/%E4%B8%AD?q=%2F');
+  expect(citationUrlKey('https://x.org/a/')).not.toBe(citationUrlKey('https://x.org/a'));
+ });
+});

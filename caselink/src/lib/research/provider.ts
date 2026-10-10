@@ -5,6 +5,7 @@ import {isIP} from 'node:net';
 import type {NewCaseInput} from '../contracts';
 import type {ServerConfig} from '../ai/config';
 import {AnalysisError} from '../ai/errors';
+import {currentExecution} from '../ai/execution';
 import type {Locale} from '../i18n/locale';
 import {WebResearchSchema,type WebResearch,type WebSource} from './contracts';
 import {buildResearchQuery,type SafeResearchQuery} from './query';
@@ -13,7 +14,9 @@ import {type ResearchPlannerTransport} from './planner';
 export type {ResearchPlannerTransport} from './planner';
 
 export const WEB_SEARCH_TIMEOUT_MS=65_000;
-export type WebSearchResponse={status?:string;output?:unknown[];requireOpenedSources?:boolean;readSourceUrls?:string[];failureReason?:WebResearch['failureReason']};
+export type WebSearchResponse={status?:string;output?:unknown[];requireOpenedSources?:boolean;readSourceUrls?:string[];failureReason?:WebResearch['failureReason'];diagnostics?:Record<string,number>};
+/** Counts only, for the request log: where cited material was lost between search, page reading and assembly. */
+export type AssemblyStats={annotations:number;citedParagraphs:number;droppedUnopened:number};
 export type WebSearchTransport=(args:{config:ServerConfig;query:SafeResearchQuery;signal:AbortSignal;locale:Locale})=>Promise<WebSearchResponse>;
 
 type ObjectValue=Record<string,unknown>;
@@ -95,9 +98,16 @@ function paragraphForCitation(spans:Span[],citation:{start:number;end:number}):S
  return spans.find(s=>citation.start>=s.start&&citation.start<s.end);
 }
 
-// URL() percent-encodes Unicode. Normalize hex case only; do not decode reserved
-// separators, drop fragments, reorder queries, or treat domains as interchangeable.
-const citationUrlKey=(url:string)=>url.replace(/%[0-9a-f]{2}/gi,escape=>escape.toUpperCase());
+// URL() percent-encodes Unicode. Normalize hex case and drop only utm_* tracking parameters (the search tool adds
+// utm_source=openai to citations but not always to the page it opened); do not decode reserved separators, drop
+// fragments, reorder other query parameters, or treat domains as interchangeable.
+export function citationUrlKey(url:string):string{
+ const value=url.replace(/%[0-9a-f]{2}/gi,escape=>escape.toUpperCase());
+ const start=value.indexOf('?');if(start<0)return value;
+ const hash=value.indexOf('#',start),end=hash<0?value.length:hash;
+ const kept=value.slice(start+1,end).split('&').filter(part=>part&&!/^utm_[^=&]*(?:=|$)/i.test(part));
+ return value.slice(0,start)+(kept.length?`?${kept.join('&')}`:'')+value.slice(end);
+}
 function returnedToolUrls(items:ObjectValue[]):Set<string>{
  const urls=new Set<string>();
  for(const item of items){
@@ -122,7 +132,7 @@ function toolReturnedParagraphCitations(span:Span,returnedUrls:Set<string>):Cita
 
 /** Native annotations first; a paragraph-local inline link may fall back only to
  * an exact public URL actually returned by a completed tool in this response. */
-export function assembleWebResearch(response:WebSearchResponse,searchTerms:string[],searchedAt=new Date().toISOString()):WebResearch{
+export function assembleWebResearch(response:WebSearchResponse,searchTerms:string[],searchedAt=new Date().toISOString(),stats?:AssemblyStats):WebResearch{
  const failure=(status:WebResearch['status'],reason:WebResearch['failureReason'],count=0):WebResearch=>({status,searchedAt,searchTerms,passages:[],sources:[],searchCallCount:Math.min(count,20),failureReason:reason,actualQueries:[],relevanceStatus:'not_assessed'});
  if(!Array.isArray(response.output))return failure('unavailable','invalid_output');
  const items=response.output.map(object).filter((x):x is ObjectValue=>!!x);
@@ -144,6 +154,7 @@ export function assembleWebResearch(response:WebSearchResponse,searchTerms:strin
    const nativeSpans=new Set<Span>();let invalidNativeRange=false;
    for(const raw of Array.isArray(part.annotations)?part.annotations:[]){
     const annotation=object(raw);if(annotation?.type!=='url_citation')continue;
+    if(stats)stats.annotations++;
     const range=citationRange(fullText,annotation.start_index as number,annotation.end_index as number);if(!range){invalidNativeRange=true;continue;}
     const span=paragraphForCitation(spans,range);if(!span){invalidNativeRange=true;continue;}
     nativeSpans.add(span);
@@ -154,9 +165,10 @@ export function assembleWebResearch(response:WebSearchResponse,searchTerms:strin
    for(const span of spans){
     if(passages.length>=40)break;
     const citations=bindings.get(span)??(!nativeSpans.has(span)&&!invalidNativeRange?toolReturnedParagraphCitations(span,returnedUrls):[]);if(!citations.length)continue;
+    if(stats)stats.citedParagraphs++;
     // Reject the entire mixed paragraph, rather than keeping one read citation
     // next to claims that also rely on an unopened page.
-    if(response.requireOpenedSources&&citations.some(citation=>!openedUrls.has(citationUrlKey(citation.url))))continue;
+    if(response.requireOpenedSources&&citations.some(citation=>!openedUrls.has(citationUrlKey(citation.url)))){if(stats)stats.droppedUnopened++;continue;}
     const text=textOnly(span.text);if(!text)continue;
     const sourceIds:string[]=[];
     for(const citation of citations){
@@ -202,7 +214,10 @@ export async function researchWeb(input:NewCaseInput,config:ServerConfig,signal?
  try{
   const response=await Promise.race([transport({config,query,signal:controller.signal,locale}),aborted]);
   if(signal?.aborted)throw cancelled();if(timedOut)return failed('timeout');
-  return finish(assembleWebResearch(response,query.searchTerms,searchedAt));
+  const stats:AssemblyStats={annotations:0,citedParagraphs:0,droppedUnopened:0};
+  const assembled=assembleWebResearch(response,query.searchTerms,searchedAt,stats);
+  try{console.info(JSON.stringify({event:'caselink_search_diagnostics',requestId:currentExecution()?.requestId??null,...response.diagnostics,...stats,passages:assembled.passages.length,sources:assembled.sources.length,failureReason:assembled.failureReason}));}catch{/* Logging must not block a request. */}
+  return finish(assembled);
  }catch(error){const cause=error as {code?:string;name?:string};if(signal?.aborted||(!timedOut&&cause.code==='CANCELLED'))throw cancelled();return failed(timedOut||cause.code==='TIMEOUT'||['TimeoutError','APIConnectionTimeoutError'].includes(cause.name??'')?'timeout':'search_failed',error instanceof ControlledSearchFailure?error.actualQueries:[]);}
  finally{clearTimeout(timer);signal?.removeEventListener('abort',cancel);controller.signal.removeEventListener('abort',onAbort);}
 }

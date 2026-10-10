@@ -5,7 +5,7 @@ import {AnalysisError} from '../ai/errors';
 import {recordModel} from '../ai/execution';
 import {resolveJurisdiction} from '../jurisdiction';
 import {APPROVED_ISSUES,buildResearchQuery,type SafeResearchQuery} from './query';
-import {assembleWebResearch,safePublicUrl,WEB_SEARCH_TIMEOUT_MS,type WebSearchTransport} from './provider';
+import {assembleWebResearch,citationUrlKey,safePublicUrl,WEB_SEARCH_TIMEOUT_MS,type WebSearchTransport} from './provider';
 
 export function openAIWebSearchConfigured(config:ServerConfig,env:Readonly<Record<string,string|undefined>>=process.env):boolean{
  return config.mode==='live'&&config.configured&&!!config.key.trim()&&!!config.model.trim()&&env.OPENAI_WEB_SEARCH_ENABLED!=='false';
@@ -48,18 +48,20 @@ export const openAIWebSearchTransport:WebSearchTransport=async({config,query,sig
  const discoveryTools=discovery.output.filter(item=>item.type==='web_search_call');
  const candidates=assembleWebResearch(discovery,query.searchTerms);
  const urls=candidates.sources.slice(0,4).map(source=>source.url);
- if(discovery.status!=='completed'||!urls.length||discoveryTools.length>4)return {status:discovery.status,output:discoveryTools,requireOpenedSources:true,readSourceUrls:[]};
+ const diagnostics={searchCalls:discoveryTools.length,candidates:urls.length};
+ if(discovery.status!=='completed'||!urls.length||discoveryTools.length>4)return {status:discovery.status,output:discoveryTools,requireOpenedSources:true,readSourceUrls:[],diagnostics};
  let reading:OpenAI.Responses.Response;
  try{reading=await recordModel('reading',config.model,()=>client.responses.create(request(`${SEARCH_INSTRUCTIONS}\nREADING ONLY: open the candidate URLs with open_page and read the relevant main text through its ending. Report supported facts and all stated procedural outcomes in concise paragraphs, with inline citations to those pages. For constitutions, legislation, codes and judgments, also copy the exact operative words of the relevant provisions or holdings verbatim in quotation marks, in the original language and with their article, section or paragraph numbers. Only use the supplied candidate URLs. Do not substitute search snippets or prior knowledge for opening the pages. If a page is blocked, omit its factual report. Do not invent a comparable case when a source is a general standard.`,{research:publicQuery,candidateUrls:urls,outputLanguage},4000,8),{signal}));}
- catch(error){if(signal.aborted)throw error;return {status:'failed',output:discoveryTools,failureReason:'search_failed',requireOpenedSources:true,readSourceUrls:[]};}
+ catch(error){if(signal.aborted)throw error;return {status:'failed',output:discoveryTools,failureReason:'search_failed',requireOpenedSources:true,readSourceUrls:[],diagnostics};}
  if(signal.aborted)throw cancelled();
  const readingTools=reading.output.filter(item=>item.type==='web_search_call');
- const urlKey=(url:string)=>url.replace(/%[0-9a-f]{2}/gi,escape=>escape.toUpperCase());
+ const urlKey=citationUrlKey;
  const allowed=new Set(urls.map(urlKey));
  const readSourceUrls=readingTools.flatMap(item=>{
   const action=item.action;const url=action.type==='open_page'&&item.status==='completed'?safePublicUrl(action.url):null;
   return url&&allowed.has(urlKey(url))?[url]:[];
  });
- if(readingTools.length>8)return {status:'incomplete',output:[...discoveryTools,...readingTools],requireOpenedSources:true,readSourceUrls:[]};
- return {status:reading.status,output:[...discoveryTools,...readingTools,...reading.output.filter(item=>item.type==='message')],requireOpenedSources:true,readSourceUrls};
+ const readingDiagnostics={...diagnostics,openCalls:readingTools.filter(item=>item.action.type==='open_page'&&item.status==='completed').length,openedCandidates:readSourceUrls.length};
+ if(readingTools.length>8)return {status:'incomplete',output:[...discoveryTools,...readingTools],requireOpenedSources:true,readSourceUrls:[],diagnostics:readingDiagnostics};
+ return {status:reading.status,output:[...discoveryTools,...readingTools,...reading.output.filter(item=>item.type==='message')],requireOpenedSources:true,readSourceUrls,diagnostics:readingDiagnostics};
 };

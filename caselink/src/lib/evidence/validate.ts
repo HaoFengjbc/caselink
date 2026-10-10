@@ -215,6 +215,35 @@ export function dropIneligibleResources(raw:unknown,input:NewCaseInput):unknown{
   return {...raw,actionOptions};
 }
 
+/**
+ * The rules stay whole-output strict for every direct caller. For live model output only: when the analysis fails
+ * and some actions pass on their own, the analysis is kept with just those actions and the page says what was
+ * removed. A failure no single action can avoid (comparisons, structure, a locked template) still discards it.
+ */
+export function keepValidActions<T extends {actionOptions:unknown[];limitations:string[]}>(raw:unknown,validate:(value:unknown)=>T,locale:Locale='zh'):T{
+  try{return validate(raw);}catch(error){
+    const actions=(raw as {actionOptions?:unknown}|null)?.actionOptions;
+    if(!(error instanceof AnalysisError)||error.code!=='INVALID_MODEL_OUTPUT'||!Array.isArray(actions)||actions.length<2)throw error;
+    const withActions=(kept:unknown[])=>{
+      const ids=new Set(kept.map(action=>(action as {actionId?:unknown})?.actionId));
+      const links=(raw as {actionWebSources?:unknown}).actionWebSources;
+      return {...(raw as object),actionOptions:kept,...(Array.isArray(links)?{actionWebSources:links.filter(link=>ids.has((link as {actionId?:unknown})?.actionId))}:{})};
+    };
+    const reasons:string[]=[];
+    const passing=actions.filter(action=>{
+      try{validate(withActions([structuredClone(action)]));return true;}
+      catch(trial){if(trial instanceof AnalysisError&&trial.code==='INVALID_MODEL_OUTPUT'){reasons.push(trial.message);return false;}throw trial;}
+    });
+    if(!passing.length||passing.length===actions.length)throw error;
+    const result=validate(withActions(passing));
+    const removed=actions.length-passing.length;
+    const note=locale==='en'?`${removed} AI-suggested action${removed>1?'s':''} failed validation and ${removed>1?'were':'was'} removed; the rest of the analysis is kept.`
+      :`AI 生成的 ${removed} 条行动建议未通过校验，已去掉（${[...new Set(reasons.map(reason=>reason.replace(/[。；;]+$/,'').slice(0,80)))].join('；').slice(0,300)}）；其余分析保留。`;
+    result.limitations=[note,...result.limitations.filter(item=>item!==note)].slice(0,12);
+    return result;
+  }
+}
+
 export function collectSources(output:ModelAnalysisOutput,context:AnalysisContext):Evidence[]{
   const ids=new Set([...output.comparableCases.flatMap(c=>c.evidenceIds),...output.actionOptions.flatMap(a=>a.supportingEvidenceIds)]);
   return context.evidence.filter(e=>ids.has(e.evidenceId));

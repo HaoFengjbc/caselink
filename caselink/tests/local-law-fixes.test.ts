@@ -67,3 +67,24 @@ describe('local law is found from the legal subject the case names',()=>{
   expect(()=>publicSearchPayload(uk)).not.toThrow();
  });
 });
+
+describe('one failing action does not discard the rest of a live analysis',()=>{
+ const twoActions=(second:string)=>{
+  const input=ph();const output=buildRuleReference(input,[],'zh');const first=output.actionOptions[0]!;
+  output.actionOptions=[first,{...structuredClone(first),actionId:'second-action',title:'第二项准备',steps:[second,...first.steps.slice(1)]}];
+  return {input,output};
+ };
+ it('keeps the actions that pass on their own and says what was removed; direct validation stays strict',async()=>{
+  const {input,output}=twoActions('参考 Asad Ali Toor 案的做法整理材料。');
+  expect(()=>validateModelOutput(structuredClone(output),input,eligibleContext(contextFor([]),input))).toThrow('方案提到历史案');
+  const transport=vi.fn(async()=>({status:'completed',output_parsed:output}));
+  const result=await analyzeInput(input,{config,researchTransport:unavailableResearch,transport});
+  expect(result.mode).toBe('live_ai');expect(result.actionOptions.map(action=>action.actionId)).toEqual([output.actionOptions[0]!.actionId]);
+  expect(result.limitations.join(' ')).toContain('AI 生成的 1 条行动建议未通过校验，已去掉（方案提到历史案');
+ });
+ it('still sets the analysis aside when no action passes on its own',async()=>{
+  const {input,output}=twoActions('参考 Asad Ali Toor 案的做法整理材料。');output.actionOptions[0]!.steps[0]='参考 Aigul Utepova 案的做法整理材料。';
+  const transport=vi.fn(async()=>({status:'completed',output_parsed:output}));
+  await expect(analyzeInput(input,{config,researchTransport:unavailableResearch,transport})).rejects.toMatchObject({code:'INVALID_MODEL_OUTPUT'});
+ });
+});

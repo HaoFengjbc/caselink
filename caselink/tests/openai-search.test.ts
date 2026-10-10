@@ -40,6 +40,14 @@ describe('OpenAI search restoration (mocked SDK HTTP, no real provider calls)',(
   expect(await result.json()).toMatchObject({liveAvailable:true,webSearchAvailable:true,webSearchProvider:'openai',controlledSearchConfigured:false});
   expect(result.headers.get('cache-control')).toContain('no-store');
  });
+ it('matches the opened page when only the citation carries utm_source, and logs counts without any text',async()=>{
+  const tracked=`${url}?utm_source=openai`;
+  const http=vi.fn().mockResolvedValueOnce(Response.json(response([tool('search',tracked),message('Discovery candidate only, do not retain this summary.',tracked)]))).mockResolvedValueOnce(Response.json(response([tool('open_page',url),message('A fictional civil claim proceeded to trial. The appeal later reversed the judgment; the appeal date is not stated.',tracked)])));vi.stubGlobal('fetch',http);
+  const value=await runExecution(identity,'analysis',()=>researchWeb(input(),readConfig()));
+  expect(value.status).toBe('completed');expect(value.passages[0]!.text).toContain('appeal later reversed');
+  const logged=vi.mocked(console.info).mock.calls.map(([line])=>String(line)).find(line=>line.includes('caselink_search_diagnostics'))!;
+  expect(JSON.parse(logged)).toEqual({event:'caselink_search_diagnostics',requestId:'openai-search-test',searchCalls:1,candidates:1,openCalls:1,openedCandidates:1,annotations:1,citedParagraphs:1,droppedUnopened:0,passages:1,sources:1,failureReason:null});
+ });
  it('sends only canonical public topics, then reads selected sources and records real tool metadata',async()=>{
   const http=mockProvider();vi.stubGlobal('fetch',http);
   const value=await runExecution(identity,'analysis',()=>researchWeb(input(),readConfig()));
