@@ -26,7 +26,7 @@ export async function generateLive(input:NewCaseInput,context:AnalysisContext,ma
 
 export async function generateWebLive(input:NewCaseInput,context:AnalysisContext,matches:MatchedCase[],research:WebResearch,config:ServerConfig,signal?:AbortSignal,transport:ModelTransport=openAITransport,locale:Locale='zh'):Promise<WebModelAnalysisOutput>{
   input=normalizeConfirmedGoal(input);
-  const raw=await generateStructured(config,buildWebPromptData(input,context,matches,research,locale),webSystemPrompt(locale)+'\n'+CONTROLLED_SNIPPET_NOTICE,'web',signal,transport);
+  const raw=await generateStructured(config,buildWebPromptData(input,context,matches,research,locale),webSystemPrompt(locale)+(research.sources.every(source=>!source.pageOpened)?'\n'+CONTROLLED_SNIPPET_NOTICE:''),'web',signal,transport);
   return validateWebModelOutput(lockWebUnspecifiedGoalActions(raw,input,locale),input,context,research,locale);
 }
 

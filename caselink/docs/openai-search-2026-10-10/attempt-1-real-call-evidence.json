@@ -1,0 +1,69 @@
+{
+  "checkedAt": "2026-10-10T15:53:23.252Z",
+  "target": "http://127.0.0.1:3041",
+  "fixture": "V-92 fictional ordinary manual input, no exampleId",
+  "status": "failed",
+  "httpStatus": 200,
+  "elapsedMs": 68027,
+  "mode": "live_ai",
+  "promptVersion": "4.4",
+  "errorCode": null,
+  "searchStatus": "unavailable",
+  "failureReason": "invalid_output",
+  "actualQueries": [
+    "site.supremecourt.uk journalism freedom expression civil judgment Bloomberg ZXC",
+    "site.judiciary.uk journalism freedom expression civil judgment defamation public interest"
+  ],
+  "searchCalls": 1,
+  "sources": [],
+  "comparisonCount": 0,
+  "documentCount": 3,
+  "execution": {
+    "requestId": "11cf5759-1ff3-4394-9838-fbbf797d4f2a",
+    "inputVersion": 1,
+    "operation": "initial",
+    "round": 1,
+    "stages": [
+      {
+        "stage": "search",
+        "elapsedMs": 10290,
+        "model": "gpt-6.1-sol",
+        "responseId": "resp_0c8ea649fb3a1d78016aca5f2f772487d2a014769dcdfecb3e",
+        "inputTokens": 13111,
+        "outputTokens": 442,
+        "toolCalls": 1,
+        "status": "completed"
+      },
+      {
+        "stage": "reading",
+        "elapsedMs": 32313,
+        "model": "gpt-6.1-sol",
+        "responseId": "resp_0f0f1cc26ba35bcc016aca5f399f2487d2add35a63aa863322",
+        "inputTokens": 30002,
+        "outputTokens": 1533,
+        "toolCalls": 4,
+        "status": "completed"
+      },
+      {
+        "stage": "synthesis",
+        "elapsedMs": 25338,
+        "model": "gpt-6.1-sol",
+        "responseId": "resp_0ad6b233815350ed016aca5f5a066487d296eb8c1b2ef0010d",
+        "inputTokens": 36340,
+        "outputTokens": 1451,
+        "toolCalls": 0,
+        "status": "completed"
+      }
+    ],
+    "failureStage": null,
+    "controlledSearch": false,
+    "reservedCostUsd": null,
+    "actualCostUsd": null
+  },
+  "actualCostUsd": null,
+  "notes": [
+    "Provider response IDs and token/tool counts are measured; no price or bill was queried.",
+    "pageOpened means the tool opened the cited URL, not verified accuracy or complete reading.",
+    "No production deployment is performed by this script."
+  ]
+}

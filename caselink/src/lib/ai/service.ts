@@ -81,12 +81,14 @@ export async function analyzeInput(raw:NewCaseInput,options:{forceRule?:boolean;
     }
   }
   if(mode!=='live_ai')output=attachRuleLegalCitations(output,legalResearch);
-  output=webResearch?.status==='completed'
+  output=mode==='live_ai'&&webResearch?.status==='completed'
     ?validateWebModelOutput(output,input,context,webResearch,locale)
     :validateModelOutput(output,input,context,locale);
   if(webResearch){
     const note=webResearch.status==='completed'
-      ?(locale==='en'?'Controlled search returned public snippets only; full source pages were not read. They are unverified supplements to the case corpus, not verified judgments.':'本次只取得受控搜索返回的公开片段，未读取完整网页。它们是待核实补充；正式案例库仍是主干，不能把片段当作判决全文。')
+      ?(webResearch.sources.length>0&&webResearch.sources.every(source=>source.pageOpened)
+        ?(locale==='en'?'The search tool opened the cited source pages. This does not establish complete reading, factual accuracy or human verification. Public research supplements the curated corpus.':'联网工具已打开被引用的来源页面；不代表已完整读取、事实准确或团队人工核实。联网资料作为正式案例库的补充。')
+        :(locale==='en'?'Search returned public snippets only; the cited pages were not opened. They remain unverified supplements to the case corpus.':'本次仅取得公开搜索片段，引用页面未打开；它们仍是正式案例库的待核实补充。'))
       :webResearch.status==='no_results'
         ?(locale==='en'?'Web research returned no usable cited material. This analysis relies on the curated corpus and general preparation only.':'本次联网研究未获得可用的引用材料；分析仅使用正式库参考与一般准备。')
         :(locale==='en'?'Web research was unavailable for this request. This analysis relies on the curated corpus and general preparation; no completed web research is claimed.':'本次联网研究未能完成；分析仅使用正式库参考与一般准备，不声称已完成网页研究。');
@@ -100,7 +102,7 @@ export async function analyzeInput(raw:NewCaseInput,options:{forceRule?:boolean;
     search_unavailable:'Web research did not complete. The result uses available historical material and general preparation.',
     not_searched:'This result uses rules or a preset; no web research was performed.',
   }:{
-    relevant_cases_found:'AI 从公开检索片段中选出候选比较；本轮未读取完整网页，事实、后续状态与适用性均待核查。',
+    relevant_cases_found:'AI 从带引用的公开资料中选出候选比较；事实、后续状态与适用性均待核查。',
     no_relevant_cases:'本次未选出合适的案例比较。取得来源不等于相关，也不代表不存在类似案件。',
     search_unavailable:'本次联网研究未完成；结果使用已有历史资料与一般准备。',
     not_searched:'本次使用规则或预置结果，未进行联网研究。',

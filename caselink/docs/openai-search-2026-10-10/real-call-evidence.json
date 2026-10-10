@@ -1,0 +1,79 @@
+{
+  "checkedAt": "2026-10-10T15:55:22.672Z",
+  "target": "http://127.0.0.1:3041",
+  "fixture": "V-92 fictional ordinary manual input, no exampleId",
+  "status": "passed",
+  "httpStatus": 200,
+  "elapsedMs": 60726,
+  "mode": "live_ai",
+  "promptVersion": "4.4",
+  "errorCode": null,
+  "searchStatus": "completed",
+  "failureReason": null,
+  "actualQueries": [
+    "site.supremecourt.uk journalism freedom expression Bloomberg ZXC judgment 2022",
+    "site.judiciary.uk journalism freedom expression civil judgment Banks Cadwalladr",
+    "site.supremecourt.uk Khuja Times Newspapers judgment 2017"
+  ],
+  "searchCalls": 1,
+  "sources": [
+    {
+      "sourceId": "web-1",
+      "url": "https://www.supremecourt.uk/cases/uksc-2020-0122?utm_source=openai",
+      "title": "Bloomberg LP (Appellant) v ZXC (Respondent) - UK Supreme Court",
+      "hostname": "www.supremecourt.uk",
+      "citationKind": "url_annotation",
+      "pageOpened": true
+    }
+  ],
+  "comparisonCount": 0,
+  "documentCount": 3,
+  "execution": {
+    "requestId": "3868d469-0c0f-462d-8ca2-1d1ec0ea5444",
+    "inputVersion": 1,
+    "operation": "initial",
+    "round": 1,
+    "stages": [
+      {
+        "stage": "search",
+        "elapsedMs": 12177,
+        "model": "gpt-6.1-sol",
+        "responseId": "resp_04d17bd59e5e2e87016aca5fae333887d28e8cc325b29dba9f",
+        "inputTokens": 13030,
+        "outputTokens": 491,
+        "toolCalls": 1,
+        "status": "completed"
+      },
+      {
+        "stage": "reading",
+        "elapsedMs": 22363,
+        "model": "gpt-6.1-sol",
+        "responseId": "resp_02a9a29f11bba357016aca5fba4a9487d280864d71bddf37fa",
+        "inputTokens": 12853,
+        "outputTokens": 1093,
+        "toolCalls": 1,
+        "status": "completed"
+      },
+      {
+        "stage": "synthesis",
+        "elapsedMs": 26082,
+        "model": "gpt-6.1-sol",
+        "responseId": "resp_0a9b5a8355197185016aca5fd0c48887d2bcdc59a1fd26a1c5",
+        "inputTokens": 38250,
+        "outputTokens": 1458,
+        "toolCalls": 0,
+        "status": "completed"
+      }
+    ],
+    "failureStage": null,
+    "controlledSearch": false,
+    "reservedCostUsd": null,
+    "actualCostUsd": null
+  },
+  "actualCostUsd": null,
+  "notes": [
+    "Provider response IDs and token/tool counts are measured; no price or bill was queried.",
+    "pageOpened means the tool opened the cited URL, not verified accuracy or complete reading.",
+    "No production deployment is performed by this script."
+  ]
+}

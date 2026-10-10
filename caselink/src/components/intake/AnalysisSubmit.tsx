@@ -16,7 +16,7 @@ import { useI18n } from '@/components/i18n/LocaleProvider';
 import styles from './intake.module.css';
 import {submissionIdentity,activeFailure,mayRetry} from './submission-state';
 
-type Capabilities = { mode: 'demo' | 'live'; liveAvailable: boolean; configured: boolean; controlledSearchConfigured?: boolean; progressEvents?: boolean };
+type Capabilities = { mode: 'demo' | 'live'; liveAvailable: boolean; configured: boolean; controlledSearchConfigured?: boolean; webSearchAvailable?: boolean; progressEvents?: boolean };
 type Failure = { code: string; message: string; retryable?: boolean; retryAfterSeconds?: number; domain?: DomainAssessment };
 
 /**
@@ -131,7 +131,7 @@ export default function AnalysisSubmit({ prepare, currentInput, operation = 'ini
     <div className={styles.modeNotice}>
       <span className={styles.savedDot}/><div><strong>{capabilities?.mode === 'live' ? capabilities.liveAvailable ? r.mode.liveReady : r.mode.liveIncomplete : capabilities ? r.mode.demo : capabilityFailed ? r.mode.failed : r.mode.checking}</strong><p>{capabilities?.mode === 'live' ? r.mode.liveText : capabilities ? r.mode.demoText : r.mode.unknownText}</p></div>
     </div>
-    {capabilities?.mode === 'live' && capabilities.controlledSearchConfigured === false && <p className="notice">{locale === 'en' ? 'Controlled web search is not configured. This workflow can use the case corpus; it will not silently switch to autonomous web search.' : '受控联网搜索尚未配置。可使用正式案例库，不会自动换用可自行改写查询的搜索工具。'}</p>}
+    {capabilities?.mode === 'live' && (capabilities.webSearchAvailable ?? capabilities.controlledSearchConfigured) === false && <p className="notice">{locale === 'en' ? 'Web search is unavailable or disabled. Analysis can still use the case corpus.' : '联网搜索不可用或已关闭，仍可使用正式案例库分析。'}</p>}
     {failure && <div className={styles.failureBox} role="alert"><strong>{failure.code === 'CANCELLED' ? r.cancelled : r.failed}</strong><p>{failure.message}</p>{failure.domain && <p>{failure.domain.reason} {failure.domain.clarification}<Link className="text-link" href="/resources">{locale === 'en' ? 'General resources and applicability' : '查看通用资源与适用条件'}</Link></p>}{retryAt > clock && <p>{locale === 'en' ? 'Retry available in ' : '可重试等待秒数：'}{Math.ceil((retryAt - clock) / 1000)}</p>}{editHref && <Link href={editHref} className="text-link">{r.editCase}<ArrowRight size={14}/></Link>}</div>}
     {busy ? <div className={styles.busyBox} role="status"><strong>{ruleOnly ? t.web.ruleBusy : r.busyTitle}</strong><p>{ruleOnly ? t.web.ruleBusyText : r.busyText}</p><button className="text-link" onClick={cancel}><X size={14}/>{r.cancel}</button>
       {preview.length > 0 && <section className={styles.waitPreview} aria-label={r.previewTitle}><h3>{r.previewTitle}</h3><p>{r.previewNote}</p><ol>{preview.map(match => { const item = localizeCase(match.record, locale); return <li key={item.caseId}><a href={`/cases/${item.caseId}`} target="_blank" rel="noopener">{item.title}<ArrowUpRight size={14}/></a><div className={styles.waitMeta}><span className="tag">{countryName(item.country, locale)}</span><span className="tag tag-accent">{match.comparison.relevance === 'comparable' ? t.analysis.comparable : t.analysis.related}</span><span className={styles.waitTier}>{r.previewTier}</span></div><p>{item.summary}</p></li>; })}</ol></section>}

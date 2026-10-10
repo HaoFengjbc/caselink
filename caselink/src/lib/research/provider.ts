@@ -1,4 +1,6 @@
 import {controlledSearchTransport,controlledSearchConfigured,ControlledSearchFailure} from './controlled-search';
+import {openAIWebSearchTransport,openAIWebSearchConfigured} from './openai-search';
+export {openAIWebSearchTransport,SEARCH_INSTRUCTIONS} from './openai-search';
 import {isIP} from 'node:net';
 import type {NewCaseInput} from '../contracts';
 import type {ServerConfig} from '../ai/config';
@@ -11,15 +13,8 @@ import {type ResearchPlannerTransport} from './planner';
 export type {ResearchPlannerTransport} from './planner';
 
 export const WEB_SEARCH_TIMEOUT_MS=65_000;
-export type WebSearchResponse={status?:string;output?:unknown[];requireOpenedSources?:boolean;readSourceUrls?:string[]};
+export type WebSearchResponse={status?:string;output?:unknown[];requireOpenedSources?:boolean;readSourceUrls?:string[];failureReason?:WebResearch['failureReason']};
 export type WebSearchTransport=(args:{config:ServerConfig;query:SafeResearchQuery;signal:AbortSignal;locale:Locale})=>Promise<WebSearchResponse>;
-
-// No LLM search instructions are executed in this version. The approved public
-// vocabulary and literal requests live in query.ts and controlled-search.ts.
-export const SEARCH_INSTRUCTIONS='Controlled public query retrieval only; no autonomous model search.';
-
-/** Legacy named transport deliberately disabled: autonomous tools cannot enforce query vocabulary. */
-export const openAIWebSearchTransport:WebSearchTransport=async()=>{throw new AnalysisError('WEB_SEARCH_DISABLED','自主联网工具已关闭。请配置受控搜索接口，或使用正式案例库。',503,{retryable:false});};
 
 type ObjectValue=Record<string,unknown>;
 const object=(value:unknown):ObjectValue|null=>value!==null&&typeof value==='object'&&!Array.isArray(value)?value as ObjectValue:null;
@@ -29,7 +24,8 @@ const textOnly=(text:string)=>text
  .replace(/<[^>]*>/g,'')
  .replace(/(?:https?:\/\/|www\.)[^\s<>\])}]+/gi,'[link omitted]')
  .replace(/(?:javascript|data|file|vbscript):[^\s<>]+/gi,'[link omitted]')
- .replace(/\[\d+(?:[,; -]\d+)*\]/g,'')
+ // Strip short numeric footnotes, but preserve neutral-citation years: [2022] UKSC 5.
+ .replace(/\[\d{1,3}(?:\s*[,;–-]\s*\d{1,3})*\]/g,'')
  .replace(/\(\s*\)/g,'').replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g,'').trim();
 
 /** Link validation, not a fetch: only public-shaped HTTP(S) URLs may be displayed. */
@@ -120,7 +116,7 @@ function toolReturnedParagraphCitations(span:Span,returnedUrls:Set<string>):Cita
  * an exact public URL actually returned by a completed tool in this response. */
 export function assembleWebResearch(response:WebSearchResponse,searchTerms:string[],searchedAt=new Date().toISOString()):WebResearch{
  const failure=(status:WebResearch['status'],reason:WebResearch['failureReason'],count=0):WebResearch=>({status,searchedAt,searchTerms,passages:[],sources:[],searchCallCount:Math.min(count,20),failureReason:reason,actualQueries:[],relevanceStatus:'not_assessed'});
- if(response.status!=='completed'||!Array.isArray(response.output))return failure('unavailable','invalid_output');
+ if(!Array.isArray(response.output))return failure('unavailable','invalid_output');
  const items=response.output.map(object).filter((x):x is ObjectValue=>!!x);
  const searches=items.filter(item=>item.type==='web_search_call'&&item.status==='completed'&&object(item.action)?.type==='search');
  if(!searches.length)return failure('unavailable','no_search');
@@ -128,6 +124,7 @@ export function assembleWebResearch(response:WebSearchResponse,searchTerms:strin
  const completedOpens=new Set(items.flatMap(item=>{const action=object(item.action);const url=item.type==='web_search_call'&&item.status==='completed'&&action?.type==='open_page'?safePublicUrl(action.url):null;return url?[citationUrlKey(url)]:[];}));
  const openedUrls=new Set((response.readSourceUrls??[]).flatMap(value=>{const url=safePublicUrl(value);const key=url?citationUrlKey(url):'';return key&&completedOpens.has(key)?[key]:[];}));
  const actualQueries=[...new Set(searches.flatMap(item=>{const action=object(item.action);return [action?.query,...(Array.isArray(action?.queries)?action.queries:[])].filter((value):value is string=>typeof value==='string'&&value.length<=700&&!unsafePublicText(value));}))].slice(0,40);
+ if(response.status!=='completed')return {...failure('unavailable',response.failureReason??'invalid_output',searches.length),actualQueries};
  const sources:WebSource[]=[];const sourceByUrl=new Map<string,WebSource>();const passages:WebResearch['passages']=[];
  for(const item of items){
   if(item.type!=='message'||(item.status&&item.status!=='completed')||!Array.isArray(item.content))continue;
@@ -180,14 +177,14 @@ export type ResearchWebOptions={
  deadlineAt?:number;
 };
 
-export async function researchWeb(input:NewCaseInput,config:ServerConfig,signal?:AbortSignal,transport:WebSearchTransport=controlledSearchTransport,locale:Locale='zh',options:ResearchWebOptions={}):Promise<WebResearch>{
+export async function researchWeb(input:NewCaseInput,config:ServerConfig,signal?:AbortSignal,transport:WebSearchTransport=openAIWebSearchTransport,locale:Locale='zh',options:ResearchWebOptions={}):Promise<WebResearch>{
  const cancelled=()=>new AnalysisError('CANCELLED','本次联网研究已取消。',499);
  if(signal?.aborted)throw cancelled();
  const attempt=options.attempt??1,searchedAt=new Date().toISOString(),query=buildResearchQuery(input,structuredResearchPlan(input),attempt);
  const finish=(result:WebResearch):WebResearch=>WebResearchSchema.parse({...result,plan:query.plan,planningMode:'structured_fallback',relevanceStatus:'not_assessed',attempts:[{attempt,reason:attempt===1?'initial':'manual_supplement',startedAt:searchedAt,status:result.status,searchTerms:result.searchTerms,actualQueries:result.actualQueries??[],searchCallCount:result.searchCallCount,sourceCount:result.sources.length,failureReason:result.failureReason}]});
  const failed=(reason:WebResearch['failureReason'],actualQueries:string[]=[]):WebResearch=>finish({status:'unavailable',searchedAt,searchTerms:query.searchTerms,actualQueries,passages:[],sources:[],searchCallCount:actualQueries.length,failureReason:reason});
  if(!config.configured||!config.key||!config.model)return failed('search_failed');
- if(transport===openAIWebSearchTransport||(transport===controlledSearchTransport&&!controlledSearchConfigured()))return failed('web_search_disabled');
+ if((transport===openAIWebSearchTransport&&!openAIWebSearchConfigured(config))||(transport===controlledSearchTransport&&!controlledSearchConfigured()))return failed('web_search_disabled');
  // The semantic planner is not invoked: a one-round server vocabulary needs no model call.
  const controller=new AbortController(),cancel=()=>controller.abort();
  signal?.addEventListener('abort',cancel,{once:true});const timeout=Math.min(WEB_SEARCH_TIMEOUT_MS,(options.deadlineAt??Date.now()+WEB_SEARCH_TIMEOUT_MS)-Date.now());

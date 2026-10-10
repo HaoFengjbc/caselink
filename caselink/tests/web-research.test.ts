@@ -83,6 +83,10 @@ describe('research queries contain only canonical labels',()=>{
 });
 
 describe('only actual search and annotated sources become research',()=>{
+ it('preserves bracketed legal citation years while removing short footnote markers',()=>{
+  const text='The decision is [2022] UKSC 5, not a footnote. [1]';
+  const report=assembleWebResearch(result(text),[]);expect(report.passages[0].text).toContain('[2022] UKSC 5');expect(report.passages[0].text).not.toContain('[1]');
+ });
  it('requires a completed search action; opening a page or failed search does not count',()=>{
   for(const call of [{...search,action:{type:'open_page'}},{...search,status:'failed'},{...search,status:'in_progress'}]){
    expect(assembleWebResearch({status:'completed',output:[call,...result().output!.slice(1)]},[])).toMatchObject({status:'unavailable',failureReason:'no_search',searchCallCount:0});
@@ -214,8 +218,8 @@ describe('paragraph links backed by this response’s completed web tools',()=>{
  });
 });
 
-describe('autonomous tool search is retired',()=>{
- it('cannot launch built-in tool search, even with a configured model',async()=>{
+describe('explicitly disabled OpenAI search',()=>{
+ it('does not launch built-in tool search when disabled, even with a configured model',async()=>{
   const network=vi.fn();vi.stubGlobal('fetch',network);
   await expect(openAIWebSearchTransport({config,query:buildResearchQuery(input()),signal:new AbortController().signal,locale:'en'})).rejects.toMatchObject({code:'WEB_SEARCH_DISABLED'});
   expect(network).not.toHaveBeenCalled();

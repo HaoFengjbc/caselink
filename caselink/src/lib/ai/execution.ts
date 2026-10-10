@@ -30,7 +30,9 @@ export async function recordModel<T extends ProviderUsage>(stage:Stage,model:str
  const execution=storage.getStore(),started=Date.now();
  try{
   const response=await invoke();
-  execution?.stages.push({stage,elapsedMs:Date.now()-started,model:response.model??model,responseId:response.id??null,inputTokens:tokenCount(response.usage?.input_tokens),outputTokens:tokenCount(response.usage?.output_tokens),toolCalls:0,status:'completed'});
+  const output=(response as ProviderUsage & {output?:unknown[]}).output;
+  const toolCalls=Array.isArray(output)?output.filter(item=>item&&typeof item==='object'&&'type' in item&&item.type==='web_search_call').length:0;
+  execution?.stages.push({stage,elapsedMs:Date.now()-started,model:response.model??model,responseId:response.id??null,inputTokens:tokenCount(response.usage?.input_tokens),outputTokens:tokenCount(response.usage?.output_tokens),toolCalls,status:'completed'});
   return response;
  }catch(error){
   if(execution){execution.failureStage=stage;execution.stages.push({stage,elapsedMs:Date.now()-started,model,responseId:null,inputTokens:null,outputTokens:null,toolCalls:0,status:'failed'});}

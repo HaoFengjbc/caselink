@@ -1,0 +1,31 @@
+{
+  "unit": {
+    "passed": 566,
+    "skipped": 2,
+    "kind": "offline, provider mocked"
+  },
+  "typecheck": "passed",
+  "productionBuild": "passed",
+  "browser": {
+    "passed": 2,
+    "kind": "recorded real output replay plus current manual UI; no model calls"
+  },
+  "actualDownloads": 4,
+  "realProvider": {
+    "requests": 6,
+    "inputTokens": 143586,
+    "outputTokens": 6468,
+    "toolActions": 7,
+    "successfulFullSearchRuns": 1,
+    "failedSearchRuns": 1,
+    "billingUsd": null
+  },
+  "productionDeployed": false,
+  "gitPushed": false,
+  "baseCommit": "d461ba6",
+  "branch": "codex/restore-openai-search",
+  "finalAfterLiveRun": [
+    "Keep retrieved-source panel visible when zero comparisons were selected.",
+    "Preserve bracketed neutral-citation years; existing recorded output unchanged."
+  ]
+}
