@@ -11,7 +11,7 @@ export default function AdaptiveSummary({ input, locale }: { input: NewCaseInput
   const hasCustomGoal = input.primaryGoal === 'other' && !!record.goalText.trim();
   const selectedGoal = hasCustomGoal ? record.goalText : labels[locale].goals[input.primaryGoal];
   const jurisdiction = ({ england_wales: en ? 'England and Wales' : '英格兰与威尔士', scotland: en ? 'Scotland' : '苏格兰', northern_ireland: en ? 'Northern Ireland' : '北爱尔兰', unknown: en ? 'Not determined' : '尚未确定' } as Record<string, string>)[record.jurisdiction] || record.jurisdiction;
-  const kind = ({ criminal: en ? 'Criminal' : '刑事', civil: en ? 'Civil' : '民事', administrative: en ? 'Administrative' : '行政', mixed: en ? 'Multiple procedures' : '多种程序', unknown: en ? 'Not determined' : '尚未确定' })[record.caseKind];
+  const kind = ({ criminal: en ? 'Criminal' : '刑事', civil: en ? 'Civil' : '民事', administrative: en ? 'Administrative' : '行政', platform: en ? 'Platform decision' : '平台决定', mixed: en ? 'Multiple procedures' : '多种程序', unknown: en ? 'Not determined' : '尚未确定' })[record.caseKind];
   return <section aria-label={en ? 'Case record' : '完整案情记录'} style={{ textAlign: 'left', maxWidth: 900, margin: '28px auto', overflowWrap: 'anywhere' }}>
     <p style={{ opacity: .72 }}>{en ? 'User-provided information; not independently verified. Confirming this record does not confirm a legal classification.' : '以下由使用者提供，未经独立核实；确认记录不代表已经确定法律性质。'}</p>
     <dl style={{ display: 'grid', gap: 18 }}>

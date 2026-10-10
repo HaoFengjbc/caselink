@@ -1,3 +1,4 @@
+import {WhatsNextPlanSchema} from './whats-next-contracts';
 import { z } from 'zod';
 import {MaterialRecordSchema} from './materials/contracts';
 import {SourceAuditSchema,LegalResearchSchema,LegalCitationSchema,CaseFollowupSchema,NextStepSchema} from './legal-contracts';
@@ -10,8 +11,8 @@ export {IntakeRecordSchema} from './intake/contracts';
 export type {IntakeRecord} from './intake/contracts';
 
 export const SCHEMA_VERSION = '1.0' as const;
-export const CORPUS_VERSION = '2026-10-09.v4';
-export const PROMPT_VERSION = '4.1';
+export const CORPUS_VERSION = '2026-10-09.v5';
+export const PROMPT_VERSION = '4.2';
 export const StageSchema = z.enum(['investigation','pretrial','trial','appeal','postjudgment','unknown']);
 export const PersonTypeSchema = z.enum(['journalist','blogger','activist','other','unknown']);
 export const BackgroundTagSchema = z.enum(['reporting','investigation_report','social_media','repost','other','unknown']);
@@ -54,7 +55,7 @@ export const ResourceSchema=z.object({resourceId:z.string(),name:z.string(),offi
  if(value.reviewStatus==='agent_checked'&&!value.agentCheckedAt)ctx.addIssue({code:'custom',path:['agentCheckedAt'],message:'Agent checking requires a recorded source-check date.'});
 });
 export type Resource=z.infer<typeof ResourceSchema>;
-export const ReportSnapshotSchema=z.object({version:z.literal(1),capturedAt:z.string(),corpusVersion:z.string(),completeness:z.enum(['complete','legacy_partial']),locale:z.enum(['zh','en']),cases:z.array(CaseRecordSchema),evidence:z.array(EvidenceSchema),documents:z.array(SourceDocumentSchema),resources:z.array(ResourceSchema),webResearch:WebResearchSchema.optional(),legalResearch:LegalResearchSchema.optional(),followups:z.array(CaseFollowupSchema).optional(),nextSteps:z.array(NextStepSchema).optional(),sourceDescriptors:z.array(SourceDescriptorSchema),uploadedMaterials:MaterialRecordSchema.optional()}).strict();
+export const ReportSnapshotSchema=z.object({version:z.literal(1),capturedAt:z.string(),corpusVersion:z.string(),completeness:z.enum(['complete','legacy_partial']),locale:z.enum(['zh','en']),cases:z.array(CaseRecordSchema),evidence:z.array(EvidenceSchema),documents:z.array(SourceDocumentSchema),resources:z.array(ResourceSchema),webResearch:WebResearchSchema.optional(),legalResearch:LegalResearchSchema.optional(),followups:z.array(CaseFollowupSchema).optional(),nextSteps:z.array(NextStepSchema).optional(),whatsNext:WhatsNextPlanSchema.optional(),sourceDescriptors:z.array(SourceDescriptorSchema),uploadedMaterials:MaterialRecordSchema.optional()}).strict();
 export type ReportSnapshot=z.infer<typeof ReportSnapshotSchema>;
 export const ComparisonBriefSchema=z.object({briefId:z.string(),title:z.string(),createdAt:z.string(),locale:z.enum(['zh','en']),caseIds:z.array(z.string()).min(2).max(4),snapshot:ReportSnapshotSchema,commonIssues:z.array(z.object({label:z.string(),supportingCaseIds:z.array(z.string()),evidenceIds:z.array(z.string()),differences:z.array(z.string()),unknowns:z.array(z.string())})),limitations:z.array(z.string())}).strict();
 export type ComparisonBrief=z.infer<typeof ComparisonBriefSchema>;
@@ -68,6 +69,6 @@ export type WebModelAnalysisOutput=z.infer<typeof WebModelAnalysisOutputSchema>;
 // Server-owned metadata is deliberately absent from the model output schema.
 export const ActionOriginSchema=z.object({actionId:z.string(),origin:z.enum(['ai','rule','preset']),reason:z.string().max(500).nullable()}).strict();
 export const ResearchAssessmentSchema=z.object({status:z.enum(['relevant_cases_found','no_relevant_cases','search_unavailable','not_searched']),attempts:z.number().int().min(0).max(2),recovery:z.enum(['not_needed','found_cases','no_relevant_cases','unavailable','budget_exhausted']),note:z.string().max(800)}).strict();
-export const AnalysisResultSchema=ModelAnalysisOutputSchema.extend({analysisId:z.string(),schemaVersion:z.literal(SCHEMA_VERSION),inputHash:z.string(),corpusVersion:z.string(),promptVersion:z.string(),createdAt:z.string(),mode:z.enum(['live_ai','rule_reference','preset_demo']),locale:z.enum(['zh','en']).optional(),webResearch:WebResearchSchema.optional(),webComparisons:z.array(WebComparisonSchema).max(5).optional(),actionWebSources:z.array(ActionWebSourcesSchema).max(3).optional(),actionOrigins:z.array(ActionOriginSchema).max(3).optional(),researchAssessment:ResearchAssessmentSchema.optional(),legalResearch:LegalResearchSchema.optional(),followups:z.array(CaseFollowupSchema).optional(),nextSteps:z.array(NextStepSchema).optional(),historicalComparisons:z.array(z.object({caseId:z.string(),interventionId:z.string()})),sources:z.array(EvidenceSchema),snapshot:ReportSnapshotSchema.optional(),domain:DomainAssessmentSchema.optional(),jurisdiction:CanonicalJurisdictionSchema.optional(),execution:ResearchExecutionSchema.optional()});
+export const AnalysisResultSchema=ModelAnalysisOutputSchema.extend({analysisId:z.string(),schemaVersion:z.literal(SCHEMA_VERSION),inputHash:z.string(),corpusVersion:z.string(),promptVersion:z.string(),createdAt:z.string(),mode:z.enum(['live_ai','rule_reference','preset_demo']),locale:z.enum(['zh','en']).optional(),webResearch:WebResearchSchema.optional(),webComparisons:z.array(WebComparisonSchema).max(5).optional(),actionWebSources:z.array(ActionWebSourcesSchema).max(3).optional(),actionOrigins:z.array(ActionOriginSchema).max(3).optional(),researchAssessment:ResearchAssessmentSchema.optional(),legalResearch:LegalResearchSchema.optional(),followups:z.array(CaseFollowupSchema).optional(),nextSteps:z.array(NextStepSchema).optional(),whatsNext:WhatsNextPlanSchema.optional(),historicalComparisons:z.array(z.object({caseId:z.string(),interventionId:z.string()})),sources:z.array(EvidenceSchema),snapshot:ReportSnapshotSchema.optional(),domain:DomainAssessmentSchema.optional(),jurisdiction:CanonicalJurisdictionSchema.optional(),execution:ResearchExecutionSchema.optional()});
 export type AnalysisResult=z.infer<typeof AnalysisResultSchema>;
 export const EMPTY_INPUT:NewCaseInput={schemaVersion:SCHEMA_VERSION,country:'',stage:'unknown',currentProblems:['unknown'],background:{activities:[],personType:'unknown',description:''},primaryGoal:'unknown',keyDates:[],resources:[],resourceConstraints:'',priorActions:{status:'unknown',description:'',date:''},publicity:'unknown',isExample:false,exampleId:null};

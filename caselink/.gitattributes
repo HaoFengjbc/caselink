@@ -1,0 +1,2 @@
+# Preserve original research PDFs and generated print artifacts as binary files.
+*.pdf binary

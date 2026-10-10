@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "1.0",
+  "country": "Kazakhstan",
+  "stage": "unknown",
+  "currentProblems": [
+    "unknown"
+  ],
+  "background": {
+    "activities": [],
+    "personType": "unknown",
+    "description": ""
+  },
+  "primaryGoal": "other",
+  "keyDates": [],
+  "resources": [],
+  "resourceConstraints": "",
+  "priorActions": {
+    "status": "unknown",
+    "description": "",
+    "date": ""
+  },
+  "publicity": "private",
+  "isExample": false,
+  "exampleId": null,
+  "intake": {
+    "version": 1,
+    "jurisdiction": "unknown",
+    "caseKind": "criminal",
+    "narrative": "【陌生虚构案件 Q-47】家属称记者黎禾在报道城市供水采购后于2026-10-08被带走，地点和文书未确认。已找到当地律师，但律师尚未与本人会面。家属只同意内部与该律师沟通，不同意向其他组织传送或公开。",
+    "goalText": "整理带走经过与律师接触问题，核对现行法律身份。",
+    "disclosureDetails": "仅内部及现有当地律师；不得向其他组织传送，不公开姓名。",
+    "answers": [],
+    "facts": [],
+    "confirmed": true,
+    "expression": "yes"
+  }
+}

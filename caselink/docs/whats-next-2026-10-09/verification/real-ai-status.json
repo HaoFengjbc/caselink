@@ -1,0 +1,20 @@
+{
+  "checkedAt": "2026-10-10T00:39:37.223Z",
+  "status": "blocked",
+  "reason": "No configured local OPENAI_API_KEY; no verified local paid-test budget.",
+  "keyPresent": false,
+  "configuredModel": "gpt-6.1-sol",
+  "analysisMode": null,
+  "realAiRequests": 0,
+  "actualIncrementalAiCostUsd": 0,
+  "syntheticProviderTests": "unit tests only; explicitly mocked, not real-AI acceptance",
+  "ordinaryBrowserTests": "real local app and API in rule mode, no mocked result",
+  "scope": "Fictional inputs only; no credentials or budget changed; no remote deployment tested",
+  "localDemonstrationMode": "demo",
+  "capabilityProbe": {
+    "url": "http://127.0.0.1:3040/api/capabilities",
+    "configured": false,
+    "liveAvailable": false,
+    "ruleAvailable": true
+  }
+}

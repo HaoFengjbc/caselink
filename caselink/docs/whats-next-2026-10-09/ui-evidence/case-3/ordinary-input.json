@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "1.0",
+  "country": "Japan",
+  "stage": "unknown",
+  "currentProblems": [
+    "unknown"
+  ],
+  "background": {
+    "activities": [],
+    "personType": "unknown",
+    "description": ""
+  },
+  "primaryGoal": "other",
+  "keyDates": [],
+  "resources": [],
+  "resourceConstraints": "",
+  "priorActions": {
+    "status": "unknown",
+    "description": "",
+    "date": ""
+  },
+  "publicity": "private",
+  "isExample": false,
+  "exampleId": null,
+  "intake": {
+    "version": 1,
+    "jurisdiction": "unknown",
+    "caseKind": "administrative",
+    "narrative": "【陌生虚构案件 N-18】记者岑澈称一项采访许可被暂停。通知只由同事转述，日期、机关和依据均不知道，还没有取得原通知。",
+    "goalText": "先确认发生了什么，整理需要索取的材料。",
+    "disclosureDetails": "仅内部整理，未经具体授权不对外发送、不公开姓名。",
+    "answers": [],
+    "facts": [],
+    "confirmed": true,
+    "expression": "yes"
+  }
+}

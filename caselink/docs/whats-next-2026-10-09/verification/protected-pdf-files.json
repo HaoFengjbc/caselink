@@ -1,0 +1,61 @@
+{
+  "baseline": "79f40cd",
+  "unchanged": true,
+  "files": [
+    {
+      "path": "src/app/api/materials/route.ts",
+      "sha256": "52c9f12f66d886ef6c886221cca12f6b6071671dc584c4415e0e04a0b22ff36a",
+      "matchesBaseline": true
+    },
+    {
+      "path": "src/lib/materials/citations.ts",
+      "sha256": "8cd7bf64e4e9e0f57200dd43cb4b0b8be1e30f5136f48b5f00daee3467c02b19",
+      "matchesBaseline": true
+    },
+    {
+      "path": "src/lib/materials/config.ts",
+      "sha256": "f5554655920adb8888033d67cc993639fe6c81aeccc1d039e53867f81aa86fee",
+      "matchesBaseline": true
+    },
+    {
+      "path": "src/lib/materials/contracts.ts",
+      "sha256": "122ff356548a610f6936a293b411b63df56a6f96f22cc25ac830fa6371cd969c",
+      "matchesBaseline": true
+    },
+    {
+      "path": "src/lib/materials/dates.ts",
+      "sha256": "08fda7257b09b56b4111b80423dbe8ed992afd3e0615d6519fac9a067eabe096",
+      "matchesBaseline": true
+    },
+    {
+      "path": "src/lib/materials/extract.ts",
+      "sha256": "75383d67face109b542551d206f07c248e2d8c917864d530628b84618e684425",
+      "matchesBaseline": true
+    },
+    {
+      "path": "src/lib/materials/integration.ts",
+      "sha256": "3959e3c371b7586876296a313b2ab5fcb78c5ae7a7e6319bbf613eeb9ea22c64",
+      "matchesBaseline": true
+    },
+    {
+      "path": "src/lib/materials/parse.ts",
+      "sha256": "d4e58f3b18cae07a17421fafc8617ed1bf16805850d4732bd9ad8e4eb2f9c062",
+      "matchesBaseline": true
+    },
+    {
+      "path": "src/lib/materials/service.ts",
+      "sha256": "4cef4edfba82a5e96afb8a9f699ba7b97ddee9f0c97add3ea7ce07004fccabf5",
+      "matchesBaseline": true
+    },
+    {
+      "path": "src/lib/materials/validation-error.ts",
+      "sha256": "4689d536b51aa21aa38172d4adc77040123e6b8c43d86cd726d7114073aaf464",
+      "matchesBaseline": true
+    },
+    {
+      "path": "src/lib/materials/worker-source.ts",
+      "sha256": "702b6a225269b572c52c8e6e097cc42c55224c1591de4cd9d03d8c5b72020835",
+      "matchesBaseline": true
+    }
+  ]
+}

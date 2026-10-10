@@ -1,5 +1,6 @@
 import { AnalysisResultSchema, EMPTY_INPUT, NewCaseInputSchema, CORPUS_VERSION, PROMPT_VERSION, type AnalysisResult, type NewCaseInput } from '../contracts';
 import { DEFAULT_PREFERENCES, UsePreferencesSchema, type UsePreferences } from '../workflow-contracts';
+import {workingSourcesValid} from '../working-source-validation';
 import { archiveAnalysis } from './history';
 
 const LEGACY_KEY = 'caselink.session.v1';
@@ -93,9 +94,10 @@ export function saveResult(result: AnalysisResult, expectedInputKey?: string, ex
   const current = readSession(); if (!current.input) return false;
   const key = inputKey(current.input); if (expectedInputKey !== undefined && key !== expectedInputKey) return false;
   const parsed = AnalysisResultSchema.safeParse(result); if (!parsed.success) return false;
-  persist({ ...current, result: parsed.data, resultInputKey: key });
+  const merged=mergeWorkingEdits(current.result,parsed.data);
+  persist({ ...current, result: merged, resultInputKey: key });
   // Persistence is a separate, explicit user preference, never a side effect of analysis.
-  if (preferences.saveMode === 'local') archiveAnalysis(current.input, parsed.data, preferences.expiresAt);
+  if (preferences.saveMode === 'local') archiveAnalysis(current.input, merged, preferences.expiresAt);
   return true;
 }
 export function isResultStale(state: SessionState = readSession()): boolean {
@@ -136,3 +138,37 @@ export function clearLegacyDraft(): void {
 export function startNewAnalysis(): void { clearSession(); }
 export function newDraft(): NewCaseInput { return structuredClone(EMPTY_INPUT); }
 export function isStorageAvailable(): boolean { return !storageUnavailable; }
+
+/** Working edits live in the existing report/session. Storage still requires the existing opt-in. */
+export function updateWorkingDocument(kind:import('../whats-next-contracts').WorkKind,markdown:string):void{
+ const current=readSession();if(!current.result?.snapshot?.whatsNext)return;
+ const result=structuredClone(current.result),plan=result.snapshot!.whatsNext!;
+ const doc=plan.documents.find(d=>d.kind===kind);if(!doc)return;
+ doc.markdown=markdown;doc.status=doc.previousMarkdown!==undefined?'needs_merge':'user_edited';doc.citationState='needs_review';doc.progress='draft';doc.progressNote='';
+ result.whatsNext=structuredClone(plan);persist({...current,result});
+}
+export function setWorkingProgress(kind:import('../whats-next-contracts').WorkKind,progress:import('../whats-next-contracts').WorkingDocument['progress'],note:string):void{
+ const current=readSession();if(!current.result?.snapshot?.whatsNext)return;
+ const result=structuredClone(current.result),plan=result.snapshot!.whatsNext!;
+ const doc=plan.documents.find(d=>d.kind===kind);if(!doc)return;
+ doc.progress=progress;doc.progressNote=note; // User-recorded activity never changes citation/team review state.
+ result.whatsNext=structuredClone(plan);persist({...current,result});
+}
+export function resolveWorkingDocument(kind:import('../whats-next-contracts').WorkKind,choice:'generated'|'edited'):void{
+ const current=readSession();if(!current.result?.snapshot?.whatsNext)return;
+ const result=structuredClone(current.result),plan=result.snapshot!.whatsNext!;
+ const doc=plan.documents.find(d=>d.kind===kind);if(!doc)return;
+ if(choice==='generated'){doc.markdown=doc.generatedMarkdown;doc.status='generated';doc.citationState=workingSourcesValid(result.snapshot!)?'source_linked':'needs_review';}
+ else {doc.status='user_edited';doc.citationState='needs_review';}
+ delete doc.previousMarkdown;doc.progress='draft';doc.progressNote='';result.whatsNext=structuredClone(plan);persist({...current,result});
+}
+export function mergeWorkingEdits(previous:AnalysisResult|null,next:AnalysisResult):AnalysisResult{
+ const result=structuredClone(next),plan=result.snapshot?.whatsNext;
+ if(!plan)return result;
+ for(const doc of plan.documents){const old=previous?.snapshot?.whatsNext?.documents.find(d=>d.kind===doc.kind);if(!old)continue;
+  if(old.status!=='generated'){
+   doc.previousMarkdown=old.markdown;doc.markdown=old.markdown;doc.status='needs_merge';doc.citationState='needs_review';doc.progress='draft';doc.progressNote='';
+  }
+ }
+ result.whatsNext=structuredClone(plan);return result;
+}

@@ -1,0 +1,8 @@
+import {EMPTY_INPUT,type NewCaseInput} from '../../src/lib/contracts';
+function make(country:string,kind:NonNullable<NewCaseInput['intake']>['caseKind'],narrative:string,goal:string):NewCaseInput{return {...structuredClone(EMPTY_INPUT),country,isExample:false,exampleId:null,publicity:'private',background:{activities:['reporting'],personType:'journalist',description:narrative},primaryGoal:'other',intake:{version:1,jurisdiction:'national',caseKind:kind,narrative,goalText:goal,disclosureDetails:'仅内部整理，未经具体授权不对外发送、不公开姓名。',answers:[],facts:[],confirmed:true,expression:'yes'}};}
+const detained=make('Kazakhstan','criminal','【陌生虚构案件 Q-47】家属称记者黎禾在报道城市供水采购后于2026-10-08被带走，地点和文书未确认。已找到当地律师，但律师尚未与本人会面。家属只同意内部与该律师沟通，不同意向其他组织传送或公开。','整理带走经过与律师接触问题，核对现行法律身份。');
+detained.currentProblems=['detained','lawyer_access'];detained.resources=['lawyer'];detained.stage='investigation';detained.keyDates=[{date:'2026-10-08',event:'家属称黎禾被带走，时间和地点未确认',approximate:false}];detained.intake!.disclosureDetails='仅内部及现有当地律师；不得向其他组织传送，不公开姓名。';
+const civil=make('United Kingdom','civil','【陌生虚构案件 V-92】社区记者温栩在英格兰和威尔士报道污水排放后，于2026-10-06收到承包商要求道歉的民事律师函。编辑部保存函件及两份检测记录。尚未收到法院文件，也没有聘请律师。承包商否认污染与其有关。','整理发表依据、对方指摘与损害主张，供当地法律顾问评估。');
+civil.intake!.jurisdiction='england_wales';civil.resources=['none'];civil.currentProblems=['expression_restricted'];civil.keyDates=[{date:'2026-10-06',event:'收到民事律师函（用户陈述）',approximate:false}];civil.priorActions={status:'described',description:'编辑部已保存律师函及检测记录，尚未答复。',date:''};
+const limited=make('Japan','administrative','【陌生虚构案件 N-18】记者岑澈称一项采访许可被暂停。通知只由同事转述，日期、机关和依据均不知道，还没有取得原通知。','先确认发生了什么，整理需要索取的材料。');limited.resources=['unknown'];limited.currentProblems=['expression_restricted'];
+export const WHATS_NEXT_INPUTS=[detained,civil,limited];

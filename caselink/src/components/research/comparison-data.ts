@@ -1,6 +1,6 @@
 import {ComparisonBriefSchema,type ComparisonBrief,type ReportSnapshot,type Resource,type SourceDescriptor} from '@/lib/contracts';
 import {captureCaseSnapshot} from '@/lib/reports/snapshot';
-import {resources} from '@/lib/corpus';
+import {resources,followups} from '@/lib/corpus';
 import {localizeResource} from '@/lib/i18n/content';
 
 export const COMPARISON_MAX_BYTES=3_000_000;
@@ -23,6 +23,9 @@ export function buildComparisonBrief(caseIds:readonly string[],locale:'zh'|'en'=
  const selectedTags=new Set(['expression','fair_trial',...(snapshot.cases.some(c=>c.problems.includes('detained'))?['detention']:[])]);
  snapshot.resources=structuredClone(resources.filter(r=>r.tags?.some(t=>selectedTags.has(t))).map(r=>localizeResource(r,locale)));
  snapshot.sourceDescriptors.push(...snapshot.resources.map(resourceDescriptor));
+ // Capture only on new comparisons. Imported older snapshots are never backfilled.
+ snapshot.followups=structuredClone(followups.filter(f=>caseIds.includes(f.caseId)));
+ for(const followup of snapshot.followups)for(const source of followup.sources)snapshot.sourceDescriptors.push({sourceId:source.sourceId,category:'historical_followup',reviewStatus:source.reviewStatus,applicability:['Historical research record; distinguish event type, proceeding and observed outcome.'],locator:source.locator,agentCheckedAt:source.reviewStatus==='agent_checked'?source.checkedAt:null,teamReviewedAt:null,unknowns:followup.unknowns});
  return ComparisonBriefSchema.parse({briefId:crypto.randomUUID(),title:loc('表达案件比较 · 内部交接简报','Expression cases · internal comparison brief',locale),createdAt:new Date().toISOString(),locale,caseIds:[...caseIds],snapshot,commonIssues:commonIssuesFromSnapshot(snapshot),limitations:[loc('仅比较所选公开案例，不能推断国家或全球发生率。','Only selected public cases are compared; no national or global prevalence inference.',locale),loc('历史行动与结果分别记载；先后关系不证明因果效果。','Historical actions and outcomes are separate; sequence does not establish causation.',locale),loc('法域、程序类型和罪名没有统一结构化字段时显示未记载；不由模型补齐。','Missing structured jurisdiction, procedure and charge fields remain unrecorded; no model fills the gaps.',locale),loc('原入库审核记录保留；本轮未独立复核原案事实。资源由 agent 检查不等于团队人工复核。','Legacy review records are retained; underlying events were not independently reverified. Agent source checks are not team review.',locale),loc('没有调用 AI 或搜索。这是生成时固定的资料简报，不是实时案情更新。','No AI or search was called. This is a generation-time snapshot, not a live case update.',locale)]});
 }
 export function serializeComparisonBrief(brief:ComparisonBrief):string{
@@ -35,6 +38,7 @@ export function parseComparisonBrief(text:string):ComparisonBrief{
  const brief=ComparisonBriefSchema.parse(JSON.parse(text));
  const ids=new Set(brief.caseIds);
  if(ids.size!==brief.caseIds.length||brief.snapshot.cases.length!==ids.size||brief.snapshot.cases.some(c=>!ids.has(c.caseId)))throw new Error('Snapshot case selection is inconsistent.');
+ if(brief.snapshot.followups?.some(f=>!ids.has(f.caseId)||f.events.some(event=>event.sourceIds.some(id=>!f.sources.some(source=>source.sourceId===id)))))throw new Error('Snapshot follow-up ownership is inconsistent.');
  const refs=new Map(brief.snapshot.evidence.map(e=>[e.evidenceId,e]));
  if(brief.snapshot.evidence.some(e=>!ids.has(e.caseId))||brief.commonIssues.some(i=>i.supportingCaseIds.some(id=>!ids.has(id))||i.evidenceIds.some(id=>!refs.has(id)||!i.supportingCaseIds.includes(refs.get(id)!.caseId))))throw new Error('Snapshot evidence ownership is inconsistent.');
  return brief;

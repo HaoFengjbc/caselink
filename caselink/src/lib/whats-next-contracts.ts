@@ -1,0 +1,12 @@
+import {z} from 'zod';
+import {NextStepSchema} from './legal-contracts';
+export const WorkKindSchema=z.enum(['timeline','issue_matrix','lawyer_brief']);
+export type WorkKind=z.infer<typeof WorkKindSchema>;
+export const WorkFactSchema=z.object({factId:z.string(),text:z.string(),quote:z.string(),origin:z.enum(['user_statement','document_record','court_finding','external_report','model_inference']),sourceLabel:z.string(),date:z.string().nullable(),precision:z.enum(['day','month','year','approximate','unknown'])}).strict();
+export type WorkFact=z.infer<typeof WorkFactSchema>;
+export const WorkingDocumentSchema=z.object({kind:WorkKindSchema,title:z.string(),markdown:z.string(),generatedMarkdown:z.string(),inputHash:z.string(),status:z.enum(['generated','user_edited','needs_merge']),citationState:z.enum(['source_linked','needs_review']),previousMarkdown:z.string().optional(),progress:z.enum(['draft','reviewed','completed','sent']).default('draft'),progressNote:z.string().default('')}).strict();
+export type WorkingDocument=z.infer<typeof WorkingDocumentSchema>;
+export const PreparationTaskSchema=z.object({taskId:z.string(),kind:WorkKindSchema,title:z.string(),whyNow:z.string(),factIds:z.array(z.string()),role:z.string(),assignment:z.literal('unassigned'),status:z.literal('draft_generated'),available:z.array(z.string()),missing:z.array(z.object({item:z.string(),why:z.string(),role:z.string()}).strict()),legalBindingIds:z.array(z.string()),history:NextStepSchema.shape.history,basisGaps:z.array(z.string()),stopConditions:z.array(z.string())}).strict();
+export const CandidatePathSchema=z.object({pathId:z.string(),title:z.string(),state:z.enum(['conditional','paused']),reason:z.string(),conditions:z.array(z.string()),legalBindingIds:z.array(z.string()),role:z.string()}).strict();
+export const WhatsNextPlanSchema=z.object({version:z.literal(1),inputHash:z.string(),facts:z.array(WorkFactSchema),priorities:z.array(PreparationTaskSchema).max(3),paths:z.array(CandidatePathSchema),questions:z.array(z.object({questionId:z.string(),question:z.string(),reason:z.string(),blocks:z.array(z.string()),role:z.string()}).strict()).max(3),documents:z.array(WorkingDocumentSchema).max(3),generationMode:z.enum(['rule_filled','ai_assisted']),limitations:z.array(z.string())}).strict();
+export type WhatsNextPlan=z.infer<typeof WhatsNextPlanSchema>;

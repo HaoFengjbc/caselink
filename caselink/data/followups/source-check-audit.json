@@ -1,0 +1,128 @@
+{
+  "version": "history-source-audit-v1",
+  "checkedAt": "2026-10-09",
+  "humanVerified": false,
+  "sourceChecks": [
+    {
+      "sourceId": "checked-utepova-hrc-filing",
+      "url": "https://cfj.org/news/journalist-convicted-under-unfair-anti-extremism-law-in-kazakhstan-should-have-conviction-overturned/",
+      "title": "Journalist Convicted Under Unfair Anti-Extremism Law in Kazakhstan Should Have Conviction Overturned",
+      "publisher": "Clooney Foundation for Justice / TrialWatch",
+      "publishedAt": "2022-04-27",
+      "locator": "Body second paragraph and Additional Background last paragraph",
+      "quote": "have challenged the conviction of the journalist, Aigul Utepova",
+      "readStatus": "full_text",
+      "checkedAt": "2026-10-09",
+      "reviewStatus": "agent_checked",
+      "teamReviewedAt": null,
+      "teamReviewer": null
+    },
+    {
+      "sourceId": "checked-bribri-report-use",
+      "url": "https://cfj.org/testimonials/",
+      "title": "Myriam Bribri testimonial / report use",
+      "publisher": "Clooney Foundation for Justice",
+      "publishedAt": null,
+      "locator": "Myriam Bribri section, sentence immediately below the testimonial",
+      "quote": "defense team used TrialWatch’s Fairness Report at her appeal hearing.",
+      "readStatus": "full_text",
+      "checkedAt": "2026-10-09",
+      "reviewStatus": "agent_checked",
+      "teamReviewedAt": null,
+      "teamReviewer": null
+    },
+    {
+      "sourceId": "checked-bribri-amnesty",
+      "url": "https://www.amnesty.org/fr/latest/news/2022/09/tunisia-drop-bogus-charges-against-activist-myriam-bribri/",
+      "title": "Tunisie. Les accusations sans fondement pesant sur Myriam Bribri doivent être abandonnées",
+      "publisher": "Amnesty International",
+      "publishedAt": "2022-09-28",
+      "locator": "Informations complémentaires: defence/prosecution appeals; opening statement calling for reversal",
+      "quote": "a fait appel de ce verdict le 23 décembre 2021. […] doivent être annulées",
+      "readStatus": "full_text",
+      "checkedAt": "2026-10-09",
+      "reviewStatus": "agent_checked",
+      "teamReviewedAt": null,
+      "teamReviewer": null
+    },
+    {
+      "sourceId": "checked-alnur-joint-letter",
+      "url": "https://www.freedom-now.org/wp-content/uploads/Ilyashev-Letter-Final-Draft-signed.pdf",
+      "title": "Letter to State Counselor Erlan Karin re WGAD Opinion No. 2/2022",
+      "publisher": "Freedom Now and Clooney Foundation for Justice / TrialWatch",
+      "publishedAt": "2022-09-13",
+      "locator": "PDF p.1 date/senders; pp.2–3 Information Requested; p.4 signatures; p.2 visually checked",
+      "quote": "Has the sentence imposed on Mr. Ilyashev in June 2020 been quashed?",
+      "readStatus": "full_text",
+      "checkedAt": "2026-10-09",
+      "reviewStatus": "agent_checked",
+      "teamReviewedAt": null,
+      "teamReviewer": null
+    },
+    {
+      "sourceId": "checked-alnur-wgad-filing",
+      "url": "https://cfj.org/news/kazakhstan-should-comply-with-un-decision-and-quash-activists-conviction/",
+      "title": "Kazakhstan Should Comply with UN Decision and Quash Activist’s Conviction",
+      "publisher": "Clooney Foundation for Justice",
+      "publishedAt": "2022-09-13",
+      "locator": "Opening paragraph on joint letter issued 2022-09-13; Background opening paragraph on petition actually filed 2021-02-12",
+      "quote": "issued a letter […] filed a petition with the UN Working Group on Arbitrary Detention",
+      "readStatus": "full_text",
+      "checkedAt": "2026-10-09",
+      "reviewStatus": "agent_checked",
+      "teamReviewedAt": null,
+      "teamReviewer": null
+    },
+    {
+      "sourceId": "checked-hajar-special-submission",
+      "url": "https://menarights.org/en/caseprofile/la-journaliste-marocaine-hajar-raissouni-poursuivie-en-violation-de-son-droit-la-vie",
+      "title": "La journaliste marocaine Hajar Raissouni poursuivie en violation de son droit à la vie privée",
+      "publisher": "MENA Rights Group",
+      "publishedAt": "2021-06-08",
+      "locator": "Opening paragraph; timeline entries 12 September, 30 September, 16 October 2019; original publication 2019-09-12, update 2021-06-08",
+      "quote": "MENA Rights Group a saisi sept procédures spéciales",
+      "readStatus": "full_text",
+      "checkedAt": "2026-10-09",
+      "reviewStatus": "agent_checked",
+      "teamReviewedAt": null,
+      "teamReviewer": null
+    },
+    {
+      "sourceId": "checked-radi-cpj-inquiries",
+      "url": "https://cpj.org/2024/10/moroccos-pardoned-journalists-face-smears-threats-after-prison/",
+      "title": "Morocco’s pardoned journalists face smears, threats after prison",
+      "publisher": "Committee to Protect Journalists",
+      "publishedAt": "2024-10-21",
+      "locator": "Opening section paragraph beginning CPJ’s emailed; Threatening phone calls, Radi-specific paragraphs",
+      "quote": "but did not receive any responses",
+      "readStatus": "full_text",
+      "checkedAt": "2026-10-09",
+      "reviewStatus": "agent_checked",
+      "teamReviewedAt": null,
+      "teamReviewer": null
+    }
+  ],
+  "notCheckedPolicy": "All other manifest URLs remain research_reported; no automatic verification or current status inference.",
+  "additionalChecks": [
+    {
+      "url": "https://spcommreports.ohchr.org/TMResultsBase/DownLoadPublicCommunicationFile?gId=27078",
+      "status": "source_checked",
+      "scope": "Four-page AL TUN 2/2022; p.1-2 December 21 conviction / appeal next day contrasts with Amnesty December 20/23; a rapporteur communication not judgment",
+      "automaticPromotion": false
+    },
+    {
+      "url": "https://www.hrw.org/news/2022/03/30/universal-periodic-review-submission-tunisia",
+      "status": "opened",
+      "scope": "Legacy UPR preservation context only, not an additional recommended action",
+      "automaticPromotion": false
+    }
+  ],
+  "failedAttempts": [
+    {
+      "url": "https://menarights.org/en/caseprofile/moroccan-journalist-hajar-raissouni-arrested-and-charged-having-illegal-abortion",
+      "status": "blocked",
+      "reason": "Tool inaccessible; incorrect guessed path",
+      "resolution": "Used exact manifest URL and successfully read underlying source. No assertion based on failed path."
+    }
+  ]
+}

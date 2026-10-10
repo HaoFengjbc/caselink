@@ -22,7 +22,7 @@ export function hasIntakeQuote(material:QuoteMaterial,quote:string):boolean{
   return quote.trim().length>0&&[material.narrative,...material.answers.map(a=>a.answer),...(material.materials?.items.flatMap(i=>i.sources.map(s=>s.quote))??[])].some(text=>text.includes(quote));
 }
 export const IntakeRecordSchema=z.object({
-  version:z.literal(1),jurisdiction:z.string().max(100),caseKind:z.enum(['criminal','civil','administrative','mixed','unknown']),
+  version:z.literal(1),jurisdiction:z.string().max(100),caseKind:z.enum(['criminal','civil','administrative','platform','mixed','unknown']),
   narrative:z.string().max(6000),goalText:z.string().max(800),disclosureDetails:z.string().max(800),
   answers:z.array(IntakeAnswerSchema).max(40),facts:z.array(IntakeFactDraftSchema).max(12),confirmed:z.boolean(),
   /** Whether the user says the matter involves journalism or public expression: the scope of the reviewed library. Absent in older drafts. */

@@ -48,9 +48,10 @@
 .sectionIntroduction p { margin: 0; color: var(--muted); font-size: 14.5px }
 
 /* ── Action card ── */
-.actionCard { position: relative; margin-bottom: 26px; padding: 30px 34px 0; background: var(--surface); border: 1px solid var(--line); border-top: 4px solid var(--subtle) }
+.actionCard { min-width: 0; overflow-wrap: anywhere; position: relative; margin-bottom: 26px; padding: 30px 34px 0; background: var(--surface); border: 1px solid var(--line); border-top: 4px solid var(--subtle) }
 .actionCard[data-applicability="priority"] { border-top-color: var(--green) }
 .actionCard[data-applicability="conditional"] { border-top-color: var(--amber) }
+.actionTop > div { min-width: 0 }
 .actionTop { display: flex; gap: 22px; align-items: flex-start }
 .actionNumber { font-family: var(--font-display); font-size: 64px; line-height: .85; color: var(--red) }
 .actionCard[data-applicability="defer"] .actionNumber { color: var(--subtle) }
@@ -177,7 +178,7 @@
 .printSources { display: none }
 
 @media (max-width: 1040px) {
-  .resultLayout { grid-template-columns: 1fr; gap: 0 }
+  .resultLayout { grid-template-columns: minmax(0, 1fr); gap: 0 }
   .resultAside { position: static; margin-top: 30px }
 }
 @media (max-width: 760px) {

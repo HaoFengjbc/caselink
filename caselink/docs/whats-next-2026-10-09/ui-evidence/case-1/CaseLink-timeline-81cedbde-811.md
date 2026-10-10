@@ -1,0 +1,167 @@
+# 案件时间线与材料索引
+
+报告: 81cedbde-8117-4297-b66a-8da42fc41787 · 2026-10-10T00:40:17.217Z
+输入版本: 39049ec41daba92c411cc66bfc063b4d597a25e97ab204cf4cf012bc07b3dfa7
+程序位置: Kazakhstan / unknown / criminal / 不清楚
+目标: 整理带走经过与律师接触问题，核对现行法律身份。
+具体披露选择: 希望先保持私下处理 · 仅内部及现有当地律师；不得向其他组织传送，不公开姓名。
+内部工作草稿；生成、下载不代表已复核、已联系或已提交。事实来自使用者及所列材料，尚未经独立核实。
+
+## 本案叙述
+【陌生虚构案件 Q-47】家属称记者黎禾在报道城市供水采购后于2026-10-08被带走，地点和文书未确认。已找到当地律师，但律师尚未与本人会面。家属只同意内部与该律师沟通，不同意向其他组织传送或公开。
+
+## 事件与日期精度
+| 日期 / 精度 | 事件 / 事实 ID | 来源属性 / 定位 | 程序 / 缺口与影响 |
+| --- | --- | --- | --- |
+| 2026-10-08 / day | [account-1] 【陌生虚构案件 Q-47】家属称记者黎禾在报道城市供水采购后于2026-10-08被带走，地点和文书未确认。 | 用户陈述，未经独立核实 · 用户叙述；未经独立核实 · 原话 / Quote: 【陌生虚构案件 Q-47】家属称记者黎禾在报道城市供水采购后于2026-10-08被带走，地点和文书未确认。 | Kazakhstan / unknown / criminal / 不清楚 · 日期须与正式文书及送达记录核对，不计算法定期限。 |
+| 未提供；需核对 / unknown | [account-2] 已找到当地律师，但律师尚未与本人会面。 | 用户陈述，未经独立核实 · 用户叙述；未经独立核实 · 原话 / Quote: 已找到当地律师，但律师尚未与本人会面。 | Kazakhstan / unknown / criminal / 不清楚 · 事件时间未确认，影响先后关系、紧迫程度及适用版本判断；由案件协调人与当地律师核对。 |
+| 未提供；需核对 / unknown | [account-3] 家属只同意内部与该律师沟通，不同意向其他组织传送或公开。 | 用户陈述，未经独立核实 · 用户叙述；未经独立核实 · 原话 / Quote: 家属只同意内部与该律师沟通，不同意向其他组织传送或公开。 | Kazakhstan / unknown / criminal / 不清楚 · 事件时间未确认，影响先后关系、紧迫程度及适用版本判断；由案件协调人与当地律师核对。 |
+
+## 已采取行动（使用者陈述）
+已采取行动未确认；请案件协调人核对有无提交、回执及律师沟通，避免重复或冲突操作。
+
+## 本案材料索引
+本报告未保存新案材料的文件名/页码索引。现有来源是上述用户陈述，不能伪填文书名、案号或页码；案件协调人应取得真实文书后追加。
+- [ ] 措施决定、作出机关及实际地点 — 决定适用程序、管辖及可核实的事实范围；尚无对应原件不能下结论。 (用户称已有当地律师（委托范围仍需确认）)
+- [ ] 事件、通知、送达及已有请求的日期来源 — 日期需逐项与文书核对，才能由当地律师判断时点与期限；系统不计算期限。 (案件协调人核对，当地律师判断)
+- [ ] 现有律师的委托、会面与材料接触范围 — 有律师不等于已取得会面或案卷；未确认委托不分派真实人员。 (当事人或获授权协调人)
+
+## 待核问题
+- 当前是通知、调查、开庭还是其他阶段？不知道也可保留。 — 阶段改变可研究的程序；内部整理仍可继续。 (用户称已有当地律师（委托范围仍需确认）)
+- 目前实际持有哪些通知或决定？尚未取得的分别是什么？ — 索取原文用于核对法律根据、机关与送达；不重复要求上传。 (案件协调人)
+
+## 冻结来源与命题定位
+引用仅支持所列研究命题，不验证用户案情，也不代表团队人工复核。用户修改命题后，原引用须重新核对。
+
+### [legal-kz-iccpr-article-19-art19-2-3] ICCPR 第 19 条：表达自由 · Article 19(2)–(3), printed p. 178 / PDF p. 8
+expression_restriction_test / iccpr-article-19 / art19-2-3
+表达限制须有法律依据，并为第19(3)列举目的所必要；具体限制是否满足要求尚待核查。
+> provided by law
+原文: https://treaties.un.org/doc/publication/unts/volume%20999/volume-999-i-14668-english.pdf
+适用条件: 具体法域: confirmed — 用户陈述法域：KZ；仅确认研究范围。 / 程序类型: confirmed — 当前记录：criminal；来源范围：all。 / 当前缔约状态（独立官方记录）: confirmed — UNTC IV.4：2006-01-24批准ICCPR，按第49条2006-04-24生效；国内效果及具体事件适用另核。 / 事件时管辖、相关保留与国内援引: unknown — 当前缔约情况与个案适用分别处理；仍须核对事件时管辖、相关保留/克减及国内援引方式。
+来源核查: 2026-10-09 · full_text · agent_checked
+团队人工复核: 未完成
+
+### [legal-kz-hrc-general-comment-34-para22] 人权事务委员会一般性意见第 34 号：表达与诽谤 · CCPR/C/GC/34, para. 22, printed / PDF p. 6
+expression_restriction_test / hrc-general-comment-34 / para22
+限制需满足第19(3)列举目的及必要性、比例性测试；该段是委员会解释。
+> necessity and proportionality
+原文: https://documents.un.org/api/symbol/access?l=en&s=CCPR/C/GC/34&t=pdf
+适用条件: 具体法域: confirmed — 用户陈述法域：KZ；仅确认研究范围。 / 程序类型: confirmed — 当前记录：criminal；来源范围：all。 / 当前缔约状态（独立官方记录）: confirmed — UNTC IV.4：2006-01-24批准ICCPR，按第49条2006-04-24生效；国内效果及具体事件适用另核。 / 事件时管辖、相关保留与国内援引: unknown — 当前缔约情况与个案适用分别处理；仍须核对事件时管辖、相关保留/克减及国内援引方式。
+来源核查: 2026-10-09 · full_text · agent_checked
+团队人工复核: 未完成
+
+### [legal-kz-hrc-general-comment-34-para25] 人权事务委员会一般性意见第 34 号：表达与诽谤 · CCPR/C/GC/34, para. 25, PDF / printed pp. 6–7
+expression_legality_test / hrc-general-comment-34 / para25
+第25段用于研究限制规则是否公开可及、足够明确以及是否赋予不受限制的裁量；先取得实际所引规则及受限表述，不据主题相近宣布国内规则无效。
+> sufficient precision
+原文: https://documents.un.org/api/symbol/access?l=en&s=CCPR/C/GC/34&t=pdf
+适用条件: 具体法域: confirmed — 用户陈述法域：KZ；仅确认研究范围。 / 程序类型: confirmed — 当前记录：criminal；来源范围：all。 / 当前缔约状态（独立官方记录）: confirmed — UNTC IV.4：2006-01-24批准ICCPR，按第49条2006-04-24生效；国内效果及具体事件适用另核。 / 事件时管辖、相关保留与国内援引: unknown — 当前缔约情况与个案适用分别处理；仍须核对事件时管辖、相关保留/克减及国内援引方式。
+来源核查: 2026-10-09 · full_text · agent_checked
+团队人工复核: 未完成
+
+### [legal-kz-hrc-general-comment-34-paras33-35] 人权事务委员会一般性意见第 34 号：表达与诽谤 · CCPR/C/GC/34, paras. 33–35, PDF / printed p. 8
+expression_necessity_proportionality / hrc-general-comment-34 / paras33-35
+第33–35段要求逐项研究限制的合法目的、较少侵害的替代方式、比例及所称威胁与表达之间的具体直接关联；先后发生不能单独证明因果或限制不合法。
+> must not be overbroad
+原文: https://documents.un.org/api/symbol/access?l=en&s=CCPR/C/GC/34&t=pdf
+适用条件: 具体法域: confirmed — 用户陈述法域：KZ；仅确认研究范围。 / 程序类型: confirmed — 当前记录：criminal；来源范围：all。 / 当前缔约状态（独立官方记录）: confirmed — UNTC IV.4：2006-01-24批准ICCPR，按第49条2006-04-24生效；国内效果及具体事件适用另核。 / 事件时管辖、相关保留与国内援引: unknown — 当前缔约情况与个案适用分别处理；仍须核对事件时管辖、相关保留/克减及国内援引方式。
+来源核查: 2026-10-09 · full_text · agent_checked
+团队人工复核: 未完成
+
+### [legal-kz-iccpr-article-9-art9-1-2] ICCPR 第 9 条：人身自由 · ICCPR Article 9(1)–(2), UNTS vol.999, printed p.175 / PDF p.5
+detention_basis_notice / iccpr-article-9 / art9-1-2
+第9(1)–(2)用于研究剥夺自由的法律根据、非任意性和逮捕理由告知；整理机关、时刻、理由及文书来源，不凭用户称被带走就宣布违反条约。
+> reasons for his arrest
+原文: https://treaties.un.org/doc/publication/unts/volume%20999/volume-999-i-14668-english.pdf
+适用条件: 具体法域: confirmed — 用户陈述法域：KZ；仅确认研究范围。 / 程序类型: confirmed — 当前记录：criminal；来源范围：all。 / 当前缔约状态（独立官方记录）: confirmed — UNTC IV.4：2006-01-24批准ICCPR，按第49条2006-04-24生效；国内效果及具体事件适用另核。 / 事件时管辖、相关保留与国内援引: unknown — 当前缔约情况与个案适用分别处理；仍须核对事件时管辖、相关保留/克减及国内援引方式。 / 当前存在拘押: unknown — 尚无明确的当前拘押陈述，先确认是否已被剥夺自由。
+来源核查: 2026-10-09 · full_text · agent_checked
+团队人工复核: 未完成
+
+### [legal-kz-iccpr-article-9-art9-4] ICCPR 第 9 条：人身自由 · Article 9(4), printed p. 176 / PDF p. 6
+detention_review / iccpr-article-9 / art9-4
+被剥夺自由者有权请求法院及时审查拘押合法性。
+> without delay
+原文: https://treaties.un.org/doc/publication/unts/volume%20999/volume-999-i-14668-english.pdf
+适用条件: 具体法域: confirmed — 用户陈述法域：KZ；仅确认研究范围。 / 程序类型: confirmed — 当前记录：criminal；来源范围：all。 / 当前缔约状态（独立官方记录）: confirmed — UNTC IV.4：2006-01-24批准ICCPR，按第49条2006-04-24生效；国内效果及具体事件适用另核。 / 事件时管辖、相关保留与国内援引: unknown — 当前缔约情况与个案适用分别处理；仍须核对事件时管辖、相关保留/克减及国内援引方式。 / 当前存在拘押: unknown — 尚无明确的当前拘押陈述，先确认是否已被剥夺自由。
+来源核查: 2026-10-09 · full_text · agent_checked
+团队人工复核: 未完成
+
+### [legal-kz-hrc-general-comment-35-paras39-40] 人权事务委员会一般性意见第 35 号：任意拘押 · CCPR/C/GC/35, paras. 39–40, PDF / printed pp. 12–13
+detention_review / hrc-general-comment-35 / paras39-40
+第39–40段解释第9(4)的司法审查，不限刑事拘押；应整理实际剥夺自由及决定记录。执行法院所判固定刑期的情形有范围限制，不能自动推成重复审查或释放资格。
+> take proceedings before a court
+原文: https://documents.un.org/api/symbol/access?l=en&s=CCPR/C/GC/35&t=pdf
+适用条件: 具体法域: confirmed — 用户陈述法域：KZ；仅确认研究范围。 / 程序类型: confirmed — 当前记录：criminal；来源范围：all。 / 当前缔约状态（独立官方记录）: confirmed — UNTC IV.4：2006-01-24批准ICCPR，按第49条2006-04-24生效；国内效果及具体事件适用另核。 / 事件时管辖、相关保留与国内援引: unknown — 当前缔约情况与个案适用分别处理；仍须核对事件时管辖、相关保留/克减及国内援引方式。
+来源核查: 2026-10-09 · full_text · agent_checked
+团队人工复核: 未完成
+
+### [legal-kz-iccpr-article-14-art14-3-b-d] ICCPR 第 14 条：公正审判 · Article 14(3)(b), (d), printed p. 177 / PDF p. 7
+criminal_defence / iccpr-article-14 / art14-3-b-d
+刑事指控下的辩护准备、律师沟通与法律协助保障；不能直接用于民事诽谤。
+> adequate time and facilities
+原文: https://treaties.un.org/doc/publication/unts/volume%20999/volume-999-i-14668-english.pdf
+适用条件: 具体法域: confirmed — 用户陈述法域：KZ；仅确认研究范围。 / 程序类型: confirmed — 当前记录：criminal；来源范围：criminal / civil。 / 当前缔约状态（独立官方记录）: confirmed — UNTC IV.4：2006-01-24批准ICCPR，按第49条2006-04-24生效；国内效果及具体事件适用另核。 / 事件时管辖、相关保留与国内援引: unknown — 当前缔约情况与个案适用分别处理；仍须核对事件时管辖、相关保留/克减及国内援引方式。
+来源核查: 2026-10-09 · full_text · agent_checked
+团队人工复核: 未完成
+
+### [legal-kz-hrc-general-comment-32-paras32-34] 人权事务委员会一般性意见第 32 号：公正审判 · CCPR/C/GC/32, paras. 32–34, printed / PDF p. 10
+criminal_defence / hrc-general-comment-32 / paras32-34
+解释刑事辩护的准备时间、材料获取和及时保密律师沟通；具体不足及当地补救须由律师核对。
+> access to documents and other evidence
+原文: https://documents.un.org/api/symbol/access?l=en&s=CCPR/C/GC/32&t=pdf
+适用条件: 具体法域: confirmed — 用户陈述法域：KZ；仅确认研究范围。 / 程序类型: confirmed — 当前记录：criminal；来源范围：criminal。 / 当前缔约状态（独立官方记录）: confirmed — UNTC IV.4：2006-01-24批准ICCPR，按第49条2006-04-24生效；国内效果及具体事件适用另核。 / 事件时管辖、相关保留与国内援引: unknown — 当前缔约情况与个案适用分别处理；仍须核对事件时管辖、相关保留/克减及国内援引方式。
+来源核查: 2026-10-09 · full_text · agent_checked
+团队人工复核: 未完成
+
+### [legal-kz-kz-criminal-procedure-detention-art140-2] 哈萨克斯坦刑事诉讼法：拘押文书、复核与替代措施 · Article 140(2)
+kz_detention_order_copy / kz-criminal-procedure-detention / art140-2
+刑事强制措施决定应载明涉嫌罪行和理由，向被采取措施者交付副本并说明申诉程序；现有材料尚不能证明文书未依法交付。
+> Копия постановления вручается лицу
+原文: https://old.adilet.zan.kz/rus/docs/K1400000231
+适用条件: 具体法域: confirmed — 用户陈述法域：KZ；仅确认研究范围。 / 程序类型: confirmed — 当前记录：criminal；来源范围：criminal。 / 事件日期对应的法律版本: unknown — 具体事件和程序日期应逐项与有效版本核对；本轮不把当前网页或下载日当事件时法律版本。 / 当前存在拘押: unknown — 尚无明确的当前拘押陈述，先确认是否已被剥夺自由。 / 条款条件：需逐项核实: unknown — 限哈萨克斯坦刑事程序；第107条路径针对审前调查中的侦查法官决定。 / 条款条件：需逐项核实: unknown — 必须核对决定种类、作出及宣告日期、申请人身份和期限恢复条件。 / 条款条件：需逐项核实: unknown — 拘押通常涉及第147(1)条刑罚门槛及例外；不能只凭记者身份判断。
+来源核查: 2026-10-09 · partial_text · agent_checked
+团队人工复核: 未完成
+
+### [legal-kz-kz-criminal-procedure-detention-art107-1-2] 哈萨克斯坦刑事诉讼法：拘押文书、复核与替代措施 · Article 107(1)(1), (2), (3)
+kz_detention_review / kz-criminal-procedure-detention / art107-1-2
+审前调查中，嫌疑人及辩护人等可对侦查法官的拘押或延押决定提出复核；第107(2)条规定自宣告起三日，正当理由逾期可申请恢复，不能根据未核实日期推算本案期限。
+> в течение трех суток с момента его оглашения
+原文: https://old.adilet.zan.kz/rus/docs/K1400000231
+适用条件: 具体法域: confirmed — 用户陈述法域：KZ；仅确认研究范围。 / 程序类型: confirmed — 当前记录：criminal；来源范围：criminal。 / 事件日期对应的法律版本: unknown — 具体事件和程序日期应逐项与有效版本核对；本轮不把当前网页或下载日当事件时法律版本。 / 当前存在拘押: unknown — 尚无明确的当前拘押陈述，先确认是否已被剥夺自由。 / 条款条件：需逐项核实: unknown — 限哈萨克斯坦刑事程序；第107条路径针对审前调查中的侦查法官决定。 / 条款条件：需逐项核实: unknown — 必须核对决定种类、作出及宣告日期、申请人身份和期限恢复条件。 / 条款条件：需逐项核实: unknown — 拘押通常涉及第147(1)条刑罚门槛及例外；不能只凭记者身份判断。 / 第107条的审前调查阶段: unknown — 候审的日常说法不能证明仍处于第107条所述审前调查程序；请律师核对决定机关及移送审判状态。
+来源核查: 2026-10-09 · partial_text · agent_checked
+团队人工复核: 未完成
+
+### [legal-kz-kz-criminal-procedure-detention-art147-1-2] 哈萨克斯坦刑事诉讼法：拘押文书、复核与替代措施 · Article 147(1), (1-1), (2); Article 148(7-1)
+kz_detention_alternatives / kz-criminal-procedure-detention / art147-1-2
+第147条要求审查更轻措施能否采用，申请与法官决定须说明理由；拘押还有刑罚门槛及列明例外，不能直接推出本案应获释。
+> невозможность применения менее строгих мер пресечения
+原文: https://old.adilet.zan.kz/rus/docs/K1400000231
+适用条件: 具体法域: confirmed — 用户陈述法域：KZ；仅确认研究范围。 / 程序类型: confirmed — 当前记录：criminal；来源范围：criminal。 / 事件日期对应的法律版本: unknown — 具体事件和程序日期应逐项与有效版本核对；本轮不把当前网页或下载日当事件时法律版本。 / 当前存在拘押: unknown — 尚无明确的当前拘押陈述，先确认是否已被剥夺自由。 / 条款条件：需逐项核实: unknown — 限哈萨克斯坦刑事程序；第107条路径针对审前调查中的侦查法官决定。 / 条款条件：需逐项核实: unknown — 必须核对决定种类、作出及宣告日期、申请人身份和期限恢复条件。 / 条款条件：需逐项核实: unknown — 拘押通常涉及第147(1)条刑罚门槛及例外；不能只凭记者身份判断。
+来源核查: 2026-10-09 · partial_text · agent_checked
+团队人工复核: 未完成
+
+### aigul-utepova · 2022-04-27
+TrialWatch / Clooney Foundation for Justice；Debevoise & Plimpton LLP · 公开确认双方已向联合国人权事务委员会挑战该定罪，并请求撤销定罪、道歉、赔偿及反极端主义法律改革。日期为公开声明日期，实际递交日未披露。 · submitted
+后续结果 / 关键差异: 实际提交得到参与者正文确认；所请求补救不是已获准结果。这是与原报告同月新增的公开行动记录，保留2022-04基线。实际递交日、与原报告全部事实截至及出版的精确先后未确认。 / 该历史参与只证明资料中记载的工作曾发生；当前案件的机制资格、程序时点、披露授权与可能结果均须另行核对。 / 新增后续记录的程序：2021年Article 405(2)定罪的国际个人来文；不能与同人其他案件合并。 / 行动与结果只保留时间关系；不能推断该行动导致结果。 / 历史案已有定罪及国内上诉；本案不能因同国或拘押事实直接迁移个人来文资格。 / 受理、国内救济、授权及对外披露需要独立检查。 / 历史材料形式：个人来文；原文确认基于审判观察，完整提交附件目录未知 / 实际递交日、当时登记及可受理性决定未知。
+只保留来源归属与时间先后，不认定因果，不证明机构当前接受本案。
+- [checked-utepova-hrc-filing] Journalist Convicted Under Unfair Anti-Extremism Law in Kazakhstan Should Have Conviction Overturned · Body second paragraph and Additional Background last paragraph · 2022-04-27 · https://cfj.org/news/journalist-convicted-under-unfair-anti-extremism-law-in-kazakhstan-should-have-conviction-overturned/
+> have challenged the conviction of the journalist, Aigul Utepova
+  full_text / agent_checked · 核查 2026-10-09 · 团队未人工复核
+
+### alnur-ilyashev · 2022-09-13
+Freedom Now；Clooney Foundation for Justice / TrialWatch · 向国务顾问Erlan Karin发出联合函，逐项询问撤销判刑、消除记录、赔偿、调查及法律改革进度，并促请接受WGAD访问请求。 · implemented
+后续结果 / 关键差异: 函件与署名可读。CFJ当日称尚无补救进度告知；此为该时点参与者观察，不能推断以后一直无执行。 / 该历史参与只证明资料中记载的工作曾发生；当前案件的机制资格、程序时点、披露授权与可能结果均须另行核对。 / 新增后续记录的程序：执行WGAD Opinion No.2/2022的后续倡议；不能与同人其他案件合并。 / 行动与结果只保留时间关系；不能推断该行动导致结果。 / 历史案已有WGAD意见；尚无国际决定的新案不能直接进入意见落实程序。 / 只能迁移把不同补救分项核对的方法；发函须授权且不是本工具自动执行。 / 历史材料形式：有签名的四页落实询问函；逐项询问判刑、记录、赔偿和调查 / 联合函后是否收到答复未知。 / 2021-02-12由Freedom Now与McKool Smith提交WGAD申请是报告前行动，仅用于来源背景，不计报告后新提交。 / 函件后答复、国内执行、记录消除及实际付款未确认。
+只保留来源归属与时间先后，不认定因果，不证明机构当前接受本案。
+- [checked-alnur-joint-letter] Letter to State Counselor Erlan Karin re WGAD Opinion No. 2/2022 · PDF p.1 date/senders; pp.2–3 Information Requested; p.4 signatures; p.2 visually checked · 2022-09-13 · https://www.freedom-now.org/wp-content/uploads/Ilyashev-Letter-Final-Draft-signed.pdf
+> Has the sentence imposed on Mr. Ilyashev in June 2020 been quashed?
+  full_text / agent_checked · 核查 2026-10-09 · 团队未人工复核
+- [checked-alnur-wgad-filing] Kazakhstan Should Comply with UN Decision and Quash Activist’s Conviction · Opening paragraph on joint letter issued 2022-09-13; Background opening paragraph on petition actually filed 2021-02-12 · 2022-09-13 · https://cfj.org/news/kazakhstan-should-comply-with-un-decision-and-quash-activists-conviction/
+> issued a letter […] filed a petition with the UN Working Group on Arbitrary Detention
+  full_text / agent_checked · 核查 2026-10-09 · 团队未人工复核
+
+---
+草稿状态: generated · 依据状态: source_linked
+已连接来源的草稿；不是团队核实的法律结论。
+用户记录的实际进度: draft
+导出不会将行动标记为已复核、已完成或已发送。

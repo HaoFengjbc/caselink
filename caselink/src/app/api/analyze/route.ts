@@ -18,7 +18,7 @@ export async function POST(request:NextRequest){
   const forceRule=data.forceRule||data.preferences?.aiEnabled===false;
   const config=forceRule?undefined:readConfig();
   if(!forceRule&&config?.mode==='live')requireResearchScope(data.input,data.locale??'zh');
-  const result=await runExecution(data,'analysis',()=>analyzeInput(data.input,{forceRule,config,signal:request.signal,locale:data.locale,identity:data}));
+  const result=await runExecution(data,'analysis',()=>analyzeInput(data.input,{allowPreparationFallback:true,forceRule,config,signal:request.signal,locale:data.locale,identity:data}));
   return NextResponse.json(result,{headers:{...NO_STORE,'X-Request-Id':requestId}});
  }catch(error){return errorResponse(error,requestId);}
 }

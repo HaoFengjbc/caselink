@@ -1,0 +1,3815 @@
+{
+  "version": "whats-next-followups-v1",
+  "checkedAt": "2026-10-09",
+  "researchCutoff": "2026-10-09",
+  "authorVerificationNotAdopted": true,
+  "originalsAreSameResearchNotIndependentCorroboration": true,
+  "originalManifestClaims": {
+    "input_pdf_count": 24,
+    "unique_report_count": 21,
+    "independent_research": true
+  },
+  "immutableFiles": [
+    {
+      "path": "data/followups/kazakhstan.json",
+      "sha256": "b9a28892a33339fe8aa3b386fa6a16903402bc9f8b7267dd1a7119c04b8619fc"
+    },
+    {
+      "path": "data/followups/tunisia.json",
+      "sha256": "087f6ab5cba677dfeec322f9e2170c90a3de66d8780804dc04fbc91b9cf262d4"
+    },
+    {
+      "path": "data/followups/morocco.json",
+      "sha256": "28202e3d36a1295bb8a860bfe17089a2e163b98e34e0be7549bc55ea459ab105"
+    },
+    {
+      "path": "data/cases/cases.json",
+      "sha256": "0612170a1c0ba502e3f76282936872627d60b5ce44adba3352aa64ce4fa1ab99"
+    },
+    {
+      "path": "data/evidence/evidence.json",
+      "sha256": "fa98ed35bc88b573542069adab149a083c123d92947f61a469db5ffe66d14cbe"
+    },
+    {
+      "path": "data/evidence/documents.json",
+      "sha256": "ced3341b5eb218ce8dad12dbcb88534e95bd092e820ece22840837602dad855e"
+    }
+  ],
+  "reports": [
+    {
+      "reportId": "followup-report-01",
+      "number": 1,
+      "caseIds": [
+        "wuth-boonlert-samak-donnapee"
+      ],
+      "filename": "01_thailand_wuth_samak_Follow_Up.pdf",
+      "sha256": "077b1939c2991933254b510d12268b9e629efed2218b2168766907dabc6c7b7a",
+      "pages": 7,
+      "sourceOriginalFactsAsOf": "2020-07",
+      "preservedCaseCutoffs": {
+        "wuth-boonlert-samak-donnapee": "2020-07"
+      },
+      "researchCutoff": "2026-10-09",
+      "authorLastVerifiedEvent": "2023-09-26",
+      "baselineDocumentId": "wuth-samak-report",
+      "baselineDocumentHash": "37f89f62011c6814c506de44ee4bfc6d42fdc9a78ceb987e1685152d43ed7cdb",
+      "authorStatusQualification": "The latest verified decision in the original Chaiwat prosecution is the Court of Appeal's 22 December 2020 acquittal. The 26 September 2023 event concerns a distinct case involving Wuth and another defendant, not Samak. No Supreme Court disposition or certificate of finality in the original proceedings was verified.",
+      "timelineRows": 4,
+      "sharedBackgroundOwner": null
+    },
+    {
+      "reportId": "followup-report-02",
+      "number": 2,
+      "caseIds": [
+        "alnur-ilyashev"
+      ],
+      "filename": "02_kazakhstan_alnur_Follow_Up.pdf",
+      "sha256": "f1fefe7877861701a332dcdc7804d739d729e01688d47969f4d1d588db11dd0b",
+      "pages": 7,
+      "sourceOriginalFactsAsOf": "2021-03",
+      "preservedCaseCutoffs": {
+        "alnur-ilyashev": "2021-03"
+      },
+      "researchCutoff": "2026-10-09",
+      "authorLastVerifiedEvent": "2026-09-04",
+      "baselineDocumentId": "alnur-report",
+      "baselineDocumentHash": "64092283a0ddfc51b796bb9195c6397bcf0b636923ef93bc28ee4d3e78988765",
+      "authorStatusQualification": "Freedom Now explicitly reports release from house arrest on 17 April 2023. A 30 April 2025 interview says the five-year public-activity ban was due to expire later that year, not that expiry had already been formally confirmed. September 2026 reporting describes release after questioning in a separate fraud investigation as a witness with a right to defence and an undertaking to appear. No current custodial order or domestic reversal of the 2020 conviction was verified.",
+      "timelineRows": 7,
+      "sharedBackgroundOwner": null
+    },
+    {
+      "reportId": "followup-report-03",
+      "number": 3,
+      "caseIds": [
+        "alexander-pichugin"
+      ],
+      "filename": "03_russia_pichugin_Follow_Up.pdf",
+      "sha256": "0deaf5aa0593f3fc4652322f1b3790f0f1c52f59333efd2bccddc15a58b70484",
+      "pages": 7,
+      "sourceOriginalFactsAsOf": "2022-04",
+      "preservedCaseCutoffs": {
+        "alexander-pichugin": "2022-04"
+      },
+      "researchCutoff": "2026-10-09",
+      "authorLastVerifiedEvent": "2025-11-13",
+      "baselineDocumentId": "pichugin-report",
+      "baselineDocumentHash": "cc6f4e4c41df79979df73a5cc48bbd6ee2f9b80c1ceec288b846604285a06c4d",
+      "authorStatusQualification": "The ECtHR's final committee judgment addresses the original speech conviction and a separate protest case. The EUR 10,000 award covers the applicant's combined findings, not exclusively the speech prosecution. A foreign-agent designation on 7 November 2025 is separately reported. No new prison sentence, domestic acquittal, or payment of the Strasbourg award was verified.",
+      "timelineRows": 6,
+      "sharedBackgroundOwner": null
+    },
+    {
+      "reportId": "followup-report-04",
+      "number": 4,
+      "caseIds": [
+        "asad-ali-toor",
+        "bilal-ghauri"
+      ],
+      "filename": "04_pakistan_peca20_Follow_Up.pdf",
+      "sha256": "e52538856af5117c2fe0d04f88bd9a2cbf23214c20969cb2bfd0a7218308899c",
+      "pages": 7,
+      "sourceOriginalFactsAsOf": "2023-09",
+      "preservedCaseCutoffs": {
+        "asad-ali-toor": "2023-09",
+        "bilal-ghauri": "2023-09"
+      },
+      "researchCutoff": "2026-10-09",
+      "authorLastVerifiedEvent": "2026-09-16",
+      "baselineDocumentId": "pakistan-peca-report",
+      "baselineDocumentHash": "88cc7310958779e156b8e8260e709ef81fd8e8ffdfdd8f6822cb13fdf9128927",
+      "authorStatusQualification": "Latest located court event is Bilal Ghauri's conditional post-arrest bail, reported on 17 September 2026. The 2022 ruling pre-dates and is discussed in the original. It does not establish repeal of all Section 20. No final merits disposition of the 2025 constitutional challenges or definitive appellate treatment of the 2022 ruling was verified.",
+      "timelineRows": 6,
+      "sharedBackgroundOwner": "asad-ali-toor"
+    },
+    {
+      "reportId": "followup-report-05",
+      "number": 5,
+      "caseIds": [
+        "emna-chargui"
+      ],
+      "filename": "05_tunisia_chargui_Follow_Up.pdf",
+      "sha256": "4d36fd15bc9c72ffc16dcd19fb6f016f7c5f427dbe758bb652711c39c431bf09",
+      "pages": 7,
+      "sourceOriginalFactsAsOf": "2021-06",
+      "preservedCaseCutoffs": {
+        "emna-chargui": "2021-06"
+      },
+      "researchCutoff": "2026-10-09",
+      "authorLastVerifiedEvent": "2020-07-13",
+      "baselineDocumentId": "emna-report",
+      "baselineDocumentHash": "1501f5309ada29f1161fdebf7102f382c0673ba75fd0ee210e52e2439ba4b159",
+      "authorStatusQualification": "The dated conviction is taken from the original report. The original also confirms an appeal and asylum in Germany by June 2021, without precise event dates. No later case-disposing order was verified through 9 October 2026. Amnesty's 15 July 2020 article describes sentencing 'yesterday', conflicting with the original's 13 July date.",
+      "timelineRows": 5,
+      "sharedBackgroundOwner": null
+    },
+    {
+      "reportId": "followup-report-06",
+      "number": 6,
+      "caseIds": [
+        "shahidul-alam"
+      ],
+      "filename": "06_bangladesh_alam_Follow_Up.pdf",
+      "sha256": "521c829c58b5d6552f575d00185511c815033cda823675e5f2010de9661a19c1",
+      "pages": 7,
+      "sourceOriginalFactsAsOf": "2023-01",
+      "preservedCaseCutoffs": {
+        "shahidul-alam": "2023-01"
+      },
+      "researchCutoff": "2026-10-09",
+      "authorLastVerifiedEvent": "2025-08-07",
+      "baselineDocumentId": "shahidul-alam-report",
+      "baselineDocumentHash": "6b0ea3d0959fb21052460b30ca8b1fe7135b65c0733531de77a2360787a92ed7",
+      "authorStatusQualification": "Quashing is corroborated by local court reporting and Amnesty. No later State appeal, leave application, stay or appellate disposition was verified. The 2022 appellate proceedings concerned an earlier challenge and must not be mistaken for an appeal from the 2025 order.",
+      "timelineRows": 7,
+      "sharedBackgroundOwner": null
+    },
+    {
+      "reportId": "followup-report-07",
+      "number": 7,
+      "caseIds": [
+        "katsiaryna-andreyeva-daria-chultsova"
+      ],
+      "filename": "07_belarus_andreyeva_chultsova_Follow_Up.pdf",
+      "sha256": "b600c49d87854db660c06320da827f01d42c79a9d6405a09e411cffde8ca812a",
+      "pages": 7,
+      "sourceOriginalFactsAsOf": "2021-10",
+      "preservedCaseCutoffs": {
+        "katsiaryna-andreyeva-daria-chultsova": "2021-10"
+      },
+      "researchCutoff": "2026-10-09",
+      "authorLastVerifiedEvent": "2026-03-24",
+      "baselineDocumentId": "katsiaryna-andreyeva-daria-chultsova-report",
+      "baselineDocumentHash": "42978ec140db651c6e7fbf6a790ca7dc04088871e02b66df627d01d8438911b4",
+      "authorStatusQualification": "Latest dated follow-up is PEN International's 24 March response to the 19 March release. Chultsova's September 2022 release followed completion of her term; Andreyeva's 2026 release followed a pardon after a separate treason conviction. Neither event establishes that either original conviction was quashed.",
+      "timelineRows": 7,
+      "sharedBackgroundOwner": null
+    },
+    {
+      "reportId": "followup-report-08",
+      "number": 8,
+      "caseIds": [
+        "mzia-amaglobeli"
+      ],
+      "filename": "08_georgia_amaglobeli_Follow_Up.pdf",
+      "sha256": "ba060e8fd8b1795408d4c4cf6efc65d7b9f9528888ffb3f2d47f3c6eaadfaf85",
+      "pages": 7,
+      "sourceOriginalFactsAsOf": "2026-01",
+      "preservedCaseCutoffs": {
+        "mzia-amaglobeli": "2026-01"
+      },
+      "researchCutoff": "2026-10-09",
+      "authorLastVerifiedEvent": "2026-09-21",
+      "baselineDocumentId": "mzia-amaglobeli-report",
+      "baselineDocumentHash": "1fcb0ff51daeb84ac93f12d1a381a835141c0bdd346b8eceb6acbef3dd99ac72",
+      "authorStatusQualification": "21 September is the publication date of a CMIS report covering September 2025-August 2026, not a new detention order. Latest verified domestic criminal disposition: Supreme Court nonadmission on 4 March 2026. A conviction-related ECHR application was reportedly filed 26 June and registered 3 July. No release or ECHR merits judgment was verified through 9 October.",
+      "timelineRows": 9,
+      "sharedBackgroundOwner": null
+    },
+    {
+      "reportId": "followup-report-09",
+      "number": 9,
+      "caseIds": [
+        "jose-ruben-zamora"
+      ],
+      "filename": "09_guatemala_zamora_Follow_Up.pdf",
+      "sha256": "c5642b38c08c144fe6b512888b417b31a1cda48ec769261e2a2b86f2839f2fc2",
+      "pages": 7,
+      "sourceOriginalFactsAsOf": "2024-02",
+      "preservedCaseCutoffs": {
+        "jose-ruben-zamora": "2024-02"
+      },
+      "researchCutoff": "2026-10-09",
+      "authorLastVerifiedEvent": "2026-10-08",
+      "baselineDocumentId": "jose-ruben-zamora-report",
+      "baselineDocumentHash": "cb11482cb6264485b37cf975caf507a1db4e772efd7f5d39228429278aba28b5",
+      "authorStatusQualification": "National Press Club's 8 October 2026 statement explicitly confirms ongoing house arrest. Latest substantive judicial development located is the 13 August refusal to lift his exit restriction. July finality applies to the particular withdrawn appeal over substitute measures, not to the criminal prosecution or retrial.",
+      "timelineRows": 10,
+      "sharedBackgroundOwner": null
+    },
+    {
+      "reportId": "followup-report-10",
+      "number": 10,
+      "caseIds": [
+        "bao-choy"
+      ],
+      "filename": "10_hong_kong_bao_choy_Follow_Up.pdf",
+      "sha256": "cc21f2ce70f7c4c93ff368821bcad6216ec023c6b8e50610bdcd5ba47f128f14",
+      "pages": 7,
+      "sourceOriginalFactsAsOf": "2021-07",
+      "preservedCaseCutoffs": {
+        "bao-choy": "2021-07"
+      },
+      "researchCutoff": "2026-10-09",
+      "authorLastVerifiedEvent": "2026-03-06",
+      "baselineDocumentId": "bao-choy-report",
+      "baselineDocumentHash": "611fe39a0578c70296b3a6d0fe1027ebb0f25a5607ef8b89510efb93854403f4",
+      "authorStatusQualification": "Latest related judicial event is a separate March 2026 judicial review of the revised vehicle-records policy. It did not reinstate Choy's convictions. Her criminal appeal was allowed on 5 June 2023 in FACC 2/2023, [2023] HKCFA 12.",
+      "timelineRows": 6,
+      "sharedBackgroundOwner": null
+    },
+    {
+      "reportId": "followup-report-11",
+      "number": 11,
+      "caseIds": [
+        "aigul-utepova"
+      ],
+      "filename": "11_kazakhstan_utepova_Follow_Up.pdf",
+      "sha256": "9be040697492965e7945ebd03a48143b299fbacd1a4ea04fd7e5f850ce1983e0",
+      "pages": 7,
+      "sourceOriginalFactsAsOf": "2022-04",
+      "preservedCaseCutoffs": {
+        "aigul-utepova": "2022-04"
+      },
+      "researchCutoff": "2026-10-09",
+      "authorLastVerifiedEvent": "2025",
+      "baselineDocumentId": "aigul-report",
+      "baselineDocumentHash": "d991f7f7d6e9fbd2af7289eb3ab9ba2a2008ed6f4ff7cf153a96d0da45144890",
+      "authorStatusQualification": "Latest verified procedural status appears in TrialWatch's submission for the June-July 2025 Human Rights Committee session: Aigul Utepova v. Kazakhstan, No. 4903/2023, pending. Exact submission day is unstated. This does not establish a UN merits decision, domestic reversal, release, termination of activity restrictions, or removal of banking restrictions as of October 2026.",
+      "timelineRows": 5,
+      "sharedBackgroundOwner": null
+    },
+    {
+      "reportId": "followup-report-12",
+      "number": 12,
+      "caseIds": [
+        "malaysiakini-steven-gan"
+      ],
+      "filename": "12_malaysia_malaysiakini_Follow_Up.pdf",
+      "sha256": "7d2ae325118fcb48134f4de1bcaf88b77d2c988d3ff596b3f1a44746513244b8",
+      "pages": 7,
+      "sourceOriginalFactsAsOf": "2021-10",
+      "preservedCaseCutoffs": {
+        "malaysiakini-steven-gan": "2021-10"
+      },
+      "researchCutoff": "2026-10-09",
+      "authorLastVerifiedEvent": "2022-03-29",
+      "baselineDocumentId": "malaysiakini-steven-gan-report",
+      "baselineDocumentHash": "65f3fed760289d6726b32b58bebf9d21332dddae76cace6fe4072cd40b4426b1",
+      "authorStatusQualification": "The latest verified case-disposing event is rejection of the company's review application, not a new conviction of Gan. Payment of the original fine was reported. No subsequent reversal was verified; this does not independently establish exhaustion of every conceivable remedy.",
+      "timelineRows": 5,
+      "sharedBackgroundOwner": null
+    },
+    {
+      "reportId": "followup-report-13",
+      "number": 13,
+      "caseIds": [
+        "marina-zolotova"
+      ],
+      "filename": "13_belarus_zolotova_Follow_Up.pdf",
+      "sha256": "578d85e79965c5a3f030a529ce56714d3ce67648cd03fcc1fa275d379eebf8ea",
+      "pages": 7,
+      "sourceOriginalFactsAsOf": "2019-07",
+      "preservedCaseCutoffs": {
+        "marina-zolotova": "2019-07-26"
+      },
+      "researchCutoff": "2026-10-09",
+      "authorLastVerifiedEvent": "2026-09-16",
+      "baselineDocumentId": "marina-zolotova-report",
+      "baselineDocumentHash": "7ee07c9232ff7c4bee579f9abf0fe31c88498baf16df19d6a052f1157824b6cf",
+      "authorStatusQualification": "Latest related event is the release of later TUT.BY co-defendant Liudmila Chekina on 16 September 2026, not a new disposition for Zolotova. Zolotova's latest substantive personal account located is dated 7 August 2026. Her pardon and release do not establish that either conviction was overturned.",
+      "timelineRows": 6,
+      "sharedBackgroundOwner": null
+    },
+    {
+      "reportId": "followup-report-14",
+      "number": 14,
+      "caseIds": [
+        "hajar-raissouni"
+      ],
+      "filename": "14_morocco_raissouni_Follow_Up.pdf",
+      "sha256": "99b255a01adcf4b776f177bf64ad6d2b145880eb8a53139ac1aa9e3847230ea4",
+      "pages": 7,
+      "sourceOriginalFactsAsOf": "2020-08",
+      "preservedCaseCutoffs": {
+        "hajar-raissouni": "2020-08"
+      },
+      "researchCutoff": "2026-10-09",
+      "authorLastVerifiedEvent": "2022-11-02",
+      "baselineDocumentId": "hajar-raissouni-report",
+      "baselineDocumentHash": "d975078d3ead4aa9b687fb00880fc2f89165ffceceab8945a7ca410fa3c0b888",
+      "authorStatusQualification": "The latest located subject-specific follow-up is a published interview, not a new judicial disposition. The pardon and release occurred on 16 October 2019 and were already recorded in the original report. The record located through 9 October 2026 does not establish that the convictions were subsequently quashed.",
+      "timelineRows": 8,
+      "sharedBackgroundOwner": null
+    },
+    {
+      "reportId": "followup-report-15",
+      "number": 15,
+      "caseIds": [
+        "omar-radi-ii-2022"
+      ],
+      "filename": "15_morocco_radi_ii_Follow_Up.pdf",
+      "sha256": "e45c0f889512eeb6c7ef14d37ad39fb19e8a190e49197bf53864c59131495429",
+      "pages": 7,
+      "sourceOriginalFactsAsOf": "2022-07",
+      "preservedCaseCutoffs": {
+        "omar-radi-ii-2022": "2022-07"
+      },
+      "researchCutoff": "2026-10-09",
+      "authorLastVerifiedEvent": "2026-10-06",
+      "baselineDocumentId": "omar-radi-ii-2022-report",
+      "baselineDocumentHash": "9c1ad11ebfb2703fd3372492d64b23fd6c24411b1d3e0b41bcdc29102d819beb",
+      "authorStatusQualification": "The latest dated follow-up is an interview publication. The last verified change to custody is pardon and release on 29 July 2024. PEN's March 2025 profile still reported uncertainty over quashing. The pardon is not described here as an acquittal, and the disposition of civil compensation is unverified.",
+      "timelineRows": 10,
+      "sharedBackgroundOwner": null
+    },
+    {
+      "reportId": "followup-report-16",
+      "number": 16,
+      "caseIds": [
+        "omar-radi-2020"
+      ],
+      "filename": "16_morocco_radi_i_Follow_Up.pdf",
+      "sha256": "bf74dcf077c16a059c41848a949696b22b6e258596bb8cfff6a8eb0f18f514cb",
+      "pages": 7,
+      "sourceOriginalFactsAsOf": "2020-09",
+      "preservedCaseCutoffs": {
+        "omar-radi-2020": "2020-09"
+      },
+      "researchCutoff": "2026-10-09",
+      "authorLastVerifiedEvent": "2026-10-01",
+      "baselineDocumentId": "omar-radi-2020-report",
+      "baselineDocumentHash": "2c838e27d9efa78225024cdd7568e18733b118fb8ade6831a51e4939e7cadd0d",
+      "authorStatusQualification": "The 1 October 2026 event is a new Amnesty investigation concerning Radi, not a ruling in the tweet prosecution. The last verified proceeding in this particular case is the 17 March 2020 conviction and notice of appeal recorded in the original. Radi's July 2024 pardon and release in the separate later case cannot be assumed to have cleared this conviction.",
+      "timelineRows": 9,
+      "sharedBackgroundOwner": null
+    },
+    {
+      "reportId": "followup-report-17",
+      "number": 17,
+      "caseIds": [
+        "svetlana-prokopyeva"
+      ],
+      "filename": "17_russia_prokopyeva_Follow_Up.pdf",
+      "sha256": "39d44a0e5d56e98f1a8514f30a45fa7fe817d5d70f480889970637179a766ada",
+      "pages": 8,
+      "sourceOriginalFactsAsOf": "2021-01",
+      "preservedCaseCutoffs": {
+        "svetlana-prokopyeva": "2021-01"
+      },
+      "researchCutoff": "2026-10-09",
+      "authorLastVerifiedEvent": "2026-05-15",
+      "baselineDocumentId": "svetlana-prokopyeva-report",
+      "baselineDocumentHash": "8cc972c9b798353930b589796bbd2b5cfb54ce6ffdc2091f464e7674a94600a8",
+      "authorStatusQualification": "A final ECtHR committee judgment on 22 January 2026 found an Article 10 violation concerning the original conviction and awarded EUR 7,500. Domestic reversal and payment were not verified. The latest verified separate proceeding is a 15 May 2026 report confirming receipt of an appeal against a 30,000-ruble foreign-agent-label fine; an 8 June hearing was scheduled, but its outcome was not verified. Historical terrorism-list removal and foreign-agent designation are different events.",
+      "timelineRows": 10,
+      "sharedBackgroundOwner": null
+    },
+    {
+      "reportId": "followup-report-18",
+      "number": 18,
+      "caseIds": [
+        "cansu-piskin"
+      ],
+      "filename": "18_turkey_piskin_Follow_Up.pdf",
+      "sha256": "62ca47addac2fd2e2189edcc650dafc81cc34f1d18e9d10b21b4cb03292fb559",
+      "pages": 7,
+      "sourceOriginalFactsAsOf": "2019-07",
+      "preservedCaseCutoffs": {
+        "cansu-piskin": "2019-07"
+      },
+      "researchCutoff": "2026-10-09",
+      "authorLastVerifiedEvent": "2019-05-07",
+      "baselineDocumentId": "cansu-piskin-report",
+      "baselineDocumentHash": "cd1d30ba4d1847a451bf7a7636ba035fb46f806be28edee09e5db992d54a1dde",
+      "authorStatusQualification": "This date is the last verified event in Piskin's own prosecution, not the latest appearance of her name online. Later reporting identifies her as an observer or author in other journalists' cases. No objection decision, activation of sentence, dismissal after supervision, acquittal, or international ruling in her own case was verified through 9 October 2026.",
+      "timelineRows": 5,
+      "sharedBackgroundOwner": null
+    },
+    {
+      "reportId": "followup-report-19",
+      "number": 19,
+      "caseIds": [
+        "moses-bwayo"
+      ],
+      "filename": "19_uganda_bwayo_Follow_Up.pdf",
+      "sha256": "e0aa08df721eb1bf864294cdc43a156af51ccd3e5a8a580aa657ee3c8fed0734",
+      "pages": 7,
+      "sourceOriginalFactsAsOf": "2021-01",
+      "preservedCaseCutoffs": {
+        "moses-bwayo": "2021-01"
+      },
+      "researchCutoff": "2026-10-09",
+      "authorLastVerifiedEvent": "2025-12-10",
+      "baselineDocumentId": "bwayo-report",
+      "baselineDocumentHash": "3f708b64ff409ef0f7f3f720ed54f7b8d9b7404664fb9e24415afe1139d6bda5",
+      "authorStatusQualification": "The latest verified follow-up is an official film-program announcement crediting Bwayo, not a court outcome. Dismissal for want of prosecution on 10 August 2020 was already in the original. His April 2024 first-person account places his move to the United States in March 2022 and describes seeking asylum; a grant was not verified. A same-name Ugandan civil case is an unconfirmed lead, not an attributed lawsuit or judgment.",
+      "timelineRows": 10,
+      "sharedBackgroundOwner": null
+    },
+    {
+      "reportId": "followup-report-20",
+      "number": 20,
+      "caseIds": [
+        "dian-abdullah"
+      ],
+      "filename": "20_malaysia_dian_Follow_Up.pdf",
+      "sha256": "a4a75beee167ef750279338335853286b74fdd687941ea4681282671f6d8bd44",
+      "pages": 7,
+      "sourceOriginalFactsAsOf": "2021-03-24",
+      "preservedCaseCutoffs": {
+        "dian-abdullah": "2021-03-24"
+      },
+      "researchCutoff": "2026-10-09",
+      "authorLastVerifiedEvent": "2021-12-21",
+      "baselineDocumentId": "dian-report",
+      "baselineDocumentHash": "160e22eafc4084aaf72988cd5a0045b83a09bdd98681e8320609669b5af178e2",
+      "authorStatusQualification": "Personal-case event: sentencing on 21 December 2021, following a guilty plea on 6 December. Fine payment, default imprisonment and later appeal were not verified. Section 233 developments through 6 February 2026 concern separate constitutional litigation and do not establish reversal of Dian's conviction.",
+      "timelineRows": 8,
+      "sharedBackgroundOwner": null
+    },
+    {
+      "reportId": "followup-report-21",
+      "number": 21,
+      "caseIds": [
+        "myriam-bribri"
+      ],
+      "filename": "21_tunisia_bribri_Follow_Up.pdf",
+      "sha256": "53b743310f838cb524d4539e211a542b5629034cff5592f5bd5c4c29d21c19a1",
+      "pages": 7,
+      "sourceOriginalFactsAsOf": "2021-06",
+      "preservedCaseCutoffs": {
+        "myriam-bribri": "2021-06"
+      },
+      "researchCutoff": "2026-10-09",
+      "authorLastVerifiedEvent": "2022-10-09",
+      "baselineDocumentId": "myriam-report",
+      "baselineDocumentHash": "863934481e9681955a9a7d4293ce31122ed86e4bb4e886386d44b9179f1bf8b6",
+      "authorStatusQualification": "Latest dated follow-up is an NGO statement announcing an expected 12 October 2022 ruling, not verification that the ruling occurred. Sources disagree on the December conviction and appeal dates. Amnesty describes a suspended custodial sentence; earlier sources describe provisional liberty. No current custody status is established.",
+      "timelineRows": 7,
+      "sharedBackgroundOwner": null
+    }
+  ],
+  "rows": [
+    {
+      "importRowId": "followup-report-01-row-01",
+      "caseId": "wuth-boonlert-samak-donnapee",
+      "eventId": "followup-report-01-row-01",
+      "sourceDate": "2019-11-18",
+      "sourceEvent": "Trial court acquitted Wuth and Samak and rejected compensation in the original case.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "decision",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-01-row-02",
+      "caseId": "wuth-boonlert-samak-donnapee",
+      "eventId": "followup-report-01-row-02",
+      "sourceDate": "2020-07-14",
+      "sourceEvent": "CFJ published its statement accompanying the TrialWatch assessment.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "publication",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-01-row-03",
+      "caseId": "wuth-boonlert-samak-donnapee",
+      "eventId": "followup-report-01-row-03",
+      "sourceDate": "2020-12-22",
+      "sourceEvent": "Court of Appeal upheld the original acquittal, according to Thailand's response to UN special procedures.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "decision",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-01-row-04",
+      "caseId": "wuth-boonlert-samak-donnapee",
+      "eventId": "followup-report-01-row-04",
+      "sourceDate": "2023-09-26",
+      "sourceEvent": "Separate Surapon Naknakorn defamation case against Wuth and Suracha Boonyeim settled.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "decision",
+      "scope": "same_person_other_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-02-row-01",
+      "caseId": "alnur-ilyashev",
+      "eventId": "followup-report-02-row-01",
+      "sourceDate": "2020-06-22",
+      "sourceEvent": "Convicted; three-year restriction-of-liberty sentence and five-year civic/public-activity ban imposed.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "decision",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-02-row-02",
+      "caseId": "alnur-ilyashev",
+      "eventId": "followup-report-02-row-02",
+      "sourceDate": "2020-09-15",
+      "sourceEvent": "Almaty City Court upheld conviction.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "decision",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-02-row-03",
+      "caseId": "alnur-ilyashev",
+      "eventId": "alnur-followup-2022-03-30-wgad-opinion",
+      "sourceDate": "2022-03-30",
+      "sourceEvent": "WGAD adopted Opinion No. 2/2022 finding arbitrary detention and calling for remedies.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "decision",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": true
+    },
+    {
+      "importRowId": "followup-report-02-row-04",
+      "caseId": "alnur-ilyashev",
+      "eventId": "followup-report-02-row-04",
+      "sourceDate": "2023-04-17",
+      "sourceEvent": "Freedom Now reports release from house arrest.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "observed_outcome",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-02-row-05",
+      "caseId": "alnur-ilyashev",
+      "eventId": "followup-report-02-row-05",
+      "sourceDate": "2025-04-30",
+      "sourceEvent": "Vlast published an interview describing continuing conviction-related professional obstacles.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "publication",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-02-row-06",
+      "caseId": "alnur-ilyashev",
+      "eventId": "alnur-followup-2025-hrc-awaiting-registration",
+      "sourceDate": "2025",
+      "sourceEvent": "2025 HRC submission: Ilyashev communication awaiting registration.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "historical_action",
+      "scope": "same_case",
+      "executionStatus": "submitted",
+      "legacyMerge": true
+    },
+    {
+      "importRowId": "followup-report-02-row-07",
+      "caseId": "alnur-ilyashev",
+      "eventId": "followup-report-02-row-07",
+      "sourceDate": "2026-09-04",
+      "sourceEvent": "Search and questioning in separate fraud investigation; subsequently released, according to September reporting and October monitoring.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "risk_personal",
+      "scope": "same_person_other_case",
+      "executionStatus": "unknown",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-03-row-01",
+      "caseId": "alexander-pichugin",
+      "eventId": "followup-report-03-row-01",
+      "sourceDate": "2020-11-11",
+      "sourceEvent": "Bogorodsk City Court convicted Pichugin and imposed a 300,000-ruble fine.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "decision",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-03-row-02",
+      "caseId": "alexander-pichugin",
+      "eventId": "followup-report-03-row-02",
+      "sourceDate": "2021-01-26",
+      "sourceEvent": "Nizhny Novgorod Regional Court upheld the fine.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "decision",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-03-row-03",
+      "caseId": "alexander-pichugin",
+      "eventId": "followup-report-03-row-03",
+      "sourceDate": "2021-10-13",
+      "sourceEvent": "Application No. 51945/21 lodged at the ECtHR.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "historical_action",
+      "scope": "same_case",
+      "executionStatus": "submitted",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-03-row-04",
+      "caseId": "alexander-pichugin",
+      "eventId": "followup-report-03-row-04",
+      "sourceDate": "2022-02-10",
+      "sourceEvent": "Supreme Court decision identified in the ECtHR appendix as final domestic decision in the speech case.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "decision",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-03-row-05",
+      "caseId": "alexander-pichugin",
+      "eventId": "followup-report-03-row-05",
+      "sourceDate": "2025-11-07",
+      "sourceEvent": "Justice Ministry foreign-agent designation reported.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "risk_personal",
+      "scope": "same_person_other_case",
+      "executionStatus": "unknown",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-03-row-06",
+      "caseId": "alexander-pichugin",
+      "eventId": "followup-report-03-row-06",
+      "sourceDate": "2025-11-13",
+      "sourceEvent": "Final ECtHR judgment; combined EUR 10,000 award.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "decision",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-04-row-01",
+      "caseId": "asad-ali-toor",
+      "eventId": "followup-report-04-row-01",
+      "sourceDate": "2022-04-08",
+      "sourceEvent": "IHC invalidates 2022 ordinance and Section 20 to the extent of reputation harm and its punishment; historical baseline event.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "decision",
+      "scope": "general_legal_background",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-04-row-02",
+      "caseId": "asad-ali-toor",
+      "eventId": "followup-report-04-row-02",
+      "sourceDate": "2023-09",
+      "sourceEvent": "Original reform report published; no letter grade.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "publication",
+      "scope": "general_legal_background",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-04-row-03",
+      "caseId": "asad-ali-toor",
+      "eventId": "followup-report-04-row-03",
+      "sourceDate": "2025-01-29",
+      "sourceEvent": "Act II of 2025 receives assent and commences; new Section 26A and procedural amendments.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "decision",
+      "scope": "general_legal_background",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-04-row-04",
+      "caseId": "asad-ali-toor",
+      "eventId": "followup-report-04-row-04",
+      "sourceDate": "2026-02-10",
+      "sourceEvent": "Published report of IHC hearing and adjournment of challenges to 6 March; not a merits judgment.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "schedule_plan",
+      "scope": "general_legal_background",
+      "executionStatus": "scheduled",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-04-row-05",
+      "caseId": "asad-ali-toor",
+      "eventId": "followup-report-04-row-05",
+      "sourceDate": "2026-07-31",
+      "sourceEvent": "Reported Toor order directs disclosure of allegations before NCCIA inquiry and disposes of his petition.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "decision",
+      "scope": "same_person_other_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-04-row-06",
+      "caseId": "bilal-ghauri",
+      "eventId": "followup-report-04-row-06",
+      "sourceDate": "2026-09-16",
+      "sourceEvent": "Ghauri granted conditional post-arrest bail in FIR 143/2026 under Sections 20 and 26A, reported the following day.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "decision",
+      "scope": "same_person_other_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-05-row-01",
+      "caseId": "emna-chargui",
+      "eventId": "followup-report-05-row-01",
+      "sourceDate": "2020-05",
+      "sourceEvent": "Satirical public-health text shared on Facebook; exact posting day differs between accounts.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "risk_personal",
+      "scope": "same_case",
+      "executionStatus": "unknown",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-05-row-02",
+      "caseId": "emna-chargui",
+      "eventId": "followup-report-05-row-02",
+      "sourceDate": "2020-07-13",
+      "sourceEvent": "First-instance conviction dated 13 July in the original; Amnesty's contemporary account implies 14 July.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "decision",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-05-row-03",
+      "caseId": "emna-chargui",
+      "eventId": "followup-report-05-row-03",
+      "sourceDate": "2021-06",
+      "sourceEvent": "Original report records an appeal and asylum in Germany; their precise dates are not supplied.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "historical_action",
+      "scope": "same_case",
+      "executionStatus": "submitted",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-05-row-04",
+      "caseId": "emna-chargui",
+      "eventId": "followup-report-05-row-04",
+      "sourceDate": "2021-06-25",
+      "sourceEvent": "CFJ announces its Tunisia reports; this is a publication, not appellate adjudication.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "publication",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-05-row-05",
+      "caseId": "emna-chargui",
+      "eventId": "followup-report-05-row-05",
+      "sourceDate": "2022-01-26",
+      "sourceEvent": "CFJ report-page publication metadata; underlying PDF remains dated June 2021.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "publication",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-06-row-01",
+      "caseId": "shahidul-alam",
+      "eventId": "followup-report-06-row-01",
+      "sourceDate": "2018-08-05",
+      "sourceEvent": "Alam arrested; Section 57 investigation followed.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "risk_personal",
+      "scope": "same_case",
+      "executionStatus": "unknown",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-06-row-02",
+      "caseId": "shahidul-alam",
+      "eventId": "followup-report-06-row-02",
+      "sourceDate": "2018-11-15",
+      "sourceEvent": "Bail granted, distinct from actual release.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "decision",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-06-row-03",
+      "caseId": "shahidul-alam",
+      "eventId": "followup-report-06-row-03",
+      "sourceDate": "2018-11-20",
+      "sourceEvent": "Release recorded by Amnesty; not inferred from sentence length.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "observed_outcome",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-06-row-04",
+      "caseId": "shahidul-alam",
+      "eventId": "followup-report-06-row-04",
+      "sourceDate": "2022-11-27",
+      "sourceEvent": "Appellate Division rejects leave in earlier litigation, as recorded in the original.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "decision",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-06-row-05",
+      "caseId": "shahidul-alam",
+      "eventId": "followup-report-06-row-05",
+      "sourceDate": "2024-11-04",
+      "sourceEvent": "High Court stays investigation and issues rule asking why proceedings should not be quashed.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "decision",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-06-row-06",
+      "caseId": "shahidul-alam",
+      "eventId": "followup-report-06-row-06",
+      "sourceDate": "2025-08-07",
+      "sourceEvent": "High Court quashes ICT Act case; local reporting describes rule made absolute.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "decision",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-06-row-07",
+      "caseId": "shahidul-alam",
+      "eventId": "followup-report-06-row-07",
+      "sourceDate": "2025-08-08",
+      "sourceEvent": "Amnesty confirms dismissal and advocates further remedies; statement is not another court order.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "publication",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-07-row-01",
+      "caseId": "katsiaryna-andreyeva-daria-chultsova",
+      "eventId": "followup-report-07-row-01",
+      "sourceDate": "2021-02-18",
+      "sourceEvent": "Both defendants convicted and sentenced to two years in the monitored public-order case.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "decision",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-07-row-02",
+      "caseId": "katsiaryna-andreyeva-daria-chultsova",
+      "eventId": "followup-report-07-row-02",
+      "sourceDate": "2022-07-13",
+      "sourceEvent": "Andreyeva convicted of treason in a separate closed proceeding; CPJ reported an additional eight-year sentence.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "decision",
+      "scope": "same_person_other_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-07-row-03",
+      "caseId": "katsiaryna-andreyeva-daria-chultsova",
+      "eventId": "followup-report-07-row-03",
+      "sourceDate": "2022-09",
+      "sourceEvent": "Chultsova released after serving her term; BAJ published confirmation on 5 September.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "observed_outcome",
+      "scope": "co_defendant",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-07-row-04",
+      "caseId": "katsiaryna-andreyeva-daria-chultsova",
+      "eventId": "followup-report-07-row-04",
+      "sourceDate": "2022-09-20",
+      "sourceEvent": "BAJ reported the Supreme Court upheld Andreyeva's effective sentence of eight years and three months.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "decision",
+      "scope": "same_person_other_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-07-row-05",
+      "caseId": "katsiaryna-andreyeva-daria-chultsova",
+      "eventId": "followup-report-07-row-05",
+      "sourceDate": "2025-09-16",
+      "sourceEvent": "BAJ's dated reporting described Chultsova as living in Poland.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "risk_personal",
+      "scope": "co_defendant",
+      "executionStatus": "unknown",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-07-row-06",
+      "caseId": "katsiaryna-andreyeva-daria-chultsova",
+      "eventId": "followup-report-07-row-06",
+      "sourceDate": "2026-03-19",
+      "sourceEvent": "Andreyeva pardoned, released and transferred to Lithuania.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "observed_outcome",
+      "scope": "same_person_other_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-07-row-07",
+      "caseId": "katsiaryna-andreyeva-daria-chultsova",
+      "eventId": "followup-report-07-row-07",
+      "sourceDate": "2026-03-24",
+      "sourceEvent": "PEN International condemned the forced exile accompanying the recent releases.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "publication",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-08-row-01",
+      "caseId": "mzia-amaglobeli",
+      "eventId": "followup-report-08-row-01",
+      "sourceDate": "2025-08-06",
+      "sourceEvent": "Conviction on the substituted Article 353(1) charge and two-year sentence.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "decision",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-08-row-02",
+      "caseId": "mzia-amaglobeli",
+      "eventId": "followup-report-08-row-02",
+      "sourceDate": "2025-11-18",
+      "sourceEvent": "Kutaisi Court of Appeal upheld conviction and sentence.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "decision",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-08-row-03",
+      "caseId": "mzia-amaglobeli",
+      "eventId": "followup-report-08-row-03",
+      "sourceDate": "2026-01-14",
+      "sourceEvent": "GYLA reported two already-filed Strasbourg cases, concerning detention rather than the later cassation disposition.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "publication",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-08-row-04",
+      "caseId": "mzia-amaglobeli",
+      "eventId": "followup-report-08-row-04",
+      "sourceDate": "2026-03-04",
+      "sourceEvent": "Supreme Court declined admission of cassation; a separate ill-treatment ECHR application was also filed that day.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "decision",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-08-row-05",
+      "caseId": "mzia-amaglobeli",
+      "eventId": "followup-report-08-row-05",
+      "sourceDate": "2026-03-11",
+      "sourceEvent": "Third, ill-treatment-related Strasbourg application registered, according to Batumelebi.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "observed_outcome",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-08-row-06",
+      "caseId": "mzia-amaglobeli",
+      "eventId": "followup-report-08-row-06",
+      "sourceDate": "2026-06-26",
+      "sourceEvent": "Conviction and fair-trial application submitted, according to GYLA as reported by The Messenger.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "historical_action",
+      "scope": "same_case",
+      "executionStatus": "submitted",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-08-row-07",
+      "caseId": "mzia-amaglobeli",
+      "eventId": "followup-report-08-row-07",
+      "sourceDate": "2026-07-03",
+      "sourceEvent": "Fourth application registered, according to the same report.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "observed_outcome",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-08-row-08",
+      "caseId": "mzia-amaglobeli",
+      "eventId": "followup-report-08-row-08",
+      "sourceDate": "2026-09-11",
+      "sourceEvent": "Georgia Today published Amaglobeli's prison letter awaiting international justice.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "publication",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-08-row-09",
+      "caseId": "mzia-amaglobeli",
+      "eventId": "followup-report-08-row-09",
+      "sourceDate": "2026-09-21",
+      "sourceEvent": "CMIS published its through-August review reporting imprisonment, early-release refusal and four Strasbourg applications.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "publication",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-09-row-01",
+      "caseId": "jose-ruben-zamora",
+      "eventId": "followup-report-09-row-01",
+      "sourceDate": "2023-06",
+      "sourceEvent": "Six-year laundering conviction and acquittals on two other charges.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "decision",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-09-row-02",
+      "caseId": "jose-ruben-zamora",
+      "eventId": "followup-report-09-row-02",
+      "sourceDate": "2023-10",
+      "sourceEvent": "Original judgment annulled and retrial ordered; already covered by the baseline.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "decision",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-09-row-03",
+      "caseId": "jose-ruben-zamora",
+      "eventId": "followup-report-09-row-03",
+      "sourceDate": "2024-10",
+      "sourceEvent": "Zamora actually moved to house arrest; prosecutors challenged the measure.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "observed_outcome",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-09-row-04",
+      "caseId": "jose-ruben-zamora",
+      "eventId": "followup-report-09-row-04",
+      "sourceDate": "2024-11",
+      "sourceEvent": "Appeals ruling revoked the earlier house-arrest measure.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "decision",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-09-row-05",
+      "caseId": "jose-ruben-zamora",
+      "eventId": "followup-report-09-row-05",
+      "sourceDate": "2025-03-10",
+      "sourceEvent": "Zamora returned to prison following that reversal.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "observed_outcome",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-09-row-06",
+      "caseId": "jose-ruben-zamora",
+      "eventId": "followup-report-09-row-06",
+      "sourceDate": "2026-02-12",
+      "sourceEvent": "CPJ confirmed renewed release from prison to house arrest.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "observed_outcome",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-09-row-07",
+      "caseId": "jose-ruben-zamora",
+      "eventId": "followup-report-09-row-07",
+      "sourceDate": "2026-03-20",
+      "sourceEvent": "Supreme Court granted amparo restoring substitute measures, as subsequently reported.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "decision",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-09-row-08",
+      "caseId": "jose-ruben-zamora",
+      "eventId": "followup-report-09-row-08",
+      "sourceDate": "2026-07-28",
+      "sourceEvent": "Reporting confirmed acceptance of prosecutors' withdrawn constitutional appeal and a separate renewed annulment/retrial order; exact underlying order dates require full decisions.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "decision",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-09-row-09",
+      "caseId": "jose-ruben-zamora",
+      "eventId": "followup-report-09-row-09",
+      "sourceDate": "2026-08-13",
+      "sourceEvent": "Tribunal Noveno refused removal of exit restriction for medical travel.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "decision",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-09-row-10",
+      "caseId": "jose-ruben-zamora",
+      "eventId": "followup-report-09-row-10",
+      "sourceDate": "2026-10-08",
+      "sourceEvent": "National Press Club explicitly confirmed continuing house arrest in award announcement.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "publication",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-10-row-01",
+      "caseId": "bao-choy",
+      "eventId": "followup-report-10-row-01",
+      "sourceDate": "2021-07",
+      "sourceEvent": "Original report published while Choy's appeal remained pending.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "publication",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-10-row-02",
+      "caseId": "bao-choy",
+      "eventId": "followup-report-10-row-02",
+      "sourceDate": "2022-11-07",
+      "sourceEvent": "Court of First Instance dismissed her initial criminal appeal.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "decision",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-10-row-03",
+      "caseId": "bao-choy",
+      "eventId": "followup-report-10-row-03",
+      "sourceDate": "2023-06-05",
+      "sourceEvent": "Court of Final Appeal allowed appeal, quashed both convictions and set sentence aside.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "decision",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-10-row-04",
+      "caseId": "bao-choy",
+      "eventId": "followup-report-10-row-04",
+      "sourceDate": "2024-01-08",
+      "sourceEvent": "Revised vehicle-records application arrangements implemented, as recorded in the later official judgment summary.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "decision",
+      "scope": "general_legal_background",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-10-row-05",
+      "caseId": "bao-choy",
+      "eventId": "followup-report-10-row-05",
+      "sourceDate": "2024-01-25",
+      "sourceEvent": "Transport Department explained specified purposes and exceptional public-interest application route.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "publication",
+      "scope": "general_legal_background",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-10-row-06",
+      "caseId": "bao-choy",
+      "eventId": "followup-report-10-row-06",
+      "sourceDate": "2026-03-06",
+      "sourceEvent": "Court of First Instance dismissed HKJA's separate challenge to the revised policy.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "decision",
+      "scope": "general_legal_background",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-11-row-01",
+      "caseId": "aigul-utepova",
+      "eventId": "followup-report-11-row-01",
+      "sourceDate": "2020-11-23",
+      "sourceEvent": "Involuntary psychiatric confinement began; ended on 11 December, separately from house arrest.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "risk_personal",
+      "scope": "same_case",
+      "executionStatus": "unknown",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-11-row-02",
+      "caseId": "aigul-utepova",
+      "eventId": "followup-report-11-row-02",
+      "sourceDate": "2021-04-29",
+      "sourceEvent": "Convicted and sentenced to restricted liberty, activity ban and compulsory labor.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "decision",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-11-row-03",
+      "caseId": "aigul-utepova",
+      "eventId": "followup-report-11-row-03",
+      "sourceDate": "2021-06-01",
+      "sourceEvent": "Conviction appeal rejected, according to CPJ's account based on the ruling and journalist.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "decision",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-11-row-04",
+      "caseId": "aigul-utepova",
+      "eventId": "aigul-followup-2022-04-27-hrc-filing-confirmed",
+      "sourceDate": "2022-04-27",
+      "sourceEvent": "CFJ and Debevoise announced that a Human Rights Committee communication had been submitted.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "historical_action",
+      "scope": "same_case",
+      "executionStatus": "submitted",
+      "legacyMerge": true
+    },
+    {
+      "importRowId": "followup-report-11-row-05",
+      "caseId": "aigul-utepova",
+      "eventId": "aigul-followup-2025-hrc-pending",
+      "sourceDate": "2025",
+      "sourceEvent": "2025 HRC submission: communication 4903/2023 pending.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "historical_action",
+      "scope": "same_case",
+      "executionStatus": "submitted",
+      "legacyMerge": true
+    },
+    {
+      "importRowId": "followup-report-12-row-01",
+      "caseId": "malaysiakini-steven-gan",
+      "eventId": "followup-report-12-row-01",
+      "sourceDate": "2020-06-09",
+      "sourceEvent": "Article and third-party comments giving rise to contempt proceedings.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "risk_personal",
+      "scope": "same_case",
+      "executionStatus": "unknown",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-12-row-02",
+      "caseId": "malaysiakini-steven-gan",
+      "eventId": "followup-report-12-row-02",
+      "sourceDate": "2021-02-19",
+      "sourceEvent": "Company convicted and fined; Gan acquitted.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "decision",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-12-row-03",
+      "caseId": "malaysiakini-steven-gan",
+      "eventId": "followup-report-12-row-03",
+      "sourceDate": "2021-10-12",
+      "sourceEvent": "Review date anticipated in the original, not an established decision date.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "schedule_plan",
+      "scope": "same_case",
+      "executionStatus": "planned",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-12-row-04",
+      "caseId": "malaysiakini-steven-gan",
+      "eventId": "followup-report-12-row-04",
+      "sourceDate": "2022-01-03",
+      "sourceEvent": "Malaysiakini reports review rescheduled for 29 March.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "schedule_plan",
+      "scope": "same_case",
+      "executionStatus": "scheduled",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-12-row-05",
+      "caseId": "malaysiakini-steven-gan",
+      "eventId": "followup-report-12-row-05",
+      "sourceDate": "2022-03-29",
+      "sourceEvent": "Federal Court unanimously dismisses company's review; fine payment reported.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "decision",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-13-row-01",
+      "caseId": "marina-zolotova",
+      "eventId": "followup-report-13-row-01",
+      "sourceDate": "2019-07",
+      "sourceEvent": "Original TrialWatch report published on the fine-only BeLTA-related prosecution.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "publication",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-13-row-02",
+      "caseId": "marina-zolotova",
+      "eventId": "followup-report-13-row-02",
+      "sourceDate": "2021-05",
+      "sourceEvent": "Zolotova arrested in the later investigation involving TUT.BY.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "risk_personal",
+      "scope": "same_person_other_case",
+      "executionStatus": "unknown",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-13-row-03",
+      "caseId": "marina-zolotova",
+      "eventId": "followup-report-13-row-03",
+      "sourceDate": "2023-03-17",
+      "sourceEvent": "Minsk court imposed a twelve-year prison sentence in the separate later case.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "decision",
+      "scope": "same_person_other_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-13-row-04",
+      "caseId": "marina-zolotova",
+      "eventId": "followup-report-13-row-04",
+      "sourceDate": "2025-12-13",
+      "sourceEvent": "Zolotova released among prisoners pardoned following negotiations with the United States.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "observed_outcome",
+      "scope": "same_person_other_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-13-row-05",
+      "caseId": "marina-zolotova",
+      "eventId": "followup-report-13-row-05",
+      "sourceDate": "2026-08-07",
+      "sourceEvent": "RSF Switzerland published her account of exile, protection in Poland and family reunion.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "risk_personal",
+      "scope": "same_person_other_case",
+      "executionStatus": "unknown",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-13-row-06",
+      "caseId": "marina-zolotova",
+      "eventId": "followup-report-13-row-06",
+      "sourceDate": "2026-09-16",
+      "sourceEvent": "CPJ confirmed release of later TUT.BY co-defendant Liudmila Chekina.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "observed_outcome",
+      "scope": "co_defendant",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-14-row-01",
+      "caseId": "hajar-raissouni",
+      "eventId": "followup-report-14-row-01",
+      "sourceDate": "2019-08-31",
+      "sourceEvent": "Raissouni and the other defendants were arrested in connection with her medical treatment.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "risk_personal",
+      "scope": "same_case",
+      "executionStatus": "unknown",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-14-row-02",
+      "caseId": "hajar-raissouni",
+      "eventId": "followup-report-14-row-02",
+      "sourceDate": "2019-09-12",
+      "sourceEvent": "MENA Rights Group submitted the situation to seven UN Special Procedures mandates, according to its case profile.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "historical_action",
+      "scope": "same_case",
+      "executionStatus": "submitted",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-14-row-03",
+      "caseId": "hajar-raissouni",
+      "eventId": "followup-report-14-row-03",
+      "sourceDate": "2019-09-30",
+      "sourceEvent": "The court convicted the five defendants. A UN Special Procedures communication was also issued on this date; these are separate actions.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "decision",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-14-row-04",
+      "caseId": "hajar-raissouni",
+      "eventId": "followup-report-14-row-04",
+      "sourceDate": "2019-10-16",
+      "sourceEvent": "Royal pardon of all five defendants; release of the imprisoned defendants. No acquittal was recorded.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "observed_outcome",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-14-row-05",
+      "caseId": "hajar-raissouni",
+      "eventId": "followup-report-14-row-05",
+      "sourceDate": "2020-08",
+      "sourceEvent": "Original TrialWatch report published, already incorporating the pardon.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "publication",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-14-row-06",
+      "caseId": "hajar-raissouni",
+      "eventId": "followup-report-14-row-06",
+      "sourceDate": "2021-06-08",
+      "sourceEvent": "MENA Rights Group updated its profile, identifying Raissouni as free and recording the earlier UN intervention.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "publication",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-14-row-07",
+      "caseId": "hajar-raissouni",
+      "eventId": "followup-report-14-row-07",
+      "sourceDate": "2021-08-24",
+      "sourceEvent": "Raissouni's first-person essay described post-release harassment and departure from Morocco.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "risk_personal",
+      "scope": "same_case",
+      "executionStatus": "unknown",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-14-row-08",
+      "caseId": "hajar-raissouni",
+      "eventId": "followup-report-14-row-08",
+      "sourceDate": "2022-11-02",
+      "sourceEvent": "A published interview with Raissouni described continuing pressure after release and her life in Paris.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "publication",
+      "scope": "same_case",
+      "executionStatus": "unknown",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-15-row-01",
+      "caseId": "omar-radi-ii-2022",
+      "eventId": "followup-report-15-row-01",
+      "sourceDate": "2020-07-29",
+      "sourceEvent": "Arrest in the later national-security and sexual-assault prosecution.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "risk_personal",
+      "scope": "same_case",
+      "executionStatus": "unknown",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-15-row-02",
+      "caseId": "omar-radi-ii-2022",
+      "eventId": "followup-report-15-row-02",
+      "sourceDate": "2021-07-19",
+      "sourceEvent": "Conviction, six-year prison sentence, and 200,000-dirham compensation order.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "decision",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-15-row-03",
+      "caseId": "omar-radi-ii-2022",
+      "eventId": "followup-report-15-row-03",
+      "sourceDate": "2022-03-03",
+      "sourceEvent": "Appeal judgment upheld the conviction and sentence, as dated in the original report.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "decision",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-15-row-04",
+      "caseId": "omar-radi-ii-2022",
+      "eventId": "followup-report-15-row-04",
+      "sourceDate": "2022-07",
+      "sourceEvent": "Original TrialWatch report published; the appeal outcome was already part of the baseline.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "publication",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-15-row-05",
+      "caseId": "omar-radi-ii-2022",
+      "eventId": "omar-ii-followup-2023-07-18-cassation",
+      "sourceDate": "2023-07-18",
+      "sourceEvent": "Court of Cassation rejected the challenge, reported by RSF on 19 July.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "decision",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": true
+    },
+    {
+      "importRowId": "followup-report-15-row-06",
+      "caseId": "omar-radi-ii-2022",
+      "eventId": "omar-ii-followup-2024-07-29-release",
+      "sourceDate": "2024-07-29",
+      "sourceEvent": "Royal pardon and actual release, confirmed by PEN on 31 July.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "observed_outcome",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": true
+    },
+    {
+      "importRowId": "followup-report-15-row-07",
+      "caseId": "omar-radi-ii-2022",
+      "eventId": "followup-report-15-row-07",
+      "sourceDate": "2024-10-21",
+      "sourceEvent": "CPJ reported threatening calls to Radi following release.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "risk_personal",
+      "scope": "same_case",
+      "executionStatus": "unknown",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-15-row-08",
+      "caseId": "omar-radi-ii-2022",
+      "eventId": "followup-report-15-row-08",
+      "sourceDate": "2025-03-21",
+      "sourceEvent": "PEN's profile described continuing pressure and unresolved quashing status.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "publication",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-15-row-09",
+      "caseId": "omar-radi-ii-2022",
+      "eventId": "followup-report-15-row-09",
+      "sourceDate": "2026-10-01",
+      "sourceEvent": "Amnesty published additional surveillance evidence concerning Radi.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "publication",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-15-row-10",
+      "caseId": "omar-radi-ii-2022",
+      "eventId": "followup-report-15-row-10",
+      "sourceDate": "2026-10-06",
+      "sourceEvent": "Interview published.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "publication",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-16-row-01",
+      "caseId": "omar-radi-2020",
+      "eventId": "followup-report-16-row-01",
+      "sourceDate": "2019-04",
+      "sourceEvent": "Tweet criticizing the judge's handling of Hirak Rif sentences.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "risk_personal",
+      "scope": "same_case",
+      "executionStatus": "unknown",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-16-row-02",
+      "caseId": "omar-radi-2020",
+      "eventId": "followup-report-16-row-02",
+      "sourceDate": "2019-12-26",
+      "sourceEvent": "Detention in the tweet prosecution; bail followed on 31 December.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "risk_personal",
+      "scope": "same_case",
+      "executionStatus": "unknown",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-16-row-03",
+      "caseId": "omar-radi-2020",
+      "eventId": "followup-report-16-row-03",
+      "sourceDate": "2020-03-17",
+      "sourceEvent": "Four-month suspended sentence and 500-dirham fine; notice of appeal filed.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "historical_action",
+      "scope": "same_case",
+      "executionStatus": "submitted",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-16-row-04",
+      "caseId": "omar-radi-2020",
+      "eventId": "followup-report-16-row-04",
+      "sourceDate": "2020-09-19",
+      "sourceEvent": "CFJ published a statement seeking reversal on appeal and distinguishing later charges.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "publication",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-16-row-05",
+      "caseId": "omar-radi-2020",
+      "eventId": "followup-report-16-row-05",
+      "sourceDate": "2021-04-06",
+      "sourceEvent": "Amnesty's account of the later prosecution separately recalled the tweet conviction.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "publication",
+      "scope": "same_person_other_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-16-row-06",
+      "caseId": "omar-radi-2020",
+      "eventId": "followup-report-16-row-06",
+      "sourceDate": "2024-07-29",
+      "sourceEvent": "Pardon and release concerning Radi's later imprisonment; scope as to the tweet conviction unverified.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "observed_outcome",
+      "scope": "same_person_other_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-16-row-07",
+      "caseId": "omar-radi-2020",
+      "eventId": "followup-report-16-row-07",
+      "sourceDate": "2024-10-21",
+      "sourceEvent": "CPJ reported threatening calls after release and uncertainty about the pardons' legal effects.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "risk_personal",
+      "scope": "same_person_other_case",
+      "executionStatus": "unknown",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-16-row-08",
+      "caseId": "omar-radi-2020",
+      "eventId": "followup-report-16-row-08",
+      "sourceDate": "2025-05-23",
+      "sourceEvent": "Radi spoke at two Brussels schools; Amnesty's 30 May account described criminal-record obstacles to journalism in Morocco.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "historical_action",
+      "scope": "professional_activity",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-16-row-09",
+      "caseId": "omar-radi-2020",
+      "eventId": "followup-report-16-row-09",
+      "sourceDate": "2026-10-01",
+      "sourceEvent": "Amnesty published new surveillance findings concerning Radi, not a tweet-case judgment.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "publication",
+      "scope": "same_person_other_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-17-row-01",
+      "caseId": "svetlana-prokopyeva",
+      "eventId": "followup-report-17-row-01",
+      "sourceDate": "2020-07-06",
+      "sourceEvent": "Original conviction; 500,000-ruble fine rather than the requested prison term.",
+      "pdfPages": [
+        5
+      ],
+      "eventKind": "decision",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-17-row-02",
+      "caseId": "svetlana-prokopyeva",
+      "eventId": "followup-report-17-row-02",
+      "sourceDate": "2021-07-06",
+      "sourceEvent": "Supreme Court decision identified by the ECtHR as final domestic decision.",
+      "pdfPages": [
+        5
+      ],
+      "eventKind": "decision",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-17-row-03",
+      "caseId": "svetlana-prokopyeva",
+      "eventId": "followup-report-17-row-03",
+      "sourceDate": "2021-11-26",
+      "sourceEvent": "ECtHR application No. 60839/21 introduced.",
+      "pdfPages": [
+        5
+      ],
+      "eventKind": "historical_action",
+      "scope": "same_case",
+      "executionStatus": "submitted",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-17-row-04",
+      "caseId": "svetlana-prokopyeva",
+      "eventId": "followup-report-17-row-04",
+      "sourceDate": "2022-03",
+      "sourceEvent": "Departure from Russia reported following searches and questioning in a separate matter.",
+      "pdfPages": [
+        5
+      ],
+      "eventKind": "risk_personal",
+      "scope": "same_person_other_case",
+      "executionStatus": "unknown",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-17-row-05",
+      "caseId": "svetlana-prokopyeva",
+      "eventId": "followup-report-17-row-05",
+      "sourceDate": "2022-05-19",
+      "sourceEvent": "Rosfinmonitoring removed Prokopyeva from terrorism/extremism list.",
+      "pdfPages": [
+        5
+      ],
+      "eventKind": "observed_outcome",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-17-row-06",
+      "caseId": "svetlana-prokopyeva",
+      "eventId": "followup-report-17-row-06",
+      "sourceDate": "2023-06-16",
+      "sourceEvent": "Foreign-agent designation, as subsequently identified by local reporting.",
+      "pdfPages": [
+        5
+      ],
+      "eventKind": "risk_personal",
+      "scope": "same_person_other_case",
+      "executionStatus": "unknown",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-17-row-07",
+      "caseId": "svetlana-prokopyeva",
+      "eventId": "followup-report-17-row-07",
+      "sourceDate": "2024-07-18",
+      "sourceEvent": "Interior Ministry wanted-list entry reported; underlying charges unspecified.",
+      "pdfPages": [
+        5
+      ],
+      "eventKind": "risk_personal",
+      "scope": "same_person_other_case",
+      "executionStatus": "unknown",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-17-row-08",
+      "caseId": "svetlana-prokopyeva",
+      "eventId": "followup-report-17-row-08",
+      "sourceDate": "2026-01-22",
+      "sourceEvent": "Final ECtHR judgment: Article 10 violation and EUR 7,500 award.",
+      "pdfPages": [
+        5
+      ],
+      "eventKind": "decision",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-17-row-09",
+      "caseId": "svetlana-prokopyeva",
+      "eventId": "followup-report-17-row-09",
+      "sourceDate": "2026-04",
+      "sourceEvent": "April administrative fine; exact order date disputed.",
+      "pdfPages": [
+        5
+      ],
+      "eventKind": "decision",
+      "scope": "same_person_other_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-17-row-10",
+      "caseId": "svetlana-prokopyeva",
+      "eventId": "followup-report-17-row-10",
+      "sourceDate": "2026-05-15",
+      "sourceEvent": "Defence appeal received; hearing scheduled for 8 June, outcome not verified.",
+      "pdfPages": [
+        5
+      ],
+      "eventKind": "historical_action",
+      "scope": "same_person_other_case",
+      "executionStatus": "submitted",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-18-row-01",
+      "caseId": "cansu-piskin",
+      "eventId": "followup-report-18-row-01",
+      "sourceDate": "2018-04-05",
+      "sourceEvent": "Article identifying the prosecutor was published.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "risk_personal",
+      "scope": "same_case",
+      "executionStatus": "unknown",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-18-row-02",
+      "caseId": "cansu-piskin",
+      "eventId": "followup-report-18-row-02",
+      "sourceDate": "2019-05-07",
+      "sourceEvent": "Guilty finding and ten-month sentence with pronouncement deferred for five years.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "decision",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-18-row-03",
+      "caseId": "cansu-piskin",
+      "eventId": "followup-report-18-row-03",
+      "sourceDate": "2019-07",
+      "sourceEvent": "Original TrialWatch report published with Ambassador Rapp's D assessment.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "publication",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-18-row-04",
+      "caseId": "cansu-piskin",
+      "eventId": "followup-report-18-row-04",
+      "sourceDate": "2024-07-03",
+      "sourceEvent": "Publication identified Piskin as a P24 observer at proceedings against Haluk Kalafat and Elif Akgul; not her own case.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "publication",
+      "scope": "professional_activity",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-18-row-05",
+      "caseId": "cansu-piskin",
+      "eventId": "followup-report-18-row-05",
+      "sourceDate": "2026-01-13",
+      "sourceEvent": "A report carrying Piskin's byline covered a hearing concerning Ismail Ari; the event date is that hearing's date, not a disposition of her prosecution.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "publication",
+      "scope": "professional_activity",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-19-row-01",
+      "caseId": "moses-bwayo",
+      "eventId": "followup-report-19-row-01",
+      "sourceDate": "2020-02-24",
+      "sourceEvent": "Detention while filming Bobi Wine; police bond followed on 26 February.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "risk_personal",
+      "scope": "same_case",
+      "executionStatus": "unknown",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-19-row-02",
+      "caseId": "moses-bwayo",
+      "eventId": "followup-report-19-row-02",
+      "sourceDate": "2020-03-04",
+      "sourceEvent": "Rearrest, unlawful-assembly charge and remand; bail followed on 6 March.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "risk_personal",
+      "scope": "same_case",
+      "executionStatus": "unknown",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-19-row-03",
+      "caseId": "moses-bwayo",
+      "eventId": "followup-report-19-row-03",
+      "sourceDate": "2020-08-10",
+      "sourceEvent": "Court dismissed the charge for want of prosecution.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "decision",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-19-row-04",
+      "caseId": "moses-bwayo",
+      "eventId": "followup-report-19-row-04",
+      "sourceDate": "2020-11",
+      "sourceEvent": "Shooting while filming, already described in the original report.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "risk_personal",
+      "scope": "same_case",
+      "executionStatus": "unknown",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-19-row-05",
+      "caseId": "moses-bwayo",
+      "eventId": "followup-report-19-row-05",
+      "sourceDate": "2021-01",
+      "sourceEvent": "Original TrialWatch report published, including dismissal and subsequent 2020 violence.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "publication",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-19-row-06",
+      "caseId": "moses-bwayo",
+      "eventId": "followup-report-19-row-06",
+      "sourceDate": "2021-07-23",
+      "sourceEvent": "ABA webpage published the report summary; not a new dismissal date.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "publication",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-19-row-07",
+      "caseId": "moses-bwayo",
+      "eventId": "followup-report-19-row-07",
+      "sourceDate": "2022-03",
+      "sourceEvent": "Move to the United States, retrospectively dated in Bwayo's April 2024 essay.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "risk_personal",
+      "scope": "professional_activity",
+      "executionStatus": "unknown",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-19-row-08",
+      "caseId": "moses-bwayo",
+      "eventId": "followup-report-19-row-08",
+      "sourceDate": "2023-11-26",
+      "sourceEvent": "Irish Times profile reported departure from Uganda and seeking asylum, and recalled the dropped prosecution.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "publication",
+      "scope": "professional_activity",
+      "executionStatus": "unknown",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-19-row-09",
+      "caseId": "moses-bwayo",
+      "eventId": "followup-report-19-row-09",
+      "sourceDate": "2024-04-25",
+      "sourceEvent": "Bwayo published a first-person account of flight, threats and seeking asylum.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "publication",
+      "scope": "professional_activity",
+      "executionStatus": "unknown",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-19-row-10",
+      "caseId": "moses-bwayo",
+      "eventId": "followup-report-19-row-10",
+      "sourceDate": "2025-12-10",
+      "sourceEvent": "Sundance's 2026 selection announcement credited Bwayo as a KikuyuLand producer.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "publication",
+      "scope": "professional_activity",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-20-row-01",
+      "caseId": "dian-abdullah",
+      "eventId": "followup-report-20-row-01",
+      "sourceDate": "2020-03-21",
+      "sourceEvent": "First post later charged under Penal Code Section 505(b).",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "risk_personal",
+      "scope": "same_case",
+      "executionStatus": "unknown",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-20-row-02",
+      "caseId": "dian-abdullah",
+      "eventId": "followup-report-20-row-02",
+      "sourceDate": "2020-03-23",
+      "sourceEvent": "Second post later charged under Section 233(1)(a).",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "risk_personal",
+      "scope": "same_case",
+      "executionStatus": "unknown",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-20-row-03",
+      "caseId": "dian-abdullah",
+      "eventId": "followup-report-20-row-03",
+      "sourceDate": "2020-06-09",
+      "sourceEvent": "Charges brought; CIJ identifies Lai Yuet Ming as Dian Abdullah.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "decision",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-20-row-04",
+      "caseId": "dian-abdullah",
+      "eventId": "followup-report-20-row-04",
+      "sourceDate": "2021-12-06",
+      "sourceEvent": "Changed pleas to guilty, according to subsequent Bernama sentencing coverage.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "historical_action",
+      "scope": "same_case",
+      "executionStatus": "submitted",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-20-row-05",
+      "caseId": "dian-abdullah",
+      "eventId": "followup-report-20-row-05",
+      "sourceDate": "2021-12-21",
+      "sourceEvent": "Sentenced to fines totaling RM 10,000, with imprisonment in default of payment.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "decision",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-20-row-06",
+      "caseId": "dian-abdullah",
+      "eventId": "followup-report-20-row-06",
+      "sourceDate": "2025-02-11",
+      "sourceEvent": "Separate statutory development: amended Section 233 uses 'grossly offensive'.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "decision",
+      "scope": "general_legal_background",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-20-row-07",
+      "caseId": "dian-abdullah",
+      "eventId": "followup-report-20-row-07",
+      "sourceDate": "2025-08-19",
+      "sourceEvent": "Separate Quah litigation: Court of Appeal invalidates two pre-amendment terms, as dated in the later Federal Court judgment; appellate report heading instead bears 26 August.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "decision",
+      "scope": "general_legal_background",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-20-row-08",
+      "caseId": "dian-abdullah",
+      "eventId": "followup-report-20-row-08",
+      "sourceDate": "2026-02-06",
+      "sourceEvent": "Federal Court partly allows government's Quah appeal and restores the impugned terms.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "decision",
+      "scope": "general_legal_background",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-21-row-01",
+      "caseId": "myriam-bribri",
+      "eventId": "followup-report-21-row-01",
+      "sourceDate": "2020-10",
+      "sourceEvent": "Video and commentary on police violence led to the Article 86 prosecution.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "risk_personal",
+      "scope": "same_case",
+      "executionStatus": "unknown",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-21-row-02",
+      "caseId": "myriam-bribri",
+      "eventId": "myriam-followup-conviction",
+      "sourceDate": "2021-12",
+      "sourceEvent": "Convicted and sentenced; HRW, the UN communication and Front Line Defenders give 21 December, while Amnesty gives 20 December.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "decision",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": true
+    },
+    {
+      "importRowId": "followup-report-21-row-03",
+      "caseId": "myriam-bribri",
+      "eventId": "myriam-followup-defence-appeal",
+      "sourceDate": "2021-12",
+      "sourceEvent": "Defense appeal filed; UN account gives 22 December and Amnesty 23 December. Amnesty also reports a prosecution appeal.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "historical_action",
+      "scope": "same_case",
+      "executionStatus": "submitted",
+      "legacyMerge": true
+    },
+    {
+      "importRowId": "followup-report-21-row-04",
+      "caseId": "myriam-bribri",
+      "eventId": "followup-report-21-row-04",
+      "sourceDate": "2022-01-25",
+      "sourceEvent": "HRW reports provisional liberty pending appeal; historical custody observation only.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "observed_outcome",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-21-row-05",
+      "caseId": "myriam-bribri",
+      "eventId": "followup-report-21-row-05",
+      "sourceDate": "2022-02-14",
+      "sourceEvent": "UN special rapporteurs send communication AL TUN 2/2022 concerning prosecution and defense safeguards.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "historical_action",
+      "scope": "same_case",
+      "executionStatus": "implemented",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-21-row-06",
+      "caseId": "myriam-bribri",
+      "eventId": "followup-report-21-row-06",
+      "sourceDate": "2022-09-27",
+      "sourceEvent": "Front Line Defenders announces an appeal session scheduled for 28 September in Sfax.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "schedule_plan",
+      "scope": "same_case",
+      "executionStatus": "scheduled",
+      "legacyMerge": false
+    },
+    {
+      "importRowId": "followup-report-21-row-07",
+      "caseId": "myriam-bribri",
+      "eventId": "followup-report-21-row-07",
+      "sourceDate": "2022-10-09",
+      "sourceEvent": "WJWC statement announces an expected 12 October ruling; no result established by this statement.",
+      "pdfPages": [
+        4
+      ],
+      "eventKind": "schedule_plan",
+      "scope": "same_case",
+      "executionStatus": "scheduled",
+      "legacyMerge": false
+    }
+  ],
+  "sourceRecords": [
+    {
+      "reportId": "followup-report-01",
+      "sourceId": "followup-report-01-source-O",
+      "originalSourceId": "O",
+      "kind": "User-supplied PDF",
+      "url": "/Users/xuxu/Downloads/CFJ_Online_Speech/government-of-thailand-chaiwat-limlikhitaksorn-v-wuth-boonlert-samak-donnapee.pdf",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-01",
+      "sourceId": "followup-report-01-source-S1",
+      "originalSourceId": "S1",
+      "kind": "Government response to UN special procedures",
+      "url": "https://whc.unesco.org/document/187092",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-01",
+      "sourceId": "followup-report-01-source-S2",
+      "originalSourceId": "S2",
+      "kind": "TrialWatch public statement",
+      "url": "https://cfj.org/news/statement-on-the-trials-of-wuth-boonlert-and-samak-donnapee-in-thailand/",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-01",
+      "sourceId": "followup-report-01-source-S3",
+      "originalSourceId": "S3",
+      "kind": "Legal research report with case documents and counsel interviews",
+      "url": "https://cfj.org/wp-content/uploads/2024/09/Thailand-SLAPPs-Report-Final_September-2024.pdf",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-02",
+      "sourceId": "followup-report-02-source-O",
+      "originalSourceId": "O",
+      "kind": "User-supplied PDF",
+      "url": "/Users/xuxu/Downloads/CFJ_Online_Speech/kazakhstan-v-alnur-ilyashev.pdf",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-02",
+      "sourceId": "followup-report-02-source-S1",
+      "originalSourceId": "S1",
+      "kind": "UN opinion",
+      "url": "https://www.freedom-now.org/wp-content/uploads/AUV_A-HRC-WGAD-2022-2.pdf",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-02",
+      "sourceId": "followup-report-02-source-S2",
+      "originalSourceId": "S2",
+      "kind": "Representing NGO case page",
+      "url": "https://www.freedom-now.org/cases/alnur-ilyashev/",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-02",
+      "sourceId": "followup-report-02-source-S3",
+      "originalSourceId": "S3",
+      "kind": "Subject interview",
+      "url": "https://vlast.kz/politika/64857-vycerknut-otovsudu.html",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-02",
+      "sourceId": "followup-report-02-source-S4",
+      "originalSourceId": "S4",
+      "kind": "Credible regional reporting",
+      "url": "https://www.azattyqasia.org/a/polnaya-zachistka-polnyy-kontrol-chto-oznachaet-volna-presledovaniy-aktivistov-i-zhurnalistov-v-kazahstane/33858613.html",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-02",
+      "sourceId": "followup-report-02-source-S5",
+      "originalSourceId": "S5",
+      "kind": "Media-rights monitoring",
+      "url": "https://adilsoz.kz/monthly-monitoring/svoboda-slova-v-kazahstane-sentyabr-2026-goda.html",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-02",
+      "sourceId": "followup-report-02-source-S6",
+      "originalSourceId": "S6",
+      "kind": "NGO treaty-body submission",
+      "url": "https://tbinternet.ohchr.org/_layouts/15/TreatyBodyExternal/DownloadDraft.aspx?key=%2FW1BdNOMQJqYFDxKkXnFg7rBZQX3gFf8jEXJQUmT2Dqbi1Yv8ZoyEzV9yKgDy6m4",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-03",
+      "sourceId": "followup-report-03-source-O",
+      "originalSourceId": "O",
+      "kind": "User-supplied PDF",
+      "url": "/Users/xuxu/Downloads/CFJ_Online_Speech/russian-federation-vs-alexander-pichugin.pdf",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-03",
+      "sourceId": "followup-report-03-source-S1",
+      "originalSourceId": "S1",
+      "kind": "Specialist journalism reporting quoting counsel",
+      "url": "https://jrnlst.ru/2021/01/27/121650/",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-03",
+      "sourceId": "followup-report-03-source-S2",
+      "originalSourceId": "S2",
+      "kind": "Judgment, authentic text on governmental judicial database",
+      "url": "https://mezisoudy.cz/databaze-judikatury/detail-rozhodnuti/63953070-c0f5-11f0-adf3-005056b43026_vlasov-a-ostatni",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-03",
+      "sourceId": "followup-report-03-source-S3",
+      "originalSourceId": "S3",
+      "kind": "Representing lawyers' account",
+      "url": "https://mmdc.ru/blog/2025/11/13/espch-vynes-reshenie-po-delu-nizhegorodskogo-zhurnalista-osuzhdennogo-za-fejk-nyus/",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-03",
+      "sourceId": "followup-report-03-source-S4",
+      "originalSourceId": "S4",
+      "kind": "Credible local reporting linking ministry announcement",
+      "url": "https://www.kommersant.ru/doc/8191767",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-04",
+      "sourceId": "followup-report-04-source-O",
+      "originalSourceId": "O",
+      "kind": "User-supplied PDF",
+      "url": "/Users/xuxu/Downloads/CFJ_Online_Speech/section-20-of-pakistans-prevention-of-electronic-crimes-act-urgent-reforms-needed.pdf",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-04",
+      "sourceId": "followup-report-04-source-S1",
+      "originalSourceId": "S1",
+      "kind": "Primary judgment reproduction",
+      "url": "https://cyrilla.org/entity/ft0m8y0qme?file=17355606812124mhhrl104ei.pdf&page=3",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-04",
+      "sourceId": "followup-report-04-source-S2",
+      "originalSourceId": "S2",
+      "kind": "Official enacted statute",
+      "url": "https://www.senate.gov.pk/uploads/documents/1738226500_897.pdf",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-04",
+      "sourceId": "followup-report-04-source-S3",
+      "originalSourceId": "S3",
+      "kind": "Official statutory consolidation",
+      "url": "https://www.pakistancode.gov.pk/pdffiles/administrator6a061efe0ed5bd153fa8b79b8eb4cba7.pdf",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-04",
+      "sourceId": "followup-report-04-source-S4",
+      "originalSourceId": "S4",
+      "kind": "Constitutional hearing reporting",
+      "url": "https://www.thenews.pk/print/1398336-peca-can-t-be-suspended-by-stay-order-ihc",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-04",
+      "sourceId": "followup-report-04-source-S5",
+      "originalSourceId": "S5",
+      "kind": "Case-specific court update",
+      "url": "https://www.journalismpakistan.com/asad-toor-challenges-nccia-notice-in-islamabad-high-court/",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-04",
+      "sourceId": "followup-report-04-source-S6",
+      "originalSourceId": "S6",
+      "kind": "Case-specific bail reporting",
+      "url": "https://www.journalismpakistan.com/bilal-ghauri-granted-bail-in-peca-case/",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-05",
+      "sourceId": "followup-report-05-source-O",
+      "originalSourceId": "O",
+      "kind": "User-supplied PDF",
+      "url": "/Users/xuxu/Downloads/CFJ_Online_Speech/tunisia-vs-emna-chargui.pdf",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-05",
+      "sourceId": "followup-report-05-source-S1",
+      "originalSourceId": "S1",
+      "kind": "NGO contemporaneous statement",
+      "url": "https://www.amnesty.org/en/latest/news/2020/07/tunisia-blogger-emna-chargui-sentenced-to-six-months-in-prison-for-social-media-post/",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-05",
+      "sourceId": "followup-report-05-source-S2",
+      "originalSourceId": "S2",
+      "kind": "Original-report publisher announcement",
+      "url": "https://cfj.org/news/trialwatch-report-show-need-for-constitutional-court-in-tunisia/",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-05",
+      "sourceId": "followup-report-05-source-S3",
+      "originalSourceId": "S3",
+      "kind": "Report catalogue page",
+      "url": "https://cfj.org/reports/tunisia-vs-emna-chargui/",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-06",
+      "sourceId": "followup-report-06-source-O",
+      "originalSourceId": "O",
+      "kind": "User-supplied PDF",
+      "url": "/Users/xuxu/Downloads/CFJ_Criminalizing_Reporting/bangladesh-v-shahidul-alam.pdf",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-06",
+      "sourceId": "followup-report-06-source-S1",
+      "originalSourceId": "S1",
+      "kind": "Court procedural reporting",
+      "url": "https://www.dhakatribune.com/bangladesh/court/364130/high-court-suspends-investigation-against",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-06",
+      "sourceId": "followup-report-06-source-S2",
+      "originalSourceId": "S2",
+      "kind": "Court decision reporting",
+      "url": "https://www.newagebd.net/post/country/272327/hc-quashes-ict-case-against-shahidul-alam",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-06",
+      "sourceId": "followup-report-06-source-S3",
+      "originalSourceId": "S3",
+      "kind": "NGO confirmation and assessment",
+      "url": "https://www.amnesty.org/en/latest/news/2025/08/bangladesh-dismissal-of-court-case-against-shahidul-alam-is-welcome-but-more-progress-needed-on-freedom-of-expression/",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-06",
+      "sourceId": "followup-report-06-source-S4",
+      "originalSourceId": "S4",
+      "kind": "Local court decision reporting",
+      "url": "https://www.ajkerpatrika.com/national/ajp8him9ohbma",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-07",
+      "sourceId": "followup-report-07-source-O",
+      "originalSourceId": "O",
+      "kind": "User-supplied PDF",
+      "url": "/Users/xuxu/Downloads/CFJ_Criminalizing_Reporting/belarus-v-katsiaryna-andreyeva-and-daria-chultsova.pdf",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-07",
+      "sourceId": "followup-report-07-source-S1",
+      "originalSourceId": "S1",
+      "kind": "ngo_reporting",
+      "url": "https://cpj.org/2022/07/belarusian-journalist-katsiaryna-andreyeva-convicted-of-treason-sentenced-to-additional-8-years-imprisonment/",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-07",
+      "sourceId": "followup-report-07-source-S2",
+      "originalSourceId": "S2",
+      "kind": "ngo_reporting",
+      "url": "https://baj.media/en/espionage-supreme-court-changed-wording-katsiaryna-andreyevas-case-while-uphelding-verdict/",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-07",
+      "sourceId": "followup-report-07-source-S3",
+      "originalSourceId": "S3",
+      "kind": "ngo_reporting",
+      "url": "https://baj.media/en/belsat-journalist-darya-chultsova-released-after-two-years-penal-colony/",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-07",
+      "sourceId": "followup-report-07-source-S4",
+      "originalSourceId": "S4",
+      "kind": "ngo_reporting",
+      "url": "https://cpj.org/2026/03/belarusian-journalist-katsiaryna-andreyeva-released-after-serving-over-5-years-in-prison/",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-07",
+      "sourceId": "followup-report-07-source-S5",
+      "originalSourceId": "S5",
+      "kind": "ngo_statement",
+      "url": "https://www.pen-international.org/news/belarus-immediately-release-all-those-still-unjustly-imprisoned",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-07",
+      "sourceId": "followup-report-07-source-S6",
+      "originalSourceId": "S6",
+      "kind": "ngo_reporting",
+      "url": "https://baj.media/en/journalist-ihar-ilyash-sentenced-to-four-years-in-prison/",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-08",
+      "sourceId": "followup-report-08-source-O",
+      "originalSourceId": "O",
+      "kind": "User-supplied PDF",
+      "url": "/Users/xuxu/Downloads/CFJ_Criminalizing_Reporting/georgia-v-mzia-amaglobeli.pdf",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-08",
+      "sourceId": "followup-report-08-source-S1",
+      "originalSourceId": "S1",
+      "kind": "ngo_reporting",
+      "url": "https://cpj.org/2026/03/georgias-supreme-court-rejects-jailed-journalist-mzia-amaglobelis-appeal/",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-08",
+      "sourceId": "followup-report-08-source-S2",
+      "originalSourceId": "S2",
+      "kind": "lawyer_statement",
+      "url": "https://gyla.ge/en/post/strasburgissasamartlo-mziaamaglobelissaqme",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-08",
+      "sourceId": "followup-report-08-source-S3",
+      "originalSourceId": "S3",
+      "kind": "subject_outlet_reporting",
+      "url": "https://batumelebi.netgazeti.ge/articles-in-english/611376/",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-08",
+      "sourceId": "followup-report-08-source-S4",
+      "originalSourceId": "S4",
+      "kind": "local_reporting_of_lawyer_statement",
+      "url": "https://www.messenger.com.ge/issues/6201_august_7_2026/6201_liza.html",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-08",
+      "sourceId": "followup-report-08-source-S5",
+      "originalSourceId": "S5",
+      "kind": "published_subject_letter",
+      "url": "https://georgiatoday.ge/mzia-amaghlobeli-i-await-international-justice-you-should-wait-too-mr-papuashvili/",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-08",
+      "sourceId": "followup-report-08-source-S6",
+      "originalSourceId": "S6",
+      "kind": "ngo_monitoring_report",
+      "url": "https://cmis.ge/en/the-state-of-journalists-safety-in-georgia-september-2025-august-2026/",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-09",
+      "sourceId": "followup-report-09-source-O",
+      "originalSourceId": "O",
+      "kind": "User-supplied PDF",
+      "url": "/Users/xuxu/Downloads/CFJ_Criminalizing_Reporting/guatemala-v-jose-ruben-zamora.pdf",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-09",
+      "sourceId": "followup-report-09-source-S1",
+      "originalSourceId": "S1",
+      "kind": "ngo_reporting",
+      "url": "https://cpj.org/2026/02/cpj-welcomes-guatemalan-journalist-jose-ruben-zamoras-release-to-house-arrest-calls-for-all-charges-to-be-dropped/",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-09",
+      "sourceId": "followup-report-09-source-S2",
+      "originalSourceId": "S2",
+      "kind": "news_reporting",
+      "url": "https://apnews.com/article/2af3711cd707064b7b0afc4663f5a7e9",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-09",
+      "sourceId": "followup-report-09-source-S3",
+      "originalSourceId": "S3",
+      "kind": "local_court_reporting",
+      "url": "https://www.prensalibre.com/guatemala/justicia/cc-deja-firme-la-libertad-de-jose-ruben-zamora-al-aceptar-el-desistimiento-del-mp-breaking/",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-09",
+      "sourceId": "followup-report-09-source-S4",
+      "originalSourceId": "S4",
+      "kind": "local_court_reporting",
+      "url": "https://prensacomunitaria.org/2026/07/sala-vuelve-a-anular-la-condena-impuesta-contra-jose-ruben-zamora/",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-09",
+      "sourceId": "followup-report-09-source-S5",
+      "originalSourceId": "S5",
+      "kind": "local_court_reporting",
+      "url": "https://www.prensalibre.com/guatemala/justicia/jose-ruben-zamora-no-podra-salir-de-guatemala-por-motivos-de-salud-tribunal-mantiene-el-arraigo-breaking/",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-09",
+      "sourceId": "followup-report-09-source-S6",
+      "originalSourceId": "S6",
+      "kind": "primary_organization_statement",
+      "url": "https://www.prnewswire.com/news-releases/national-press-club-honors-guatemalan-journalist-jose-ruben-zamora-with-john-aubuchon-press-freedom-award-302902723.html",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-10",
+      "sourceId": "followup-report-10-source-O",
+      "originalSourceId": "O",
+      "kind": "User-supplied PDF",
+      "url": "/Users/xuxu/Downloads/CFJ_Criminalizing_Reporting/hong-kong-special-administrative-region-v-bao-choy-yuk-ling.pdf",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-10",
+      "sourceId": "followup-report-10-source-S1",
+      "originalSourceId": "S1",
+      "kind": "court_judgment_reproduction",
+      "url": "https://babelcite.com/case/153990",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-10",
+      "sourceId": "followup-report-10-source-S2",
+      "originalSourceId": "S2",
+      "kind": "court_judgment_reproduction",
+      "url": "https://babelcite.com/case/152985",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-10",
+      "sourceId": "followup-report-10-source-S3",
+      "originalSourceId": "S3",
+      "kind": "official_policy_statement",
+      "url": "https://www.info.gov.hk/gia/general/202401/25/P2024012500708.htm",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-10",
+      "sourceId": "followup-report-10-source-S4",
+      "originalSourceId": "S4",
+      "kind": "court_judgment",
+      "url": "https://www.pcpd.org.hk/english/enforcement/judgments/files/HCAL000559A_2024.pdf",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-10",
+      "sourceId": "followup-report-10-source-S5",
+      "originalSourceId": "S5",
+      "kind": "official_judgment_summary",
+      "url": "https://www.doj.gov.hk/en/notable_judgments/pdf/HCAL_559_2024e.pdf",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-11",
+      "sourceId": "followup-report-11-source-O",
+      "originalSourceId": "O",
+      "kind": "User-supplied PDF",
+      "url": "/Users/xuxu/Downloads/CFJ_Criminalizing_Reporting/kazakhstan-v-aigul-utepova.pdf",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-11",
+      "sourceId": "followup-report-11-source-S1",
+      "originalSourceId": "S1",
+      "kind": "Representatives' public statement",
+      "url": "https://cfj.org/news/journalist-convicted-under-unfair-anti-extremism-law-in-kazakhstan-should-have-conviction-overturned/",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-11",
+      "sourceId": "followup-report-11-source-S2",
+      "originalSourceId": "S2",
+      "kind": "NGO treaty-body submission",
+      "url": "https://tbinternet.ohchr.org/_layouts/15/TreatyBodyExternal/DownloadDraft.aspx?key=%2FW1BdNOMQJqYFDxKkXnFg7rBZQX3gFf8jEXJQUmT2Dqbi1Yv8ZoyEzV9yKgDy6m4",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-11",
+      "sourceId": "followup-report-11-source-S3",
+      "originalSourceId": "S3",
+      "kind": "Journalist-rights reporting based on journalist, counsel and trial materials",
+      "url": "https://cpj.org/2021/04/kazakh-journalist-aigul-utepova-convicted-of-participating-in-banned-political-groups/",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-11",
+      "sourceId": "followup-report-11-source-S4",
+      "originalSourceId": "S4",
+      "kind": "Historical case profile",
+      "url": "https://cpj.org/data/people/aigul-utepova/",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-12",
+      "sourceId": "followup-report-12-source-O",
+      "originalSourceId": "O",
+      "kind": "User-supplied PDF",
+      "url": "/Users/xuxu/Downloads/CFJ_Criminalizing_Reporting/malaysia-v-malaysiakini-and-steven-gan.pdf",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-12",
+      "sourceId": "followup-report-12-source-S1",
+      "originalSourceId": "S1",
+      "kind": "Court decision reporting",
+      "url": "https://www.malaysianow.com/news/2022/03/29/malaysiakini-fails-in-review-bid-to-overturn-contempt-conviction",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-12",
+      "sourceId": "followup-report-12-source-S2",
+      "originalSourceId": "S2",
+      "kind": "Court decision reporting",
+      "url": "https://www.thevibes.com/articles/news/57373/court-rejects-malaysiakini-review-bid-on-contempt-verdict",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-12",
+      "sourceId": "followup-report-12-source-S3",
+      "originalSourceId": "S3",
+      "kind": "Subject news outlet procedural report; accessible search-index excerpt",
+      "url": "https://www.malaysiakini.com/news/605415",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-13",
+      "sourceId": "followup-report-13-source-O",
+      "originalSourceId": "O",
+      "kind": "User-supplied PDF",
+      "url": "/Users/xuxu/Downloads/CFJ_Criminalizing_Reporting/monitoring-of-the-trial-of-marina-zolotova.pdf",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-13",
+      "sourceId": "followup-report-13-source-S1",
+      "originalSourceId": "S1",
+      "kind": "ngo_reporting",
+      "url": "https://cpj.org/2023/03/belarusian-journalist-maryna-zolatava-sentenced-to-12-years-in-prison-valeryia-kastsiuhova-to-10-years/",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-13",
+      "sourceId": "followup-report-13-source-S2",
+      "originalSourceId": "S2",
+      "kind": "ngo_reporting",
+      "url": "https://cpj.org/2025/12/belarusian-journalist-maryna-zolatava-released-after-serving-over-4-years-in-prison/",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-13",
+      "sourceId": "followup-report-13-source-S3",
+      "originalSourceId": "S3",
+      "kind": "subject_account_published_by_ngo",
+      "url": "https://rsf-ch.ch/de/frei-aber-nicht-zuhause-die-belarussische-journalistin-maryna-zolatava-ueber-ihr-leben-im-exil/",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-13",
+      "sourceId": "followup-report-13-source-S4",
+      "originalSourceId": "S4",
+      "kind": "ngo_reporting",
+      "url": "https://cpj.org/2026/09/cpj-welcomes-release-of-three-journalists-in-belarus/",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-14",
+      "sourceId": "followup-report-14-source-O",
+      "originalSourceId": "O",
+      "kind": "User-supplied PDF",
+      "url": "/Users/xuxu/Downloads/CFJ_Criminalizing_Reporting/morocco-v-hajar-raissouni-et-al.pdf",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-14",
+      "sourceId": "followup-report-14-source-S1",
+      "originalSourceId": "S1",
+      "kind": "NGO urgent-action outcome",
+      "url": "https://www.amnesty.org/en/wp-content/uploads/2021/05/MDE2914482019ENGLISH.pdf",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-14",
+      "sourceId": "followup-report-14-source-S2",
+      "originalSourceId": "S2",
+      "kind": "NGO case profile and intervention record",
+      "url": "https://menarights.org/en/caseprofile/la-journaliste-marocaine-hajar-raissouni-poursuivie-en-violation-de-son-droit-la-vie",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-14",
+      "sourceId": "followup-report-14-source-S3",
+      "originalSourceId": "S3",
+      "kind": "Subject's first-person account",
+      "url": "https://www.mo.be/opinie/marokko-n-grote-gevangenis-voor-mij",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-14",
+      "sourceId": "followup-report-14-source-S4",
+      "originalSourceId": "S4",
+      "kind": "Subject interview",
+      "url": "https://mariecolvinnetwork.org/en/1743/",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-15",
+      "sourceId": "followup-report-15-source-O",
+      "originalSourceId": "O",
+      "kind": "User-supplied PDF",
+      "url": "/Users/xuxu/Downloads/CFJ_Criminalizing_Reporting/morocco-v-omar-radi-ii.pdf",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-15",
+      "sourceId": "followup-report-15-source-S1",
+      "originalSourceId": "S1",
+      "kind": "NGO report of judicial outcome",
+      "url": "https://rsf.org/en/morocco-s-court-cassation-rejects-final-appeals-two-jailed-journalists",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-15",
+      "sourceId": "followup-report-15-source-S2",
+      "originalSourceId": "S2",
+      "kind": "NGO release confirmation",
+      "url": "https://www.pen-international.org/news/morocco-pen-international-welcomes-the-release-of-journalists",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-15",
+      "sourceId": "followup-report-15-source-S3",
+      "originalSourceId": "S3",
+      "kind": "NGO reporting with subject interviews",
+      "url": "https://cpj.org/2024/10/moroccos-pardoned-journalists-face-smears-threats-after-prison/",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-15",
+      "sourceId": "followup-report-15-source-S4",
+      "originalSourceId": "S4",
+      "kind": "NGO case profile",
+      "url": "https://www.pen-international.org/cases/omar-radi",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-15",
+      "sourceId": "followup-report-15-source-S5",
+      "originalSourceId": "S5",
+      "kind": "NGO investigation",
+      "url": "https://www.amnesty.org/en/latest/news/2026/10/whistleblower-reveals-how-morocco-used-a-web-of-surveillance-to-silence-journalists/",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-15",
+      "sourceId": "followup-report-15-source-S6",
+      "originalSourceId": "S6",
+      "kind": "Interview",
+      "url": "https://www.aljazeera.com/news/2026/10/6/moroccan-journalists-recount-years-of-surveillance-amid-new-amnesty-claim",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-16",
+      "sourceId": "followup-report-16-source-O",
+      "originalSourceId": "O",
+      "kind": "User-supplied PDF",
+      "url": "/Users/xuxu/Downloads/CFJ_Criminalizing_Reporting/morocco-v-omar-radi.pdf",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-16",
+      "sourceId": "followup-report-16-source-S1",
+      "originalSourceId": "S1",
+      "kind": "Report publisher's statement",
+      "url": "https://cfj.org/news/statement-on-the-release-of-the-report-on-the-trial-of-omar-radi-in-morocco/",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-16",
+      "sourceId": "followup-report-16-source-S2",
+      "originalSourceId": "S2",
+      "kind": "NGO case statement",
+      "url": "https://www.amnesty.org/en/latest/press-release/2021/04/morocco-journalist-targeted-by-authorities-faces-trial/",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-16",
+      "sourceId": "followup-report-16-source-S3",
+      "originalSourceId": "S3",
+      "kind": "NGO release confirmation",
+      "url": "https://www.pen-international.org/news/morocco-pen-international-welcomes-the-release-of-journalists",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-16",
+      "sourceId": "followup-report-16-source-S4",
+      "originalSourceId": "S4",
+      "kind": "NGO reporting with subject interviews",
+      "url": "https://cpj.org/2024/10/moroccos-pardoned-journalists-face-smears-threats-after-prison/",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-16",
+      "sourceId": "followup-report-16-source-S5",
+      "originalSourceId": "S5",
+      "kind": "Account of subject's public appearances",
+      "url": "https://jeunes.amnesty.be/jeunes/montrez/temoignages-actions/article/omar-radi-voix-face-pouvoir",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-16",
+      "sourceId": "followup-report-16-source-S6",
+      "originalSourceId": "S6",
+      "kind": "NGO investigation",
+      "url": "https://www.amnesty.org/en/latest/news/2026/10/whistleblower-reveals-how-morocco-used-a-web-of-surveillance-to-silence-journalists/",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-17",
+      "sourceId": "followup-report-17-source-O",
+      "originalSourceId": "O",
+      "kind": "User-supplied PDF",
+      "url": "/Users/xuxu/Downloads/CFJ_Criminalizing_Reporting/russian-federation-vs-svetlana-prokopyeva.pdf",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-17",
+      "sourceId": "followup-report-17-source-S1",
+      "originalSourceId": "S1",
+      "kind": "News agency reporting on Rosfinmonitoring",
+      "url": "https://www.interfax.ru/russia/841755",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-17",
+      "sourceId": "followup-report-17-source-S2",
+      "originalSourceId": "S2",
+      "kind": "Credible international reporting on ministry database",
+      "url": "https://www.rferl.org/a/russian-journalist-prokopeyva-wanted-list/33041436.html",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-17",
+      "sourceId": "followup-report-17-source-S3",
+      "originalSourceId": "S3",
+      "kind": "Judgment, authentic text on governmental judicial database",
+      "url": "https://mezisoudy.cz/databaze-judikatury/detail-rozhodnuti/f9f7ec3f-f7f6-11f0-85f3-005056b43026_gritsevich-a-ostatni",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-17",
+      "sourceId": "followup-report-17-source-S4",
+      "originalSourceId": "S4",
+      "kind": "Local court reporting",
+      "url": "https://pln-pskov.ru/society/585353.html",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-17",
+      "sourceId": "followup-report-17-source-S5",
+      "originalSourceId": "S5",
+      "kind": "Local reporting quoting regional courts' press service",
+      "url": "https://pln-pskov.ru/society/587739.html",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-18",
+      "sourceId": "followup-report-18-source-O",
+      "originalSourceId": "O",
+      "kind": "User-supplied PDF",
+      "url": "/Users/xuxu/Downloads/CFJ_Criminalizing_Reporting/trial-monitoring-of-people-v-cansu-piskin.pdf",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-18",
+      "sourceId": "followup-report-18-source-S1",
+      "originalSourceId": "S1",
+      "kind": "Local legal-monitoring report",
+      "url": "https://mlsaturkey.com/en/journalist-cansu-piskin-sentenced-to-10-months-in-prison",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-18",
+      "sourceId": "followup-report-18-source-S2",
+      "originalSourceId": "S2",
+      "kind": "Local contemporaneous reporting",
+      "url": "https://bianet.org/haber/journalist-cansu-piskin-sentenced-to-10-months-in-prison-208260",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-18",
+      "sourceId": "followup-report-18-source-S3",
+      "originalSourceId": "S3",
+      "kind": "NGO contemporaneous reporting",
+      "url": "https://cpj.org/2019/05/turkey-crackdown-chronicle-week-of-may-5-2019/",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-18",
+      "sourceId": "followup-report-18-source-S4",
+      "originalSourceId": "S4",
+      "kind": "Local reporting of another case",
+      "url": "https://bianet.org/haber/former-bianet-journalists-acquitted-in-insulting-turkish-nation-case-297093",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-18",
+      "sourceId": "followup-report-18-source-S5",
+      "originalSourceId": "S5",
+      "kind": "Bylined court report of another case",
+      "url": "https://www.expressioninterrupted.com/tr/gazeteci-ismail-ari-nin-yargilandigi-dava-eylul-ayina-ertelendi/",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-19",
+      "sourceId": "followup-report-19-source-O",
+      "originalSourceId": "O",
+      "kind": "User-supplied PDF",
+      "url": "/Users/xuxu/Downloads/CFJ_Criminalizing_Reporting/uganda-v-moses-bwayo.pdf",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-19",
+      "sourceId": "followup-report-19-source-S1",
+      "originalSourceId": "S1",
+      "kind": "Original report publisher's summary",
+      "url": "https://www.americanbar.org/groups/human_rights/reports/fair_trial_report_uganda_moses_bwayo/",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-19",
+      "sourceId": "followup-report-19-source-S2",
+      "originalSourceId": "S2",
+      "kind": "Reported subject profile",
+      "url": "https://www.irishtimes.com/world/africa/2023/11/26/bobi-wine-documentary-maker-forced-to-flee-uganda/",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-19",
+      "sourceId": "followup-report-19-source-S3",
+      "originalSourceId": "S3",
+      "kind": "Subject's first-person account",
+      "url": "https://www.documentary.org/column/field-recording-we-are-removing-dictator",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-19",
+      "sourceId": "followup-report-19-source-S4",
+      "originalSourceId": "S4",
+      "kind": "Official professional-program announcement",
+      "url": "https://www.sundance.org/blogs/2026-sundance-film-festival-unveils-97-projects-selected-for-the-feature-film-and-episodic-program/",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-19",
+      "sourceId": "followup-report-19-source-S5",
+      "originalSourceId": "S5",
+      "kind": "Official cause list; unconfirmed same-name lead",
+      "url": "https://judiciary.go.ug/files/downloads/Civil%20Division%20Court%20Cause%20List%20Monday%20November%2010%20-%20Friday%20November%2014%202025.pdf",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-20",
+      "sourceId": "followup-report-20-source-O",
+      "originalSourceId": "O",
+      "kind": "User-supplied PDF",
+      "url": "/Users/xuxu/Downloads/Citizen Journalism/Malaysia_ A Preliminary Report on Criminal Proceedings Against Blogger Dian Abdullah.pdf",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-20",
+      "sourceId": "followup-report-20-source-S1",
+      "originalSourceId": "S1",
+      "kind": "NGO primary contemporaneous statement",
+      "url": "https://cijmalaysia.net/wp-content/uploads/2020/06/CSOs-stand-in-solidarity_19JUNE2021.pdf",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-20",
+      "sourceId": "followup-report-20-source-S2",
+      "originalSourceId": "S2",
+      "kind": "Court sentencing reporting",
+      "url": "https://international.astroawani.com/malaysia-news/single-mother-fined-rm10000-insulting-agong-former-pm-337614",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-20",
+      "sourceId": "followup-report-20-source-S3",
+      "originalSourceId": "S3",
+      "kind": "Primary judgment reproduction",
+      "url": "https://www.elaw.my/JE/01/JE_2025_37.pdf",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-20",
+      "sourceId": "followup-report-20-source-S4",
+      "originalSourceId": "S4",
+      "kind": "Primary judgment reproduction",
+      "url": "https://www.elaw.my/JE/01/JE_2026_9.pdf",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-21",
+      "sourceId": "followup-report-21-source-O",
+      "originalSourceId": "O",
+      "kind": "User-supplied PDF",
+      "url": "/Users/xuxu/Downloads/Citizen Journalism/Myriam-Bribri_June-2021_Fairness-Report (2).pdf",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-21",
+      "sourceId": "followup-report-21-source-S1",
+      "originalSourceId": "S1",
+      "kind": "NGO case reporting",
+      "url": "https://www.hrw.org/fr/news/2022/01/25/une-activiste-tunisienne-condamnee-une-peine-de-prison-pour-avoir-critique-la",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-21",
+      "sourceId": "followup-report-21-source-S2",
+      "originalSourceId": "S2",
+      "kind": "Primary UN communication",
+      "url": "https://spcommreports.ohchr.org/TMResultsBase/DownLoadPublicCommunicationFile?gId=27078",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-21",
+      "sourceId": "followup-report-21-source-S3",
+      "originalSourceId": "S3",
+      "kind": "NGO procedural update",
+      "url": "https://www.frontlinedefenders.org/en/case/woman-human-rights-defender-meriem-bribri-appeal-session-scheduled-28-september-2022",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-21",
+      "sourceId": "followup-report-21-source-S4",
+      "originalSourceId": "S4",
+      "kind": "NGO case statement",
+      "url": "https://www.amnesty.org/fr/latest/news/2022/09/tunisia-drop-bogus-charges-against-activist-myriam-bribri/",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    },
+    {
+      "reportId": "followup-report-21",
+      "sourceId": "followup-report-21-source-S5",
+      "originalSourceId": "S5",
+      "kind": "NGO scheduled-proceeding statement",
+      "url": "https://www.wjwc.org/news-en/wjwc-call-for-dropping-false-charges-against-a-tunisian-activist",
+      "readStatus": "not_opened_this_run",
+      "independentlyVerified": false
+    }
+  ],
+  "preservedFiles": [
+    {
+      "name": "00_Collection_Index.pdf",
+      "sha256": "2b97c621781f65d758f555a4f25ec91d55076a5f00c751d8f42ef89447a158b6",
+      "pages": 6
+    },
+    {
+      "name": "01_thailand_wuth_samak_Follow_Up.pdf",
+      "sha256": "077b1939c2991933254b510d12268b9e629efed2218b2168766907dabc6c7b7a",
+      "pages": 7
+    },
+    {
+      "name": "02_kazakhstan_alnur_Follow_Up.pdf",
+      "sha256": "f1fefe7877861701a332dcdc7804d739d729e01688d47969f4d1d588db11dd0b",
+      "pages": 7
+    },
+    {
+      "name": "03_russia_pichugin_Follow_Up.pdf",
+      "sha256": "0deaf5aa0593f3fc4652322f1b3790f0f1c52f59333efd2bccddc15a58b70484",
+      "pages": 7
+    },
+    {
+      "name": "04_pakistan_peca20_Follow_Up.pdf",
+      "sha256": "e52538856af5117c2fe0d04f88bd9a2cbf23214c20969cb2bfd0a7218308899c",
+      "pages": 7
+    },
+    {
+      "name": "05_tunisia_chargui_Follow_Up.pdf",
+      "sha256": "4d36fd15bc9c72ffc16dcd19fb6f016f7c5f427dbe758bb652711c39c431bf09",
+      "pages": 7
+    },
+    {
+      "name": "06_bangladesh_alam_Follow_Up.pdf",
+      "sha256": "521c829c58b5d6552f575d00185511c815033cda823675e5f2010de9661a19c1",
+      "pages": 7
+    },
+    {
+      "name": "07_belarus_andreyeva_chultsova_Follow_Up.pdf",
+      "sha256": "b600c49d87854db660c06320da827f01d42c79a9d6405a09e411cffde8ca812a",
+      "pages": 7
+    },
+    {
+      "name": "08_georgia_amaglobeli_Follow_Up.pdf",
+      "sha256": "ba060e8fd8b1795408d4c4cf6efc65d7b9f9528888ffb3f2d47f3c6eaadfaf85",
+      "pages": 7
+    },
+    {
+      "name": "09_guatemala_zamora_Follow_Up.pdf",
+      "sha256": "c5642b38c08c144fe6b512888b417b31a1cda48ec769261e2a2b86f2839f2fc2",
+      "pages": 7
+    },
+    {
+      "name": "10_hong_kong_bao_choy_Follow_Up.pdf",
+      "sha256": "cc21f2ce70f7c4c93ff368821bcad6216ec023c6b8e50610bdcd5ba47f128f14",
+      "pages": 7
+    },
+    {
+      "name": "11_kazakhstan_utepova_Follow_Up.pdf",
+      "sha256": "9be040697492965e7945ebd03a48143b299fbacd1a4ea04fd7e5f850ce1983e0",
+      "pages": 7
+    },
+    {
+      "name": "12_malaysia_malaysiakini_Follow_Up.pdf",
+      "sha256": "7d2ae325118fcb48134f4de1bcaf88b77d2c988d3ff596b3f1a44746513244b8",
+      "pages": 7
+    },
+    {
+      "name": "13_belarus_zolotova_Follow_Up.pdf",
+      "sha256": "578d85e79965c5a3f030a529ce56714d3ce67648cd03fcc1fa275d379eebf8ea",
+      "pages": 7
+    },
+    {
+      "name": "14_morocco_raissouni_Follow_Up.pdf",
+      "sha256": "99b255a01adcf4b776f177bf64ad6d2b145880eb8a53139ac1aa9e3847230ea4",
+      "pages": 7
+    },
+    {
+      "name": "15_morocco_radi_ii_Follow_Up.pdf",
+      "sha256": "e45c0f889512eeb6c7ef14d37ad39fb19e8a190e49197bf53864c59131495429",
+      "pages": 7
+    },
+    {
+      "name": "16_morocco_radi_i_Follow_Up.pdf",
+      "sha256": "bf74dcf077c16a059c41848a949696b22b6e258596bb8cfff6a8eb0f18f514cb",
+      "pages": 7
+    },
+    {
+      "name": "17_russia_prokopyeva_Follow_Up.pdf",
+      "sha256": "39d44a0e5d56e98f1a8514f30a45fa7fe817d5d70f480889970637179a766ada",
+      "pages": 8
+    },
+    {
+      "name": "18_turkey_piskin_Follow_Up.pdf",
+      "sha256": "62ca47addac2fd2e2189edcc650dafc81cc34f1d18e9d10b21b4cb03292fb559",
+      "pages": 7
+    },
+    {
+      "name": "19_uganda_bwayo_Follow_Up.pdf",
+      "sha256": "e0aa08df721eb1bf864294cdc43a156af51ccd3e5a8a580aa657ee3c8fed0734",
+      "pages": 7
+    },
+    {
+      "name": "20_malaysia_dian_Follow_Up.pdf",
+      "sha256": "a4a75beee167ef750279338335853286b74fdd687941ea4681282671f6d8bd44",
+      "pages": 7
+    },
+    {
+      "name": "21_tunisia_bribri_Follow_Up.pdf",
+      "sha256": "53b743310f838cb524d4539e211a542b5629034cff5592f5bd5c4c29d21c19a1",
+      "pages": 7
+    },
+    {
+      "name": "Research_and_Source_Manifest.json",
+      "sha256": "45c6a5bc2dcb629a96d783565e0f409346447155bcec7039e425e2d2041808f3",
+      "pages": null
+    }
+  ],
+  "counts": {
+    "reports": 21,
+    "caseMappings": 22,
+    "inputTimelineRows": 150,
+    "inputSourceRecords": 121,
+    "webSourceRecords": 100,
+    "uniqueWebUrls": 96,
+    "pdfPages": 154,
+    "sourceCheckedActions": 8,
+    "outputEventRecords": 155,
+    "teamVerified": 0
+  },
+  "reviewedActionIds": [
+    "aigul-followup-2022-04-27-hrc-filing-confirmed",
+    "myriam-followup-report-used-appeal",
+    "myriam-followup-defence-appeal",
+    "myriam-followup-amnesty-advocacy",
+    "alnur-followup-2022-09-13-joint-letter",
+    "reviewed-alnur-2021-wgad-petition",
+    "followup-report-14-row-02",
+    "omar-ii-followup-2024-10-21-cpj-risk-check"
+  ]
+}

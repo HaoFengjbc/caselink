@@ -44,11 +44,11 @@ describe('adaptive case record reaches analysis without forcing old categories',
     record.intake!.goalText='';expect(hasCustomGoal(record)).toBe(false);
     expect(buildRuleReference(record, [], 'en').actionOptions[0].title).not.toBe(result.actionOptions[0].title);
   });
-  it('gives the live model the reviewed corpus for narrative assessment and allows zero matches', async () => {
+  it('keeps incompatible criminal corpus out of the civil model context', async () => {
     const record = input(); const output = buildRuleReference(record, [], 'en');
     const transport = vi.fn(async ({ data }: { data: string }) => {
       const context = JSON.parse(data);
-      expect(context.historicalCases.length).toBeGreaterThan(0);
+      expect(context.historicalCases).toEqual([]);
       expect(context.historicalCases.length).toBeLessThanOrEqual(3);
       expect(context.heuristicComparisons.every((item: { relevance: string }) => item.relevance === 'related')).toBe(true);
       return { status: 'completed', output_parsed: output };

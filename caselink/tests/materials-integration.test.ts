@@ -91,7 +91,8 @@ describe('PDF intake uses one case record and immutable source evidence',()=>{
   expect(result.snapshot?.sourceDescriptors.some(s=>s.category==='uploaded_material')).toBe(true);
   expect(result.snapshot?.legalResearch?.bindings.length).toBeGreaterThan(0);
   expect(result.snapshot?.nextSteps?.length).toBeGreaterThan(0);
-  expect(result.snapshot?.sourceDescriptors.some(s=>s.category==='domestic_law')).toBe(true);
+  // An allegation of inaccurate reporting is not enough to identify a domestic cause of action.
+  expect(result.snapshot?.sourceDescriptors.some(s=>s.category==='domestic_law')).toBe(false);
   input.intake.materials!.items[0].text='Later user edit';
   expect(result.snapshot?.uploadedMaterials?.items[0].text).not.toBe('Later user edit');
   const markdown=analysisMarkdown(result,input,'en');expect(markdown).toContain('not the original PDFs');expect(markdown).toContain('fictional-letter.pdf · pdf-fixture-1 · PDF 1');

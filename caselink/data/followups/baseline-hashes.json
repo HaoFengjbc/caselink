@@ -1,0 +1,26 @@
+[
+  {
+    "path": "data/followups/kazakhstan.json",
+    "sha256": "b9a28892a33339fe8aa3b386fa6a16903402bc9f8b7267dd1a7119c04b8619fc"
+  },
+  {
+    "path": "data/followups/tunisia.json",
+    "sha256": "087f6ab5cba677dfeec322f9e2170c90a3de66d8780804dc04fbc91b9cf262d4"
+  },
+  {
+    "path": "data/followups/morocco.json",
+    "sha256": "28202e3d36a1295bb8a860bfe17089a2e163b98e34e0be7549bc55ea459ab105"
+  },
+  {
+    "path": "data/cases/cases.json",
+    "sha256": "0612170a1c0ba502e3f76282936872627d60b5ce44adba3352aa64ce4fa1ab99"
+  },
+  {
+    "path": "data/evidence/evidence.json",
+    "sha256": "fa98ed35bc88b573542069adab149a083c123d92947f61a469db5ffe66d14cbe"
+  },
+  {
+    "path": "data/evidence/documents.json",
+    "sha256": "ced3341b5eb218ce8dad12dbcb88534e95bd092e820ece22840837602dad855e"
+  }
+]

@@ -1,3 +1,5 @@
+import incrementalFollowups from '../../data/followups/incremental.json';
+import {mergeFollowups} from './followup-merge';
 import casesJson from '../../data/cases/cases.json';
 import evidenceJson from '../../data/evidence/evidence.json';
 import documentsJson from '../../data/evidence/documents.json';
@@ -16,11 +18,17 @@ export const getCase=(id:string)=>cases.find(c=>c.caseId===id);
 export const getEvidence=(id:string)=>evidence.find(e=>e.evidenceId===id);
 
 /** Append-only public follow-ups; original reports and their cut-offs remain unchanged. */
-export const followups=CaseFollowupSchema.array().parse([...kzFollowups,...tnFollowups,...maFollowups]);
+export const followups=mergeFollowups(CaseFollowupSchema.array().parse([...kzFollowups,...tnFollowups,...maFollowups]),CaseFollowupSchema.array().parse(incrementalFollowups));
 for(const followup of followups){
  const record=cases.find(c=>c.caseId===followup.caseId);
  if(!record||record.lastKnownStatusAsOf!==followup.originalFactsAsOf)throw new Error('Follow-up case ownership / original cut-off mismatch');
  const sourceIds=new Set(followup.sources.map(s=>s.sourceId));
  if(sourceIds.size!==followup.sources.length||new Set(followup.events.map(e=>e.eventId)).size!==followup.events.length)throw new Error('Duplicate follow-up source or event ID');
- for(const event of followup.events)if(!event.sourceIds.length||event.sourceIds.some(id=>!followup.sources.some(source=>source.sourceId===id&&['full_text','partial_text'].includes(source.readStatus)&&source.quote.trim()&&source.locator.trim())))throw new Error('Follow-up event lacks a read source passage');
+ for(const event of followup.events){
+  if(!event.sourceIds.length||event.sourceIds.some(id=>!sourceIds.has(id)))throw new Error('Follow-up source ownership mismatch');
+  const readSources=followup.sources.filter(source=>event.sourceIds.includes(source.sourceId)&&['full_text','partial_text'].includes(source.readStatus)&&source.quote.trim()&&source.locator.trim());
+  if(!readSources.length)throw new Error('Follow-up event lacks a read source passage');
+  if(event.verification==='source_checked'&&!readSources.some(source=>source.sourceKind==='underlying_source'&&source.supportLevel==='source_checked'))throw new Error('Checked event requires an opened underlying source');
+  if(event.verification==='research_reported'&&!readSources.some(source=>source.sourceKind==='uploaded_research'))throw new Error('Research line requires its own uploaded-report passage');
+ }
 }
