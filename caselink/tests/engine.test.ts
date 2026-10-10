@@ -96,7 +96,7 @@ describe('input identity and exact presets',()=>{
   });
   it('demo never calls a provider even with config and key',async()=>{
     const transport=fake(null);
-    for(const d of DEMO_SCENARIOS){const result=await analyzeInput(d.input,{config:demoConfig,transport});expect(result.mode).toBe('preset_demo');expect(result.sources.length).toBeGreaterThan(0);}
+    for(const d of DEMO_SCENARIOS){const result=await analyzeInput(d.input,{config:demoConfig,transport});expect(result.mode).toBe('preset_demo');if(d.input.intake?.caseKind==='civil')expect(result.comparableCases).toEqual([]);else expect(result.sources.length).toBeGreaterThan(0);}
     expect(transport).not.toHaveBeenCalled();
   });
   it('retaining exampleId after an edit does not reuse a preset',async()=>{

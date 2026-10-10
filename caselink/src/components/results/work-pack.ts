@@ -1,6 +1,7 @@
 import type {AnalysisResult,NewCaseInput} from '@/lib/contracts';
 import {snapshotForResult} from '@/lib/reports/snapshot';
 import {labels} from '@/lib/i18n/en';
+import {workingDocumentMarkdown} from './working-documents';
 import {materialsCopy} from '@/lib/i18n/materials';
 
 /** A working document from the frozen report, never a filing or inferred user consent. */
@@ -53,6 +54,7 @@ export function workPackMarkdown(result:AnalysisResult,input:NewCaseInput,locale
   for(const h of step.history)lines.push(`- ${tr('历史比较','Historical comparison')}: ${h.caseId} · ${h.date} · ${h.actor} · ${h.action} · ${h.executionStatus}`,`  ${tr('记录的结果（不认定因果）','Recorded outcome (no causal inference)')}: ${h.outcome}`,`  ${tr('关键差异','Differences')}: ${h.differences.join(' / ')}`,`  ${tr('原报告/后续来源','Report / follow-up references')}: ${[...h.evidenceIds,...h.sourceIds].join(', ')}`);
  }
  if(!snapshot.nextSteps)lines.push(tr('本报告没有保存本轮行动材料记录，不从当前资料补写。','This report did not save the working-plan data; it is not reconstructed from current sources.'));
- lines.push('',tr('清单仅存在此下载文件中。后续修改、保存和分享由持有人决定。','Checklist state exists only in this downloaded file. Its holder controls later edits, storage and sharing.'));
+ lines.push('',snapshot.whatsNext?tr('草稿与用户记录的进度默认仅在内存；主动保存报告或下载才保留。后续分享由持有人按具体授权决定。','Drafts and user-recorded progress stay in memory by default; explicitly save or download to retain them. Later sharing follows the holder’s specific authorization.'):tr('清单仅存在此下载文件中。后续修改、保存和分享由持有人决定。','Checklist state exists only in this downloaded file. Its holder controls later edits, storage and sharing.'));
+ if(snapshot.whatsNext?.documents.length){lines.push('',`## ${tr('本案填好的三份工作材料','Three filled documents for this case')}`,...snapshot.whatsNext.documents.flatMap(document=>['',workingDocumentMarkdown(document,locale)]));}
  return lines.join('\n');
 }

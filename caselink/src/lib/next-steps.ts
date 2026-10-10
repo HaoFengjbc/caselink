@@ -3,6 +3,8 @@ import type {CaseFollowup,LegalResearch,NextStep} from './legal-contracts';
 import {cases,evidence} from './corpus';
 import {recognizedJurisdiction} from './jurisdiction';
 import {legalProceeding} from './legal-research';
+import {issueSignals} from './issue-legal-selection';
+import {localizeCase} from './i18n/content';
 import {hasDisclosureNotes} from './intake/analysis';
 
 type Locale='zh'|'en';
@@ -37,13 +39,14 @@ function selectedFollowupAction(action:ModelAnalysisOutput['actionOptions'][numb
  return purposes.includes(action.requiresPublicity?'external':action.goal);
 }
 function historyFor(action:ModelAnalysisOutput['actionOptions'][number],input:NewCaseInput,output:ModelAnalysisOutput,followups:CaseFollowup[],locale:Locale):NextStep['history']{
- if(action.actionId==='prepare-case-file'||action.actionId==='clarify-goal'||input.primaryGoal==='unknown'||input.primaryGoal==='other')return [];
+ if(action.actionId==='prepare-case-file'||action.actionId==='clarify-goal')return [];
  // The existing selected history is criminal. A civil example cannot inherit those procedural actions.
  if(legalProceeding(input)!=='criminal')return [];
  const selected=new Set([...output.comparableCases.map(c=>c.caseId),...followups.map(f=>f.caseId)]);
- const candidates=cases.filter(c=>selected.has(c.caseId)&&sameCountry(input,c));
- const direct=candidates.flatMap(record=>record.interventions.filter(intervention=>intervention.executionStatus==='implemented'&&shared(intervention.evidenceIds,action.supportingEvidenceIds)).map(intervention=>({record,intervention,direct:true})));
- const thematic=candidates.flatMap(record=>record.interventions.filter(intervention=>intervention.executionStatus==='implemented'&&matchesPurpose(action,`${intervention.action} ${intervention.actor}`)).map(intervention=>({record,intervention,direct:false})));
+ const candidates=cases.filter(c=>selected.has(c.caseId)&&sameCountry(input,c)).map(c=>localizeCase(c,locale));
+ const compatible=(stage:string)=>input.stage==='unknown'||stage==='unknown'||stage===input.stage||(['investigation','pretrial'].includes(input.stage)&&['investigation','pretrial'].includes(stage));
+ const direct=candidates.flatMap(record=>record.interventions.filter(intervention=>intervention.executionStatus==='implemented'&&compatible(intervention.stageAtAction)&&shared(intervention.evidenceIds,action.supportingEvidenceIds)).map(intervention=>({record,intervention,direct:true})));
+ const thematic=candidates.flatMap(record=>record.interventions.filter(intervention=>intervention.executionStatus==='implemented'&&compatible(intervention.stageAtAction)&&matchesPurpose(action,`${intervention.action} ${intervention.actor}`)).map(intervention=>({record,intervention,direct:false})));
  const chosen:Array<(typeof direct)[number]>=[];
  // Prefer two different cases where available, including unsuccessful or unresolved requests.
  for(const candidate of [...direct,...thematic]){
@@ -58,9 +61,9 @@ function historyFor(action:ModelAnalysisOutput['actionOptions'][number],input:Ne
  }));
  const ownedCases=new Set(chosen.map(item=>item.record.caseId));
  // New, sourced participation is shown as its own event, never silently merged into the old outcome.
- for(const record of followups.filter(f=>ownedCases.has(f.caseId))){
-  const relevant=record.events.filter(event=>event.executionStatus==='implemented'&&selectedFollowupAction(action,event.eventId)&&event.sourceIds.length&&event.sourceIds.every(id=>record.sources.some(source=>source.sourceId===id&&['full_text','partial_text'].includes(source.readStatus)&&source.quote.trim()))).sort((a,b)=>Number(/使用.*报告|report.*use/i.test(b.action))-Number(/使用.*报告|report.*use/i.test(a.action))).slice(0,1);
-  for(const event of relevant)history.push({caseId:record.caseId,interventionId:null,followupEventId:event.eventId,actor:event.actors.join('；'),action:event.action,executionStatus:event.executionStatus,date:event.eventDate??t(locale,'来源未明确事件日期','The source does not specify an event date'),outcome:event.outcome,differences:[t(locale,'该历史参与只证明资料中记载的工作曾发生；当前案件的机制资格、程序时点、披露授权与可能结果均须另行核对。','This historical participation establishes only the recorded work; the current matter’s mechanism eligibility, timing, disclosure permission and possible outcomes require separate review.'),t(locale,`新增后续记录的程序：${event.proceeding}；不能与同人其他案件合并。`,`Proceeding of this follow-up: ${event.proceeding}; do not merge another case involving the same person.`),causalLimit(locale),...(event.causalAttribution?[t(locale,`来源归属声明（未独立验证因果）：${event.causalAttribution}`,`Attributed source claim (causality not independently verified): ${event.causalAttribution}`)]:[]),...event.unknowns],evidenceIds:[],sourceIds:[...event.sourceIds]});
+ for(const record of followups.filter(f=>sameCountry(input,cases.find(c=>c.caseId===f.caseId)!))){
+  const relevant=record.events.filter(event=>['implemented','submitted'].includes(event.executionStatus)&&(event.verification?event.verification==='source_checked'&&event.eventKind==='historical_action'&&event.scope==='same_case'&&!!event.matching?.proceedings.includes(legalProceeding(input))&&(event.matching.stages.length===0||event.matching.stages.some(stage=>stage.replace(/post[_-]judgment/,'postjudgment')===input.stage)||input.stage==='unknown')&&(event.matching.goals.includes(action.goal)||event.matching.issues.some(issue=>action.goal==='lawyer'?['counsel','fair_trial','expression'].includes(issue):action.goal==='release'?['detention','remedy'].includes(issue):action.goal==='change_judgment'?['appeal','remedy'].includes(issue):false)):ownedCases.has(record.caseId)&&selectedFollowupAction(action,event.eventId))&&event.sourceIds.length&&event.sourceIds.some(id=>record.sources.some(source=>source.sourceId===id&&['full_text','partial_text'].includes(source.readStatus)&&source.quote.trim()&&(!event.verification||source.supportLevel==='source_checked'&&source.sourceKind==='underlying_source')))).sort((a,b)=>Number(/使用.*报告|report.*use/i.test(b.action))-Number(/使用.*报告|report.*use/i.test(a.action))).slice(0,1);
+  for(const event of relevant)history.push({caseId:record.caseId,interventionId:null,followupEventId:event.eventId,actor:event.actors.join('；'),action:event.action,executionStatus:event.executionStatus,date:event.eventDate??t(locale,'来源未明确事件日期','The source does not specify an event date'),outcome:event.outcome,differences:[t(locale,'该历史参与只证明资料中记载的工作曾发生；当前案件的机制资格、程序时点、披露授权与可能结果均须另行核对。','This historical participation establishes only the recorded work; the current matter’s mechanism eligibility, timing, disclosure permission and possible outcomes require separate review.'),t(locale,`新增后续记录的程序：${event.proceeding}；不能与同人其他案件合并。`,`Proceeding of this follow-up: ${event.proceeding}; do not merge another case involving the same person.`),causalLimit(locale),...(event.causalAttribution?[t(locale,`来源归属声明（未独立验证因果）：${event.causalAttribution}`,`Attributed source claim (causality not independently verified): ${event.causalAttribution}`)]:[]),...(event.matching?.differences??[]),...(event.matching?[t(locale,`历史材料形式：${event.matching.materialForm}`,`Historical material form: ${event.matching.materialForm}`)]:[]),...event.unknowns],evidenceIds:[],sourceIds:event.sourceIds.filter(id=>record.sources.some(s=>s.sourceId===id&&['full_text','partial_text'].includes(s.readStatus)&&s.quote.trim()&&(!event.verification||s.supportLevel==='source_checked'&&s.sourceKind==='underlying_source')))});
  }
  return history;
 }
@@ -75,7 +78,8 @@ export function buildNextSteps(input:NewCaseInput,output:ModelAnalysisOutput,res
   if(timeline){materials=[t(locale,'原始叙述、已取得文件、已发出请求与实际回应；分别标明日期精度及来源位置。','Original account, available documents, requests already made and actual responses, with date precision and source locations.')];deliverables=[t(locale,'一份分列“用户陈述／对方指控／法院认定／待核事实”的案件时间线。','A case timeline separating user statements, opposing allegations, court findings and unverified facts.'),t(locale,'一份材料与来源索引：文件名、真实页码或网页定位、保管者、缺失项；未见原件不填页码。','A materials/source index with file names, actual pages or web locations, custodian and missing items; no invented page numbers.')];}
   else if(clarify){materials=[t(locale,'用户已经确认的目标与逐项披露限制；只补未回答的优先顺序。','The user’s confirmed goals and disclosure boundaries; ask only about priorities still unanswered.')];deliverables=[t(locale,'一页内部案件简报，列已知事实、用户目标、披露边界和仍需决策的问题。','A one-page internal brief recording known facts, user goals, disclosure boundaries and remaining decisions.')];}
   else if(action.requiresPublicity){materials=[t(locale,'按具体收件者、材料、方式划分的披露同意记录；脱敏副本与风险说明。','Consent recorded by recipient, material and channel; redacted copies and a risk note.'),t(locale,'候选机构或机制的现行资格、保密规则与送件要求；历史参与不代表当前接案。','Current eligibility, confidentiality and submission requirements of a candidate body; historical participation does not establish current availability.')];deliverables=[t(locale,'内部候选行动路径对照表：公开倡议／机制材料准备／继续内部处理，各自条件、差异与停止点。','An internal comparison of public advocacy, mechanism-material preparation and continued internal handling, with conditions, differences and stop points.'),t(locale,'一份待批准的脱敏摘要及同意范围表；保留为草稿。','A redacted draft summary and a consent-scope register awaiting approval.')];}
-  else if(civil){materials=[t(locale,'已有律师函与收件记录、涉诉具体表述、对方损害主张及诉状是否已取得的记录。','The demand letter and receipt record, disputed words, alleged harm and the record of whether court pleadings are available.'),t(locale,'发表时的核验材料、编辑判断与公共利益理由；经济犯罪关联另列为待证事项。','Publication-time verification material, editorial reasoning and public-interest basis; keep economic-crime relevance as a separate unproven issue.')];deliverables=[t(locale,'给当地律师的事实与条件表：严重损害、公共利益抗辩、诉前回应和有限反SLAPP条件分别列证据与缺口。','A fact/condition matrix for local counsel separating serious harm, public-interest defence, pre-action response and limited anti-SLAPP conditions.'),t(locale,'内部函件回应问题清单与拟稿范围；由当地律师判断时限和是否对外回应。','An internal response-question list and drafting scope; local counsel determines timing and whether to respond externally.')];}
+  else if(civil&&research.bindings.some(b=>b.resourceId==='ew-defamation-act-2013')){materials=[t(locale,'已有律师函与收件记录、涉诉具体表述、对方损害主张及诉状是否已取得的记录。','The demand letter and receipt record, disputed words, alleged harm and the record of whether court pleadings are available.'),t(locale,'发表时的核验材料、编辑判断与公共利益理由；经济犯罪关联另列为待证事项。','Publication-time verification material, editorial reasoning and public-interest basis; keep economic-crime relevance as a separate unproven issue.')];deliverables=[t(locale,'给当地律师的事实与条件表：严重损害、公共利益抗辩、诉前回应和有限反SLAPP条件分别列证据与缺口。','A fact/condition matrix for local counsel separating serious harm, public-interest defence, pre-action response and limited anti-SLAPP conditions.'),t(locale,'内部函件回应问题清单与拟稿范围；由当地律师判断时限和是否对外回应。','An internal response-question list and drafting scope; local counsel determines timing and whether to respond externally.')];}
+  else if(civil){materials=[t(locale,'实际持有的函件或法院文书、具体表述、对方请求、发表依据与送达记录；未知分别保留。','Documents actually held, disputed words, the other party’s request, publication basis and service records; retain unknowns.')];deliverables=[t(locale,'给当地律师的事实与问题表：先确认请求依据与程序，再筛选对应规则；不预设诽谤、严重损害或特定反SLAPP途径。','A fact-and-question table for local counsel: establish the claim basis and procedure before selecting rules; do not assume defamation, serious harm or a particular anti-SLAPP route.')];}
   else if(action.goal==='release'||action.goal==='conditions'){materials=[t(locale,'拘押或限制决定及宣告／送达记录；已有索取请求未获回应的，保留请求与实际回应记录。','Detention/restriction decisions and pronouncement/service records; where an existing document request is unanswered, preserve that request and any actual response.'),t(locale,'各项限制、替代安排和必要健康资料分项整理，由现有律师核实其程序用途。','A separated record of restrictions, alternatives and necessary health information for counsel to assess procedural use.')];deliverables=[t(locale,'当地律师问题单：决定依据、当前程序阶段、可用审查机关、文书与日期缺口及替代措施。','Questions for local counsel on the decision basis, current procedural stage, review authority, missing documents/dates and alternatives.'),t(locale,'一份内部候选路径与条件表，明确哪些仅可准备、哪些待律师确认；不推算新案期限。','An internal route/condition matrix distinguishing preparation from steps awaiting counsel; no new-case deadline calculation.')];}
   else{materials=[t(locale,'起诉／传唤或裁判文书、争议表达及上下文、收到的具体威胁与已有辩护准备。','Charge/summons or judgment documents, disputed expression in context, specific threats and defence preparation already undertaken.')];deliverables=[t(locale,'表达限制与指控要件问题表：每项区分已知事实、法律来源、尚未知的适用条件。','An expression-restriction and charge-elements question matrix separating known facts, legal sources and unknown conditions.'),t(locale,'内部法律研究简报与当地律师问题单；列清历史行动的关键差异及未解决结果。','An internal legal-research brief and counsel question list identifying differences from historical actions and unresolved outcomes.')];}
   const basisGaps:string[]=[];
@@ -87,13 +91,13 @@ export function buildNextSteps(input:NewCaseInput,output:ModelAnalysisOutput,res
  });
 }
 /** Referential integrity and status checks; it does not infer causal effect. */
-export function validateNextStepLinks(nextSteps:NextStep[],output:ModelAnalysisOutput,research:LegalResearch,followups:CaseFollowup[]):string[]{
+export function validateNextStepLinks(nextSteps:NextStep[],output:ModelAnalysisOutput,research:LegalResearch,followups:CaseFollowup[],locale:Locale='zh'):string[]{
  const errors:string[]=[];
  for(const step of nextSteps){
   if(!output.actionOptions.some(action=>action.actionId===step.actionId))errors.push(`${step.actionId}: action is not present.`);
   for(const id of step.legalBindingIds)if(!(output.actionOptions.find(action=>action.actionId===step.actionId)?.legalCitations??[]).some(citation=>citation.bindingId===id)||!research.bindings.some(binding=>binding.bindingId===id&&binding.applicability!=='excluded'&&!binding.conditions.some(condition=>condition.status==='not_met')))errors.push(`${step.actionId}: legal binding is absent or excluded.`);
   for(const history of step.history){
-   const record=cases.find(item=>item.caseId===history.caseId);
+   const rawRecord=cases.find(item=>item.caseId===history.caseId);const record=rawRecord?localizeCase(rawRecord,locale):undefined;
    if(history.interventionId){
     const intervention=record?.interventions.find(item=>item.interventionId===history.interventionId);
     if(!intervention||intervention.executionStatus!==history.executionStatus||intervention.actor!==history.actor||intervention.action!==history.action)errors.push(`${step.actionId}: historical intervention owner, text or status mismatch.`);
@@ -105,9 +109,20 @@ export function validateNextStepLinks(nextSteps:NextStep[],output:ModelAnalysisO
    }else if(history.followupEventId){
     const followup=followups.find(item=>item.caseId===history.caseId);const event=followup?.events.find(item=>item.eventId===history.followupEventId);
     if(!event||event.executionStatus!==history.executionStatus||event.action!==history.action||event.actors.join('；')!==history.actor||event.outcome!==history.outcome)errors.push(`${step.actionId}: follow-up owner, text, outcome or status mismatch.`);
-    if(!history.sourceIds.length||history.sourceIds.some(id=>!event?.sourceIds.includes(id)||!followup?.sources.some(source=>source.sourceId===id&&['full_text','partial_text'].includes(source.readStatus))))errors.push(`${step.actionId}: follow-up source is missing, unread or belongs to another case.`);
+    if(event?.verification&&(event.verification!=='source_checked'||event.eventKind!=='historical_action'||event.scope!=='same_case'))errors.push(`${step.actionId}: follow-up verification, kind or scope is ineligible.`);
+    if(!history.sourceIds.length||history.sourceIds.some(id=>!event?.sourceIds.includes(id)||!followup?.sources.some(source=>source.sourceId===id&&['full_text','partial_text'].includes(source.readStatus)&&source.quote.trim()&&(!event.verification||source.supportLevel==='source_checked'&&source.sourceKind==='underlying_source'))))errors.push(`${step.actionId}: follow-up source is missing, unread or belongs to another case.`);
    }else errors.push(`${step.actionId}: historical record has no owned intervention or follow-up event.`);
   }
  }
  return errors;
+}
+
+/** Preparation can match a research method for a custom goal; the real user goal is never replaced. */
+export function preparationHistory(input:NewCaseInput,output:ModelAnalysisOutput,followups:CaseFollowup[],locale:Locale='zh'):NextStep['history']{
+ if(legalProceeding(input)!=='criminal'||!output.actionOptions[0])return [];
+ const goals:NewCaseInput['primaryGoal'][]=issueSignals(input).libertyConcern?['release','lawyer']:input.stage==='appeal'||input.stage==='postjudgment'?['change_judgment','lawyer']:['lawyer','drop_charges'];
+ const found=goals.flatMap(goal=>historyFor({...output.actionOptions[0],actionId:'internal-research-method',goal,requiresPublicity:false,supportingEvidenceIds:[]},input,output,followups,locale));
+ // Reviewed follow-up action with explicit scope takes precedence over a thematic original action.
+ found.sort((a,b)=>Number(!a.followupEventId)-Number(!b.followupEventId));
+ return [...new Map(found.map(h=>[`${h.caseId}:${h.interventionId??h.followupEventId}`,h])).values()].slice(0,2);
 }

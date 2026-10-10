@@ -10,7 +10,7 @@ export const DEMO_SCENARIOS: Array<{id:string; title:string; description:string;
   }},
   {id:'blogger-public-charges',title:'博主被诉：考虑公开倡导',description:'虚构场景：突尼斯博主因转发内容受审，希望停止起诉，可考虑公开。',input:{
     ...structuredClone(EMPTY_INPUT),country:'突尼斯',stage:'trial',currentProblems:['threats','expression_restricted'],
-    background:{activities:['social_media','repost'],personType:'blogger',description:'【虚构演示】一名博主因转发公共议题讽刺内容受到起诉，庭审正在进行。收到网络威胁，尚未获知终局判决。'},
+    background:{activities:['social_media','repost'],personType:'blogger',description:'【虚构演示】一名博主因转发公共议题讽刺内容受到刑事起诉，庭审正在进行。收到网络威胁，尚未获知终局判决。'},
     primaryGoal:'drop_charges',keyDates:[],resources:['lawyer','local_ngo'],resourceConstraints:'当地公益组织可协助材料整理，但没有确认媒体合作方。',
     priorActions:{status:'none',description:'',date:''},publicity:'public',isExample:true,exampleId:'blogger-public-charges'
   }}
@@ -26,7 +26,7 @@ export const DEMO_SCENARIOS_EN: Array<{id:string; title:string; description:stri
   }},
   {id:'blogger-public-charges',title:'Blogger charged: consider public advocacy',description:'Fictional scenario: a blogger in Tunisia is on trial over shared content, wants the prosecution stopped, and is open to going public.',input:{
     ...structuredClone(EMPTY_INPUT),country:'Tunisia',stage:'trial',currentProblems:['threats','expression_restricted'],
-    background:{activities:['social_media','repost'],personType:'blogger',description:'[Fictional demo] A blogger is prosecuted for sharing satirical content about a public issue, and the trial is ongoing. They have received online threats; no final judgment is known yet.'},
+    background:{activities:['social_media','repost'],personType:'blogger',description:'[Fictional demo] A blogger faces criminal prosecution for sharing satirical content about a public issue, and the trial is ongoing. They have received online threats; no final judgment is known yet.'},
     primaryGoal:'drop_charges',keyDates:[],resources:['lawyer','local_ngo'],resourceConstraints:'A local NGO can help organize material, but no media partner is confirmed.',
     priorActions:{status:'none',description:'',date:''},publicity:'public',isExample:true,exampleId:'blogger-public-charges'
   }}

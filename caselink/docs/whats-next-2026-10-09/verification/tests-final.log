@@ -1,0 +1,16 @@
+
+> caselink@0.1.0 test
+> vitest run
+
+
+ RUN  v5.0.3 /Users/fenghao/Desktop/hackhaton/caselink
+
+
+ Test Files  39 passed (39)
+      Tests  550 passed | 2 skipped (552)
+   Start at  20:41:05
+   Duration  4.86s (tests 70%, import 22%, transform 8%)
+
+    Isolate  39 workers spawned · ~113ms startup each (spawn + environment, per file)
+             at least ~378ms faster with isolate: false — reuses workers across files instead of one per file
+

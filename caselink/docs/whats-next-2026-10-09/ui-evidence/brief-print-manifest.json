@@ -1,0 +1,23 @@
+[
+  {
+    "case": "case-1",
+    "markdown": "/Users/fenghao/Desktop/hackhaton/caselink/docs/whats-next-2026-10-09/ui-evidence/case-1/CaseLink-lawyer_brief-81cedbde-811.md",
+    "fullPdf": "/Users/fenghao/Desktop/hackhaton/caselink/output/pdf/case-1-counsel-brief.pdf",
+    "bodyOnlyPdf": "/Users/fenghao/Desktop/hackhaton/caselink/tmp/pdfs/case-1-body-only.pdf",
+    "bodyCharacters": 1662
+  },
+  {
+    "case": "case-2",
+    "markdown": "/Users/fenghao/Desktop/hackhaton/caselink/docs/whats-next-2026-10-09/ui-evidence/case-2/CaseLink-lawyer_brief-5e347bbc-853.md",
+    "fullPdf": "/Users/fenghao/Desktop/hackhaton/caselink/output/pdf/case-2-counsel-brief.pdf",
+    "bodyOnlyPdf": "/Users/fenghao/Desktop/hackhaton/caselink/tmp/pdfs/case-2-body-only.pdf",
+    "bodyCharacters": 1210
+  },
+  {
+    "case": "case-3",
+    "markdown": "/Users/fenghao/Desktop/hackhaton/caselink/docs/whats-next-2026-10-09/ui-evidence/case-3/CaseLink-lawyer_brief-10c4ded4-7c1.md",
+    "fullPdf": "/Users/fenghao/Desktop/hackhaton/caselink/output/pdf/case-3-counsel-brief.pdf",
+    "bodyOnlyPdf": "/Users/fenghao/Desktop/hackhaton/caselink/tmp/pdfs/case-3-body-only.pdf",
+    "bodyCharacters": 1121
+  }
+]

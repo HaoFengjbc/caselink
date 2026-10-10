@@ -1,0 +1,52 @@
+[
+  {
+    "path": "docs/whats-next-2026-10-09/demo-history.json",
+    "bytes": 1201109,
+    "sha256": "e91e52391bd1fa37ca693fe3bd171f7396f7df6b8b7af1c22de6f5dd24ea2828"
+  },
+  {
+    "path": "output/pdf/case-1-counsel-brief.pdf",
+    "bytes": 765158,
+    "sha256": "bfb6a52196b3e959b53aec4aaa3bd6a0b67020f64ea23485c2e3570aaeedc37a"
+  },
+  {
+    "path": "output/pdf/case-1-counsel-brief.html",
+    "bytes": 25222,
+    "sha256": "9e2f0f94b70ed0799217f608266c0c94e33c96a962327257af32d716fc2bf126"
+  },
+  {
+    "path": "output/pdf/case-3-counsel-brief.pdf",
+    "bytes": 561872,
+    "sha256": "2acc440a743498ea95263f6aaa5542cbe26edb1ac9fccc8dc4901635b8b46c19"
+  },
+  {
+    "path": "output/pdf/case-1-counsel-brief-one-page.pdf",
+    "bytes": 337369,
+    "sha256": "ecf52d8a2dbb93bcb9f22b1a1e9669a8ede1b1ccbb650ce9c038ec0610e517ad"
+  },
+  {
+    "path": "output/pdf/case-2-counsel-brief.pdf",
+    "bytes": 570785,
+    "sha256": "d570c1e5f04cf2d21e370f1708c4300500e84d1de71a1a2326730d73fb711ffc"
+  },
+  {
+    "path": "output/pdf/case-2-counsel-brief.html",
+    "bytes": 9232,
+    "sha256": "6f96ea9584213004f8588e403a3834988654e85d28c6d7bf8d938d0f4c23ec8a"
+  },
+  {
+    "path": "output/pdf/case-3-counsel-brief.html",
+    "bytes": 8738,
+    "sha256": "72d00c6e08d0d27159232305186f440bf71831293d54c93696198c40e9a283bf"
+  },
+  {
+    "path": "output/pdf/case-3-counsel-brief-one-page.pdf",
+    "bytes": 312747,
+    "sha256": "7247a8536d1444fd8c5058b921c3dc313d703cffbc9a444102f0faed9aa7d88d"
+  },
+  {
+    "path": "output/pdf/case-2-counsel-brief-one-page.pdf",
+    "bytes": 315775,
+    "sha256": "5f39f96610e44586ea76d15ec2a3ebe7e968714832fb2648d49d9b1897b9c9b9"
+  }
+]

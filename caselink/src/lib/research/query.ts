@@ -13,7 +13,7 @@ export const APPROVED_ISSUES={
  fair_trial:'fair trial safeguards',press_freedom:'journalism freedom of expression',
 } as const;
 const APPROVED_STAGES:Record<NewCaseInput['stage'],string>={investigation:'investigation',pretrial:'pretrial proceedings',trial:'trial',appeal:'appeal',postjudgment:'post judgment',unknown:'procedure unconfirmed'};
-const APPROVED_KINDS={criminal:'criminal',civil:'civil',administrative:'administrative',mixed:'mixed proceedings',unknown:'legal proceedings'} as const;
+const APPROVED_KINDS={criminal:'criminal',civil:'civil',administrative:'administrative',platform:'platform decision',mixed:'mixed proceedings',unknown:'legal proceedings'} as const;
 const APPROVED_REMEDIES:Record<NewCaseInput['primaryGoal'],string>={release:'release from detention',lawyer:'access to legal representation',conditions:'detention conditions',drop_charges:'charges',change_judgment:'review of judgment',other:'documented legal response',unknown:'legal safeguards'};
 export type SafeResearchQuery={jurisdiction:CanonicalJurisdiction;caseKind:keyof typeof APPROVED_KINDS;stage:NewCaseInput['stage'];topics:string[];searchTerms:string[];plan:ResearchPlan;attempt:1|2;strategy:'direct_comparison'|'broader_legal_analogy'};
 export function approvedIssueLabels(input:NewCaseInput,proposal?:ResearchPlan):string[]{

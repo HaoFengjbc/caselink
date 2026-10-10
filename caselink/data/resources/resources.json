@@ -74,7 +74,10 @@
       ],
       "gaps": [
         "尚未选择具体任务授权及评估安全例外；回执不代表采取行动。"
-      ]
+      ],
+      "language": "English official source",
+      "translationStatus": "中文为Agent研究说明，非经团队核定的正式译文；正式原文控制。",
+      "legalEffect": "机制工作方法或提交指引；不赋予个案可受理、行动或国内执行保证。"
     }
   },
   {
@@ -140,7 +143,10 @@
       ],
       "gaps": [
         "是否符合新闻工作范围、紧急性、可用资源及共享授权均需个案确认。"
-      ]
+      ],
+      "language": "English official source",
+      "translationStatus": "中文为Agent研究说明，非经团队核定的正式译文；正式原文控制。",
+      "legalEffect": "机构公开援助范围；历史参与或页面存在不保证当前接案。"
     }
   },
   {
@@ -183,7 +189,7 @@
       "proceedings": [
         "all"
       ],
-      "currentVersionStatus": "已核对条约正文；UNTC IV.4 状态页标注截至 2026-10-08，并于 2026-10-09 读取。缔约状态、保留、国内地位和机制资格分开。",
+      "currentVersionStatus": "已核对条约正文；UNTC IV.4当前状态页于2026-10-09重新读取（页面状态同日）。当前参与、保留、事件时适用及国内效果分别处理。",
       "eventVersionStatus": "演示案未提供事件日期；不能确认事件时版本及程序条件。",
       "provisions": [
         {
@@ -208,9 +214,9 @@
       ],
       "relatedSources": [
         {
-          "title": "UNTC IV.4 缔约状态及保留（页面截至2026-10-08）",
-          "url": "https://treaties.un.org/Pages/ShowMTDSGDetails.aspx?chapter=4&lang=en&mtdsg_no=IV-4&src=UNTSONLINE&tabid=3",
-          "locator": "Participant表：Kazakhstan / Tunisia / United Kingdom；Declarations and Reservations：英国条目；脚注43（撤回部分保留）。2026-10-09读取。"
+          "title": "UNTC IV.4 当前状态及领土脚注，2026-10-09读取",
+          "url": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en",
+          "locator": "参与方表（KZ/TN/GB/CN/RU/BY；MY未列）；Hong Kong脚注6。相关保留、克减及事件时适用仍须逐案核对。"
         }
       ],
       "jurisdictionChecks": [
@@ -218,24 +224,62 @@
           "jurisdiction": "KZ",
           "status": "confirmed",
           "topic": "participation",
-          "detail": "UNTC IV.4参与方表：2006-01-24批准ICCPR；不代表国内直接援引或个案符合条款。",
-          "sourceUrl": "https://treaties.un.org/Pages/ShowMTDSGDetails.aspx?chapter=4&lang=en&mtdsg_no=IV-4&src=UNTSONLINE&tabid=3"
+          "detail": "UNTC IV.4：2006-01-24批准ICCPR，按第49条2006-04-24生效；国内效果及具体事件适用另核。",
+          "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
         },
         {
           "jurisdiction": "TN",
           "status": "confirmed",
           "topic": "participation",
-          "detail": "UNTC IV.4参与方表：1969-03-18批准ICCPR；不代表国内直接援引或个案符合条款。",
-          "sourceUrl": "https://treaties.un.org/Pages/ShowMTDSGDetails.aspx?chapter=4&lang=en&mtdsg_no=IV-4&src=UNTSONLINE&tabid=3"
+          "detail": "UNTC IV.4：1969-03-18批准ICCPR；1976-03-23起生效，国内效果及具体事件适用另核。",
+          "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
         },
         {
           "jurisdiction": "GB",
           "status": "confirmed",
           "topic": "participation",
-          "detail": "UNTC IV.4参与方表：1976-05-20批准ICCPR；英国保留和具体事件仍须分别审查。",
-          "sourceUrl": "https://treaties.un.org/Pages/ShowMTDSGDetails.aspx?chapter=4&lang=en&mtdsg_no=IV-4&src=UNTSONLINE&tabid=3"
+          "detail": "UNTC IV.4：1976-05-20批准ICCPR；按第49条1976-08-20生效，相关英国保留、领土及国内效果另核。",
+          "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
+        },
+        {
+          "jurisdiction": "HK",
+          "status": "confirmed",
+          "topic": "participation",
+          "detail": "UNTC IV.4脚注6明确香港特别行政区继续适用ICCPR；不能由中国内地未批准推导不适用，具体保留及国内效果另核。",
+          "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
+        },
+        {
+          "jurisdiction": "CN",
+          "status": "not_met",
+          "topic": "participation",
+          "detail": "UNTC IV.4：中国于1998-10-05签署、尚未批准；中国内地不据此承担ICCPR缔约义务。香港等领土安排必须另查。",
+          "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
+        },
+        {
+          "jurisdiction": "MY",
+          "status": "not_met",
+          "topic": "participation",
+          "detail": "UNTC IV.4参与方表没有马来西亚；本轮ICCPR资料只可作清楚标示的比较标准，不当作其条约义务。",
+          "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
+        },
+        {
+          "jurisdiction": "RU",
+          "status": "confirmed",
+          "topic": "participation",
+          "detail": "UNTC IV.4：俄罗斯（原苏联）1973-10-16批准ICCPR，公约1976-03-23生效；具体保留、事件管辖及国内效果另核。",
+          "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
+        },
+        {
+          "jurisdiction": "BY",
+          "status": "confirmed",
+          "topic": "participation",
+          "detail": "UNTC IV.4：白俄罗斯于1973-11-12批准ICCPR，公约1976-03-23生效；第一任择议定书退出不能视作退出ICCPR。",
+          "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
         }
-      ]
+      ],
+      "language": "English official source",
+      "translationStatus": "中文为Agent研究说明，非经团队核定的正式译文；正式原文控制。",
+      "legalEffect": "国际条约；国家/领土及时点适用、保留和国内援引效果分别核对。"
     }
   },
   {
@@ -248,7 +292,7 @@
       "工作准备建议：对应事实及材料索引、事件时间、程序文件；由负责律师判断国内援引。"
     ],
     "type": "treaty",
-    "locator": "Article 9(4), printed p. 176 / PDF p. 6；Article 9(3), printed p. 175 / PDF p. 5",
+    "locator": "Article 9(4), printed p. 176 / PDF p. 6；Article 9(3), printed p. 175 / PDF p. 5；ICCPR Article 9(1)–(2), UNTS vol.999, printed p.175 / PDF p.5",
     "summary": "区分刑事拘押保障与所有剥夺自由者的法院审查权。",
     "eligibility": [
       "核对国家缔约、相关保留/克减、事件时间和管辖关系。",
@@ -275,10 +319,9 @@
         "international"
       ],
       "proceedings": [
-        "criminal",
-        "administrative"
+        "all"
       ],
-      "currentVersionStatus": "已核对条约正文；UNTC IV.4 状态页标注截至 2026-10-08，并于 2026-10-09 读取。缔约状态、保留、国内地位和机制资格分开。",
+      "currentVersionStatus": "已核对条约正文；UNTC IV.4当前状态页于2026-10-09重新读取（页面状态同日）。当前参与、保留、事件时适用及国内效果分别处理。",
       "eventVersionStatus": "演示案未提供事件日期；不能确认事件时版本及程序条件。",
       "provisions": [
         {
@@ -298,6 +341,15 @@
           "supports": [
             "criminal_detention_review"
           ]
+        },
+        {
+          "provisionId": "art9-1-2",
+          "locator": "ICCPR Article 9(1)–(2), UNTS vol.999, printed p.175 / PDF p.5",
+          "quote": "reasons for his arrest",
+          "explanation": "第9(1)–(2)用于研究剥夺自由的法律根据、非任意性和逮捕理由告知；整理机关、时刻、理由及文书来源，不凭用户称被带走就宣布违反条约。",
+          "supports": [
+            "detention_basis_notice"
+          ]
         }
       ],
       "confirmed": [
@@ -312,9 +364,9 @@
       ],
       "relatedSources": [
         {
-          "title": "UNTC IV.4 缔约状态及保留（页面截至2026-10-08）",
-          "url": "https://treaties.un.org/Pages/ShowMTDSGDetails.aspx?chapter=4&lang=en&mtdsg_no=IV-4&src=UNTSONLINE&tabid=3",
-          "locator": "Participant表：Kazakhstan / Tunisia / United Kingdom；Declarations and Reservations：英国条目；脚注43（撤回部分保留）。2026-10-09读取。"
+          "title": "UNTC IV.4 当前状态及领土脚注，2026-10-09读取",
+          "url": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en",
+          "locator": "参与方表（KZ/TN/GB/CN/RU/BY；MY未列）；Hong Kong脚注6。相关保留、克减及事件时适用仍须逐案核对。"
         }
       ],
       "jurisdictionChecks": [
@@ -322,24 +374,62 @@
           "jurisdiction": "KZ",
           "status": "confirmed",
           "topic": "participation",
-          "detail": "UNTC IV.4参与方表：2006-01-24批准ICCPR；不代表国内直接援引或个案符合条款。",
-          "sourceUrl": "https://treaties.un.org/Pages/ShowMTDSGDetails.aspx?chapter=4&lang=en&mtdsg_no=IV-4&src=UNTSONLINE&tabid=3"
+          "detail": "UNTC IV.4：2006-01-24批准ICCPR，按第49条2006-04-24生效；国内效果及具体事件适用另核。",
+          "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
         },
         {
           "jurisdiction": "TN",
           "status": "confirmed",
           "topic": "participation",
-          "detail": "UNTC IV.4参与方表：1969-03-18批准ICCPR；不代表国内直接援引或个案符合条款。",
-          "sourceUrl": "https://treaties.un.org/Pages/ShowMTDSGDetails.aspx?chapter=4&lang=en&mtdsg_no=IV-4&src=UNTSONLINE&tabid=3"
+          "detail": "UNTC IV.4：1969-03-18批准ICCPR；1976-03-23起生效，国内效果及具体事件适用另核。",
+          "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
         },
         {
           "jurisdiction": "GB",
           "status": "confirmed",
           "topic": "participation",
-          "detail": "UNTC IV.4参与方表：1976-05-20批准ICCPR；英国保留和具体事件仍须分别审查。",
-          "sourceUrl": "https://treaties.un.org/Pages/ShowMTDSGDetails.aspx?chapter=4&lang=en&mtdsg_no=IV-4&src=UNTSONLINE&tabid=3"
+          "detail": "UNTC IV.4：1976-05-20批准ICCPR；按第49条1976-08-20生效，相关英国保留、领土及国内效果另核。",
+          "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
+        },
+        {
+          "jurisdiction": "HK",
+          "status": "confirmed",
+          "topic": "participation",
+          "detail": "UNTC IV.4脚注6明确香港特别行政区继续适用ICCPR；不能由中国内地未批准推导不适用，具体保留及国内效果另核。",
+          "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
+        },
+        {
+          "jurisdiction": "CN",
+          "status": "not_met",
+          "topic": "participation",
+          "detail": "UNTC IV.4：中国于1998-10-05签署、尚未批准；中国内地不据此承担ICCPR缔约义务。香港等领土安排必须另查。",
+          "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
+        },
+        {
+          "jurisdiction": "MY",
+          "status": "not_met",
+          "topic": "participation",
+          "detail": "UNTC IV.4参与方表没有马来西亚；本轮ICCPR资料只可作清楚标示的比较标准，不当作其条约义务。",
+          "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
+        },
+        {
+          "jurisdiction": "RU",
+          "status": "confirmed",
+          "topic": "participation",
+          "detail": "UNTC IV.4：俄罗斯（原苏联）1973-10-16批准ICCPR，公约1976-03-23生效；具体保留、事件管辖及国内效果另核。",
+          "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
+        },
+        {
+          "jurisdiction": "BY",
+          "status": "confirmed",
+          "topic": "participation",
+          "detail": "UNTC IV.4：白俄罗斯于1973-11-12批准ICCPR，公约1976-03-23生效；第一任择议定书退出不能视作退出ICCPR。",
+          "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
         }
-      ]
+      ],
+      "language": "English official source",
+      "translationStatus": "中文为Agent研究说明，非经团队核定的正式译文；正式原文控制。",
+      "legalEffect": "国际条约；国家/领土及时点适用、保留和国内援引效果分别核对。"
     }
   },
   {
@@ -383,7 +473,7 @@
         "criminal",
         "civil"
       ],
-      "currentVersionStatus": "已核对条约正文；UNTC IV.4 状态页标注截至 2026-10-08，并于 2026-10-09 读取。缔约状态、保留、国内地位和机制资格分开。",
+      "currentVersionStatus": "已核对条约正文；UNTC IV.4当前状态页于2026-10-09重新读取（页面状态同日）。当前参与、保留、事件时适用及国内效果分别处理。",
       "eventVersionStatus": "演示案未提供事件日期；不能确认事件时版本及程序条件。",
       "provisions": [
         {
@@ -418,9 +508,9 @@
       ],
       "relatedSources": [
         {
-          "title": "UNTC IV.4 缔约状态及保留（页面截至2026-10-08）",
-          "url": "https://treaties.un.org/Pages/ShowMTDSGDetails.aspx?chapter=4&lang=en&mtdsg_no=IV-4&src=UNTSONLINE&tabid=3",
-          "locator": "Participant表：Kazakhstan / Tunisia / United Kingdom；Declarations and Reservations：英国条目；脚注43（撤回部分保留）。2026-10-09读取。"
+          "title": "UNTC IV.4 当前状态及领土脚注，2026-10-09读取",
+          "url": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en",
+          "locator": "参与方表（KZ/TN/GB/CN/RU/BY；MY未列）；Hong Kong脚注6。相关保留、克减及事件时适用仍须逐案核对。"
         }
       ],
       "jurisdictionChecks": [
@@ -428,24 +518,62 @@
           "jurisdiction": "KZ",
           "status": "confirmed",
           "topic": "participation",
-          "detail": "UNTC IV.4参与方表：2006-01-24批准ICCPR；不代表国内直接援引或个案符合条款。",
-          "sourceUrl": "https://treaties.un.org/Pages/ShowMTDSGDetails.aspx?chapter=4&lang=en&mtdsg_no=IV-4&src=UNTSONLINE&tabid=3"
+          "detail": "UNTC IV.4：2006-01-24批准ICCPR，按第49条2006-04-24生效；国内效果及具体事件适用另核。",
+          "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
         },
         {
           "jurisdiction": "TN",
           "status": "confirmed",
           "topic": "participation",
-          "detail": "UNTC IV.4参与方表：1969-03-18批准ICCPR；不代表国内直接援引或个案符合条款。",
-          "sourceUrl": "https://treaties.un.org/Pages/ShowMTDSGDetails.aspx?chapter=4&lang=en&mtdsg_no=IV-4&src=UNTSONLINE&tabid=3"
+          "detail": "UNTC IV.4：1969-03-18批准ICCPR；1976-03-23起生效，国内效果及具体事件适用另核。",
+          "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
         },
         {
           "jurisdiction": "GB",
           "status": "confirmed",
           "topic": "participation",
-          "detail": "UNTC IV.4参与方表：1976-05-20批准ICCPR；英国保留和具体事件仍须分别审查。",
-          "sourceUrl": "https://treaties.un.org/Pages/ShowMTDSGDetails.aspx?chapter=4&lang=en&mtdsg_no=IV-4&src=UNTSONLINE&tabid=3"
+          "detail": "UNTC IV.4：1976-05-20批准ICCPR；按第49条1976-08-20生效，相关英国保留、领土及国内效果另核。",
+          "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
+        },
+        {
+          "jurisdiction": "HK",
+          "status": "confirmed",
+          "topic": "participation",
+          "detail": "UNTC IV.4脚注6明确香港特别行政区继续适用ICCPR；不能由中国内地未批准推导不适用，具体保留及国内效果另核。",
+          "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
+        },
+        {
+          "jurisdiction": "CN",
+          "status": "not_met",
+          "topic": "participation",
+          "detail": "UNTC IV.4：中国于1998-10-05签署、尚未批准；中国内地不据此承担ICCPR缔约义务。香港等领土安排必须另查。",
+          "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
+        },
+        {
+          "jurisdiction": "MY",
+          "status": "not_met",
+          "topic": "participation",
+          "detail": "UNTC IV.4参与方表没有马来西亚；本轮ICCPR资料只可作清楚标示的比较标准，不当作其条约义务。",
+          "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
+        },
+        {
+          "jurisdiction": "RU",
+          "status": "confirmed",
+          "topic": "participation",
+          "detail": "UNTC IV.4：俄罗斯（原苏联）1973-10-16批准ICCPR，公约1976-03-23生效；具体保留、事件管辖及国内效果另核。",
+          "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
+        },
+        {
+          "jurisdiction": "BY",
+          "status": "confirmed",
+          "topic": "participation",
+          "detail": "UNTC IV.4：白俄罗斯于1973-11-12批准ICCPR，公约1976-03-23生效；第一任择议定书退出不能视作退出ICCPR。",
+          "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
         }
-      ]
+      ],
+      "language": "English official source",
+      "translationStatus": "中文为Agent研究说明，非经团队核定的正式译文；正式原文控制。",
+      "legalEffect": "国际条约；国家/领土及时点适用、保留和国内援引效果分别核对。"
     }
   },
   {
@@ -487,7 +615,7 @@
       "proceedings": [
         "all"
       ],
-      "currentVersionStatus": "已核对条约正文；UNTC IV.4 状态页标注截至 2026-10-08，并于 2026-10-09 读取。缔约状态、保留、国内地位和机制资格分开。",
+      "currentVersionStatus": "已核对条约正文；UNTC IV.4当前状态页于2026-10-09重新读取（页面状态同日）。当前参与、保留、事件时适用及国内效果分别处理。",
       "eventVersionStatus": "演示案未提供事件日期；不能确认事件时版本及程序条件。",
       "provisions": [
         {
@@ -512,9 +640,9 @@
       ],
       "relatedSources": [
         {
-          "title": "UNTC IV.4 缔约状态及保留（页面截至2026-10-08）",
-          "url": "https://treaties.un.org/Pages/ShowMTDSGDetails.aspx?chapter=4&lang=en&mtdsg_no=IV-4&src=UNTSONLINE&tabid=3",
-          "locator": "Participant表：Kazakhstan / Tunisia / United Kingdom；Declarations and Reservations：英国条目；脚注43（撤回部分保留）。2026-10-09读取。"
+          "title": "UNTC IV.4 当前状态及领土脚注，2026-10-09读取",
+          "url": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en",
+          "locator": "参与方表（KZ/TN/GB/CN/RU/BY；MY未列）；Hong Kong脚注6。相关保留、克减及事件时适用仍须逐案核对。"
         }
       ],
       "jurisdictionChecks": [
@@ -522,24 +650,62 @@
           "jurisdiction": "KZ",
           "status": "confirmed",
           "topic": "participation",
-          "detail": "UNTC IV.4参与方表：2006-01-24批准ICCPR；不代表国内直接援引或个案符合条款。",
-          "sourceUrl": "https://treaties.un.org/Pages/ShowMTDSGDetails.aspx?chapter=4&lang=en&mtdsg_no=IV-4&src=UNTSONLINE&tabid=3"
+          "detail": "UNTC IV.4：2006-01-24批准ICCPR，按第49条2006-04-24生效；国内效果及具体事件适用另核。",
+          "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
         },
         {
           "jurisdiction": "TN",
           "status": "confirmed",
           "topic": "participation",
-          "detail": "UNTC IV.4参与方表：1969-03-18批准ICCPR；不代表国内直接援引或个案符合条款。",
-          "sourceUrl": "https://treaties.un.org/Pages/ShowMTDSGDetails.aspx?chapter=4&lang=en&mtdsg_no=IV-4&src=UNTSONLINE&tabid=3"
+          "detail": "UNTC IV.4：1969-03-18批准ICCPR；1976-03-23起生效，国内效果及具体事件适用另核。",
+          "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
         },
         {
           "jurisdiction": "GB",
           "status": "confirmed",
           "topic": "participation",
-          "detail": "UNTC IV.4参与方表：1976-05-20批准ICCPR；英国保留和具体事件仍须分别审查。",
-          "sourceUrl": "https://treaties.un.org/Pages/ShowMTDSGDetails.aspx?chapter=4&lang=en&mtdsg_no=IV-4&src=UNTSONLINE&tabid=3"
+          "detail": "UNTC IV.4：1976-05-20批准ICCPR；按第49条1976-08-20生效，相关英国保留、领土及国内效果另核。",
+          "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
+        },
+        {
+          "jurisdiction": "HK",
+          "status": "confirmed",
+          "topic": "participation",
+          "detail": "UNTC IV.4脚注6明确香港特别行政区继续适用ICCPR；不能由中国内地未批准推导不适用，具体保留及国内效果另核。",
+          "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
+        },
+        {
+          "jurisdiction": "CN",
+          "status": "not_met",
+          "topic": "participation",
+          "detail": "UNTC IV.4：中国于1998-10-05签署、尚未批准；中国内地不据此承担ICCPR缔约义务。香港等领土安排必须另查。",
+          "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
+        },
+        {
+          "jurisdiction": "MY",
+          "status": "not_met",
+          "topic": "participation",
+          "detail": "UNTC IV.4参与方表没有马来西亚；本轮ICCPR资料只可作清楚标示的比较标准，不当作其条约义务。",
+          "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
+        },
+        {
+          "jurisdiction": "RU",
+          "status": "confirmed",
+          "topic": "participation",
+          "detail": "UNTC IV.4：俄罗斯（原苏联）1973-10-16批准ICCPR，公约1976-03-23生效；具体保留、事件管辖及国内效果另核。",
+          "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
+        },
+        {
+          "jurisdiction": "BY",
+          "status": "confirmed",
+          "topic": "participation",
+          "detail": "UNTC IV.4：白俄罗斯于1973-11-12批准ICCPR，公约1976-03-23生效；第一任择议定书退出不能视作退出ICCPR。",
+          "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
         }
-      ]
+      ],
+      "language": "English official source",
+      "translationStatus": "中文为Agent研究说明，非经团队核定的正式译文；正式原文控制。",
+      "legalEffect": "国际条约；国家/领土及时点适用、保留和国内援引效果分别核对。"
     }
   },
   {
@@ -552,8 +718,8 @@
       "工作准备建议：标注实际受限的表达或程序事实，对照所引段落整理律师问题。"
     ],
     "type": "interpretation",
-    "locator": "CCPR/C/GC/34, para. 22, printed / PDF p. 6；CCPR/C/GC/34, para. 47, printed / PDF p. 12",
-    "summary": "第22段用于限制测试，第47段用于诽谤制度及处罚研究。",
+    "locator": "CCPR/C/GC/34, para. 22, printed / PDF p. 6；CCPR/C/GC/34, para. 47, printed / PDF p. 12；CCPR/C/GC/34, para. 25, PDF / printed pp. 6–7；CCPR/C/GC/34, paras. 33–35, PDF / printed p. 8",
+    "summary": "第22、25、33–35段分别研究限制目的、可及明确的规则、必要性与比例，第47段研究诽谤保障。",
     "eligibility": [
       "核对 ICCPR 适用性和所引段落上下文。"
     ],
@@ -582,7 +748,7 @@
         "all"
       ],
       "currentVersionStatus": "已读取发布机构在核查日提供的正文；不是个案适用性结论。",
-      "eventVersionStatus": "演示案未提供事件日期；不能确认事件时版本及程序条件。",
+      "eventVersionStatus": "解释文件发布日和相关事件日期分别记录；个案所涉条约、管辖及国内程序效果仍需核对。",
       "provisions": [
         {
           "provisionId": "para22",
@@ -601,10 +767,29 @@
           "supports": [
             "defamation_safeguards"
           ]
+        },
+        {
+          "provisionId": "para25",
+          "locator": "CCPR/C/GC/34, para. 25, PDF / printed pp. 6–7",
+          "quote": "sufficient precision",
+          "explanation": "第25段用于研究限制规则是否公开可及、足够明确以及是否赋予不受限制的裁量；先取得实际所引规则及受限表述，不据主题相近宣布国内规则无效。",
+          "supports": [
+            "expression_legality_test"
+          ]
+        },
+        {
+          "provisionId": "paras33-35",
+          "locator": "CCPR/C/GC/34, paras. 33–35, PDF / printed p. 8",
+          "quote": "must not be overbroad",
+          "explanation": "第33–35段要求逐项研究限制的合法目的、较少侵害的替代方式、比例及所称威胁与表达之间的具体直接关联；先后发生不能单独证明因果或限制不合法。",
+          "supports": [
+            "expression_necessity_proportionality"
+          ]
         }
       ],
       "confirmed": [
-        "已读所引段落及相邻段落；保留委员会解释文件类别。"
+        "已读所引段落及相邻段落；保留委员会解释文件类别。",
+        "2026-10-09增量重读所引核心段落及上下文，保持agent_checked，未团队人工复核。"
       ],
       "corrections": [
         "以具体段落支持具体判断；不得当作国内法条或本案裁决。"
@@ -614,9 +799,9 @@
       ],
       "relatedSources": [
         {
-          "title": "UNTC IV.4 缔约状态及保留（页面截至2026-10-08）",
-          "url": "https://treaties.un.org/Pages/ShowMTDSGDetails.aspx?chapter=4&lang=en&mtdsg_no=IV-4&src=UNTSONLINE&tabid=3",
-          "locator": "Participant表：Kazakhstan / Tunisia / United Kingdom；Declarations and Reservations：英国条目；脚注43（撤回部分保留）。2026-10-09读取。"
+          "title": "UNTC IV.4 当前状态及领土脚注，2026-10-09读取",
+          "url": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en",
+          "locator": "参与方表（KZ/TN/GB/CN/RU/BY；MY未列）；Hong Kong脚注6。相关保留、克减及事件时适用仍须逐案核对。"
         }
       ],
       "jurisdictionChecks": [
@@ -624,24 +809,62 @@
           "jurisdiction": "KZ",
           "status": "confirmed",
           "topic": "participation",
-          "detail": "UNTC IV.4参与方表：2006-01-24批准ICCPR；不代表国内直接援引或个案符合条款。",
-          "sourceUrl": "https://treaties.un.org/Pages/ShowMTDSGDetails.aspx?chapter=4&lang=en&mtdsg_no=IV-4&src=UNTSONLINE&tabid=3"
+          "detail": "UNTC IV.4：2006-01-24批准ICCPR，按第49条2006-04-24生效；国内效果及具体事件适用另核。",
+          "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
         },
         {
           "jurisdiction": "TN",
           "status": "confirmed",
           "topic": "participation",
-          "detail": "UNTC IV.4参与方表：1969-03-18批准ICCPR；不代表国内直接援引或个案符合条款。",
-          "sourceUrl": "https://treaties.un.org/Pages/ShowMTDSGDetails.aspx?chapter=4&lang=en&mtdsg_no=IV-4&src=UNTSONLINE&tabid=3"
+          "detail": "UNTC IV.4：1969-03-18批准ICCPR；1976-03-23起生效，国内效果及具体事件适用另核。",
+          "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
         },
         {
           "jurisdiction": "GB",
           "status": "confirmed",
           "topic": "participation",
-          "detail": "UNTC IV.4参与方表：1976-05-20批准ICCPR；英国保留和具体事件仍须分别审查。",
-          "sourceUrl": "https://treaties.un.org/Pages/ShowMTDSGDetails.aspx?chapter=4&lang=en&mtdsg_no=IV-4&src=UNTSONLINE&tabid=3"
+          "detail": "UNTC IV.4：1976-05-20批准ICCPR；按第49条1976-08-20生效，相关英国保留、领土及国内效果另核。",
+          "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
+        },
+        {
+          "jurisdiction": "HK",
+          "status": "confirmed",
+          "topic": "participation",
+          "detail": "UNTC IV.4脚注6明确香港特别行政区继续适用ICCPR；不能由中国内地未批准推导不适用，具体保留及国内效果另核。",
+          "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
+        },
+        {
+          "jurisdiction": "CN",
+          "status": "not_met",
+          "topic": "participation",
+          "detail": "UNTC IV.4：中国于1998-10-05签署、尚未批准；中国内地不据此承担ICCPR缔约义务。香港等领土安排必须另查。",
+          "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
+        },
+        {
+          "jurisdiction": "MY",
+          "status": "not_met",
+          "topic": "participation",
+          "detail": "UNTC IV.4参与方表没有马来西亚；本轮ICCPR资料只可作清楚标示的比较标准，不当作其条约义务。",
+          "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
+        },
+        {
+          "jurisdiction": "RU",
+          "status": "confirmed",
+          "topic": "participation",
+          "detail": "UNTC IV.4：俄罗斯（原苏联）1973-10-16批准ICCPR，公约1976-03-23生效；具体保留、事件管辖及国内效果另核。",
+          "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
+        },
+        {
+          "jurisdiction": "BY",
+          "status": "confirmed",
+          "topic": "participation",
+          "detail": "UNTC IV.4：白俄罗斯于1973-11-12批准ICCPR，公约1976-03-23生效；第一任择议定书退出不能视作退出ICCPR。",
+          "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
         }
-      ]
+      ],
+      "language": "English official source",
+      "translationStatus": "中文为Agent研究说明，非经团队核定的正式译文；正式原文控制。",
+      "legalEffect": "人权事务委员会对ICCPR的解释性文件，不是新颁国内法律或本案裁决。"
     }
   },
   {
@@ -654,8 +877,8 @@
       "工作准备建议：标注实际受限的表达或程序事实，对照所引段落整理律师问题。"
     ],
     "type": "interpretation",
-    "locator": "CCPR/C/GC/35, para. 12, printed / PDF pp. 3–4；CCPR/C/GC/35, para. 4, printed / PDF p. 1",
-    "summary": "区分违法和任意，及不同款项的程序范围。",
+    "locator": "CCPR/C/GC/35, para. 12, printed / PDF pp. 3–4；CCPR/C/GC/35, para. 4, printed / PDF p. 1；CCPR/C/GC/35, para. 38, PDF / printed p. 12；CCPR/C/GC/35, paras. 39–40, PDF / printed pp. 12–13",
+    "summary": "按具体拘押性质研究非任意性、候审替代措施及司法审查；不产生当地保释条件或时限。",
     "eligibility": [
       "核对 ICCPR 适用性和所引段落上下文。"
     ],
@@ -680,11 +903,10 @@
         "international"
       ],
       "proceedings": [
-        "criminal",
-        "administrative"
+        "all"
       ],
       "currentVersionStatus": "已读取发布机构在核查日提供的正文；不是个案适用性结论。",
-      "eventVersionStatus": "演示案未提供事件日期；不能确认事件时版本及程序条件。",
+      "eventVersionStatus": "解释文件发布日和相关事件日期分别记录；个案所涉条约、管辖及国内程序效果仍需核对。",
       "provisions": [
         {
           "provisionId": "para12",
@@ -703,10 +925,29 @@
           "supports": [
             "detention_review"
           ]
+        },
+        {
+          "provisionId": "para38",
+          "locator": "CCPR/C/GC/35, para. 38, PDF / printed p. 12",
+          "quote": "exception rather than the rule",
+          "explanation": "第38段针对刑事候审拘押，要求个别化必要性研究、替代措施及定期重审；只支持整理理由和材料，不产生某国保释条件、法定时限或自动获释结论。",
+          "supports": [
+            "pretrial_detention_alternatives"
+          ]
+        },
+        {
+          "provisionId": "paras39-40",
+          "locator": "CCPR/C/GC/35, paras. 39–40, PDF / printed pp. 12–13",
+          "quote": "take proceedings before a court",
+          "explanation": "第39–40段解释第9(4)的司法审查，不限刑事拘押；应整理实际剥夺自由及决定记录。执行法院所判固定刑期的情形有范围限制，不能自动推成重复审查或释放资格。",
+          "supports": [
+            "detention_review"
+          ]
         }
       ],
       "confirmed": [
-        "已读所引段落及相邻段落；保留委员会解释文件类别。"
+        "已读所引段落及相邻段落；保留委员会解释文件类别。",
+        "2026-10-09增量重读所引核心段落及上下文，保持agent_checked，未团队人工复核。"
       ],
       "corrections": [
         "以具体段落支持具体判断；不得当作国内法条或本案裁决。"
@@ -716,9 +957,9 @@
       ],
       "relatedSources": [
         {
-          "title": "UNTC IV.4 缔约状态及保留（页面截至2026-10-08）",
-          "url": "https://treaties.un.org/Pages/ShowMTDSGDetails.aspx?chapter=4&lang=en&mtdsg_no=IV-4&src=UNTSONLINE&tabid=3",
-          "locator": "Participant表：Kazakhstan / Tunisia / United Kingdom；Declarations and Reservations：英国条目；脚注43（撤回部分保留）。2026-10-09读取。"
+          "title": "UNTC IV.4 当前状态及领土脚注，2026-10-09读取",
+          "url": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en",
+          "locator": "参与方表（KZ/TN/GB/CN/RU/BY；MY未列）；Hong Kong脚注6。相关保留、克减及事件时适用仍须逐案核对。"
         }
       ],
       "jurisdictionChecks": [
@@ -726,24 +967,62 @@
           "jurisdiction": "KZ",
           "status": "confirmed",
           "topic": "participation",
-          "detail": "UNTC IV.4参与方表：2006-01-24批准ICCPR；不代表国内直接援引或个案符合条款。",
-          "sourceUrl": "https://treaties.un.org/Pages/ShowMTDSGDetails.aspx?chapter=4&lang=en&mtdsg_no=IV-4&src=UNTSONLINE&tabid=3"
+          "detail": "UNTC IV.4：2006-01-24批准ICCPR，按第49条2006-04-24生效；国内效果及具体事件适用另核。",
+          "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
         },
         {
           "jurisdiction": "TN",
           "status": "confirmed",
           "topic": "participation",
-          "detail": "UNTC IV.4参与方表：1969-03-18批准ICCPR；不代表国内直接援引或个案符合条款。",
-          "sourceUrl": "https://treaties.un.org/Pages/ShowMTDSGDetails.aspx?chapter=4&lang=en&mtdsg_no=IV-4&src=UNTSONLINE&tabid=3"
+          "detail": "UNTC IV.4：1969-03-18批准ICCPR；1976-03-23起生效，国内效果及具体事件适用另核。",
+          "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
         },
         {
           "jurisdiction": "GB",
           "status": "confirmed",
           "topic": "participation",
-          "detail": "UNTC IV.4参与方表：1976-05-20批准ICCPR；英国保留和具体事件仍须分别审查。",
-          "sourceUrl": "https://treaties.un.org/Pages/ShowMTDSGDetails.aspx?chapter=4&lang=en&mtdsg_no=IV-4&src=UNTSONLINE&tabid=3"
+          "detail": "UNTC IV.4：1976-05-20批准ICCPR；按第49条1976-08-20生效，相关英国保留、领土及国内效果另核。",
+          "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
+        },
+        {
+          "jurisdiction": "HK",
+          "status": "confirmed",
+          "topic": "participation",
+          "detail": "UNTC IV.4脚注6明确香港特别行政区继续适用ICCPR；不能由中国内地未批准推导不适用，具体保留及国内效果另核。",
+          "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
+        },
+        {
+          "jurisdiction": "CN",
+          "status": "not_met",
+          "topic": "participation",
+          "detail": "UNTC IV.4：中国于1998-10-05签署、尚未批准；中国内地不据此承担ICCPR缔约义务。香港等领土安排必须另查。",
+          "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
+        },
+        {
+          "jurisdiction": "MY",
+          "status": "not_met",
+          "topic": "participation",
+          "detail": "UNTC IV.4参与方表没有马来西亚；本轮ICCPR资料只可作清楚标示的比较标准，不当作其条约义务。",
+          "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
+        },
+        {
+          "jurisdiction": "RU",
+          "status": "confirmed",
+          "topic": "participation",
+          "detail": "UNTC IV.4：俄罗斯（原苏联）1973-10-16批准ICCPR，公约1976-03-23生效；具体保留、事件管辖及国内效果另核。",
+          "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
+        },
+        {
+          "jurisdiction": "BY",
+          "status": "confirmed",
+          "topic": "participation",
+          "detail": "UNTC IV.4：白俄罗斯于1973-11-12批准ICCPR，公约1976-03-23生效；第一任择议定书退出不能视作退出ICCPR。",
+          "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
         }
-      ]
+      ],
+      "language": "English official source",
+      "translationStatus": "中文为Agent研究说明，非经团队核定的正式译文；正式原文控制。",
+      "legalEffect": "人权事务委员会对ICCPR的解释性文件，不是新颁国内法律或本案裁决。"
     }
   },
   {
@@ -785,7 +1064,7 @@
         "criminal"
       ],
       "currentVersionStatus": "已读取发布机构在核查日提供的正文；不是个案适用性结论。",
-      "eventVersionStatus": "演示案未提供事件日期；不能确认事件时版本及程序条件。",
+      "eventVersionStatus": "解释文件发布日和相关事件日期分别记录；个案所涉条约、管辖及国内程序效果仍需核对。",
       "provisions": [
         {
           "provisionId": "paras32-34",
@@ -798,7 +1077,8 @@
         }
       ],
       "confirmed": [
-        "已读所引段落及相邻段落；保留委员会解释文件类别。"
+        "已读所引段落及相邻段落；保留委员会解释文件类别。",
+        "2026-10-09增量重读所引核心段落及上下文，保持agent_checked，未团队人工复核。"
       ],
       "corrections": [
         "以具体段落支持具体判断；不得当作国内法条或本案裁决。",
@@ -809,9 +1089,9 @@
       ],
       "relatedSources": [
         {
-          "title": "UNTC IV.4 缔约状态及保留（页面截至2026-10-08）",
-          "url": "https://treaties.un.org/Pages/ShowMTDSGDetails.aspx?chapter=4&lang=en&mtdsg_no=IV-4&src=UNTSONLINE&tabid=3",
-          "locator": "Participant表：Kazakhstan / Tunisia / United Kingdom；Declarations and Reservations：英国条目；脚注43（撤回部分保留）。2026-10-09读取。"
+          "title": "UNTC IV.4 当前状态及领土脚注，2026-10-09读取",
+          "url": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en",
+          "locator": "参与方表（KZ/TN/GB/CN/RU/BY；MY未列）；Hong Kong脚注6。相关保留、克减及事件时适用仍须逐案核对。"
         }
       ],
       "jurisdictionChecks": [
@@ -819,24 +1099,62 @@
           "jurisdiction": "KZ",
           "status": "confirmed",
           "topic": "participation",
-          "detail": "UNTC IV.4参与方表：2006-01-24批准ICCPR；不代表国内直接援引或个案符合条款。",
-          "sourceUrl": "https://treaties.un.org/Pages/ShowMTDSGDetails.aspx?chapter=4&lang=en&mtdsg_no=IV-4&src=UNTSONLINE&tabid=3"
+          "detail": "UNTC IV.4：2006-01-24批准ICCPR，按第49条2006-04-24生效；国内效果及具体事件适用另核。",
+          "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
         },
         {
           "jurisdiction": "TN",
           "status": "confirmed",
           "topic": "participation",
-          "detail": "UNTC IV.4参与方表：1969-03-18批准ICCPR；不代表国内直接援引或个案符合条款。",
-          "sourceUrl": "https://treaties.un.org/Pages/ShowMTDSGDetails.aspx?chapter=4&lang=en&mtdsg_no=IV-4&src=UNTSONLINE&tabid=3"
+          "detail": "UNTC IV.4：1969-03-18批准ICCPR；1976-03-23起生效，国内效果及具体事件适用另核。",
+          "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
         },
         {
           "jurisdiction": "GB",
           "status": "confirmed",
           "topic": "participation",
-          "detail": "UNTC IV.4参与方表：1976-05-20批准ICCPR；英国保留和具体事件仍须分别审查。",
-          "sourceUrl": "https://treaties.un.org/Pages/ShowMTDSGDetails.aspx?chapter=4&lang=en&mtdsg_no=IV-4&src=UNTSONLINE&tabid=3"
+          "detail": "UNTC IV.4：1976-05-20批准ICCPR；按第49条1976-08-20生效，相关英国保留、领土及国内效果另核。",
+          "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
+        },
+        {
+          "jurisdiction": "HK",
+          "status": "confirmed",
+          "topic": "participation",
+          "detail": "UNTC IV.4脚注6明确香港特别行政区继续适用ICCPR；不能由中国内地未批准推导不适用，具体保留及国内效果另核。",
+          "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
+        },
+        {
+          "jurisdiction": "CN",
+          "status": "not_met",
+          "topic": "participation",
+          "detail": "UNTC IV.4：中国于1998-10-05签署、尚未批准；中国内地不据此承担ICCPR缔约义务。香港等领土安排必须另查。",
+          "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
+        },
+        {
+          "jurisdiction": "MY",
+          "status": "not_met",
+          "topic": "participation",
+          "detail": "UNTC IV.4参与方表没有马来西亚；本轮ICCPR资料只可作清楚标示的比较标准，不当作其条约义务。",
+          "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
+        },
+        {
+          "jurisdiction": "RU",
+          "status": "confirmed",
+          "topic": "participation",
+          "detail": "UNTC IV.4：俄罗斯（原苏联）1973-10-16批准ICCPR，公约1976-03-23生效；具体保留、事件管辖及国内效果另核。",
+          "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
+        },
+        {
+          "jurisdiction": "BY",
+          "status": "confirmed",
+          "topic": "participation",
+          "detail": "UNTC IV.4：白俄罗斯于1973-11-12批准ICCPR，公约1976-03-23生效；第一任择议定书退出不能视作退出ICCPR。",
+          "sourceUrl": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en"
         }
-      ]
+      ],
+      "language": "English official source",
+      "translationStatus": "中文为Agent研究说明，非经团队核定的正式译文；正式原文控制。",
+      "legalEffect": "人权事务委员会对ICCPR的解释性文件，不是新颁国内法律或本案裁决。"
     }
   },
   {
@@ -878,10 +1196,9 @@
         "international"
       ],
       "proceedings": [
-        "criminal",
-        "administrative"
+        "all"
       ],
-      "currentVersionStatus": "2017 正文已读；OHCHR 当前提交指引仍链接该文件。未声称已核查全部最新操作表格。",
+      "currentVersionStatus": "2026-10-09已读A/HRC/36/38核心段落；当前特别程序提交首页仍链接该工作方法。独立WGAD介绍页读取失败，现用问卷及其他更新未完整核查。",
       "eventVersionStatus": "演示案未提供事件日期；不能确认事件时版本及程序条件。",
       "provisions": [
         {
@@ -920,8 +1237,16 @@
           "title": "OHCHR特别程序提交入口",
           "url": "https://spsubmission.ohchr.org/",
           "locator": "What are Communications? 后的WGAD工作方法链接，跳至 https://ap.ohchr.org/documents/dpage_e.aspx?si=A/HRC/36/38。"
+        },
+        {
+          "title": "OHCHR当前特别程序提交指南链接WGAD独立方法",
+          "url": "https://spsubmission.ohchr.org/",
+          "locator": "Methods of work of the Working Group on Arbitrary Detention，链接 A/HRC/36/38"
         }
-      ]
+      ],
+      "language": "English official source",
+      "translationStatus": "中文为Agent研究说明，非经团队核定的正式译文；正式原文控制。",
+      "legalEffect": "机制工作方法或提交指引；不赋予个案可受理、行动或国内执行保证。"
     }
   },
   {
@@ -993,14 +1318,9 @@
       ],
       "relatedSources": [
         {
-          "title": "UNTC IV.5 第一任择议定书状态（截至2026-10-09）",
+          "title": "UNTC IV.5当前状态、声明与退出脚注",
           "url": "https://treaties.un.org/Pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-5&chapter=4&clang=_en",
-          "locator": "Participant表：Kazakhstan、Tunisia及完整列表（无英国）；Declarations and Reservations：Kazakhstan。"
-        },
-        {
-          "title": "ICCPR第一任择议定书正文",
-          "url": "https://treaties.un.org/doc/publication/unts/volume%20999/volume-999-i-14668-english.pdf",
-          "locator": "Articles 1–5, printed pp.302–303 / PDF pp.63–64"
+          "locator": "Participant表、KZ/RU声明、Belarus脚注6；OP原文第1–5、9、12条。"
         }
       ],
       "jurisdictionChecks": [
@@ -1008,24 +1328,62 @@
           "jurisdiction": "KZ",
           "status": "confirmed",
           "topic": "mechanism_eligibility",
-          "detail": "仅确认国家接受程序：2009-06-30批准；KZ声明限对其生效后国家行为。个案的时间、受害人、救济和重复程序条件未确认。",
+          "detail": "2006-01-24批准ICCPR；2009-06-30批准OP。OP声明限生效后国家行为；事件时间与国家管辖仍须个案核对。",
           "sourceUrl": "https://treaties.un.org/Pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-5&chapter=4&clang=_en"
         },
         {
           "jurisdiction": "TN",
           "status": "confirmed",
           "topic": "mechanism_eligibility",
-          "detail": "仅确认国家接受程序：2011-06-29加入；个案的时间、受害人、救济和重复程序条件未确认。",
+          "detail": "1969-03-18批准ICCPR；2011-06-29加入OP。国内援引、事件时间及受理要件另核。",
           "sourceUrl": "https://treaties.un.org/Pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-5&chapter=4&clang=_en"
         },
         {
           "jurisdiction": "GB",
           "status": "not_met",
           "topic": "mechanism_eligibility",
-          "detail": "英国未在第一任择议定书参与方表，不能以ICCPR缔约身份或第41条国家间来文声明替代个人来文资格。",
+          "detail": "1976-05-20批准ICCPR；英国未参加第一任择议定书。ICCPR缔约不能替代个人来文国家资格。",
+          "sourceUrl": "https://treaties.un.org/Pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-5&chapter=4&clang=_en"
+        },
+        {
+          "jurisdiction": "HK",
+          "status": "not_met",
+          "topic": "mechanism_eligibility",
+          "detail": "UNTC IV.4脚注6记载ICCPR在香港特别行政区继续适用。不得从中国内地状态推导；香港未获第一任择议定书程序的领土适用。",
+          "sourceUrl": "https://treaties.un.org/Pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-5&chapter=4&clang=_en"
+        },
+        {
+          "jurisdiction": "CN",
+          "status": "not_met",
+          "topic": "mechanism_eligibility",
+          "detail": "中国1998-10-05签署ICCPR，当前未批准（香港等领土安排须独立核对）；未参加OP1。这里只可作清楚标示的比较标准。",
+          "sourceUrl": "https://treaties.un.org/Pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-5&chapter=4&clang=_en"
+        },
+        {
+          "jurisdiction": "MY",
+          "status": "not_met",
+          "topic": "mechanism_eligibility",
+          "detail": "马来西亚未列ICCPR/OP1参与方表。可保留国际比较标准，不写作其ICCPR条约义务。",
+          "sourceUrl": "https://treaties.un.org/Pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-5&chapter=4&clang=_en"
+        },
+        {
+          "jurisdiction": "RU",
+          "status": "confirmed",
+          "topic": "mechanism_eligibility",
+          "detail": "ICCPR参与方；OP于1991-10-01加入，声明限其生效后情势/事件。不得将历史欧洲人权法院程序迁移至2022-09-16之后的新事件。",
+          "sourceUrl": "https://treaties.un.org/Pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-5&chapter=4&clang=_en"
+        },
+        {
+          "jurisdiction": "BY",
+          "status": "not_met",
+          "topic": "mechanism_eligibility",
+          "detail": "白俄罗斯仍为ICCPR参与方，但OP退出于2023-02-08生效。新来文受此限制；退出前已提交事项须按OP第12(2)条另核，旧案不自动关闭。",
           "sourceUrl": "https://treaties.un.org/Pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-5&chapter=4&clang=_en"
         }
-      ]
+      ],
+      "language": "English official source",
+      "translationStatus": "中文为Agent研究说明，非经团队核定的正式译文；正式原文控制。",
+      "legalEffect": "机制工作方法或提交指引；不赋予个案可受理、行动或国内执行保证。"
     }
   },
   {
@@ -1124,7 +1482,10 @@
           "detail": "不属于ECHR缔约国；未列法院缔约表和欧洲委员会成员表。表达主题相同不能替代缔约资格。",
           "sourceUrl": "https://www.coe.int/en/web/portal/members-states"
         }
-      ]
+      ],
+      "language": "English official source",
+      "translationStatus": "中文为Agent研究说明，非经团队核定的正式译文；正式原文控制。",
+      "legalEffect": "国际条约；国家/领土及时点适用、保留和国内援引效果分别核对。"
     }
   },
   {
@@ -1223,7 +1584,10 @@
           "detail": "不属于ECHR缔约国；未列法院缔约表和欧洲委员会成员表。表达主题相同不能替代缔约资格。",
           "sourceUrl": "https://www.coe.int/en/web/portal/members-states"
         }
-      ]
+      ],
+      "language": "English official source",
+      "translationStatus": "中文为Agent研究说明，非经团队核定的正式译文；正式原文控制。",
+      "legalEffect": "国际条约；国家/领土及时点适用、保留和国内援引效果分别核对。"
     }
   },
   {
@@ -1332,7 +1696,10 @@
           "detail": "不属于ECHR缔约国；未列法院缔约表和欧洲委员会成员表。表达主题相同不能替代缔约资格。",
           "sourceUrl": "https://www.coe.int/en/web/portal/members-states"
         }
-      ]
+      ],
+      "language": "English official source",
+      "translationStatus": "中文为Agent研究说明，非经团队核定的正式译文；正式原文控制。",
+      "legalEffect": "国际条约；国家/领土及时点适用、保留和国内援引效果分别核对。"
     }
   },
   {
@@ -1412,6 +1779,11 @@
           "title": "欧洲委员会当前成员国页",
           "url": "https://www.coe.int/en/web/portal/members-states",
           "locator": "Member states完整列表，英国在列，哈萨克斯坦与突尼斯不在列；2026-10-09读取。非成员判断结合公约第59条与法院缔约表，不把地理位置当资格。"
+        },
+        {
+          "title": "ECtHR全院决议：俄罗斯停止缔约及余留管辖",
+          "url": "https://www.echr.coe.int/documents/d/echr/resolution_echr_cessation_membership_russia_coe_eng",
+          "locator": "2022-03-22 resolution, declarations 1–2, PDF p.2；后2022-09-16的新事件不能迁移旧路径。"
         }
       ],
       "jurisdictionChecks": [
@@ -1436,7 +1808,10 @@
           "detail": "不属于ECHR缔约国；未列法院缔约表和欧洲委员会成员表。表达主题相同不能替代缔约资格。",
           "sourceUrl": "https://www.coe.int/en/web/portal/members-states"
         }
-      ]
+      ],
+      "language": "English official source",
+      "translationStatus": "中文为Agent研究说明，非经团队核定的正式译文；正式原文控制。",
+      "legalEffect": "区域机制申请指引；欧洲公约体系与ICCPR程序分开。"
     }
   },
   {
@@ -1502,7 +1877,10 @@
       ],
       "gaps": [
         "是否属于计划所指人权捍卫者、预算资格、资金可用性及安全联络授权待确认。"
-      ]
+      ],
+      "language": "English official source",
+      "translationStatus": "中文为Agent研究说明，非经团队核定的正式译文；正式原文控制。",
+      "legalEffect": "机构公开援助范围；历史参与或页面存在不保证当前接案。"
     }
   }
 ]

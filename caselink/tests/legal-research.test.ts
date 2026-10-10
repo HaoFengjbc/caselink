@@ -33,13 +33,13 @@ describe('case-specific legal research',()=>{
  });
  it('does not reuse England and Wales law for Scotland, even with the example ID retained',()=>{
   const input=demo(2);input.intake!.jurisdiction='scotland';
-  const research=buildLegalResearch(input);expect(research.bindings).toEqual([]);expect(research.coverage).toBe('gap');
+  const research=buildLegalResearch(input);expect(research.bindings.some(b=>b.resourceId.startsWith('ew-'))).toBe(false);expect(research.coverage).toBe('gap');
  });
  it('never imports criminal defence or detention procedure into a civil input',()=>{
   const civil=demo(2);const research=buildLegalResearch(civil);
   expect(research.bindings.some(binding=>binding.claimKey==='criminal_defence'||binding.resourceId==='iccpr-article-9')).toBe(false);
   const changed=demo(0);changed.intake={...civil.intake!,jurisdiction:'',narrative:'虚构民事纠纷，未记载刑事指控。'};
-  expect(buildLegalResearch(changed).bindings).toEqual([]);
+  expect(buildLegalResearch(changed).bindings.some(b=>b.claimKey==='criminal_defence'||b.resourceId.startsWith('kz-'))).toBe(false);
  });
  it('preserves unknown elements and explicitly excludes a premature strike-out step',()=>{
   const research=buildLegalResearch(demo(2));

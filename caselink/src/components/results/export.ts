@@ -1,3 +1,4 @@
+import {workingDocumentMarkdown} from './working-documents';
 import {materialsCopy} from '@/lib/i18n/materials';
 import {evidenceSourceLink,sourceFormatNote} from '@/lib/evidence/source-links';
 import type {AnalysisResult,NewCaseInput} from '@/lib/contracts';
@@ -16,6 +17,7 @@ export function analysisMarkdown(result:AnalysisResult,input:NewCaseInput,locale
  input=normalizeConfirmedGoal(input);
  let original=locale==='en'?englishMarkdown(result,input):chineseMarkdown(result,input);
  original = original.replace('\n\n##', `\n${locale === 'en' ? 'Snapshot' : '历史快照'}: ${snapshot.completeness === 'complete' ? (locale === 'en' ? 'Generation-time evidence preserved' : '生成时证据已固定') : (locale === 'en' ? 'Legacy partial record; missing cases/documents/resources are not reconstructed from today’s library.' : '旧版不完整记录；缺失的案例、文档和资源未用当前库回填。')}\n\n##`);
+ if(snapshot.whatsNext)original+='\n\n## What’s Next\n'+snapshot.whatsNext.priorities.map(task=>`### ${task.title}\n${task.whyNow}\n${task.missing.map(m=>`- ${m.item}: ${m.why} (${m.role})`).join('\n')}`).join('\n\n')+'\n'+snapshot.whatsNext.paths.map(path=>`- ${path.state}: ${path.title} — ${path.reason}`).join('\n')+'\n\n'+snapshot.whatsNext.documents.map(document=>workingDocumentMarkdown(document,locale)).join('\n\n');
  const record=input.intake;
  const marker=locale==='en'?'## Historical comparison':'## 历史比较';
  if(!record)return original.replace(marker,legalResearchMarkdown(result,locale)+'\n'+historicalFollowupMarkdown(result,locale)+'\n'+webResearchMarkdown(result,locale)+'\n'+marker);

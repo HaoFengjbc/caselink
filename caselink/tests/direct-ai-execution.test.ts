@@ -47,7 +47,7 @@ describe('direct AI route integration (mock provider; no real paid calls)',()=>{
  it('does not cache results or failed requests; edited input and explicit supplements can run again',async()=>{
   const provider=mockProvider();vi.stubGlobal('fetch',provider);
   provider.mockImplementationOnce(async()=>Response.json({error:{type:'requests',code:'rate_limit_exceeded',message:'private diagnostic'}},{status:429}));
-  expect((await analyze(request('/api/analyze'))).status).toBe(429);
+  const failed=await analyze(request('/api/analyze'));expect(failed.status).toBe(200);const fallback=await failed.json();expect(fallback.mode).toBe('rule_reference');expect(fallback.limitations.join(' ')).toContain('RATE_LIMITED');expect(fallback.whatsNext.documents).toHaveLength(3);
   const value=input();value.intake!.narrative+=' Fictional additional document.';
   for(const [version,operation] of [[2,'initial'],[2,'supplement'],[2,'supplement']] as const){
    const response=await analyze(request('/api/analyze',value,{inputVersion:version,operation,parentAnalysisId:'prior-report-id'}));expect(response.status).toBe(200);

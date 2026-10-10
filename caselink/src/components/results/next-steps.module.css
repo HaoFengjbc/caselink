@@ -1,4 +1,4 @@
-.nextSteps { margin: 20px 0; padding: 20px; border: 1px solid #cfded5; border-radius: 10px; background: #f8fbf8; }
+.nextSteps { min-width: 0; overflow-wrap: anywhere; margin: 20px 0; padding: 20px; border: 1px solid #cfded5; border-radius: 10px; background: #f8fbf8; }
 .heading { display: flex; align-items: baseline; flex-wrap: wrap; gap: 8px 14px; }
 .heading > span { font-size: .73rem; font-weight: 750; letter-spacing: .04em; color: #386047; }
 .heading h4 { margin: 0; font-size: .96rem; }
@@ -19,7 +19,7 @@
 .source blockquote { border-left: 3px solid #cbdccf; margin: 10px 0; padding: 4px 12px; white-space: pre-wrap; }
 .basisGaps { color: #715b35; }
 .stops { border-left: 3px solid #d7c795; padding: 8px 8px 8px 28px; }
-.followups { padding: 18px 0; }
+.followups { min-width: 0; overflow-wrap: anywhere; padding: 18px 0; }
 .followups > h3 { font-size: 1rem; }
 .event { border: 1px solid #dde4de; border-radius: 8px; margin: 12px 0; }
 .event > summary { cursor: pointer; padding: 14px; display: flex; flex-direction: column; gap: 7px; }

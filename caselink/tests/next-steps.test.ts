@@ -5,7 +5,7 @@ import {DEMO_SCENARIOS} from '../data/demo/fixtures';
 import {cases,followups} from '../src/lib/corpus';
 import {buildLegalResearch,attachRuleLegalCitations} from '../src/lib/legal-research';
 import {buildRuleReference} from '../src/lib/retrieval/rules';
-import {buildNextSteps,validateNextStepLinks} from '../src/lib/next-steps';
+import {buildNextSteps,validateNextStepLinks,preparationHistory} from '../src/lib/next-steps';
 import {analyzeInput} from '../src/lib/ai/service';
 import {snapshotForResult} from '../src/lib/reports/snapshot';
 import {analysisMarkdown} from '../src/components/results/export';
@@ -15,7 +15,7 @@ import {LocaleProvider} from '../src/components/i18n/LocaleProvider';
 import {ReportSnapshotProvider} from '../src/components/results/SnapshotContext';
 import type {AnalysisResult} from '../src/lib/contracts';
 const config={mode:'demo' as const,configured:false,key:'',model:'',timeoutMs:1000,reasoningEffort:'low' as const,maxOutputTokens:9000};
-function prepared(index:number){const input=structuredClone(DEMO_SCENARIOS[index].input);const research=buildLegalResearch(input);const output=attachRuleLegalCitations(buildRuleReference(input),research);return {input,research,output,steps:buildNextSteps(input,output,research,followups)};}
+function prepared(index:number,stage?:'appeal'|'postjudgment'){const input=structuredClone(DEMO_SCENARIOS[index].input);if(stage)input.stage=stage;const research=buildLegalResearch(input);const output=attachRuleLegalCitations(buildRuleReference(input),research);return {input,research,output,steps:buildNextSteps(input,output,research,followups)};}
 const stepHtml=(result:AnalysisResult)=>renderToStaticMarkup(createElement(LocaleProvider,{initial:'zh',children:createElement(ReportSnapshotProvider,{snapshot:snapshotForResult(result),children:createElement(ActionNextSteps,{actionId:result.actionOptions[0].actionId})})}));
 
 describe('evidence-linked work products under existing actions',()=>{
@@ -27,15 +27,16 @@ describe('evidence-linked work products under existing actions',()=>{
   expect(primary.history.some(history=>history.caseId==='alnur-ilyashev'&&`${history.action} ${history.outcome}`.includes('拒绝'))).toBe(true);
   const external=steps.find(step=>step.actionId==='external-advocacy')!;
   expect(output.actionOptions.find(action=>action.actionId===external.actionId)!.applicability).toBe('defer');expect(external.stopConditions.join(' ')).toContain('公开倡议暂不推进');
-  expect(external.legalBindingIds.some(id=>id.includes('ohchr-special-procedures'))).toBe(true);
+  expect(research.mechanisms?.some(m=>m.resourceIds.includes('ohchr-special-procedures'))).toBe(true);
   expect(validateNextStepLinks(steps,output,research,followups)).toEqual([]);expect(input.publicity).toBe('private');
  });
  it('shows new sourced participation without transferring another proceeding or inferring causality',()=>{
   const kz=prepared(0);const primary=kz.steps.find(step=>step.actionId==='primary-release')!;
-  expect(primary.history.map(history=>history.followupEventId)).toContain('aigul-followup-2022-04-27-hrc-filing-confirmed');
+  expect(primary.history.map(history=>history.followupEventId)).not.toContain('aigul-followup-2022-04-27-hrc-filing-confirmed');
+  const appeal=prepared(0,'appeal');expect(appeal.steps.flatMap(step=>step.history).map(history=>history.followupEventId)).toContain('aigul-followup-2022-04-27-hrc-filing-confirmed');
   expect(primary.history.every(history=>['aigul-utepova','alnur-ilyashev'].includes(history.caseId))).toBe(true);
   expect(primary.history.every(history=>history.differences.some(difference=>difference.includes('不能推断')))).toBe(true);
-  const tn=prepared(1);const reportUse=tn.steps.flatMap(step=>step.history).find(history=>history.followupEventId==='myriam-followup-report-used-appeal')!;
+  const tn=prepared(1,'appeal');const reportUse=preparationHistory(tn.input,tn.output,followups).find(history=>history.followupEventId==='myriam-followup-report-used-appeal')!;
   expect(reportUse).toBeDefined();expect(reportUse.date).toBe('来源未明确事件日期');expect(reportUse.differences.join(' ')).toContain('来源归属声明');
   expect(tn.steps.flatMap(step=>step.history).every(history=>history.followupEventId!=='myriam-followup-scheduled-hearing')).toBe(true);
  });
@@ -44,7 +45,7 @@ describe('evidence-linked work products under existing actions',()=>{
   record.events.find(event=>event.eventId==='myriam-followup-report-used-appeal')!.executionStatus='planned';
   const steps=buildNextSteps(input,output,research,modified);
   expect(steps.flatMap(step=>step.history).some(history=>history.followupEventId==='myriam-followup-report-used-appeal')).toBe(false);
-  expect(steps.flatMap(step=>step.history).every(history=>history.executionStatus==='implemented')).toBe(true);
+  expect(steps.flatMap(step=>step.history).every(history=>['implemented','submitted'].includes(history.executionStatus))).toBe(true);
   expect(steps.find(step=>step.actionId==='primary-drop_charges')!.basisGaps.join(' ')).toContain('建议数量不等于实际实施或成功数量');
  });
  it('keeps civil England and Wales separate and does not force history or law onto chronology preparation',()=>{
@@ -57,9 +58,9 @@ describe('evidence-linked work products under existing actions',()=>{
 
 describe('owned references and unchanged historical meaning',()=>{
  it('rejects cross-case references, status upgrades and changed historical outcomes',()=>{
-  const {steps,output,research}=prepared(0);
+  const {steps,output,research}=prepared(0,'appeal');
   const crossed=structuredClone(steps);crossed[0].history[0].caseId='emna-chargui';expect(validateNextStepLinks(crossed,output,research,followups).join(' ')).toContain('owner');
-  const altered=structuredClone(steps);altered[0].history[0].outcome='该律师行动导致无罪获释';expect(validateNextStepLinks(altered,output,research,followups).join(' ')).toContain('outcome was altered');
+  const altered=structuredClone(steps);altered[0].history[0].outcome='该律师行动导致无罪获释';expect(validateNextStepLinks(altered,output,research,followups).join(' ')).toMatch(/outcome was altered|outcome or status mismatch/);
   const upgraded=structuredClone(steps);upgraded[0].history[0].executionStatus='recommended_only';expect(validateNextStepLinks(upgraded,output,research,followups).join(' ')).toContain('status mismatch');
   const sourceSwap=structuredClone(steps);const history=sourceSwap.flatMap(step=>step.history).find(history=>history.followupEventId)!;history.sourceIds=[followups.find(item=>item.caseId==='emna-chargui')!.sources[0].sourceId];expect(validateNextStepLinks(sourceSwap,output,research,followups).join(' ')).toContain('another case');
  });

@@ -1,4 +1,6 @@
-import {buildLegalResearch,attachRuleLegalCitations} from '../legal-research';
+import {buildWhatsNext} from '../whats-next';
+import {buildWorkingDocuments} from '../../components/results/working-documents';
+import {buildLegalResearch,attachRuleLegalCitations,legalProceeding} from '../legal-research';
 import {captureReportSnapshot} from '../reports/snapshot';
 import {assessDomain,requireResearchScope} from '../research/domain';
 import {resolveJurisdiction} from '../jurisdiction';
@@ -24,7 +26,7 @@ import type {ResearchPlannerTransport} from '../research/planner';
 import {needsGoalClarification,normalizeConfirmedGoal} from '../intake/analysis';
 const webComparisonCount=(value:ModelAnalysisOutput|WebModelAnalysisOutput)=>Array.isArray((value as WebModelAnalysisOutput).webComparisons)?(value as WebModelAnalysisOutput).webComparisons.length:0;
 
-export async function analyzeInput(raw:NewCaseInput,options:{forceRule?:boolean;signal?:AbortSignal;config?:ServerConfig;transport?:ModelTransport;researchTransport?:WebSearchTransport;researchPlannerTransport?:ResearchPlannerTransport;locale?:Locale;identity?:RequestIdentity}={}):Promise<AnalysisResult>{
+export async function analyzeInput(raw:NewCaseInput,options:{forceRule?:boolean;signal?:AbortSignal;config?:ServerConfig;transport?:ModelTransport;researchTransport?:WebSearchTransport;researchPlannerTransport?:ResearchPlannerTransport;locale?:Locale;identity?:RequestIdentity;allowPreparationFallback?:boolean}={}):Promise<AnalysisResult>{
   const locale=options.locale??'zh';
   const deadlineAt=Date.now()+270_000;
   const checkCancelled=()=>{if(options.signal?.aborted)throw new AnalysisError('CANCELLED','本次分析已取消。',499);};
@@ -43,16 +45,18 @@ export async function analyzeInput(raw:NewCaseInput,options:{forceRule?:boolean;
   // The reviewed library holds journalism and expression cases only. When the person says the matter is
   // unrelated, no library case is offered as a comparison.
   const domain=assessDomain(input,locale),jurisdiction=resolveJurisdiction(input);
-  if(domain.status!=='in_scope')matches=[];
+  if(domain.status!=='in_scope'||legalProceeding(input)!=='criminal')matches=[];
   const context=contextFor(matches);
   const legalResearch=buildLegalResearch(input,locale);
   let mode:AnalysisResult['mode'];let output:ModelAnalysisOutput|WebModelAnalysisOutput;let webResearch:WebResearch|undefined;
+  let preparationFailure:string|undefined;
   let attempts=0;const recovery:NonNullable<AnalysisResult['researchAssessment']>['recovery']='not_needed';
   if(options.forceRule){mode='rule_reference';output=buildRuleReference(input,matches,locale);}
   else if(config!.mode==='demo'){
-    const preset=presetOutput(inputHash,locale);mode=preset?'preset_demo':'rule_reference';output=preset??buildRuleReference(input,matches,locale);
+    const preset=presetOutput(inputHash,locale);mode=preset?'preset_demo':'rule_reference';output=buildRuleReference(input,matches,locale);
   }else{
     requireResearchScope(input,locale);
+    try{
     requireLiveConfiguration(config!);
     const researchOptions={deadlineAt,attempt:options.identity?.operation==='supplement'?2 as const:1 as const};
     webResearch=await researchWeb(input,config!,options.signal,options.researchTransport,locale,researchOptions);attempts=1;
@@ -70,6 +74,11 @@ export async function analyzeInput(raw:NewCaseInput,options:{forceRule?:boolean;
     checkCancelled();mode='live_ai';
     // Matching labels and dimensions are deterministic, never upgraded by the model.
     output.comparableCases=output.comparableCases.map(c=>{const match=matches.find(m=>m.record.caseId===c.caseId);return match?{...c,relevance:match.comparison.relevance,matchDimensions:match.comparison.matchDimensions}:c;});
+    }catch(error){
+      if(!options.allowPreparationFallback||options.signal?.aborted||(error instanceof AnalysisError&&error.code==='CANCELLED'))throw error;
+      preparationFailure=error instanceof AnalysisError?error.code:'UPSTREAM_ERROR';
+      mode='rule_reference';output=buildRuleReference(input,matches,locale);
+    }
   }
   if(mode!=='live_ai')output=attachRuleLegalCitations(output,legalResearch);
   output=webResearch?.status==='completed'
@@ -111,11 +120,15 @@ export async function analyzeInput(raw:NewCaseInput,options:{forceRule?:boolean;
   // Chinese results keep their original shape; only other languages are tagged.
   checkCancelled();
   const nextSteps=buildNextSteps(input,output,legalResearch,followups,locale);
-  const followupCaseIds=new Set([...output.comparableCases.map(c=>c.caseId),...nextSteps.flatMap(step=>step.history.map(h=>h.caseId))]);
+  const whatsNext=buildWhatsNext(input,output,legalResearch,followups,inputHash,mode,locale);
+  if(preparationFailure){const note=locale==='en'?`AI organization did not complete (${preparationFailure}). These are case-filled rule drafts, not successful AI output.`:`AI 整理未完成（${preparationFailure}）；已保留本案填充的规则材料，不计真实 AI 成功。`;output.limitations=[note,...output.limitations].slice(0,12);whatsNext.limitations.unshift(note);}
+  const followupCaseIds=new Set([...output.comparableCases.map(c=>c.caseId),...nextSteps.flatMap(step=>step.history.map(h=>h.caseId)),...whatsNext.priorities.flatMap(task=>task.history.map(h=>h.caseId))]);
   const selectedFollowups=followups.filter(f=>followupCaseIds.has(f.caseId));
-  const nextStepErrors=validateNextStepLinks(nextSteps,output,legalResearch,selectedFollowups);
+  const nextStepErrors=validateNextStepLinks(nextSteps,output,legalResearch,selectedFollowups,locale);
   if(nextStepErrors.length)throw new AnalysisError('INVALID_MODEL_OUTPUT',nextStepErrors.join('；'),502);
-  const result=AnalysisResultSchema.parse({...output,legalResearch,nextSteps,followups:selectedFollowups,domain,jurisdiction,execution:currentExecution()??{...executionFor(options.identity??{requestId:randomUUID(),inputVersion:1,operation:'initial'}),actualCostUsd:mode==='live_ai'?null:0},...(webResearch?{webResearch}:{}),actionOrigins,researchAssessment,analysisId:randomUUID(),schemaVersion:SCHEMA_VERSION,inputHash,corpusVersion:CORPUS_VERSION,promptVersion:PROMPT_VERSION,createdAt:new Date().toISOString(),mode,historicalComparisons,sources:referencedSources,...(locale==='zh'?{}:{locale})});
+  const result=AnalysisResultSchema.parse({...output,legalResearch,nextSteps,whatsNext,followups:selectedFollowups,domain,jurisdiction,execution:currentExecution()??{...executionFor(options.identity??{requestId:randomUUID(),inputVersion:1,operation:'initial'}),actualCostUsd:mode==='live_ai'?null:0},...(webResearch?{webResearch}:{}),actionOrigins,researchAssessment,analysisId:randomUUID(),schemaVersion:SCHEMA_VERSION,inputHash,corpusVersion:CORPUS_VERSION,promptVersion:PROMPT_VERSION,createdAt:new Date().toISOString(),mode,historicalComparisons,sources:referencedSources,...(locale==='zh'?{}:{locale})});
   result.snapshot=captureReportSnapshot(result,locale,input);
-  return result;
+  const documents=buildWorkingDocuments(input,result,locale);
+  result.whatsNext!.documents=documents;result.snapshot.whatsNext=structuredClone(result.whatsNext!);
+  return AnalysisResultSchema.parse(result);
 }

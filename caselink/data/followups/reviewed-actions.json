@@ -1,0 +1,747 @@
+{
+  "version": "whats-next-history-check-v1",
+  "checkedAt": "2026-10-09",
+  "humanReviewComplete": false,
+  "actions": [
+    {
+      "caseId": "aigul-utepova",
+      "event": {
+        "eventId": "aigul-followup-2022-04-27-hrc-filing-confirmed",
+        "proceeding": "2021年Article 405(2)定罪的国际个人来文",
+        "subjects": [
+          "Aigul Utepova"
+        ],
+        "eventDate": "2022-04-27",
+        "datePrecision": "day",
+        "actors": [
+          "TrialWatch / Clooney Foundation for Justice",
+          "Debevoise & Plimpton LLP"
+        ],
+        "action": "公开确认双方已向联合国人权事务委员会挑战该定罪，并请求撤销定罪、道歉、赔偿及反极端主义法律改革。日期为公开声明日期，实际递交日未披露。",
+        "executionStatus": "submitted",
+        "outcome": "公开确认已向人权事务委员会提交；请求撤销、道歉及赔偿不等于已获准。当前可受理性、实体决定与国内落实未由本来源确认。",
+        "relationshipToOutcome": "sequence_only",
+        "causalAttribution": null,
+        "sourceIds": [
+          "checked-utepova-hrc-filing"
+        ],
+        "unknowns": [
+          "实际递交日、当时登记及可受理性决定未知。"
+        ],
+        "eventKind": "historical_action",
+        "scope": "same_case",
+        "proceedingId": "2021年Article 405(2)定罪的国际个人来文",
+        "personIds": [
+          "aigul-utepova"
+        ],
+        "reportId": "followup-report-11",
+        "researchCutoff": "2026-10-09",
+        "supportClaim": "公开确认双方已向联合国人权事务委员会挑战该定罪，并请求撤销定罪、道歉、赔偿及反极端主义法律改革。日期为公开声明日期，实际递交日未披露。",
+        "verification": "source_checked",
+        "matching": {
+          "proceedings": [
+            "criminal"
+          ],
+          "stages": [
+            "appeal",
+            "post_judgment",
+            "post-conviction"
+          ],
+          "issues": [
+            "expression",
+            "fair_trial",
+            "detention",
+            "counsel"
+          ],
+          "goals": [
+            "prepare_materials",
+            "local_counsel_review"
+          ],
+          "materialForm": "个人来文；原文确认基于审判观察，完整提交附件目录未知",
+          "differences": [
+            "历史案已有定罪及国内上诉；本案不能因同国或拘押事实直接迁移个人来文资格。",
+            "受理、国内救济、授权及对外披露需要独立检查。"
+          ]
+        }
+      },
+      "sources": [
+        {
+          "sourceId": "checked-utepova-hrc-filing",
+          "title": "Journalist Convicted Under Unfair Anti-Extremism Law in Kazakhstan Should Have Conviction Overturned",
+          "url": "https://cfj.org/news/journalist-convicted-under-unfair-anti-extremism-law-in-kazakhstan-should-have-conviction-overturned/",
+          "publisher": "Clooney Foundation for Justice / TrialWatch",
+          "publishedAt": "2022-04-27",
+          "locator": "Body second paragraph and Additional Background last paragraph",
+          "quote": "have challenged the conviction of the journalist, Aigul Utepova",
+          "readStatus": "full_text",
+          "checkedAt": "2026-10-09",
+          "reviewStatus": "agent_checked",
+          "teamReviewedAt": null,
+          "teamReviewer": null,
+          "sourceKind": "underlying_source",
+          "supportLevel": "source_checked",
+          "reportId": "followup-report-11"
+        }
+      ],
+      "check": {
+        "checkedAt": "2026-10-09",
+        "reviewerType": "agent",
+        "teamReviewer": null,
+        "method": "Opened underlying source full body through web; document-specific passages inspected",
+        "notEstablished": [
+          "Causal effectiveness",
+          "Current willingness to assist a new case",
+          "Team or lawyer verification"
+        ]
+      }
+    },
+    {
+      "caseId": "myriam-bribri",
+      "event": {
+        "eventId": "myriam-followup-report-used-appeal",
+        "proceeding": "Myriam Bribri；2020年评论警察暴力视频、电信法第86条相关刑事程序（原报告2021-06）",
+        "subjects": [
+          "Myriam Bribri"
+        ],
+        "eventDate": null,
+        "datePrecision": "unknown",
+        "actors": [
+          "Myriam Bribri的辩护团队；CFJ/TrialWatch（报告提供方）"
+        ],
+        "action": "CFJ官方页面记载辩护团队在上诉听证中使用TrialWatch公平审判报告。",
+        "executionStatus": "implemented",
+        "outcome": "参与方网页确认报告被辩护团队使用；未给实际使用日期或终局上诉结果，无法判断因果。",
+        "relationshipToOutcome": "unknown",
+        "causalAttribution": null,
+        "sourceIds": [
+          "checked-bribri-report-use"
+        ],
+        "unknowns": [
+          "网页未给发布日期或听证日期，不能把2026-10-09核查日当行动日。",
+          "暂无上诉卷宗独立验证报告是否正式提交、作为何种证据或被法院引用。",
+          "机构曾参与该案不代表当前可接案或已有合作。"
+        ],
+        "eventKind": "historical_action",
+        "scope": "same_case",
+        "proceedingId": "Myriam Bribri；2020年评论警察暴力视频、电信法第86条相关刑事程序（原报告2021-06）",
+        "personIds": [
+          "myriam-bribri"
+        ],
+        "reportId": "followup-report-21",
+        "researchCutoff": "2026-10-09",
+        "supportClaim": "CFJ官方页面记载辩护团队在上诉听证中使用TrialWatch公平审判报告。",
+        "verification": "source_checked",
+        "matching": {
+          "proceedings": [
+            "criminal"
+          ],
+          "stages": [],
+          "issues": [
+            "expression",
+            "fair_trial",
+            "appeal",
+            "counsel"
+          ],
+          "goals": [
+            "prepare_materials",
+            "local_counsel_review"
+          ],
+          "materialForm": "TrialWatch公平审判报告作为律师上诉参考；本案仅生成内部研究简报",
+          "differences": [
+            "历史行为发生于上诉听证；本案程序阶段可能不同。",
+            "未确认原上诉文书格式、裁判及引用报告对结果的影响；仅借鉴给律师组织研究材料。"
+          ]
+        }
+      },
+      "sources": [
+        {
+          "sourceId": "checked-bribri-report-use",
+          "title": "Myriam Bribri testimonial / report use",
+          "url": "https://cfj.org/testimonials/",
+          "publisher": "Clooney Foundation for Justice",
+          "publishedAt": null,
+          "locator": "Myriam Bribri section, sentence immediately below the testimonial",
+          "quote": "defense team used TrialWatch’s Fairness Report at her appeal hearing.",
+          "readStatus": "full_text",
+          "checkedAt": "2026-10-09",
+          "reviewStatus": "agent_checked",
+          "teamReviewedAt": null,
+          "teamReviewer": null,
+          "sourceKind": "underlying_source",
+          "supportLevel": "source_checked",
+          "reportId": "followup-report-21"
+        }
+      ],
+      "check": {
+        "checkedAt": "2026-10-09",
+        "reviewerType": "agent",
+        "teamReviewer": null,
+        "method": "Opened underlying source full body through web; document-specific passages inspected",
+        "notEstablished": [
+          "Causal effectiveness",
+          "Current willingness to assist a new case",
+          "Team or lawyer verification"
+        ]
+      }
+    },
+    {
+      "caseId": "myriam-bribri",
+      "event": {
+        "eventId": "myriam-followup-defence-appeal",
+        "proceeding": "Myriam Bribri；2020年评论警察暴力视频、电信法第86条相关刑事程序（原报告2021-06）",
+        "subjects": [
+          "Myriam Bribri"
+        ],
+        "eventDate": "2021-12",
+        "datePrecision": "month",
+        "actors": [
+          "Myriam Bribri的辩护律师"
+        ],
+        "action": "就一审判决启动上诉；Amnesty另记检方也上诉。",
+        "executionStatus": "submitted",
+        "outcome": "已报告辩方上诉；Amnesty同时记载检方上诉。未核实终局结果或监禁实际执行。",
+        "relationshipToOutcome": "sequence_only",
+        "causalAttribution": null,
+        "sourceIds": [
+          "checked-bribri-amnesty"
+        ],
+        "unknowns": [
+          "上诉22/23日、定罪20/21日来源冲突；须实际判决和递交凭证。",
+          "Amnesty称四个月缓刑；不能改写为已服刑。"
+        ],
+        "eventKind": "historical_action",
+        "scope": "same_case",
+        "proceedingId": "Myriam Bribri；2020年评论警察暴力视频、电信法第86条相关刑事程序（原报告2021-06）",
+        "personIds": [
+          "myriam-bribri"
+        ],
+        "reportId": "followup-report-21",
+        "researchCutoff": "2026-10-09",
+        "supportClaim": "就一审判决启动上诉；Amnesty另记检方也上诉。",
+        "verification": "source_checked",
+        "matching": {
+          "proceedings": [
+            "criminal"
+          ],
+          "stages": [
+            "trial",
+            "appeal",
+            "post_judgment",
+            "post-conviction"
+          ],
+          "issues": [
+            "appeal",
+            "fair_trial",
+            "expression"
+          ],
+          "goals": [
+            "prepare_materials",
+            "local_counsel_review"
+          ],
+          "materialForm": "辩方上诉；未取得上诉通知和理由全文",
+          "differences": [
+            "刑事定罪后上诉，不能将同国民事函件视为同类程序。",
+            "Amnesty与联合国来函的递交日相差一天，保留月精度；本案必须由律师核对实际文书和期限。"
+          ]
+        }
+      },
+      "sources": [
+        {
+          "sourceId": "checked-bribri-amnesty",
+          "title": "Tunisie. Les accusations sans fondement pesant sur Myriam Bribri doivent être abandonnées",
+          "url": "https://www.amnesty.org/fr/latest/news/2022/09/tunisia-drop-bogus-charges-against-activist-myriam-bribri/",
+          "publisher": "Amnesty International",
+          "publishedAt": "2022-09-28",
+          "locator": "Informations complémentaires: defence/prosecution appeals; opening statement calling for reversal",
+          "quote": "a fait appel de ce verdict le 23 décembre 2021. […] doivent être annulées",
+          "readStatus": "full_text",
+          "checkedAt": "2026-10-09",
+          "reviewStatus": "agent_checked",
+          "teamReviewedAt": null,
+          "teamReviewer": null,
+          "sourceKind": "underlying_source",
+          "supportLevel": "source_checked",
+          "reportId": "followup-report-21"
+        }
+      ],
+      "check": {
+        "checkedAt": "2026-10-09",
+        "reviewerType": "agent",
+        "teamReviewer": null,
+        "method": "Opened underlying source full body through web; document-specific passages inspected",
+        "notEstablished": [
+          "Causal effectiveness",
+          "Current willingness to assist a new case",
+          "Team or lawyer verification"
+        ]
+      }
+    },
+    {
+      "caseId": "myriam-bribri",
+      "event": {
+        "eventId": "myriam-followup-amnesty-advocacy",
+        "proceeding": "Myriam Bribri；2020年评论警察暴力视频、电信法第86条相关刑事程序（原报告2021-06）",
+        "subjects": [
+          "Myriam Bribri"
+        ],
+        "eventDate": "2022-09-28",
+        "datePrecision": "day",
+        "actors": [
+          "Amnesty International；Amna Guellali"
+        ],
+        "action": "在预定上诉听证前公开发表声明，要求撤销定罪和刑罚。",
+        "executionStatus": "implemented",
+        "outcome": "公开声明确已发表；撤销定罪是声明诉求，本次未证明实现。",
+        "relationshipToOutcome": "sequence_only",
+        "causalAttribution": null,
+        "sourceIds": [
+          "checked-bribri-amnesty"
+        ],
+        "unknowns": [
+          "没有材料证明声明导致法院改变决定，也不能假定当事人对新的公开使用继续同意。"
+        ],
+        "eventKind": "historical_action",
+        "scope": "same_case",
+        "proceedingId": "Myriam Bribri；2020年评论警察暴力视频、电信法第86条相关刑事程序（原报告2021-06）",
+        "personIds": [
+          "myriam-bribri"
+        ],
+        "reportId": "followup-report-21",
+        "researchCutoff": "2026-10-09",
+        "supportClaim": "在预定上诉听证前公开发表声明，要求撤销定罪和刑罚。",
+        "verification": "source_checked",
+        "matching": {
+          "proceedings": [
+            "criminal"
+          ],
+          "stages": [
+            "appeal"
+          ],
+          "issues": [
+            "publicity",
+            "expression"
+          ],
+          "goals": [
+            "prepare_materials",
+            "local_counsel_review"
+          ],
+          "materialForm": "面向公众的有署名声明",
+          "differences": [
+            "仅在已具明确公开授权的路径讨论；内部简报不等于公开倡议。",
+            "这是一份撤罪呼吁，未证明当局按呼吁行动或终局获无罪。"
+          ]
+        }
+      },
+      "sources": [
+        {
+          "sourceId": "checked-bribri-amnesty",
+          "title": "Tunisie. Les accusations sans fondement pesant sur Myriam Bribri doivent être abandonnées",
+          "url": "https://www.amnesty.org/fr/latest/news/2022/09/tunisia-drop-bogus-charges-against-activist-myriam-bribri/",
+          "publisher": "Amnesty International",
+          "publishedAt": "2022-09-28",
+          "locator": "Informations complémentaires: defence/prosecution appeals; opening statement calling for reversal",
+          "quote": "a fait appel de ce verdict le 23 décembre 2021. […] doivent être annulées",
+          "readStatus": "full_text",
+          "checkedAt": "2026-10-09",
+          "reviewStatus": "agent_checked",
+          "teamReviewedAt": null,
+          "teamReviewer": null,
+          "sourceKind": "underlying_source",
+          "supportLevel": "source_checked",
+          "reportId": "followup-report-21"
+        }
+      ],
+      "check": {
+        "checkedAt": "2026-10-09",
+        "reviewerType": "agent",
+        "teamReviewer": null,
+        "method": "Opened underlying source full body through web; document-specific passages inspected",
+        "notEstablished": [
+          "Causal effectiveness",
+          "Current willingness to assist a new case",
+          "Team or lawyer verification"
+        ]
+      }
+    },
+    {
+      "caseId": "alnur-ilyashev",
+      "event": {
+        "eventId": "alnur-followup-2022-09-13-joint-letter",
+        "proceeding": "执行WGAD Opinion No.2/2022的后续倡议",
+        "subjects": [
+          "Alnur Ilyashev"
+        ],
+        "eventDate": "2022-09-13",
+        "datePrecision": "day",
+        "actors": [
+          "Freedom Now",
+          "Clooney Foundation for Justice / TrialWatch"
+        ],
+        "action": "向国务顾问Erlan Karin发出联合函，逐项询问撤销判刑、消除记录、赔偿、调查及法律改革进度，并促请接受WGAD访问请求。",
+        "executionStatus": "implemented",
+        "outcome": "联合函正文及签名可读，CFJ同期声明明确已发出；参与方称当时尚无落实进度告知。未确认后来回函、国内撤销、赔偿或执行。",
+        "relationshipToOutcome": "sequence_only",
+        "causalAttribution": null,
+        "sourceIds": [
+          "checked-alnur-joint-letter",
+          "checked-alnur-wgad-filing"
+        ],
+        "unknowns": [
+          "函件后答复、国内执行、记录消除及实际付款未确认。"
+        ],
+        "eventKind": "historical_action",
+        "scope": "same_case",
+        "proceedingId": "执行WGAD Opinion No.2/2022的后续倡议",
+        "personIds": [
+          "alnur-ilyashev"
+        ],
+        "reportId": "followup-report-02",
+        "researchCutoff": "2026-10-09",
+        "supportClaim": "向国务顾问Erlan Karin发出联合函，逐项询问撤销判刑、消除记录、赔偿、调查及法律改革进度，并促请接受WGAD访问请求。",
+        "verification": "source_checked",
+        "matching": {
+          "proceedings": [
+            "criminal"
+          ],
+          "stages": [
+            "post_judgment",
+            "post-conviction",
+            "appeal"
+          ],
+          "issues": [
+            "remedy",
+            "fair_trial",
+            "expression"
+          ],
+          "goals": [
+            "prepare_materials",
+            "local_counsel_review"
+          ],
+          "materialForm": "有签名的四页落实询问函；逐项询问判刑、记录、赔偿和调查",
+          "differences": [
+            "历史案已有WGAD意见；尚无国际决定的新案不能直接进入意见落实程序。",
+            "只能迁移把不同补救分项核对的方法；发函须授权且不是本工具自动执行。"
+          ]
+        }
+      },
+      "sources": [
+        {
+          "sourceId": "checked-alnur-joint-letter",
+          "title": "Letter to State Counselor Erlan Karin re WGAD Opinion No. 2/2022",
+          "url": "https://www.freedom-now.org/wp-content/uploads/Ilyashev-Letter-Final-Draft-signed.pdf",
+          "publisher": "Freedom Now and Clooney Foundation for Justice / TrialWatch",
+          "publishedAt": "2022-09-13",
+          "locator": "PDF p.1 date/senders; pp.2–3 Information Requested; p.4 signatures; p.2 visually checked",
+          "quote": "Has the sentence imposed on Mr. Ilyashev in June 2020 been quashed?",
+          "readStatus": "full_text",
+          "checkedAt": "2026-10-09",
+          "reviewStatus": "agent_checked",
+          "teamReviewedAt": null,
+          "teamReviewer": null,
+          "sourceKind": "underlying_source",
+          "supportLevel": "source_checked",
+          "reportId": "followup-report-02"
+        },
+        {
+          "sourceId": "checked-alnur-wgad-filing",
+          "title": "Kazakhstan Should Comply with UN Decision and Quash Activist’s Conviction",
+          "url": "https://cfj.org/news/kazakhstan-should-comply-with-un-decision-and-quash-activists-conviction/",
+          "publisher": "Clooney Foundation for Justice",
+          "publishedAt": "2022-09-13",
+          "locator": "Opening paragraph on joint letter issued 2022-09-13; Background opening paragraph on petition actually filed 2021-02-12",
+          "quote": "issued a letter […] filed a petition with the UN Working Group on Arbitrary Detention",
+          "readStatus": "full_text",
+          "checkedAt": "2026-10-09",
+          "reviewStatus": "agent_checked",
+          "teamReviewedAt": null,
+          "teamReviewer": null,
+          "sourceKind": "underlying_source",
+          "supportLevel": "source_checked",
+          "reportId": "followup-report-02"
+        }
+      ],
+      "check": {
+        "checkedAt": "2026-10-09",
+        "reviewerType": "agent",
+        "teamReviewer": null,
+        "method": "Opened underlying source full body through web; document-specific passages inspected",
+        "notEstablished": [
+          "Causal effectiveness",
+          "Current willingness to assist a new case",
+          "Team or lawyer verification"
+        ]
+      }
+    },
+    {
+      "caseId": "alnur-ilyashev",
+      "event": {
+        "proceeding": "Alnur 2020 Article 274 criminal prosecution — WGAD petition",
+        "subjects": [
+          "Alnur Ilyashev"
+        ],
+        "eventDate": "2021-02-12",
+        "datePrecision": "day",
+        "actors": [
+          "Freedom Now",
+          "McKool Smith"
+        ],
+        "action": "CFJ正文确认Freedom Now与McKool Smith于2021-02-12代表Alnur向WGAD提交申请。",
+        "executionStatus": "submitted",
+        "outcome": "同来源记载2022-03随后有WGAD意见；没有证明国内撤罪或赔偿执行。",
+        "relationshipToOutcome": "sequence_only",
+        "causalAttribution": null,
+        "unknowns": [
+          "原始申请全文及案内授权未取得；不由这例推断新案可受理。"
+        ],
+        "eventId": "reviewed-alnur-2021-wgad-petition",
+        "sourceIds": [
+          "checked-alnur-wgad-filing"
+        ],
+        "eventKind": "historical_action",
+        "scope": "same_case",
+        "proceedingId": "Alnur 2020 Article 274 criminal prosecution — WGAD petition",
+        "personIds": [
+          "alnur-ilyashev"
+        ],
+        "reportId": "followup-report-02",
+        "researchCutoff": "2026-10-09",
+        "supportClaim": "CFJ正文确认Freedom Now与McKool Smith于2021-02-12代表Alnur向WGAD提交申请。",
+        "verification": "source_checked",
+        "matching": {
+          "proceedings": [
+            "criminal"
+          ],
+          "stages": [
+            "trial",
+            "appeal",
+            "post_judgment",
+            "post-conviction"
+          ],
+          "issues": [
+            "detention",
+            "fair_trial",
+            "expression"
+          ],
+          "goals": [
+            "prepare_materials",
+            "local_counsel_review"
+          ],
+          "materialForm": "WGAD申请；完整原申请与附件目录未知",
+          "differences": [
+            "实际提交发生于原报告2021-03之前，是经复核的历史背景，不计报告后的新行动。",
+            "WGAD与人权事务委员会个人来文分属不同机制，需独立资格和披露检查。"
+          ]
+        }
+      },
+      "sources": [
+        {
+          "sourceId": "checked-alnur-wgad-filing",
+          "title": "Kazakhstan Should Comply with UN Decision and Quash Activist’s Conviction",
+          "url": "https://cfj.org/news/kazakhstan-should-comply-with-un-decision-and-quash-activists-conviction/",
+          "publisher": "Clooney Foundation for Justice",
+          "publishedAt": "2022-09-13",
+          "locator": "Opening paragraph on joint letter issued 2022-09-13; Background opening paragraph on petition actually filed 2021-02-12",
+          "quote": "issued a letter […] filed a petition with the UN Working Group on Arbitrary Detention",
+          "readStatus": "full_text",
+          "checkedAt": "2026-10-09",
+          "reviewStatus": "agent_checked",
+          "teamReviewedAt": null,
+          "teamReviewer": null,
+          "sourceKind": "underlying_source",
+          "supportLevel": "source_checked",
+          "reportId": "followup-report-02"
+        }
+      ],
+      "check": {
+        "checkedAt": "2026-10-09",
+        "reviewerType": "agent",
+        "teamReviewer": null,
+        "method": "Opened underlying source full body through web; document-specific passages inspected",
+        "notEstablished": [
+          "Causal effectiveness",
+          "Current willingness to assist a new case",
+          "Team or lawyer verification"
+        ]
+      }
+    },
+    {
+      "caseId": "hajar-raissouni",
+      "event": {
+        "proceeding": "Hajar Raissouni 2019 prosecution — Special Procedures submission",
+        "subjects": [
+          "Hajar Raissouni"
+        ],
+        "eventDate": "2019-09-12",
+        "datePrecision": "day",
+        "actors": [
+          "MENA Rights Group"
+        ],
+        "action": "MENA Rights Group记录已在2019-09-12向联合国特别程序提交Hajar案情况并请求释放。",
+        "executionStatus": "submitted",
+        "outcome": "同来源随后记录2019-09-30特别程序来函及10-16赦免释放；只证明先后关系，未证明倡议导致赦免或定罪撤销。",
+        "relationshipToOutcome": "sequence_only",
+        "causalAttribution": null,
+        "unknowns": [
+          "属原报告前历史行为；完整提交书、政府答复及赦免法律效果尚未核实。",
+          "来源概述称七个任务，但时间线名单另含国内机构；不据此生成七项已确认国际提交。"
+        ],
+        "eventId": "followup-report-14-row-02",
+        "sourceIds": [
+          "checked-hajar-special-submission"
+        ],
+        "eventKind": "historical_action",
+        "scope": "same_case",
+        "proceedingId": "Hajar Raissouni 2019 prosecution — Special Procedures submission",
+        "personIds": [
+          "hajar-raissouni"
+        ],
+        "reportId": "followup-report-14",
+        "researchCutoff": "2026-10-09",
+        "supportClaim": "MENA Rights Group记录已在2019-09-12向联合国特别程序提交Hajar案情况并请求释放。",
+        "verification": "source_checked",
+        "matching": {
+          "proceedings": [
+            "criminal"
+          ],
+          "stages": [],
+          "issues": [
+            "detention",
+            "expression",
+            "fair_trial"
+          ],
+          "goals": [
+            "prepare_materials",
+            "local_counsel_review"
+          ],
+          "materialForm": "向特别程序提交个案情况；原始提交书/附件格式未知",
+          "differences": [
+            "2019原案包含隐私和拘押等情况；不能仅从记者身份推出新案具同等事实。",
+            "特别程序来函不是WGAD实体意见或HRC个人来文；发布/对政府披露需另行授权。"
+          ]
+        }
+      },
+      "sources": [
+        {
+          "sourceId": "checked-hajar-special-submission",
+          "title": "La journaliste marocaine Hajar Raissouni poursuivie en violation de son droit à la vie privée",
+          "url": "https://menarights.org/en/caseprofile/la-journaliste-marocaine-hajar-raissouni-poursuivie-en-violation-de-son-droit-la-vie",
+          "publisher": "MENA Rights Group",
+          "publishedAt": "2021-06-08",
+          "locator": "Opening paragraph; timeline entries 12 September, 30 September, 16 October 2019; original publication 2019-09-12, update 2021-06-08",
+          "quote": "MENA Rights Group a saisi sept procédures spéciales",
+          "readStatus": "full_text",
+          "checkedAt": "2026-10-09",
+          "reviewStatus": "agent_checked",
+          "teamReviewedAt": null,
+          "teamReviewer": null,
+          "sourceKind": "underlying_source",
+          "supportLevel": "source_checked",
+          "reportId": "followup-report-14"
+        }
+      ],
+      "check": {
+        "checkedAt": "2026-10-09",
+        "reviewerType": "agent",
+        "teamReviewer": null,
+        "method": "Opened underlying source full body through web; document-specific passages inspected",
+        "notEstablished": [
+          "Causal effectiveness",
+          "Current willingness to assist a new case",
+          "Team or lawyer verification"
+        ]
+      }
+    },
+    {
+      "caseId": "omar-radi-ii-2022",
+      "event": {
+        "eventId": "omar-ii-followup-2024-10-21-cpj-risk-check",
+        "proceeding": "Omar Radi II：2020-07-29拘押、2021年六年刑/2022年上诉的国家安全及性犯罪指控案；非2020推文案",
+        "subjects": [
+          "Omar Radi"
+        ],
+        "eventDate": "2024-10-21",
+        "datePrecision": "day",
+        "actors": [
+          "Committee to Protect Journalists",
+          "Omar Radi（受访者）"
+        ],
+        "action": "发布获释后跟进访谈，并已向司法部询问赦免条款、向内政部询问骚扰情况。",
+        "executionStatus": "implemented",
+        "outcome": "CPJ称未获两部回复。Radi报告先被跟踪、召开发布会后遭威胁电话；他表示法律身份不明影响复工。这是当事人陈述与CPJ核查行动，不是已确定的现行职业法规则。",
+        "relationshipToOutcome": "sequence_only",
+        "causalAttribution": null,
+        "sourceIds": [
+          "checked-radi-cpj-inquiries"
+        ],
+        "unknowns": [
+          "访谈及向政府发信的确切日期未披露；事件日是文章发布日期。",
+          "不同记者遭遇不同：CPJ明确Radi当时主要报告跟踪/威胁，不能套用另两人的污名报道事实。",
+          "2024-10之后当前安全及赦免法律效果本次未进一步确认。"
+        ],
+        "eventKind": "historical_action",
+        "scope": "same_case",
+        "proceedingId": "Omar Radi II：2020-07-29拘押、2021年六年刑/2022年上诉的国家安全及性犯罪指控案；非2020推文案",
+        "personIds": [
+          "omar-radi-ii-2022"
+        ],
+        "reportId": "followup-report-15",
+        "researchCutoff": "2026-10-09",
+        "supportClaim": "发布获释后跟进访谈，并已向司法部询问赦免条款、向内政部询问骚扰情况。",
+        "verification": "source_checked",
+        "matching": {
+          "proceedings": [
+            "criminal"
+          ],
+          "stages": [
+            "post_judgment",
+            "post-conviction",
+            "released"
+          ],
+          "issues": [
+            "remedy",
+            "counsel"
+          ],
+          "goals": [
+            "prepare_materials",
+            "local_counsel_review"
+          ],
+          "materialForm": "向司法部/内政部邮件询问及受访者访谈；邮件原文未知",
+          "differences": [
+            "历史问题是获释后的赦免效力与风险；拘押中的新案不应复制为已获赦后的程序。",
+            "本案可内部列出需律师核对事项；向政府或公开采访须另有授权。"
+          ]
+        }
+      },
+      "sources": [
+        {
+          "sourceId": "checked-radi-cpj-inquiries",
+          "title": "Morocco’s pardoned journalists face smears, threats after prison",
+          "url": "https://cpj.org/2024/10/moroccos-pardoned-journalists-face-smears-threats-after-prison/",
+          "publisher": "Committee to Protect Journalists",
+          "publishedAt": "2024-10-21",
+          "locator": "Opening section paragraph beginning CPJ’s emailed; Threatening phone calls, Radi-specific paragraphs",
+          "quote": "but did not receive any responses",
+          "readStatus": "full_text",
+          "checkedAt": "2026-10-09",
+          "reviewStatus": "agent_checked",
+          "teamReviewedAt": null,
+          "teamReviewer": null,
+          "sourceKind": "underlying_source",
+          "supportLevel": "source_checked",
+          "reportId": "followup-report-15"
+        }
+      ],
+      "check": {
+        "checkedAt": "2026-10-09",
+        "reviewerType": "agent",
+        "teamReviewer": null,
+        "method": "Opened underlying source full body through web; document-specific passages inspected",
+        "notEstablished": [
+          "Causal effectiveness",
+          "Current willingness to assist a new case",
+          "Team or lawyer verification"
+        ]
+      }
+    }
+  ]
+}

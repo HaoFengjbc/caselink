@@ -1,0 +1,11 @@
+{
+  "checkedAt": "2026-10-10T00:41:58.585Z",
+  "localUrl": "http://127.0.0.1:3041/history",
+  "build": "optimized production build",
+  "isolatedTestBrowser": true,
+  "reportsImported": 3,
+  "visiblePriorityCards": 3,
+  "analysisOrIntakeRequests": 0,
+  "result": "passed",
+  "userBrowserStorageChanged": false
+}

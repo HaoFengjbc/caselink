@@ -1,4 +1,5 @@
 import React from 'react';
+import {FollowupTimeline} from '@/components/results/NextSteps';
 import type {CaseRecord,ComparisonBrief,ReportSnapshot} from '@/lib/contracts';
 import {labels} from '@/lib/i18n/en';
 import {safeSourceUrl} from './comparison-data';
@@ -25,6 +26,7 @@ export function ComparisonBriefView({brief}:{brief:ComparisonBrief}){
  {title:en?'Procedural concerns':'程序问题',cell:c=><><p>{c.problems.map(x=>L.problems[x]).join(' · ')||notRecorded}</p><SnapshotEvidence ids={c.evidenceIds} snapshot={snapshot}/>{c.conflicts.map(x=><div key={x.description}><p className={styles.conflict}>{x.description}</p><SnapshotEvidence ids={x.evidenceIds} snapshot={snapshot}/></div>)}</>},
  {title:en?'Historical actions':'历史行动',cell:c=>c.interventions.length?c.interventions.map(a=><div key={a.interventionId}><p><b>{a.actor}</b> · {a.action}</p><p className={styles.note}>{en?'Recorded status':'实施记录'}: {a.executionStatus} · {a.date.value||a.date.originalText||notRecorded} · {en?'Outcome relationship':'与结果关系'}: {a.relationshipToOutcome}</p><SnapshotEvidence ids={a.evidenceIds} snapshot={snapshot}/></div>):notRecorded},
  {title:en?'Subsequent status':'后续状态',cell:c=><><p>{c.statusSummary}</p><p className={styles.note}>{en?'Known as of':'事实截至'} {c.lastKnownStatusAsOf}</p>{c.outcomes.map(o=><div key={o.outcomeId}><p>{o.description}</p><SnapshotEvidence ids={o.evidenceIds} snapshot={snapshot}/></div>)}</>},
+ {title:en?'Follow-up actions, separate proceedings and later outcomes':'后续行动、另案与后来结果',cell:c=>snapshot.followups?.some(f=>f.caseId===c.caseId)?snapshot.followups.filter(f=>f.caseId===c.caseId).map(f=><FollowupTimeline key={f.caseId} followup={f} locale={brief.locale}/>):<p className={styles.empty}>{en?'No follow-up record in this snapshot. Current library updates are not backfilled.':'这份快照未保存后续记录，不使用当前库补写。'}</p>},
  {title:en?'Unknowns':'未知 / 缺失',cell:c=><ul>{c.unknowns.map(u=><li key={u}>{u}</li>)}</ul>}
  ];
  return <div className={styles.brief} id="comparison-brief"><section className={styles.panel}><span className={styles.eyebrow}>{en?'Internal handoff · public source snapshot':'内部交接 · 公开资料快照'}</span><h2>{brief.title}</h2><p>{brief.createdAt} · {snapshot.corpusVersion} · {brief.caseIds.length} {en?'selected records':'个所选案例'}</p><p className={styles.note}>{en?'No AI generation, web search, or live status update. Export this snapshot to preserve the comparison.':'没有调用 AI、联网搜索或更新最新案情。导出快照可保留本次比较内容。'}</p></section>

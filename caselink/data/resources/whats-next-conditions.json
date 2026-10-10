@@ -1,0 +1,96 @@
+{
+  "version": "2026-10-09.v1",
+  "checkedAt": "2026-10-09",
+  "reviewStatus": "agent_checked",
+  "teamReviewedAt": null,
+  "teamReviewer": null,
+  "sources": {
+    "iccprStatus": "https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-4&chapter=4&clang=_en",
+    "optionalProtocolStatus": "https://treaties.un.org/Pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-5&chapter=4&clang=_en",
+    "entryIntoForceRules": "https://treaties.un.org/doc/publication/unts/volume%20999/volume-999-i-14668-english.pdf",
+    "russiaEchr": "https://www.echr.coe.int/documents/d/echr/resolution_echr_cessation_membership_russia_coe_eng"
+  },
+  "scope": "Targeted current-state checks only. Effective dates are deposit dates plus the treaty-defined three calendar months where relevant; no individual date or deadline is inferred. Historical and continuing violations require individual review. No global participation lookup defaults to confirmed.",
+  "countries": [
+    {
+      "countryCode": "KZ",
+      "participation": "confirmed",
+      "iccprEffectiveFrom": "2006-04-24",
+      "optionalProtocol": "confirmed",
+      "opEffectiveFrom": "2009-09-30",
+      "opWithdrawal": null,
+      "detailZh": "2006-01-24批准ICCPR；2009-06-30批准OP。OP声明限生效后国家行为；事件时间与国家管辖仍须个案核对。",
+      "detailEn": "ICCPR ratified 2006-01-24; OP ratified 2009-06-30. The OP declaration concerns State acts after its entry into force; event timing and jurisdiction require separate review."
+    },
+    {
+      "countryCode": "TN",
+      "participation": "confirmed",
+      "iccprEffectiveFrom": "1976-03-23",
+      "optionalProtocol": "confirmed",
+      "opEffectiveFrom": "2011-09-29",
+      "opWithdrawal": null,
+      "detailZh": "1969-03-18批准ICCPR；2011-06-29加入OP。国内援引、事件时间及受理要件另核。",
+      "detailEn": "ICCPR ratified 1969-03-18; OP acceded to 2011-06-29. Domestic effect, event timing and admissibility remain separate."
+    },
+    {
+      "countryCode": "GB",
+      "participation": "confirmed",
+      "iccprEffectiveFrom": "1976-08-20",
+      "optionalProtocol": "not_met",
+      "opEffectiveFrom": null,
+      "opWithdrawal": null,
+      "detailZh": "1976-05-20批准ICCPR；英国未参加第一任择议定书。ICCPR缔约不能替代个人来文国家资格。",
+      "detailEn": "ICCPR ratified 1976-05-20. The UK is not party to OP1; Covenant participation does not establish individual-communication competence."
+    },
+    {
+      "countryCode": "HK",
+      "participation": "confirmed",
+      "iccprEffectiveFrom": null,
+      "optionalProtocol": "not_met",
+      "opEffectiveFrom": null,
+      "opWithdrawal": null,
+      "detailZh": "UNTC IV.4脚注6记载ICCPR在香港特别行政区继续适用。不得从中国内地状态推导；香港未获第一任择议定书程序的领土适用。",
+      "detailEn": "UNTC IV.4 note 6 records continued Covenant application to Hong Kong SAR. Mainland status is not a proxy; OP1 individual communications have not been extended to Hong Kong."
+    },
+    {
+      "countryCode": "CN",
+      "participation": "not_met",
+      "iccprEffectiveFrom": null,
+      "optionalProtocol": "not_met",
+      "opEffectiveFrom": null,
+      "opWithdrawal": null,
+      "detailZh": "中国1998-10-05签署ICCPR，当前未批准（香港等领土安排须独立核对）；未参加OP1。这里只可作清楚标示的比较标准。",
+      "detailEn": "China signed the ICCPR on 1998-10-05 but has not ratified it; territorial arrangements such as Hong Kong require separate review. China is not party to OP1. References are comparative only."
+    },
+    {
+      "countryCode": "MY",
+      "participation": "not_met",
+      "iccprEffectiveFrom": null,
+      "optionalProtocol": "not_met",
+      "opEffectiveFrom": null,
+      "opWithdrawal": null,
+      "detailZh": "马来西亚未列ICCPR/OP1参与方表。可保留国际比较标准，不写作其ICCPR条约义务。",
+      "detailEn": "Malaysia is not a participant in the ICCPR or OP1 tables. International references are comparative standards, not its Covenant treaty obligations."
+    },
+    {
+      "countryCode": "RU",
+      "participation": "confirmed",
+      "iccprEffectiveFrom": "1976-03-23",
+      "optionalProtocol": "confirmed",
+      "opEffectiveFrom": "1992-01-01",
+      "opWithdrawal": null,
+      "detailZh": "ICCPR参与方；OP于1991-10-01加入，声明限其生效后情势/事件。不得将历史欧洲人权法院程序迁移至2022-09-16之后的新事件。",
+      "detailEn": "ICCPR participant; OP accession 1991-10-01 with a temporal declaration. Historical ECtHR proceedings cannot be transferred to events after 2022-09-16."
+    },
+    {
+      "countryCode": "BY",
+      "participation": "confirmed",
+      "iccprEffectiveFrom": "1976-03-23",
+      "optionalProtocol": "not_met",
+      "opEffectiveFrom": "1992-12-30",
+      "opWithdrawal": "2023-02-08",
+      "detailZh": "白俄罗斯仍为ICCPR参与方，但OP退出于2023-02-08生效。新来文受此限制；退出前已提交事项须按OP第12(2)条另核，旧案不自动关闭。",
+      "detailEn": "Belarus remains an ICCPR participant but OP denunciation took effect 2023-02-08. New communications are restricted; pre-existing submissions require separate OP Article 12(2) review and are not automatically closed."
+    }
+  ]
+}

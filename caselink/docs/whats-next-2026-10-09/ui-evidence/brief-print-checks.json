@@ -1,0 +1,47 @@
+[
+  {
+    "case": "case-1",
+    "bodyPages": 1,
+    "fullPages": 6,
+    "pageSizePoints": [
+      594.96,
+      841.92
+    ],
+    "bodyTextCharacters": 1780,
+    "appendixStartsPage2": true,
+    "bodyMatchesFullPage1": true,
+    "cjkNormalization": "NFKC for compatibility radical glyphs in PDF extraction",
+    "fontSizePt": 10,
+    "lineHeight": 1.4
+  },
+  {
+    "case": "case-2",
+    "bodyPages": 1,
+    "fullPages": 3,
+    "pageSizePoints": [
+      594.96,
+      841.92
+    ],
+    "bodyTextCharacters": 1314,
+    "appendixStartsPage2": true,
+    "bodyMatchesFullPage1": true,
+    "cjkNormalization": "NFKC for compatibility radical glyphs in PDF extraction",
+    "fontSizePt": 10,
+    "lineHeight": 1.4
+  },
+  {
+    "case": "case-3",
+    "bodyPages": 1,
+    "fullPages": 3,
+    "pageSizePoints": [
+      594.96,
+      841.92
+    ],
+    "bodyTextCharacters": 1223,
+    "appendixStartsPage2": true,
+    "bodyMatchesFullPage1": true,
+    "cjkNormalization": "NFKC for compatibility radical glyphs in PDF extraction",
+    "fontSizePt": 10,
+    "lineHeight": 1.4
+  }
+]

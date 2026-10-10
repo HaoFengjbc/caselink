@@ -1,0 +1,268 @@
+{
+  "finalFrozenSourceBrowserTests": 4,
+  "finalPassed": 4,
+  "retainedCombinedRegressionTests": 8,
+  "retainedCombinedPassed": 8,
+  "legacySourceTests": 4,
+  "ordinaryCases": 3,
+  "actualNewCaseDocumentDownloads": 9,
+  "comparisonDownloads": 1,
+  "mode": "rule_reference; actual HTTP responses; no mocked analysis",
+  "pdfBodyPages": [
+    1,
+    1,
+    1
+  ],
+  "pdfFullPages": [
+    6,
+    3,
+    3
+  ],
+  "files": [
+    {
+      "path": "brief-print-checks.json",
+      "bytes": 1068,
+      "sha256": "4c2e50bd576e65c51db9748e2359c48f6302f4df3c6d378b8e1b813b469bd1e6"
+    },
+    {
+      "path": "brief-print-manifest.json",
+      "bytes": 1182,
+      "sha256": "30aa34b88729416846f43a26091eeaa30577ea8926a361625091f1944bbfac20"
+    },
+    {
+      "path": "browser-results-full-regression.json",
+      "bytes": 10660,
+      "sha256": "b3813f26a06bc3acdba0a9440ec1b83d1086b783768975ff4e4036314f8de789"
+    },
+    {
+      "path": "browser-results.json",
+      "bytes": 6232,
+      "sha256": "d80f2ddc43133622bfe057ac073354111892e05fdf7037a680b7d816be96752d"
+    },
+    {
+      "path": "case-1/CaseLink-issue_matrix-81cedbde-811.md",
+      "bytes": 46455,
+      "sha256": "deb7ac590148319a765215c2cffb7bfdeac79266d3b6e2a89713fa6c839f09b4"
+    },
+    {
+      "path": "case-1/CaseLink-lawyer_brief-81cedbde-811.md",
+      "bytes": 22776,
+      "sha256": "d1434e016e3470e164d3d7a6003d57b7a02d91fef90498ffd2dbbf54570cd778"
+    },
+    {
+      "path": "case-1/CaseLink-timeline-81cedbde-811.md",
+      "bytes": 23058,
+      "sha256": "cc6614c1b48d0250ea5af2ec685b7f67a6e9142906a4b9558bed79c45e78f361"
+    },
+    {
+      "path": "case-1/complete-output.json",
+      "bytes": 843603,
+      "sha256": "db726e906bd442fb9475e51c1410e6514c9b47132b939ca7cffe7f697c2d8486"
+    },
+    {
+      "path": "case-1/ordinary-input.json",
+      "bytes": 1136,
+      "sha256": "73f3ab72409ddb6645b1a2e7f03ff62277025f693ebf02bddd28770ee147e434"
+    },
+    {
+      "path": "case-1/priority-cards.png",
+      "bytes": 310787,
+      "sha256": "9b12d9c908295dfdae5e610ae5a9fe5af48a003991c7c9bd6d1c76f64b867eae"
+    },
+    {
+      "path": "case-1/whats-next-desktop.png",
+      "bytes": 263329,
+      "sha256": "50cdcab3ce3703875f5e1863f159a5d6e79e1c7a7c04b60bbf3611b62b7abf1e"
+    },
+    {
+      "path": "case-1/whats-next-mobile.png",
+      "bytes": 98476,
+      "sha256": "3709f3e03211a5ad8d475b03162d65c48c428cd371a6d52165e6c3789db2d77b"
+    },
+    {
+      "path": "case-2/CaseLink-issue_matrix-5e347bbc-853.md",
+      "bytes": 18611,
+      "sha256": "8345d33a770d8e014f6af08437cab9804af1f8e98343c5e4b023f19f4a3dd6cb"
+    },
+    {
+      "path": "case-2/CaseLink-lawyer_brief-5e347bbc-853.md",
+      "bytes": 7530,
+      "sha256": "2e0f61a335ddce946f89ee862946b1f844af83833609b47ed1d5d34b3f114d51"
+    },
+    {
+      "path": "case-2/CaseLink-timeline-5e347bbc-853.md",
+      "bytes": 8824,
+      "sha256": "a3eccfdb4835dcc4d12028198a07c99d63d740587b4d4376f110b343dedbea20"
+    },
+    {
+      "path": "case-2/complete-output.json",
+      "bytes": 268668,
+      "sha256": "4aa7515afcd1a41d4cf134f922d77be0862bc4743f94a8d18675926223d2e60a"
+    },
+    {
+      "path": "case-2/ordinary-input.json",
+      "bytes": 1161,
+      "sha256": "7fa29e8287fee5ad27e95660a63d56cd1783931734e55fef63d6ed48abdba57d"
+    },
+    {
+      "path": "case-2/priority-cards.png",
+      "bytes": 312309,
+      "sha256": "4a8ee733699ba349e6dbce50a9c220b39afac8b5b405b43bc008aabc555cca46"
+    },
+    {
+      "path": "case-2/whats-next-desktop.png",
+      "bytes": 270958,
+      "sha256": "e3400ae0335ee8dd230b3e0448375c7a00794428793227d6c0c8b6e47eec7183"
+    },
+    {
+      "path": "case-2/whats-next-mobile.png",
+      "bytes": 98204,
+      "sha256": "b485fe453fa19f36a68045b31eaa36ccbb57acaf0801e90d006f8addeff8642a"
+    },
+    {
+      "path": "case-3/CaseLink-issue_matrix-10c4ded4-7c1.md",
+      "bytes": 17126,
+      "sha256": "3e9f9e147fca7328e7988543b31973e2533f8fbb26e7e2b9876f6574480de828"
+    },
+    {
+      "path": "case-3/CaseLink-lawyer_brief-10c4ded4-7c1.md",
+      "bytes": 7029,
+      "sha256": "15fe7786470fe21f8151515d672e4c7ce496fee06617f1245664e0f742ef6f16"
+    },
+    {
+      "path": "case-3/CaseLink-timeline-10c4ded4-7c1.md",
+      "bytes": 7831,
+      "sha256": "4efdeab24e9d8fd44058bb3045de984ca05bfc08600fbb927b72b602ff6b24ed"
+    },
+    {
+      "path": "case-3/complete-output.json",
+      "bytes": 240944,
+      "sha256": "84316f0e43110a9fe2cbdff1d1304db389d63c6aa448e76be9f8f9f8936d9d05"
+    },
+    {
+      "path": "case-3/ordinary-input.json",
+      "bytes": 1010,
+      "sha256": "1ae5dec506bc53534c2a2ca938a43a82798a4867e8c5ac511f59cdd5bdf62870"
+    },
+    {
+      "path": "case-3/priority-cards.png",
+      "bytes": 303164,
+      "sha256": "6c659ff148c19dd4f4d6a6c05bcf3daae3049dbda70bd531affb19353bd14cf7"
+    },
+    {
+      "path": "case-3/whats-next-desktop.png",
+      "bytes": 259420,
+      "sha256": "e7253209a2dda2f3e2a0e8964e9f4e4496797c8e39921a86042c390a471730f7"
+    },
+    {
+      "path": "case-3/whats-next-mobile.png",
+      "bytes": 96974,
+      "sha256": "bf0cd7845d1fade83cb176251f1f97f702231f1423a57725f5e8d231664748a7"
+    },
+    {
+      "path": "comparison/CaseLink-comparison-74e34ac5-4c74-4ca5-be30-69d5fa394f10.md",
+      "bytes": 75795,
+      "sha256": "2e6e0b1f56019e31e462aa1f64cea52340ddb1a885fdf524d3e428f5f82c6ded"
+    },
+    {
+      "path": "comparison/comparison-desktop.png",
+      "bytes": 166617,
+      "sha256": "794f5db924d613dacdba7fb78bb51017b7f0d67965759bfd1c85ab2866814434"
+    },
+    {
+      "path": "legacy-examples/source-integration-来源链、主动保存与真实导出：博主被诉/CaseLink-history-1-of-1.json",
+      "bytes": 733512,
+      "sha256": "785f27a79f4b2628df2845b576fcf017b05428035979ef6003389f20e5fd4204"
+    },
+    {
+      "path": "legacy-examples/source-integration-来源链、主动保存与真实导出：博主被诉/CaseLink-internal-working-pack-2026-10-10.md",
+      "bytes": 101953,
+      "sha256": "f847fc40bd25224926050cd13dba26b015064e909fbb19e1bf7b591fe93eb794"
+    },
+    {
+      "path": "legacy-examples/source-integration-来源链、主动保存与真实导出：博主被诉/CaseLink-行动参考-2026-10-10.md",
+      "bytes": 220500,
+      "sha256": "15d5e5421043c1b78c97d7cb53031b2618a5790203f18809a41d257edb6314df"
+    },
+    {
+      "path": "legacy-examples/source-integration-来源链、主动保存与真实导出：博主被诉/tn-constitution-expression-next-step.png",
+      "bytes": 62553,
+      "sha256": "e161316f5da9c9c7782e2f0206e5d904eec58c4be70dd22790cd9d0c0114514f"
+    },
+    {
+      "path": "legacy-examples/source-integration-来源链、主动保存与真实导出：博主被诉/tn-constitution-expression.png",
+      "bytes": 2093521,
+      "sha256": "23bb626ee72408715b65200b48fa8f0264c5d16631f3a50c7d281da566c4ad23"
+    },
+    {
+      "path": "legacy-examples/source-integration-来源链、主动保存与真实导出：英国调查报道/CaseLink-history-1-of-1.json",
+      "bytes": 441197,
+      "sha256": "eb088b4e2e169fa3e014a9d6415c773a1d55f12319559c6902a411af57e3d255"
+    },
+    {
+      "path": "legacy-examples/source-integration-来源链、主动保存与真实导出：英国调查报道/CaseLink-internal-working-pack-2026-10-10.md",
+      "bytes": 78950,
+      "sha256": "a168186a9b722c3f3353eaa43305610eaf0445a9f9227018a4527c23af21988d"
+    },
+    {
+      "path": "legacy-examples/source-integration-来源链、主动保存与真实导出：英国调查报道/CaseLink-行动参考-2026-10-10.md",
+      "bytes": 117537,
+      "sha256": "bb4004bc4fa148ec1e658ec1e688182cd3346cfecfb9de3cba2576e40b3836f3"
+    },
+    {
+      "path": "legacy-examples/source-integration-来源链、主动保存与真实导出：英国调查报道/ew-defamation-act-2013-next-step.png",
+      "bytes": 62686,
+      "sha256": "fc96f3c8998a4b21ab9fc5b16fcf2cecc1213ffea399d45eb0599ded72e27bed"
+    },
+    {
+      "path": "legacy-examples/source-integration-来源链、主动保存与真实导出：英国调查报道/ew-defamation-act-2013.png",
+      "bytes": 2041164,
+      "sha256": "f8f88dd9daf57f9a76053cfe66798f1bece606ba2ff094c6b8f667bdbee20b22"
+    },
+    {
+      "path": "legacy-examples/source-integration-来源链、主动保存与真实导出：记者受限/CaseLink-history-1-of-1.json",
+      "bytes": 873269,
+      "sha256": "dac8785d6cd0740d0a7b440db50ebcd4c16e6a6257c95978649db425b4de6d96"
+    },
+    {
+      "path": "legacy-examples/source-integration-来源链、主动保存与真实导出：记者受限/CaseLink-internal-working-pack-2026-10-10.md",
+      "bytes": 131045,
+      "sha256": "6214ba3cea07d47977e16568dca7d52372c926bfd788d37d9ca7cf800d893340"
+    },
+    {
+      "path": "legacy-examples/source-integration-来源链、主动保存与真实导出：记者受限/CaseLink-行动参考-2026-10-10.md",
+      "bytes": 255073,
+      "sha256": "b013ae0276267f7b9d0469d16fa59bb33209b63298d30768540c30098d9db0a4"
+    },
+    {
+      "path": "legacy-examples/source-integration-来源链、主动保存与真实导出：记者受限/kz-criminal-procedure-detention-next-step.png",
+      "bytes": 64571,
+      "sha256": "c171fb05a499027d1bb7aca709fce4d2eaafd7e78da654ade0a86f509c18fce3"
+    },
+    {
+      "path": "legacy-examples/source-integration-来源链、主动保存与真实导出：记者受限/kz-criminal-procedure-detention.png",
+      "bytes": 2388943,
+      "sha256": "f8f4600d12b706ce34f45f6d280c133de6aacaf61e6d8220234d7c63e9f46c03"
+    },
+    {
+      "path": "print/briefs-all-pages.png",
+      "bytes": 750218,
+      "sha256": "7f6247973b2b6876f69e40d9d52d4c49f449a814586d53cebbb5048eca76c8e5"
+    },
+    {
+      "path": "print/case-1-brief-body.png",
+      "bytes": 219539,
+      "sha256": "13b4db0bd4c9df6b702e5e25acce10bab8a566ee78ab218fe529a2c14639f33f"
+    },
+    {
+      "path": "print/case-2-brief-body.png",
+      "bytes": 178006,
+      "sha256": "0df42e1be9078f1b6312cb8429dd074c8381a51aec7dd583bb528e61c4865d48"
+    },
+    {
+      "path": "print/case-3-brief-body.png",
+      "bytes": 168830,
+      "sha256": "397a2e2e1b8cc8e2b53fd95ae2cff150bcede795627b9a3155c8ca234e1f3551"
+    }
+  ]
+}
