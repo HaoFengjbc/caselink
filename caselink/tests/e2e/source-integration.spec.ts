@@ -22,6 +22,9 @@ for(const [label,localId] of [
  const analyzed=await response;expect(analyzed.ok(),await analyzed.text()).toBeTruthy();
  const report=await analyzed.json();
  await expect(page).toHaveURL(/\/analysis$/);
+ // Key questions lead the page; the full provision list sits in the folded sources section.
+ await expect(page.getByRole('region',{name:'本案的关键问题'})).toBeVisible();
+ await page.getByText(/^资料来源与审核状态/).click();
  await expect(page.getByRole('region',{name:'本案法律研究链'})).toBeVisible();
  const binding=report.snapshot.legalResearch.bindings.find((b:{resourceId:string})=>b.resourceId===localId);
  expect(binding).toBeTruthy();
@@ -58,12 +61,12 @@ for(const [label,localId] of [
  await imported.goto(new URL('/history',page.url()).href);
  await imported.getByLabel('导入 CaseLink 文件').setInputFiles(backupPath);
  await imported.getByRole('link',{name:'查看报告',exact:true}).click();
- await expect(imported.getByRole('region',{name:'本案法律研究链'})).toBeVisible();
+ await expect(imported.getByRole('region',{name:'本案的关键问题'})).toBeVisible();
  const restored=await imported.evaluate(()=>Object.entries(localStorage).filter(([k])=>k.startsWith('caselink.report.v1.')).map(([,v])=>JSON.parse(v)));
  expect(restored[0].result.snapshot).toEqual(report.snapshot);await fresh.close();
  await page.goto(`/analysis?id=${report.analysisId}`);
- await expect(page.getByRole('region',{name:'本案法律研究链'})).toBeVisible();
- await page.reload();await expect(page.getByRole('region',{name:'本案法律研究链'})).toBeVisible();
+ await expect(page.getByRole('region',{name:'本案的关键问题'})).toBeVisible();
+ await page.reload();await expect(page.getByRole('region',{name:'本案的关键问题'})).toBeVisible();
  await page.locator('article').filter({has:page.locator(`[data-next-step="${step.actionId}"]`)}).getByText('步骤、依据与条件',{exact:true}).click();
  await page.locator(`[data-next-step="${step.actionId}"]`).screenshot({path:testInfo.outputPath(`${localId}-next-step.png`)});
  await page.screenshot({path:testInfo.outputPath(`${localId}.png`),fullPage:true});

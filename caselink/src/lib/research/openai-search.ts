@@ -23,7 +23,7 @@ export function publicSearchPayload(query:SafeResearchQuery){
   const plan={...query.plan,disputedConduct:query.topics,evidenceIssues:[]};
   for(const term of buildResearchQuery({...canonical,primaryGoal},plan,query.attempt).searchTerms)possible.add(term);
  }
- if(!query.searchTerms.length||query.searchTerms.length>2||query.searchTerms.some(term=>!possible.has(term)))throw new Error('unapproved_search_query');
+ if(!query.searchTerms.length||query.searchTerms.length>3||query.searchTerms.some(term=>!possible.has(term)))throw new Error('unapproved_search_query');
  return {jurisdiction,caseKind:canonical.intake!.caseKind,stage:canonical.stage,searchTerms:[...query.searchTerms]};
 }
 
@@ -43,14 +43,14 @@ export const openAIWebSearchTransport:WebSearchTransport=async({config,query,sig
   include:['web_search_call.action.sources'],max_tool_calls:maxToolCalls,max_output_tokens:maxOutputTokens,reasoning:{effort:'low'},
  });
  const outputLanguage=locale==='en'?'English':'Chinese';
- const discovery=await recordModel('search',config.model,()=>client.responses.create(request(`${SEARCH_INSTRUCTIONS}\nDISCOVERY ONLY: search for up to three relevant specific public source URLs. Return one short cited candidate paragraph per source; detailed source reading happens next.`,{research:publicQuery,outputLanguage},1400),{signal}));
+ const discovery=await recordModel('search',config.model,()=>client.responses.create(request(`${SEARCH_INSTRUCTIONS}\nDISCOVERY ONLY: search for up to four relevant specific public source URLs: comparable judgments or case reports, and the official text of the domestic constitution, statute or code behind the research topics, preferring government, legislature and court websites. Return one short cited candidate paragraph per source; detailed source reading happens next.`,{research:publicQuery,outputLanguage},1400,4),{signal}));
  if(signal.aborted)throw cancelled();
  const discoveryTools=discovery.output.filter(item=>item.type==='web_search_call');
  const candidates=assembleWebResearch(discovery,query.searchTerms);
- const urls=candidates.sources.slice(0,3).map(source=>source.url);
- if(discovery.status!=='completed'||!urls.length||discoveryTools.length>3)return {status:discovery.status,output:discoveryTools,requireOpenedSources:true,readSourceUrls:[]};
+ const urls=candidates.sources.slice(0,4).map(source=>source.url);
+ if(discovery.status!=='completed'||!urls.length||discoveryTools.length>4)return {status:discovery.status,output:discoveryTools,requireOpenedSources:true,readSourceUrls:[]};
  let reading:OpenAI.Responses.Response;
- try{reading=await recordModel('reading',config.model,()=>client.responses.create(request(`${SEARCH_INSTRUCTIONS}\nREADING ONLY: open the candidate URLs with open_page and read the relevant main text through its ending. Report supported facts and all stated procedural outcomes in concise paragraphs, with inline citations to those pages. Only use the supplied candidate URLs. Do not substitute search snippets or prior knowledge for opening the pages. If a page is blocked, omit its factual report. Do not invent a comparable case when a source is a general standard.`,{research:publicQuery,candidateUrls:urls,outputLanguage},4000,6),{signal}));}
+ try{reading=await recordModel('reading',config.model,()=>client.responses.create(request(`${SEARCH_INSTRUCTIONS}\nREADING ONLY: open the candidate URLs with open_page and read the relevant main text through its ending. Report supported facts and all stated procedural outcomes in concise paragraphs, with inline citations to those pages. For constitutions, legislation, codes and judgments, also copy the exact operative words of the relevant provisions or holdings verbatim in quotation marks, in the original language and with their article, section or paragraph numbers. Only use the supplied candidate URLs. Do not substitute search snippets or prior knowledge for opening the pages. If a page is blocked, omit its factual report. Do not invent a comparable case when a source is a general standard.`,{research:publicQuery,candidateUrls:urls,outputLanguage},4000,8),{signal}));}
  catch(error){if(signal.aborted)throw error;return {status:'failed',output:discoveryTools,failureReason:'search_failed',requireOpenedSources:true,readSourceUrls:[]};}
  if(signal.aborted)throw cancelled();
  const readingTools=reading.output.filter(item=>item.type==='web_search_call');
@@ -60,6 +60,6 @@ export const openAIWebSearchTransport:WebSearchTransport=async({config,query,sig
   const action=item.action;const url=action.type==='open_page'&&item.status==='completed'?safePublicUrl(action.url):null;
   return url&&allowed.has(urlKey(url))?[url]:[];
  });
- if(readingTools.length>6)return {status:'incomplete',output:[...discoveryTools,...readingTools],requireOpenedSources:true,readSourceUrls:[]};
+ if(readingTools.length>8)return {status:'incomplete',output:[...discoveryTools,...readingTools],requireOpenedSources:true,readSourceUrls:[]};
  return {status:reading.status,output:[...discoveryTools,...readingTools,...reading.output.filter(item=>item.type==='message')],requireOpenedSources:true,readSourceUrls};
 };

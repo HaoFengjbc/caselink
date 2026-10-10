@@ -57,13 +57,13 @@ function parseArguments(args) {
 
 const modules = new Map();
 const moduleUrls = new Map();
-const fixtureAllowlist = new Set(['src/lib/whats-next-contracts.ts','src/lib/materials/contracts.ts','src/lib/legal-contracts.ts','src/lib/workflow-contracts.ts', 'src/lib/contracts.ts', 'src/lib/intake/contracts.ts', 'src/lib/research/contracts.ts', 'src/lib/research/plan.ts', 'data/demo/fixtures.ts']);
+const fixtureAllowlist = new Set(['src/lib/whats-next-contracts.ts','src/lib/materials/contracts.ts','src/lib/legal-contracts.ts','src/lib/workflow-contracts.ts', 'src/lib/contracts.ts', 'src/lib/intake/contracts.ts', 'src/lib/research/contracts.ts', 'src/lib/research/plan.ts', 'src/lib/issues/contracts.ts', 'data/demo/fixtures.ts']);
 async function fixtureModule(relative) {
   assert(fixtureAllowlist.has(relative), 'LOCAL_INPUT_ERROR', '拒绝加载未指定的本地输入模块。');
   const filename = path.join(root, relative);
   if (modules.has(filename)) return modules.get(filename);
   let source = stripTypeScriptTypes(await fs.readFile(filename, 'utf8'), { mode: 'strip' });
-  if (['src/lib/whats-next-contracts.ts','src/lib/materials/contracts.ts','src/lib/legal-contracts.ts','src/lib/workflow-contracts.ts', 'src/lib/contracts.ts', 'src/lib/intake/contracts.ts', 'src/lib/research/contracts.ts', 'src/lib/research/plan.ts'].includes(relative)) {
+  if (['src/lib/whats-next-contracts.ts','src/lib/materials/contracts.ts','src/lib/legal-contracts.ts','src/lib/workflow-contracts.ts', 'src/lib/contracts.ts', 'src/lib/intake/contracts.ts', 'src/lib/research/contracts.ts', 'src/lib/research/plan.ts', 'src/lib/issues/contracts.ts'].includes(relative)) {
     source = source.replace(/import\s*\{\s*z\s*\}\s*from\s*['"]zod['"];?/, `import zod from ${JSON.stringify(pathToFileURL(require.resolve('zod')).href)}; const { z } = zod;`);
     if(relative==='src/lib/contracts.ts'||relative==='src/lib/intake/contracts.ts'||relative==='src/lib/materials/contracts.ts') {
       await fixtureModule('src/lib/workflow-contracts.ts');
@@ -86,6 +86,8 @@ async function fixtureModule(relative) {
       await fixtureModule('src/lib/research/contracts.ts');
       const researchUrl = moduleUrls.get(path.join(root, 'src/lib/research/contracts.ts'));
       source = source.replace(/\bfrom\s*['"]\.\/research\/contracts['"]/g, `from ${JSON.stringify(researchUrl)}`);
+      await fixtureModule('src/lib/issues/contracts.ts');
+      source = source.replace(/\bfrom\s*['"]\.\/issues\/contracts['"]/g, `from ${JSON.stringify(moduleUrls.get(path.join(root, 'src/lib/issues/contracts.ts')))}`);
       // Rewrite both the import and re-export, without enabling generic relative-module loading.
       source = source.replace(/\bfrom\s*['"]\.\/intake\/contracts['"]/g, `from ${JSON.stringify(intakeUrl)}`);
     }

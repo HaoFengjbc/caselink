@@ -23,6 +23,7 @@ export function captureReportSnapshot(result:AnalysisResult,locale:'zh'|'en'=res
  const requiredEvidenceIds = new Set([...result.comparableCases.flatMap(c => c.evidenceIds), ...result.actionOptions.flatMap(a => a.supportingEvidenceIds), ...result.sources.map(e => e.evidenceId)]);
  if ([...requiredEvidenceIds].some(id => !snapshot.evidence.some(e => e.evidenceId === id)) || snapshot.evidence.some(e => !snapshot.documents.some(d => d.documentId === e.documentId))) snapshot.completeness = 'legacy_partial';
  if (result.comparableCases.some(c => !snapshot.cases.some(record => record.caseId === c.caseId)) || [...resourceIds].some(id => !snapshot.resources.some(r => r.resourceId === id))) snapshot.completeness = 'legacy_partial';
+ if(result.caseIssues)snapshot.caseIssues=structuredClone(result.caseIssues);
  if(result.legalResearch){
   snapshot.legalResearch=structuredClone(result.legalResearch);
   if(result.legalResearch.bindings.some(binding=>!snapshot.resources.some(resource=>resource.resourceId===binding.resourceId&&resource.sourceAudit?.provisions.some(provision=>provision.provisionId===binding.provisionId&&provision.supports.includes(binding.claimKey)&&provision.explanation===binding.claim))))snapshot.completeness='legacy_partial';

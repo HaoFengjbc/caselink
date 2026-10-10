@@ -28,6 +28,18 @@ const textOnly=(text:string)=>text
  .replace(/\[\d{1,3}(?:\s*[,;–-]\s*\d{1,3})*\]/g,'')
  .replace(/\(\s*\)/g,'').replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g,'').trim();
 
+/** Public unicast addresses only: no private, loopback, link-local, multicast, transition or documentation space. */
+export function publicIpAddress(address:string):boolean{
+ const family=isIP(address);
+ if(family===4){
+  const [a,b,c]=address.split('.').map(Number);
+  return !(a===0||a===10||a===127||a>=224||(a===100&&b>=64&&b<=127)||(a===169&&b===254)||(a===172&&b>=16&&b<=31)||(a===192&&(b===168||b===0||b===2))||(a===198&&(b===18||b===19||(b===51&&c===100)))||(a===203&&b===0&&c===113));
+ }
+ // Only global-unicast-shaped IPv6, excluding transition and documentation space.
+ if(family===6)return /^[23][0-9a-f]{3}:/i.test(address)&&!/^2001:(?:0:|2:|10:|20:|db8:)/i.test(address)&&!address.toLowerCase().startsWith('2002:')&&!address.toLowerCase().startsWith('3fff:');
+ return false;
+}
+
 /** Link validation, not a fetch: only public-shaped HTTP(S) URLs may be displayed. */
 export function safePublicUrl(value:unknown):string|null{
  if(typeof value!=='string'||value.length>3000||/[\u0000-\u0020\u007F\\]/.test(value))return null;
@@ -36,12 +48,8 @@ export function safePublicUrl(value:unknown):string|null{
  const host=url.hostname.toLowerCase().replace(/\.$/,'');
  const address=host.replace(/^\[|\]$/g,'');
  const family=isIP(address);
- if(family===4){
-  const [a,b,c]=address.split('.').map(Number);
-  if(a===0||a===10||a===127||a>=224||(a===100&&b>=64&&b<=127)||(a===169&&b===254)||(a===172&&b>=16&&b<=31)||(a===192&&(b===168||b===0||b===2))||(a===198&&(b===18||b===19||(b===51&&c===100)))||(a===203&&b===0&&c===113))return null;
- }else if(family===6){
-  // Only global-unicast-shaped IPv6, excluding transition and documentation space.
-  if(!/^[23][0-9a-f]{3}:/.test(address)||/^2001:(?:0:|2:|10:|20:|db8:)/.test(address)||address.startsWith('2002:')||address.startsWith('3fff:'))return null;
+ if(family){
+  if(!publicIpAddress(address))return null;
  }else{
   if(!host.includes('.')||!/[a-z]/i.test(host)||/(?:^|\.)(?:localhost|local|internal|intranet|lan|home|test|invalid|example|onion)$/.test(host))return null;
   if(host.endsWith('.localhost.localdomain')||host==='localhost.localdomain'||host.endsWith('.nip.io')||host.endsWith('.sslip.io')||host.endsWith('.localtest.me'))return null;

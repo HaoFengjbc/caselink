@@ -89,7 +89,7 @@ describe('English analysis end to end',()=>{
       const result=await analyzeInput(scenario.input,{config:demoConfig,locale:'en'});
       expect(result.mode).toBe('preset_demo');expect(result.locale).toBe('en');
       // Immutable source snapshots retain original-language source metadata and quotes.
-      const presentation={...result,sources:[],snapshot:undefined,whatsNext:undefined,legalResearch:undefined,followups:undefined,nextSteps:result.nextSteps?.map(step=>({...step,history:[]})),actionOptions:result.actionOptions.map(a=>({...a,prerequisites:a.prerequisites.filter(p=>!result.legalResearch?.bindings.some(b=>b.claim===p))}))};
+      const presentation={...result,sources:[],snapshot:undefined,whatsNext:undefined,legalResearch:undefined,followups:undefined,caseIssues:result.caseIssues?.map(issue=>({...issue,facts:[],authorities:issue.authorities.filter(a=>a.check!=='catalog').map(a=>({...a,quote:null}))})),nextSteps:result.nextSteps?.map(step=>({...step,history:[]})),actionOptions:result.actionOptions.map(a=>({...a,prerequisites:a.prerequisites.filter(p=>!result.legalResearch?.bindings.some(b=>b.claim===p))}))};
       expect(CJK.test(JSON.stringify(presentation))).toBe(false);
       expect(result.legalResearch?.bindings.every(b=>b.relationOrigin==='curated_rule')).toBe(true);
       expect(result.snapshot?.locale).toBe('en');

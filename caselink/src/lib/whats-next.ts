@@ -8,7 +8,15 @@ import {reportedRepresentation} from './whats-next-context';
 import {labels} from './i18n/en';
 const tr=(locale:'zh'|'en',zh:string,en:string)=>locale==='en'?en:zh;
 const conditionState=(status:'confirmed'|'unknown'|'not_met',locale:'zh'|'en')=>({confirmed:tr(locale,'已确认','Confirmed'),unknown:tr(locale,'待确认','To confirm'),not_met:tr(locale,'不满足','Not met')})[status];
-const precision=(date:string|null):WorkFact['precision']=>!date?'unknown':/^\d{4}-\d{2}-\d{2}$/.test(date)?'day':/^\d{4}-\d{2}$/.test(date)?'month':/^\d{4}$/.test(date)?'year':'approximate';
+const MONTH='(?:jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|june?|july?|aug(?:ust)?|sep(?:t(?:ember)?)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)';
+/** How precise a date as written is; a document's "10 January 2019" is a full day, not an approximation. */
+const precision=(date:string|null):WorkFact['precision']=>{
+ if(!date)return 'unknown';
+ if(/^\d{4}-\d{2}-\d{2}$/.test(date)||/\d{4}\s*年\s*\d{1,2}\s*月\s*\d{1,2}\s*日/.test(date)||new RegExp(`\\b\\d{1,2}(?:st|nd|rd|th)?\\s+${MONTH}\\.?,?\\s+\\d{4}|${MONTH}\\.?\\s+\\d{1,2}(?:st|nd|rd|th)?,?\\s+\\d{4}`,'i').test(date))return 'day';
+ if(/^\d{4}-\d{2}$/.test(date)||/\d{4}\s*年\s*\d{1,2}\s*月/.test(date)||new RegExp(`${MONTH}\\.?,?\\s+\\d{4}`,'i').test(date))return 'month';
+ if(/^\s*(?:in\s+)?\d{4}\s*年?\s*$/i.test(date))return 'year';
+ return 'approximate';
+};
 /** Facts are supplied accounts, not independently investigated findings. Text stays data. */
 export function workingFacts(input:NewCaseInput,locale:'zh'|'en'='zh'):WorkFact[]{
  const facts:WorkFact[]=[];
@@ -22,7 +30,7 @@ export function workingFacts(input:NewCaseInput,locale:'zh'|'en'='zh'):WorkFact[
  if(input.priorActions.status==='described')add('prior-action',input.priorActions.description,input.priorActions.description,tr(locale,'用户陈述的已做行动／回应','User-reported prior action / response'),input.priorActions.date||null);
  input.intake?.answers.filter(a=>!['goal-details','disclosure-details'].includes(a.questionId)).forEach(a=>add(`answer-${a.questionId}`,a.answer,a.answer,a.question));
  for(const item of input.intake?.materials?.items??[]){
-  const source=item.sources.map(s=>`${s.filename} ${tr(locale,`第 ${s.pdfPage} 页`,`p. ${s.pdfPage}`)}`).join('; ');
+  const source=[...new Set(item.sources.map(s=>`${s.filename} ${tr(locale,`第 ${s.pdfPage} 页`,`p. ${s.pdfPage}`)}`))].join('; ');
   add(`material-${item.id}`,item.text,item.sources.map(s=>s.quote).join('\n'),source,item.date,item.status==='edited'?'user_statement':'document_record');
  }
  return facts;

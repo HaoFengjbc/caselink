@@ -32,7 +32,7 @@ describe('controlled actual search requests, mocked HTTP only',()=>{
   const http=vi.fn(async(url:unknown)=>{calls.push(new URL(String(url)));return Response.json({query:{original:new URL(String(url)).searchParams.get('q'),spellcheck_off:true},web:{results:[{url:'https://www.judiciary.uk/judgments/fixture',title:'Fictional result',description:'A public snippet. Full source not read.'}]}});});
   const transport=createControlledSearchTransport(http as typeof fetch,{CONTROLLED_SEARCH_ENABLED:'true',BRAVE_SEARCH_API_KEY:'fixture-only'});
   const result=await withTestExecution(()=>researchWeb(value,config,undefined,transport,'en'));
-  expect(calls).toHaveLength(2);expect(calls.every(url=>url.searchParams.get('spellcheck')==='false')).toBe(true);expect(result.actualQueries).toEqual(buildResearchQuery(value).searchTerms);expect(result.sources.every(s=>s.pageOpened===false)).toBe(true);expect(result.passages[0].text).toContain('source page not opened');
+  expect(calls).toHaveLength(3);expect(calls.every(url=>url.searchParams.get('spellcheck')==='false')).toBe(true);expect(result.actualQueries).toEqual(buildResearchQuery(value).searchTerms);expect(result.sources.every(s=>s.pageOpened===false)).toBe(true);expect(result.passages[0].text).toContain('source page not opened');
  });
  it('rejects tampered prepared queries before outbound HTTP rather than filtering after disclosure',async()=>{
   const query=buildResearchQuery(input());query.searchTerms=['SecretName unusual event 2026 exact'];const http=vi.fn();const transport=createControlledSearchTransport(http,{CONTROLLED_SEARCH_ENABLED:'true',BRAVE_SEARCH_API_KEY:'fixture'});
@@ -41,7 +41,7 @@ describe('controlled actual search requests, mocked HTTP only',()=>{
  it('keeps the executed query record when the second provider request fails',async()=>{
   let count=0;const http=vi.fn(async()=>++count===1?Response.json({web:{results:[]}}):new Response('',{status:429}));
   const transport=createControlledSearchTransport(http as typeof fetch,{CONTROLLED_SEARCH_ENABLED:'true',BRAVE_SEARCH_API_KEY:'fixture'});
-  const result=await withTestExecution(()=>researchWeb(input(),config,undefined,transport));expect(http).toHaveBeenCalledTimes(2);expect(result.status).toBe('unavailable');expect(result.actualQueries).toEqual(buildResearchQuery(input()).searchTerms);expect(result.searchCallCount).toBe(2);
+  const result=await withTestExecution(()=>researchWeb(input(),config,undefined,transport));expect(http).toHaveBeenCalledTimes(2);expect(result.status).toBe('unavailable');expect(result.actualQueries).toEqual(buildResearchQuery(input()).searchTerms.slice(0,2));expect(result.searchCallCount).toBe(2);
  });
  it('rejects prototype keys as proposed labels and never infers defamation from civil alone',()=>{
   const value=input(),proposal={...structuredResearchPlan(value),disputedConduct:['__proto__','constructor','toString']};expect(buildResearchQuery(value,proposal).topics).toEqual(['journalism freedom of expression']);expect(buildResearchQuery(value).searchTerms.join(' ')).not.toContain('defamation');
