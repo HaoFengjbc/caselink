@@ -9,7 +9,7 @@ test.beforeEach(async({page})=>{
 async function manualInput(page:Page,index:number){
  const input=WHATS_NEXT_INPUTS[index];await page.goto('/new');
  await page.getByRole('button',{name:/没有文件，直接描述/}).click();
- await page.getByRole('checkbox',{name:'提交时允许调用 AI（关闭不改变案情，使用规则参考）'}).uncheck();
+ await page.getByRole('checkbox',{name:'提交时允许调用 AI'}).uncheck();
  await page.getByLabel('国家或地区',{exact:true}).fill(input.country);
  if(index===1)await page.getByRole('radio',{name:'英格兰与威尔士',exact:true}).check();
  await page.getByRole('radio',{name:['刑事','民事','行政'][index],exact:true}).check();
